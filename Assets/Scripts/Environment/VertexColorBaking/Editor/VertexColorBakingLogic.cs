@@ -40,7 +40,7 @@ public class VertexColorBakingLogic
         {
             return targetObjects
                         .Select(o => o.GetComponent<VertexColorLightSource>())
-                        .Where(o => o != null)
+                        .Where(o => o != null && o.isActiveAndEnabled)
                         .ToArray();
         }
 
