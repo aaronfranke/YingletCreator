@@ -11,8 +11,10 @@ public class VertexColorBakingLogic
     {
         if (targetObjects == null) return;
 
-        foreach (var targetObject in targetObjects)
+        for (int i = 0; i < targetObjects.Length; i++)
         {
+            var targetObject = targetObjects[i];
+            EditorUtility.DisplayProgressBar("Vertex Color Baking", $"Clearing data ({i}/{targetObjects.Length})", i / (float)targetObjects.Length);
             // var vdColorHandler = targetObject.GetComponent<VDColorHandler>();
             // if (vdColorHandler != null)
             // {
@@ -24,17 +26,24 @@ public class VertexColorBakingLogic
                 Undo.DestroyObjectImmediate(bakedData);
             }
         }
+        EditorUtility.ClearProgressBar();
     }
 
     public static void BakeVertexColors(Transform[] targetObjects, VertexColorBakingSettings settings)
     {
         ClearVertexColorData(targetObjects);
+
+        EditorUtility.DisplayProgressBar("Vertex Color Baking", "Gathering Lights", 0.0f);
         var lights = GetLights();
 
-        foreach (var targetObject in targetObjects)
+        for (int i = 0; i < targetObjects.Length; i++)
         {
+            var targetObject = targetObjects[i];
+            EditorUtility.DisplayProgressBar("Vertex Color Baking", $"Coloring objects ({i}/{targetObjects.Length})", i / (float)targetObjects.Length);
             ColorObject(targetObject);
         }
+
+        EditorUtility.ClearProgressBar();
 
         VertexColorLightSource[] GetLights()
         {
