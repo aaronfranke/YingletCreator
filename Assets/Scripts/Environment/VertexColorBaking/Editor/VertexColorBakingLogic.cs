@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -27,16 +29,53 @@ public class VertexColorBakingLogic
     public static void BakeVertexColors(Transform[] targetObjects, VertexColorBakingSettings settings)
     {
         ClearVertexColorData(targetObjects);
+        var lights = GetLights();
+
         foreach (var targetObject in targetObjects)
         {
-            var meshFilter = targetObject.GetComponent<MeshFilter>(); 
-            if (meshFilter == null) continue;
+            ColorObject(targetObject);
+        }
 
+        VertexColorLightSource[] GetLights()
+        {
+            return targetObjects
+                        .Select(o => o.GetComponent<VertexColorLightSource>())
+                        .Where(o => o != null)
+                        .ToArray();
+        }
+
+        void ColorObject(Transform targetObject)
+        {
+
+            var meshFilter = targetObject.GetComponent<MeshFilter>();
+            if (meshFilter == null) return;
 
             var bakedData = Undo.AddComponent<BakedVertexColorData>(targetObject.gameObject);
             Undo.RecordObject(bakedData, "Set vertex color data");
-            var colors = Enumerable.Repeat(settings.SkyColor, meshFilter.sharedMesh.vertices.Length).ToArray();
+
+            var localVerts = meshFilter.sharedMesh.vertices.ToArray();
+            var worldPositionVerts = localVerts.Select(v => targetObject.TransformPoint(v)).ToArray();
+
+            // var colors = Enumerable.Repeat(settings.SkyColor, meshFilter.sharedMesh.vertices.Length).ToArray();
+            var colors = worldPositionVerts.Select(v => GetColorForVert(v)).ToArray();
+
             bakedData.SetColors(colors);
         }
+
+        Color GetColorForVert(Vector3 worldPos)
+        {
+            var color = settings.SkyColor;
+            foreach (var light in lights)
+            {
+                var distance = Vector3.Distance(worldPos, light.transform.position);
+                var power = settings.PointLightFalloff.Evaluate(distance / light.Range);
+                power *= light.Intensity;
+                if (power < .01f) continue;
+                var targetColor = light.Color * color;
+                color = Color.Lerp(color, targetColor, power);
+            }
+            return color;
+        }
     }
+
 }

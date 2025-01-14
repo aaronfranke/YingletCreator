@@ -11,4 +11,6 @@ public class VertexColorBakingSettings
  
     public Color SkyColor = Color.white;
     public Color ShadowColor = Color.black;
+
+    public AnimationCurve PointLightFalloff;
 }

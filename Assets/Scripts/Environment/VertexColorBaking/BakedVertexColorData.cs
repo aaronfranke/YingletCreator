@@ -10,9 +10,13 @@ public class BakedVertexColorData : MonoBehaviour
 	{
 		MeshFilter meshFilter = gameObject.GetComponent<MeshFilter>();
 		if (_originalMesh == null) return; // This was likely JUST instantiated by the editor
+		if (meshFilter.sharedMesh == null)
+		{
+			meshFilter.sharedMesh = _originalMesh;
+		}
 		if (meshFilter.sharedMesh != _originalMesh) return; // The mesh has already been swapped off the original
 
-		
+
 		var coloredMesh = Mesh.Instantiate(meshFilter.sharedMesh);  //make a deep copy
 		coloredMesh.colors = _colors;
 		meshFilter.sharedMesh = coloredMesh;
