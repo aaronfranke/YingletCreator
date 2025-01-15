@@ -3,6 +3,8 @@ using UnityEngine;
 [System.Serializable]
 public class VertexColorBakingSettings
 {
+    public const int SamplingTextureSize = 16;
+
     public const float SamplingBias = 0.001f;
     [Range(0.01f, 100.0f)]
 	public float SamplingDistance = 10.0f;

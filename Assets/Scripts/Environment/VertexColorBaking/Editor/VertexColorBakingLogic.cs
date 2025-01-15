@@ -15,11 +15,6 @@ public class VertexColorBakingLogic
         {
             var targetObject = targetObjects[i];
             EditorUtility.DisplayProgressBar("Vertex Color Baking", $"Clearing data ({i}/{targetObjects.Length})", i / (float)targetObjects.Length);
-            // var vdColorHandler = targetObject.GetComponent<VDColorHandler>();
-            // if (vdColorHandler != null)
-            // {
-            //     Undo.DestroyObjectImmediate(vdColorHandler);
-            // }
             var bakedData = targetObject.GetComponent<BakedVertexColorData>();
             if (bakedData != null)
             {
@@ -33,7 +28,9 @@ public class VertexColorBakingLogic
     {
         ClearVertexColorData(targetObjects);
 
-        EditorUtility.DisplayProgressBar("Vertex Color Baking", "Gathering Lights", 0.0f);
+        EditorUtility.DisplayProgressBar("Vertex Color Baking", "Setting up", 0.0f);
+        using var renderSettingsDisabler = new RenderSettingDisabler();
+        using var samplerCamera = new AmbientOcclusionSamplerCamera(settings);
         var lights = GetLights();
 
         for (int i = 0; i < targetObjects.Length; i++)
@@ -63,28 +60,33 @@ public class VertexColorBakingLogic
             Undo.RecordObject(bakedData, "Set vertex color data");
 
             var localVerts = meshFilter.sharedMesh.vertices.ToArray();
-            var worldPositionVerts = localVerts.Select(v => targetObject.TransformPoint(v)).ToArray();
-
-            // var colors = Enumerable.Repeat(settings.SkyColor, meshFilter.sharedMesh.vertices.Length).ToArray();
-            var colors = worldPositionVerts.Select(v => GetColorForVert(v)).ToArray();
+            var localNormals = meshFilter.sharedMesh.normals.ToArray();
+            var worldVerts = localVerts.Select(v => targetObject.TransformPoint(v)).ToArray();
+            var worldNormals = localNormals.Select(n => Vector3.Normalize(targetObject.TransformDirection(n))).ToArray();
+            var colors = new Color[worldVerts.Length];
+            for (int i = 0; i < worldVerts.Length; i++)
+            {
+                colors[i] = GetColorForVert(worldVerts[i], worldNormals[i]);
+            }
 
             bakedData.SetColors(colors);
-        }
 
-        Color GetColorForVert(Vector3 worldPos)
-        {
-            var color = settings.SkyColor;
-            foreach (var light in lights)
+            Color GetColorForVert(Vector3 worldPos, Vector3 normal)
             {
-                var distance = Vector3.Distance(worldPos, light.transform.position);
-                var power = settings.PointLightFalloff.Evaluate(distance / light.Range);
-                power *= light.Intensity;
-                if (power < .01f) continue;
-                var targetColor = light.Color * color;
-                color = Color.Lerp(color, targetColor, power);
+                // var color = settings.SkyColor;
+                var ao = samplerCamera.SampleAO(worldPos, normal);
+                var color = Color.Lerp(settings.ShadowColor, settings.SkyColor, ao);
+                foreach (var light in lights)
+                {
+                    var distance = Vector3.Distance(worldPos, light.transform.position);
+                    var power = settings.PointLightFalloff.Evaluate(distance / light.Range);
+                    power *= light.Intensity;
+                    if (power < .01f) continue;
+                    var targetColor = light.Color * color;
+                    color = Color.Lerp(color, targetColor, power);
+                }
+                return color;
             }
-            return color;
         }
     }
-
 }
