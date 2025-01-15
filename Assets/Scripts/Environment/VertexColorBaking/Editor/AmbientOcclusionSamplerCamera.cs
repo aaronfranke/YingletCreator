@@ -21,16 +21,14 @@ public sealed class AmbientOcclusionSamplerCamera : IDisposable
         _cameraGO = new GameObject("VertexColorBakingCamera");
         _camera = _cameraGO.AddComponent<Camera>();
         _camera.targetTexture = _renderTexture;
-        _camera.renderingPath = RenderingPath.Forward;
-        // _camera.pixelRect = new Rect(0, 0, VertexColorBakingSettings.SamplingTextureSize, VertexColorBakingSettings.SamplingTextureSize);
         _camera.aspect = 1.0f;
         _camera.nearClipPlane = VertexColorBakingSettings.SamplingBias;
         _camera.farClipPlane = settings.SamplingDistance;
-        _camera.fieldOfView = Mathf.Clamp(settings.SamplingCameraFOV, 5, 160);
+        _camera.fieldOfView = Mathf.Clamp(settings.SamplingCameraFOV, 5, 170);
         _camera.clearFlags = CameraClearFlags.SolidColor;
         _camera.backgroundColor = Color.white;
         _camera.cullingMask = Tools.visibleLayers; // May need to be adjusted in the future
-        _camera.enabled = false;
+        _camera.enabled = false; // We render with .Render
         var shader = Shader.Find("Hidden/VertexColorBakingAmbientOcclusion");
         _camera.SetReplacementShader(shader, "");
 
@@ -53,31 +51,24 @@ public sealed class AmbientOcclusionSamplerCamera : IDisposable
 
         _texture2D.ReadPixels(new Rect(0, 0, _renderTexture.width, _renderTexture.height), 0, 0);
         _texture2D.Apply();
-        var color = GetAverageColor(_texture2D);
+        var averageValue = GetAverageValue(_texture2D);
         
         RenderTexture.active = null;
-        return color.r;
+        return averageValue;
     }
 
-    static Color GetAverageColor(Texture2D texture)
+    static float GetAverageValue(Texture2D texture)
     {
         // Get all pixels of the texture
         Color[] pixels = texture.GetPixels();
 
-        // Initialize variables to store color components
-        float totalR = 0f, totalG = 0f, totalB = 0f, totalA = 0f;
+        float totalR = 0f;
 
-        // Sum up the color components
         foreach (Color pixel in pixels)
         {
             totalR += pixel.r;
-            totalG += pixel.g;
-            totalB += pixel.b;
-            totalA += pixel.a;
         }
 
-        // Calculate the average
-        int totalPixels = pixels.Length;
-        return new Color(totalR / totalPixels, totalG / totalPixels, totalB / totalPixels, totalA / totalPixels);
+        return totalR / pixels.Length;
     }
 }

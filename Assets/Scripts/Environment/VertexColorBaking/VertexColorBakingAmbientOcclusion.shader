@@ -6,7 +6,7 @@ Shader "Hidden/VertexColorBakingAmbientOcclusion" {
 		#pragma vertex vert 
 		#pragma fragment frag
 		half4 vert(half4 vertexPos : POSITION) : SV_POSITION { return UnityObjectToClipPos(vertexPos); }
-		half4 frag(void) : COLOR { return (0,0,0,0); }
+		half4 frag(void) : COLOR { return half4(0,0,0,0); }
 		ENDCG
 	} }
 }

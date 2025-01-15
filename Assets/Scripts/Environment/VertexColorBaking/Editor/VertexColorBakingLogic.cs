@@ -73,7 +73,6 @@ public class VertexColorBakingLogic
 
             Color GetColorForVert(Vector3 worldPos, Vector3 normal)
             {
-                // var color = settings.SkyColor;
                 var ao = samplerCamera.SampleAO(worldPos, normal);
                 var color = Color.Lerp(settings.ShadowColor, settings.SkyColor, ao);
                 foreach (var light in lights)
