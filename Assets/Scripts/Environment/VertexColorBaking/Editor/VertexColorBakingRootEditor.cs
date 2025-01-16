@@ -20,7 +20,7 @@ public class VertexColorBakingRootEditor : Editor
         if (GUILayout.Button("Bake"))
         {
             var selection = Selection.GetTransforms(SelectionMode.Deep);
-            VertexColorBakingLogic.BakeVertexColors(root.GetComponentsInChildren<Transform>(), root._settings);
+            VertexColorBakingLogic.BakeVertexColors(root.transform, root.GetComponentsInChildren<Transform>(), root._settings);
         }
     }
 }

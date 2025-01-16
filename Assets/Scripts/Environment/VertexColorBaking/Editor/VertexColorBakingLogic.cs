@@ -24,13 +24,14 @@ public class VertexColorBakingLogic
         EditorUtility.ClearProgressBar();
     }
 
-    public static void BakeVertexColors(Transform[] targetObjects, VertexColorBakingSettings settings)
+    public static void BakeVertexColors(Transform root, Transform[] targetObjects, VertexColorBakingSettings settings)
     {
         ClearVertexColorData(targetObjects);
 
         EditorUtility.DisplayProgressBar("Vertex Color Baking", "Setting up", 0.0f);
         using var renderSettingsDisabler = new RenderSettingDisabler();
         using var samplerCamera = new AmbientOcclusionSamplerCamera(settings);
+        using var temporaryPlane = new TemporaryPlane(root.transform.position);
         var lights = GetLights();
 
         for (int i = 0; i < targetObjects.Length; i++)
