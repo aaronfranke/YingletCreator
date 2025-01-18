@@ -35,7 +35,8 @@ public class VertexColorBakingLogic
         using var settingsApplier = new VertexColorObjectSettingsApplier(targetObjects);
         using var temporaryPlane = new TemporaryPlane(root);
         using var renderSettingsDisabler = new RenderSettingDisabler();
-        using var samplerCamera = new AmbientOcclusionSamplerCamera(root, settings);
+        using var prefabInstantiator = new VertexColorPrefabInstantiator(root);
+        using var samplerCamera = new AmbientOcclusionSamplerCamera(settings, prefabInstantiator);
         var lights = GetLights();
 
         for (int i = 0; i < targetObjects.Length; i++)

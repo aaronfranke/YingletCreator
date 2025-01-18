@@ -10,15 +10,17 @@ public sealed class AmbientOcclusionSamplerCamera : IDisposable
     private readonly RenderTexture _renderTexture;
     private readonly GameObject _cameraGO;
     private readonly Camera _camera;
+    private readonly IAmbientOcclusionSamplerCameraOffsetter _offsetter;
     private readonly Texture2D _texture2D;
 
-    public AmbientOcclusionSamplerCamera(Transform root, VertexColorBakingSettings settings)
+    public AmbientOcclusionSamplerCamera(VertexColorBakingSettings settings, IAmbientOcclusionSamplerCameraOffsetter offsetter)
     {
+        _offsetter = offsetter;
+
         _texture2D = new Texture2D(VertexColorBakingSettings.SamplingTextureSize, VertexColorBakingSettings.SamplingTextureSize, TextureFormat.RGBA64, false);
         _renderTexture = new RenderTexture(VertexColorBakingSettings.SamplingTextureSize, VertexColorBakingSettings.SamplingTextureSize, 16, RenderTextureFormat.ARGB64);
 
         _cameraGO = new GameObject("VertexColorBakingCamera");
-        _cameraGO.transform.parent = root;
         _camera = _cameraGO.AddComponent<Camera>();
         _camera.targetTexture = _renderTexture;
         _camera.aspect = 1.0f;
@@ -47,6 +49,7 @@ public sealed class AmbientOcclusionSamplerCamera : IDisposable
     {
         _cameraGO.transform.position = position + normal * VertexColorBakingSettings.SamplingBias;
         _cameraGO.transform.LookAt(position + normal);
+        _offsetter.AdjustPosition(_cameraGO.transform);
         _camera.Render();
 
         RenderTexture.active = _renderTexture;
@@ -54,7 +57,7 @@ public sealed class AmbientOcclusionSamplerCamera : IDisposable
         _texture2D.ReadPixels(new Rect(0, 0, _renderTexture.width, _renderTexture.height), 0, 0);
         _texture2D.Apply();
         var averageValue = GetAverageValue(_texture2D);
-        
+
         RenderTexture.active = null;
         return averageValue;
     }
@@ -73,4 +76,9 @@ public sealed class AmbientOcclusionSamplerCamera : IDisposable
 
         return totalR / pixels.Length;
     }
+}
+
+public interface IAmbientOcclusionSamplerCameraOffsetter
+{
+    public void AdjustPosition(Transform camera);
 }

@@ -18,4 +18,5 @@ public class VertexColorBakingSettings
     public AnimationCurve PointLightFalloff = AnimationCurve.Linear(0, 1, 1, 0);
 
     public const int NoRenderLayer = 29; // Chosen at random; should probably be something that's free
+    public static Vector3 InstantiatedPrefabOffset => new Vector3(2000, 0, 0); // chosen at random; should be far from the center of the scene. See VertexColorPrefabInstantiator for details
 }
