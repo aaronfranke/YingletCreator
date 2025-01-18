@@ -1,7 +1,4 @@
-using System;
-using System.Collections;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -29,10 +26,10 @@ public class VertexColorBakingLogic
         ClearVertexColorData(targetObjects);
 
         EditorUtility.DisplayProgressBar("Vertex Color Baking", "Setting up", 0.0f);
-        using var renderSettingsDisabler = new RenderSettingDisabler();
-        using var samplerCamera = new AmbientOcclusionSamplerCamera(settings);
-        using var temporaryPlane = new TemporaryPlane(root.transform.position);
         using var settingsApplier = new VertexColorObjectSettingsApplier(targetObjects);
+        using var temporaryPlane = new TemporaryPlane(root);
+        using var renderSettingsDisabler = new RenderSettingDisabler();
+        using var samplerCamera = new AmbientOcclusionSamplerCamera(root, settings);
         var lights = GetLights();
 
         for (int i = 0; i < targetObjects.Length; i++)

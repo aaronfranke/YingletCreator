@@ -12,13 +12,13 @@ public sealed class AmbientOcclusionSamplerCamera : IDisposable
     private readonly Camera _camera;
     private readonly Texture2D _texture2D;
 
-    public AmbientOcclusionSamplerCamera(VertexColorBakingSettings settings)
+    public AmbientOcclusionSamplerCamera(Transform root, VertexColorBakingSettings settings)
     {
-        
         _texture2D = new Texture2D(VertexColorBakingSettings.SamplingTextureSize, VertexColorBakingSettings.SamplingTextureSize, TextureFormat.RGBA64, false);
         _renderTexture = new RenderTexture(VertexColorBakingSettings.SamplingTextureSize, VertexColorBakingSettings.SamplingTextureSize, 16, RenderTextureFormat.ARGB64);
 
         _cameraGO = new GameObject("VertexColorBakingCamera");
+        _cameraGO.transform.parent = root;
         _camera = _cameraGO.AddComponent<Camera>();
         _camera.targetTexture = _renderTexture;
         _camera.aspect = 1.0f;
@@ -27,7 +27,9 @@ public sealed class AmbientOcclusionSamplerCamera : IDisposable
         _camera.fieldOfView = Mathf.Clamp(settings.SamplingCameraFOV, 5, 170);
         _camera.clearFlags = CameraClearFlags.SolidColor;
         _camera.backgroundColor = Color.white;
-        _camera.cullingMask = Tools.visibleLayers; // May need to be adjusted in the future
+        var mask = Tools.visibleLayers;
+        mask &= ~(1 << VertexColorBakingSettings.NoRenderLayer);
+        _camera.cullingMask = mask;
         _camera.enabled = false; // We render with .Render
         var shader = Shader.Find("Hidden/VertexColorBakingAmbientOcclusion");
         _camera.SetReplacementShader(shader, "");
