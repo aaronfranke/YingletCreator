@@ -13,14 +13,14 @@ public class VertexColorBakingRootEditor : Editor
 
         if (GUILayout.Button("Clear Vertex Color Data"))
         {
-            VertexColorBakingLogic.ClearVertexColorData(root.GetComponentsInChildren<Transform>());
+            VertexColorBakingLogic.ClearVertexColorData(root.transform);
         }
         GUILayout.Space(5);
 
         if (GUILayout.Button("Bake"))
         {
             var selection = Selection.GetTransforms(SelectionMode.Deep);
-            VertexColorBakingLogic.BakeVertexColors(root.transform, root.GetComponentsInChildren<Transform>(), root._settings);
+            VertexColorBakingLogic.BakeVertexColors(root.transform, root._settings);
         }
     }
 }

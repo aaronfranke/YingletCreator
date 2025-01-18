@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class VertexColorBakingLogic
 {
-    public static void ClearVertexColorData(Transform[] targetObjects)
+    public static void ClearVertexColorData(Transform root)
     {
-        if (targetObjects == null) return;
+        if (root == null) return;
+        
+        var targetObjects = root.GetComponentsInChildren<Transform>();
 
         for (int i = 0; i < targetObjects.Length; i++)
         {
@@ -21,9 +23,13 @@ public class VertexColorBakingLogic
         EditorUtility.ClearProgressBar();
     }
 
-    public static void BakeVertexColors(Transform root, Transform[] targetObjects, VertexColorBakingSettings settings)
+    public static void BakeVertexColors(Transform root, VertexColorBakingSettings settings)
     {
-        ClearVertexColorData(targetObjects);
+        if (root == null) return;
+        
+        var targetObjects = root.GetComponentsInChildren<Transform>();
+
+        ClearVertexColorData(root);
 
         EditorUtility.DisplayProgressBar("Vertex Color Baking", "Setting up", 0.0f);
         using var settingsApplier = new VertexColorObjectSettingsApplier(targetObjects);
