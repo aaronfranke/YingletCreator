@@ -32,6 +32,7 @@ public class VertexColorBakingLogic
         using var renderSettingsDisabler = new RenderSettingDisabler();
         using var samplerCamera = new AmbientOcclusionSamplerCamera(settings);
         using var temporaryPlane = new TemporaryPlane(root.transform.position);
+        using var settingsApplier = new VertexColorObjectSettingsApplier(targetObjects);
         var lights = GetLights();
 
         for (int i = 0; i < targetObjects.Length; i++)
@@ -47,7 +48,7 @@ public class VertexColorBakingLogic
         {
             return targetObjects
                         .Select(o => o.GetComponent<VertexColorLightSource>())
-                        .Where(o => o != null && o.isActiveAndEnabled)
+                        .Where(o => o != null)
                         .ToArray();
         }
 
