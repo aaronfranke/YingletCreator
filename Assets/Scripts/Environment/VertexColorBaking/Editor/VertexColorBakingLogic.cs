@@ -48,10 +48,10 @@ public class VertexColorBakingLogic
 
         EditorUtility.ClearProgressBar();
 
-        VertexColorLightSource[] GetLights()
+        IVertexColorLight[] GetLights()
         {
             return targetObjects
-                        .Select(o => o.GetComponent<VertexColorLightSource>())
+                        .Select(o => o.GetComponent<IVertexColorLight>())
                         .Where(o => o != null)
                         .ToArray();
         }
@@ -83,7 +83,7 @@ public class VertexColorBakingLogic
                 var color = Color.Lerp(settings.ShadowColor, settings.SkyColor, ao);
                 foreach (var light in lights)
                 {
-                    var distance = Vector3.Distance(worldPos, light.transform.position);
+                    var distance = light.GetDistance(worldPos);
                     var power = settings.PointLightFalloff.Evaluate(distance / light.Range);
                     power *= light.Intensity;
                     if (power < .01f) continue;

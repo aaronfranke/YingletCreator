@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class VertexColorLightSource : MonoBehaviour
+public class VertexColorPointLight : MonoBehaviour, IVertexColorLight
 {
     [ColorUsage(showAlpha: true, hdr: true)]
-    public Color Color = Color.white;
-    public float Range = 5;
-    public float Intensity = 1;
+    [SerializeField] Color Color = Color.white;
+    [SerializeField] float Intensity = 1;
+    [SerializeField] float Range = 5;
 
     Color LowAlphaColor
     {
@@ -15,6 +15,17 @@ public class VertexColorLightSource : MonoBehaviour
             color.a = .3f;
             return color;
         }
+    }
+
+    Color IVertexColorLight.Color => Color;
+
+    float IVertexColorLight.Intensity => Intensity;
+
+    float IVertexColorLight.Range => Range;
+
+    public float GetDistance(Vector3 from)
+    {
+        return Vector3.Distance(from, this.transform.position);
     }
 
     // This is called every frame in the Scene View
