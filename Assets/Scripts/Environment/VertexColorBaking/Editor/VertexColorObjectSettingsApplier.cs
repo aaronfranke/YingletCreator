@@ -27,12 +27,12 @@ public class VertexColorObjectSettingsApplier : IDisposable
                 var meshRender = setting.GetComponent<MeshRenderer>();
                 if (meshRender == null)
                 {
-                    Debug.LogWarning("Settings called for no obfuscation, but the object didn't even have a MeshRenderer to begin with");
+                    Debug.LogWarning("Settings called for no obfuscation, but the object didn't even have a MeshRenderer to begin with", setting.gameObject);
                     continue;
                 }
                 if (meshRender.enabled == false)
                 {
-                    Debug.LogWarning("Settings called for no obfuscation, but the object didn't even have its mesh render enabled to begin with");
+                    Debug.LogWarning("Settings called for no obfuscation, but the object didn't even have its mesh render enabled to begin with", setting.gameObject);
                     continue;
                 }
                 meshRender.enabled = false;
