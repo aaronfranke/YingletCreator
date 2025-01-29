@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wood (Wall)
+  m_Name: StoneSquares
   m_Shader: {fileID: -6465566751694194690, guid: cdd59963bc31a574694fd8ea3917cd9f, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -62,7 +62,7 @@ Material:
         m_Scale: {x: 0.5, y: 0.5}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 5bca3308e116ab44485127b93131ada3, type: 3}
+        m_Texture: {fileID: 2800000, guid: 13e118d9028245d44a76c4e7234df921, type: 3}
         m_Scale: {x: 0.5, y: 0.5}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -151,7 +151,7 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _Tiling: 1
+    - _Tiling: 1.5
     - _VignetteIgnore: 0
     - _VignettePower: 1
     - _WorkflowMode: 1
