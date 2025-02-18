@@ -20,14 +20,12 @@ def export():
     
     for selectedObject in exportObjects:
         exportPath = os.path.dirname(bpy.data.filepath)
-        exportPath += "/../Assets/Art/Models/"
+        exportPath += "/../Assets/Art/Models"
 
         # The model's path should be based on the collections it is under
-        collections = selectedObject.users_collection
-        if collections is None:
-            collections = []
-        for collection in collections:
-            exportPath += collection.name + "/"
+        exportPath += get_collection_path(selectedObject.name) + "/"
+        
+        print(exportPath)
             
         os.makedirs(exportPath, exist_ok=True)
 
@@ -36,6 +34,7 @@ def export():
         exportPath += selectedObject.name
         exportPath += ".fbx"
         exportPath = os.path.abspath(exportPath)
+        
         
         select_children_recursive(selectedObject, True)
         bpy.ops.export_scene.fbx(
@@ -60,5 +59,16 @@ def select_children_recursive(obj, doSelect):
     obj.select_set(doSelect)
     for child in obj.children:
         select_children_recursive(child, doSelect)
+        
+
+def get_collection_path(obj_name):
+    """Returns the relative collection path of an object based on its hierarchy."""
+    # Check which collection the object belongs to
+    for collection in bpy.data.collections:
+        child_collection_names = [child_collection.name for child_collection in collection.children]
+        if obj_name in collection.objects or obj_name in child_collection_names:
+            return get_collection_path(collection.name) + "/" + collection.name
+    
+    return "" 
     
 export()
