@@ -10,3 +10,5 @@ https://omarfaruqtawsif.gumroad.com/l/zcpfq
 UCU Paint is also used heavily in the texturing workflow.
 It can be downloaded from File->Preferences->Get Extensions (Search UCU Paint), or here:
 https://github.com/ucupumar/ucupaint
+
+UVToolkit is used for unwrapping, though is not strictly required
