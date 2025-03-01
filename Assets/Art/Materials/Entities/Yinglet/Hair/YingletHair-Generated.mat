@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: YingletHead-Generated
-  m_Shader: {fileID: -6465566751694194690, guid: bb0a68bea54449441897c4548d65586c, type: 3}
+  m_Name: YingletHair-Generated
+  m_Shader: {fileID: -6465566751694194690, guid: 8fee8edde1b9c3b45936a2aab6836a1c, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -57,7 +57,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: e51227a030500524799471d167e95ee7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -110,6 +110,7 @@ Material:
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
+    - _Contrast: 1.037
     - _Contrast_1: 1
     - _Cull: 2
     - _Cutoff: 0.5
@@ -121,8 +122,10 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _HueShift: 349
     - _HueShift_1: 0
     - _Metallic: 0
+    - _Multiplication: 0.212
     - _Multiplication_1: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -133,6 +136,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _Saturation: 0.737
     - _Saturation_1: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
