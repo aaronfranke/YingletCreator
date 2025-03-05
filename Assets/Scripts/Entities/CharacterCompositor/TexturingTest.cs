@@ -1,39 +1,45 @@
+using CharacterCompositor;
 using NUnit.Framework;
 using UnityEngine;
 
-public class TexturingTest : MonoBehaviour
+namespace CharacterCompositor
 {
-    [SerializeField] SkinnedMeshRenderer _bodyMeshRenderer;
-    [SerializeField] Material _originalMaterial;
-
-    [SerializeField] Material _compositeColorizeAndMix;
-
-    [SerializeField] Texture2D _bodyTexture;
-    Material _editorMaterial;
-
-    public void UpdateMaterial()
+    public class TexturingTest : MonoBehaviour
     {
-        Assert.IsNotNull(_bodyMeshRenderer);
+        [SerializeField] SkinnedMeshRenderer _bodyMeshRenderer;
+        [SerializeField] Material _originalMaterial;
 
-        var renderTextures = new DoubleBufferedRenderTexture(256);
+        [SerializeField] Material _compositeColorizeAndMix;
 
-        if (_editorMaterial == null)
+        [SerializeField] Texture2D _bodyTexture;
+        [SerializeField] ColorGroup _testColorGroup;
+
+        Material _editorMaterial;
+
+        public void UpdateMaterial()
         {
-            _editorMaterial = new Material(_originalMaterial);
+            Assert.IsNotNull(_bodyMeshRenderer);
+
+            var renderTextures = new DoubleBufferedRenderTexture(256);
+
+            if (_editorMaterial == null)
+            {
+                _editorMaterial = new Material(_originalMaterial);
+            }
+
+            var blitMaterial = new Material(_compositeColorizeAndMix);
+            blitMaterial.SetTexture("_MixTex", _bodyTexture);
+            blitMaterial.Colorize(_testColorGroup.DefaultColorValues);
+
+            renderTextures.Blit(blitMaterial);
+
+            _editorMaterial.mainTexture = renderTextures.Finalize();
+            _bodyMeshRenderer.sharedMaterial = _editorMaterial;
         }
 
-        var blitMaterial = new Material(_compositeColorizeAndMix);
-        // TODO: Continue here, adding other properties and doing it for existing materials
-        blitMaterial.SetTexture("_MixTex", _bodyTexture);
-
-        renderTextures.Blit(blitMaterial);
-
-        _editorMaterial.mainTexture = renderTextures.Finalize();
-        _bodyMeshRenderer.sharedMaterial = _editorMaterial;
-    }
-
-    public void RevertMaterial()
-    {
-        _bodyMeshRenderer.sharedMaterial = _originalMaterial;
+        public void RevertMaterial()
+        {
+            _bodyMeshRenderer.sharedMaterial = _originalMaterial;
+        }
     }
 }
