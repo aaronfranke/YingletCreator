@@ -9,65 +9,32 @@ namespace CharacterCompositor
     {
         [SerializeField] GameObject _rigPrefab;
 
-        [SerializeField] GameObject _bodyPrefab;
-
-        const string RigChildName = "Rig";
-        const string BodyChildName = "Body";
+        [SerializeField] MeshWithMaterial[] _meshesWithMaterials;
 
         public void Composite()
         {
             Clear();
 
-            var rigGo = CreateWithName(_rigPrefab, RigChildName);
+            var rigGo = GameObject.Instantiate(_rigPrefab, this.transform);
+            rigGo.name = _rigPrefab.name;
 
-            // TODO clean this all up
-            _bodyPrefab.gameObject.SetActive(false);
-            var bodyGo = GameObject.Instantiate(_bodyPrefab, this.transform);
-            var skinnedMeshRenderer = bodyGo.GetComponent<SkinnedMeshRenderer>();
-            skinnedMeshRenderer.rootBone = rigGo.transform.Find("root");
-            var boneMap = GetChildTransformMap(rigGo.transform);
-            skinnedMeshRenderer.bones = skinnedMeshRenderer.bones.Select(b => boneMap[b.name]).ToArray();
-            bodyGo.name = BodyChildName;
-            bodyGo.gameObject.SetActive(true);
-            _bodyPrefab.gameObject.SetActive(true);
+            var boneMap = Utilities.GetChildTransformMap(rigGo.transform);
 
+            foreach (var meshWithMaterial in _meshesWithMaterials)
+            {
+                Utilities.CreateSkinnedObject(meshWithMaterial.SkinnedMeshRendererPrefab, this.transform, boneMap);
+            }
         }
 
         public void Clear()
         {
-            DeleteChildIfExists(RigChildName);
-            DeleteChildIfExists(BodyChildName);
-        }
-
-        GameObject CreateWithName(GameObject prefab, string name)
-        {
-            var obj = GameObject.Instantiate(prefab, this.transform);
-            obj.name = name;
-
-            return obj;
-        }
-
-        void DeleteChildIfExists(string name)
-        {
-            var child = transform.Find(name);
-            if (child == null) return;
-            GameObject.DestroyImmediate(child.gameObject);
-        }
-
-        public static Dictionary<string, Transform> GetChildTransformMap(Transform root)
-        {
-            var transformMap = new Dictionary<string, Transform>();
-            AddChildrenToMap(root);
-            return transformMap;
-
-            void AddChildrenToMap(Transform parent)
+            this.transform.DeleteChildIfExists(_rigPrefab.name);
+            
+            foreach (var meshWithMaterial in _meshesWithMaterials)
             {
-                foreach (Transform child in parent)
-                {
-                    transformMap[child.name] = child;
-                    AddChildrenToMap(child);
-                }
+                this.transform.DeleteChildIfExists(meshWithMaterial.SkinnedMeshRendererPrefab.name);
             }
         }
+
     }
 }
