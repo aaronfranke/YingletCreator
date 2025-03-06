@@ -14,27 +14,13 @@ namespace CharacterCompositor
         public void Composite()
         {
             Clear();
-
-            var rigGo = GameObject.Instantiate(_rigPrefab, this.transform);
-            rigGo.name = _rigPrefab.name;
-
-            var boneMap = Utilities.GetChildTransformMap(rigGo.transform);
-
-            foreach (var meshWithMaterial in _meshesWithMaterials)
-            {
-                Utilities.CreateSkinnedObject(meshWithMaterial.SkinnedMeshRendererPrefab, this.transform, boneMap);
-            }
+            var meshMapping = MeshUtilities.GenerateMeshes(this.transform, _rigPrefab, _meshesWithMaterials);
+            MaterialUtilities.ApplyMaterialsToMeshes(meshMapping);
         }
 
         public void Clear()
         {
-            this.transform.DeleteChildIfExists(_rigPrefab.name);
-            
-            foreach (var meshWithMaterial in _meshesWithMaterials)
-            {
-                this.transform.DeleteChildIfExists(meshWithMaterial.SkinnedMeshRendererPrefab.name);
-            }
+            MeshUtilities.ClearMeshes(this.transform, _rigPrefab, _meshesWithMaterials);
         }
-
     }
 }
