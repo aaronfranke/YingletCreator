@@ -10,7 +10,7 @@ namespace CharacterCompositor
 		[SerializeField] ColorGroup _defaultColorGroup;
 		[SerializeField] MaterialDescription _targetMaterialDescription;
 		[SerializeField] Texture2D _shading;
-		// [SerializeField] Texture2D _mask;
+		[SerializeField] Texture2D _mask;
 		// TODO: Also add something to control sorting probly
 
 		public ColorGroup DefaultColorGroup => _defaultColorGroup;
@@ -24,8 +24,6 @@ namespace CharacterCompositor
 		/// <summary>
 		/// Optional texture that controls 
 		/// </summary>
-		//public Texture2D Mask => _mask;
-
+		public Texture2D Mask => _mask;
 	}
-
 }
