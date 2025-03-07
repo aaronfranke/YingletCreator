@@ -20,8 +20,12 @@ namespace CharacterCompositor
 				var material = mappedMaterial.Value;
 
 				var applicableMixTextures = sortedMixTextures.Where(m => m.TargetMaterialDescription == materialDescription).ToArray();
+				if (!applicableMixTextures.Any())
+				{
+					Debug.LogWarning($"Failed to texture material '{materialDescription.name}'; no applicable mix textures to apply");
+				}
 
-				int largestSize = applicableMixTextures.Max(m => m.Shading.width);
+				int largestSize = applicableMixTextures.Any() ? applicableMixTextures.Max(m => m.Shading.width) : 1;
 				var renderTextures = new DoubleBufferedRenderTexture(largestSize);
 
 				foreach (var applicableMixTexture in applicableMixTextures)

@@ -25,11 +25,6 @@ public sealed class DoubleBufferedRenderTexture
             var rt = new RenderTexture(textureSize, textureSize, 0);
             rt.Create();
 
-            // Code below can be used to start the texture white, but I don't think it's needed yet
-            // Texture2D whiteTexture = new Texture2D(1, 1);
-            // whiteTexture.SetPixel(0, 0, Color.white);
-            // whiteTexture.Apply();
-            // Graphics.Blit(whiteTexture, renderTexture);
             return rt;
         }
     }

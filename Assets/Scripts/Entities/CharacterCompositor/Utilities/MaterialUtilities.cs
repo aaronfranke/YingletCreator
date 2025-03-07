@@ -23,7 +23,7 @@ namespace CharacterCompositor
 				}
 				else
 				{
-					var newMaterial = CreateNewMaterial();
+					var newMaterial = new Material(materialDescription.ReferenceMaterial);
 					materialMap[materialDescription] = newMaterial;
 					ApplyMaterial(meshGameObject, newMaterial);
 				}
@@ -35,12 +35,6 @@ namespace CharacterCompositor
 		{
 			var skinnedMR = meshGameObject.GetComponent<SkinnedMeshRenderer>();
 			skinnedMR.sharedMaterial = material;
-		}
-
-		static Material CreateNewMaterial()
-		{
-			var shader = Shader.Find("Universal Render Pipeline/Unlit");
-			return new Material(shader);
 		}
 	}
 }
