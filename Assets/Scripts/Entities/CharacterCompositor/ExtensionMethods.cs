@@ -4,7 +4,7 @@ namespace CharacterCompositor
 {
 	public static class ExtensionMethods
 	{
-		public static void Colorize(this Material material, IColorizeValues values)
+		public static void SetColorizeParams(this Material material, IColorizeValues values)
 		{
 			material.SetFloat("_HueShift", values.HueShift);
 			material.SetFloat("_Multiplication", values.Multiplication);

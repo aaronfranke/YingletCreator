@@ -29,7 +29,7 @@ namespace CharacterCompositor
 
             var blitMaterial = new Material(_compositeColorizeAndMix);
             blitMaterial.SetTexture("_MixTex", _bodyTexture);
-            blitMaterial.Colorize(_testColorGroup.DefaultColorValues);
+            blitMaterial.SetColorizeParams(_testColorGroup.DefaultColorValues);
 
             renderTextures.Blit(blitMaterial);
 
