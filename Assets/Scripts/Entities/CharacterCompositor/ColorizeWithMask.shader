@@ -1,9 +1,10 @@
-Shader "Hidden/Colorize"
+Shader "Hidden/ColorizeWithMask"
 {
     Properties
     {
         _MainTex ("Main Texture", 2D) = "white" { }
         _MixTex ("Mix Texture", 2D) = "white" { }
+        _MaskTex ("Mask Texture", 2D) = "white" { }
 
         _HueShift ("Hue Shift", Range(0, 360)) = 0
         _Multiplication ("Multiplication", Range(0, 2)) = 1
@@ -36,6 +37,7 @@ Shader "Hidden/Colorize"
             // Properties
             sampler2D _MainTex;
             sampler2D _MixTex;
+            sampler2D _MaskTex;
             float _HueShift;
             float _Multiplication;
             float _Contrast;
@@ -53,6 +55,7 @@ Shader "Hidden/Colorize"
             {
                 float4 mainTexColor = tex2D(_MainTex, i.uv);
                 float4 mixTexColor = tex2D(_MixTex, i.uv);
+                float4 maskTexColor = tex2D(_MaskTex, i.uv);
                 
                 // Hue
                 Unity_Hue_Degrees_float(mixTexColor.rgb, _HueShift, mixTexColor.rgb);
@@ -65,6 +68,7 @@ Shader "Hidden/Colorize"
 
 
                 float4 outColor = mainTexColor;
+                mixTexColor.a = mixTexColor.a * maskTexColor.a;
                 outColor.rgb = lerp(mainTexColor.rgb, mixTexColor.rgb, mixTexColor.a);
                 outColor.a = max(mainTexColor.a, mixTexColor.a);
                 return outColor;

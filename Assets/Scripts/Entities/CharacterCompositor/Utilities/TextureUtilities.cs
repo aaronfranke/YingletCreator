@@ -8,8 +8,9 @@ namespace CharacterCompositor
 	{
 		public static void UpdateMaterialsWithTextures(IReadOnlyDictionary<MaterialDescription, Material> materialMapping, IEnumerable<MixTexture> mixTextures, MixTextureOrdering mixTextureOrdering)
 		{
-			var blitShader = Shader.Find("Hidden/Colorize");
-			var blitMaterial = new Material(blitShader);
+			var colorizeShader = Shader.Find("Hidden/Colorize");
+			var colorizeWithMaskShader = Shader.Find("Hidden/ColorizeWithMask");
+			var blitMaterial = new Material(colorizeShader);
 
 			var sortedMixTextures = SortMixTextures(mixTextures, mixTextureOrdering);
 
@@ -25,7 +26,17 @@ namespace CharacterCompositor
 
 				foreach (var applicableMixTexture in applicableMixTextures)
 				{
+					if (applicableMixTexture.Mask == null)
+					{
+						blitMaterial.shader = colorizeShader;
+					}
+					else
+					{
+						blitMaterial.shader = colorizeWithMaskShader;
+						blitMaterial.SetTexture("_MaskTex", applicableMixTexture.Mask);
+					}
 					blitMaterial.SetTexture("_MixTex", applicableMixTexture.Shading);
+
 					blitMaterial.SetColorizeParams(applicableMixTexture.DefaultColorGroup.DefaultColorValues);
 					renderTextures.Blit(blitMaterial);
 				}
