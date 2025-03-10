@@ -35,9 +35,19 @@ void Unity_Multiply_float3_float3(float3 A, float3 B, out float3 Out)
 
 void Unity_Contrast_float(float3 In, float Contrast, out float3 Out)
 {
-	float midpoint = pow(0.5, 2.2);
+	// float midpoint = pow(0.5, 2.2);
+	float midpoint = 0.217638f;
 	Out =  (In - midpoint) * Contrast + midpoint;
 }
+
+void Modified_Contrast_float(float3 In, float Contrast, float3 Midpoint, out float3 Out)
+{
+	// Unity tries to find a nice generic midpoint to move towards
+	// But it often times ends up being pretty far off from what we want
+	// Let's pass our own one in
+	Out =  (In - Midpoint) * Contrast + Midpoint;
+}
+
 
 void Unity_Saturation_float(float3 In, float Saturation, out float3 Out)
 {

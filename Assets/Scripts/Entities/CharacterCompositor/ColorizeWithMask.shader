@@ -10,6 +10,7 @@ Shader "Hidden/ColorizeWithMask"
         _Multiplication ("Multiplication", Range(0, 2)) = 1
         _Contrast ("Contrast", Range(0, 2)) = 1
         _Saturation ("Saturation", Range(0, 2)) = 1
+        _ContrastMidpoint ("Contrast Midpoint", Color) = (0.5, 0.5, 0.5, 1.0)
     }
     SubShader
     {
@@ -42,6 +43,7 @@ Shader "Hidden/ColorizeWithMask"
             float _Multiplication;
             float _Contrast;
             float _Saturation;
+            float4 _ContrastMidpoint;
 
             v2f vert(appdata v)
             {
@@ -57,12 +59,12 @@ Shader "Hidden/ColorizeWithMask"
                 float4 mixTexColor = tex2D(_MixTex, i.uv);
                 float4 maskTexColor = tex2D(_MaskTex, i.uv);
                 
+                // Contrast
+                Modified_Contrast_float(mixTexColor.rgb, _Contrast, _ContrastMidpoint.rgb, mixTexColor.rgb);
                 // Hue
                 Unity_Hue_Degrees_float(mixTexColor.rgb, _HueShift, mixTexColor.rgb);
                 // Multiplication
                 Unity_Multiply_float3_float3(mixTexColor.rgb, _Multiplication, mixTexColor.rgb);
-                // Contrast
-                Unity_Contrast_float(mixTexColor.rgb, _Contrast, mixTexColor.rgb);
                 // Saturation
                 Unity_Saturation_float(mixTexColor.rgb, _Saturation, mixTexColor.rgb);
 

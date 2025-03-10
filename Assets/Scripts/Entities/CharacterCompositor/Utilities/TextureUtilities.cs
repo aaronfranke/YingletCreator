@@ -40,13 +40,21 @@ namespace CharacterCompositor
 						blitMaterial.SetTexture("_MaskTex", applicableMixTexture.Mask);
 					}
 					blitMaterial.SetTexture("_MixTex", applicableMixTexture.Shading);
-
-					blitMaterial.SetColorizeParams(applicableMixTexture.DefaultColorGroup.DefaultColorValues);
+					ApplyMixTexturePropsToMaterial(blitMaterial, applicableMixTexture);
 					renderTextures.Blit(blitMaterial);
 				}
 
 				material.mainTexture = renderTextures.Finalize();
 			}
+		}
+
+		static void ApplyMixTexturePropsToMaterial(Material material, MixTexture mixTexture){
+			var values = mixTexture.DefaultColorGroup.DefaultColorValues;
+			material.SetFloat("_HueShift", values.HueShift);
+			material.SetFloat("_Multiplication", values.Multiplication);
+			material.SetFloat("_Contrast", values.Contrast);
+			material.SetFloat("_Saturation", values.Saturation);
+			material.SetColor("_ContrastMidpoint", mixTexture.ContrastMidpointColor);
 		}
 
 		static IEnumerable<MixTexture> SortMixTextures(IEnumerable<MixTexture> mixTextures, MixTextureOrdering mixTextureOrdering)
