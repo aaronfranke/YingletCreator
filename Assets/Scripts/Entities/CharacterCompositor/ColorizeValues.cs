@@ -23,7 +23,7 @@ namespace CharacterCompositor
 	{
 		[SerializeField][Range(0, 360)] float _hueShift = 0;
 		[SerializeField][Range(0, 2)] float _multiplication = 1;
-		[SerializeField][Range(0, 2)] float _contrast = 1;
+		[SerializeField][Range(0, 3)] float _contrast = 1;
 		[SerializeField][Range(0, 2)] float _saturation = 1;
 
 		public float HueShift => _hueShift;

@@ -28,6 +28,34 @@ void Unity_Hue_Degrees_float(float3 In, float Offset, out float3 Out)
 	Out = hsv.z * lerp(K2.xxx, saturate(P2 - K2.xxx), hsv.y);
 }
 
+// Unity's hue implementation is frankly kind of shit
+void Modified_Hue_Degrees_float(float3 In, float Offset, out float3 Out)
+{
+	Offset = -Offset / 180;
+    float3x3 RGBtoYIQ = float3x3(
+        0.299,  0.587,  0.114,
+        0.596, -0.274, -0.322,
+        0.211, -0.523,  0.311);
+    
+    float3x3 YIQtoRGB = float3x3(
+        1.0,  0.956,  0.621,
+        1.0, -0.272, -0.647,
+        1.0, -1.106,  1.703);
+    
+    float3 yiq = mul(RGBtoYIQ, In);
+    float angle = Offset * 3.14159265;
+    float cosA = cos(angle);
+    float sinA = sin(angle);
+    
+    float3x3 hueRotation = float3x3(
+        1,      0,       0,
+        0,  cosA,  -sinA,
+        0,  sinA,   cosA);
+    
+    yiq = mul(hueRotation, yiq);
+    Out = mul(YIQtoRGB, yiq);
+}
+
 void Unity_Multiply_float3_float3(float3 A, float3 B, out float3 Out)
 {
 	Out = A * B;
