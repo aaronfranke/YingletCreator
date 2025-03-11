@@ -62,7 +62,7 @@ namespace CharacterCompositor
 			var mixTextureToOrder = new Dictionary<MixTexture, int>();
 			for (int i = 0; i < mixTextureOrdering.OrderedMixTextures.Length; i++)
 			{
-				mixTextureToOrder[mixTextureOrdering.OrderedMixTextures[i]] = 0;
+				mixTextureToOrder[mixTextureOrdering.OrderedMixTextures[i]] = i;
 			}
 			return mixTextures.OrderBy(m =>
 			{
