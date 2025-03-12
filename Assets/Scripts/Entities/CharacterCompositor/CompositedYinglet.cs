@@ -24,7 +24,8 @@ namespace CharacterCompositor
 
         public void Clear()
         {
-            MeshUtilities.ClearMeshes(this.transform, _rigPrefab, _meshesWithMaterials);
+            // TODO: Put everything under a root object that can be cleared easily; Dirty things afterwards (if editor)
+            MeshUtilities.ClearMeshes(this.transform, _rigPrefab);
         }
 
         public void UpdateColorGroup()

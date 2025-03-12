@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 namespace CharacterCompositor
 {
 	public static class MeshUtilities
 	{
+		const string MESH_ROOT_NAME = "Meshes";
+
 		/// <summary>
 		/// Generates the meshes needed for the character
 		/// </summary>
@@ -15,24 +18,25 @@ namespace CharacterCompositor
 			var rigGo = GameObject.Instantiate(rigPrefab, root);
 			rigGo.name = rigPrefab.name;
 
+			
+			var meshRoot = new GameObject(MESH_ROOT_NAME);
+			meshRoot.transform.parent = root;
+			meshRoot.transform.localPosition = Vector3.zero;
+
 			var boneMap = GetChildTransformMap(rigGo.transform);
 
 			var mapping = new Dictionary<MeshWithMaterial, GameObject>();
 			foreach (var meshWithMaterial in meshesWithMaterials)
 			{
-				mapping[meshWithMaterial] = CreateSkinnedObject(meshWithMaterial.SkinnedMeshRendererPrefab, root, boneMap);
+				mapping[meshWithMaterial] = CreateSkinnedObject(meshWithMaterial.SkinnedMeshRendererPrefab, meshRoot.transform, boneMap);
 			}
 			return mapping;
 		}
 
-		public static void ClearMeshes(Transform root, GameObject rigPrefab, IEnumerable<MeshWithMaterial> meshesWithMaterials)
+		public static void ClearMeshes(Transform root, GameObject rigPrefab)
 		{
 			root.DeleteChildIfExists(rigPrefab.name);
-
-			foreach (var meshWithMaterial in meshesWithMaterials)
-			{
-				root.DeleteChildIfExists(meshWithMaterial.SkinnedMeshRendererPrefab.name);
-			}
+			root.DeleteChildIfExists(MESH_ROOT_NAME);
 		}
 
 

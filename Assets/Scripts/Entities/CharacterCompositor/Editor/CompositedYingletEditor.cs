@@ -15,11 +15,13 @@ namespace CharacterCompositor
             if (GUILayout.Button("Composite"))
             {
                 myScript.Composite();
+                EditorUtility.SetDirty(myScript.gameObject);
             }
 
             if (GUILayout.Button("Clear"))
             {
                 myScript.Clear();
+                EditorUtility.SetDirty(myScript.gameObject);
             }
         }
     }
