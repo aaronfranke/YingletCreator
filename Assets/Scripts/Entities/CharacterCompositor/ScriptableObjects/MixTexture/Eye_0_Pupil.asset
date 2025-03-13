@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b503c82202b52da46953cf1868a9b4a5, type: 3}
-  m_Name: Eye_0_Iris
+  m_Script: {fileID: 11500000, guid: 6146fa64fc41be046833b5a4d89534af, type: 3}
+  m_Name: Eye_0_Pupil
   m_EditorClassIdentifier: 
   _defaultColorGroup: {fileID: 11400000, guid: 6239c8c41a4765e4dbaa3db3e8efda01, type: 2}
-  _contrastMidpointColor: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
+  _contrastMidpointColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   _targetMaterialDescription: {fileID: 11400000, guid: b984a79f4ffb8b44888d6c1bd8d9d21a, type: 2}
   _shading: {fileID: 2800000, guid: c28b12e16d8fc2c47b48e03ca24c8651, type: 3}
   _mask: {fileID: 0}
+  _materialPropertyName: _Pupil

@@ -30,6 +30,13 @@ namespace CharacterCompositor
 
 				foreach (var applicableMixTexture in applicableMixTextures)
 				{
+					// For some materials (like the eye), we just need to dump this Texture in one of the properties instead of building up _MainTex
+					if (applicableMixTexture is PropertyTargetingMixTexture propertyTargetingMixTexture)
+					{
+						material.SetTexture(propertyTargetingMixTexture.MaterialPropertyName, propertyTargetingMixTexture.Shading);
+						continue;
+					}
+
 					if (applicableMixTexture.Mask == null)
 					{
 						blitMaterial.shader = colorizeShader;
@@ -48,7 +55,8 @@ namespace CharacterCompositor
 			}
 		}
 
-		static void ApplyMixTexturePropsToMaterial(Material material, MixTexture mixTexture){
+		static void ApplyMixTexturePropsToMaterial(Material material, MixTexture mixTexture)
+		{
 			var values = mixTexture.DefaultColorGroup.DefaultColorValues;
 			material.SetFloat("_HueShift", values.HueShift);
 			material.SetFloat("_Multiplication", values.Multiplication);

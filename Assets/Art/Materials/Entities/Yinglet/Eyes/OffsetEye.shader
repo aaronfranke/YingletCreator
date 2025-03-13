@@ -1,8 +1,8 @@
-Shader "Custom/UnlitAlphaCutoff"
+Shader "Custom/OffsetEye"
 {
     Properties
     {
-        _Fill ("Fill", 2D) = "white" {}
+        _MainTex ("Main Texture", 2D) = "white" {}
         _Outline ("Outline", 2D) = "white" {}
         _Pupil ("Pupil", 2D) = "white" {}
         _AlphaCutoff ("Alpha Cutoff", Range(0,1)) = 0.5
@@ -23,7 +23,7 @@ Shader "Custom/UnlitAlphaCutoff"
             #pragma target 2.0
             #pragma multi_compile_fog
             
-            sampler2D _Fill;
+            sampler2D _MainTex;
             sampler2D _Outline;
             sampler2D _Pupil;
             float _AlphaCutoff;
@@ -62,16 +62,16 @@ Shader "Custom/UnlitAlphaCutoff"
 
             fixed4 frag (v2f i) : SV_Target
             {
-                fixed4 fill = tex2D(_Fill, i.uv);
+                fixed4 mainTex = tex2D(_MainTex, i.uv);
                 fixed4 outline = tex2D(_Outline, i.uv);
                 fixed2 pupilOffset = float2(_PupilOffsetX, _PupilOffsetY);
                 fixed4 pupil = tex2D(_Pupil, i.uv + pupilOffset);
 
                 fixed4 col = (0,0,0,0);
-                col.rgb = lerp(col.rgb, fill.rgb, fill.a);
+                col.rgb = lerp(col.rgb, mainTex.rgb, mainTex.a);
                 col.rgb = lerp(col.rgb, pupil.rgb, pupil.a);
                 col.rgb = lerp(col.rgb, outline.rgb, outline.a);
-                col.a = max(fill.a, outline.a);
+                col.a = max(mainTex.a, outline.a);
                 
                 if (col.a < _AlphaCutoff)
                     discard;
