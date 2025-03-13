@@ -30,5 +30,7 @@ namespace CharacterCompositor
 		public Texture2D Mask => null;
 
 		public string name => $"{_textures.name}_{_isLeft}";
-	}
+
+		public bool Sortable => false;
+    }
 }

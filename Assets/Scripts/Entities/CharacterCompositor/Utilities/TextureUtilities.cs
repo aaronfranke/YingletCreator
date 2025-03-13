@@ -67,6 +67,8 @@ namespace CharacterCompositor
 			}
 			return mixTextures.OrderBy(m =>
 			{
+				if (!m.Sortable) return 0;
+				
 				if (mixTextureToOrder.TryGetValue(m, out int index))
 				{
 					return index;

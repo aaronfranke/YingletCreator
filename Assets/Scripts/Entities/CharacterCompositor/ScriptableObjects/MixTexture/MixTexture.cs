@@ -33,6 +33,8 @@ namespace CharacterCompositor
 		Texture2D Mask  { get; }
 
 		string name { get; }
+
+		bool Sortable { get; }
 	}
 
 	[CreateAssetMenu(fileName = "MixTexture", menuName = "Scriptable Objects/Character Compositor/MixTexture")]
@@ -53,5 +55,7 @@ namespace CharacterCompositor
 		public Texture2D Shading => _shading;
 
 		public Texture2D Mask => _mask;
-	}
+
+		public bool Sortable => true;
+    }
 }
