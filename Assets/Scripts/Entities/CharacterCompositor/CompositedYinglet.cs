@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace CharacterCompositor
@@ -9,6 +10,8 @@ namespace CharacterCompositor
         [SerializeField] GameObject _rigPrefab;
         [SerializeField] MeshWithMaterial[] _meshesWithMaterials;
         [SerializeField] MixTexture[] _mixTextures;
+        [SerializeField] EyeMixTextures _eyeMixTexture;
+        [SerializeField] EyeMixTextureReferences _eyeMixTextureReferences;
         [SerializeField] MixTextureOrdering _mixTextureOrdering;
 
         IReadOnlyDictionary<MeshWithMaterial, GameObject> _lastMeshMapping;
@@ -19,7 +22,9 @@ namespace CharacterCompositor
             Clear();
             _lastMeshMapping = MeshUtilities.GenerateMeshes(this.transform, _rigPrefab, _meshesWithMaterials);
             _lastMaterialMapping = MaterialUtilities.ApplyMaterialsToMeshes(_lastMeshMapping);
-            TextureUtilities.UpdateMaterialsWithTextures(_lastMaterialMapping, _mixTextures, _mixTextureOrdering);
+            IEnumerable<IMixTexture> mixTextures = _mixTextures.Concat(_eyeMixTexture.GenerateMixTextures(_eyeMixTextureReferences)).ToArray();
+            TextureUtilities.UpdateMaterialsWithTextures(_lastMaterialMapping, mixTextures, _mixTextureOrdering);
+            _eyeMixTexture.ApplyEyeProperties(_lastMaterialMapping, _eyeMixTextureReferences);
         }
 
         public void Clear()

@@ -6,7 +6,7 @@ namespace CharacterCompositor
 {
 	public static class TextureUtilities
 	{
-		public static void UpdateMaterialsWithTextures(IReadOnlyDictionary<MaterialDescription, Material> materialMapping, IEnumerable<MixTexture> mixTextures, MixTextureOrdering mixTextureOrdering)
+		public static void UpdateMaterialsWithTextures(IReadOnlyDictionary<MaterialDescription, Material> materialMapping, IEnumerable<IMixTexture> mixTextures, MixTextureOrdering mixTextureOrdering)
 		{
 			var colorizeShader = Shader.Find("Hidden/Colorize");
 			var colorizeWithMaskShader = Shader.Find("Hidden/ColorizeWithMask");
@@ -30,13 +30,6 @@ namespace CharacterCompositor
 
 				foreach (var applicableMixTexture in applicableMixTextures)
 				{
-					// For some materials (like the eye), we just need to dump this Texture in one of the properties instead of building up _MainTex
-					if (applicableMixTexture is PropertyTargetingMixTexture propertyTargetingMixTexture)
-					{
-						material.SetTexture(propertyTargetingMixTexture.MaterialPropertyName, propertyTargetingMixTexture.Shading);
-						continue;
-					}
-
 					if (applicableMixTexture.Mask == null)
 					{
 						blitMaterial.shader = colorizeShader;
@@ -55,7 +48,7 @@ namespace CharacterCompositor
 			}
 		}
 
-		static void ApplyMixTexturePropsToMaterial(Material material, MixTexture mixTexture)
+		static void ApplyMixTexturePropsToMaterial(Material material, IMixTexture mixTexture)
 		{
 			var values = mixTexture.DefaultColorGroup.DefaultColorValues;
 			material.SetFloat("_HueShift", values.HueShift);
@@ -65,9 +58,9 @@ namespace CharacterCompositor
 			material.SetColor("_ContrastMidpoint", mixTexture.ContrastMidpointColor);
 		}
 
-		static IEnumerable<MixTexture> SortMixTextures(IEnumerable<MixTexture> mixTextures, MixTextureOrdering mixTextureOrdering)
+		static IEnumerable<IMixTexture> SortMixTextures(IEnumerable<IMixTexture> mixTextures, MixTextureOrdering mixTextureOrdering)
 		{
-			var mixTextureToOrder = new Dictionary<MixTexture, int>();
+			var mixTextureToOrder = new Dictionary<IMixTexture, int>();
 			for (int i = 0; i < mixTextureOrdering.OrderedMixTextures.Length; i++)
 			{
 				mixTextureToOrder[mixTextureOrdering.OrderedMixTextures[i]] = i;
@@ -78,7 +71,7 @@ namespace CharacterCompositor
 				{
 					return index;
 				}
-				Debug.LogWarning($"MixTexture '{m.name}' did not exist in the mix texture ordering. Add it to the `_Order` scriptable object", m);
+				Debug.LogWarning($"MixTexture '{m.name}' did not exist in the mix texture ordering. Add it to the `_Order` scriptable object");
 				return int.MaxValue;
 			}).ToArray();
 		}
