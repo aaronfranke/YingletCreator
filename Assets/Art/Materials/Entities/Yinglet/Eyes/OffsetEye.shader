@@ -55,7 +55,7 @@ Shader "Custom/OffsetEye"
                 // This isn't actually a proper way of turning depth into distance
                 // If we wanted to, we'd need more math like in this article:
                 // https://www.cyanilux.com/tutorials/depth/#eye-depth
-                o.vertex.z += (_DepthOffset / camDist) * o.vertex.w;
+                o.vertex.z += _DepthOffset * 1 / (camDist * camDist) * o.vertex.w;
                 o.uv = v.uv;
                 return o;
             }
