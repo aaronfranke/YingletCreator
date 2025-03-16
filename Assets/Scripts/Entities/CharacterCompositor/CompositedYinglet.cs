@@ -22,21 +22,20 @@ namespace CharacterCompositor
             Clear();
             _lastMeshMapping = MeshUtilities.GenerateMeshes(this.transform, _rigPrefab, _meshesWithMaterials);
             _lastMaterialMapping = MaterialUtilities.ApplyMaterialsToMeshes(_lastMeshMapping);
-            IEnumerable<IMixTexture> mixTextures = _mixTextures.Concat(_eyeMixTexture.GenerateMixTextures(_eyeMixTextureReferences)).ToArray();
-            TextureUtilities.UpdateMaterialsWithTextures(_lastMaterialMapping, mixTextures, _mixTextureOrdering);
+            UpdateColorGroup();
             _eyeMixTexture.ApplyEyeProperties(_lastMaterialMapping, _eyeMixTextureReferences);
         }
 
         public void Clear()
         {
-            // TODO: Put everything under a root object that can be cleared easily; Dirty things afterwards (if editor)
             MeshUtilities.ClearMeshes(this.transform, _rigPrefab);
         }
 
         public void UpdateColorGroup()
         {
             // Optimization opportunity: Pass in the color group and use it to filter materials that need updating
-            TextureUtilities.UpdateMaterialsWithTextures(_lastMaterialMapping, _mixTextures, _mixTextureOrdering);
+            IEnumerable<IMixTexture> mixTextures = _mixTextures.Concat(_eyeMixTexture.GenerateMixTextures(_eyeMixTextureReferences)).ToArray();
+            TextureUtilities.UpdateMaterialsWithTextures(_lastMaterialMapping, mixTextures, _mixTextureOrdering);
         }
     }
 }
