@@ -734,6 +734,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 50aec42f2662d7344b9a4caf839eb2f6, type: 2}
   - {fileID: 11400000, guid: b80f1435d4f9dfe45937d7a6b01f77ff, type: 2}
   - {fileID: 11400000, guid: ab06503a183dd474f898976ab9d156c8, type: 2}
+  - {fileID: 11400000, guid: e8fc7b06604b8f94fa348c6975d897c0, type: 2}
   _mixTextures:
   - {fileID: 11400000, guid: 4e85041bdf3089347b8d3c4f3d7468a9, type: 2}
   - {fileID: 11400000, guid: b500c4ab4b0357240b4f3b4d662a9f4e, type: 2}
@@ -806,9 +807,9 @@ Transform:
   m_GameObject: {fileID: 1642465447}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.526, y: 0, z: -0.115}
+  m_LocalPosition: {x: -1, y: 0, z: 0}
   m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 825457094}
   - {fileID: 2109852800}
