@@ -17,6 +17,11 @@ namespace CharacterCompositor
         IReadOnlyDictionary<MeshWithMaterial, GameObject> _lastMeshMapping;
         IReadOnlyDictionary<MaterialDescription, Material> _lastMaterialMapping;
 
+        void Start()
+        {
+            Composite();
+        }
+
         public void Composite()
         {
             Clear();

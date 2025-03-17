@@ -67,7 +67,7 @@ Shader "Custom/OffsetEye"
                 fixed2 pupilOffset = float2(_PupilOffsetX, _PupilOffsetY);
                 fixed4 pupil = tex2D(_Pupil, i.uv + pupilOffset);
 
-                fixed4 col = (0,0,0,0);
+                fixed4 col = fixed4(0,0,0,0);
                 col.rgb = lerp(col.rgb, mainTex.rgb, mainTex.a);
                 col.rgb = lerp(col.rgb, pupil.rgb, pupil.a);
                 col.rgb = lerp(col.rgb, outline.rgb, outline.a);
