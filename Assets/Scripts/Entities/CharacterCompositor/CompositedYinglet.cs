@@ -1,13 +1,17 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace CharacterCompositor
 {
-
-    public class CompositedYinglet : MonoBehaviour
+    public interface ICompositedYinglet
     {
-        [SerializeField] GameObject _rigPrefab;
+        event Action OnSkinnedMeshRenderersRegenerated;
+    }
+    public class CompositedYinglet : MonoBehaviour, ICompositedYinglet
+    {
+        [SerializeField] Transform _rigRoot;
         [SerializeField] MeshWithMaterial[] _meshesWithMaterials;
         [SerializeField] MixTexture[] _mixTextures;
         [SerializeField] EyeMixTextures _eyeMixTexture;
@@ -17,6 +21,8 @@ namespace CharacterCompositor
         IReadOnlyDictionary<MeshWithMaterial, GameObject> _lastMeshMapping;
         IReadOnlyDictionary<MaterialDescription, Material> _lastMaterialMapping;
 
+        public event Action OnSkinnedMeshRenderersRegenerated = delegate { };
+
         void Start()
         {
             Composite();
@@ -25,7 +31,8 @@ namespace CharacterCompositor
         public void Composite()
         {
             Clear();
-            _lastMeshMapping = MeshUtilities.GenerateMeshes(this.transform, _rigPrefab, _meshesWithMaterials);
+            _lastMeshMapping = MeshUtilities.GenerateMeshes(this.transform, _rigRoot, _meshesWithMaterials);
+            OnSkinnedMeshRenderersRegenerated();
             _lastMaterialMapping = MaterialUtilities.ApplyMaterialsToMeshes(_lastMeshMapping);
             UpdateColorGroup();
             _eyeMixTexture.ApplyEyeProperties(_lastMaterialMapping, _eyeMixTextureReferences);
@@ -33,7 +40,7 @@ namespace CharacterCompositor
 
         public void Clear()
         {
-            MeshUtilities.ClearMeshes(this.transform, _rigPrefab);
+            MeshUtilities.ClearMeshes(this.transform);
         }
 
         public void UpdateColorGroup()
