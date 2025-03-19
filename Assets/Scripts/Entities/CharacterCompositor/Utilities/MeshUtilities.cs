@@ -64,7 +64,18 @@ namespace CharacterCompositor
 			bodyGo.name = prefab.name;
 			var skinnedMeshRenderer = bodyGo.GetComponent<SkinnedMeshRenderer>();
 			skinnedMeshRenderer.rootBone = boneMap["root"];
-			skinnedMeshRenderer.bones = skinnedMeshRenderer.bones.Select(b => boneMap[b.name]).ToArray();
+			skinnedMeshRenderer.bones = skinnedMeshRenderer.bones.Select(b =>
+			{
+				// Experimental (functional) code
+				// Can add leaf bones to the parent rig with a prefix, _scale, and use that to scale things up without interfering with anything else
+				// Might be nice to make skin a bit thicker when it's responsible for clothes, for example
+				// if (boneMap.TryGetValue($"{b.name}_scale", out Transform scaleTransfrom))
+				// {
+				// 	return scaleTransfrom;
+				// }
+				return boneMap[b.name];
+			}
+			).ToArray();
 			return bodyGo;
 		}
 	}
