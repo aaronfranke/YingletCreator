@@ -35,6 +35,8 @@ def export():
         exportPath += ".fbx"
         exportPath = os.path.abspath(exportPath)
         
+        if (selectedObject.type == 'ARMATURE'):
+             obj.animation_data.action = bpy.data.actions.get("__T-Pose")
         
         select_children_recursive(selectedObject, True)
         bpy.ops.export_scene.fbx(
