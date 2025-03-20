@@ -31,11 +31,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: YingletRig|Idle_Test
-      takeName: YingletRig|Idle_Test
+      name: YingletRig|_T-Pose
+      takeName: YingletRig|_T-Pose
       internalID: -8737304300846074459
       firstFrame: 0
-      lastFrame: 119
+      lastFrame: 1
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -60,8 +60,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: YingletRig|TailSlideAnim
-      takeName: YingletRig|TailSlideAnim
+      name: YingletRig|Additive_TailSlide
+      takeName: YingletRig|Additive_TailSlide
       internalID: 7582341528865353522
       firstFrame: 0
       lastFrame: 29
@@ -89,11 +89,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: YingletRig|Idle_Test_0
-      takeName: YingletRig|Idle_Test_0
+      name: YingletRig|Anim_IdleSide
+      takeName: YingletRig|Anim_IdleSide
       internalID: 6366173660682038172
       firstFrame: 0
-      lastFrame: 1
+      lastFrame: 89
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -118,9 +118,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: YingletRig|__T-Pose
-      takeName: YingletRig|__T-Pose
-      internalID: 1321345754909125662
+      name: YingletRig|Pose_Point
+      takeName: YingletRig|Pose_Point
+      internalID: 6515687901391024995
       firstFrame: 0
       lastFrame: 1
       wrapMode: 0
@@ -130,7 +130,36 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
-      loopBlend: 0
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: YingletRig|Additive_Breathing
+      takeName: YingletRig|Additive_Breathing
+      internalID: -7406522081885923422
+      firstFrame: 0
+      lastFrame: 119
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
