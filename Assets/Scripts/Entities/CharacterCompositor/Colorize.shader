@@ -1,4 +1,4 @@
-Shader "Hidden/Colorize"
+Shader "CharacterCompositor/Colorize"
 {
     Properties
     {
@@ -13,13 +13,16 @@ Shader "Hidden/Colorize"
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "RenderType"="Opaque" "RenderPipeline" = "UniversalPipeline" }
         Pass
         {
-            CGPROGRAM
+            Name "Universal Forward"
+            Tags { "LightMode" = "UniversalForward" }
+
+            HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-            #include "UnityCG.cginc"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             #include "ColorizeUtils.hlsl"
 
             struct appdata
@@ -35,8 +38,8 @@ Shader "Hidden/Colorize"
             };
             
             // Properties
-            sampler2D _MainTex;
-            sampler2D _MixTex;
+            TEXTURE2D(_MainTex); SAMPLER(sampler_MainTex);
+            TEXTURE2D(_MixTex); SAMPLER(sampler_MixTex);
             float _HueShift;
             float _Multiplication;
             float _Contrast;
@@ -46,16 +49,15 @@ Shader "Hidden/Colorize"
             v2f vert(appdata v)
             {
                 v2f o;
-                o.vertex = UnityObjectToClipPos(v.vertex);
+                o.vertex = TransformObjectToHClip(v.vertex.xyz);
                 o.uv = v.uv;
                 return o;
             }
 
             float4 frag(v2f i) : SV_Target
             {
-                float4 mainTexColor = tex2D(_MainTex, i.uv);
-                float4 mixTexColor = tex2D(_MixTex, i.uv);
-                
+                float4 mainTexColor = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.uv);
+                float4 mixTexColor = SAMPLE_TEXTURE2D(_MixTex, sampler_MixTex, i.uv);
                 // Contrast
                 Modified_Contrast_float(mixTexColor.rgb, _Contrast, _ContrastMidpoint.rgb, mixTexColor.rgb);
                 // Hue
@@ -65,14 +67,13 @@ Shader "Hidden/Colorize"
                 // Saturation
                 Unity_Saturation_float(mixTexColor.rgb, _Saturation, mixTexColor.rgb);
 
-
                 float4 outColor = mainTexColor;
                 outColor.rgb = lerp(mainTexColor.rgb, mixTexColor.rgb, mixTexColor.a);
                 outColor.a = max(mainTexColor.a, mixTexColor.a);
                 return outColor;
             }
 
-            ENDCG
+            ENDHLSL
         }
     }
 }

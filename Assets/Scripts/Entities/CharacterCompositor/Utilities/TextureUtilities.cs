@@ -8,8 +8,8 @@ namespace CharacterCompositor
 	{
 		public static void UpdateMaterialsWithTextures(IReadOnlyDictionary<MaterialDescription, Material> materialMapping, IEnumerable<IMixTexture> mixTextures, MixTextureOrdering mixTextureOrdering)
 		{
-			var colorizeShader = Shader.Find("Hidden/Colorize");
-			var colorizeWithMaskShader = Shader.Find("Hidden/ColorizeWithMask");
+			var colorizeShader = Shader.Find("CharacterCompositor/Colorize");
+			var colorizeWithMaskShader = Shader.Find("CharacterCompositor/ColorizeWithMask");
 			var blitMaterial = new Material(colorizeShader);
 
 			var sortedMixTextures = SortMixTextures(mixTextures, mixTextureOrdering);

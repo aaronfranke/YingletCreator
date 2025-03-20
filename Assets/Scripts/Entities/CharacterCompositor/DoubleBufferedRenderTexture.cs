@@ -1,7 +1,5 @@
-using NUnit.Framework;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering;
+using UnityEngine.Assertions;
 
 /// <summary>
 /// Render textures can't natively be used for read and write at the same time
