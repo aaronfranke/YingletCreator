@@ -7,8 +7,9 @@ Shader "Custom/OffsetEye"
         _Pupil ("Pupil", 2D) = "white" {}
         _AlphaCutoff ("Alpha Cutoff", Range(0,1)) = 0.5
         _DepthOffset ("Depth Offset", Float) = 0.0
-        _PupilOffsetX ("Pupil Offset X", Float) = 0.0
-        _PupilOffsetY ("Pupil Offset Y", Float) = 0.0
+        _PupilOffsetX ("Pupil Offset X", Range(-0.35,0.2)) = 0.0
+        _PupilOffsetY ("Pupil Offset Y", Range(-0.31,.22)) = 0.0
+        _Expression ("Expression", Integer) = 1
     }
     SubShader
     {
@@ -31,6 +32,7 @@ Shader "Custom/OffsetEye"
             float _DepthOffset;
             float _PupilOffsetX;
             float _PupilOffsetY;
+            int _Expression;
 
             struct appdata_t
             {
@@ -63,15 +65,20 @@ Shader "Custom/OffsetEye"
 
             float4 frag (v2f i) : SV_Target
             {
-                float2 pupilOffset = float2(_PupilOffsetX, _PupilOffsetY);
+                const int MAX_EXPRESSIONS = 3; 
 
-                float4 mainTex = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.uv);
-                float4 outline = SAMPLE_TEXTURE2D(_Outline, sampler_Outline, i.uv);
+                float2 pupilOffset = float2(_PupilOffsetX, _PupilOffsetY);
+                float2 expressionUV = i.uv;
+                expressionUV.x += _Expression;
+
+                expressionUV.x /= MAX_EXPRESSIONS;
+
+                float4 mainTex = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, expressionUV);
+                float4 outline = SAMPLE_TEXTURE2D(_Outline, sampler_Outline, expressionUV);
                 float4 pupil = SAMPLE_TEXTURE2D(_Pupil, sampler_Pupil, i.uv + pupilOffset);
 
 
-                float4 col = float4(0,0,0,0);
-                col.rgb = lerp(col.rgb, mainTex.rgb, mainTex.a);
+                float4 col = mainTex;
                 col.rgb = lerp(col.rgb, pupil.rgb, pupil.a);
                 col.rgb = lerp(col.rgb, outline.rgb, outline.a);
                 col.a = max(mainTex.a, outline.a);

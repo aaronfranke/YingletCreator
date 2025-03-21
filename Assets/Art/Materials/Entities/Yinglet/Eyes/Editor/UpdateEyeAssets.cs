@@ -6,14 +6,17 @@ using UnityEngine;
 
 public class UpdateEyeAssets
 {
+	const int SIZE = 64;
 	const string RAW_TEXTURE_PATH = "Assets/Art/Materials/Entities/Yinglet/Eyes/RawTextures";
 	const string SCRIPTABLE_OBJECT_OUTPUT_PATH = "Assets/ScriptableObjects/CharacterCompositor/MixTexture/Eyes/";
 
-	static readonly string[] EYE_EXPRESSIONS = new[] { "Normal", "Normal" , "Normal" };
+	static readonly string[] EYE_EXPRESSIONS = new[] { "Normal", "Squint", "Closed" };
 
 	[MenuItem("Custom/Update Eye Assets")]
 	static void Apply()
 	{
+		var transparentPixels = CreateTransparentPixels();
+
 		var eyeTextureFolders = Directory.GetDirectories(RAW_TEXTURE_PATH);
 		foreach (var eyeTextureFolder in eyeTextureFolders)
 		{
@@ -29,33 +32,41 @@ public class UpdateEyeAssets
 			var textureSize = EYE_EXPRESSIONS.Length;
 
 			asset._pupil = LoadTex("Pupil");
-			asset._outline = GenerateAndLoadTex("Outline");
-			asset._fill = GenerateAndLoadTex("Fill");
+			asset._outline = GenerateAndLoadTex("Outline", true);
+			asset._fill = GenerateAndLoadTex("Fill", false);
 
 			EditorUtility.SetDirty(asset);
+			AssetDatabase.SaveAssets();
 
-			Texture2D LoadTex(string relativePath)
+			Texture2D LoadTex(string relativePath, bool mustExist = true)
 			{
 				var expectedPath = Path.Combine(eyeTextureFolder, relativePath + ".png");
 				var tex2d = AssetDatabase.LoadAssetAtPath<Texture2D>(expectedPath);
-				if (tex2d == null)
+				if (tex2d == null && mustExist)
 				{
 					Debug.LogWarning($"Failed to find expected tex2d at {expectedPath}");
 				}
 				return tex2d;
 			}
 
-			Texture2D GenerateAndLoadTex(string textureName)
+			Texture2D GenerateAndLoadTex(string textureName, bool mustExist)
 			{
-				var texture2Ds = EYE_EXPRESSIONS.Select(e => LoadTex(Path.Combine(e, textureName))).ToArray();
-				int texSize = texture2Ds.FirstOrDefault(t => t != null)?.width ?? 64;
+				var expressionRelativePaths = EYE_EXPRESSIONS.Select(e => Path.Combine(e, textureName)).ToArray();
+				// Ensure all the textures are readable
+				foreach (var relPath in expressionRelativePaths)
+				{
+					UpdateTextureSettings(Path.Combine(eyeTextureFolder, relPath + ".png"));
+				}
+				var texture2Ds = expressionRelativePaths.Select(e => LoadTex(e, mustExist)).ToArray();
+				// int texSize = texture2Ds.FirstOrDefault(t => t != null)?.width ?? 64;
+				int texSize = SIZE;
 
 				Texture2D combinedTexture = new Texture2D(texSize * texture2Ds.Length, texSize);
 				for (int i = 0; i < texture2Ds.Length; i++)
 				{
 					var texture2D = texture2Ds[i];
-					if (texture2D == null) continue;
-					combinedTexture.SetPixels(i * texSize, 0, texSize, texSize, texture2D.GetPixels());
+					var pixelsToApply = texture2D?.GetPixels() ?? transparentPixels;
+					combinedTexture.SetPixels(i * texSize, 0, texSize, texSize, pixelsToApply);
 				}
 
 				byte[] pngData = combinedTexture.EncodeToPNG();
@@ -63,11 +74,36 @@ public class UpdateEyeAssets
 				var outputPath = Path.Combine(eyeTextureFolder, $"{outputName}.png");
 				File.WriteAllBytes(outputPath, pngData);
 				AssetDatabase.Refresh();
+				UpdateTextureSettings(outputPath);
 
 				var generatedTex = LoadTex(outputName);
 				return generatedTex;
 			}
+
+			void UpdateTextureSettings(string path)
+			{
+				var importer = AssetImporter.GetAtPath(path) as TextureImporter;
+				if (importer == null) return; // This asset may not exist
+				importer.isReadable = true;
+				importer.alphaIsTransparency = true;
+				importer.compressionQuality = 3;
+				importer.SaveAndReimport();
+			}
 		}
-		AssetDatabase.SaveAssets();
+	}
+
+	static Color[] CreateTransparentPixels()
+	{
+		Texture2D texture = new Texture2D(SIZE, SIZE, TextureFormat.RGBA32, false);
+
+		Color transparentColor = new Color(0, 0, 0, 0); // Fully transparent
+		Color[] pixels = new Color[SIZE * SIZE];
+
+		for (int i = 0; i < pixels.Length; i++)
+		{
+			pixels[i] = transparentColor;
+		}
+
+		return pixels;
 	}
 }
