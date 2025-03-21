@@ -32,6 +32,7 @@ namespace CharacterCompositor
 			return new[] {
 				new EyeMixTexture(this, references, true),
 				new EyeMixTexture(this, references, false),
+				// TODO eventually: add support for eyelids here
 			};
 		}
 
