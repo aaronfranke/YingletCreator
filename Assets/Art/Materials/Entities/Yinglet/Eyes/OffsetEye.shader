@@ -12,20 +12,21 @@ Shader "Custom/OffsetEye"
     }
     SubShader
     {
-        Tags { "RenderType"="TransparentCutout" "Queue"="AlphaTest" }
+        Tags { "RenderType"="TransparentCutout" "Queue"="AlphaTest" "RenderPipeline" = "UniversalPipeline" }
         LOD 100
 
         Pass
         {
-            CGPROGRAM
+            HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-            #pragma target 2.0
-            #pragma multi_compile_fog
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             
-            sampler2D _MainTex;
-            sampler2D _Outline;
-            sampler2D _Pupil;
+
+            
+            TEXTURE2D(_MainTex); SAMPLER(sampler_MainTex);
+            TEXTURE2D(_Outline); SAMPLER(sampler_Outline);
+            TEXTURE2D(_Pupil); SAMPLER(sampler_Pupil);
             float _AlphaCutoff;
             float _DepthOffset;
             float _PupilOffsetX;
@@ -47,7 +48,7 @@ Shader "Custom/OffsetEye"
             v2f vert (appdata_t v)
             {
                 v2f o;
-                o.vertex = UnityObjectToClipPos(v.vertex);
+                o.vertex = TransformObjectToHClip(v.vertex.xyz);
                 o.worldPos = mul(unity_ObjectToWorld, v.vertex);
                 float camDist = length(o.worldPos.xyz - _WorldSpaceCameraPos);
                 
@@ -60,14 +61,16 @@ Shader "Custom/OffsetEye"
                 return o;
             }
 
-            fixed4 frag (v2f i) : SV_Target
+            float4 frag (v2f i) : SV_Target
             {
-                fixed4 mainTex = tex2D(_MainTex, i.uv);
-                fixed4 outline = tex2D(_Outline, i.uv);
-                fixed2 pupilOffset = float2(_PupilOffsetX, _PupilOffsetY);
-                fixed4 pupil = tex2D(_Pupil, i.uv + pupilOffset);
+                float2 pupilOffset = float2(_PupilOffsetX, _PupilOffsetY);
 
-                fixed4 col = fixed4(0,0,0,0);
+                float4 mainTex = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, i.uv);
+                float4 outline = SAMPLE_TEXTURE2D(_Outline, sampler_Outline, i.uv);
+                float4 pupil = SAMPLE_TEXTURE2D(_Pupil, sampler_Pupil, i.uv + pupilOffset);
+
+
+                float4 col = float4(0,0,0,0);
                 col.rgb = lerp(col.rgb, mainTex.rgb, mainTex.a);
                 col.rgb = lerp(col.rgb, pupil.rgb, pupil.a);
                 col.rgb = lerp(col.rgb, outline.rgb, outline.a);
@@ -77,7 +80,7 @@ Shader "Custom/OffsetEye"
                     discard;
                 return col;
             }
-            ENDCG
+            ENDHLSL
         }
     }
 }
