@@ -5,18 +5,27 @@ using UnityEngine;
 namespace CharacterCompositor
 {
 
+	public interface IEyeMixTextures
+	{
+		string name { get; }
+		public Color ContrastMidpointColor { get; }
+		public Texture2D Fill { get; }
+		IEnumerable<IMixTexture> GenerateMixTextures(EyeMixTextureReferences references);
+		void ApplyEyeProperties(IReadOnlyDictionary<MaterialDescription, Material> materialMapping, EyeMixTextureReferences references);
+	}
+
 	[CreateAssetMenu(fileName = "EyeMixTextures", menuName = "Scriptable Objects/Character Compositor/EyeMixTextures")]
-	public class EyeMixTextures : ScriptableObject
+	public class EyeMixTextures : ScriptableObject, IEyeMixTextures
 	{
 		[SerializeField][ColorUsage(false)] Color _contrastMidpointColor = Color.gray;
-		[SerializeField] Texture2D _fill;
-		[SerializeField] Texture2D _outline;
-		[SerializeField] Texture2D _pupil;
+		
+		// The following are public only because UpdateEyeAsset wants to set them
+		public Texture2D _fill;
+		public Texture2D _outline;
+		public Texture2D _pupil;
 
 		public Color ContrastMidpointColor => _contrastMidpointColor;
 		public Texture2D Fill => _fill;
-		public Texture2D Outline => _outline;
-		public Texture2D Pupil => _pupil;
 
 		public IEnumerable<IMixTexture> GenerateMixTextures(EyeMixTextureReferences references)
 		{

@@ -8,11 +8,11 @@ namespace CharacterCompositor
 	/// </summary>
 	class EyeMixTexture : IMixTexture
 	{
-		private readonly EyeMixTextures _textures;
+		private readonly IEyeMixTextures _textures;
 		private readonly EyeMixTextureReferences _references;
 		private readonly bool _isLeft;
 
-		public EyeMixTexture(EyeMixTextures textures, EyeMixTextureReferences references, bool isLeft)
+		public EyeMixTexture(IEyeMixTextures textures, EyeMixTextureReferences references, bool isLeft)
 		{
 			_textures = textures;
 			_references = references;
