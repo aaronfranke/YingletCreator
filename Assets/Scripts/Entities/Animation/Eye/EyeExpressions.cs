@@ -47,7 +47,7 @@ public class EyeExpressions : MonoBehaviour
 
     void SetEyesToExpression(EyeExpression eyeExpression)
     {
-        foreach (var eyeMaterial in _eyeGatherer.GetEyeMaterials())
+        foreach (var eyeMaterial in _eyeGatherer.EyeMaterials)
         {
             eyeMaterial.SetInteger(EXPRESSION_PROPERTY_ID, (int)eyeExpression);
         }

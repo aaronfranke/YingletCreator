@@ -3,7 +3,7 @@ using UnityEngine;
 
 public interface IEyeGatherer
 {
-    Material[] GetEyeMaterials();
+    Material[] EyeMaterials { get; }
 }
 
 public class EyeGatherer : MonoBehaviour, IEyeGatherer
@@ -13,18 +13,21 @@ public class EyeGatherer : MonoBehaviour, IEyeGatherer
     const string EYE_NAME_LEFT = "YingletEye_Left";
     const string EYE_NAME_RIGHT = "YingletEye_Right";
 
-    public Material[] GetEyeMaterials()
+    public Material[] EyeMaterials
     {
-        if (_cachedEyes != null) return _cachedEyes;
-
-        var leftEye = GetEyeMaterial(EYE_NAME_LEFT);
-        var rightEye = GetEyeMaterial(EYE_NAME_RIGHT);
-
-        if (leftEye != null && rightEye != null)
+        get
         {
-            _cachedEyes = new[] { leftEye, rightEye };
+            if (_cachedEyes != null) return _cachedEyes;
+
+            var leftEye = GetEyeMaterial(EYE_NAME_LEFT);
+            var rightEye = GetEyeMaterial(EYE_NAME_RIGHT);
+
+            if (leftEye != null && rightEye != null)
+            {
+                _cachedEyes = new[] { leftEye, rightEye };
+            }
+            return _cachedEyes;
         }
-        return _cachedEyes;
     }
 
     Material GetEyeMaterial(string name)
