@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Linq;
 using CharacterCompositor;
@@ -10,12 +11,11 @@ public class UpdateEyeAssets
 	const string RAW_TEXTURE_PATH = "Assets/Art/Materials/Entities/Yinglet/Eyes/RawTextures";
 	const string SCRIPTABLE_OBJECT_OUTPUT_PATH = "Assets/ScriptableObjects/CharacterCompositor/MixTexture/Eyes/";
 
-	static readonly string[] EYE_EXPRESSIONS = new[] { "Normal", "Squint", "Closed" };
-
 	[MenuItem("Custom/Update Eye Assets")]
 	static void Apply()
 	{
 		var transparentPixels = CreateTransparentPixels();
+		var expressionNames = Enum.GetNames(typeof(EyeExpression));
 
 		var eyeTextureFolders = Directory.GetDirectories(RAW_TEXTURE_PATH);
 		foreach (var eyeTextureFolder in eyeTextureFolders)
@@ -29,7 +29,7 @@ public class UpdateEyeAssets
 				asset = ScriptableObject.CreateInstance<EyeMixTextures>();
 				AssetDatabase.CreateAsset(asset, destinationPath);
 			}
-			var textureSize = EYE_EXPRESSIONS.Length;
+			var textureSize = expressionNames.Length;
 
 			asset._pupil = LoadTex("Pupil");
 			asset._outline = GenerateAndLoadTex("Outline", true);
@@ -51,7 +51,7 @@ public class UpdateEyeAssets
 
 			Texture2D GenerateAndLoadTex(string textureName, bool mustExist)
 			{
-				var expressionRelativePaths = EYE_EXPRESSIONS.Select(e => Path.Combine(e, textureName)).ToArray();
+				var expressionRelativePaths = expressionNames.Select(e => Path.Combine(e, textureName)).ToArray();
 				// Ensure all the textures are readable
 				foreach (var relPath in expressionRelativePaths)
 				{

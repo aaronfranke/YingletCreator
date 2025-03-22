@@ -6,6 +6,12 @@ namespace CharacterCompositor
 {
 	public static class TextureUtilities
 	{
+		static readonly int HUE_SHIFT_PROPERTY_ID = Shader.PropertyToID("_HueShift");
+		static readonly int MULTIPLICATION_PROPERTY_ID = Shader.PropertyToID("_Multiplication");
+		static readonly int CONTRAST_PROPERTY_ID = Shader.PropertyToID("_Contrast");
+		static readonly int SATURATION_PROPERTY_ID = Shader.PropertyToID("_Saturation");
+		static readonly int CONTRAST_MIDPOINT_PROPERTY_ID = Shader.PropertyToID("_ContrastMidpoint");
+
 		public static void UpdateMaterialsWithTextures(IReadOnlyDictionary<MaterialDescription, Material> materialMapping, IEnumerable<IMixTexture> mixTextures, MixTextureOrdering mixTextureOrdering)
 		{
 			var colorizeShader = Shader.Find("CharacterCompositor/Colorize");
@@ -51,11 +57,11 @@ namespace CharacterCompositor
 		static void ApplyMixTexturePropsToMaterial(Material material, IMixTexture mixTexture)
 		{
 			var values = mixTexture.DefaultColorGroup.DefaultColorValues;
-			material.SetFloat("_HueShift", values.HueShift);
-			material.SetFloat("_Multiplication", values.Multiplication);
-			material.SetFloat("_Contrast", values.Contrast);
-			material.SetFloat("_Saturation", values.Saturation);
-			material.SetColor("_ContrastMidpoint", mixTexture.ContrastMidpointColor);
+			material.SetFloat(HUE_SHIFT_PROPERTY_ID, values.HueShift);
+			material.SetFloat(MULTIPLICATION_PROPERTY_ID, values.Multiplication);
+			material.SetFloat(CONTRAST_PROPERTY_ID, values.Contrast);
+			material.SetFloat(SATURATION_PROPERTY_ID, values.Saturation);
+			material.SetColor(CONTRAST_MIDPOINT_PROPERTY_ID, mixTexture.ContrastMidpointColor);
 		}
 
 		static IEnumerable<IMixTexture> SortMixTextures(IEnumerable<IMixTexture> mixTextures, MixTextureOrdering mixTextureOrdering)

@@ -18,7 +18,7 @@ namespace CharacterCompositor
 	public class EyeMixTextures : ScriptableObject, IEyeMixTextures
 	{
 		[SerializeField][ColorUsage(false)] Color _contrastMidpointColor = Color.gray;
-		
+
 		// The following are public only because UpdateEyeAsset wants to set them
 		public Texture2D _fill;
 		public Texture2D _outline;
@@ -26,6 +26,10 @@ namespace CharacterCompositor
 
 		public Color ContrastMidpointColor => _contrastMidpointColor;
 		public Texture2D Fill => _fill;
+
+		static readonly int OUTLINE_PROPERTY_ID = Shader.PropertyToID("_Outline");
+		static readonly int PUPIL_PROPERTY_ID = Shader.PropertyToID("_Pupil");
+
 
 		public IEnumerable<IMixTexture> GenerateMixTextures(EyeMixTextureReferences references)
 		{
@@ -45,8 +49,8 @@ namespace CharacterCompositor
 			{
 				if (materialMapping.TryGetValue(materialDescription, out Material material))
 				{
-					material.SetTexture("_Outline", _outline);
-					material.SetTexture("_Pupil", _pupil);
+					material.SetTexture(OUTLINE_PROPERTY_ID, _outline);
+					material.SetTexture(PUPIL_PROPERTY_ID, _pupil);
 				}
 				else
 				{
