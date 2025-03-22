@@ -905,7 +905,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 878209175}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eac3ca744abbfaa44b341ab04bb59394, type: 3}
   m_Name: 
@@ -915,30 +915,30 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
+      value: -0.02
+      inSlope: 0.05078768
+      outSlope: 0.05078768
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.28267634
     - serializedVersion: 3
-      time: 0.42999998
-      value: 0
-      inSlope: 0
-      outSlope: 0
+      time: 0.48999998
+      value: 0.018450102
+      inSlope: 0.10190869
+      outSlope: 0.10190869
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
-      outWeight: 0
+      inWeight: 0.18224025
+      outWeight: 0.16764845
     - serializedVersion: 3
       time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      value: 0.98
+      inSlope: 0.2511744
+      outSlope: 0.2511744
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.11143509
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 1
