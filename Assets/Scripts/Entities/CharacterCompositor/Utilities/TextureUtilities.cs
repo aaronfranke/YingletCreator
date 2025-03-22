@@ -6,6 +6,8 @@ namespace CharacterCompositor
 {
 	public static class TextureUtilities
 	{
+		static readonly int MASK_TEX_PROPERTY_ID = Shader.PropertyToID("_MaskTex");
+		static readonly int MIX_TEX_PROPERTY_ID = Shader.PropertyToID("_MixTex");
 		static readonly int HUE_SHIFT_PROPERTY_ID = Shader.PropertyToID("_HueShift");
 		static readonly int MULTIPLICATION_PROPERTY_ID = Shader.PropertyToID("_Multiplication");
 		static readonly int CONTRAST_PROPERTY_ID = Shader.PropertyToID("_Contrast");
@@ -43,9 +45,9 @@ namespace CharacterCompositor
 					else
 					{
 						blitMaterial.shader = colorizeWithMaskShader;
-						blitMaterial.SetTexture("_MaskTex", applicableMixTexture.Mask);
+						blitMaterial.SetTexture(MASK_TEX_PROPERTY_ID, applicableMixTexture.Mask); // todo
 					}
-					blitMaterial.SetTexture("_MixTex", applicableMixTexture.Shading);
+					blitMaterial.SetTexture(MIX_TEX_PROPERTY_ID, applicableMixTexture.Shading);
 					ApplyMixTexturePropsToMaterial(blitMaterial, applicableMixTexture);
 					renderTextures.Blit(blitMaterial);
 				}
