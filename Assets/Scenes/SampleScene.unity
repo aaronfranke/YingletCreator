@@ -400,6 +400,7 @@ GameObject:
   - component: {fileID: 576857613}
   - component: {fileID: 576857616}
   - component: {fileID: 576857615}
+  - component: {fileID: 576857617}
   m_Layer: 0
   m_Name: Visuals
   m_TagString: Untagged
@@ -463,8 +464,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db5e79379b2fcb542b80952c05476994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxWobbleX: 0.135
-  _maxWobbleY: 0.05
+  _maxWobbleX: 0.075
+  _maxWobbleY: 0.04
   _wobbleTimeRange: {x: 1.8, y: 4.2}
   _wobbleEaseSettings:
     _curve:
@@ -504,6 +505,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50e440787009b9143957127f2ca38a72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &576857617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576857611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eceb345ed354d24e8e40b6d9658ddca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _headBone: {fileID: 1871833919}
+  _degreesToOffsetMult: 0.01
 --- !u!1 &667363522
 GameObject:
   m_ObjectHideFlags: 0
@@ -1431,6 +1446,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1765086561}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1871833919 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6172640457113620533, guid: 1f49178469c2dbb4fb9c36f48adf51f8, type: 3}
+  m_PrefabInstance: {fileID: 783714734}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1981071926
 PrefabInstance:
   m_ObjectHideFlags: 0
