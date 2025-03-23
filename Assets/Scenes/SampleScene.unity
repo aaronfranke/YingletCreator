@@ -908,6 +908,16 @@ MonoBehaviour:
     ignoredTransforms: []
     colliders: []
     animated: 1
+  - rootTransform: {fileID: 876103808}
+    jiggleSettings: {fileID: 11400000, guid: 8453343dc1dd9ea45871b016eb291455, type: 2}
+    ignoredTransforms: []
+    colliders: []
+    animated: 1
+  - rootTransform: {fileID: 968528671}
+    jiggleSettings: {fileID: 11400000, guid: 8453343dc1dd9ea45871b016eb291455, type: 2}
+    ignoredTransforms: []
+    colliders: []
+    animated: 1
   wind: {x: 0, y: 0, z: 0}
   debugDraw: 0
 --- !u!4 &783714740 stripped
@@ -1040,6 +1050,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &876103808 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8430286132503156432, guid: 1f49178469c2dbb4fb9c36f48adf51f8, type: 3}
+  m_PrefabInstance: {fileID: 783714734}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &878209175
 GameObject:
   m_ObjectHideFlags: 0
@@ -1080,7 +1095,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 878209175}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eac3ca744abbfaa44b341ab04bb59394, type: 3}
   m_Name: 
@@ -1365,6 +1380,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debugMovableEntity: {fileID: 306049437}
+--- !u!4 &968528671 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5310448515344979282, guid: 1f49178469c2dbb4fb9c36f48adf51f8, type: 3}
+  m_PrefabInstance: {fileID: 783714734}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1257398303
 GameObject:
   m_ObjectHideFlags: 0
