@@ -17,10 +17,32 @@ public class VertexColorBakingRootEditor : Editor
         }
         GUILayout.Space(5);
 
+        if (GUILayout.Button("Clear Vertex Color Data (all)"))
+        {
+            var allBakingRoots = FindObjectsByType<VertexColorBakingRoot>(FindObjectsSortMode.None);
+            foreach (var bakingRoot in allBakingRoots)
+            {
+                VertexColorBakingLogic.ClearVertexColorData(bakingRoot.transform);
+            }
+        }
+        GUILayout.Space(5);
+
         if (GUILayout.Button("Bake"))
         {
-            var selection = Selection.GetTransforms(SelectionMode.Deep);
             VertexColorBakingLogic.BakeVertexColors(root.transform, root._settings);
         }
+        GUILayout.Space(5);
+
+        if (GUILayout.Button("Bake (all)"))
+        {
+
+            var allBakingRoots = FindObjectsByType<VertexColorBakingRoot>(FindObjectsSortMode.None);
+            foreach (var bakingRoot in allBakingRoots)
+            {
+                VertexColorBakingLogic.BakeVertexColors(bakingRoot.transform, bakingRoot._settings);
+            }
+        }
+        GUILayout.Space(5);
+
     }
 }

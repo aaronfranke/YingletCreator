@@ -69,10 +69,10 @@ namespace CharacterCompositor
 				// Experimental (functional) code
 				// Can add leaf bones to the parent rig with a prefix, _scale, and use that to scale things up without interfering with anything else
 				// Might be nice to make skin a bit thicker when it's responsible for clothes, for example
-				// if (boneMap.TryGetValue($"{b.name}_scale", out Transform scaleTransfrom))
-				// {
-				// 	return scaleTransfrom;
-				// }
+				if (boneMap.TryGetValue($"{b.name}_scale", out Transform scaleTransfrom))
+				{
+					return scaleTransfrom;
+				}
 				return boneMap[b.name];
 			}
 			).ToArray();
