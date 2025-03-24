@@ -11,13 +11,12 @@ public class VertexColorBakingRootEditor : Editor
         base.OnInspectorGUI();
         var root = target as VertexColorBakingRoot;
 
-        if (GUILayout.Button("Clear Vertex Color Data"))
+        GUILayout.BeginHorizontal();
+        if (GUILayout.Button("Clear"))
         {
             VertexColorBakingLogic.ClearVertexColorData(root.transform);
         }
-        GUILayout.Space(5);
-
-        if (GUILayout.Button("Clear Vertex Color Data (all)"))
+        if (GUILayout.Button("Clear (all)"))
         {
             var allBakingRoots = FindObjectsByType<VertexColorBakingRoot>(FindObjectsSortMode.None);
             foreach (var bakingRoot in allBakingRoots)
@@ -25,24 +24,22 @@ public class VertexColorBakingRootEditor : Editor
                 VertexColorBakingLogic.ClearVertexColorData(bakingRoot.transform);
             }
         }
+        GUILayout.EndHorizontal();
         GUILayout.Space(5);
 
+        GUILayout.BeginHorizontal();
         if (GUILayout.Button("Bake"))
         {
             VertexColorBakingLogic.BakeVertexColors(root.transform, root._settings);
         }
-        GUILayout.Space(5);
-
         if (GUILayout.Button("Bake (all)"))
         {
-
             var allBakingRoots = FindObjectsByType<VertexColorBakingRoot>(FindObjectsSortMode.None);
             foreach (var bakingRoot in allBakingRoots)
             {
                 VertexColorBakingLogic.BakeVertexColors(bakingRoot.transform, bakingRoot._settings);
             }
         }
-        GUILayout.Space(5);
-
+        GUILayout.EndHorizontal();
     }
 }
