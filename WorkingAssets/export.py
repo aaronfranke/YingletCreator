@@ -36,7 +36,7 @@ def export():
         exportPath = os.path.abspath(exportPath)
         
         if (selectedObject.type == 'ARMATURE'):
-             obj.animation_data.action = bpy.data.actions.get("__T-Pose")
+             obj.animation_data.action = bpy.data.actions.get("_T-Pose")
         
         select_children_recursive(selectedObject, True)
         bpy.ops.export_scene.fbx(
@@ -50,6 +50,8 @@ def export():
             object_types={'MESH', 'ARMATURE'},  # Include only mesh and armature
             use_armature_deform_only=True,  # Export only bones used for deformation
             add_leaf_bones=False,  # Prevents extra bones from being added
+            bake_anim_simplify_factor = .45, # (Default 1) - The lower the value is, the higher the filesize. Feet also shuffle with this though
+            bake_anim_step = 1 # (Default 1) - How often frames are sampled
         )
         select_children_recursive(selectedObject, False)
         
