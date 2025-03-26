@@ -12,6 +12,8 @@ public class BookmarkSelfVisualController : ReactiveBehaviour
     private BookmarkImageControl _imageControl;
     private IBookmarkPageControl _pageControl;
     private IBookmarkSelfSelection _selfSelection;
+    private IClipboardOrdering _clipboardOrdering;
+
     private BookmarkImageControl _visualOnlyImageControl;
 
     private void Awake()
@@ -19,6 +21,7 @@ public class BookmarkSelfVisualController : ReactiveBehaviour
         _imageControl = this.GetComponent<BookmarkImageControl>();
         _pageControl = this.GetComponent<IBookmarkPageControl>();
         _selfSelection = this.GetComponent<IBookmarkSelfSelection>();
+        _clipboardOrdering = this.GetComponentInParent<IClipboardOrdering>();
         CreateVisualOnlyBookmark();
     }
 
@@ -29,13 +32,22 @@ public class BookmarkSelfVisualController : ReactiveBehaviour
 
     private void ReflectSelected()
     {
-        _pageControl.Page.SetActive(_selfSelection.IsSelected.Val);
+        bool isSelected = _selfSelection.IsSelected.Val;
+        _pageControl.Page.SetActive(isSelected);
+        if (isSelected)
+        {
+            _clipboardOrdering.SendToFront(_pageControl.Page.transform);
+            _clipboardOrdering.SendToFront(this.transform);
+        }
+
     }
 
     void CreateVisualOnlyBookmark()
     {
-        _visualOnlyImageControl = Instantiate(_visualOnlyPrefab, this.transform.parent).GetComponent<BookmarkImageControl>();
+        var go = Instantiate(_visualOnlyPrefab, this.transform.parent);
+        _visualOnlyImageControl = go.GetComponent<BookmarkImageControl>();
         _imageControl.CopyValuesTo(_visualOnlyImageControl);
-        _visualOnlyImageControl.gameObject.SetActive(false);
+        go.SetActive(false);
+        _clipboardOrdering.SendToBack(go.transform);
     }
 }
