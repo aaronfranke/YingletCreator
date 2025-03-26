@@ -1,16 +1,5 @@
-using UnityEngine;
+using Reactivity;
 
-public class ClipboardOrdering : MonoBehaviour
+public class ClipboardOrdering : ReactiveBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

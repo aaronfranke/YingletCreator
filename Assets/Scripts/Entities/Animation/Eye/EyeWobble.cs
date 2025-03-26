@@ -25,6 +25,7 @@ public class EyeWobble : MonoBehaviour, IEyeOffsetProvider
         {
             yield return new WaitForSeconds(Random.Range(_wobbleTimeRange.x, _wobbleTimeRange.y));
             var targetWobbleAmount = new Vector2(Random.Range(-_maxWobbleX, _maxWobbleX), Random.Range(-_maxWobbleY, _maxWobbleY));
+            // Note: _wobbleAmount probably should have been cached here for use in the function, but w/e
             this.StartEaseCoroutine(ref _moveEye, _wobbleEaseSettings, p => _wobbleAmount = Vector2.Lerp(_wobbleAmount, targetWobbleAmount, p));
         }
     }
