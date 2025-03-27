@@ -1,7 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BookmarkImageControl : MonoBehaviour
+public interface IBookmarkImageControl
+{
+    void CopyValuesFrom(IBookmarkImageControl source);
+}
+
+public class BookmarkImageControl : MonoBehaviour, IBookmarkImageControl
 {
     [SerializeField] Image _fill;
     [SerializeField] Image _icon;
@@ -13,11 +18,12 @@ public class BookmarkImageControl : MonoBehaviour
         _unselectedColor = _fill.color;
     }
 
-    public void CopyValuesTo(BookmarkImageControl destination)
+    public void CopyValuesFrom(IBookmarkImageControl source)
     {
-        destination._unselectedColor = _unselectedColor;
-        destination._fill.color = _fill.color;
-        destination._icon.color = _icon.color;
-        destination._icon.sprite = _icon.sprite;
+        var sourceImpl = (BookmarkImageControl)source;
+        _unselectedColor = sourceImpl._unselectedColor;
+        _fill.color = sourceImpl._fill.color;
+        _icon.color = sourceImpl._icon.color;
+        _icon.sprite = sourceImpl._icon.sprite;
     }
 }

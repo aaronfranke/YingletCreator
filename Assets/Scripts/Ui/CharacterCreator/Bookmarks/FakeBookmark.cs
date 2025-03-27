@@ -1,4 +1,3 @@
-using Reactivity;
 using System.Collections;
 using UnityEngine;
 
@@ -14,34 +13,41 @@ public class FakeBookmark : MonoBehaviour, IFakeBookmark
 {
     [SerializeField] RectTransform _animMotionRoot;
     private Animation _animation;
-    private BookmarkImageControl _imageControl;
-    private RealBookmarkReference _realReference;
+    private IBookmarkImageControl _imageControl;
     private IClipboardOrdering _clipboardOrdering;
+    private IClipboardElementSelection _elementSelection;
     private Coroutine _freeFallCoroutine;
+    private IPage _page;
 
     void Awake()
     {
         _animation = this.GetComponent<Animation>();
-        _imageControl = this.GetComponent<BookmarkImageControl>();
+        _imageControl = this.GetComponent<IBookmarkImageControl>();
         _clipboardOrdering = this.GetComponentInParent<IClipboardOrdering>();
+        _elementSelection = this.GetComponent<IClipboardElementSelection>();
     }
 
     void Start()
     {
-        _realReference.IsRealSelected.OnChanged += Selected_OnChanged;
+        _elementSelection.IsSelected.OnChanged += Selected_OnChanged;
         this.gameObject.SetActive(false);
     }
 
     private void OnDestroy()
     {
-        _realReference.IsRealSelected.OnChanged -= Selected_OnChanged;
+        _elementSelection.IsSelected.OnChanged -= Selected_OnChanged;
     }
 
     public void Setup(GameObject realBookmark)
     {
-        _realReference = new RealBookmarkReference(realBookmark);
-        _realReference.ImageControl.CopyValuesTo(_imageControl);
-        this.transform.position = _realReference.Transform.position;
+        _imageControl.CopyValuesFrom(realBookmark.GetComponent<IBookmarkImageControl>());
+        this.transform.position = realBookmark.transform.position;
+
+        var selectiontype = realBookmark.GetComponent<IClipboardElementSelection>().Type;
+        _elementSelection.Type = selectiontype;
+
+        _page = this.GetComponentInParent<IClipboardSelection>().GetPageWithType(selectiontype);
+
         _clipboardOrdering.SendToBack(this.transform);
     }
 
@@ -57,32 +63,15 @@ public class FakeBookmark : MonoBehaviour, IFakeBookmark
 
     IEnumerator FreeFall()
     {
-        var page = _realReference.PageReference.Page;
         _animMotionRoot.localPosition = Vector3.zero;
         _animMotionRoot.localRotation = Quaternion.identity;
-        page.SetParent(_animMotionRoot);
+        _page.SetParent(_animMotionRoot);
         _animation.Play();
         yield return new WaitForSeconds(_animation.clip.length);
         _animation.Stop();
 
 
         // Still our parent? Disable this
-        page.DisableIfStillParented(_animMotionRoot);
-    }
-}
-
-sealed class RealBookmarkReference
-{
-    public RectTransform Transform { get; }
-    public IReadOnlyObservable<bool> IsRealSelected { get; }
-    public BookmarkImageControl ImageControl { get; }
-    public IBookmarkPageReference PageReference { get; }
-
-    public RealBookmarkReference(GameObject realBookmark)
-    {
-        ImageControl = realBookmark.GetComponent<BookmarkImageControl>();
-        PageReference = realBookmark.GetComponent<IBookmarkPageReference>();
-        IsRealSelected = realBookmark.GetComponent<IBookmarkSelfSelection>().IsSelected;
-        Transform = realBookmark.GetComponent<RectTransform>();
+        _page.DisableIfStillParented(_animMotionRoot);
     }
 }

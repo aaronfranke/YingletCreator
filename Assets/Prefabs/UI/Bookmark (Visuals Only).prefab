@@ -198,6 +198,7 @@ GameObject:
   - component: {fileID: 1519955314435361544}
   - component: {fileID: 3444597286655019638}
   - component: {fileID: 1660447327318211473}
+  - component: {fileID: 6556623138159959349}
   m_Layer: 5
   m_Name: Bookmark (Visuals Only)
   m_TagString: Untagged
@@ -248,3 +249,16 @@ MonoBehaviour:
   _fill: {fileID: 1221608152091676888}
   _icon: {fileID: 7146891195247324228}
   _selectedIconColor: {r: 0.9882353, g: 0.9607843, b: 0.87058824, a: 1}
+--- !u!114 &6556623138159959349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8484396959655653066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63b9dc963337d644689ac45c9e714872, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 0

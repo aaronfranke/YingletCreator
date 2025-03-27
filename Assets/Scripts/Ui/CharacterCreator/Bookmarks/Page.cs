@@ -4,10 +4,9 @@ using UnityEngine.UI;
 
 public interface IPage
 {
-    void Connect(IBookmarkSelfSelection bookmark);
-
     void SetParent(Transform newParent);
     void DisableIfStillParented(Transform compareParent);
+    T GetComponent<T>();
 
 }
 public class Page : ReactiveBehaviour, IPage
@@ -21,7 +20,7 @@ public class Page : ReactiveBehaviour, IPage
     private Quaternion _originalRot;
     private CanvasGroup _canvasGroup;
     private IClipboardOrdering _clipboardOrdering;
-    private IBookmarkSelfSelection _bookmark;
+    private IClipboardElementSelection _elementSelection;
     private Coroutine _tintCoroutine;
 
     void Awake()
@@ -31,20 +30,16 @@ public class Page : ReactiveBehaviour, IPage
         _originalRot = this.transform.localRotation;
         _canvasGroup = this.GetComponent<CanvasGroup>();
         _clipboardOrdering = this.GetComponentInParent<IClipboardOrdering>();
+        _elementSelection = this.GetComponent<IClipboardElementSelection>();
         _tintImage.color = Color.clear;
         _tintImage.gameObject.SetActive(false);
-    }
-
-    public void Connect(IBookmarkSelfSelection bookmark)
-    {
-        _bookmark = bookmark;
+        this.gameObject.SetActive(false);
         AddReflector(ReflectSelected);
     }
 
-
     private void ReflectSelected()
     {
-        bool isSelected = _bookmark.IsSelected.Val;
+        bool isSelected = _elementSelection.IsSelected.Val;
         _canvasGroup.interactable = isSelected;
         if (isSelected)
         {
