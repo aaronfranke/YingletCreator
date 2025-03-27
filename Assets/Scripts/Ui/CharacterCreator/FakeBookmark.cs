@@ -48,7 +48,7 @@ public class FakeBookmark : MonoBehaviour, IFakeBookmark
     {
         if (!wasSelected) return;
 
-        _clipboardOrdering.SendToFront(this.transform);
+        _clipboardOrdering.SendToFront(this.transform, isFreeFall: true);
         this.gameObject.SetActive(true);
         this.StopAndStartCoroutine(ref _freeFallCoroutine, FreeFall());
     }

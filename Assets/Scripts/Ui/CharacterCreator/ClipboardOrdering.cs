@@ -1,15 +1,22 @@
 using UnityEngine;
 
+
 public interface IClipboardOrdering
 {
-    void SendToFront(Transform transform);
+    void SendToFront(Transform transform, bool isFreeFall);
     void SendToBack(Transform transform);
 }
 public class ClipboardOrdering : MonoBehaviour, IClipboardOrdering
 {
-    public void SendToFront(Transform transform)
+    [SerializeField] RectTransform _normalParent;
+    [SerializeField] RectTransform _freefallParent;
+
+
+    public void SendToFront(Transform transform, bool isFreefall)
     {
-        transform.SetSiblingIndex(this.transform.childCount - 1);
+        var parent = isFreefall ? _freefallParent : _normalParent;
+        transform.SetParent(parent);
+        transform.SetSiblingIndex(parent.childCount - 1);
     }
 
     public void SendToBack(Transform transform)

@@ -195,6 +195,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 40420120}
   m_CullTransparentMesh: 1
+--- !u!1 &46697552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 46697553}
+  - component: {fileID: 46697554}
+  m_Layer: 5
+  m_Name: FreeFallClipboardContent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &46697553
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46697552}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 910679607}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 5.296}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -0.000015258789, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &46697554
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46697552}
+  m_CullTransparentMesh: 1
 --- !u!1 &117732434
 GameObject:
   m_ObjectHideFlags: 0
@@ -3698,6 +3742,8 @@ GameObject:
   - component: {fileID: 910679607}
   - component: {fileID: 910679609}
   - component: {fileID: 910679608}
+  - component: {fileID: 910679611}
+  - component: {fileID: 910679610}
   m_Layer: 5
   m_Name: ClipboardBase
   m_TagString: Untagged
@@ -3718,6 +3764,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1740156671}
+  - {fileID: 46697553}
   - {fileID: 396553224}
   m_Father: {fileID: 1687597798}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 5.296}
@@ -3764,6 +3811,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 910679606}
   m_CullTransparentMesh: 1
+--- !u!114 &910679610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910679606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3d32d4a193be8e4cb4b56dedd383f04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _initialSelection: {fileID: 1974823063}
+--- !u!114 &910679611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910679606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 655ade6b098d90a43906c6036a682020, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _normalParent: {fileID: 1740156671}
+  _freefallParent: {fileID: 46697553}
 --- !u!1 &964567395
 GameObject:
   m_ObjectHideFlags: 0
@@ -5762,8 +5836,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1740156671}
   - component: {fileID: 1740156674}
-  - component: {fileID: 1740156673}
-  - component: {fileID: 1740156672}
   m_Layer: 5
   m_Name: ClipboardContent
   m_TagString: Untagged
@@ -5796,31 +5868,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -0.000015258789, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1740156672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1740156670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3d32d4a193be8e4cb4b56dedd383f04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _initialSelection: {fileID: 1974823063}
---- !u!114 &1740156673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1740156670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 655ade6b098d90a43906c6036a682020, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &1740156674
 CanvasRenderer:
   m_ObjectHideFlags: 0
