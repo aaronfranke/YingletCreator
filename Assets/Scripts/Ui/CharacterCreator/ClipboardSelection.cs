@@ -15,7 +15,7 @@ public class ClipboardSelection : MonoBehaviour, IClipboardSelection
 
     public Observable<IBookmarkSelfSelection> Selection { get; } = new Observable<IBookmarkSelfSelection>();
 
-    void Awake()
+    void Start()
     {
         Selection.Val = _initialSelection;
     }
