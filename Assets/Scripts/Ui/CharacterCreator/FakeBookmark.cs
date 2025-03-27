@@ -60,17 +60,14 @@ public class FakeBookmark : MonoBehaviour, IFakeBookmark
         var page = _realReference.PageReference.Page;
         _animMotionRoot.localPosition = Vector3.zero;
         _animMotionRoot.localRotation = Quaternion.identity;
-        page.transform.SetParent(_animMotionRoot, true);
+        page.SetParent(_animMotionRoot);
         _animation.Play();
         yield return new WaitForSeconds(_animation.clip.length);
         _animation.Stop();
 
 
         // Still our parent? Disable this
-        if (page.transform.parent == _animMotionRoot)
-        {
-            page.SetActive(false);
-        }
+        page.DisableIfStillParented(_animMotionRoot);
     }
 }
 
@@ -79,12 +76,12 @@ sealed class RealBookmarkReference
     public RectTransform Transform { get; }
     public IReadOnlyObservable<bool> IsRealSelected { get; }
     public BookmarkImageControl ImageControl { get; }
-    public IBookmarkPageControl PageReference { get; }
+    public IBookmarkPageReference PageReference { get; }
 
     public RealBookmarkReference(GameObject realBookmark)
     {
         ImageControl = realBookmark.GetComponent<BookmarkImageControl>();
-        PageReference = realBookmark.GetComponent<IBookmarkPageControl>();
+        PageReference = realBookmark.GetComponent<IBookmarkPageReference>();
         IsRealSelected = realBookmark.GetComponent<IBookmarkSelfSelection>().IsSelected;
         Transform = realBookmark.GetComponent<RectTransform>();
     }

@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 public interface IClipboardOrdering
 {
     void SendToFront(Transform transform, bool isFreeFall);
