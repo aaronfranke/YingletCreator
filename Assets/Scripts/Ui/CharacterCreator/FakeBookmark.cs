@@ -12,8 +12,8 @@ public interface IFakeBookmark
 
 public class FakeBookmark : MonoBehaviour, IFakeBookmark
 {
-    [SerializeField] FakeBookmarkFreefallSettings _freeFallSettings;
-
+    [SerializeField] RectTransform _animMotionRoot;
+    private Animation _animation;
     private BookmarkImageControl _imageControl;
     private RealBookmarkReference _realReference;
     private IClipboardOrdering _clipboardOrdering;
@@ -21,6 +21,7 @@ public class FakeBookmark : MonoBehaviour, IFakeBookmark
 
     void Awake()
     {
+        _animation = this.GetComponent<Animation>();
         _imageControl = this.GetComponent<BookmarkImageControl>();
         _clipboardOrdering = this.GetComponentInParent<IClipboardOrdering>();
     }
@@ -48,6 +49,7 @@ public class FakeBookmark : MonoBehaviour, IFakeBookmark
     {
         if (!wasSelected) return;
 
+        _animation.Stop();
         _clipboardOrdering.SendToFront(this.transform, isFreeFall: true);
         this.gameObject.SetActive(true);
         this.StopAndStartCoroutine(ref _freeFallCoroutine, FreeFall());
@@ -55,27 +57,19 @@ public class FakeBookmark : MonoBehaviour, IFakeBookmark
 
     IEnumerator FreeFall()
     {
-        var page = _realReference.PageReference.Page.transform;
+        var page = _realReference.PageReference.Page;
+        _animMotionRoot.localPosition = Vector3.zero;
+        _animMotionRoot.localRotation = Quaternion.identity;
+        page.transform.SetParent(_animMotionRoot, true);
+        _animation.Play();
+        yield return new WaitForSeconds(_animation.clip.length);
+        _animation.Stop();
 
-        this.transform.position = _realReference.Transform.position;
-        this.transform.rotation = _realReference.Transform.rotation;
-        page.SetParent(this.transform, true);
-        Vector3 velocity =
-            Vector3.right * Random.Range(_freeFallSettings.HorizontalSpeedRange.x, _freeFallSettings.HorizontalSpeedRange.y) +
-            Vector3.up * Random.Range(_freeFallSettings.VerticalSpeedRange.x, _freeFallSettings.VerticalSpeedRange.y);
-
-        float startTime = Time.time;
-        while (Time.time < startTime + _freeFallSettings.Duration)
-        {
-            this.transform.position += velocity * Time.deltaTime;
-            velocity += Vector3.up * _freeFallSettings.Gravity * Time.deltaTime;
-            yield return null;
-        }
 
         // Still our parent? Disable this
-        if (page.transform.parent == this.transform)
+        if (page.transform.parent == _animMotionRoot)
         {
-            _realReference.PageReference.Page.SetActive(false);
+            page.SetActive(false);
         }
     }
 }
@@ -94,13 +88,4 @@ sealed class RealBookmarkReference
         IsRealSelected = realBookmark.GetComponent<IBookmarkSelfSelection>().IsSelected;
         Transform = realBookmark.GetComponent<RectTransform>();
     }
-}
-
-[System.Serializable]
-sealed class FakeBookmarkFreefallSettings
-{
-    public float Duration = 10f;
-    public Vector2 HorizontalSpeedRange;
-    public Vector2 VerticalSpeedRange;
-    public float Gravity;
 }

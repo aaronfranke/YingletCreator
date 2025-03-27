@@ -88,6 +88,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4029933790686924803, guid: f04b0cf6474e00f429e4659d89cad8b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 8484396959655653066, guid: f04b0cf6474e00f429e4659d89cad8b9, type: 3}
       propertyPath: m_Name
       value: Bookmark (Fake)
@@ -99,7 +103,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8484396959655653066, guid: f04b0cf6474e00f429e4659d89cad8b9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1433735255993856385}
+    - targetCorrespondingSourceObject: {fileID: 8484396959655653066, guid: f04b0cf6474e00f429e4659d89cad8b9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 548762659605064253}
   m_SourcePrefab: {fileID: 100100000, guid: f04b0cf6474e00f429e4659d89cad8b9, type: 3}
+--- !u!224 &3174095052086851001 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4029933790686924803, guid: f04b0cf6474e00f429e4659d89cad8b9, type: 3}
+  m_PrefabInstance: {fileID: 2009051627772372410}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7953136878572997488 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8484396959655653066, guid: f04b0cf6474e00f429e4659d89cad8b9, type: 3}
@@ -117,8 +129,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba293d35ca176d145aa941d6747a5bf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _freeFallSettings:
-    Duration: 6
-    HorizontalSpeedRange: {x: -300, y: 300}
-    VerticalSpeedRange: {x: -400, y: -600}
-    Gravity: -400
+  _animMotionRoot: {fileID: 3174095052086851001}
+--- !u!111 &548762659605064253
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7953136878572997488}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 7400000, guid: c6850a8488817bf4abc92777c842966f, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: c6850a8488817bf4abc92777c842966f, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0
