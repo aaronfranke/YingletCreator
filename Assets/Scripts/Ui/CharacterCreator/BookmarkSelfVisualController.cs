@@ -32,11 +32,12 @@ public class BookmarkSelfVisualController : ReactiveBehaviour
     private void ReflectSelected()
     {
         bool isSelected = _selfSelection.IsSelected.Val;
-        _pageControl.Page.SetActive(isSelected);
+        _pageControl.MakeInteractable(isSelected);
         if (isSelected)
         {
             _clipboardOrdering.SendToFront(_pageControl.Page.transform);
             _clipboardOrdering.SendToFront(this.transform);
+            _pageControl.ResetTransform();
         }
     }
 

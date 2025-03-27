@@ -7,10 +7,9 @@ public interface IClipboardOrdering
 }
 public class ClipboardOrdering : MonoBehaviour, IClipboardOrdering
 {
-    [SerializeField] Transform[] _alwaysOnTopItems;
     public void SendToFront(Transform transform)
     {
-        transform.SetSiblingIndex(this.transform.childCount - _alwaysOnTopItems.Length - 1);
+        transform.SetSiblingIndex(this.transform.childCount - 1);
     }
 
     public void SendToBack(Transform transform)

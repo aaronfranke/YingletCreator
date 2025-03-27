@@ -12,7 +12,7 @@ public interface IFakeBookmark
 
 public class FakeBookmark : MonoBehaviour, IFakeBookmark
 {
-    [SerializeField] float _freeFallTime = 10f;
+    [SerializeField] FakeBookmarkFreefallSettings _freeFallSettings;
 
     private BookmarkImageControl _imageControl;
     private RealBookmarkReference _realReference;
@@ -44,9 +44,9 @@ public class FakeBookmark : MonoBehaviour, IFakeBookmark
         _clipboardOrdering.SendToBack(this.transform);
     }
 
-    private void Selected_OnChanged(bool _, bool isSelected)
+    private void Selected_OnChanged(bool wasSelected, bool isSelected)
     {
-        if (!isSelected) return;
+        if (!wasSelected) return;
 
         _clipboardOrdering.SendToFront(this.transform);
         this.gameObject.SetActive(true);
@@ -55,13 +55,27 @@ public class FakeBookmark : MonoBehaviour, IFakeBookmark
 
     IEnumerator FreeFall()
     {
+        var page = _realReference.PageReference.Page.transform;
+
         this.transform.position = _realReference.Transform.position;
         this.transform.rotation = _realReference.Transform.rotation;
+        page.SetParent(this.transform, true);
+        Vector3 velocity =
+            Vector3.right * Random.Range(_freeFallSettings.HorizontalSpeedRange.x, _freeFallSettings.HorizontalSpeedRange.y) +
+            Vector3.up * Random.Range(_freeFallSettings.VerticalSpeedRange.x, _freeFallSettings.VerticalSpeedRange.y);
+
         float startTime = Time.time;
-        while (Time.time < startTime + _freeFallTime)
+        while (Time.time < startTime + _freeFallSettings.Duration)
         {
-            this.transform.position += Vector3.down * 100 * Time.deltaTime;
+            this.transform.position += velocity * Time.deltaTime;
+            velocity += Vector3.up * _freeFallSettings.Gravity * Time.deltaTime;
             yield return null;
+        }
+
+        // Still our parent? Disable this
+        if (page.transform.parent == this.transform)
+        {
+            _realReference.PageReference.Page.SetActive(false);
         }
     }
 }
@@ -71,12 +85,22 @@ sealed class RealBookmarkReference
     public RectTransform Transform { get; }
     public IReadOnlyObservable<bool> IsRealSelected { get; }
     public BookmarkImageControl ImageControl { get; }
-    public GameObject Page { get; }
+    public IBookmarkPageControl PageReference { get; }
+
     public RealBookmarkReference(GameObject realBookmark)
     {
         ImageControl = realBookmark.GetComponent<BookmarkImageControl>();
-        Page = realBookmark.GetComponent<IBookmarkPageControl>().Page;
+        PageReference = realBookmark.GetComponent<IBookmarkPageControl>();
         IsRealSelected = realBookmark.GetComponent<IBookmarkSelfSelection>().IsSelected;
         Transform = realBookmark.GetComponent<RectTransform>();
     }
+}
+
+[System.Serializable]
+sealed class FakeBookmarkFreefallSettings
+{
+    public float Duration = 10f;
+    public Vector2 HorizontalSpeedRange;
+    public Vector2 VerticalSpeedRange;
+    public float Gravity;
 }

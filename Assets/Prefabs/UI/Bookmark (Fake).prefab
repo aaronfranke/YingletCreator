@@ -117,3 +117,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba293d35ca176d145aa941d6747a5bf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _freeFallSettings:
+    Duration: 6
+    HorizontalSpeedRange: {x: -300, y: 300}
+    VerticalSpeedRange: {x: -400, y: -600}
+    Gravity: -400
