@@ -35,6 +35,7 @@ public class BookmarkSelfVisualController : ReactiveBehaviour
         _pageControl.MakeInteractable(isSelected);
         if (isSelected)
         {
+            _pageControl.Page.SetActive(true);
             _clipboardOrdering.SendToFront(_pageControl.Page.transform, isFreeFall: false);
             _clipboardOrdering.SendToFront(this.transform, isFreeFall: false);
             _pageControl.ResetTransform();
