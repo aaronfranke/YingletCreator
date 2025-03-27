@@ -14,6 +14,7 @@ public class AudioPlayer : MonoBehaviour, IAudioPlayer
         source.clip = soundEffect.Clip;
         source.loop = false;
         source.volume = Mathf.Min(1, soundEffect.Volume); // Might eventually need to multiply this by some input for dynamic sound effects
+        source.pitch = Random.Range(soundEffect.RandomPitchRange.x, soundEffect.RandomPitchRange.y);
         //source.outputAudioMixerGroup = _audioMixerHandler.SfxGroup;
         source.Play();
 
