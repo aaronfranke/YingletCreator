@@ -1,3 +1,4 @@
+using Reactivity;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,16 +7,41 @@ public interface IBookmarkImageControl
     void CopyValuesFrom(IBookmarkImageControl source);
 }
 
-public class BookmarkImageControl : MonoBehaviour, IBookmarkImageControl
+public class BookmarkImageControl : ReactiveBehaviour, IBookmarkImageControl
 {
     [SerializeField] Image _fill;
     [SerializeField] Image _icon;
     [SerializeField] Color _selectedIconColor = Color.white;
+    [SerializeField] EaseSettings _iconTransitionEaseSettings;
     private Color _unselectedColor;
+    private IClipboardElementSelection _selection;
+    private Coroutine _iconTransitionCoroutine;
 
     private void Awake()
     {
-        _unselectedColor = _fill.color;
+        _unselectedColor = _icon.color;
+        _selection = this.GetComponent<IClipboardElementSelection>();
+    }
+
+    void Start()
+    {
+        AddReflector(ReflectSelected);
+    }
+
+    void ReflectSelected()
+    {
+        bool selected = _selection.IsSelected.Val;
+        var fromColor = _icon.color;
+        var toColor = selected ? _selectedIconColor : _unselectedColor;
+
+        if (!this.gameObject.activeInHierarchy)
+        {
+            _icon.color = toColor;
+        }
+        else
+        {
+            this.StartEaseCoroutine(ref _iconTransitionCoroutine, _iconTransitionEaseSettings, p => _icon.color = Color.Lerp(fromColor, toColor, p));
+        }
     }
 
     public void CopyValuesFrom(IBookmarkImageControl source)
@@ -26,4 +52,6 @@ public class BookmarkImageControl : MonoBehaviour, IBookmarkImageControl
         _icon.color = sourceImpl._icon.color;
         _icon.sprite = sourceImpl._icon.sprite;
     }
+
+
 }
