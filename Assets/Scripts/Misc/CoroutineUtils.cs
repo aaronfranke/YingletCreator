@@ -24,12 +24,12 @@ public static class CoroutineUtils
         existingCoroutine = monoBehaviour.StartCoroutine(routine);
     }
 
-    public static void StartEaseCoroutine(this MonoBehaviour monoBehaviour, ref Coroutine existingCoroutine, EaseSettings settings, Action<float> apply)
+    public static void StartEaseCoroutine(this MonoBehaviour monoBehaviour, ref Coroutine existingCoroutine, EaseSettings settings, Action<float> apply, Action onComplete = null)
     {
-        StopAndStartCoroutine(monoBehaviour, ref existingCoroutine, Ease(settings, apply));
+        StopAndStartCoroutine(monoBehaviour, ref existingCoroutine, Ease(settings, apply, onComplete));
     }
 
-    static IEnumerator Ease(EaseSettings settings, Action<float> apply)
+    static IEnumerator Ease(EaseSettings settings, Action<float> apply, Action onComplete)
     {
         for (float t = 0; t < settings.Duration; t += Time.deltaTime)
         {
@@ -38,5 +38,6 @@ public static class CoroutineUtils
             yield return null;
         }
         apply(settings.Curve.Evaluate(1));
+        if (onComplete != null) onComplete();
     }
 }

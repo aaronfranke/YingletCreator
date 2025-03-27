@@ -1,5 +1,6 @@
 using Reactivity;
 using UnityEngine;
+using UnityEngine.UI;
 
 public interface IPage
 {
@@ -11,12 +12,17 @@ public interface IPage
 }
 public class Page : ReactiveBehaviour, IPage
 {
+    [SerializeField] Image _tintImage;
+    [SerializeField] Color _startTintColor;
+    [SerializeField] EaseSettings _untintEaseSettings;
+
     private Transform _originalParent;
     private Vector3 _originalPos;
     private Quaternion _originalRot;
     private CanvasGroup _canvasGroup;
     private IClipboardOrdering _clipboardOrdering;
     private IBookmarkSelfSelection _bookmark;
+    private Coroutine _tintCoroutine;
 
     void Awake()
     {
@@ -25,6 +31,8 @@ public class Page : ReactiveBehaviour, IPage
         _originalRot = this.transform.localRotation;
         _canvasGroup = this.GetComponent<CanvasGroup>();
         _clipboardOrdering = this.GetComponentInParent<IClipboardOrdering>();
+        _tintImage.color = Color.clear;
+        _tintImage.gameObject.SetActive(false);
     }
 
     public void Connect(IBookmarkSelfSelection bookmark)
@@ -43,6 +51,11 @@ public class Page : ReactiveBehaviour, IPage
             this.gameObject.SetActive(true);
             ResetTransform();
             _clipboardOrdering.SendToFront(this.transform, isFreeFall: false);
+
+            _tintImage.gameObject.SetActive(true);
+            this.StartEaseCoroutine(ref _tintCoroutine, _untintEaseSettings,
+                p => _tintImage.color = Color.Lerp(_startTintColor, Color.clear, p),
+                () => _tintImage.gameObject.SetActive(false));
         }
     }
 

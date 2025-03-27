@@ -595,6 +595,34 @@ PrefabInstance:
       propertyPath: m_text
       value: Slidy Zhings
       objectReference: {fileID: 0}
+    - target: {fileID: 8724743861178572848, guid: f9b9aad9a968cab41b668cd626818ba9, type: 3}
+      propertyPath: _startTintColor.a
+      value: 0.48235294
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724743861178572848, guid: f9b9aad9a968cab41b668cd626818ba9, type: 3}
+      propertyPath: _untintEaseSettings._curve.m_Curve.Array.data[0].inSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724743861178572848, guid: f9b9aad9a968cab41b668cd626818ba9, type: 3}
+      propertyPath: _untintEaseSettings._curve.m_Curve.Array.data[1].inSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724743861178572848, guid: f9b9aad9a968cab41b668cd626818ba9, type: 3}
+      propertyPath: _untintEaseSettings._curve.m_Curve.Array.data[0].outSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724743861178572848, guid: f9b9aad9a968cab41b668cd626818ba9, type: 3}
+      propertyPath: _untintEaseSettings._curve.m_Curve.Array.data[1].outSlope
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724743861178572848, guid: f9b9aad9a968cab41b668cd626818ba9, type: 3}
+      propertyPath: _untintEaseSettings._curve.m_Curve.Array.data[0].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724743861178572848, guid: f9b9aad9a968cab41b668cd626818ba9, type: 3}
+      propertyPath: _untintEaseSettings._curve.m_Curve.Array.data[1].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
     - target: {fileID: 8830547996550550258, guid: f9b9aad9a968cab41b668cd626818ba9, type: 3}
       propertyPath: m_Name
       value: Page - Sliders
@@ -844,7 +872,7 @@ CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 1788782190123642224, guid: f9b9aad9a968cab41b668cd626818ba9, type: 3}
   m_PrefabInstance: {fileID: 254714139}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &254714143 stripped
+--- !u!114 &254714147 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8724743861178572848, guid: f9b9aad9a968cab41b668cd626818ba9, type: 3}
   m_PrefabInstance: {fileID: 254714139}
@@ -1366,7 +1394,7 @@ PrefabInstance:
     - target: {fileID: 7473838015295326922, guid: 66cf973f0124a7942935ec6ed6e6d99e, type: 3}
       propertyPath: _page
       value: 
-      objectReference: {fileID: 254714143}
+      objectReference: {fileID: 254714147}
     - target: {fileID: 8114617256564113601, guid: 66cf973f0124a7942935ec6ed6e6d99e, type: 3}
       propertyPath: m_Color.b
       value: 0.7490196
