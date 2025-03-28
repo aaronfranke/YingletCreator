@@ -17,11 +17,11 @@ public class BookmarkSelfVisualController : ReactiveBehaviour
     {
         _elementSelection = this.GetComponent<IClipboardElementSelection>();
         _clipboardOrdering = this.GetComponentInParent<IClipboardOrdering>();
-        CreateFakeBookmark();
     }
 
     private void Start()
     {
+        CreateFakeBookmark();
         this.AddReflector(ReflectSelected);
     }
 
