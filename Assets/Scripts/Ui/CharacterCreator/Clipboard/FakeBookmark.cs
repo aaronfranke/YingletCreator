@@ -48,7 +48,7 @@ public class FakeBookmark : MonoBehaviour, IFakeBookmark
 
         _page = this.GetComponentInParent<IClipboardSelection>().GetPageWithType(selectiontype);
 
-        _clipboardOrdering.SendToBack(this.transform);
+        _clipboardOrdering.SendToLayer(this.transform, ClipboardLayer.Back);
     }
 
     private void Selected_OnChanged(bool wasSelected, bool isSelected)
@@ -56,7 +56,7 @@ public class FakeBookmark : MonoBehaviour, IFakeBookmark
         if (!wasSelected) return;
 
         _animation.Stop();
-        _clipboardOrdering.SendToFront(this.transform, isFreeFall: true);
+        _clipboardOrdering.SendToLayer(this.transform, ClipboardLayer.Freefall);
         this.gameObject.SetActive(true);
         this.StopAndStartCoroutine(ref _freeFallCoroutine, FreeFall());
     }

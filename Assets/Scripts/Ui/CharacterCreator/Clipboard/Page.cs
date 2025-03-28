@@ -25,7 +25,6 @@ public class Page : ReactiveBehaviour, IPage
 
     void Awake()
     {
-        _originalParent = this.transform.parent;
         _originalPos = this.transform.localPosition;
         _originalRot = this.transform.localRotation;
         _canvasGroup = this.GetComponent<CanvasGroup>();
@@ -41,11 +40,13 @@ public class Page : ReactiveBehaviour, IPage
     {
         bool isSelected = _elementSelection.IsSelected.Val;
         _canvasGroup.interactable = isSelected;
+
+        _clipboardOrdering.SendToLayer(this.transform, isSelected ? ClipboardLayer.ActivePage : ClipboardLayer.Back);
+
         if (isSelected)
         {
             this.gameObject.SetActive(true);
             ResetTransform();
-            _clipboardOrdering.SendToFront(this.transform, isFreeFall: false);
 
             _tintImage.gameObject.SetActive(true);
             this.StartEaseCoroutine(ref _tintCoroutine, _untintEaseSettings,
@@ -56,7 +57,6 @@ public class Page : ReactiveBehaviour, IPage
 
     void ResetTransform()
     {
-        this.transform.SetParent(_originalParent, true);
         this.transform.localPosition = _originalPos;
         this.transform.localRotation = _originalRot;
     }

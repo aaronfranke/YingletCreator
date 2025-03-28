@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BookmarkSoundEffects : MonoBehaviour
+public class BookmarkSounds : MonoBehaviour
 {
     [SerializeField] private SoundEffect _hoverBookmark;
     private IAudioPlayer _audioPlayer;

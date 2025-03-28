@@ -9,14 +9,12 @@ public class BookmarkSelfVisualController : ReactiveBehaviour
 {
     [SerializeField] GameObject _visualOnlyPrefab;
 
-    private IBookmarkImageControl _imageControl;
     private IClipboardElementSelection _elementSelection;
     private IClipboardOrdering _clipboardOrdering;
 
 
     private void Awake()
     {
-        _imageControl = this.GetComponent<IBookmarkImageControl>();
         _elementSelection = this.GetComponent<IClipboardElementSelection>();
         _clipboardOrdering = this.GetComponentInParent<IClipboardOrdering>();
         CreateFakeBookmark();
@@ -30,10 +28,7 @@ public class BookmarkSelfVisualController : ReactiveBehaviour
     private void ReflectSelected()
     {
         bool isSelected = _elementSelection.IsSelected.Val;
-        if (isSelected)
-        {
-            _clipboardOrdering.SendToFront(this.transform, isFreeFall: false);
-        }
+        _clipboardOrdering.SendToLayer(this.transform, isSelected ? ClipboardLayer.ActiveBookmark : ClipboardLayer.Back);
     }
 
     void CreateFakeBookmark()
