@@ -10,8 +10,10 @@ def export():
         
     exportObjects = []
     for obj in selectedObjects:
-        # Never export a mesh without its parent
+        # Never export a mesh without its parent, and always make sure that parent is visible
         if obj.type == 'MESH' and obj.parent and obj.parent.type == 'ARMATURE':
+            obj.parent.hide_set(False)
+            obj.parent.hide_viewport = False
             exportObjects.append(obj.parent)
         else:
             exportObjects.append(obj)
@@ -36,7 +38,10 @@ def export():
         exportPath = os.path.abspath(exportPath)
         
         if (selectedObject.type == 'ARMATURE'):
-             obj.animation_data.action = bpy.data.actions.get("_T-Pose")
+             selectedObject.animation_data.action = bpy.data.actions.get("_T-Pose")
+             for child in selectedObject.children:
+                child.hide_set(False)  # Make visible in viewport
+                child.hide_viewport = False  # Ensure it's not hidden in viewport
         
         select_children_recursive(selectedObject, True)
         bpy.ops.export_scene.fbx(
@@ -46,7 +51,7 @@ def export():
             axis_up = 'Y',
             bake_space_transform=True,
             apply_scale_options='FBX_SCALE_ALL',
-            use_mesh_modifiers=True,  # Ensure the final deformed shape is exported
+            use_mesh_modifiers=True,  # Apply mirror; this prevents shape key usage. It might be possible to get this working with https://github.com/smokejohn/SKkeeper/tree/master
             object_types={'MESH', 'ARMATURE'},  # Include only mesh and armature
             use_armature_deform_only=True,  # Export only bones used for deformation
             add_leaf_bones=False,  # Prevents extra bones from being added
@@ -54,10 +59,6 @@ def export():
             bake_anim_step = 1 # (Default 1) - How often frames are sampled
         )
         select_children_recursive(selectedObject, False)
-        
-    
-    for selectedObject in selectedObjects:
-        selectedObject.select_set(True)
         
 def select_children_recursive(obj, doSelect):
     obj.select_set(doSelect)
@@ -75,4 +76,10 @@ def get_collection_path(obj_name):
     
     return "" 
     
+
+# These operations are somewhat destructive (changing the selection, unhiding content, changing the animation)
+# Rather than trying to undo things ourselves, just revert the file back to what it was right before we applied this
+bpy.ops.wm.save_mainfile()
 export()
+bpy.ops.wm.revert_mainfile()
+
