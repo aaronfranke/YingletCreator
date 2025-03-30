@@ -12,7 +12,7 @@ public class CharacterCreatorSlider : MonoBehaviour
     private void Awake()
     {
         _dataRepo = this.GetComponentInParent<ICharacterCreatorDataRepository>();
-        _slider = this.GetComponent<Slider>();
+        _slider = this.GetComponentInChildren<Slider>();
         _slider.onValueChanged.AddListener(Slider_OnValueChanged);
     }
 
