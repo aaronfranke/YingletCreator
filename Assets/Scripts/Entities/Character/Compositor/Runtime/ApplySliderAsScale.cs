@@ -39,7 +39,7 @@ public class ApplySliderAsScale : MonoBehaviour, IApplyableCustomization
 
     Vector3 GetSize()
     {
-        var sliderValue = GetSliderValue();
+        var sliderValue = _dataRepository.GetSliderValue(_sliderId);
         if (sliderValue < _middle)
         {
             float p = sliderValue / _middle;
@@ -50,15 +50,5 @@ public class ApplySliderAsScale : MonoBehaviour, IApplyableCustomization
             float p = (sliderValue - _middle) / (1 - _middle);
             return Vector3.LerpUnclamped(Vector3.one, _maxSize, p);
         }
-    }
-
-    float GetSliderValue()
-    {
-
-        if (_dataRepository.CustomizationData.SliderData.SliderValues.TryGetValue(_sliderId, out float value))
-        {
-            return value;
-        }
-        return 0.5f;
     }
 }
