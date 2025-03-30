@@ -14,8 +14,8 @@ public class ApplySliderAsScale : MonoBehaviour, IApplyableCustomization
     [SerializeField] Transform _target;
     [SerializeField] Vector3 _minSize = Vector3.one;
     [SerializeField] Vector3 _maxSize = Vector3.one;
-    [SerializeField] float _middle = .5f;
     [SerializeField] ApplySliderMode _applyMode;
+    [SerializeField] ApplySliderAsScaleAdvancedOptions _advanced;
 
     ICharacterCreatorDataRepository _dataRepository;
 
@@ -27,6 +27,7 @@ public class ApplySliderAsScale : MonoBehaviour, IApplyableCustomization
     public void Apply()
     {
         var value = GetSize();
+
         if (_applyMode == ApplySliderMode.Override)
         {
             _target.localScale = value;
@@ -35,20 +36,33 @@ public class ApplySliderAsScale : MonoBehaviour, IApplyableCustomization
         {
             _target.localScale = _target.localScale.Multiply(value);
         }
+
+        foreach (var child in _advanced._childScaleExclusion)
+        {
+            child.localScale = child.localScale.Multiply(value.GetReciprocal());
+        }
     }
 
     Vector3 GetSize()
     {
         var sliderValue = _dataRepository.GetSliderValue(_sliderId);
-        if (sliderValue < _middle)
+        var middle = _advanced._middle;
+        if (sliderValue < middle)
         {
-            float p = sliderValue / _middle;
+            float p = sliderValue / middle;
             return Vector3.LerpUnclamped(_minSize, Vector3.one, p);
         }
         else
         {
-            float p = (sliderValue - _middle) / (1 - _middle);
+            float p = (sliderValue - middle) / (1 - middle);
             return Vector3.LerpUnclamped(Vector3.one, _maxSize, p);
         }
     }
+}
+
+[System.Serializable]
+public class ApplySliderAsScaleAdvancedOptions
+{
+    [SerializeField] public float _middle = .5f;
+    [SerializeField] public Transform[] _childScaleExclusion;
 }
