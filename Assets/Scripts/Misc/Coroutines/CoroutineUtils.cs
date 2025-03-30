@@ -2,8 +2,14 @@ using System;
 using System.Collections;
 using UnityEngine;
 
+public interface IEaseSettings
+{
+    AnimationCurve Curve { get; }
+    float Duration { get; }
+}
+
 [System.Serializable]
-public sealed class EaseSettings
+public sealed class EaseSettings : IEaseSettings
 {
     [SerializeField] AnimationCurve _curve = AnimationCurve.Linear(0, 0, 1, 1);
     [SerializeField] float _duration = 1;
@@ -24,12 +30,12 @@ public static class CoroutineUtils
         existingCoroutine = monoBehaviour.StartCoroutine(routine);
     }
 
-    public static void StartEaseCoroutine(this MonoBehaviour monoBehaviour, ref Coroutine existingCoroutine, EaseSettings settings, Action<float> apply, Action onComplete = null)
+    public static void StartEaseCoroutine(this MonoBehaviour monoBehaviour, ref Coroutine existingCoroutine, IEaseSettings settings, Action<float> apply, Action onComplete = null)
     {
         StopAndStartCoroutine(monoBehaviour, ref existingCoroutine, Ease(settings, apply, onComplete));
     }
 
-    static IEnumerator Ease(EaseSettings settings, Action<float> apply, Action onComplete)
+    static IEnumerator Ease(IEaseSettings settings, Action<float> apply, Action onComplete)
     {
         for (float t = 0; t < settings.Duration; t += Time.deltaTime)
         {

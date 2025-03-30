@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class HideOnScrollExtent : MonoBehaviour
 {
     [SerializeField] bool _topExtent;
-    [SerializeField] EaseSettings _easeSettings;
+    [SerializeField] SharedEaseSettings _easeSettings;
 
     private ScrollRect _scrollRect;
     private Image _image;
