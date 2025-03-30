@@ -1553,11 +1553,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2028666646019431127, guid: 747a343cd5f5ae141860d801f779645a, type: 3}
       propertyPath: m_text
-      value: Width
+      value: Frame
       objectReference: {fileID: 0}
     - target: {fileID: 3096010171094217710, guid: 747a343cd5f5ae141860d801f779645a, type: 3}
       propertyPath: m_Name
-      value: Slider - Width
+      value: Slider - Frame
       objectReference: {fileID: 0}
     - target: {fileID: 3096010171094217710, guid: 747a343cd5f5ae141860d801f779645a, type: 3}
       propertyPath: m_IsActive
@@ -5512,8 +5512,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sliderId: {fileID: 11400000, guid: 361b59cc953d5b848ab615052a8cc677, type: 2}
   _target: {fileID: 1482011563}
-  _minSize: {x: 0.93, y: 1.07, z: 0.93}
-  _maxSize: {x: 1.07, y: 0.93, z: 1.07}
+  _minSize: {x: 1.07, y: 0.93, z: 1.07}
+  _maxSize: {x: 0.93, y: 1.07, z: 0.93}
   _middle: 0.5
   _applyMode: 0
 --- !u!114 &1399892499
