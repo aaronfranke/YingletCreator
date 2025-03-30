@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public sealed class ClipboardSounds : MonoBehaviour
+public sealed class ClipboardSfx : MonoBehaviour
 {
     [SerializeField] private SoundEffect _changePage;
     private IAudioPlayer _audioPlayer;

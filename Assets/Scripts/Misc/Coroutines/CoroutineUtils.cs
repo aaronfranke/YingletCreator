@@ -22,10 +22,18 @@ public static class CoroutineUtils
 {
     public static void StopAndStartCoroutine(this MonoBehaviour monoBehaviour, ref Coroutine existingCoroutine, IEnumerator routine)
     {
-
         if (existingCoroutine != null)
         {
             monoBehaviour.StopCoroutine(existingCoroutine);
+        }
+        existingCoroutine = monoBehaviour.StartCoroutine(routine);
+    }
+
+    public static void StartCoroutineIfNotAlreadyRunning(this MonoBehaviour monoBehaviour, ref Coroutine existingCoroutine, IEnumerator routine)
+    {
+        if (existingCoroutine != null)
+        {
+            return;
         }
         existingCoroutine = monoBehaviour.StartCoroutine(routine);
     }
