@@ -1,3 +1,4 @@
+using Reactivity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace CharacterCompositor
     {
         event Action OnSkinnedMeshRenderersRegenerated;
     }
-    public class CompositedYinglet : MonoBehaviour, ICompositedYinglet
+    public class CompositedYinglet : ReactiveBehaviour, ICompositedYinglet
     {
         [SerializeField] Transform _rigRoot;
         [SerializeField] MeshWithMaterial[] _meshesWithMaterials;
@@ -20,18 +21,33 @@ namespace CharacterCompositor
 
         IReadOnlyDictionary<MeshWithMaterial, GameObject> _lastMeshMapping;
         IReadOnlyDictionary<MaterialDescription, Material> _lastMaterialMapping;
+        private ICompositorMeshConstraint[] _meshConstraints;
 
         public event Action OnSkinnedMeshRenderersRegenerated = delegate { };
 
+        void Awake()
+        {
+            _meshConstraints = this.GetComponentsInChildren<ICompositorMeshConstraint>();
+        }
+
         void Start()
         {
-            Composite();
+            AddReflector(Composite);
         }
 
         public void Composite()
         {
             Clear();
-            _lastMeshMapping = MeshUtilities.GenerateMeshes(this.transform, _rigRoot, _meshesWithMaterials);
+            ISet<MeshWithMaterial> filteredMeshesWithMaterials = new HashSet<MeshWithMaterial>(_meshesWithMaterials);
+            if (_meshConstraints != null)
+            {
+                foreach (var meshConstraint in _meshConstraints)
+                {
+                    meshConstraint.Filter(ref filteredMeshesWithMaterials);
+                }
+            }
+
+            _lastMeshMapping = MeshUtilities.GenerateMeshes(this.transform, _rigRoot, filteredMeshesWithMaterials);
             OnSkinnedMeshRenderersRegenerated();
             _lastMaterialMapping = MaterialUtilities.ApplyMaterialsToMeshes(_lastMeshMapping);
             UpdateColorGroup();
