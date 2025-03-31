@@ -22,6 +22,7 @@ namespace CharacterCompositor
         IReadOnlyDictionary<MeshWithMaterial, GameObject> _lastMeshMapping;
         IReadOnlyDictionary<MaterialDescription, Material> _lastMaterialMapping;
         private ICompositorMeshConstraint[] _meshConstraints;
+        private Dictionary<string, Transform> _boneMap;
 
         public event Action OnSkinnedMeshRenderersRegenerated = delegate { };
 
@@ -46,8 +47,8 @@ namespace CharacterCompositor
                     meshConstraint.Filter(ref filteredMeshesWithMaterials);
                 }
             }
-
-            _lastMeshMapping = MeshUtilities.GenerateMeshes(this.transform, _rigRoot, filteredMeshesWithMaterials);
+            if (_boneMap == null) _boneMap = MeshUtilities.GetBoneMap(_rigRoot);
+            _lastMeshMapping = MeshUtilities.GenerateMeshes(_rigRoot, _boneMap, filteredMeshesWithMaterials);
             OnSkinnedMeshRenderersRegenerated();
             _lastMaterialMapping = MaterialUtilities.ApplyMaterialsToMeshes(_lastMeshMapping);
             UpdateColorGroup();
@@ -56,7 +57,7 @@ namespace CharacterCompositor
 
         public void Clear()
         {
-            MeshUtilities.ClearMeshes(this.transform);
+            MeshUtilities.ClearMeshes(_rigRoot);
         }
 
         public void UpdateColorGroup()

@@ -27,7 +27,6 @@ public class ApplySliderAsScale : MonoBehaviour, IApplyableCustomization
     public void Apply()
     {
         var value = GetSize();
-        DetachBonesIfNeeded();
 
         if (_applyMode == ApplySliderMode.Override)
         {
@@ -56,28 +55,10 @@ public class ApplySliderAsScale : MonoBehaviour, IApplyableCustomization
         }
     }
 
-    void DetachBonesIfNeeded()
-    {
-        if (_advanced._childScaleExclusion.Length == 0)
-        {
-            return;
-        }
-        foreach (var bone in _advanced._childScaleExclusion)
-        {
-            var origParent = bone.parent;
-            var localScale = bone.localScale;
-            var originalPos = bone.position;
-            bone.SetParent(null, true);
-
-        }
-
-    }
-
 }
 
 [System.Serializable]
 public class ApplySliderAsScaleAdvancedOptions
 {
     [SerializeField] public float _middle = .5f;
-    [SerializeField] public Transform[] _childScaleExclusion;
 }

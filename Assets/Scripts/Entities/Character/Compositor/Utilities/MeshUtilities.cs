@@ -13,13 +13,11 @@ namespace CharacterCompositor
         /// Generates the meshes needed for the character
         /// </summary>
         /// <returns>A mapping between the description of the required meshes and the generated gameobjects</returns>
-        public static IReadOnlyDictionary<MeshWithMaterial, GameObject> GenerateMeshes(Transform root, Transform rigRoot, IEnumerable<MeshWithMaterial> meshesWithMaterials)
+        public static IReadOnlyDictionary<MeshWithMaterial, GameObject> GenerateMeshes(Transform rigRoot, Dictionary<string, Transform> boneMap, IEnumerable<MeshWithMaterial> meshesWithMaterials)
         {
             var meshRoot = new GameObject(MESH_ROOT_NAME);
-            meshRoot.transform.parent = root;
+            meshRoot.transform.parent = rigRoot;
             meshRoot.transform.localPosition = Vector3.zero;
-
-            var boneMap = GetChildTransformMap(rigRoot);
 
             var mapping = new Dictionary<MeshWithMaterial, GameObject>();
             foreach (var meshWithMaterial in meshesWithMaterials)
@@ -35,14 +33,14 @@ namespace CharacterCompositor
         }
 
 
-        static void DeleteChildIfExists(this UnityEngine.Transform transform, string name)
+        static void DeleteChildIfExists(this Transform transform, string name)
         {
             var child = transform.Find(name);
             if (child == null) return;
             GameObject.DestroyImmediate(child.gameObject);
         }
 
-        static Dictionary<string, Transform> GetChildTransformMap(Transform root)
+        public static Dictionary<string, Transform> GetBoneMap(Transform root)
         {
             var transformMap = new Dictionary<string, Transform>();
             AddChildrenToMap(root);

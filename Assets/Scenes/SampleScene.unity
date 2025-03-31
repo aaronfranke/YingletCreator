@@ -1530,7 +1530,6 @@ MonoBehaviour:
   _applyMode: 0
   _advanced:
     _middle: 0.5
-    _childScaleExclusion: []
 --- !u!114 &317338662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1550,7 +1549,6 @@ MonoBehaviour:
   _applyMode: 0
   _advanced:
     _middle: 0.5
-    _childScaleExclusion: []
 --- !u!114 &317338663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2897,11 +2895,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 491341936}
   m_CullTransparentMesh: 1
---- !u!4 &496646064 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2193519315206056271, guid: 1f49178469c2dbb4fb9c36f48adf51f8, type: 3}
-  m_PrefabInstance: {fileID: 542079214}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &499530868
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3163,15 +3156,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5308886388910788558, guid: 1f49178469c2dbb4fb9c36f48adf51f8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5308886388910788558, guid: 1f49178469c2dbb4fb9c36f48adf51f8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 4.5474735e-13
       objectReference: {fileID: 0}
     - target: {fileID: 5308886388910788558, guid: 1f49178469c2dbb4fb9c36f48adf51f8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5308886388910788558, guid: 1f49178469c2dbb4fb9c36f48adf51f8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4484,8 +4477,6 @@ MonoBehaviour:
   _applyMode: 0
   _advanced:
     _middle: 0.5
-    _childScaleExclusion:
-    - {fileID: 496646064}
 --- !u!1001 &868750225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5543,7 +5534,6 @@ MonoBehaviour:
   _applyMode: 1
   _advanced:
     _middle: 0.5
-    _childScaleExclusion: []
 --- !u!114 &1172340840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5563,7 +5553,6 @@ MonoBehaviour:
   _applyMode: 0
   _advanced:
     _middle: 0.5
-    _childScaleExclusion: []
 --- !u!114 &1172340841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5583,7 +5572,6 @@ MonoBehaviour:
   _applyMode: 1
   _advanced:
     _middle: 0.5
-    _childScaleExclusion: []
 --- !u!1001 &1179827815
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6245,7 +6233,6 @@ MonoBehaviour:
   _applyMode: 1
   _advanced:
     _middle: 0.5
-    _childScaleExclusion: []
 --- !u!114 &1315579978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6265,7 +6252,6 @@ MonoBehaviour:
   _applyMode: 0
   _advanced:
     _middle: 0.5
-    _childScaleExclusion: []
 --- !u!114 &1315579979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6285,7 +6271,6 @@ MonoBehaviour:
   _applyMode: 1
   _advanced:
     _middle: 0.5
-    _childScaleExclusion: []
 --- !u!114 &1315579980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6305,7 +6290,6 @@ MonoBehaviour:
   _applyMode: 0
   _advanced:
     _middle: 0.5
-    _childScaleExclusion: []
 --- !u!4 &1358306388 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6278071305568337777, guid: 1f49178469c2dbb4fb9c36f48adf51f8, type: 3}
@@ -6451,6 +6435,7 @@ GameObject:
   - component: {fileID: 1399892497}
   - component: {fileID: 1399892499}
   - component: {fileID: 1399892498}
+  - component: {fileID: 1399892501}
   - component: {fileID: 1399892500}
   m_Layer: 0
   m_Name: Body
@@ -6489,13 +6474,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sliderId: {fileID: 11400000, guid: 361b59cc953d5b848ab615052a8cc677, type: 2}
-  _target: {fileID: 47094802}
+  _target: {fileID: 1482011563}
   _minSize: {x: 1.07, y: 0.93, z: 1.07}
   _maxSize: {x: 0.93, y: 1.07, z: 0.93}
   _applyMode: 0
   _advanced:
     _middle: 0.5
-    _childScaleExclusion: []
 --- !u!114 &1399892499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6515,7 +6499,6 @@ MonoBehaviour:
   _applyMode: 0
   _advanced:
     _middle: 0.5
-    _childScaleExclusion: []
 --- !u!114 &1399892500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6535,8 +6518,20 @@ MonoBehaviour:
   _applyMode: 0
   _advanced:
     _middle: 0.5
-    _childScaleExclusion:
-    - {fileID: 1690720736}
+--- !u!114 &1399892501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399892496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7897b392fe3290c4e84fc9d2ad16a83d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bonesToDetach:
+  - {fileID: 1690720736}
 --- !u!1 &1400062682
 GameObject:
   m_ObjectHideFlags: 0
@@ -6821,7 +6816,6 @@ MonoBehaviour:
   _applyMode: 0
   _advanced:
     _middle: 0.5
-    _childScaleExclusion: []
 --- !u!114 &1528989979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6841,7 +6835,6 @@ MonoBehaviour:
   _applyMode: 0
   _advanced:
     _middle: 0.5
-    _childScaleExclusion: []
 --- !u!114 &1528989980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6861,7 +6854,6 @@ MonoBehaviour:
   _applyMode: 0
   _advanced:
     _middle: 0.5
-    _childScaleExclusion: []
 --- !u!114 &1528989981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6881,7 +6873,6 @@ MonoBehaviour:
   _applyMode: 0
   _advanced:
     _middle: 0.5
-    _childScaleExclusion: []
 --- !u!4 &1531092434 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8480657988124328674, guid: 1f49178469c2dbb4fb9c36f48adf51f8, type: 3}
