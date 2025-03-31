@@ -239,7 +239,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _changePage: {fileID: 11400000, guid: 28451689ba236ab4e93d914e2dc78cac, type: 2}
   _volumeDecreaseSpeed: 5
-  _sliderDeltaToVolume: 8
+  _sliderDeltaToVolume: 12
+  _minimumVolumeToAdd: 0.35
 --- !u!114 &4975192960482198083
 MonoBehaviour:
   m_ObjectHideFlags: 0

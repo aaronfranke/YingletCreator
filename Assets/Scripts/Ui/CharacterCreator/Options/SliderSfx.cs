@@ -8,6 +8,7 @@ public class SliderSfx : MonoBehaviour
     [SerializeField] private SoundEffect _changePage;
     [SerializeField] float _volumeDecreaseSpeed;
     [SerializeField] float _sliderDeltaToVolume;
+    [SerializeField] float _minimumVolumeToAdd;
 
     private IAudioPlayer _audioPlayer;
     private Slider _slider;
@@ -31,6 +32,7 @@ public class SliderSfx : MonoBehaviour
         }
 
         float delta = Mathf.Abs(value - _previousValue);
+        _volume = Mathf.Max(_minimumVolumeToAdd, _volume);
         _volume = Mathf.Clamp01(_volume + delta * _sliderDeltaToVolume);
 
         this.StartCoroutineIfNotAlreadyRunning(ref _coroutine, Play());
