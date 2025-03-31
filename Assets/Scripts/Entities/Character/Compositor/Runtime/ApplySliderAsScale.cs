@@ -27,6 +27,7 @@ public class ApplySliderAsScale : MonoBehaviour, IApplyableCustomization
     public void Apply()
     {
         var value = GetSize();
+        DetachBonesIfNeeded();
 
         if (_applyMode == ApplySliderMode.Override)
         {
@@ -37,10 +38,6 @@ public class ApplySliderAsScale : MonoBehaviour, IApplyableCustomization
             _target.localScale = _target.localScale.Multiply(value);
         }
 
-        foreach (var child in _advanced._childScaleExclusion)
-        {
-            child.localScale = child.localScale.Multiply(value.GetReciprocal());
-        }
     }
 
     Vector3 GetSize()
@@ -58,6 +55,24 @@ public class ApplySliderAsScale : MonoBehaviour, IApplyableCustomization
             return Vector3.LerpUnclamped(Vector3.one, _maxSize, p);
         }
     }
+
+    void DetachBonesIfNeeded()
+    {
+        if (_advanced._childScaleExclusion.Length == 0)
+        {
+            return;
+        }
+        foreach (var bone in _advanced._childScaleExclusion)
+        {
+            var origParent = bone.parent;
+            var localScale = bone.localScale;
+            var originalPos = bone.position;
+            bone.SetParent(null, true);
+
+        }
+
+    }
+
 }
 
 [System.Serializable]
