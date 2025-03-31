@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,8 +20,15 @@ public class HideOnScrollExtent : MonoBehaviour
 
         _startColor = _image.color;
         _scrollRect.onValueChanged.AddListener(CheckScrollbarExtent);
+        StartCoroutine(SetAfterAFrame());
+    }
+    IEnumerator SetAfterAFrame()
+    {
+        // Bit of a hack, but for whatever reason the scroll rect isn't ready to give us proper values on frame 0
+        yield return null;
         UpdateGraphic(_scrollRect.normalizedPosition, false);
     }
+
     void OnDestroy()
     {
         _scrollRect?.onValueChanged.RemoveListener(CheckScrollbarExtent);
