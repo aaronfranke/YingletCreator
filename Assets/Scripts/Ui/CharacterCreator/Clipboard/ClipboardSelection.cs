@@ -4,9 +4,14 @@ using UnityEngine;
 
 public enum ClipboardSelectionType
 {
-    Overview = 0,
-    Palette = 1,
-    Sliders = 2
+    PresetsSaves,
+    FurHair,
+    EyesMouthEars,
+    Clothes,
+    Palette,
+    Sliders,
+    Background,
+    PhotoMode
 }
 
 public interface IClipboardSelection
@@ -35,6 +40,6 @@ public class ClipboardSelection : MonoBehaviour, IClipboardSelection
 
     public IPage GetPageWithType(ClipboardSelectionType type)
     {
-        return this.GetComponentsInChildren<IPage>(true).First(page => page.GetComponent<IClipboardElementSelection>().Type == type);
+        return this.GetComponentsInChildren<IPage>(true).FirstOrDefault(page => page.GetComponent<IClipboardElementSelection>().Type == type);
     }
 }

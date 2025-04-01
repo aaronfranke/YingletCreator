@@ -65,13 +65,13 @@ public class FakeBookmark : MonoBehaviour, IFakeBookmark
     {
         _animMotionRoot.localPosition = Vector3.zero;
         _animMotionRoot.localRotation = Quaternion.identity;
-        _page.SetParent(_animMotionRoot);
+        _page?.SetParent(_animMotionRoot);
         _animation.Play();
         yield return new WaitForSeconds(_animation.clip.length);
         _animation.Stop();
 
 
         // Still our parent? Disable this
-        _page.DisableIfStillParented(_animMotionRoot);
+        _page?.DisableIfStillParented(_animMotionRoot);
     }
 }
