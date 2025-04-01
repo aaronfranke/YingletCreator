@@ -7,8 +7,8 @@ namespace CharacterCompositor
     public interface IEyeMixTextures
     {
         string name { get; }
-        public Color ContrastMidpointColor { get; }
         public Texture2D Fill { get; }
+        public Texture2D Eyelid { get; }
         IEnumerable<IMixTexture> GenerateMixTextures(EyeMixTextureReferences references);
         void ApplyEyeProperties(IReadOnlyDictionary<MaterialDescription, Material> materialMapping, EyeMixTextureReferences references);
     }
@@ -16,15 +16,14 @@ namespace CharacterCompositor
     [CreateAssetMenu(fileName = "EyeMixTextures", menuName = "Scriptable Objects/Character Compositor/EyeMixTextures")]
     public class EyeMixTextures : ScriptableObject, IEyeMixTextures
     {
-        [SerializeField][ColorUsage(false)] Color _contrastMidpointColor = Color.gray;
-
         // The following are public only because UpdateEyeAsset wants to set them
         public Texture2D _fill;
+        public Texture2D _eyelid;
         public Texture2D _outline;
         public Texture2D _pupil;
 
-        public Color ContrastMidpointColor => _contrastMidpointColor;
         public Texture2D Fill => _fill;
+        public Texture2D Eyelid => _eyelid;
 
         static readonly int OUTLINE_PROPERTY_ID = Shader.PropertyToID("_Outline");
         static readonly int PUPIL_PROPERTY_ID = Shader.PropertyToID("_Pupil");
@@ -32,11 +31,15 @@ namespace CharacterCompositor
 
         public IEnumerable<IMixTexture> GenerateMixTextures(EyeMixTextureReferences references)
         {
-            return new[] {
-                new EyeMixTexture(this, references, true),
-                new EyeMixTexture(this, references, false),
-				// TODO eventually: add support for eyelids here
-			};
+            var mixtextures = new List<EyeMixTexture>();
+            if (_eyelid != null)
+            {
+                mixtextures.Add(new EyeMixTexture(this, references, true, true));
+                mixtextures.Add(new EyeMixTexture(this, references, false, true));
+            }
+            mixtextures.Add(new EyeMixTexture(this, references, true, false));
+            mixtextures.Add(new EyeMixTexture(this, references, false, false));
+            return mixtextures;
         }
 
         public void ApplyEyeProperties(IReadOnlyDictionary<MaterialDescription, Material> materialMapping, EyeMixTextureReferences references)
