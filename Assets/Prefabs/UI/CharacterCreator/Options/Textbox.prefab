@@ -171,6 +171,7 @@ GameObject:
   - component: {fileID: 314759085173905342}
   - component: {fileID: 8452876098434386232}
   - component: {fileID: 5270933407703103825}
+  - component: {fileID: 2286867275320299884}
   m_Layer: 0
   m_Name: InputField (TMP)
   m_TagString: Untagged
@@ -362,6 +363,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _soundEffect: {fileID: 11400000, guid: 508bf4032cf09064f92b0aee9be30176, type: 2}
+--- !u!114 &2286867275320299884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834490290195468163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043be7a5c06d8224cbc499a61e973acf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundEffect: {fileID: 11400000, guid: 66f9c6c60fe90fd4bb4a8aa7d90d09a8, type: 2}
 --- !u!1 &6182714086822775623
 GameObject:
   m_ObjectHideFlags: 0
