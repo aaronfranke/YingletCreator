@@ -52,7 +52,6 @@ namespace CharacterCompositor
             OnSkinnedMeshRenderersRegenerated();
             _lastMaterialMapping = MaterialUtilities.ApplyMaterialsToMeshes(_lastMeshMapping);
             UpdateColorGroup();
-            _eyeMixTexture.ApplyEyeProperties(_lastMaterialMapping, _eyeMixTextureReferences);
         }
 
         public void Clear()

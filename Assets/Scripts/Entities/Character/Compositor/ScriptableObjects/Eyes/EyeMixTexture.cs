@@ -8,31 +8,33 @@ namespace CharacterCompositor
     /// </summary>
     class EyeMixTexture : IMixTexture
     {
-        private readonly IEyeMixTextures _textures;
+        private readonly Texture2D _texture;
         private readonly EyeMixTextureReferences _references;
+        private readonly EyeIndividualMixTextureReferences _individualReferences;
         private readonly bool _isLeft;
-        private readonly bool _isFill;
 
-        public EyeMixTexture(IEyeMixTextures textures, EyeMixTextureReferences references, bool isLeft, bool isFill)
+        public EyeMixTexture(Texture2D texture, EyeMixTextureReferences references, EyeIndividualMixTextureReferences individualReferences, bool isLeft)
         {
-            _textures = textures;
+            _texture = texture;
             _references = references;
+            _individualReferences = individualReferences;
             _isLeft = isLeft;
-            _isFill = isFill;
         }
 
-        public ColorGroup DefaultColorGroup => _isFill ? _references.Fill.DefaultColorGroup : _references.Eyelid.DefaultColorGroup;
+        public ColorGroup DefaultColorGroup => _individualReferences.DefaultColorGroup;
 
-        public Color ContrastMidpointColor => _isFill ? _references.Fill.ContrastMidpointColor : _references.Eyelid.ContrastMidpointColor;
+        public Color ContrastMidpointColor => _individualReferences.ContrastMidpointColor;
 
         public MaterialDescription TargetMaterialDescription => _isLeft ? _references.LeftMaterialDescription : _references.RightMaterialDescription;
 
-        public Texture2D Shading => _isFill ? _textures.Fill : _textures.Eyelid;
+        public Texture2D Shading => _texture;
 
         public Texture2D Mask => null;
 
-        public string name => _textures.name + "_" + (_isLeft ? "left" : "right") + (_isFill ? "fill" : "eyelid");
+        public string name => _texture.name;
 
         public bool Sortable => false;
+
+        public TargetMaterialTexture TargetMaterialTexture => _individualReferences.TargetMaterialTexture;
     }
 }

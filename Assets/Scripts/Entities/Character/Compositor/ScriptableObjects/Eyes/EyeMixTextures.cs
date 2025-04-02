@@ -10,7 +10,6 @@ namespace CharacterCompositor
         public Texture2D Fill { get; }
         public Texture2D Eyelid { get; }
         IEnumerable<IMixTexture> GenerateMixTextures(EyeMixTextureReferences references);
-        void ApplyEyeProperties(IReadOnlyDictionary<MaterialDescription, Material> materialMapping, EyeMixTextureReferences references);
     }
 
     [CreateAssetMenu(fileName = "EyeMixTextures", menuName = "Scriptable Objects/Character Compositor/EyeMixTextures")]
@@ -25,40 +24,22 @@ namespace CharacterCompositor
         public Texture2D Fill => _fill;
         public Texture2D Eyelid => _eyelid;
 
-        static readonly int OUTLINE_PROPERTY_ID = Shader.PropertyToID("_Outline");
-        static readonly int PUPIL_PROPERTY_ID = Shader.PropertyToID("_Pupil");
-
 
         public IEnumerable<IMixTexture> GenerateMixTextures(EyeMixTextureReferences references)
         {
             var mixtextures = new List<EyeMixTexture>();
             if (_eyelid != null)
             {
-                mixtextures.Add(new EyeMixTexture(this, references, true, true));
-                mixtextures.Add(new EyeMixTexture(this, references, false, true));
+                mixtextures.Add(new EyeMixTexture(_eyelid, references, references.Eyelid, true));
+                mixtextures.Add(new EyeMixTexture(_eyelid, references, references.Eyelid, false));
             }
-            mixtextures.Add(new EyeMixTexture(this, references, true, false));
-            mixtextures.Add(new EyeMixTexture(this, references, false, false));
+            mixtextures.Add(new EyeMixTexture(_fill, references, references.Fill, true));
+            mixtextures.Add(new EyeMixTexture(_fill, references, references.Fill, false));
+            mixtextures.Add(new EyeMixTexture(_outline, references, references.Outline, true));
+            mixtextures.Add(new EyeMixTexture(_outline, references, references.Outline, false));
+            mixtextures.Add(new EyeMixTexture(_pupil, references, references.Pupil, true));
+            mixtextures.Add(new EyeMixTexture(_pupil, references, references.Pupil, false));
             return mixtextures;
-        }
-
-        public void ApplyEyeProperties(IReadOnlyDictionary<MaterialDescription, Material> materialMapping, EyeMixTextureReferences references)
-        {
-            Apply(references.LeftMaterialDescription);
-            Apply(references.RightMaterialDescription);
-
-            void Apply(MaterialDescription materialDescription)
-            {
-                if (materialMapping.TryGetValue(materialDescription, out Material material))
-                {
-                    material.SetTexture(OUTLINE_PROPERTY_ID, _outline);
-                    material.SetTexture(PUPIL_PROPERTY_ID, _pupil);
-                }
-                else
-                {
-                    Debug.LogWarning($"Material mapping did not contain expected MaterialDescription {materialDescription.name}");
-                }
-            }
         }
     }
 }
