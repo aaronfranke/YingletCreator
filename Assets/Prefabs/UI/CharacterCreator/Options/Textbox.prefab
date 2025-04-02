@@ -169,6 +169,8 @@ GameObject:
   - component: {fileID: 874914474223053060}
   - component: {fileID: 4822882033674255366}
   - component: {fileID: 314759085173905342}
+  - component: {fileID: 8452876098434386232}
+  - component: {fileID: 5270933407703103825}
   m_Layer: 0
   m_Name: InputField (TMP)
   m_TagString: Untagged
@@ -247,7 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -335,6 +337,31 @@ MonoBehaviour:
   isAlert: 0
   m_InputValidator: {fileID: 0}
   m_ShouldActivateOnSelect: 1
+--- !u!114 &8452876098434386232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834490290195468163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1f1f7ff1b5cda46bd79014f44d30a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5270933407703103825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5834490290195468163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 597a9cee9cc2a3f4db32aa57b8292d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundEffect: {fileID: 11400000, guid: 508bf4032cf09064f92b0aee9be30176, type: 2}
 --- !u!1 &6182714086822775623
 GameObject:
   m_ObjectHideFlags: 0
