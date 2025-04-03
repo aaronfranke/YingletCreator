@@ -7,6 +7,8 @@ namespace Character.Creator
 
     public interface ICustomizationData
     {
+        string Name { get; set; }
+
         ICustomizationSliderData SliderData { get; }
 
         //ICustomizationToggleData ToggleData { get; }

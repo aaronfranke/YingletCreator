@@ -8,6 +8,9 @@ namespace Character.Creator
 
     public class ObservableCustomizationData : ICustomizationData
     {
+        Observable<string> _name = new Observable<string>();
+        public string Name { get { return _name.Val; } set { _name.Val = value; } }
+
         public ICustomizationSliderData SliderData { get; } = new ObervableCustomizationSliderData();
     }
 
