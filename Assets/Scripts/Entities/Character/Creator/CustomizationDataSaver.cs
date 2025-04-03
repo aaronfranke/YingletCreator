@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using System.Text.RegularExpressions;
 using UnityEngine;
@@ -10,29 +9,26 @@ namespace Character.Creator
         void SaveCurrent();
         void DeleteCurrent();
 
-        string FolderRoot { get; }
     }
 
     public class CustomizationDataSaver : MonoBehaviour, ICustomizationDataSaver
     {
         const string EXTENSION = ".yingsave";
 
-        string _folderRoot;
         private ICharacterCreatorDataRepository _dataRepository;
-
-        public string FolderRoot => _folderRoot;
+        private ICustomizationSaveFolderProvider _locationProvider;
 
         void Awake()
         {
-            _folderRoot = GetFolderRoot();
             _dataRepository = this.GetComponent<ICharacterCreatorDataRepository>();
+            _locationProvider = this.GetComponent<ICustomizationSaveFolderProvider>();
         }
 
         public void SaveCurrent()
         {
             var data = _dataRepository.CustomizationData;
             var fileName = SanitizeNameToFilepath(data.Name);
-            var pathOnDisk = Path.Combine(_folderRoot, fileName);
+            var pathOnDisk = Path.Combine(_locationProvider.FolderRoot, fileName);
             string json = JsonUtility.ToJson(new CustomizationSavedData(data), true);
             File.WriteAllText(pathOnDisk, json);
         }
@@ -49,17 +45,6 @@ namespace Character.Creator
             }
             var sanitized = Regex.Replace(actualName, "[^a-zA-Z]", "");
             return sanitized + EXTENSION;
-        }
-
-        static string GetFolderRoot()
-        {
-            string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string folder = Path.Combine(documentsPath, "My Games", Application.productName);
-            if (!Directory.Exists(folder))
-            {
-                Directory.CreateDirectory(folder);
-            }
-            return folder;
         }
 
     }

@@ -6,14 +6,14 @@ using UnityEngine.UI;
 public class OpenFolderOnButtonClick : MonoBehaviour
 {
     private Button _button;
-    private ICustomizationDataSaver _dataSaver;
+    private ICustomizationSaveFolderProvider _folderProvider;
 
     private void Awake()
     {
         _button = this.GetComponent<Button>();
         _button.onClick.AddListener(Button_OnClick);
 
-        _dataSaver = this.GetComponentInParent<ICustomizationDataSaver>();
+        _folderProvider = this.GetComponentInParent<ICustomizationSaveFolderProvider>();
     }
 
     private void OnDestroy()
@@ -23,6 +23,6 @@ public class OpenFolderOnButtonClick : MonoBehaviour
 
     private void Button_OnClick()
     {
-        Process.Start("explorer.exe", _dataSaver.FolderRoot);
+        Process.Start("explorer.exe", _folderProvider.FolderRoot);
     }
 }
