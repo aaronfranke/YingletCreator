@@ -7,9 +7,10 @@ namespace Character.Creator
 {
     public interface ICustomizationDataSaver
     {
-        void Save(ICustomizationData data);
-        // LoadFromName
-        // LoadAllNames
+        void SaveCurrent();
+        void DeleteCurrent();
+
+        string FolderRoot { get; }
     }
 
     public class CustomizationDataSaver : MonoBehaviour, ICustomizationDataSaver
@@ -17,29 +18,36 @@ namespace Character.Creator
         const string EXTENSION = ".yingsave";
 
         string _folderRoot;
+        private ICharacterCreatorDataRepository _dataRepository;
+
+        public string FolderRoot => _folderRoot;
 
         void Awake()
         {
             _folderRoot = GetFolderRoot();
+            _dataRepository = this.GetComponent<ICharacterCreatorDataRepository>();
         }
 
-        public void Save(ICustomizationData data)
+        public void SaveCurrent()
         {
+            var data = _dataRepository.CustomizationData;
             var fileName = SanitizeNameToFilepath(data.Name);
             var pathOnDisk = Path.Combine(_folderRoot, fileName);
             string json = JsonUtility.ToJson(new CustomizationSavedData(data), true);
             File.WriteAllText(pathOnDisk, json);
         }
-
-
+        public void DeleteCurrent()
+        {
+            // TODO
+        }
 
         string SanitizeNameToFilepath(string actualName)
         {
-            var sanitized = Regex.Replace(actualName, "[^a-zA-Z]", "");
-            if (sanitized.Length == 0)
+            if (string.IsNullOrWhiteSpace(actualName))
             {
-                sanitized = "Unnamed";
+                actualName = "Unnamed";
             }
+            var sanitized = Regex.Replace(actualName, "[^a-zA-Z]", "");
             return sanitized + EXTENSION;
         }
 
@@ -53,5 +61,6 @@ namespace Character.Creator
             }
             return folder;
         }
+
     }
 }
