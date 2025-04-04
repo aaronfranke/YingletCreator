@@ -17,6 +17,12 @@ public class YingPortraitGrid : ReactiveBehaviour
     private GameObject CreatePortrait(string name)
     {
         var go = Instantiate(_yingPortraitPrefab, this.transform);
+
+        // Place it right before the pre-existing "Create New" button
+        int siblingCount = this.transform.childCount;
+        int targetIndex = Mathf.Max(0, siblingCount - 2);
+        go.transform.SetSiblingIndex(targetIndex);
+
         go.GetComponentInChildren<TextMeshProUGUI>().text = name;
         return go;
     }
