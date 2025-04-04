@@ -9,7 +9,7 @@ namespace Character.Creator
         string FolderRoot { get; }
     }
 
-    public class CustomizationSaveFolderProvider : MonoBehaviour
+    public class CustomizationSaveFolderProvider : MonoBehaviour, ICustomizationSaveFolderProvider
     {
         string _folderRoot;
         public string FolderRoot

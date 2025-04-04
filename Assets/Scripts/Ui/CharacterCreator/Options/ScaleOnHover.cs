@@ -1,7 +1,7 @@
 using Reactivity;
 using UnityEngine;
 
-[RequireComponent(typeof(IHoverableDetector))]
+[RequireComponent(typeof(HoverableDetector))]
 public class ScaleOnHover : ReactiveBehaviour
 {
     [SerializeField] float _hoverScale;
