@@ -6,12 +6,12 @@ namespace Character.Creator
     {
         [SerializeField] private SoundEffect _soundEffect;
         private IAudioPlayer _audioPlayer;
-        private ICustomizationDataSaver _dataSaver;
+        private ICustomizationDiskIO _dataSaver;
 
         private void Awake()
         {
             _audioPlayer = Singletons.GetSingleton<IAudioPlayer>();
-            _dataSaver = this.GetComponent<ICustomizationDataSaver>();
+            _dataSaver = this.GetComponent<ICustomizationDiskIO>();
         }
 
         void Update()
@@ -19,7 +19,7 @@ namespace Character.Creator
             // Manual saving too
             if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.S))
             {
-                _dataSaver.SaveCurrent();
+                _dataSaver.SaveSelected();
                 _audioPlayer.Play(_soundEffect);
             }
         }

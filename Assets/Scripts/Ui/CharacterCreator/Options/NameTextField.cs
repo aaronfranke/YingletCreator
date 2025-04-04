@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class NameTextField : MonoBehaviour
 {
-    private ICharacterCreatorDataRepository _dataRepository;
+    private ICustomizationSelectedDataRepository _dataRepository;
     private TMP_InputField _inputField;
 
     private void Awake()
     {
-        _dataRepository = this.GetComponentInParent<ICharacterCreatorDataRepository>();
+        _dataRepository = this.GetComponentInParent<ICustomizationSelectedDataRepository>();
         _inputField = this.GetComponent<TMP_InputField>();
         _inputField.onValueChanged.AddListener(InputField_OnValueChanged);
     }

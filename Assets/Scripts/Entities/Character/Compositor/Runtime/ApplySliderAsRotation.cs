@@ -9,11 +9,11 @@ public class ApplySliderAsRotation : MonoBehaviour, IApplyableCustomization
     [SerializeField] Vector3 _eulerAngles;
     [SerializeField] AnimationCurve _applyAmountBySliderVal;
 
-    ICharacterCreatorDataRepository _dataRepository;
+    ICustomizationSelectedDataRepository _dataRepository;
 
     private void Awake()
     {
-        _dataRepository = GetComponentInParent<ICharacterCreatorDataRepository>();
+        _dataRepository = GetComponentInParent<ICustomizationSelectedDataRepository>();
     }
 
     public void Apply()

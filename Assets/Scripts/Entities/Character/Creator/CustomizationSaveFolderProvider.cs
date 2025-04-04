@@ -6,28 +6,28 @@ namespace Character.Creator
 {
     public interface ICustomizationSaveFolderProvider
     {
-        string FolderRoot { get; }
+        string CustomFolderRoot { get; }
     }
 
     public class CustomizationSaveFolderProvider : MonoBehaviour, ICustomizationSaveFolderProvider
     {
-        string _folderRoot;
-        public string FolderRoot
+        string _customFolderRoot;
+        public string CustomFolderRoot
         {
             get
             {
-                if (_folderRoot == null)
+                if (_customFolderRoot == null)
                 {
-                    _folderRoot = GetFolderRoot();
+                    _customFolderRoot = GetCustomFolderRoot();
                 }
-                return _folderRoot;
+                return _customFolderRoot;
             }
         }
 
-        static string GetFolderRoot()
+        static string GetCustomFolderRoot()
         {
             string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string folder = Path.Combine(documentsPath, "My Games", Application.productName);
+            string folder = Path.Combine(documentsPath, "My Games", Application.productName, "CustomYings");
             if (!Directory.Exists(folder))
             {
                 Directory.CreateDirectory(folder);

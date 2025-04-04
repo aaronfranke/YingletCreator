@@ -124,6 +124,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6962280729609239485, guid: 1f49178469c2dbb4fb9c36f48adf51f8, type: 3}
   m_PrefabInstance: {fileID: 542079214}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &19183703
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 19183704}
+  m_Layer: 0
+  m_Name: ============================================
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &19183704
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19183703}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &23632575
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -542,11 +573,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739304276860080370, guid: e3084702969b67c47bb02b7383f2369c, type: 3}
       propertyPath: m_Size
-      value: 0.63274336
+      value: 0.62477875
       objectReference: {fileID: 0}
     - target: {fileID: 3739304276860080370, guid: e3084702969b67c47bb02b7383f2369c, type: 3}
       propertyPath: m_Value
-      value: 1.0000001
+      value: 0.9999999
       objectReference: {fileID: 0}
     - target: {fileID: 4000672511737842373, guid: e3084702969b67c47bb02b7383f2369c, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4434,9 +4465,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 954353170}
-  - component: {fileID: 954353169}
-  - component: {fileID: 954353171}
   - component: {fileID: 954353173}
+  - component: {fileID: 954353171}
+  - component: {fileID: 954353169}
+  - component: {fileID: 954353174}
   - component: {fileID: 954353172}
   m_Layer: 0
   m_Name: CharacterCreator
@@ -4510,6 +4542,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8aa3b7911033c6f4ead97707f7fc29bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &954353174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954353168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af3672891f8eb40488172d7b1b7c2b95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &955715212 stripped
@@ -7236,3 +7280,4 @@ SceneRoots:
   - {fileID: 1642465449}
   - {fileID: 1902899445}
   - {fileID: 954353170}
+  - {fileID: 19183704}

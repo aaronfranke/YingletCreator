@@ -23,6 +23,6 @@ public class OpenFolderOnButtonClick : MonoBehaviour
 
     private void Button_OnClick()
     {
-        Process.Start("explorer.exe", _folderProvider.FolderRoot);
+        Process.Start("explorer.exe", _folderProvider.CustomFolderRoot);
     }
 }

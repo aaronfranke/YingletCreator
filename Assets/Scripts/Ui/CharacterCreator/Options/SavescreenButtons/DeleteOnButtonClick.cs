@@ -5,14 +5,14 @@ using UnityEngine.UI;
 public class DeleteOnButtonClick : MonoBehaviour
 {
     private Button _button;
-    private ICustomizationDataSaver _dataSaver;
+    private ICustomizationDiskIO _dataSaver;
 
     private void Awake()
     {
         _button = this.GetComponent<Button>();
         _button.onClick.AddListener(Button_OnClick);
 
-        _dataSaver = this.GetComponentInParent<ICustomizationDataSaver>();
+        _dataSaver = this.GetComponentInParent<ICustomizationDiskIO>();
     }
 
     private void OnDestroy()
@@ -22,6 +22,6 @@ public class DeleteOnButtonClick : MonoBehaviour
 
     private void Button_OnClick()
     {
-        _dataSaver.SaveCurrent();
+        _dataSaver.SaveSelected();
     }
 }

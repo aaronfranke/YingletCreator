@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class CharacterCreatorSlider : MonoBehaviour
 {
     [SerializeField] CharacterSliderId _sliderId;
-    private ICharacterCreatorDataRepository _dataRepo;
+    private ICustomizationSelectedDataRepository _dataRepo;
     private Slider _slider;
 
     private void Awake()
     {
-        _dataRepo = this.GetComponentInParent<ICharacterCreatorDataRepository>();
+        _dataRepo = this.GetComponentInParent<ICustomizationSelectedDataRepository>();
         _slider = this.GetComponentInChildren<Slider>();
         _slider.onValueChanged.AddListener(Slider_OnValueChanged);
     }

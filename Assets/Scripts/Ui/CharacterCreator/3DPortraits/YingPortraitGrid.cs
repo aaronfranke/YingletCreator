@@ -1,3 +1,4 @@
+using Character.Creator;
 using Reactivity;
 using TMPro;
 using UnityEngine;
@@ -5,25 +6,35 @@ using UnityEngine;
 public class YingPortraitGrid : ReactiveBehaviour
 {
     [SerializeField] GameObject _yingPortraitPrefab;
-    string[] _debugYingNames = new[] { "Kass", "Vizlet", "Pekkit" };
-    EnumerableReflector<string, GameObject> _yingEnumerableReflector;
+    [SerializeField] CustomizationYingletGroup _group;
+    private ICustomizationYingletRepository _yingletRepository;
+    private int _initialChildren;
+    EnumerableReflector<CustomizationCachedYingletReference, GameObject> _yingEnumerableReflector;
 
+    private void Awake()
+    {
+        _yingletRepository = this.GetComponentInParent<ICustomizationYingletRepository>();
+        _initialChildren = this.transform.childCount;
+    }
     private void Start()
     {
         _yingEnumerableReflector = new(CreatePortrait, RemovePortrait);
         AddReflector(ReflectYings);
     }
 
-    private GameObject CreatePortrait(string name)
+    private GameObject CreatePortrait(CustomizationCachedYingletReference yingReference)
     {
         var go = Instantiate(_yingPortraitPrefab, this.transform);
 
         // Place it right before the pre-existing "Create New" button
-        int siblingCount = this.transform.childCount;
-        int targetIndex = Mathf.Max(0, siblingCount - 2);
-        go.transform.SetSiblingIndex(targetIndex);
+        if (_initialChildren != 0)
+        {
+            int siblingCount = this.transform.childCount;
+            int targetIndex = Mathf.Max(0, siblingCount - 1 - _initialChildren);
+            go.transform.SetSiblingIndex(targetIndex);
+        }
 
-        go.GetComponentInChildren<TextMeshProUGUI>().text = name;
+        go.GetComponentInChildren<TextMeshProUGUI>().text = yingReference.Path;
         return go;
     }
     private void RemovePortrait(GameObject obj)
@@ -33,6 +44,6 @@ public class YingPortraitGrid : ReactiveBehaviour
 
     void ReflectYings()
     {
-        _yingEnumerableReflector.Enumerate(_debugYingNames);
+        _yingEnumerableReflector.Enumerate(_yingletRepository.GetYinglets(CustomizationYingletGroup.Custom));
     }
 }

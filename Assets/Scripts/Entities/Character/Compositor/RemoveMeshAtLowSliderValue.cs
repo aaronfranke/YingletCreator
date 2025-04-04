@@ -16,12 +16,12 @@ public class RemoveMeshAtLowSliderValue : ReactiveBehaviour, ICompositorMeshCons
     [SerializeField] CharacterSliderId _sliderId;
     [SerializeField] float _minimumValue;
 
-    ICharacterCreatorDataRepository _dataRepository;
+    ICustomizationSelectedDataRepository _dataRepository;
     private Computed<bool> _constrain;
 
     private void Awake()
     {
-        _dataRepository = GetComponentInParent<ICharacterCreatorDataRepository>();
+        _dataRepository = GetComponentInParent<ICustomizationSelectedDataRepository>();
         _constrain = CreateComputed(ComputeConstrain);
     }
 

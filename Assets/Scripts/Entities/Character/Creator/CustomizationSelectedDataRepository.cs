@@ -3,13 +3,15 @@ using UnityEngine;
 
 namespace Character.Creator
 {
-
-    public interface ICharacterCreatorDataRepository
+    /// <summary>
+    /// Returns observable data associated to the selected yinglet
+    /// </summary>
+    public interface ICustomizationSelectedDataRepository
     {
         ICustomizationData CustomizationData { get; }
     }
 
-    public class CharacterCreatorDataRepository : MonoBehaviour, ICharacterCreatorDataRepository
+    public class CustomizationSelectedDataRepository : MonoBehaviour, ICustomizationSelectedDataRepository
     {
         ObservableCustomizationData _customizationData = new ObservableCustomizationData();
 
@@ -18,7 +20,7 @@ namespace Character.Creator
 
     public static class CharacterCreatorDataRepositoryExtensionMethods
     {
-        public static float GetSliderValue(this ICharacterCreatorDataRepository dataRepository, CharacterSliderId sliderId)
+        public static float GetSliderValue(this ICustomizationSelectedDataRepository dataRepository, CharacterSliderId sliderId)
         {
 
             if (dataRepository.CustomizationData.SliderData.SliderValues.TryGetValue(sliderId, out float value))
