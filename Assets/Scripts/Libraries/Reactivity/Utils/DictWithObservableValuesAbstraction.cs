@@ -5,6 +5,8 @@ using System.Linq;
 
 namespace Reactivity
 {
+    // Not currently used
+
     /// <summary>
     /// We may frequently have an IDictionary<T, IObservable<K>>, but a consumer just wants a IDictionary<T, K>
     /// This class turns the former into the latter
@@ -33,7 +35,6 @@ namespace Reactivity
                 else
                 {
                     _source[key] = new Observable<K>(value);
-
                 }
             }
         }

@@ -8,16 +8,16 @@ using UnityEngine;
 
 namespace Character.Creator
 {
-    public sealed class CustomizationCachedYingletReference
+    public sealed class CachedYingletReference
     {
-        public CustomizationCachedYingletReference(string path, ICustomizationData cachedData)
+        public CachedYingletReference(string path, SerializableCustomizationData cachedData)
         {
             Path = path;
             CachedData = cachedData;
         }
 
         public string Path { get; }
-        public ICustomizationData CachedData { get; }
+        public SerializableCustomizationData CachedData { get; }
     }
 
     /// <summary>
@@ -27,7 +27,7 @@ namespace Character.Creator
     {
         void SaveSelected();
         void DeleteSelected();
-        IEnumerable<CustomizationCachedYingletReference> LoadInitialYingData(CustomizationYingletGroup group);
+        IEnumerable<CachedYingletReference> LoadInitialYingData(CustomizationYingletGroup group);
 
     }
 
@@ -47,9 +47,9 @@ namespace Character.Creator
         public void SaveSelected()
         {
             var data = _dataRepository.CustomizationData;
-            var fileName = SanitizeNameToFilepath(data.Name);
+            var fileName = SanitizeNameToFilepath(data.Name.Val);
             var pathOnDisk = Path.Combine(_locationProvider.CustomFolderRoot, fileName);
-            string json = JsonUtility.ToJson(new CustomizationSavedData(data), true);
+            string json = JsonUtility.ToJson(new SerializableCustomizationData(data), true);
             File.WriteAllText(pathOnDisk, json);
         }
         public void DeleteSelected()
@@ -58,14 +58,19 @@ namespace Character.Creator
             throw new System.NotImplementedException();
         }
 
-        public IEnumerable<CustomizationCachedYingletReference> LoadInitialYingData(CustomizationYingletGroup group)
+        public IEnumerable<CachedYingletReference> LoadInitialYingData(CustomizationYingletGroup group)
         {
             var filePaths = GetYingPaths(group);
-            return filePaths.Select(path => new CustomizationCachedYingletReference(path, LoadData(path)));
+            return filePaths.Select(path => new CachedYingletReference(path, LoadData(path)));
         }
         IEnumerable<string> GetYingPaths(CustomizationYingletGroup group)
         {
             var folder = GetFolderForGroup(group);
+            if (!Directory.Exists(folder))
+            {
+                Debug.LogWarning($"No folder for group {group} at path {folder}");
+                return Enumerable.Empty<string>();
+            }
             return Directory.GetFiles(folder, $"*{EXTENSION}", SearchOption.TopDirectoryOnly);
 
         }
@@ -73,13 +78,15 @@ namespace Character.Creator
         {
             return group switch
             {
+                CustomizationYingletGroup.Preset => _locationProvider.PresetFolderRoot,
                 CustomizationYingletGroup.Custom => _locationProvider.CustomFolderRoot,
                 _ => throw new ArgumentException("No folder for group")
             };
         }
-        ICustomizationData LoadData(string filePath)
+        SerializableCustomizationData LoadData(string filePath)
         {
-            return null; // TODO implement
+            string text = File.ReadAllText(filePath);
+            return JsonUtility.FromJson<SerializableCustomizationData>(text);
         }
 
 

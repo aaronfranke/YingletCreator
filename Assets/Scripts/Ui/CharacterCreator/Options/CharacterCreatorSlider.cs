@@ -1,5 +1,6 @@
 using Character.Creator;
 using Character.Data;
+using Reactivity;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +24,6 @@ public class CharacterCreatorSlider : MonoBehaviour
 
     private void Slider_OnValueChanged(float arg0)
     {
-        _dataRepo.CustomizationData.SliderData.SliderValues[_sliderId] = arg0;
+        ObservableDictUtils<CharacterSliderId, float>.SetOrUpdate(_dataRepo.CustomizationData.SliderData.SliderValues, _sliderId, arg0);
     }
 }

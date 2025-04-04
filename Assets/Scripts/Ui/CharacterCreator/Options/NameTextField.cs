@@ -21,6 +21,6 @@ public class NameTextField : MonoBehaviour
 
     private void InputField_OnValueChanged(string arg0)
     {
-        _dataRepository.CustomizationData.Name = arg0;
+        _dataRepository.CustomizationData.Name.Val = arg0;
     }
 }

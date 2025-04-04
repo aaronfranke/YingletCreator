@@ -1,5 +1,5 @@
 using Character.Data;
-using UnityEngine;
+using Reactivity;
 
 namespace Character.Creator
 {
@@ -8,14 +8,27 @@ namespace Character.Creator
     /// </summary>
     public interface ICustomizationSelectedDataRepository
     {
-        ICustomizationData CustomizationData { get; }
+        ObservableCustomizationData CustomizationData { get; }
     }
 
-    public class CustomizationSelectedDataRepository : MonoBehaviour, ICustomizationSelectedDataRepository
+    public class CustomizationSelectedDataRepository : ReactiveBehaviour, ICustomizationSelectedDataRepository
     {
-        ObservableCustomizationData _customizationData = new ObservableCustomizationData();
+        private ICustomizationSelection _selection;
+        private Computed<ObservableCustomizationData> _data;
 
-        public ICustomizationData CustomizationData => _customizationData;
+        public ObservableCustomizationData CustomizationData => _data.Val;
+
+        void Awake()
+        {
+            _selection = this.GetComponent<ICustomizationSelection>();
+            _data = CreateComputed(ComputeCustomizationData);
+        }
+
+        ObservableCustomizationData ComputeCustomizationData()
+        {
+            var cachedData = _selection.Selected.CachedData;
+            return new ObservableCustomizationData(cachedData);
+        }
     }
 
     public static class CharacterCreatorDataRepositoryExtensionMethods
@@ -23,9 +36,9 @@ namespace Character.Creator
         public static float GetSliderValue(this ICustomizationSelectedDataRepository dataRepository, CharacterSliderId sliderId)
         {
 
-            if (dataRepository.CustomizationData.SliderData.SliderValues.TryGetValue(sliderId, out float value))
+            if (dataRepository.CustomizationData.SliderData.SliderValues.TryGetValue(sliderId, out Observable<float> value))
             {
-                return value;
+                return value.Val;
             }
             return 0.5f;
         }

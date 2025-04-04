@@ -9,7 +9,7 @@ public class YingPortraitGrid : ReactiveBehaviour
     [SerializeField] CustomizationYingletGroup _group;
     private ICustomizationYingletRepository _yingletRepository;
     private int _initialChildren;
-    EnumerableReflector<CustomizationCachedYingletReference, GameObject> _yingEnumerableReflector;
+    EnumerableReflector<CachedYingletReference, GameObject> _yingEnumerableReflector;
 
     private void Awake()
     {
@@ -22,7 +22,7 @@ public class YingPortraitGrid : ReactiveBehaviour
         AddReflector(ReflectYings);
     }
 
-    private GameObject CreatePortrait(CustomizationCachedYingletReference yingReference)
+    private GameObject CreatePortrait(CachedYingletReference yingReference)
     {
         var go = Instantiate(_yingPortraitPrefab, this.transform);
 
@@ -44,6 +44,6 @@ public class YingPortraitGrid : ReactiveBehaviour
 
     void ReflectYings()
     {
-        _yingEnumerableReflector.Enumerate(_yingletRepository.GetYinglets(CustomizationYingletGroup.Custom));
+        _yingEnumerableReflector.Enumerate(_yingletRepository.GetYinglets(_group));
     }
 }

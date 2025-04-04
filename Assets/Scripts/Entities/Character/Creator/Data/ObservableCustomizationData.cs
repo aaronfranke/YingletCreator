@@ -1,15 +1,14 @@
-
 using Character.Data;
-using System.Collections.Generic;
+using Reactivity;
 
 namespace Character.Creator
 {
 
-    public interface ICustomizationData
-    {
-        string Name { get; set; }
 
-        ICustomizationSliderData SliderData { get; }
+    public sealed class ObservableCustomizationData
+    {
+        public Observable<string> Name { get; } = new();
+        public ObervableCustomizationSliderData SliderData { get; }
 
         //ICustomizationToggleData ToggleData { get; }
         //ICustomizationColorData ColorData { get; }
@@ -17,17 +16,29 @@ namespace Character.Creator
         // Author?
         // CreationDate?
         // LastUpdateDate?
+
+        public ObservableCustomizationData(SerializableCustomizationData serializableData)
+        {
+            Name.Val = serializableData.Name;
+            SliderData = new ObervableCustomizationSliderData();
+        }
     }
 
-
-    public interface ICustomizationSliderData
+    public sealed class ObervableCustomizationSliderData
     {
+        public ObervableCustomizationSliderData()
+        {
+        }
+
         /// <summary>
         /// The float value is always in the range of 0 to 1
         /// </summary>
-        /// 
-        IDictionary<CharacterSliderId, float> SliderValues { get; }
+        public ObservableDict<CharacterSliderId, Observable<float>> SliderValues { get; } = new();
     }
+
+
+
+
 
     // Below this line is old code planning that is likely no longer relevant
 
@@ -73,5 +84,4 @@ namespace Character.Creator
     //    //public Vector3 MinScale { get; }
     //    //public Vector3  MaxScale { get; }
     //}
-
 }

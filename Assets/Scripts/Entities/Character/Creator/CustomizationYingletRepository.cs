@@ -21,16 +21,16 @@ namespace Character.Creator
 
     public interface ICustomizationYingletRepository
     {
-        IEnumerable<CustomizationCachedYingletReference> GetYinglets(CustomizationYingletGroup group);
+        IEnumerable<CachedYingletReference> GetYinglets(CustomizationYingletGroup group);
     }
 
     public class CustomizationYingletRepository : MonoBehaviour, ICustomizationYingletRepository
     {
         private ICustomizationDiskIO _diskIO;
 
-        private Dictionary<CustomizationYingletGroup, ObservableList<CustomizationCachedYingletReference>> _yinglets = new();
+        private Dictionary<CustomizationYingletGroup, ObservableList<CachedYingletReference>> _yinglets = new();
 
-        public IEnumerable<CustomizationCachedYingletReference> GetYinglets(CustomizationYingletGroup group)
+        public IEnumerable<CachedYingletReference> GetYinglets(CustomizationYingletGroup group)
         {
             return _yinglets[group];
         }
@@ -43,12 +43,13 @@ namespace Character.Creator
 
         void LoadAllYinglets()
         {
+            LoadGroupYinglets(CustomizationYingletGroup.Preset);
             LoadGroupYinglets(CustomizationYingletGroup.Custom);
 
             void LoadGroupYinglets(CustomizationYingletGroup group)
             {
                 var paths = _diskIO.LoadInitialYingData(group).ToArray();
-                var list = new ObservableList<CustomizationCachedYingletReference>();
+                var list = new ObservableList<CachedYingletReference>();
                 foreach (var path in paths)
                 {
                     list.Add(path);
