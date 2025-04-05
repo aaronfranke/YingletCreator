@@ -1,6 +1,5 @@
 using Character.Creator;
 using Reactivity;
-using TMPro;
 
 public interface IYingPortraitReference
 {
@@ -27,7 +26,6 @@ public class YingPortraitReference : ReactiveBehaviour, IYingPortraitReference
     public void Setup(CachedYingletReference reference)
     {
         _reference.Val = reference;
-        GetComponentInChildren<TextMeshProUGUI>().text = reference.CachedData.Name;
     }
 
     bool ComputeSelected()

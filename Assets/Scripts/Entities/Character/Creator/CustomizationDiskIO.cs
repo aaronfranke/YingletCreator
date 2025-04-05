@@ -1,3 +1,4 @@
+using Reactivity;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,14 +11,25 @@ namespace Character.Creator
 {
     public sealed class CachedYingletReference
     {
+        Observable<SerializableCustomizationData> _cachedData;
         public CachedYingletReference(string path, SerializableCustomizationData cachedData)
         {
             Path = path;
-            CachedData = cachedData;
+            _cachedData = new Observable<SerializableCustomizationData>(cachedData);
         }
 
         public string Path { get; }
-        public SerializableCustomizationData CachedData { get; }
+        public SerializableCustomizationData CachedData
+        {
+            get
+            {
+                return _cachedData.Val;
+            }
+            set
+            {
+                _cachedData.Val = value;
+            }
+        }
     }
 
     /// <summary>
@@ -35,26 +47,31 @@ namespace Character.Creator
     {
         const string EXTENSION = ".yingsave";
 
-        private ICustomizationSelectedDataRepository _dataRepository;
+        private ICustomizationSelection _selectionReference;
+        private ICustomizationSelectedDataRepository _selectionData;
         private ICustomizationSaveFolderProvider _locationProvider;
 
         void Awake()
         {
-            _dataRepository = this.GetComponent<ICustomizationSelectedDataRepository>();
+            _selectionReference = this.GetComponent<ICustomizationSelection>();
+            _selectionData = this.GetComponent<ICustomizationSelectedDataRepository>();
             _locationProvider = this.GetComponent<ICustomizationSaveFolderProvider>();
         }
 
         public void SaveSelected()
         {
-            var data = _dataRepository.CustomizationData;
+            // Serialize the data
+            var data = _selectionData.CustomizationData;
+            var serializedData = new SerializableCustomizationData(data);
 
-            // TODO: Figure out how to handle name changes
+            // Write it to disk
             var fileName = SanitizeNameToFilepath(data.Name.Val);
-
-
             var pathOnDisk = Path.Combine(_locationProvider.CustomFolderRoot, fileName);
-            string json = JsonUtility.ToJson(new SerializableCustomizationData(data), true);
+            string json = JsonUtility.ToJson(serializedData, true);
             File.WriteAllText(pathOnDisk, json);
+
+            // Update our own reference
+            _selectionReference.Selected.CachedData = serializedData;
         }
         public void DeleteSelected()
         {
