@@ -1,4 +1,5 @@
 using Reactivity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -17,12 +18,15 @@ namespace Character.Creator
         // Autosave(?)
     }
 
-
-
     public interface ICustomizationYingletRepository
     {
         IEnumerable<CachedYingletReference> GetYinglets(CustomizationYingletGroup group);
         void AddNewCustom(CachedYingletReference reference);
+
+        /// <summary>
+        /// Removes the given yinglet from the custom repository, returning the index it existed at
+        /// </summary>
+        int DeleteCustom(CachedYingletReference reference);
     }
 
     public class CustomizationYingletRepository : MonoBehaviour, ICustomizationYingletRepository
@@ -62,6 +66,18 @@ namespace Character.Creator
         public void AddNewCustom(CachedYingletReference reference)
         {
             _yinglets[CustomizationYingletGroup.Custom].Add(reference);
+        }
+
+        public int DeleteCustom(CachedYingletReference reference)
+        {
+            var list = _yinglets[CustomizationYingletGroup.Custom];
+            int index = list.IndexOf(reference);
+            if (index < 0)
+            {
+                throw new ArgumentException($"Couldn't find reference: {reference.CachedData.Name}");
+            }
+            list.RemoveAt(index);
+            return index;
         }
     }
 }

@@ -22,6 +22,6 @@ public class DeleteOnButtonClick : MonoBehaviour
 
     private void Button_OnClick()
     {
-        _diskIO.SaveSelected();
+        _diskIO.DeleteSelected();
     }
 }

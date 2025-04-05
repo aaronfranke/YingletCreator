@@ -108,8 +108,22 @@ namespace Character.Creator
 
         public void DeleteSelected()
         {
-            // TODO CONTINUE FROM RIGHT HERE
-            throw new System.NotImplementedException();
+            // Delete the file off disk
+            File.Delete(_selectionReference.Selected.Path);
+
+            // Remove the reference
+            int index = _yingletRepository.DeleteCustom(_selectionReference.Selected);
+
+            // Select an adjacent item
+            var customYinglets = _yingletRepository.GetYinglets(CustomizationYingletGroup.Custom);
+            if (customYinglets.Any())
+            {
+                _selectionReference.Selected = customYinglets.ElementAt((index - 1) % customYinglets.Count());
+            }
+            else
+            {
+                _selectionReference.Selected = _yingletRepository.GetYinglets(CustomizationYingletGroup.Preset).First();
+            }
         }
 
         public IEnumerable<CachedYingletReference> LoadInitialYingData(CustomizationYingletGroup group)

@@ -1,8 +1,7 @@
+using Reactivity.Implementation;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Reactivity.Implementation;
 
 namespace Reactivity
 {
@@ -61,12 +60,13 @@ namespace Reactivity
         public void CopyTo(T[] array, int arrayIndex)
         {
             notifier.Track();
-			list.CopyTo(array, arrayIndex);
-		}
+            list.CopyTo(array, arrayIndex);
+        }
 
         public int IndexOf(T item)
         {
-            throw new NotImplementedException();
+            notifier.Track();
+            return list.IndexOf(item);
         }
 
         public void Insert(int index, T item)
@@ -86,7 +86,8 @@ namespace Reactivity
 
         public void RemoveAt(int index)
         {
-            throw new NotImplementedException();
+            list.RemoveAt(index);
+            notifier.Dirty();
         }
         #endregion
 
