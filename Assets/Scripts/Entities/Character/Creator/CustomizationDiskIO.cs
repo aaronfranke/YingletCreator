@@ -18,7 +18,7 @@ namespace Character.Creator
             _cachedData = new Observable<SerializableCustomizationData>(cachedData);
         }
 
-        public string Path { get; }
+        public string Path { get; set; }
         public SerializableCustomizationData CachedData
         {
             get
@@ -65,14 +65,26 @@ namespace Character.Creator
             var serializedData = new SerializableCustomizationData(data);
 
             // Write it to disk
-            var fileName = SanitizeNameToFilepath(data.Name.Val);
-            var pathOnDisk = Path.Combine(_locationProvider.CustomFolderRoot, fileName);
+            string rootFolder = _locationProvider.CustomFolderRoot;
+            string newYingletName = data.Name.Val;
+            var lastFilePath = _selectionReference.Selected.Path;
+            var newFilePath = GetUniqueAlphanumericFilePath(newYingletName, lastFilePath, rootFolder);
+            var pathOnDisk = Path.Combine(_locationProvider.CustomFolderRoot, newFilePath);
             string json = JsonUtility.ToJson(serializedData, true);
             File.WriteAllText(pathOnDisk, json);
 
+            // Clean up the old path (if applicable)
+            bool pathIsTheSame = newFilePath == lastFilePath;
+            if (!pathIsTheSame)
+            {
+                File.Delete(lastFilePath);
+            }
+
             // Update our own reference
             _selectionReference.Selected.CachedData = serializedData;
+            _selectionReference.Selected.Path = newFilePath;
         }
+
         public void DeleteSelected()
         {
             // TODO
@@ -110,15 +122,34 @@ namespace Character.Creator
             return JsonUtility.FromJson<SerializableCustomizationData>(text);
         }
 
-
-        string SanitizeNameToFilepath(string actualName)
+        string GetUniqueAlphanumericFilePath(string newYingletName, string lastFileName, string folderPath)
         {
-            if (string.IsNullOrWhiteSpace(actualName))
+            // Step 1: Make string alphanumeric
+            string baseName = Regex.Replace(newYingletName, "[^a-zA-Z0-9]", "");
+
+            if (string.IsNullOrWhiteSpace(baseName))
             {
-                actualName = "Unnamed";
+                baseName = "unnamed";
             }
-            var sanitized = Regex.Replace(actualName, "[^a-zA-Z]", "");
-            return sanitized + EXTENSION;
+
+            // Step 2: Prepare full file path
+            string fileName = baseName + EXTENSION;
+            string fullPath = Path.Combine(folderPath, fileName);
+
+            int counter = 1;
+            while (File.Exists(fullPath))
+            {
+                if (fullPath == lastFileName)
+                {
+                    break; // Same name as last time; we're good here
+                }
+
+                fileName = $"{baseName}_{counter}{EXTENSION}";
+                fullPath = Path.Combine(folderPath, fileName);
+                counter++;
+            }
+
+            return fullPath;
         }
     }
 }
