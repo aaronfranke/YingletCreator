@@ -12,10 +12,12 @@ namespace Character.Creator
     public sealed class CachedYingletReference
     {
         Observable<SerializableCustomizationData> _cachedData;
-        public CachedYingletReference(string path, SerializableCustomizationData cachedData)
+
+        public CachedYingletReference(string path, SerializableCustomizationData cachedData, CustomizationYingletGroup group)
         {
             Path = path;
             _cachedData = new Observable<SerializableCustomizationData>(cachedData);
+            Group = group;
         }
 
         public string Path { get; set; }
@@ -30,6 +32,8 @@ namespace Character.Creator
                 _cachedData.Val = value;
             }
         }
+
+        public CustomizationYingletGroup Group { get; }
     }
 
     /// <summary>
@@ -101,7 +105,7 @@ namespace Character.Creator
             WriteToDisk(newFilePath, serializedData);
 
             // Create a new reference and select it
-            var newReference = new CachedYingletReference(newFilePath, serializedData);
+            var newReference = new CachedYingletReference(newFilePath, serializedData, CustomizationYingletGroup.Custom);
             _yingletRepository.AddNewCustom(newReference);
             _selectionReference.Selected = newReference;
         }
@@ -129,7 +133,7 @@ namespace Character.Creator
         public IEnumerable<CachedYingletReference> LoadInitialYingData(CustomizationYingletGroup group)
         {
             var filePaths = GetYingPaths(group);
-            return filePaths.Select(path => new CachedYingletReference(path, LoadData(path)));
+            return filePaths.Select(path => new CachedYingletReference(path, LoadData(path), group));
         }
         IEnumerable<string> GetYingPaths(CustomizationYingletGroup group)
         {
