@@ -54,6 +54,7 @@ GameObject:
   - component: {fileID: 6150168173539049567}
   - component: {fileID: 3970077161983126540}
   - component: {fileID: 7020295120958003965}
+  - component: {fileID: 847152449024244551}
   m_Layer: 5
   m_Name: NewYing (Button)
   m_TagString: Untagged
@@ -248,6 +249,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _soundEffect: {fileID: 11400000, guid: eb2a4e4271f711848aa0a8f19a29b79a, type: 2}
+--- !u!114 &847152449024244551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4212764732313547772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1b2e08e63e90354aafc63920eb62461, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6095300585261635652
 GameObject:
   m_ObjectHideFlags: 0

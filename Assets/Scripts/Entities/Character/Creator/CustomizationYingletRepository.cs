@@ -22,6 +22,7 @@ namespace Character.Creator
     public interface ICustomizationYingletRepository
     {
         IEnumerable<CachedYingletReference> GetYinglets(CustomizationYingletGroup group);
+        void AddNewCustom(CachedYingletReference reference);
     }
 
     public class CustomizationYingletRepository : MonoBehaviour, ICustomizationYingletRepository
@@ -56,6 +57,11 @@ namespace Character.Creator
                 }
                 _yinglets[group] = list;
             }
+        }
+
+        public void AddNewCustom(CachedYingletReference reference)
+        {
+            _yinglets[CustomizationYingletGroup.Custom].Add(reference);
         }
     }
 }

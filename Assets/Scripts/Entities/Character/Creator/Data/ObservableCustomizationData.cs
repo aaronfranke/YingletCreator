@@ -10,11 +10,12 @@ namespace Character.Creator
         public Observable<string> Name { get; } = new();
         public ObervableCustomizationSliderData SliderData { get; }
 
+        // CreationDate?
+
         //ICustomizationToggleData ToggleData { get; }
         //ICustomizationColorData ColorData { get; }
         // string Name { get; }
         // Author?
-        // CreationDate?
         // LastUpdateDate?
 
         public ObservableCustomizationData(SerializableCustomizationData serializableData)

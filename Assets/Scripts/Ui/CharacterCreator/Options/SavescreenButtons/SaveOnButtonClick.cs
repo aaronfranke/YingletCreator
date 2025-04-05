@@ -5,14 +5,14 @@ using UnityEngine.UI;
 public class SaveOnButtonClick : MonoBehaviour
 {
     private Button _button;
-    private ICustomizationDiskIO _dataSaver;
+    private ICustomizationDiskIO _diskIO;
 
     private void Awake()
     {
         _button = this.GetComponent<Button>();
         _button.onClick.AddListener(Button_OnClick);
 
-        _dataSaver = this.GetComponentInParent<ICustomizationDiskIO>();
+        _diskIO = this.GetComponentInParent<ICustomizationDiskIO>();
     }
 
     private void OnDestroy()
@@ -22,6 +22,6 @@ public class SaveOnButtonClick : MonoBehaviour
 
     private void Button_OnClick()
     {
-        _dataSaver.SaveSelected();
+        _diskIO.SaveSelected();
     }
 }

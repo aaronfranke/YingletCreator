@@ -2,7 +2,7 @@ using Character.Creator;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DeleteOnButtonClick : MonoBehaviour
+public class NewYingOnButtonClick : MonoBehaviour
 {
     private Button _button;
     private ICustomizationDiskIO _diskIO;
@@ -22,6 +22,6 @@ public class DeleteOnButtonClick : MonoBehaviour
 
     private void Button_OnClick()
     {
-        _diskIO.SaveSelected();
+        _diskIO.DuplicateSelected();
     }
 }

@@ -38,6 +38,7 @@ namespace Character.Creator
     public interface ICustomizationDiskIO
     {
         void SaveSelected();
+        void DuplicateSelected();
         void DeleteSelected();
         IEnumerable<CachedYingletReference> LoadInitialYingData(CustomizationYingletGroup group);
 
@@ -46,16 +47,19 @@ namespace Character.Creator
     public class CustomizationDiskIO : MonoBehaviour, ICustomizationDiskIO
     {
         const string EXTENSION = ".yingsave";
+        const string DUPLICATE_SUFFIX = " (copy)";
 
         private ICustomizationSelection _selectionReference;
         private ICustomizationSelectedDataRepository _selectionData;
         private ICustomizationSaveFolderProvider _locationProvider;
+        private ICustomizationYingletRepository _yingletRepository;
 
         void Awake()
         {
             _selectionReference = this.GetComponent<ICustomizationSelection>();
             _selectionData = this.GetComponent<ICustomizationSelectedDataRepository>();
             _locationProvider = this.GetComponent<ICustomizationSaveFolderProvider>();
+            _yingletRepository = this.GetComponent<ICustomizationYingletRepository>();
         }
 
         public void SaveSelected()
@@ -69,9 +73,7 @@ namespace Character.Creator
             string newYingletName = data.Name.Val;
             var lastFilePath = _selectionReference.Selected.Path;
             var newFilePath = GetUniqueAlphanumericFilePath(newYingletName, lastFilePath, rootFolder);
-            var pathOnDisk = Path.Combine(_locationProvider.CustomFolderRoot, newFilePath);
-            string json = JsonUtility.ToJson(serializedData, true);
-            File.WriteAllText(pathOnDisk, json);
+            WriteToDisk(newFilePath, serializedData);
 
             // Clean up the old path (if applicable)
             bool pathIsTheSame = newFilePath == lastFilePath;
@@ -85,9 +87,28 @@ namespace Character.Creator
             _selectionReference.Selected.Path = newFilePath;
         }
 
+        public void DuplicateSelected()
+        {
+            // Serialize the data
+            var data = _selectionData.CustomizationData;
+            data.Name.Val += DUPLICATE_SUFFIX;
+            var serializedData = new SerializableCustomizationData(data);
+
+            // Write it to disk
+            string rootFolder = _locationProvider.CustomFolderRoot;
+            string newYingletName = data.Name.Val;
+            var newFilePath = GetUniqueAlphanumericFilePath(newYingletName, null, rootFolder);
+            WriteToDisk(newFilePath, serializedData);
+
+            // Create a new reference and select it
+            var newReference = new CachedYingletReference(newFilePath, serializedData);
+            _yingletRepository.AddNewCustom(newReference);
+            _selectionReference.Selected = newReference;
+        }
+
         public void DeleteSelected()
         {
-            // TODO
+            // TODO CONTINUE FROM RIGHT HERE
             throw new System.NotImplementedException();
         }
 
@@ -122,7 +143,7 @@ namespace Character.Creator
             return JsonUtility.FromJson<SerializableCustomizationData>(text);
         }
 
-        string GetUniqueAlphanumericFilePath(string newYingletName, string lastFileName, string folderPath)
+        string GetUniqueAlphanumericFilePath(string newYingletName, string lastFilePath, string folderPath)
         {
             // Step 1: Make string alphanumeric
             string baseName = Regex.Replace(newYingletName, "[^a-zA-Z0-9]", "");
@@ -139,7 +160,7 @@ namespace Character.Creator
             int counter = 1;
             while (File.Exists(fullPath))
             {
-                if (fullPath == lastFileName)
+                if (fullPath == lastFilePath)
                 {
                     break; // Same name as last time; we're good here
                 }
@@ -150,6 +171,12 @@ namespace Character.Creator
             }
 
             return fullPath;
+        }
+
+        void WriteToDisk(string newFilePath, SerializableCustomizationData serializedData)
+        {
+            string json = JsonUtility.ToJson(serializedData, true);
+            File.WriteAllText(newFilePath, json);
         }
     }
 }
