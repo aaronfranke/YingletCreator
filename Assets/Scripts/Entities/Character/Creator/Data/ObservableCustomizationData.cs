@@ -21,14 +21,20 @@ namespace Character.Creator
         public ObservableCustomizationData(SerializableCustomizationData serializableData)
         {
             Name.Val = serializableData.Name;
-            SliderData = new ObervableCustomizationSliderData();
+            SliderData = new ObervableCustomizationSliderData(serializableData.SliderData);
         }
     }
 
     public sealed class ObervableCustomizationSliderData
     {
-        public ObervableCustomizationSliderData()
+        public ObervableCustomizationSliderData(SerializableCustomizationSliderData sliderData)
         {
+            if (sliderData?.SliderValues == null) return;
+            foreach (var sliderValue in sliderData.SliderValues)
+            {
+                var key = ResourceLoader.Load<CharacterSliderId>(sliderValue.SliderID);
+                SliderValues[key] = new Observable<float>(sliderValue.Value);
+            }
         }
 
         /// <summary>
