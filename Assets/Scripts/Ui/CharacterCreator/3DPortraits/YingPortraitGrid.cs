@@ -1,6 +1,5 @@
 using Character.Creator;
 using Reactivity;
-using TMPro;
 using UnityEngine;
 
 public class YingPortraitGrid : ReactiveBehaviour
@@ -33,8 +32,8 @@ public class YingPortraitGrid : ReactiveBehaviour
             int targetIndex = Mathf.Max(0, siblingCount - 1 - _initialChildren);
             go.transform.SetSiblingIndex(targetIndex);
         }
+        go.GetComponentInChildren<IYingPortraitReference>().Setup(yingReference);
 
-        go.GetComponentInChildren<TextMeshProUGUI>().text = yingReference.Path;
         return go;
     }
     private void RemovePortrait(GameObject obj)

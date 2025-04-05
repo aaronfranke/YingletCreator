@@ -58,7 +58,6 @@ namespace Character.Creator
 
     //public interface ICustomizationColorData
     //{
-    //    // big TODO here to figure this out
     //    //IEnumerable<Color> Data;
     //}
     //public interface IColorAdjustmentData

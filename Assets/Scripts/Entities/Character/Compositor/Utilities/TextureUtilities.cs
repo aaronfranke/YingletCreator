@@ -24,7 +24,6 @@ namespace CharacterCompositor
             var blitMaterial = new Material(colorizeShader);
 
             var sortedMixTextures = SortMixTextures(mixTextures, mixTextureOrdering);
-            // TODO: Continue from here, separating these out by destination textures
 
             foreach (var mappedMaterial in materialMapping)
             {
@@ -62,7 +61,7 @@ namespace CharacterCompositor
                         else
                         {
                             blitMaterial.shader = colorizeWithMaskShader;
-                            blitMaterial.SetTexture(MASK_TEX_PROPERTY_ID, applicableMixTexture.Mask); // todo
+                            blitMaterial.SetTexture(MASK_TEX_PROPERTY_ID, applicableMixTexture.Mask);
                         }
                         blitMaterial.SetTexture(MIX_TEX_PROPERTY_ID, applicableMixTexture.Shading);
                         ApplyMixTexturePropsToMaterial(blitMaterial, applicableMixTexture);

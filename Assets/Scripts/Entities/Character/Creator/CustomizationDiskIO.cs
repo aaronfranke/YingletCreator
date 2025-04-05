@@ -47,14 +47,18 @@ namespace Character.Creator
         public void SaveSelected()
         {
             var data = _dataRepository.CustomizationData;
+
+            // TODO: Figure out how to handle name changes
             var fileName = SanitizeNameToFilepath(data.Name.Val);
+
+
             var pathOnDisk = Path.Combine(_locationProvider.CustomFolderRoot, fileName);
             string json = JsonUtility.ToJson(new SerializableCustomizationData(data), true);
             File.WriteAllText(pathOnDisk, json);
         }
         public void DeleteSelected()
         {
-            // TODO: Continue from here
+            // TODO
             throw new System.NotImplementedException();
         }
 

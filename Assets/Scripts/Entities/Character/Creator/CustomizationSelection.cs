@@ -9,7 +9,7 @@ namespace Character.Creator
     /// </summary>
     public interface ICustomizationSelection
     {
-        public CachedYingletReference Selected { get; }
+        public CachedYingletReference Selected { get; set; }
     }
 
     public class CustomizationSelection : MonoBehaviour, ICustomizationSelection
@@ -28,7 +28,17 @@ namespace Character.Creator
             _selected.Val = initialSelection;
         }
 
-        public CachedYingletReference Selected => _selected.Val;
+        public CachedYingletReference Selected
+        {
+            get
+            {
+                return _selected.Val;
+            }
+            set
+            {
+                _selected.Val = value;
+            }
+        }
     }
 
 }
