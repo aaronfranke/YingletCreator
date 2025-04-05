@@ -1,8 +1,8 @@
 using Character.Creator;
+using Reactivity;
 using TMPro;
-using UnityEngine;
 
-public class NameTextField : MonoBehaviour
+public class NameTextField : ReactiveBehaviour
 {
     private ICustomizationSelectedDataRepository _dataRepository;
     private TMP_InputField _inputField;
@@ -14,8 +14,19 @@ public class NameTextField : MonoBehaviour
         _inputField.onValueChanged.AddListener(InputField_OnValueChanged);
     }
 
-    private void OnDestroy()
+    private void Start()
     {
+        AddReflector(ReflectText);
+    }
+
+    void ReflectText()
+    {
+        _inputField.text = _dataRepository.CustomizationData.Name.Val;
+    }
+
+    private new void OnDestroy()
+    {
+        base.OnDestroy();
         _inputField.onValueChanged.RemoveListener(InputField_OnValueChanged);
     }
 
