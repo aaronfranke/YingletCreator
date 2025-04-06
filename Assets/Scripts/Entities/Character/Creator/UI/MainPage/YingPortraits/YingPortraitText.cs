@@ -1,11 +1,9 @@
 using Reactivity;
 using TMPro;
 
-// Not an image yet until we have the technology
-
 namespace Character.Creator.UI
 {
-    public class YingPortraitImage : ReactiveBehaviour
+    public class YingPortraitText : ReactiveBehaviour
     {
         private ICustomizationSelection _selection;
         private IYingPortraitReference _reference;
