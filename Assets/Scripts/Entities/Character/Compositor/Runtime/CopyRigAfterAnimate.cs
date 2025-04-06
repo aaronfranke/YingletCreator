@@ -1,3 +1,4 @@
+using Snapshotter;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ using UnityEngine;
 /// So I've decided to make a second rig. This script will force it to match the first rig right after the update
 /// This will allow me to recklessly apply whatever I want to this rig with the reassurance that it will all be fresh the next frame
 /// </summary>
-public class CopyRigAfterAnimate : MonoBehaviour
+public class CopyRigAfterAnimate : MonoBehaviour, ISnapshottable
 {
     [SerializeField] Transform _sourceRoot;
     [SerializeField] Transform _sourceTransform;
@@ -48,12 +49,23 @@ public class CopyRigAfterAnimate : MonoBehaviour
 
     private void LateUpdate()
     {
+        CopyBones();
+    }
+    void CopyBones()
+    {
         foreach (var copyBone in _copyBonesArray)
         {
             copyBone.Copy();
         }
     }
-
+    public void PrepareForSnapshot()
+    {
+        if (!Application.isPlaying)
+        {
+            SetupCopyBones();
+            CopyBones();
+        }
+    }
 
     sealed class CopyBone
     {

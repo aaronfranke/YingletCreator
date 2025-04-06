@@ -1,4 +1,5 @@
 using Reactivity;
+using Snapshotter;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace CharacterCompositor
     {
         event Action OnSkinnedMeshRenderersRegenerated;
     }
-    public class CompositedYinglet : ReactiveBehaviour, ICompositedYinglet
+    public class CompositedYinglet : ReactiveBehaviour, ICompositedYinglet, ISnapshottable
     {
         [SerializeField] Transform _rigRoot;
         [SerializeField] MeshWithMaterial[] _meshesWithMaterials;
@@ -64,6 +65,15 @@ namespace CharacterCompositor
             // Optimization opportunity: Pass in the color group and use it to filter materials that need updating
             IEnumerable<IMixTexture> mixTextures = _mixTextures.Concat(_eyeMixTexture.GenerateMixTextures(_eyeMixTextureReferences)).ToArray();
             TextureUtilities.UpdateMaterialsWithTextures(_lastMaterialMapping, mixTextures, _mixTextureOrdering);
+        }
+
+        public void PrepareForSnapshot()
+        {
+            // The editor won't have composited
+            if (!Application.isPlaying)
+            {
+                Composite();
+            }
         }
     }
 }

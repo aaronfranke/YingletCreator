@@ -13,6 +13,10 @@ namespace Snapshotter
             _references = references;
 
             _yingletInstance = GameObject.Instantiate(_references.YingletPrefab);
+            foreach (var snapshottable in _yingletInstance.GetComponentsInChildren<ISnapshottable>())
+            {
+                snapshottable.PrepareForSnapshot();
+            }
             SetLayerRecursively(_yingletInstance, _references.LayerIndex);
         }
 
