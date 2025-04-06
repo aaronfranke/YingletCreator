@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Linq;
 using UnityEngine;
 
@@ -19,7 +17,7 @@ public class EyePupilOffset : MonoBehaviour
 
     void Awake()
     {
-        _eyeGatherer = this.GetComponent<IEyeGatherer>();
+        _eyeGatherer = this.GetComponentInParent<IEyeGatherer>();
         _offsetProviders = this.GetComponents<IEyeOffsetProvider>().Where(c => c.enabled).ToArray();
     }
 

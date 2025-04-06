@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -9,7 +8,6 @@ public enum EyeExpression
     Closed
 }
 
-[RequireComponent(typeof(IEyeGatherer))]
 public class EyeExpressions : MonoBehaviour
 {
     [SerializeField] float _squintTime = .015f;
@@ -21,7 +19,7 @@ public class EyeExpressions : MonoBehaviour
 
     void Awake()
     {
-        _eyeGatherer = this.GetComponent<IEyeGatherer>();
+        _eyeGatherer = this.GetComponentInParent<IEyeGatherer>();
         _blinkTimer = this.GetComponent<IBlinkTimer>();
 
         _blinkTimer.OnBlink += BlinkTimer_OnBlink;

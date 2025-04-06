@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public interface IEyeGatherer
@@ -8,6 +7,7 @@ public interface IEyeGatherer
 
 public class EyeGatherer : MonoBehaviour, IEyeGatherer
 {
+    [SerializeField] Transform _rigRoot;
     Material[] _cachedEyes;
 
     const string EYE_NAME_LEFT = "YingletEye_Left";
@@ -32,7 +32,7 @@ public class EyeGatherer : MonoBehaviour, IEyeGatherer
 
     Material GetEyeMaterial(string name)
     {
-        var eyeTransform = TransformUtils.FindChildRecursive(this.transform, name);
+        var eyeTransform = TransformUtils.FindChildRecursive(_rigRoot, name);
         if (eyeTransform == null)
         {
             Debug.LogError($"Failed to find eye {name}");

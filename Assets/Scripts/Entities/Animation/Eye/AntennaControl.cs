@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -24,6 +22,7 @@ sealed class Antenna
 
 public class AntennaControl : MonoBehaviour
 {
+    [SerializeField] Transform _rigRoot;
     [SerializeField] EaseSettings _blinkEaseSettings;
     [SerializeField] Vector2 _blinkAngleRotations;
 
@@ -35,7 +34,7 @@ public class AntennaControl : MonoBehaviour
     {
         _blinkTimer = this.GetComponent<IBlinkTimer>();
 
-        var antennaTransforms = TransformUtils.FindChildrenByPrefix(this.transform, "antenna_");
+        var antennaTransforms = TransformUtils.FindChildrenByPrefix(_rigRoot, "antenna_");
         _antennas = antennaTransforms.Select(a => new Antenna(a)).ToArray();
         if (!_antennas.Any()) Debug.LogWarning("Did not find any antennas to control");
 
@@ -50,7 +49,7 @@ public class AntennaControl : MonoBehaviour
     }
 
 
- 
+
     private void BlinkTimer_OnBlink()
     {
         CoroutineUtils.StartEaseCoroutine(this, ref _blinkCoroutine, _blinkEaseSettings, p =>
