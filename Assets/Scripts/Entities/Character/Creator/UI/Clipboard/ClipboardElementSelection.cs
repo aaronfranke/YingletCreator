@@ -10,9 +10,8 @@ namespace Character.Creator.UI
     /// - The fake bookmark
     /// This provides a common mechanism for them all to know this information
     /// </summary>
-    internal interface IClipboardElementSelection
+    internal interface IClipboardElementSelection : ISelectable
     {
-        IReadOnlyObservable<bool> IsSelected { get; }
         void SetSelected();
         ClipboardSelectionType Type { get; set; }
     }
@@ -23,7 +22,7 @@ namespace Character.Creator.UI
         private IClipboardSelection _clipboardSelection;
         private Computed<bool> _isSelected;
 
-        public IReadOnlyObservable<bool> IsSelected => _isSelected;
+        public IReadOnlyObservable<bool> Selected => _isSelected;
 
         Observable<ClipboardSelectionType> _type = new Observable<ClipboardSelectionType>();
         public ClipboardSelectionType Type

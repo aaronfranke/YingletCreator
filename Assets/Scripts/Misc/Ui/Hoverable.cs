@@ -2,12 +2,12 @@ using Reactivity;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public interface IHoverableDetector
+public interface IHoverable
 {
     IReadOnlyObservable<bool> Hovered { get; }
 }
 
-public class HoverableDetector : MonoBehaviour, IHoverableDetector, IPointerEnterHandler, IPointerExitHandler
+public class Hoverable : MonoBehaviour, IHoverable, IPointerEnterHandler, IPointerExitHandler
 {
     Observable<bool> _hovered = new(false);
 

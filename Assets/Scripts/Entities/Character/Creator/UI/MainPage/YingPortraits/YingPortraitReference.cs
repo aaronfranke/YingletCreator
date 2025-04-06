@@ -2,11 +2,10 @@ using Reactivity;
 
 namespace Character.Creator.UI
 {
-    public interface IYingPortraitReference
+    public interface IYingPortraitReference : ISelectable
     {
         void Setup(CachedYingletReference reference);
         public CachedYingletReference Reference { get; }
-        bool IsSelected { get; }
     }
 
     public class YingPortraitReference : ReactiveBehaviour, IYingPortraitReference
@@ -16,7 +15,7 @@ namespace Character.Creator.UI
         private Observable<CachedYingletReference> _reference = new();
 
         public CachedYingletReference Reference => _reference.Val;
-        public bool IsSelected => _selected.Val;
+        public IReadOnlyObservable<bool> Selected => _selected;
 
         void Awake()
         {

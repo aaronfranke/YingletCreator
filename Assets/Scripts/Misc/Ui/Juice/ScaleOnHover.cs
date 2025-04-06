@@ -1,17 +1,16 @@
 using Reactivity;
 using UnityEngine;
 
-[RequireComponent(typeof(HoverableDetector))]
 public class ScaleOnHover : ReactiveBehaviour
 {
     [SerializeField] float _hoverScale;
     [SerializeField] SharedEaseSettings _easeSettings;
-    private IHoverableDetector _hoverable;
+    private IHoverable _hoverable;
     private Coroutine _transitionCoroutine;
 
     private void Awake()
     {
-        _hoverable = this.GetComponent<IHoverableDetector>();
+        _hoverable = this.GetComponentInParent<IHoverable>();
     }
 
     void Start()

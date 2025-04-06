@@ -40,7 +40,7 @@ namespace Character.Creator.UI
 
         private void ReflectSelected()
         {
-            bool isSelected = _elementSelection.IsSelected.Val;
+            bool isSelected = _elementSelection.Selected.Val;
             _canvasGroup.interactable = isSelected;
 
             _clipboardOrdering.SendToLayer(this.transform, isSelected ? ClipboardLayer.ActivePage : ClipboardLayer.Back);

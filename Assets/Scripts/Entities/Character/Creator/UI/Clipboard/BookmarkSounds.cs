@@ -6,13 +6,13 @@ namespace Character.Creator.UI
     {
         [SerializeField] private SoundEffect _hoverBookmark;
         private IAudioPlayer _audioPlayer;
-        private IHoverableDetector _hoverable;
+        private IHoverable _hoverable;
         private IClipboardElementSelection _selection;
 
         private void Awake()
         {
             _audioPlayer = Singletons.GetSingleton<IAudioPlayer>();
-            _hoverable = this.GetComponent<IHoverableDetector>();
+            _hoverable = this.GetComponent<IHoverable>();
             _selection = this.GetComponent<IClipboardElementSelection>();
         }
 
@@ -28,7 +28,7 @@ namespace Character.Creator.UI
         private void Hovered_OnChanged(bool from, bool to)
         {
             if (!to) return;
-            if (_selection.IsSelected.Val) return;
+            if (_selection.Selected.Val) return;
             _audioPlayer.Play(_hoverBookmark);
         }
     }

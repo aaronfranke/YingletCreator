@@ -31,13 +31,13 @@ namespace Character.Creator.UI
 
         void Start()
         {
-            _elementSelection.IsSelected.OnChanged += Selected_OnChanged;
+            _elementSelection.Selected.OnChanged += Selected_OnChanged;
             this.gameObject.SetActive(false);
         }
 
         private void OnDestroy()
         {
-            _elementSelection.IsSelected.OnChanged -= Selected_OnChanged;
+            _elementSelection.Selected.OnChanged -= Selected_OnChanged;
         }
 
         public void Setup(GameObject realBookmark)

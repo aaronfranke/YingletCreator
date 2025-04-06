@@ -32,7 +32,7 @@ namespace Character.Creator.UI
 
         void ReflectSelected()
         {
-            bool selected = _selection.IsSelected.Val;
+            bool selected = _selection.Selected.Val;
             var fromColor = _icon.color;
             var toColor = selected ? _selectedIconColor : _unselectedColor;
 

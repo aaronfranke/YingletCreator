@@ -1,16 +1,16 @@
 using UnityEngine;
 
-[RequireComponent(typeof(HoverableDetector))]
+[RequireComponent(typeof(Hoverable))]
 public class PlaySoundOnHoverUI : MonoBehaviour
 {
     [SerializeField] private SoundEffect _soundEffect;
     private IAudioPlayer _audioPlayer;
-    private IHoverableDetector _hoverable;
+    private IHoverable _hoverable;
 
     private void Awake()
     {
         _audioPlayer = Singletons.GetSingleton<IAudioPlayer>();
-        _hoverable = this.GetComponent<IHoverableDetector>();
+        _hoverable = this.GetComponent<IHoverable>();
     }
 
     private void Start()

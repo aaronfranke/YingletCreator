@@ -29,7 +29,7 @@ namespace Character.Creator.UI
 
         private void ReflectSelected()
         {
-            bool isSelected = _elementSelection.IsSelected.Val;
+            bool isSelected = _elementSelection.Selected.Val;
             _clipboardOrdering.SendToLayer(this.transform, isSelected ? ClipboardLayer.ActiveBookmark : ClipboardLayer.Back);
         }
 

@@ -31,7 +31,7 @@ namespace Character.Creator.UI
         }
         void ReflectInteractable()
         {
-            _button.interactable = !_reference.IsSelected;
+            _button.interactable = !_reference.Selected.Val;
         }
     }
 }

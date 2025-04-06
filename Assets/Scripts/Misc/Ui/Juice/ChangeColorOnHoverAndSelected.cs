@@ -3,19 +3,21 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(HoverableDetector))]
-public class TintOnHover : ReactiveBehaviour
+public class ChangeColorOnHoverAndSelected : ReactiveBehaviour
 {
-    [SerializeField] Color _targetColor;
+    [SerializeField] Color _hoverColor;
+    [SerializeField] Color _selectColor;
     [SerializeField] Graphic[] _targets;
     [SerializeField] SharedEaseSettings _easeSettings;
-    private IHoverableDetector _hoverable;
+    private IHoverable _hoverable;
+    private ISelectable _selectable;
     private Color _originalColor;
     private Coroutine _transitionCoroutine;
 
     private void Awake()
     {
-        _hoverable = this.GetComponent<IHoverableDetector>();
+        _hoverable = this.GetComponentInParent<IHoverable>();
+        _selectable = this.GetComponentInParent<ISelectable>();
         _originalColor = _targets.First().color;
         UpdateColors(_originalColor);
     }
@@ -28,8 +30,21 @@ public class TintOnHover : ReactiveBehaviour
     private void Reflect()
     {
         Color from = _targets.First().color;
-        Color to = _hoverable.Hovered.Val ? _targetColor : _originalColor;
+        Color to = GetTargetColor();
         this.StartEaseCoroutine(ref _transitionCoroutine, _easeSettings, p => UpdateColors(Color.LerpUnclamped(from, to, p)));
+    }
+
+    Color GetTargetColor()
+    {
+        if (_selectable.Selected.Val)
+        {
+            return _selectColor;
+        }
+        if (_hoverable.Hovered.Val)
+        {
+            return _hoverColor;
+        }
+        return _originalColor;
     }
 
     void UpdateColors(Color c)
