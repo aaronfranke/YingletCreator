@@ -1,3 +1,4 @@
+using Snapshotter;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ internal interface IApplyableCustomization
 /// <summary>
 /// We want to apply all of these options in order, as some affect others
 /// </summary>
-public class ApplyCustomizationsAfterAnimate : MonoBehaviour
+public class ApplyCustomizationsAfterAnimate : MonoBehaviour, ISnapshottable
 {
     private IEnumerable<IApplyableCustomization> _applyable;
 
@@ -25,5 +26,10 @@ public class ApplyCustomizationsAfterAnimate : MonoBehaviour
         {
             a.Apply();
         }
+    }
+
+    public void PrepareForSnapshot()
+    {
+        LateUpdate();
     }
 }

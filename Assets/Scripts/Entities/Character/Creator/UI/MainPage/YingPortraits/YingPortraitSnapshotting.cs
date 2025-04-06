@@ -1,5 +1,7 @@
 using Character.Creator;
+using Character.Creator.UI;
 using Snapshotter;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,28 +11,26 @@ public class YingPortraitSnapshotting : MonoBehaviour
     [SerializeField] SnapshotterReferences _references;
     [SerializeField] SnapshotterCameraPosition _cameraPosition;
     private RawImage _image;
-    private ICustomizationSelectedDataRepository _dataRepository;
+    private IYingPortraitReference _reference;
     private RenderTexture _rt;
 
     private void Awake()
     {
         _image = this.GetComponent<RawImage>();
-        _dataRepository = GetComponentInParent<ICustomizationSelectedDataRepository>();
+        _reference = GetComponentInParent<IYingPortraitReference>();
     }
     void Start()
     {
         _image.texture = null;
         _image.enabled = false;
-        RunThrottled(WaitAndThenSnapshot());
+        RunThrottled(Snapshot);
     }
 
-    IEnumerator WaitAndThenSnapshot()
+    void Snapshot()
     {
-        // TODO: Wait for longer based on some scheduler
-        yield return null;
-        yield return null;
-
-        _rt = SnapshotterUtils.Snapshot(_references, new SnapshotterParams(_cameraPosition, _dataRepository.CustomizationData));
+        // Optimization opportunity; could re-use selected if it's the same reference
+        var observableData = new ObservableCustomizationData(_reference.Reference.CachedData);
+        _rt = SnapshotterUtils.Snapshot(_references, new SnapshotterParams(_cameraPosition, observableData));
         _image.texture = _rt;
         _image.enabled = true;
     }
@@ -41,10 +41,8 @@ public class YingPortraitSnapshotting : MonoBehaviour
         _rt?.Release();
     }
 
-
-
     static Coroutine currentChain;
-    void RunThrottled(IEnumerator routine)
+    void RunThrottled(Action action)
     {
         IEnumerator Chain()
         {
@@ -52,11 +50,9 @@ public class YingPortraitSnapshotting : MonoBehaviour
             if (currentChain != null)
                 yield return currentChain;
 
-            // Now run the new coroutine
-            yield return this.StartCoroutine(routine);
-
-            // Wait before allowing the next one
             yield return null;
+
+            action();
 
             currentChain = null;
         }

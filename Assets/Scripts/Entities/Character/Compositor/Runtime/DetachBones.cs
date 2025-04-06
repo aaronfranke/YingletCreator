@@ -6,12 +6,18 @@ using UnityEngine;
 public class DetachBones : MonoBehaviour, IApplyableCustomization
 {
     [SerializeField] Transform[] _bonesToDetach;
+    private Transform _root;
+
+    void Awake()
+    {
+        _root = this.GetComponentInParent<YingletVisualsRoot>().transform;
+    }
 
     public void Apply()
     {
         foreach (var bone in _bonesToDetach)
         {
-            bone.SetParent(null, true);
+            bone.SetParent(_root, true);
         }
     }
 
