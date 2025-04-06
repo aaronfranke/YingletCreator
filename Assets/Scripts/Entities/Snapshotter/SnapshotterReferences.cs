@@ -9,6 +9,11 @@ namespace Snapshotter
         int LayerMask { get; }
 
         /// <summary>
+        /// Always a 1:1 ratio for now
+        /// </summary>
+        int SizeInPixels { get; }
+
+        /// <summary>
         /// Mostly used for testing
         /// </summary>
         bool CleanupObjects { get; }
@@ -19,12 +24,13 @@ namespace Snapshotter
     {
         [SerializeField] GameObject _yingletPrefab;
         [SerializeField] int _layerIndex;
+        [SerializeField] int _sizeInPixels;
         [SerializeField] bool _cleanupObject;
 
         public GameObject YingletPrefab => _yingletPrefab;
         public int LayerIndex => _layerIndex;
         public int LayerMask => 1 << _layerIndex;
-
+        public int SizeInPixels => _sizeInPixels;
         public bool CleanupObjects => _cleanupObject;
     }
 }
