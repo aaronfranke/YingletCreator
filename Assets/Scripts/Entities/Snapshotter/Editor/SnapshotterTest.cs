@@ -15,7 +15,8 @@ namespace Snapshotter
         {
             var references = AssetDatabase.LoadAssetAtPath<SnapshotterReferences>(ReferencesRelativePath);
             var camPos = AssetDatabase.LoadAssetAtPath<SnapshotterCameraPosition>(CameraPosRelativePath);
-            var sParams = new SnapshotterParams(camPos);
+            Debug.LogError("TODO: Setup sparams again if I want to call this; should read from streaming assets and convert?");
+            var sParams = new SnapshotterParams(camPos, null);
             var rt = SnapshotterUtils.Snapshot(references, sParams);
 
             // Create Texture2D and read pixels

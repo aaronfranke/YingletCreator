@@ -18,7 +18,8 @@ namespace Snapshotter
             _camera = go.AddComponent<Camera>();
             _camera.transform.position = _sParams.CamPos.Position;
             _camera.transform.rotation = Quaternion.Euler(_sParams.CamPos.Rotation);
-            _camera.clearFlags = CameraClearFlags.Nothing;
+            _camera.cullingMask = references.LayerMask;
+            _camera.clearFlags = CameraClearFlags.Color;
             _camera.nearClipPlane = 0.01f;
             _camera.backgroundColor = Color.clear;
         }

@@ -16,7 +16,7 @@ namespace Character.Creator.UI
         {
             _rectTransform = this.GetComponent<RectTransform>();
             _originalPos = _rectTransform.anchoredPosition3D;
-            _button = this.GetComponent<Button>();
+            _button = this.GetComponentInParent<Button>();
             _button.onClick.AddListener(Button_OnClick);
         }
 

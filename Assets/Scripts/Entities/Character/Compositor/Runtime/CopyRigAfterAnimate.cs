@@ -21,6 +21,10 @@ public class CopyRigAfterAnimate : MonoBehaviour, ISnapshottable
         SetupCopyBones();
         Application.quitting += Application_quitting;
     }
+    void OnDestroy()
+    {
+        Application.quitting -= Application_quitting;
+    }
 
     private void Application_quitting()
     {
@@ -60,11 +64,8 @@ public class CopyRigAfterAnimate : MonoBehaviour, ISnapshottable
     }
     public void PrepareForSnapshot()
     {
-        if (!Application.isPlaying)
-        {
-            SetupCopyBones();
-            CopyBones();
-        }
+        SetupCopyBones();
+        CopyBones();
     }
 
     sealed class CopyBone

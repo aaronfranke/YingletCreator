@@ -69,11 +69,7 @@ namespace CharacterCompositor
 
         public void PrepareForSnapshot()
         {
-            // The editor won't have composited
-            if (!Application.isPlaying)
-            {
-                Composite();
-            }
+            Composite();
         }
     }
 }

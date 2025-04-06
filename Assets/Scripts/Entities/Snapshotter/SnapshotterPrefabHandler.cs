@@ -8,11 +8,14 @@ namespace Snapshotter
         private readonly ISnapshotterReferences _references;
         private readonly GameObject _yingletInstance;
 
-        public SnapshotterPrefabHandler(ISnapshotterReferences references)
+        public SnapshotterPrefabHandler(ISnapshotterReferences references, SnapshotterParams sParams)
         {
             _references = references;
+            _references.YingletPrefab.SetActive(false); // Set inactive so we can set the data repository before everything Start's
 
             _yingletInstance = GameObject.Instantiate(_references.YingletPrefab);
+            _yingletInstance.GetComponent<SnapshotterDataRepository>().Setup(sParams.Data);
+            _yingletInstance.SetActive(true);
             foreach (var snapshottable in _yingletInstance.GetComponentsInChildren<ISnapshottable>())
             {
                 snapshottable.PrepareForSnapshot();
@@ -32,6 +35,7 @@ namespace Snapshotter
 
         public void Dispose()
         {
+            _references.YingletPrefab.SetActive(true);
             if (_yingletInstance != null && _references.CleanupObjects)
             {
                 GameObject.DestroyImmediate(_yingletInstance);
