@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Character.Creator.UI
 {
-    public class CharacterCreatorSlider : MonoBehaviour
+    public class CharacterCreatorSlider : ReactiveBehaviour
     {
         [SerializeField] CharacterSliderId _sliderId;
         private ICustomizationSelectedDataRepository _dataRepo;
@@ -18,10 +18,22 @@ namespace Character.Creator.UI
             _slider.onValueChanged.AddListener(Slider_OnValueChanged);
         }
 
-        private void OnDestroy()
+        private void Start()
         {
+            AddReflector(ReflectSliderValue);
+        }
+
+        private new void OnDestroy()
+        {
+            base.OnDestroy();
             _slider.onValueChanged.RemoveListener(Slider_OnValueChanged);
         }
+
+        private void ReflectSliderValue()
+        {
+            _slider.value = _dataRepo.GetSliderValue(_sliderId);
+        }
+
 
         private void Slider_OnValueChanged(float arg0)
         {
