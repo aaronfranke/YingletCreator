@@ -18,7 +18,7 @@ namespace Snapshotter
             rt.Create();
             cameraHandler.RenderTo(rt);
 
-            UnityEngine.Debug.Log($"Snapshot took {stopWatch.ElapsedMilliseconds}ms");
+            //UnityEngine.Debug.Log($"Snapshot took {stopWatch.ElapsedMilliseconds}ms");
             return rt;
         }
     }

@@ -21,7 +21,7 @@ public class YingPortraitSnapshotting : MonoBehaviour
     {
         _image.texture = null;
         _image.enabled = false;
-        StartCoroutine(WaitAndThenSnapshot());
+        RunThrottled(WaitAndThenSnapshot());
     }
 
     IEnumerator WaitAndThenSnapshot()
@@ -39,5 +39,28 @@ public class YingPortraitSnapshotting : MonoBehaviour
     {
         _image.texture = null;
         _rt?.Release();
+    }
+
+
+
+    static Coroutine currentChain;
+    void RunThrottled(IEnumerator routine)
+    {
+        IEnumerator Chain()
+        {
+            // Wait until the current chain is done
+            if (currentChain != null)
+                yield return currentChain;
+
+            // Now run the new coroutine
+            yield return this.StartCoroutine(routine);
+
+            // Wait before allowing the next one
+            yield return null;
+
+            currentChain = null;
+        }
+
+        currentChain = this.StartCoroutine(Chain());
     }
 }
