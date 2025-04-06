@@ -13,6 +13,8 @@ namespace Snapshotter
         /// </summary>
         int SizeInPixels { get; }
 
+        public float YScaleToCamOffset { get; }
+
         /// <summary>
         /// Mostly used for testing
         /// </summary>
@@ -26,11 +28,13 @@ namespace Snapshotter
         [SerializeField] int _layerIndex;
         [SerializeField] int _sizeInPixels;
         [SerializeField] bool _cleanupObject;
+        [SerializeField] float _yScaleToCamOffset = 1;
 
         public GameObject YingletPrefab => _yingletPrefab;
         public int LayerIndex => _layerIndex;
         public int LayerMask => 1 << _layerIndex;
         public int SizeInPixels => _sizeInPixels;
+        public float YScaleToCamOffset => _yScaleToCamOffset;
         public bool CleanupObjects => _cleanupObject;
     }
 }

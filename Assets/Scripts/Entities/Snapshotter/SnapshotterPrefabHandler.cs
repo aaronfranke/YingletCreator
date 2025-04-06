@@ -41,5 +41,10 @@ namespace Snapshotter
                 GameObject.DestroyImmediate(_yingletInstance);
             }
         }
+
+        public float GetYScale()
+        {
+            return TransformUtils.FindChildRecursive(_yingletInstance.transform, "CompositedYinglet").lossyScale.y;
+        }
     }
 }

@@ -38,5 +38,10 @@ namespace Snapshotter
                 GameObject.Destroy(_camera.gameObject);
             }
         }
+
+        public void OffsetPosByScale(float yScale)
+        {
+            _camera.transform.position += Vector3.up * (1 - yScale) * _references.YScaleToCamOffset;
+        }
     }
 }

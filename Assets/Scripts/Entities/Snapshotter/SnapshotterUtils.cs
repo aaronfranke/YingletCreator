@@ -12,6 +12,7 @@ namespace Snapshotter
 
             using var prefabHandler = new SnapshotterPrefabHandler(references, sParams);
             using var cameraHandler = new SnapshotterCameraHandler(references, sParams);
+            cameraHandler.OffsetPosByScale(prefabHandler.GetYScale());
 
 
             var rt = new RenderTexture(references.SizeInPixels, references.SizeInPixels, 24);
