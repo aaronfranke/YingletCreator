@@ -1,3 +1,4 @@
+using Character.Creator;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
@@ -8,15 +9,20 @@ namespace Snapshotter
     {
         const string ReferencesRelativePath = "Assets/Scripts/Entities/Snapshotter/SnapshotterReferences.asset";
         const string CameraPosRelativePath = "Assets/Scripts/Entities/Snapshotter/CameraPositions/_Default.asset";
-        const string OutputPath = "Assets/Scripts/Entities/Snapshotter/_TestGenerated.png";
+        public const string OutputPath = "Assets/Scripts/Entities/Snapshotter/_TestGenerated.png";
+        const string PresetPath = "Assets/StreamingAssets/PresetYings/KassenAkoll.yingsave";
 
         [MenuItem("Custom/Test Snapshotter")]
         public static void TestSnapshotter()
         {
             var references = AssetDatabase.LoadAssetAtPath<SnapshotterReferences>(ReferencesRelativePath);
             var camPos = AssetDatabase.LoadAssetAtPath<SnapshotterCameraPosition>(CameraPosRelativePath);
-            Debug.LogError("TODO: Setup sparams again if I want to call this; should read from streaming assets and convert?");
-            var sParams = new SnapshotterParams(camPos, null);
+
+            string text = File.ReadAllText(PresetPath);
+            var serializedData = JsonUtility.FromJson<SerializableCustomizationData>(text);
+            var observableData = new ObservableCustomizationData(serializedData);
+
+            var sParams = new SnapshotterParams(camPos, observableData);
             var rt = SnapshotterUtils.Snapshot(references, sParams);
 
             // Create Texture2D and read pixels

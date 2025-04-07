@@ -33,6 +33,17 @@ public class YingPortraitSnapshotting : MonoBehaviour
         _rt = SnapshotterUtils.Snapshot(_references, new SnapshotterParams(_cameraPosition, observableData));
         _image.texture = _rt;
         _image.enabled = true;
+
+        // Encode to PNG
+        //string OutputPath = $"Assets/Scripts/Entities/Snapshotter/_TestGenerated{this.GetInstanceID()}.png";
+        //RenderTexture.active = _rt;
+        //Texture2D tex = new Texture2D(_rt.width, _rt.height, TextureFormat.RGBA32, false);
+        //tex.ReadPixels(new Rect(0, 0, _rt.width, _rt.height), 0, 0);
+        //tex.Apply();
+        //RenderTexture.active = null;
+        //byte[] pngData = tex.EncodeToPNG();
+        //System.IO.File.WriteAllBytes(OutputPath, pngData);
+        //Debug.Log("Saved PNG to: " + OutputPath);
     }
 
     private void OnDestroy()
