@@ -97,6 +97,7 @@ namespace Character.Creator
             var data = _selectionData.CustomizationData;
             data.Name.Val += DUPLICATE_SUFFIX;
             var serializedData = new SerializableCustomizationData(data);
+            serializedData.CreationTime = DateTime.Now;
 
             // Write it to disk
             string rootFolder = _locationProvider.CustomFolderRoot;
@@ -133,7 +134,9 @@ namespace Character.Creator
         public IEnumerable<CachedYingletReference> LoadInitialYingData(CustomizationYingletGroup group)
         {
             var filePaths = GetYingPaths(group);
-            return filePaths.Select(path => new CachedYingletReference(path, LoadData(path), group));
+            var references = filePaths.Select(path => new CachedYingletReference(path, LoadData(path), group)).ToList();
+            references.Sort((a, b) => DateTime.Compare(a.CachedData.CreationTime, b.CachedData.CreationTime));
+            return references;
         }
         IEnumerable<string> GetYingPaths(CustomizationYingletGroup group)
         {

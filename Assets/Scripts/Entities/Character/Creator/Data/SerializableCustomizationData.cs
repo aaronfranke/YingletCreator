@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 
 namespace Character.Creator
@@ -9,6 +10,20 @@ namespace Character.Creator
     public sealed class SerializableCustomizationData
     {
         public string Name;
+
+        public string CreationTimeString;
+        public DateTime CreationTime
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(CreationTimeString))
+                {
+                    return DateTime.MinValue;
+                }
+                return DateTime.Parse(CreationTimeString);
+            }
+            set => CreationTimeString = value.ToString("o");
+        }
 
         public SerializableCustomizationSliderData SliderData;
 
