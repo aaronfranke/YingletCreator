@@ -1,12 +1,13 @@
 using Character.Creator;
 using Character.Creator.UI;
+using Reactivity;
 using Snapshotter;
 using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class YingPortraitSnapshotting : MonoBehaviour
+public class YingPortraitSnapshotting : ReactiveBehaviour
 {
     [SerializeField] SnapshotterReferences _references;
     [SerializeField] SnapshotterCameraPosition _cameraPosition;
@@ -23,12 +24,18 @@ public class YingPortraitSnapshotting : MonoBehaviour
     {
         _image.texture = null;
         _image.enabled = false;
+
+        AddReflector(Reflect);
+    }
+
+    private void Reflect()
+    {
+        var cachedData = _reference.Reference.CachedData; // Not actually used; just for reflection
         RunThrottled(Snapshot);
     }
 
     void Snapshot()
     {
-        // Optimization opportunity; could re-use selected if it's the same reference
         var observableData = new ObservableCustomizationData(_reference.Reference.CachedData);
         _rt = SnapshotterUtils.Snapshot(_references, new SnapshotterParams(_cameraPosition, observableData));
         _image.texture = _rt;
@@ -46,8 +53,9 @@ public class YingPortraitSnapshotting : MonoBehaviour
         //Debug.Log("Saved PNG to: " + OutputPath);
     }
 
-    private void OnDestroy()
+    private new void OnDestroy()
     {
+        base.OnDestroy();
         _image.texture = null;
         _rt?.Release();
     }
