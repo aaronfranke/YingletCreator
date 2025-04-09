@@ -27,7 +27,7 @@ namespace CharacterCompositor
 
         public MaterialDescription TargetMaterialDescription => _isLeft ? _references.LeftMaterialDescription : _references.RightMaterialDescription;
 
-        public Texture2D Shading => _texture;
+        public Texture2D Grayscale => _texture;
 
         public Texture2D Mask => null;
 
