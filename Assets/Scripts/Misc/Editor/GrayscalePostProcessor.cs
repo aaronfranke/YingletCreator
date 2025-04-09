@@ -22,8 +22,8 @@ public sealed class GrayscalePostProcessor : AssetPostprocessor
 
 	static void UpdateGrayscale(Texture2D tex)
 	{
-		if (tex == null) return;
-		if (tex.isDataSRGB) ; // probably not setup yet
+		if (tex == null) return;// probably not setup yet
+		if (tex.isDataSRGB)
 		{
 			var pathToShading = AssetDatabase.GetAssetPath(tex);
 			TextureImporter importer = AssetImporter.GetAtPath(pathToShading) as TextureImporter;
