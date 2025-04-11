@@ -2,10 +2,31 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-public sealed class TextureGrayscaler
+public sealed class TextureGrayscaler : EditorWindow
 {
 	[MenuItem("Custom/Texture Processing/Grayscale and Normalize")]
-	public static void GrayscaleAndNormalizeTexture()
+	public static void ShowWindow()
+	{
+		GetWindow<TextureGrayscaler>(nameof(TextureGrayscaler));
+	}
+
+	private Color lightColor = Color.white;
+	private Color darkColor = Color.black;
+
+	private void OnGUI()
+	{
+		GUILayout.Label("Select Two Colors", EditorStyles.boldLabel);
+
+		lightColor = EditorGUILayout.ColorField("LightColor", lightColor);
+		darkColor = EditorGUILayout.ColorField("DarkColor", darkColor);
+
+		if (GUILayout.Button("Grayscale"))
+		{
+			GrayscaleAndNormalizeTexture(lightColor, darkColor);
+		}
+	}
+
+	public static void GrayscaleAndNormalizeTexture(Color lightColor, Color darkColor)
 	{
 		Texture2D selectedTexture = Selection.activeObject as Texture2D;
 
@@ -28,12 +49,6 @@ public sealed class TextureGrayscaler
 		tex.Apply();
 
 		Color[] pixels = tex.GetPixels();
-		float minGray = 1f;
-		float maxGray = 0f;
-
-		// Peach colored overrides
-		//minGray = 0.7104314f;
-		//maxGray = 0.7905334f;
 
 		ColorRA[] grays = new ColorRA[pixels.Length];
 
@@ -44,14 +59,10 @@ public sealed class TextureGrayscaler
 			float gray = color.grayscale;
 			grays[i].R = gray;
 			grays[i].A = color.a;
-
-			if (color.a < .3f) continue; // Don't trust transparent colors; The program may have defaulted their RGB to black
-			if (gray < minGray) minGray = gray;
-			if (gray > maxGray) maxGray = gray;
 		}
-		Debug.Log($"Min gray: {minGray}");
-		Debug.Log($"Max gray: {maxGray}");
 
+		float maxGray = lightColor.grayscale;
+		float minGray = darkColor.grayscale;
 		float range = maxGray - minGray;
 		if (range <= 0f) range = 1f; // Avoid divide by zero
 
@@ -79,7 +90,7 @@ public sealed class TextureGrayscaler
 			AssetDatabase.Refresh();
 			Debug.Log("Texture processed and saved at: " + newPath);
 		}
-		RevertCompression();
+		FinalizeSettings();
 
 
 		void UpdateTextureSettings()
@@ -95,9 +106,9 @@ public sealed class TextureGrayscaler
 				importer.textureCompression = TextureImporterCompression.Uncompressed;
 				needsUpdate = true;
 			}
-			if (importer.sRGBTexture == true)
+			if (importer.sRGBTexture == false)
 			{
-				importer.sRGBTexture = false;
+				importer.sRGBTexture = true;
 				needsUpdate = true;
 			}
 
@@ -108,14 +119,11 @@ public sealed class TextureGrayscaler
 		}
 
 
-		void RevertCompression()
+		void FinalizeSettings()
 		{
-
-			if (importer.textureCompression != originalTextureCompression)
-			{
-				importer.textureCompression = originalTextureCompression;
-				AssetDatabase.ImportAsset(assetPath, ImportAssetOptions.ForceUpdate);
-			}
+			importer.sRGBTexture = false;
+			importer.textureCompression = originalTextureCompression;
+			AssetDatabase.ImportAsset(assetPath, ImportAssetOptions.ForceUpdate);
 		}
 	}
 
