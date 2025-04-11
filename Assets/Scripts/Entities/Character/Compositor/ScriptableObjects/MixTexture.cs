@@ -13,12 +13,6 @@ namespace CharacterCompositor
 		ColorGroup DefaultColorGroup { get; }
 
 		/// <summary>
-		/// When Contrast=0, this is the color that should be used for this texture
-		/// Generally an average between the high and low colors
-		/// </summary>
-		Color ContrastMidpointColor { get; }
-
-		/// <summary>
 		/// What material this texture should be applied to
 		/// </summary>
 		MaterialDescription TargetMaterialDescription { get; }
@@ -44,14 +38,11 @@ namespace CharacterCompositor
 	public class MixTexture : ScriptableObject, IMixTexture
 	{
 		[SerializeField] ColorGroup _defaultColorGroup;
-		[SerializeField][ColorUsage(false)] Color _contrastMidpointColor = Color.gray;
 		[SerializeField] MaterialDescription _targetMaterialDescription;
 		[SerializeField] Texture2D _grayscale;
 		[SerializeField] Texture2D _mask;
 
 		public ColorGroup DefaultColorGroup => _defaultColorGroup;
-
-		public Color ContrastMidpointColor => _contrastMidpointColor;
 
 		public MaterialDescription TargetMaterialDescription => _targetMaterialDescription;
 

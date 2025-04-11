@@ -6,8 +6,10 @@ namespace CharacterCompositor
 	[CreateAssetMenu(fileName = "ColorGroup", menuName = "Scriptable Objects/Character Compositor/ColorGroup")]
 	public class ColorGroup : ScriptableObject
 	{
-		[SerializeField] SerializableColorizeValues _defaultColorValues;
+		[SerializeField] SerializableColorizeValues _baseDefaultColor;
+		[SerializeField] SerializableColorizeValues _shadeDefaultColor;
 
-		public IColorizeValues DefaultColorValues => _defaultColorValues;
-    }
+		public IColorizeValues BaseDefaultColor => _baseDefaultColor;
+		public IColorizeValues ShadeDefaultColor => _shadeDefaultColor;
+	}
 }

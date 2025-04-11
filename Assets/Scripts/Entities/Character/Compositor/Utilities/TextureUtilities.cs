@@ -79,9 +79,11 @@ namespace CharacterCompositor
 
 		static void ApplyMixTexturePropsToMaterial(Material material, IMixTexture mixTexture)
 		{
-			var values = mixTexture.DefaultColorGroup.DefaultColorValues;
-			material.SetColor(MAIN_COLOR_PROPERTY_ID, Color.red);
-			material.SetColor(DARK_COLOR_PROPERTY_ID, Color.blue);
+			var main = mixTexture.DefaultColorGroup.BaseDefaultColor.GetColor();
+			var shade = mixTexture.DefaultColorGroup.ShadeDefaultColor.GetColor();
+
+			material.SetColor(MAIN_COLOR_PROPERTY_ID, main);
+			material.SetColor(DARK_COLOR_PROPERTY_ID, shade);
 		}
 
 		static IEnumerable<IMixTexture> SortMixTextures(IEnumerable<IMixTexture> mixTextures, MixTextureOrdering mixTextureOrdering)
