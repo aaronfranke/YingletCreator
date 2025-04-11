@@ -50,31 +50,16 @@ public sealed class TextureGrayscaler : EditorWindow
 
 		Color[] pixels = tex.GetPixels();
 
-		ColorRA[] grays = new ColorRA[pixels.Length];
-
-		// Convert to grayscale and find min/max
-		for (int i = 0; i < pixels.Length; i++)
-		{
-			Color color = pixels[i];
-			float gray = color.grayscale;
-			grays[i].R = gray;
-			grays[i].A = color.a;
-		}
-
-		float maxGray = lightColor.grayscale;
-		float minGray = darkColor.grayscale;
-		float range = maxGray - minGray;
-		if (range <= 0f) range = 1f; // Avoid divide by zero
 
 		// Normalize and apply back to pixels
 		for (int i = 0; i < pixels.Length; i++)
 		{
-			var gray = grays[i];
-			float normalized = (gray.R - minGray) / range;
+			var col = pixels[i];
+			float normalized = InverseLerpColor(darkColor, lightColor, col);
 			// Capture it to only 50% of the range
 			// We'll use the rest of that range for black/white details
 			normalized = normalized / 2 + .25f;
-			pixels[i] = new Color(normalized, normalized, normalized, gray.A);
+			pixels[i] = new Color(normalized, normalized, normalized, col.a);
 		}
 
 		tex.SetPixels(pixels);
@@ -106,11 +91,6 @@ public sealed class TextureGrayscaler : EditorWindow
 				importer.textureCompression = TextureImporterCompression.Uncompressed;
 				needsUpdate = true;
 			}
-			if (importer.sRGBTexture == false)
-			{
-				importer.sRGBTexture = true;
-				needsUpdate = true;
-			}
 
 			if (needsUpdate)
 			{
@@ -121,21 +101,23 @@ public sealed class TextureGrayscaler : EditorWindow
 
 		void FinalizeSettings()
 		{
-			importer.sRGBTexture = false;
 			importer.textureCompression = originalTextureCompression;
 			AssetDatabase.ImportAsset(assetPath, ImportAssetOptions.ForceUpdate);
 		}
 	}
 
-
-	struct ColorRA
+	// chat-gpt generated garbage
+	static float InverseLerpColor(Color colorA, Color colorB, Color inputColor)
 	{
-		public ColorRA(float r, float a)
-		{
-			R = r;
-			A = a;
-		}
-		public float R;
-		public float A;
+		float diffR = Mathf.Abs(colorB.r - colorA.r);
+		float diffG = Mathf.Abs(colorB.g - colorA.g);
+		float diffB = Mathf.Abs(colorB.b - colorA.b);
+
+		if (diffR >= diffG && diffR >= diffB)
+			return Mathf.InverseLerp(colorA.r, colorB.r, inputColor.r);
+		else if (diffG >= diffR && diffG >= diffB)
+			return Mathf.InverseLerp(colorA.g, colorB.g, inputColor.g);
+		else
+			return Mathf.InverseLerp(colorA.b, colorB.b, inputColor.b);
 	}
 }

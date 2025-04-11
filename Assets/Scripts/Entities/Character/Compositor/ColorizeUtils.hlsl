@@ -1,25 +1,33 @@
 #ifndef COLORIZE_UTILS_INCLUDED
 #define COLORIZE_UTILS_INCLUDED
 
-float saturateAndGammaConvert(float f)
-{
-                // Saturating alone will cause the resulting black/white ranges to look like ass
-                // So convert it from rgb to gamma
-    f = saturate(f);
-    f = pow(f, 2.2f); // Good enough heuristic
-    return f;
-}
+// Converted from UnityCG.cginc for single values (not colors)
 
+
+float Custom_ColorspaceConversion_Linear_RGB_float(float In)
+{
+    float sRGBLo = In * 12.92;
+    float sRGBHi = (pow(max(abs(In), 1.192092896e-07), float(1.0 / 2.4)) * 1.055) - 0.055;
+    return float(In <= 0.0031308) ? sRGBLo : sRGBHi;
+}
+float Custom_ColorspaceConversion_RGB_Linear_float(float In)
+{
+    float linearRGBLo = In / 12.92;
+    float linearRGBHi = pow(max(abs((In + 0.055) / 1.055), 1.192092896e-07), float(2.4));
+    return float(In <= 0.04045) ? linearRGBLo : linearRGBHi;
+}
 float4 GrayscaleToColored(float4 mainTexColor, float4 grayscaleColor, float4 color, float4 darkColor)
 {
-    float range25to75 = (grayscaleColor.r - 0.25f) * 2;
-    float3 colorizedColor = lerp(darkColor.rgb, color.rgb, saturate(range25to75));
+    float grayscale = Custom_ColorspaceConversion_Linear_RGB_float(grayscaleColor.r);
+    
+    float range25to75 = saturate((grayscale - 0.25f) * 2);
+    float3 colorizedColor = lerp(darkColor.rgb, color.rgb, range25to75);
 
-    float range0to25 = grayscaleColor.r * 4;
-    colorizedColor = lerp((0, 0, 0), colorizedColor, saturateAndGammaConvert(range0to25));
+    float range0to25 = saturate(grayscale * 4);
+    colorizedColor = lerp((0, 0, 0), colorizedColor, Custom_ColorspaceConversion_RGB_Linear_float(range0to25));
 
-    float range75to100 = (grayscaleColor.r - 0.75f) * 4;
-    colorizedColor = lerp(colorizedColor, (1, 1, 1), saturateAndGammaConvert(range75to100));
+    float range75to100 = saturate((grayscale - 0.75f) * 4);
+    colorizedColor = lerp(colorizedColor, (1, 1, 1), Custom_ColorspaceConversion_RGB_Linear_float(range75to100));
 
     float4 outColor = mainTexColor;
     outColor.rgb = lerp(mainTexColor.rgb, colorizedColor, grayscaleColor.a);
