@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee45e03f2dc3e2f4a82b3713ad9c84ac, type: 3}
   m_Name: FurPattern
   m_EditorClassIdentifier: 
-  _defaultColorValues:
-    _hueShift: 10
-    _multiplication: 1.021
-    _contrast: 1.655
-    _saturation: 0.594
+  _baseDefaultColor:
+    _hue: 0.0974843
+    _saturation: 0.22362873
+    _value: 0.9294118
+  _shadeDefaultColor:
+    _hue: 0.0864979
+    _saturation: 0.34051725
+    _value: 0.909804
