@@ -95,7 +95,7 @@ public class UpdateEyeAssets
 				importer.isReadable = true;
 				importer.alphaIsTransparency = true;
 				importer.compressionQuality = compress ? 3 : 100; // Source textures shouldn't be compressed
-				importer.sRGBTexture = false; // These are used for grayscale
+				importer.sRGBTexture = true; // These are used for grayscale
 				importer.SaveAndReimport();
 			}
 		}
