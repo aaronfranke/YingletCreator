@@ -1,3 +1,4 @@
+using Character.Data;
 using UnityEngine;
 
 namespace CharacterCompositor
@@ -6,9 +7,13 @@ namespace CharacterCompositor
 	public sealed class EyeIndividualMixTextureReferences
 	{
 		[SerializeField] ColorGroup _defaultColorGroup;
+		[SerializeField] ReColorId _leftReColorId;
+		[SerializeField] ReColorId _rightReColorId;
 		[SerializeField] TargetMaterialTexture _targetMaterialTexture;
 
 		public ColorGroup DefaultColorGroup => _defaultColorGroup;
+		public ReColorId LeftReColorId => _leftReColorId;
+		public ReColorId RightReColorId => _rightReColorId;
 		public TargetMaterialTexture TargetMaterialTexture => _targetMaterialTexture;
 	}
 
@@ -21,6 +26,9 @@ namespace CharacterCompositor
 		[SerializeField] EyeIndividualMixTextureReferences _outline;
 		[SerializeField] MaterialDescription _leftMaterialDescription;
 		[SerializeField] MaterialDescription _rightMaterialDescription;
+		[SerializeField] ReColorId _leftEyeColorId;
+		[SerializeField] ReColorId _rightEyeColorId;
+		[SerializeField] ReColorId _eyelidColorId;
 
 		public EyeIndividualMixTextureReferences Fill => _fill;
 		public EyeIndividualMixTextureReferences Eyelid => _eyelid;

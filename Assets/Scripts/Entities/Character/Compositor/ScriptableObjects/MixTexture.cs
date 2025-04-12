@@ -1,3 +1,4 @@
+using Character.Data;
 using UnityEngine;
 
 namespace CharacterCompositor
@@ -7,10 +8,17 @@ namespace CharacterCompositor
 	{
 
 		/// <summary>
-		/// Textures are grouped together to share the same color adjustments
-		/// This property determines which group this texture should default into
+		/// A grouping that determines the default color for this texture if a recolor isn't provided
+		/// Additionally, if a new item isn't recolored but an item in the group is,
+		/// This will use that recolored item's texture recolor
 		/// </summary>
 		ColorGroup DefaultColorGroup { get; }
+
+		/// <summary>
+		/// The ID used to re-color this
+		/// If null, this mix texture can't be recolored
+		/// </summary>
+		ReColorId ReColorId { get; }
 
 		/// <summary>
 		/// What material this texture should be applied to
@@ -38,11 +46,14 @@ namespace CharacterCompositor
 	public class MixTexture : ScriptableObject, IMixTexture
 	{
 		[SerializeField] ColorGroup _defaultColorGroup;
+		[SerializeField] ReColorId _reColorId;
 		[SerializeField] MaterialDescription _targetMaterialDescription;
 		[SerializeField] Texture2D _grayscale;
 		[SerializeField] Texture2D _mask;
 
 		public ColorGroup DefaultColorGroup => _defaultColorGroup;
+
+		public ReColorId ReColorId => _reColorId;
 
 		public MaterialDescription TargetMaterialDescription => _targetMaterialDescription;
 
@@ -53,6 +64,7 @@ namespace CharacterCompositor
 		public bool Sortable => true;
 
 		public TargetMaterialTexture TargetMaterialTexture => TargetMaterialTexture.MainTexture;
+
 	}
 
 	public enum TargetMaterialTexture

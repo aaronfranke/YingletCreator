@@ -1,3 +1,4 @@
+using Character.Data;
 using UnityEngine;
 
 
@@ -23,6 +24,8 @@ namespace CharacterCompositor
 
 		public ColorGroup DefaultColorGroup => _individualReferences.DefaultColorGroup;
 
+		public ReColorId ReColorId => _isLeft ? _individualReferences.LeftReColorId : _individualReferences.RightReColorId;
+
 		public MaterialDescription TargetMaterialDescription => _isLeft ? _references.LeftMaterialDescription : _references.RightMaterialDescription;
 
 		public Texture2D Grayscale => _texture;
@@ -34,5 +37,6 @@ namespace CharacterCompositor
 		public bool Sortable => false;
 
 		public TargetMaterialTexture TargetMaterialTexture => _individualReferences.TargetMaterialTexture;
+
 	}
 }
