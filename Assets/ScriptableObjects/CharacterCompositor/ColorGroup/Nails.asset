@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee45e03f2dc3e2f4a82b3713ad9c84ac, type: 3}
   m_Name: Nails
   m_EditorClassIdentifier: 
-  _defaultColorValues:
-    _hueShift: 336
-    _multiplication: 0.216
-    _contrast: 1.007
-    _saturation: 0.219
+  _baseDefaultColor:
+    _hue: 0.01449279
+    _saturation: 0.21226418
+    _value: 0.26415092
+  _shadeDefaultColor:
+    _hue: 0.01449279
+    _saturation: 0.21226418
+    _value: 0.26415092

@@ -1,6 +1,6 @@
-using UnityEngine;
-using UnityEditor;
 using System.IO;
+using UnityEditor;
+using UnityEngine;
 
 /// <summary>
 /// Unity UI gets a really annoying jagged edge if the border is flush with the side
@@ -10,7 +10,7 @@ using System.IO;
 /// </summary>
 public class AddTransparentBorder : EditorWindow
 {
-    [MenuItem("Custom/Add Transparent Border to .png", false, 2000)]
+    [MenuItem("Custom/Texture Processing/Add Transparent Border to .png", false, 2000)]
     private static void AddBorder()
     {
         string path = AssetDatabase.GetAssetPath(Selection.activeObject);

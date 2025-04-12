@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee45e03f2dc3e2f4a82b3713ad9c84ac, type: 3}
   m_Name: Base
   m_EditorClassIdentifier: 
-  _defaultColorValues:
-    _hueShift: 3
-    _multiplication: 0.723
-    _contrast: 1.089
-    _saturation: 0.995
+  _baseDefaultColor:
+    _hue: 0.08054998
+    _saturation: 0.39999998
+    _value: 0.84
+  _shadeDefaultColor:
+    _hue: 0.060846552
+    _saturation: 0.6556604
+    _value: 0.8113208

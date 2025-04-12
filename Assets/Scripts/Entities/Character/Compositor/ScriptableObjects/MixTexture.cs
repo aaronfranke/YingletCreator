@@ -3,71 +3,62 @@ using UnityEngine;
 namespace CharacterCompositor
 {
 
-    public interface IMixTexture
-    {
+	public interface IMixTexture
+	{
 
-        /// <summary>
-        /// Textures are grouped together to share the same color adjustments
-        /// This property determines which group this texture should default into
-        /// </summary>
-        ColorGroup DefaultColorGroup { get; }
+		/// <summary>
+		/// Textures are grouped together to share the same color adjustments
+		/// This property determines which group this texture should default into
+		/// </summary>
+		ColorGroup DefaultColorGroup { get; }
 
-        /// <summary>
-        /// When Contrast=0, this is the color that should be used for this texture
-        /// Generally an average between the high and low colors
-        /// </summary>
-        Color ContrastMidpointColor { get; }
+		/// <summary>
+		/// What material this texture should be applied to
+		/// </summary>
+		MaterialDescription TargetMaterialDescription { get; }
 
-        /// <summary>
-        /// What material this texture should be applied to
-        /// </summary>
-        MaterialDescription TargetMaterialDescription { get; }
+		/// <summary>
+		/// Texture that contains the shading for this. Usually a reddish gradient 
+		/// </summary>
+		Texture2D Grayscale { get; }
 
-        /// <summary>
-        /// Texture that contains the shading for this. Usually a reddish gradient 
-        /// </summary>
-        Texture2D Shading { get; }
+		/// <summary>
+		/// Optional texture that controls what parts of the texture should be rendered
+		/// </summary>
+		Texture2D Mask { get; }
 
-        /// <summary>
-        /// Optional texture that controls what parts of the texture should be rendered
-        /// </summary>
-        Texture2D Mask { get; }
+		string name { get; }
 
-        string name { get; }
+		bool Sortable { get; }
 
-        bool Sortable { get; }
+		TargetMaterialTexture TargetMaterialTexture { get; }
+	}
 
-        TargetMaterialTexture TargetMaterialTexture { get; }
-    }
+	[CreateAssetMenu(fileName = "MixTexture", menuName = "Scriptable Objects/Character Compositor/MixTexture")]
+	public class MixTexture : ScriptableObject, IMixTexture
+	{
+		[SerializeField] ColorGroup _defaultColorGroup;
+		[SerializeField] MaterialDescription _targetMaterialDescription;
+		[SerializeField] Texture2D _grayscale;
+		[SerializeField] Texture2D _mask;
 
-    [CreateAssetMenu(fileName = "MixTexture", menuName = "Scriptable Objects/Character Compositor/MixTexture")]
-    public class MixTexture : ScriptableObject, IMixTexture
-    {
-        [SerializeField] ColorGroup _defaultColorGroup;
-        [SerializeField][ColorUsage(false)] Color _contrastMidpointColor = Color.gray;
-        [SerializeField] MaterialDescription _targetMaterialDescription;
-        [SerializeField] Texture2D _shading;
-        [SerializeField] Texture2D _mask;
+		public ColorGroup DefaultColorGroup => _defaultColorGroup;
 
-        public ColorGroup DefaultColorGroup => _defaultColorGroup;
+		public MaterialDescription TargetMaterialDescription => _targetMaterialDescription;
 
-        public Color ContrastMidpointColor => _contrastMidpointColor;
+		public Texture2D Grayscale => _grayscale;
 
-        public MaterialDescription TargetMaterialDescription => _targetMaterialDescription;
+		public Texture2D Mask => _mask;
 
-        public Texture2D Shading => _shading;
+		public bool Sortable => true;
 
-        public Texture2D Mask => _mask;
+		public TargetMaterialTexture TargetMaterialTexture => TargetMaterialTexture.MainTexture;
+	}
 
-        public bool Sortable => true;
-
-        public TargetMaterialTexture TargetMaterialTexture => TargetMaterialTexture.MainTexture;
-    }
-
-    public enum TargetMaterialTexture
-    {
-        MainTexture,
-        Outline, // Used in the eye texture; covers the pupil
-        Pupil // Used in the eye texture
-    }
+	public enum TargetMaterialTexture
+	{
+		MainTexture,
+		Outline, // Used in the eye texture; covers the pupil
+		Pupil // Used in the eye texture
+	}
 }

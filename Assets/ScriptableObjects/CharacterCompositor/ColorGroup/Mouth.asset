@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee45e03f2dc3e2f4a82b3713ad9c84ac, type: 3}
   m_Name: Mouth
   m_EditorClassIdentifier: 
-  _defaultColorValues:
-    _hueShift: 0
-    _multiplication: 1
-    _contrast: 1
-    _saturation: 1
+  _baseDefaultColor:
+    _hue: 0.14102565
+    _saturation: 0.056521732
+    _value: 0.90196085
+  _shadeDefaultColor:
+    _hue: 0.14102565
+    _saturation: 0.056521732
+    _value: 0.90196085
