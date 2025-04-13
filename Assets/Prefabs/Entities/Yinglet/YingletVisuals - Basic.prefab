@@ -1344,7 +1344,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _meshes:
-  - {fileID: 11400000, guid: aefbe41cb6624564682ac02608a7274c, type: 2}
   - {fileID: 11400000, guid: b80f1435d4f9dfe45937d7a6b01f77ff, type: 2}
   - {fileID: 11400000, guid: a28b5634cd3972e4b9ced895901b8ebb, type: 2}
   - {fileID: 11400000, guid: 791b18dff3fff1444b913ffe7fc6f4e2, type: 2}
@@ -1359,6 +1358,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4467667786261249746}
   - component: {fileID: 3342700892592550629}
+  - component: {fileID: 6580971865811794333}
   m_Layer: 0
   m_Name: MeshCreation
   m_TagString: Untagged
@@ -1396,6 +1396,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a25f9e1a66ebb28469265be7566b8e4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6580971865811794333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5532958630467826227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abec8659019432a4ea42875aa249e2e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigRoot: {fileID: 7242667306552982940}
 --- !u!1 &5902246520854567290
 GameObject:
   m_ObjectHideFlags: 0
