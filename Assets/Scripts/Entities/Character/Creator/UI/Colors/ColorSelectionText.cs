@@ -1,15 +1,29 @@
+using Reactivity;
 using TMPro;
 using UnityEngine;
 
 
 namespace Character.Creator.UI
 {
-	public class ColorSelectionText : MonoBehaviour
+	public class ColorSelectionText : ReactiveBehaviour
 	{
+		[SerializeField] Material _selectedMaterial;
+		private IColorSelectionReference _reference;
+		private TMP_Text _text;
+		private Material _startMaterial;
+
 		private void Start()
 		{
-			var reference = this.GetComponentInParent<IColorSelectionReference>();
-			this.GetComponent<TMP_Text>().text = reference.Id.name;
+			_reference = this.GetComponentInParent<IColorSelectionReference>();
+			_text = this.GetComponent<TMP_Text>();
+			_text.text = _reference.Id.name;
+			_startMaterial = _text.fontMaterial;
+			AddReflector(ReflectTextMaterial);
+		}
+
+		private void ReflectTextMaterial()
+		{
+			_text.fontMaterial = _reference.Selected.Val ? _selectedMaterial : _startMaterial;
 		}
 	}
 }

@@ -3,18 +3,18 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ChangeColorOnHover : ReactiveBehaviour
+public class ChangeColorOnSelected : ReactiveBehaviour
 {
 	[SerializeField] Color _targetColor;
 	[SerializeField] Graphic[] _targets;
 	[SerializeField] SharedEaseSettings _easeSettings;
-	private IHoverable _hoverable;
+	private ISelectable _selectable;
 	private Color _originalColor;
 	private Coroutine _transitionCoroutine;
 
 	private void Awake()
 	{
-		_hoverable = this.GetComponentInParent<IHoverable>();
+		_selectable = this.GetComponentInParent<ISelectable>();
 		_originalColor = _targets.First().color;
 		UpdateColors(_originalColor);
 	}
@@ -27,7 +27,7 @@ public class ChangeColorOnHover : ReactiveBehaviour
 	private void Reflect()
 	{
 		Color from = _targets.First().color;
-		Color to = _hoverable.Hovered.Val ? _targetColor : _originalColor;
+		Color to = _selectable.Selected.Val ? _targetColor : _originalColor;
 		this.StartEaseCoroutine(ref _transitionCoroutine, _easeSettings, p => UpdateColors(Color.LerpUnclamped(from, to, p)));
 	}
 

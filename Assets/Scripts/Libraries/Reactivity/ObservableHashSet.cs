@@ -1,7 +1,7 @@
+using Reactivity.Implementation;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Reactivity.Implementation;
 
 namespace Reactivity
 {
@@ -26,7 +26,7 @@ namespace Reactivity
 				dict.Add(item, dictValue);
 			}
 			if (dictValue.Exists) return;
-			
+
 			dictValue.Exists = true;
 			dictValue.Notifier.Dirty();
 
@@ -34,6 +34,13 @@ namespace Reactivity
 		}
 
 		public bool Remove(T item)
+		{
+			var result = RemoveNoEnumNotify(item);
+			enumerableNotifier.Dirty();
+			return result;
+		}
+
+		bool RemoveNoEnumNotify(T item)
 		{
 			if (!dict.TryGetValue(item, out var dictValue))
 			{
@@ -43,8 +50,6 @@ namespace Reactivity
 			var returnVal = dictValue.Exists;
 			dictValue.Exists = false;
 			dictValue.Notifier.Dirty();
-
-			enumerableNotifier.Dirty();
 
 			return returnVal;
 		}
@@ -75,7 +80,12 @@ namespace Reactivity
 
 		public void Clear()
 		{
-			throw new System.NotImplementedException();
+			var keys = dict.Keys.ToArray();
+			foreach (var key in keys)
+			{
+				RemoveNoEnumNotify(key);
+			}
+			enumerableNotifier.Dirty();
 		}
 
 		public void CopyTo(T[] array, int arrayIndex)
