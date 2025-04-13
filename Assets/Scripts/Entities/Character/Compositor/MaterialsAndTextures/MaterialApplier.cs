@@ -8,18 +8,18 @@ namespace Character.Compositor
 	{
 		private IMeshGeneration _meshGeneration;
 		private IReadOnlyDictionary<MaterialDescription, Material> _lookup;
-		private EnumerableDictReflector<MeshObjectWithMaterialDescription, object> _enumerableReflector;
+		private EnumerableSetReflector<MeshObjectWithMaterialDescription> _enumerableReflector;
 
 		private void Awake()
 		{
 			_meshGeneration = this.GetCompositedYingletComponent<IMeshGeneration>();
 			var materialGeneration = this.GetComponent<IMaterialGeneration>();
 			_lookup = materialGeneration.GeneratedMaterialLookup; // Grabbing this reference outside the reactive scope is not ideal, but should be fiiine and save us a bit of headache
-			_enumerableReflector = new(Create, (_) => { });
+			_enumerableReflector = new(Create);
 			AddReflector(Reflect);
 		}
 
-		private object Create(MeshObjectWithMaterialDescription description)
+		private void Create(MeshObjectWithMaterialDescription description)
 		{
 			if (_lookup.TryGetValue(description.MaterialDescription, out Material material))
 			{
@@ -30,7 +30,6 @@ namespace Character.Compositor
 			{
 				Debug.LogWarning($"Failed to find a material with description {description.MaterialDescription.name} for mesh object {description.MeshGO.name}");
 			}
-			return null;
 		}
 
 		private void Reflect()

@@ -23,7 +23,7 @@ namespace Character.Compositor
 
 		private IndividualMaterialTexturerReferences _references;
 		private MaterialWithDescription _material;
-		EnumerableDictReflector<IMixTexture, object> _relevantMixTextures;
+		EnumerableSetReflector<IMixTexture> _relevantMixTextures;
 		private Reflector _reflectRelevantMixTextures;
 		private Reflector _reflectTextureComposite;
 		private List<RenderTexture> _cachedRenderTextures = new List<RenderTexture>();
@@ -33,7 +33,7 @@ namespace Character.Compositor
 			_references = references;
 			_material = material;
 
-			_relevantMixTextures = new EnumerableDictReflector<IMixTexture, object>(Create, Delete);
+			_relevantMixTextures = new EnumerableSetReflector<IMixTexture>();
 			_reflectRelevantMixTextures = new Reflector(ReflectRelevantMixTextures);
 			_reflectTextureComposite = new Reflector(ReflectTextureComposite);
 		}
@@ -49,7 +49,7 @@ namespace Character.Compositor
 		{
 			CleanupRenderTextures();
 
-			var relevantTextures = _relevantMixTextures.Keys.ToArray();
+			var relevantTextures = _relevantMixTextures.Items.ToArray();
 			var sortedTextures = SortMixTextures(relevantTextures, _references.MixTextureOrdering);
 
 			// Some materials have multiple textures (notably the eyes). Update them separately
@@ -122,9 +122,6 @@ namespace Character.Compositor
 				return int.MaxValue;
 			}).ToArray();
 		}
-
-		private object Create(IMixTexture texture) => null;
-		private void Delete(object obj) { }
 
 		void CleanupRenderTextures()
 		{

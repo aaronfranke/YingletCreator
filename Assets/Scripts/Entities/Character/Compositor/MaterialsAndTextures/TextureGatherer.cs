@@ -12,18 +12,16 @@ namespace Character.Compositor
 	public class TextureGatherer : ReactiveBehaviour, ITextureGatherer
 	{
 		private ITextureGathererMutator[] _mutators;
-		private EnumerableDictReflector<IMixTexture, object> _enumerableReflector;
+		private EnumerableSetReflector<IMixTexture> _enumerableReflector;
 
-		public IEnumerable<IMixTexture> AllRelevantTextures => _enumerableReflector.Keys;
+		public IEnumerable<IMixTexture> AllRelevantTextures => _enumerableReflector.Items;
 
 		void Awake()
 		{
 			_mutators = this.GetComponentsInChildren<ITextureGathererMutator>();
-			_enumerableReflector = new EnumerableDictReflector<IMixTexture, object>(Added, Removed);
+			_enumerableReflector = new();
 			AddReflector(Composite);
 		}
-		private object Added(IMixTexture material) => null;
-		private void Removed(object obj) { }
 
 		public void Composite()
 		{

@@ -13,20 +13,24 @@ namespace Reactivity
 	/// <typeparam name="TObj">The create portion can return something of this type. This helps it get cleaned up in the delete portion</typeparam>
 	internal sealed class EnumerableDictReflector<TSource, TObj>
 	{
-		private readonly Func<TSource, TObj> _create;
-		private readonly Action<TObj> _delete;
+		private readonly Func<TSource, TObj> _create = null;
+		private readonly Action<TObj> _delete = null;
 
 		private IEnumerable<TSource> _lastItems;
 		private readonly IDictionary<TSource, TObj> _currentObjs;
 		private readonly Notifier notifier = new Notifier();
 
 
+		public EnumerableDictReflector()
+		{
+			_lastItems = Enumerable.Empty<TSource>();
+			_currentObjs = new Dictionary<TSource, TObj>();
+		}
 		public EnumerableDictReflector(Func<TSource, TObj> create, Action<TObj> delete)
+			: this()
 		{
 			_create = create;
 			_delete = delete;
-			_lastItems = Enumerable.Empty<TSource>();
-			_currentObjs = new Dictionary<TSource, TObj>();
 		}
 
 		/// <summary>
@@ -44,13 +48,13 @@ namespace Reactivity
 			var removes = _lastItems.Except(itemsCopy);
 			foreach (var add in adds)
 			{
-				var newObj = _create(add);
+				var newObj = _create != null ? _create(add) : default(TObj);
 				_currentObjs[add] = newObj;
 			}
 			foreach (var remove in removes)
 			{
 				_currentObjs.Remove(remove, out var removedObj);
-				_delete(removedObj);
+				if (_delete != null) _delete(removedObj);
 			}
 			_lastItems = itemsCopy;
 			if (adds.Any() || removes.Any())
