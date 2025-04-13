@@ -13,7 +13,7 @@ namespace Character.Compositor
 	public class MeshGeneration : ReactiveBehaviour, IMeshGeneration
 	{
 		[SerializeField] Transform _rigRoot;
-		private IMeshDefinition _meshDefinition;
+		private IMeshGatherer _meshDefinition;
 		private EnumerableReflector<MeshWithMaterial, MeshObjectWithMaterialDescription> _enumerableReflector;
 		private Dictionary<string, Transform> _boneMap;
 
@@ -21,7 +21,7 @@ namespace Character.Compositor
 
 		void Awake()
 		{
-			_meshDefinition = this.GetComponent<IMeshDefinition>();
+			_meshDefinition = this.GetComponent<IMeshGatherer>();
 			_enumerableReflector = new EnumerableReflector<MeshWithMaterial, MeshObjectWithMaterialDescription>(Added, Removed);
 			_boneMap = GetBoneMap(_rigRoot);
 			AddReflector(Composite);
@@ -47,7 +47,7 @@ namespace Character.Compositor
 
 		public void Composite()
 		{
-			var meshes = _meshDefinition.DefinedMeshes.ToArray();
+			var meshes = _meshDefinition.AllRelevantMeshes.ToArray();
 			_enumerableReflector.Enumerate(meshes);
 		}
 

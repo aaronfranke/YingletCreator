@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Character.Compositor
 {
 
-	public class MeshDefinition_RemoveAtLowSliderValue : ReactiveBehaviour, IMeshDefinitionMutator
+	public class MeshGatherer_RemoveAtLowSliderValue : ReactiveBehaviour, IMeshGathererMutator
 	{
 		[SerializeField] MeshWithMaterial _toRemove;
 		[SerializeField] CharacterSliderId _sliderId;

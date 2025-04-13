@@ -27,6 +27,8 @@ namespace Character.Compositor
 
 		void Awake()
 		{
+			if (!this.isActiveAndEnabled) return;
+
 			AddReflector(Composite);
 		}
 		public void Composite()

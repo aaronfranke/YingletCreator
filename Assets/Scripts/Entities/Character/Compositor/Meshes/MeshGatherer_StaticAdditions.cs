@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Character.Compositor
 {
-	public class MeshDefinition_StaticAdditions : MonoBehaviour, IMeshDefinitionMutator
+	public class MeshGatherer_StaticAdditions : MonoBehaviour, IMeshGathererMutator
 	{
 		[SerializeField] MeshWithMaterial[] _meshes;
 		public void Mutate(ref ISet<MeshWithMaterial> set)

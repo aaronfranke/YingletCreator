@@ -84,5 +84,15 @@ namespace Reactivity
 				return (IReadOnlyDictionary<TSource, TObj>)_currentObjs;
 			}
 		}
+
+		public IEnumerable<KeyValuePair<TSource, TObj>> KVP
+		{
+			get
+			{
+				notifier.Track();
+				return _currentObjs.AsEnumerable();
+			}
+
+		}
 	}
 }

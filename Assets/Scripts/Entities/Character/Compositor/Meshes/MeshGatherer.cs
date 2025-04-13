@@ -7,24 +7,24 @@ namespace Character.Compositor
 	/// Reads the input customization data and generates the set of meshess that need to be created
 	/// Does not actually generate any meshes based off of this information
 	/// </summary>
-	public interface IMeshDefinition
+	public interface IMeshGatherer
 	{
 		/// <summary>
-		/// The set of meshes defined
+		/// The set of all meshes relevant to this composition
 		/// A corresponding GameObject should be created for all of these
 		/// </summary>
-		IEnumerable<MeshWithMaterial> DefinedMeshes { get; }
+		IEnumerable<MeshWithMaterial> AllRelevantMeshes { get; }
 	}
-	public class MeshDefinition : ReactiveBehaviour, IMeshDefinition
+	public class MeshGatherer : ReactiveBehaviour, IMeshGatherer
 	{
-		private IMeshDefinitionMutator[] _mutators;
+		private IMeshGathererMutator[] _mutators;
 		private EnumerableReflector<MeshWithMaterial, object> _enumerableReflector;
 
-		public IEnumerable<MeshWithMaterial> DefinedMeshes => _enumerableReflector.Keys;
+		public IEnumerable<MeshWithMaterial> AllRelevantMeshes => _enumerableReflector.Keys;
 
 		void Awake()
 		{
-			_mutators = this.GetComponentsInChildren<IMeshDefinitionMutator>();
+			_mutators = this.GetComponentsInChildren<IMeshGathererMutator>();
 			_enumerableReflector = new EnumerableReflector<MeshWithMaterial, object>(Added, Removed);
 			AddReflector(Composite);
 		}
@@ -45,7 +45,7 @@ namespace Character.Compositor
 	/// <summary>
 	/// Interface that can either add or remove meshes from the set
 	/// </summary>
-	public interface IMeshDefinitionMutator
+	public interface IMeshGathererMutator
 	{
 		/// <summary>
 		/// Reflectively called, giving the implementation a chance to add or remove meshes from the list
