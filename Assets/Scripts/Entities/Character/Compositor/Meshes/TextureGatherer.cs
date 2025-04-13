@@ -5,29 +5,29 @@ namespace Character.Compositor
 {
 	public interface ITextureGatherer
 	{
-		IEnumerable<MixTexture> AllRelevantTextures { get; }
+		IEnumerable<IMixTexture> AllRelevantTextures { get; }
 
 	}
 
 	public class TextureGatherer : ReactiveBehaviour, ITextureGatherer
 	{
 		private ITextureGathererMutator[] _mutators;
-		private EnumerableReflector<MixTexture, object> _enumerableReflector;
+		private EnumerableReflector<IMixTexture, object> _enumerableReflector;
 
-		public IEnumerable<MixTexture> AllRelevantTextures => _enumerableReflector.Keys;
+		public IEnumerable<IMixTexture> AllRelevantTextures => _enumerableReflector.Keys;
 
 		void Awake()
 		{
 			_mutators = this.GetComponentsInChildren<ITextureGathererMutator>();
-			_enumerableReflector = new EnumerableReflector<MixTexture, object>(Added, Removed);
+			_enumerableReflector = new EnumerableReflector<IMixTexture, object>(Added, Removed);
 			AddReflector(Composite);
 		}
-		private object Added(MixTexture material) => null;
+		private object Added(IMixTexture material) => null;
 		private void Removed(object obj) { }
 
 		public void Composite()
 		{
-			ISet<MixTexture> set = new HashSet<MixTexture>();
+			ISet<IMixTexture> set = new HashSet<IMixTexture>();
 			foreach (var m in _mutators)
 			{
 				m.Mutate(ref set);
@@ -45,6 +45,6 @@ namespace Character.Compositor
 		/// <summary>
 		/// Reflectively called, giving the implementation a chance to add or remove meshes from the list
 		/// </summary>
-		public void Mutate(ref ISet<MixTexture> textures);
+		public void Mutate(ref ISet<IMixTexture> textures);
 	}
 }
