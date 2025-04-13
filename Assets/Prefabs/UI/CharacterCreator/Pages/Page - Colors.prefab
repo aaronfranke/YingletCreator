@@ -144,6 +144,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2764674973348881295, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3512307546995425619, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
       propertyPath: m_Name
       value: Page - Colors
@@ -163,6 +167,10 @@ PrefabInstance:
     - target: {fileID: 4099649964880116737, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4223748227334262666, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
+      propertyPath: m_Size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4223748227334262666, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
       propertyPath: m_Value
@@ -188,6 +196,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Colorful Colors
       objectReference: {fileID: 0}
+    - target: {fileID: 4920883411348114028, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
+      propertyPath: m_PreferredHeight
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 4933058571705587622, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -211,6 +223,10 @@ PrefabInstance:
     - target: {fileID: 4933058571705587622, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043645701892320230, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
+      propertyPath: m_Padding.m_Bottom
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5337473424918895239, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
       propertyPath: m_AnchorMax.y
