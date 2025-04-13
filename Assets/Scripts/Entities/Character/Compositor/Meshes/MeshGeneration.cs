@@ -5,25 +5,30 @@ using UnityEngine;
 
 namespace CharacterCompositor
 {
-	public class MeshGeneration : ReactiveBehaviour
+	public interface IMeshGeneration
+	{
+		IEnumerable<MeshObjectWithMaterialDescription> Meshes { get; }
+
+	}
+	public class MeshGeneration : ReactiveBehaviour, IMeshGeneration
 	{
 		[SerializeField] Transform _rigRoot;
 		private IMeshDefinition _meshDefinition;
-		private EnumerableReflector<MeshWithMaterial, GameObject> _enumerableReflector;
+		private EnumerableReflector<MeshWithMaterial, MeshObjectWithMaterialDescription> _enumerableReflector;
 		private Dictionary<string, Transform> _boneMap;
+
+		IEnumerable<MeshObjectWithMaterialDescription> IMeshGeneration.Meshes => _enumerableReflector.Values;
 
 		void Awake()
 		{
 			_meshDefinition = this.GetComponent<IMeshDefinition>();
-			_enumerableReflector = new EnumerableReflector<MeshWithMaterial, GameObject>(Added, Removed);
+			_enumerableReflector = new EnumerableReflector<MeshWithMaterial, MeshObjectWithMaterialDescription>(Added, Removed);
 			_boneMap = GetBoneMap(_rigRoot);
 			AddReflector(Composite);
 		}
-		private GameObject Added(MeshWithMaterial mesh)
+		private MeshObjectWithMaterialDescription Added(MeshWithMaterial mesh)
 		{
-
 			var newGO = GameObject.Instantiate(mesh.SkinnedMeshRendererPrefab, this.transform.position, Quaternion.identity, this.transform);
-
 
 			newGO.name = mesh.SkinnedMeshRendererPrefab.name;
 			var skinnedMeshRenderer = newGO.GetComponent<SkinnedMeshRenderer>();
@@ -33,12 +38,11 @@ namespace CharacterCompositor
 				return _boneMap[b.name];
 			}
 			).ToArray();
-			//mapping[meshWithMaterial] = CreateSkinnedObject(meshWithMaterial.SkinnedMeshRendererPrefab, meshRoot.transform, boneMap);
-			return newGO;
+			return new MeshObjectWithMaterialDescription(newGO, mesh.MaterialDescription);
 		}
-		private void Removed(GameObject obj)
+		private void Removed(MeshObjectWithMaterialDescription obj)
 		{
-			GameObject.Destroy(obj);
+			Destroy(obj.MeshGO);
 		}
 
 		public void Composite()
@@ -63,5 +67,17 @@ namespace CharacterCompositor
 				}
 			}
 		}
+	}
+
+	public sealed class MeshObjectWithMaterialDescription
+	{
+		public MeshObjectWithMaterialDescription(GameObject mesh, MaterialDescription materialDescription)
+		{
+			MeshGO = mesh;
+			MaterialDescription = materialDescription;
+		}
+
+		public GameObject MeshGO { get; }
+		public MaterialDescription MaterialDescription { get; }
 	}
 }

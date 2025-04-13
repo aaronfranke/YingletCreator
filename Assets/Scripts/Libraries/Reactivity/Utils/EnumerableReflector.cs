@@ -75,5 +75,14 @@ namespace Reactivity
 				return _currentObjs.Values;
 			}
 		}
+
+		public IReadOnlyDictionary<TSource, TObj> Dict
+		{
+			get
+			{
+				notifier.Track();
+				return (IReadOnlyDictionary<TSource, TObj>)_currentObjs;
+			}
+		}
 	}
 }
