@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b503c82202b52da46953cf1868a9b4a5, type: 3}
-  m_Name: Hair_KassShadow
+  m_Name: Clothes - LingerieBase
   m_EditorClassIdentifier: 
-  _defaultColorGroup: {fileID: 11400000, guid: 24c4b4b3b6860a54fb8462a12f87f960, type: 2}
-  _contrastMidpointColor: {r: 0.95686275, g: 0.69803923, b: 0.5294118, a: 1}
-  _targetMaterialDescription: {fileID: 11400000, guid: 48d8d82a82557e04db940f0877878de1, type: 2}
-  _grayscale: {fileID: 2800000, guid: ff8c78fda8a456c4bb8be2fced3f7b1d, type: 3}
+  _reColorId: {fileID: 11400000, guid: 964e901922f6f2d498fc0d264cb46c0d, type: 2}
+  _targetMaterialDescription: {fileID: 11400000, guid: 0000dbc734a9450498cd8155fc145a66, type: 2}
+  _grayscale: {fileID: 2800000, guid: e8e493c68c734ad48849ed9725b056d4, type: 3}
   _mask: {fileID: 0}

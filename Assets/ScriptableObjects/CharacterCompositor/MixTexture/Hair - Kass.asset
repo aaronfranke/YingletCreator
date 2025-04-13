@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b503c82202b52da46953cf1868a9b4a5, type: 3}
-  m_Name: MouthKass
+  m_Name: Hair - Kass
   m_EditorClassIdentifier: 
-  _defaultColorGroup: {fileID: 11400000, guid: 685366f82755e964286540ab5f0f468e, type: 2}
-  _contrastMidpointColor: {r: 0.9058824, g: 0.8941177, b: 0.83921576, a: 1}
-  _targetMaterialDescription: {fileID: 11400000, guid: 047350e2a35df3c45a26cd141168ed10, type: 2}
-  _grayscale: {fileID: 2800000, guid: 06ab06b81b8f37d498397c65772f18c5, type: 3}
+  _reColorId: {fileID: 11400000, guid: e9621494b32dad54ea74c750b0e81b33, type: 2}
+  _targetMaterialDescription: {fileID: 11400000, guid: f044c0356f7c193469f2c093c892709e, type: 2}
+  _grayscale: {fileID: 2800000, guid: e51227a030500524799471d167e95ee7, type: 3}
   _mask: {fileID: 0}

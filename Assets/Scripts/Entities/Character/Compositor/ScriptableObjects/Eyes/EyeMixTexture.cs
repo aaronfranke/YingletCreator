@@ -22,8 +22,6 @@ namespace Character.Compositor
 			_isLeft = isLeft;
 		}
 
-		public ColorGroup DefaultColorGroup => _individualReferences.DefaultColorGroup;
-
 		public ReColorId ReColorId => _isLeft ? _individualReferences.LeftReColorId : _individualReferences.RightReColorId;
 
 		public MaterialDescription TargetMaterialDescription => _isLeft ? _references.LeftMaterialDescription : _references.RightMaterialDescription;

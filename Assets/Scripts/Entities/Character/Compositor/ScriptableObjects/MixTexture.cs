@@ -8,13 +8,6 @@ namespace Character.Compositor
 	{
 
 		/// <summary>
-		/// A grouping that determines the default color for this texture if a recolor isn't provided
-		/// Additionally, if a new item isn't recolored but an item in the group is,
-		/// This will use that recolored item's texture recolor
-		/// </summary>
-		ColorGroup DefaultColorGroup { get; }
-
-		/// <summary>
 		/// The ID used to re-color this
 		/// If null, this mix texture can't be recolored
 		/// </summary>
@@ -45,13 +38,10 @@ namespace Character.Compositor
 	[CreateAssetMenu(fileName = "MixTexture", menuName = "Scriptable Objects/Character Compositor/MixTexture")]
 	public class MixTexture : ScriptableObject, IMixTexture
 	{
-		[SerializeField] ColorGroup _defaultColorGroup;
 		[SerializeField] ReColorId _reColorId;
 		[SerializeField] MaterialDescription _targetMaterialDescription;
 		[SerializeField] Texture2D _grayscale;
 		[SerializeField] Texture2D _mask;
-
-		public ColorGroup DefaultColorGroup => _defaultColorGroup;
 
 		public ReColorId ReColorId => _reColorId;
 

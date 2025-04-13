@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b503c82202b52da46953cf1868a9b4a5, type: 3}
-  m_Name: Body_Nails
+  m_Name: Body - Beans
   m_EditorClassIdentifier: 
-  _defaultColorGroup: {fileID: 11400000, guid: 9192cfd3a9ab3c347bf47d2d0339c9fa, type: 2}
-  _contrastMidpointColor: {r: 0.95686275, g: 0.69803923, b: 0.5294118, a: 1}
+  _reColorId: {fileID: 11400000, guid: 605612a1324795647be8ee4ac4dce626, type: 2}
   _targetMaterialDescription: {fileID: 11400000, guid: 0000dbc734a9450498cd8155fc145a66, type: 2}
-  _grayscale: {fileID: 2800000, guid: c9f44334ff64d6a4fa1bece52ddc4026, type: 3}
-  _mask: {fileID: 2800000, guid: 2af3d1aaabeb7cb41abb9dc0c3df5a07, type: 3}
+  _grayscale: {fileID: 2800000, guid: 60ef18e4d9361e8458312c92287c8b80, type: 3}
+  _mask: {fileID: 0}
