@@ -4,45 +4,50 @@ using Reactivity;
 using System.Linq;
 using UnityEngine;
 
-public class ColorSelectionGroup : ReactiveBehaviour
+namespace Character.Creator.UI
 {
-	ITextureGatherer _gatherer;
-	[SerializeField] GameObject _colorSelectionPrefab;
-
-	EnumerableDictReflector<ReColorId, GameObject> _enumerableReflector;
-
-	private void Awake()
+	public class ColorSelectionGroup : ReactiveBehaviour
 	{
-		_gatherer = this.GetCharacterCreatorComponent<ITextureGatherer>();
-		_enumerableReflector = new(Create, Delete);
-		// Clean up any dummy objects under this
-		foreach (Transform child in transform)
+		ITextureGatherer _gatherer;
+		[SerializeField] GameObject _colorSelectionPrefab;
+
+		EnumerableDictReflector<ReColorId, GameObject> _enumerableReflector;
+
+		private void Awake()
 		{
-			Destroy(child.gameObject);
+			_gatherer = this.GetCharacterCreatorComponent<ITextureGatherer>();
+			_enumerableReflector = new(Create, Delete);
+			// Clean up any dummy objects under this
+			foreach (Transform child in transform)
+			{
+				Destroy(child.gameObject);
+			}
 		}
-	}
 
-	private GameObject Create(ReColorId id)
-	{
-		return Instantiate(_colorSelectionPrefab, this.transform);
-	}
-	private void Delete(GameObject gameObject)
-	{
-		Destroy(gameObject);
-	}
+		private GameObject Create(ReColorId id)
+		{
+			var go = Instantiate(_colorSelectionPrefab, this.transform);
+			go.GetComponent<IColorSelectionReference>().Id = id;
+			return go;
+		}
+		private void Delete(GameObject gameObject)
+		{
+			Destroy(gameObject);
+		}
 
-	private void Start()
-	{
-		AddReflector(ReflectColors);
-	}
+		private void Start()
+		{
+			AddReflector(ReflectColors);
+		}
 
-	void ReflectColors()
-	{
-		var recolorIds = _gatherer.AllRelevantTextures
-			.ToArray()
-			.Select(t => t.ReColorId)
-			.Where(i => i != null)
-			.ToHashSet();
-		_enumerableReflector.Enumerate(recolorIds);
+		void ReflectColors()
+		{
+			var recolorIds = _gatherer.AllRelevantTextures
+				.ToArray()
+				.Select(t => t.ReColorId)
+				.Where(i => i != null)
+				.ToHashSet();
+			_enumerableReflector.Enumerate(recolorIds);
+		}
 	}
 }
