@@ -577,6 +577,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6529575930122525476}
   - component: {fileID: 7602931229595406225}
+  - component: {fileID: 5691230049441232822}
+  - component: {fileID: 5885039670241748245}
   m_Layer: 0
   m_Name: TextureGatherer - DebugAdditive
   m_TagString: Untagged
@@ -614,6 +616,39 @@ MonoBehaviour:
   _textures:
   - {fileID: 11400000, guid: 37e8c4cebf6a11b44bba549b577f2f3c, type: 2}
   - {fileID: 11400000, guid: 6492f42815d1f4347a1f42f0c35258bf, type: 2}
+  - {fileID: 11400000, guid: eac753ccf614f63428da85bef4e26c60, type: 2}
+--- !u!114 &5691230049441232822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633952639997449326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87196c4caacad2448822baaa65070fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textures:
+  - {fileID: 11400000, guid: 1691fc46d90eda546b391d8164745a5e, type: 2}
+  - {fileID: 11400000, guid: b500c4ab4b0357240b4f3b4d662a9f4e, type: 2}
+  - {fileID: 11400000, guid: 5ecde03b4dc0ab14e9db0222c48bf33e, type: 2}
+  - {fileID: 11400000, guid: a320692dd8f32a14bb1f68af531d3239, type: 2}
+--- !u!114 &5885039670241748245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633952639997449326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87196c4caacad2448822baaa65070fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textures:
+  - {fileID: 11400000, guid: 7b91e2af58c58014a9db0881c5aa2e3a, type: 2}
+  - {fileID: 11400000, guid: 50e8861ef6c67c74ba6e56cb484034b2, type: 2}
 --- !u!1 &1752072061432067290
 GameObject:
   m_ObjectHideFlags: 0
@@ -2031,7 +2066,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4256077204897904255}
-  - component: {fileID: 1616172953590368420}
   - component: {fileID: 1171032844985239950}
   m_Layer: 0
   m_Name: CompositedYinglet
@@ -2061,55 +2095,6 @@ Transform:
   - {fileID: 4041256890071865057}
   m_Father: {fileID: 5936742691922770110}
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
---- !u!114 &1616172953590368420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7768275107933138602}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73d4b4a5a2c47d74f80634aa8475f411, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rigRoot: {fileID: 7242667306552982940}
-  _meshesWithMaterials:
-  - {fileID: 11400000, guid: aba7cec6e2ecde94ab2722038e840a79, type: 2}
-  - {fileID: 11400000, guid: 5717722a0a397ab4a8a4ef23f2b0da70, type: 2}
-  - {fileID: 11400000, guid: adfe061252c9f9f4f8c23b0959ef5bf3, type: 2}
-  - {fileID: 11400000, guid: b6ba7c9b3e627444da1c88677819eab5, type: 2}
-  - {fileID: 11400000, guid: 75797025092d2d3489c7845471ceafd2, type: 2}
-  - {fileID: 11400000, guid: 3160ec369448e0e429917437b0f687f9, type: 2}
-  - {fileID: 11400000, guid: 600f99d0c0d231f4e9a7fca9611166b6, type: 2}
-  - {fileID: 11400000, guid: fb65c04c5ee1c2b4a8c1e844c417deb2, type: 2}
-  - {fileID: 11400000, guid: a28b5634cd3972e4b9ced895901b8ebb, type: 2}
-  - {fileID: 11400000, guid: 250a9bd921b834f42ac1274edc3cf4fd, type: 2}
-  - {fileID: 11400000, guid: 791b18dff3fff1444b913ffe7fc6f4e2, type: 2}
-  - {fileID: 11400000, guid: b80f1435d4f9dfe45937d7a6b01f77ff, type: 2}
-  - {fileID: 11400000, guid: ab06503a183dd474f898976ab9d156c8, type: 2}
-  - {fileID: 11400000, guid: e8fc7b06604b8f94fa348c6975d897c0, type: 2}
-  _mixTextures:
-  - {fileID: 11400000, guid: 4e85041bdf3089347b8d3c4f3d7468a9, type: 2}
-  - {fileID: 11400000, guid: 1691fc46d90eda546b391d8164745a5e, type: 2}
-  - {fileID: 11400000, guid: a6951b0ffa2a09c46816097d66069968, type: 2}
-  - {fileID: 11400000, guid: b7b0f6e99607ea14aa633b818fd92ffe, type: 2}
-  - {fileID: 11400000, guid: eac753ccf614f63428da85bef4e26c60, type: 2}
-  - {fileID: 11400000, guid: 473b9969a620c564d91afe76473c376f, type: 2}
-  - {fileID: 11400000, guid: 37e8c4cebf6a11b44bba549b577f2f3c, type: 2}
-  - {fileID: 11400000, guid: 6492f42815d1f4347a1f42f0c35258bf, type: 2}
-  - {fileID: 11400000, guid: 15ef4b591ca7e0648a7ac450cd7d1a1c, type: 2}
-  - {fileID: 11400000, guid: 7f5183a5d5982ae4a906f701a5d915ad, type: 2}
-  - {fileID: 11400000, guid: 7b91e2af58c58014a9db0881c5aa2e3a, type: 2}
-  - {fileID: 11400000, guid: 50e8861ef6c67c74ba6e56cb484034b2, type: 2}
-  - {fileID: 11400000, guid: 2204013300d8b844187d8edaefddd3c4, type: 2}
-  - {fileID: 11400000, guid: c9f80055e215de548b81941b18a15e50, type: 2}
-  - {fileID: 11400000, guid: 5ecde03b4dc0ab14e9db0222c48bf33e, type: 2}
-  - {fileID: 11400000, guid: a320692dd8f32a14bb1f68af531d3239, type: 2}
-  - {fileID: 11400000, guid: b500c4ab4b0357240b4f3b4d662a9f4e, type: 2}
-  _eyeMixTexture: {fileID: 11400000, guid: 6b3e45e01f867204d9948c941c02b1e4, type: 2}
-  _eyeMixTextureReferences: {fileID: 11400000, guid: 87bf2f14988bd694b949957462908dcf, type: 2}
-  _mixTextureOrdering: {fileID: 11400000, guid: 24e382dfffbbace459bf4ad6dc633cdb, type: 2}
 --- !u!114 &1171032844985239950
 MonoBehaviour:
   m_ObjectHideFlags: 0

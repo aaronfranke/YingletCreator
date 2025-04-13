@@ -10,46 +10,47 @@ using UnityEngine.Assertions;
 /// </summary>
 public sealed class DoubleBufferedRenderTexture
 {
-    RenderTexture _upToDate;
-    RenderTexture _backup;
+	RenderTexture _upToDate;
+	RenderTexture _backup;
 
-    public DoubleBufferedRenderTexture(int textureSize)
-    {
-        _upToDate = CreateRT();
-        _backup = CreateRT();
+	public DoubleBufferedRenderTexture(int textureSize)
+	{
+		_upToDate = CreateRT();
+		_backup = CreateRT();
 
-        RenderTexture CreateRT()
-        {
-            var rt = new RenderTexture(textureSize, textureSize, 0);
-            rt.Create();
+		RenderTexture CreateRT()
+		{
+			var rt = new RenderTexture(textureSize, textureSize, 0);
+			rt.Create();
 
-            return rt;
-        }
-    }
+			return rt;
+		}
+	}
 
-    public void Blit(Material mat)
-    {
-        Assert.IsNotNull(_backup);
+	public void Blit(Material mat)
+	{
+		Assert.IsNotNull(_backup);
 
-        Graphics.Blit(_upToDate, _backup, mat);
-        Swap();
-    }
+		Graphics.Blit(_upToDate, _backup, mat);
+		Swap();
+	}
 
-    public RenderTexture Finalize()
-    {
-        if (_backup != null)
-        {
-            Object.DestroyImmediate(_backup);
-            _backup = null;
-        }
+	public RenderTexture Finalize()
+	{
+		if (_backup != null)
+		{
+			_backup.Release();
+			Object.Destroy(_backup);
+			_backup = null;
+		}
 
-        return _upToDate;
-    }
+		return _upToDate;
+	}
 
-    void Swap()
-    {
-        RenderTexture temp = _upToDate;
-        _upToDate = _backup;
-        _backup = temp;
-    }
+	void Swap()
+	{
+		RenderTexture temp = _upToDate;
+		_upToDate = _backup;
+		_backup = temp;
+	}
 }

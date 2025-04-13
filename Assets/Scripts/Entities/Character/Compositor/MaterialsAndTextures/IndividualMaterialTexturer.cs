@@ -26,6 +26,7 @@ namespace Character.Compositor
 		EnumerableReflector<IMixTexture, object> _relevantMixTextures;
 		private Reflector _reflectRelevantMixTextures;
 		private Reflector _reflectTextureComposite;
+		private List<RenderTexture> _cachedRenderTextures = new List<RenderTexture>();
 
 		public IndividualMaterialTexturer(IndividualMaterialTexturerReferences references, MaterialWithDescription material)
 		{
@@ -46,6 +47,8 @@ namespace Character.Compositor
 
 		private void ReflectTextureComposite()
 		{
+			CleanupRenderTextures();
+
 			var relevantTextures = _relevantMixTextures.Keys.ToArray();
 			var sortedTextures = SortMixTextures(relevantTextures, _references.MixTextureOrdering);
 
@@ -54,13 +57,12 @@ namespace Character.Compositor
 			foreach (var bucket in buckets)
 			{
 				if (!bucket.Any()) continue;
-				UpdateMaterialTexture(bucket.Key, bucket);
+				var rt = UpdateMaterialTexture(bucket.Key, bucket);
+				_cachedRenderTextures.Add(rt);
 			}
-
-
 		}
 
-		void UpdateMaterialTexture(TargetMaterialTexture materialTexture, IEnumerable<IMixTexture> applicableMixTextures)
+		RenderTexture UpdateMaterialTexture(TargetMaterialTexture materialTexture, IEnumerable<IMixTexture> applicableMixTextures)
 		{
 			int largestSize = applicableMixTextures.Any() ? applicableMixTextures.Max(m => m.Grayscale.width) : 1;
 			// TODO: Cleanup these textures
@@ -82,12 +84,14 @@ namespace Character.Compositor
 				renderTextures.Blit(_references.BlitMaterial);
 			}
 
+			var renderTexture = renderTextures.Finalize();
 			if (materialTexture == TargetMaterialTexture.MainTexture)
-				_material.Material.mainTexture = renderTextures.Finalize();
+				_material.Material.mainTexture = renderTexture;
 			else if (materialTexture == TargetMaterialTexture.Outline)
-				_material.Material.SetTexture(OUTLINE_PROPERTY_ID, renderTextures.Finalize());
+				_material.Material.SetTexture(OUTLINE_PROPERTY_ID, renderTexture);
 			else if (materialTexture == TargetMaterialTexture.Pupil)
-				_material.Material.SetTexture(PUPIL_PROPERTY_ID, renderTextures.Finalize());
+				_material.Material.SetTexture(PUPIL_PROPERTY_ID, renderTexture);
+			return renderTexture;
 		}
 
 		static void ApplyMixTexturePropsToMaterial(Material material, IMixTexture mixTexture)
@@ -122,11 +126,21 @@ namespace Character.Compositor
 		private object Create(IMixTexture texture) => null;
 		private void Delete(object obj) { }
 
+		void CleanupRenderTextures()
+		{
+			foreach (var rt in _cachedRenderTextures)
+			{
+				rt.Release();
+				GameObject.Destroy(rt);
+			}
+			_cachedRenderTextures.Clear();
+		}
 
 		public void Dispose()
 		{
 			_reflectTextureComposite.Destroy();
 			_reflectRelevantMixTextures.Destroy();
+			CleanupRenderTextures();
 		}
 	}
 

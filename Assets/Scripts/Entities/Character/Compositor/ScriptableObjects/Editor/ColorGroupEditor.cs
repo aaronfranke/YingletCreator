@@ -57,11 +57,11 @@ namespace Character.Compositor
 		static void UpdateGraphics()
 		{
 
-			var composited = GameObject.FindObjectsByType<CompositedYinglet>(FindObjectsSortMode.None);
-			foreach (var c in composited)
-			{
-				c.UpdateColorGroup();
-			}
+			//var composited = GameObject.FindObjectsByType<CompositedYinglet>(FindObjectsSortMode.None);
+			//foreach (var c in composited)
+			//{
+			//	c.UpdateColorGroup();
+			//}
 		}
 	}
 }
