@@ -28,8 +28,10 @@ namespace Character.Creator.UI
 		{
 			var go = Instantiate(_colorSelectionPrefab, this.transform);
 			go.GetComponent<IColorSelectionReference>().Id = id;
+			PositionSorted(go);
 			return go;
 		}
+
 		private void Delete(GameObject gameObject)
 		{
 			Destroy(gameObject);
@@ -48,6 +50,38 @@ namespace Character.Creator.UI
 				.Where(i => i != null)
 				.ToHashSet();
 			_enumerableReflector.Enumerate(recolorIds);
+		}
+
+
+		void PositionSorted(GameObject newObject)
+		{
+			var newValue = GetSortValue(newObject);
+
+			// Default to last position
+			int insertIndex = this.transform.childCount - 1;
+
+			// Find correct sibling index
+			for (int i = 0; i < this.transform.childCount - 1; i++)
+			{
+				Transform sibling = this.transform.GetChild(i);
+				int siblingValue = GetSortValue(sibling.gameObject);
+
+				if (newValue < siblingValue)
+				{
+					insertIndex = i;
+					break;
+				}
+			}
+
+			// Move the new object to the correct index
+			newObject.transform.SetSiblingIndex(insertIndex);
+		}
+
+		int GetSortValue(GameObject gameObject)
+		{
+			// TODO: implement this properly
+			var reference = gameObject.GetComponent<IColorSelectionReference>();
+			return reference.Id.name.Length;
 		}
 	}
 }
