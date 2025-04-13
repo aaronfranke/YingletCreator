@@ -22,15 +22,9 @@ namespace CharacterCompositor
 
 		IReadOnlyDictionary<MeshWithMaterial, GameObject> _lastMeshMapping;
 		IReadOnlyDictionary<MaterialDescription, Material> _lastMaterialMapping;
-		private ICompositorMeshConstraint[] _meshConstraints;
 		private Dictionary<string, Transform> _boneMap;
 
 		public event Action OnSkinnedMeshRenderersRegenerated = delegate { };
-
-		void Awake()
-		{
-			_meshConstraints = this.GetComponentsInChildren<ICompositorMeshConstraint>();
-		}
 
 		void Start()
 		{
@@ -41,13 +35,6 @@ namespace CharacterCompositor
 		{
 			Clear();
 			ISet<MeshWithMaterial> filteredMeshesWithMaterials = new HashSet<MeshWithMaterial>(_meshesWithMaterials);
-			if (_meshConstraints != null)
-			{
-				foreach (var meshConstraint in _meshConstraints)
-				{
-					meshConstraint.Filter(ref filteredMeshesWithMaterials);
-				}
-			}
 			if (_boneMap == null) _boneMap = MeshUtilities.GetBoneMap(_rigRoot);
 			_lastMeshMapping = MeshUtilities.GenerateMeshes(_rigRoot, _boneMap, filteredMeshesWithMaterials);
 			OnSkinnedMeshRenderersRegenerated();
