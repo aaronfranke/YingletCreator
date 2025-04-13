@@ -1,5 +1,5 @@
 using UnityEngine;
-namespace CharacterCompositor
+namespace Character.Compositor
 {
 
 	/// <summary>

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace CharacterCompositor
+namespace Character.Compositor
 {
 	/// <summary>
 	/// Values to be used by the colorization process for textures

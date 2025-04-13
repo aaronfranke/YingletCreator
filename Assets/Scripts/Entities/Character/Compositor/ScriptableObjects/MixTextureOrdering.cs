@@ -1,8 +1,8 @@
 using System.Collections;
-using CharacterCompositor;
+using Character.Compositor;
 using UnityEngine;
 
-namespace CharacterCompositor
+namespace Character.Compositor
 {
 
 	[CreateAssetMenu(fileName = "MixTextureOrdering", menuName = "Scriptable Objects/Character Compositor/MixTextureOrdering")]

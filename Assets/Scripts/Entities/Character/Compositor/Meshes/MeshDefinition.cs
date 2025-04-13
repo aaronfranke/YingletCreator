@@ -1,7 +1,7 @@
 using Reactivity;
 using System.Collections.Generic;
 
-namespace CharacterCompositor
+namespace Character.Compositor
 {
 	/// <summary>
 	/// Reads the input customization data and generates the set of meshess that need to be created

@@ -1,4 +1,4 @@
-using CharacterCompositor;
+using Character.Compositor;
 using System;
 using System.IO;
 using System.Linq;

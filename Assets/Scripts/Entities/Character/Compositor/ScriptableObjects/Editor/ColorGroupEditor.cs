@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace CharacterCompositor
+namespace Character.Compositor
 {
 	[CustomEditor(typeof(ColorGroup))]
 	public class ColorGroupEditor : Editor

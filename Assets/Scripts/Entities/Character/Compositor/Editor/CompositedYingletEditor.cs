@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 
-namespace CharacterCompositor
+namespace Character.Compositor
 {
 
     [CustomEditor(typeof(CompositedYinglet))]

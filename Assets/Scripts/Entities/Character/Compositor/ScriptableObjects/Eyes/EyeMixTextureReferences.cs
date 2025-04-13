@@ -1,7 +1,7 @@
 using Character.Data;
 using UnityEngine;
 
-namespace CharacterCompositor
+namespace Character.Compositor
 {
 	[System.Serializable]
 	public sealed class EyeIndividualMixTextureReferences

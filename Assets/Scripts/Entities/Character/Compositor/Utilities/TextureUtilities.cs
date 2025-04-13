@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace CharacterCompositor
+namespace Character.Compositor
 {
 	public static class TextureUtilities
 	{

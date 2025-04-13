@@ -4,7 +4,7 @@ using Reactivity;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CharacterCompositor
+namespace Character.Compositor
 {
 
 	public class MeshDefinition_RemoveAtLowSliderValue : ReactiveBehaviour, IMeshDefinitionMutator

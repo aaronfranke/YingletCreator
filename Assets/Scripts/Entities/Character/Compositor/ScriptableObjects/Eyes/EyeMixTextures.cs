@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CharacterCompositor
+namespace Character.Compositor
 {
 
     public interface IEyeMixTextures

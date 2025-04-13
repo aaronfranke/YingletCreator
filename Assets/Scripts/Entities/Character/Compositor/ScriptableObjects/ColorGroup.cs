@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-namespace CharacterCompositor
+namespace Character.Compositor
 {
 	[CreateAssetMenu(fileName = "ColorGroup", menuName = "Scriptable Objects/Character Compositor/ColorGroup")]
 	public class ColorGroup : ScriptableObject

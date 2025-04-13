@@ -1,4 +1,4 @@
-using CharacterCompositor;
+using Character.Compositor;
 using Reactivity;
 using System.Collections.Generic;
 using UnityEngine;

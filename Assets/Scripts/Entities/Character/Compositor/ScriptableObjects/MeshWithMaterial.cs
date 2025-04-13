@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace CharacterCompositor
+namespace Character.Compositor
 {
 
 	[CreateAssetMenu(fileName = "MeshWithMaterial", menuName = "Scriptable Objects/Character Compositor/MeshWithMaterial")]

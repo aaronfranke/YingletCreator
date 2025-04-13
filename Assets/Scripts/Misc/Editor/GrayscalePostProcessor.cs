@@ -1,4 +1,4 @@
-using CharacterCompositor;
+using Character.Compositor;
 using System.Diagnostics;
 using UnityEditor;
 using UnityEngine;

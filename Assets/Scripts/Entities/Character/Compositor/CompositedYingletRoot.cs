@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace CharacterCompositor
+namespace Character.Compositor
 {
 	/// <summary>
 	/// Stub class to make it easier to look up components
