@@ -14,7 +14,7 @@ namespace Character.Compositor
 	{
 		[SerializeField] Transform _rigRoot;
 		private IMeshGatherer _meshDefinition;
-		private EnumerableReflector<MeshWithMaterial, MeshObjectWithMaterialDescription> _enumerableReflector;
+		private EnumerableDictReflector<MeshWithMaterial, MeshObjectWithMaterialDescription> _enumerableReflector;
 		private Dictionary<string, Transform> _boneMap;
 
 		IEnumerable<MeshObjectWithMaterialDescription> IMeshGeneration.Meshes => _enumerableReflector.Values;
@@ -22,7 +22,7 @@ namespace Character.Compositor
 		void Awake()
 		{
 			_meshDefinition = this.GetComponent<IMeshGatherer>();
-			_enumerableReflector = new EnumerableReflector<MeshWithMaterial, MeshObjectWithMaterialDescription>(Added, Removed);
+			_enumerableReflector = new EnumerableDictReflector<MeshWithMaterial, MeshObjectWithMaterialDescription>(Added, Removed);
 			_boneMap = GetBoneMap(_rigRoot);
 			AddReflector(Composite);
 		}

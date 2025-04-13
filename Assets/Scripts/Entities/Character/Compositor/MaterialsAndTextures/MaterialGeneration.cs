@@ -20,7 +20,7 @@ namespace Character.Compositor
 	public class MaterialGeneration : ReactiveBehaviour, IMaterialGeneration
 	{
 
-		private EnumerableReflector<MaterialDescription, Material> _enumerableReflector;
+		private EnumerableDictReflector<MaterialDescription, Material> _enumerableReflector;
 		private IMeshGatherer _meshDefinition;
 
 		public IReadOnlyDictionary<MaterialDescription, Material> GeneratedMaterialLookup => _enumerableReflector.Dict;

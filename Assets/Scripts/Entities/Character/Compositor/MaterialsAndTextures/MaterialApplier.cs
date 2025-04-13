@@ -8,7 +8,7 @@ namespace Character.Compositor
 	{
 		private IMeshGeneration _meshGeneration;
 		private IReadOnlyDictionary<MaterialDescription, Material> _lookup;
-		private EnumerableReflector<MeshObjectWithMaterialDescription, object> _enumerableReflector;
+		private EnumerableDictReflector<MeshObjectWithMaterialDescription, object> _enumerableReflector;
 
 		private void Awake()
 		{

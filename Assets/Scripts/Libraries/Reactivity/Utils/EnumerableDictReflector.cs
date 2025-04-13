@@ -6,12 +6,12 @@ using System.Linq;
 namespace Reactivity
 {
 	/// <summary>
-	/// This class helps when reflecting off an IEnumerable
-	/// It simplifies the task of determining what items need to be created / removed
+	/// This class helps when reflecting off an IEnumerable to some other currency
+	/// It simplifies the task of determining what items need to be created / removed when mapping from something
 	/// </summary>
 	/// <typeparam name="TSource">The keyable type of the IEnumerable. This should really be unique</typeparam>
 	/// <typeparam name="TObj">The create portion can return something of this type. This helps it get cleaned up in the delete portion</typeparam>
-	internal sealed class EnumerableReflector<TSource, TObj>
+	internal sealed class EnumerableDictReflector<TSource, TObj>
 	{
 		private readonly Func<TSource, TObj> _create;
 		private readonly Action<TObj> _delete;
@@ -21,7 +21,7 @@ namespace Reactivity
 		private readonly Notifier notifier = new Notifier();
 
 
-		public EnumerableReflector(Func<TSource, TObj> create, Action<TObj> delete)
+		public EnumerableDictReflector(Func<TSource, TObj> create, Action<TObj> delete)
 		{
 			_create = create;
 			_delete = delete;

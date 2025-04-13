@@ -23,7 +23,7 @@ namespace Character.Compositor
 
 		private IndividualMaterialTexturerReferences _references;
 		private MaterialWithDescription _material;
-		EnumerableReflector<IMixTexture, object> _relevantMixTextures;
+		EnumerableDictReflector<IMixTexture, object> _relevantMixTextures;
 		private Reflector _reflectRelevantMixTextures;
 		private Reflector _reflectTextureComposite;
 		private List<RenderTexture> _cachedRenderTextures = new List<RenderTexture>();
@@ -33,7 +33,7 @@ namespace Character.Compositor
 			_references = references;
 			_material = material;
 
-			_relevantMixTextures = new EnumerableReflector<IMixTexture, object>(Create, Delete);
+			_relevantMixTextures = new EnumerableDictReflector<IMixTexture, object>(Create, Delete);
 			_reflectRelevantMixTextures = new Reflector(ReflectRelevantMixTextures);
 			_reflectTextureComposite = new Reflector(ReflectTextureComposite);
 		}

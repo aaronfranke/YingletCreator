@@ -10,7 +10,7 @@ namespace Character.Compositor
 
 		private IMaterialGeneration _materialGeneration;
 		private IndividualMaterialTexturerReferences _individualReferences;
-		private EnumerableReflector<MaterialWithDescription, IndividualMaterialTexturer> _enumerableReflector;
+		private EnumerableDictReflector<MaterialWithDescription, IndividualMaterialTexturer> _enumerableReflector;
 
 		private void Awake()
 		{

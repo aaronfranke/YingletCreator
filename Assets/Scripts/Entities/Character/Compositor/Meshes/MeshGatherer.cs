@@ -18,14 +18,14 @@ namespace Character.Compositor
 	public class MeshGatherer : ReactiveBehaviour, IMeshGatherer
 	{
 		private IMeshGathererMutator[] _mutators;
-		private EnumerableReflector<MeshWithMaterial, object> _enumerableReflector;
+		private EnumerableDictReflector<MeshWithMaterial, object> _enumerableReflector;
 
 		public IEnumerable<MeshWithMaterial> AllRelevantMeshes => _enumerableReflector.Keys;
 
 		void Awake()
 		{
 			_mutators = this.GetComponentsInChildren<IMeshGathererMutator>();
-			_enumerableReflector = new EnumerableReflector<MeshWithMaterial, object>(Added, Removed);
+			_enumerableReflector = new EnumerableDictReflector<MeshWithMaterial, object>(Added, Removed);
 			AddReflector(Composite);
 		}
 		private object Added(MeshWithMaterial material) => null;

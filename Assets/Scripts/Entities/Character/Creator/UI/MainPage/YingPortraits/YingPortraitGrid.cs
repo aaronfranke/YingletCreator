@@ -9,7 +9,7 @@ namespace Character.Creator.UI
         [SerializeField] CustomizationYingletGroup _group;
         private ICustomizationYingletRepository _yingletRepository;
         private int _initialChildren;
-        EnumerableReflector<CachedYingletReference, GameObject> _yingEnumerableReflector;
+        EnumerableDictReflector<CachedYingletReference, GameObject> _yingEnumerableReflector;
 
         private void Awake()
         {
