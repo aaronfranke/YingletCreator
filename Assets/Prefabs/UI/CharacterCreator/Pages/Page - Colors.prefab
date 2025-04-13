@@ -164,6 +164,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4223748227334262666, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4262256649012887942, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -322,6 +326,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3356350096447615278}
     m_Modifications:
+    - target: {fileID: 3697148971230804492, guid: c7898ebdb506b044a8f94625bab75f2f, type: 3}
+      propertyPath: m_wordSpacing
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3697148971230804492, guid: c7898ebdb506b044a8f94625bab75f2f, type: 3}
+      propertyPath: m_characterSpacing
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3761608461502484159, guid: c7898ebdb506b044a8f94625bab75f2f, type: 3}
       propertyPath: m_Name
       value: Color Selection
