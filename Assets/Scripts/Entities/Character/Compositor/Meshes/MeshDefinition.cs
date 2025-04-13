@@ -1,5 +1,4 @@
 using Reactivity;
-using Snapshotter;
 using System.Collections.Generic;
 
 namespace CharacterCompositor
@@ -16,7 +15,7 @@ namespace CharacterCompositor
 		/// </summary>
 		IEnumerable<MeshWithMaterial> DefinedMeshes { get; }
 	}
-	public class MeshDefinition : ReactiveBehaviour, IMeshDefinition, ISnapshottable
+	public class MeshDefinition : ReactiveBehaviour, IMeshDefinition
 	{
 		private IMeshDefinitionMutator[] _mutators;
 		private EnumerableReflector<MeshWithMaterial, object> _enumerableReflector;
@@ -27,15 +26,10 @@ namespace CharacterCompositor
 		{
 			_mutators = this.GetComponentsInChildren<IMeshDefinitionMutator>();
 			_enumerableReflector = new EnumerableReflector<MeshWithMaterial, object>(Added, Removed);
+			AddReflector(Composite);
 		}
 		private object Added(MeshWithMaterial material) => null;
 		private void Removed(object obj) { }
-
-
-		void Start()
-		{
-			AddReflector(Composite);
-		}
 
 		public void Composite()
 		{
@@ -45,12 +39,6 @@ namespace CharacterCompositor
 				m.Mutate(ref set);
 			}
 			_enumerableReflector.Enumerate(set);
-			UnityEngine.Debug.Log(set.Count);
-		}
-
-		public void PrepareForSnapshot()
-		{
-			Start();
 		}
 	}
 

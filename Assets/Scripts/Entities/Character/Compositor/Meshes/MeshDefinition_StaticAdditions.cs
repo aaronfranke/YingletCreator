@@ -1,15 +1,17 @@
-using CharacterCompositor;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeshDefinition_StaticAdditions : MonoBehaviour, IMeshDefinitionMutator
+namespace CharacterCompositor
 {
-	[SerializeField] MeshWithMaterial[] _meshes;
-	public void Mutate(ref ISet<MeshWithMaterial> set)
+	public class MeshDefinition_StaticAdditions : MonoBehaviour, IMeshDefinitionMutator
 	{
-		foreach (var mesh in _meshes)
+		[SerializeField] MeshWithMaterial[] _meshes;
+		public void Mutate(ref ISet<MeshWithMaterial> set)
 		{
-			set.Add(mesh);
+			foreach (var mesh in _meshes)
+			{
+				set.Add(mesh);
+			}
 		}
 	}
 }
