@@ -13,7 +13,10 @@ namespace Character.Creator.UI
 
 	public class ColorSelectionSorter : MonoBehaviour, IColorSelectionSorter
 	{
+		const int NoIdInsertionPointOffset = 10000;
+
 		[SerializeField] MixTextureOrdering _mixTextureOrdering;
+		[SerializeField] ReColorId _noIdInsertionPoint;
 
 		Dictionary<ReColorId, int> _valueLookup;
 
@@ -25,6 +28,10 @@ namespace Character.Creator.UI
 			{
 				// Use the mix texture ordering to determine recolor ID ordering (a separate ordering would be a headache)
 				var id = mixTexture.ReColorId;
+				if (id == _noIdInsertionPoint)
+				{
+					value += NoIdInsertionPointOffset;
+				}
 				if (id == null) continue;
 				if (!_valueLookup.ContainsKey(id))
 				{
@@ -68,7 +75,7 @@ namespace Character.Creator.UI
 			else
 			{
 				// Not ordered. Probably an eye; just throw ita t 
-				return int.MaxValue;
+				return NoIdInsertionPointOffset;
 			}
 		}
 	}
