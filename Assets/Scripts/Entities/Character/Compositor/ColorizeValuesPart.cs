@@ -29,6 +29,13 @@ namespace Character.Compositor
 
 		public float Value => _value;
 
+		public SerializableColorizeValuesPart(IColorizeValuesPart values)
+		{
+			_hue = values.Hue;
+			_saturation = values.Saturation;
+			_value = values.Value;
+		}
+
 		public void Set(Color color)
 		{
 			Color.RGBToHSV(color, out _hue, out _saturation, out _value);

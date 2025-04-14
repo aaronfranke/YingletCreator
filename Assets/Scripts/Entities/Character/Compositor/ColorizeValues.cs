@@ -26,5 +26,11 @@ namespace Character.Compositor
 
 		public IColorizeValuesPart Base => _base;
 		public IColorizeValuesPart Shade => _shade;
+
+		public SerializableColorizeValues(IColorizeValues values)
+		{
+			_base = new SerializableColorizeValuesPart(values.Base);
+			_shade = new SerializableColorizeValuesPart(values.Shade);
+		}
 	}
 }

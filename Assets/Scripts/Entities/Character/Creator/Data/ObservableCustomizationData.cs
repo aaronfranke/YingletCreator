@@ -1,6 +1,7 @@
 using Character.Compositor;
 using Character.Data;
 using Reactivity;
+using System;
 
 namespace Character.Creator
 {
@@ -9,8 +10,9 @@ namespace Character.Creator
 	public sealed class ObservableCustomizationData
 	{
 		public Observable<string> Name { get; } = new();
-		public ObervableCustomizationSliderData SliderData { get; }
+		public ObservableCustomizationSliderData SliderData { get; }
 		public ObservableCustomizationColorData ColorData { get; }
+		public DateTime CreationTime { get; }
 
 		//ICustomizationToggleData ToggleData { get; }
 		//ICustomizationColorData ColorData { get; }
@@ -21,19 +23,20 @@ namespace Character.Creator
 		public ObservableCustomizationData(SerializableCustomizationData serializableData)
 		{
 			Name.Val = serializableData.Name;
+			CreationTime = serializableData.CreationTime;
 			SliderData = new(serializableData.SliderData);
-			ColorData = new();
+			ColorData = new(serializableData.ColorData);
 		}
 	}
 
-	public sealed class ObervableCustomizationSliderData
+	public sealed class ObservableCustomizationSliderData
 	{
-		public ObervableCustomizationSliderData(SerializableCustomizationSliderData sliderData)
+		public ObservableCustomizationSliderData(SerializableCustomizationSliderData sliderData)
 		{
 			if (sliderData?.SliderValues == null) return;
 			foreach (var sliderValue in sliderData.SliderValues)
 			{
-				var key = ResourceLoader.Load<CharacterSliderId>(sliderValue.SliderID);
+				var key = ResourceLoader.Load<CharacterSliderId>(sliderValue.Id);
 				SliderValues[key] = new Observable<float>(sliderValue.Value);
 			}
 		}
@@ -46,6 +49,16 @@ namespace Character.Creator
 
 	public sealed class ObservableCustomizationColorData
 	{
+		public ObservableCustomizationColorData(SerializableCustomizationColorData colorData)
+		{
+			if (colorData?.ColorizeValues == null) return;
+			foreach (var colorizeValues in colorData.ColorizeValues)
+			{
+				var key = ResourceLoader.Load<ReColorId>(colorizeValues.Id);
+				ColorizeValues[key] = new Observable<IColorizeValues>(colorizeValues.Values);
+			}
+		}
+
 		public ObservableDict<ReColorId, Observable<IColorizeValues>> ColorizeValues { get; } = new();
 	}
 
