@@ -33,7 +33,7 @@ namespace Character.Creator.UI
 		{
 			var id = _activeSelection.FirstSelected;
 			if (!id) return;
-			_slider.value = _dataRepo.GetColorizeValues(id).Base.Hue;
+			_slider.SetValueWithoutNotify(_dataRepo.GetColorizeValues(id).Base.Hue);
 		}
 
 
@@ -43,7 +43,9 @@ namespace Character.Creator.UI
 			if (!id) return;
 
 			var writeableColor = new WriteableColorizeValues(_dataRepo.GetColorizeValues(id));
+			var diff = arg0 - writeableColor.Base.Hue;
 			writeableColor.Base.Hue = arg0;
+			writeableColor.Shade.Hue += diff;
 			_dataRepo.SetColorizeValues(id, writeableColor);
 		}
 	}

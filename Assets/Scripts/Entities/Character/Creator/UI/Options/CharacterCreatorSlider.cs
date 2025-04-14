@@ -31,7 +31,7 @@ namespace Character.Creator.UI
 
 		private void ReflectSliderValue()
 		{
-			_slider.value = _dataRepo.GetSliderValue(_sliderId);
+			_slider.SetValueWithoutNotify(_dataRepo.GetSliderValue(_sliderId));
 		}
 
 

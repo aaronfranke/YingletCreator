@@ -1,3 +1,4 @@
+using Character.Creator;
 using Reactivity;
 using System.Linq;
 using UnityEngine;
@@ -15,7 +16,10 @@ namespace Character.Compositor
 		private void Awake()
 		{
 			_materialGeneration = this.GetCompositedYingletComponent<IMaterialGeneration>();
-			_individualReferences = new IndividualMaterialTexturerReferences(this.GetComponent<ITextureGatherer>(), _ordering);
+			_individualReferences = new IndividualMaterialTexturerReferences(
+				this.GetComponentInParent<ICustomizationSelectedDataRepository>(),
+				this.GetComponent<ITextureGatherer>(),
+				_ordering);
 			_enumerableReflector = new(Create, Delete);
 			AddReflector(ReflectMaterials);
 		}

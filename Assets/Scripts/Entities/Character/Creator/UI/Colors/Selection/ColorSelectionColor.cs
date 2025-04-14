@@ -8,6 +8,7 @@ namespace Character.Creator.UI
 {
 	public class ColorSelectionColor : ReactiveBehaviour
 	{
+		private ICustomizationSelectedDataRepository _dataRepository;
 		private IColorSelectionReference _reference;
 		private Image _image;
 		private Material _material;
@@ -17,6 +18,7 @@ namespace Character.Creator.UI
 
 		private void Awake()
 		{
+			_dataRepository = this.GetComponentInParent<ICustomizationSelectedDataRepository>();
 			_reference = this.GetComponentInParent<IColorSelectionReference>();
 			_image = this.GetComponent<Image>();
 		}
@@ -24,15 +26,19 @@ namespace Character.Creator.UI
 		{
 			_material = new Material(_image.materialForRendering);
 			_image.material = _material;
+			_image.color = Color.white;
 			AddReflector(Reflect);
 		}
 
 		private void Reflect()
 		{
-			// Not yet reflecting anything
-			_image.color = Color.white;
-			_material.SetColor(BASE_COLOR_PROPERTY_ID, _reference.Id.ColorGroup.DefaultColors.Base.GetColor());
-			_material.SetColor(SHADE_COLOR_PROPERTY_ID, _reference.Id.ColorGroup.DefaultColors.Shade.GetColor());
+			var colorizeValues = _dataRepository.GetColorizeValues(_reference.Id);
+
+			_material.SetColor(BASE_COLOR_PROPERTY_ID, colorizeValues.Base.GetColor());
+			_material.SetColor(SHADE_COLOR_PROPERTY_ID, colorizeValues.Shade.GetColor());
+			// Neither _image.SetMaterialDirty() nor _image.SetAllDirty(); seem to force this to update, so do this hack
+			_image.enabled = false;
+			_image.enabled = true;
 		}
 	}
 }

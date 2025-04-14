@@ -1,4 +1,5 @@
 ﻿
+using Character.Creator;
 using Reactivity;
 using System;
 using System.Collections.Generic;
@@ -65,7 +66,6 @@ namespace Character.Compositor
 		RenderTexture UpdateMaterialTexture(TargetMaterialTexture materialTexture, IEnumerable<IMixTexture> applicableMixTextures)
 		{
 			int largestSize = applicableMixTextures.Any() ? applicableMixTextures.Max(m => m.Grayscale.width) : 1;
-			// TODO: Cleanup these textures
 			var renderTextures = new DoubleBufferedRenderTexture(largestSize);
 
 			foreach (var applicableMixTexture in applicableMixTextures)
@@ -94,10 +94,20 @@ namespace Character.Compositor
 			return renderTexture;
 		}
 
-		static void ApplyMixTexturePropsToMaterial(Material material, IMixTexture mixTexture)
+		void ApplyMixTexturePropsToMaterial(Material material, IMixTexture mixTexture)
 		{
-			var main = mixTexture.ReColorId?.ColorGroup.DefaultColors.Base.GetColor() ?? Color.white;
-			var shade = mixTexture.ReColorId?.ColorGroup.DefaultColors.Shade.GetColor() ?? Color.black;
+			var reColorId = mixTexture.ReColorId;
+			if (reColorId == null)
+			{
+				material.SetColor(MAIN_COLOR_PROPERTY_ID, Color.white);
+				material.SetColor(DARK_COLOR_PROPERTY_ID, Color.black);
+				return;
+			}
+
+			var colorizeValues = _references.DataRepository.GetColorizeValues(reColorId);
+
+			var main = colorizeValues.Base.GetColor();
+			var shade = colorizeValues.Shade.GetColor();
 
 			material.SetColor(MAIN_COLOR_PROPERTY_ID, main);
 			material.SetColor(DARK_COLOR_PROPERTY_ID, shade);
@@ -143,8 +153,9 @@ namespace Character.Compositor
 
 	internal sealed class IndividualMaterialTexturerReferences : IDisposable
 	{
-		public IndividualMaterialTexturerReferences(ITextureGatherer textureGatherer, MixTextureOrdering mixTextureOrdering)
+		public IndividualMaterialTexturerReferences(ICustomizationSelectedDataRepository dataRepository, ITextureGatherer textureGatherer, MixTextureOrdering mixTextureOrdering)
 		{
+			DataRepository = dataRepository;
 			TextureGatherer = textureGatherer;
 			MixTextureOrdering = mixTextureOrdering;
 
@@ -152,6 +163,7 @@ namespace Character.Compositor
 			BlitMaterial = new Material(IndividualMaterialTexturer.COLORIZE_SHADER);
 		}
 
+		public ICustomizationSelectedDataRepository DataRepository { get; }
 		public ITextureGatherer TextureGatherer { get; }
 		public MixTextureOrdering MixTextureOrdering { get; }
 		public Material BlitMaterial { get; }
