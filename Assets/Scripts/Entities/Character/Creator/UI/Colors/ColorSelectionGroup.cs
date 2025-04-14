@@ -16,7 +16,7 @@ namespace Character.Creator.UI
 
 		private void Awake()
 		{
-			_sorter = this.GetComponent<IColorSelectionSorter>();
+			_sorter = this.GetComponentInParent<IColorSelectionSorter>();
 			_gatherer = this.GetCharacterCreatorComponent<ITextureGatherer>();
 			_enumerableReflector = new(Create, Delete);
 			// Clean up any dummy objects under this
@@ -30,7 +30,7 @@ namespace Character.Creator.UI
 		{
 			var go = Instantiate(_colorSelectionPrefab, this.transform);
 			go.GetComponent<IColorSelectionReference>().Id = id;
-			_sorter.PositionSorted(go);
+			_sorter.PositionSorted(this.transform, go);
 			return go;
 		}
 

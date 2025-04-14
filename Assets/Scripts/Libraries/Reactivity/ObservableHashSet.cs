@@ -90,7 +90,13 @@ namespace Reactivity
 
 		public void CopyTo(T[] array, int arrayIndex)
 		{
-			throw new System.NotImplementedException();
+			dict
+				.Where(kvp => kvp.Value.Exists)
+				.Select(kvp => kvp.Key)
+				.ToArray()
+				.CopyTo(array, arrayIndex);
+
+			enumerableNotifier.Track();
 		}
 		#endregion
 

@@ -1,6 +1,7 @@
 using Character.Compositor;
 using Character.Data;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
@@ -8,7 +9,8 @@ namespace Character.Creator.UI
 {
 	public interface IColorSelectionSorter
 	{
-		void PositionSorted(GameObject newObject);
+		IEnumerable<ReColorId> Sort(IEnumerable<ReColorId> ids);
+		void PositionSorted(Transform root, GameObject newObject);
 	}
 
 	public class ColorSelectionSorter : MonoBehaviour, IColorSelectionSorter
@@ -41,17 +43,17 @@ namespace Character.Creator.UI
 			}
 		}
 
-		public void PositionSorted(GameObject newObject)
+		public void PositionSorted(Transform root, GameObject newObject)
 		{
 			var newValue = GetSortValue(newObject);
 
 			// Default to last position
-			int insertIndex = this.transform.childCount - 1;
+			int insertIndex = root.childCount - 1;
 
 			// Find correct sibling index
-			for (int i = 0; i < this.transform.childCount - 1; i++)
+			for (int i = 0; i < root.childCount - 1; i++)
 			{
-				Transform sibling = this.transform.GetChild(i);
+				Transform sibling = root.GetChild(i);
 				int siblingValue = GetSortValue(sibling.gameObject);
 
 				if (newValue < siblingValue)
@@ -67,16 +69,26 @@ namespace Character.Creator.UI
 
 		int GetSortValue(GameObject gameObject)
 		{
-			var reference = gameObject.GetComponent<IColorSelectionReference>().Id;
-			if (_valueLookup.TryGetValue(reference, out int value))
+			var id = gameObject.GetComponent<IColorSelectionReference>().Id;
+			return GetSortValue(id);
+		}
+
+		int GetSortValue(ReColorId id)
+		{
+			if (_valueLookup.TryGetValue(id, out int value))
 			{
 				return value;
 			}
 			else
 			{
-				// Not ordered. Probably an eye; just throw ita t 
+				// Not ordered. Probably an eye; throw it in the middle 
 				return NoIdInsertionPointOffset;
 			}
+		}
+
+		public IEnumerable<ReColorId> Sort(IEnumerable<ReColorId> ids)
+		{
+			return ids.OrderBy(id => GetSortValue(id));
 		}
 	}
 }
