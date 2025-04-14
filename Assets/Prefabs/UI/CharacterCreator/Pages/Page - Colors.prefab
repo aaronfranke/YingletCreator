@@ -233,8 +233,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0, y: -6.5696}
+  m_SizeDelta: {x: 0, y: -13.1392}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4467439293363916860
 CanvasRenderer:
@@ -266,7 +266,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Click to select a color.
 
-    Shift-click or drag-drop to select multiple.'
+    Shift+click and drag to select multiple.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 31289117d6afe2c449a86f120137f0d5, type: 2}
   m_sharedMaterial: {fileID: 211475481123427812, guid: 31289117d6afe2c449a86f120137f0d5, type: 2}
@@ -275,8 +275,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4288592338
-  m_fontColor: {r: 0.8235295, g: 0.7254902, b: 0.61960787, a: 1}
+    rgba: 4285108404
+  m_fontColor: {r: 0.7075472, g: 0.56474125, b: 0.41051087, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -715,7 +715,8 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3375916199030164021, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4099649964880116737, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
@@ -734,6 +735,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3512307546995425619, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5239588029708702728}
+    - targetCorrespondingSourceObject: {fileID: 5191163224940803345, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3312506840596648847}
     - targetCorrespondingSourceObject: {fileID: 852569135782661623, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7573096045501772171}
@@ -787,6 +791,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7172d35eab6c9e45951fd85b6dfb54a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3237248033162085029 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4223748227334262666, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
+  m_PrefabInstance: {fileID: 1617011401304608047}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a4db7a114972834c8e4117be1d82ba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!224 &3266891601673276585 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4262256649012887942, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
+  m_PrefabInstance: {fileID: 1617011401304608047}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &3356350096447615278 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4099649964880116737, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
@@ -797,6 +817,41 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4933058571705587622, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
   m_PrefabInstance: {fileID: 1617011401304608047}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6807877205380462654 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5191163224940803345, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
+  m_PrefabInstance: {fileID: 1617011401304608047}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3312506840596648847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6807877205380462654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc5fca429c76d874bac3da53f4c420fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Content: {fileID: 3356350096447615278}
+  m_Horizontal: 0
+  m_Vertical: 1
+  m_MovementType: 2
+  m_Elasticity: 0.1
+  m_Inertia: 1
+  m_DecelerationRate: 0.135
+  m_ScrollSensitivity: 3
+  m_Viewport: {fileID: 3266891601673276585}
+  m_HorizontalScrollbar: {fileID: 0}
+  m_VerticalScrollbar: {fileID: 3237248033162085029}
+  m_HorizontalScrollbarVisibility: 0
+  m_VerticalScrollbarVisibility: 2
+  m_HorizontalScrollbarSpacing: 0
+  m_VerticalScrollbarSpacing: 16
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1959012006284297057
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 namespace Character.Creator.UI
 {
-	public class ColorSelectionClicking : MonoBehaviour, IPointerClickHandler
+	public class ColorSelectionClicking : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
 	{
 		private IColorActiveSelection _activeSelection;
 		private IColorSelectionReference _reference;
@@ -14,10 +14,22 @@ namespace Character.Creator.UI
 			_reference = this.GetComponent<IColorSelectionReference>();
 		}
 
-		public void OnPointerClick(PointerEventData eventData)
+		public void OnPointerDown(PointerEventData eventData)
+		{
+			Handle();
+		}
+
+		public void OnPointerEnter(PointerEventData eventData)
+		{
+			if (!Input.GetMouseButton(0)) return;
+			Handle();
+		}
+
+		void Handle()
 		{
 			bool union = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
 			_activeSelection.ToggleSelection(_reference.Id, union);
 		}
+
 	}
 }
