@@ -1,5 +1,8 @@
 using Assets.Scripts.Entities.Character.Compositor;
+using Character.Compositor;
+using Character.Data;
 using Reactivity;
+using System.Linq;
 using UnityEngine.UI;
 
 namespace Character.Creator.UI
@@ -37,16 +40,34 @@ namespace Character.Creator.UI
 		}
 
 
-		private void Slider_OnValueChanged(float arg0)
+		private void Slider_OnValueChanged(float value)
 		{
-			var id = _activeSelection.FirstSelected;
-			if (!id) return;
+			var ids = _activeSelection.AllSelected.ToList();
+			if (!ids.Any()) return;
 
-			var writeableColor = new WriteableColorizeValues(_dataRepo.GetColorizeValues(id));
-			var diff = arg0 - writeableColor.Base.Hue;
-			writeableColor.Base.Hue = arg0;
-			writeableColor.Shade.Hue += diff;
-			_dataRepo.SetColorizeValues(id, writeableColor);
+			var existingColors = ids.Select(id => new IdWithColor(id, _dataRepo.GetColorizeValues(id))).ToList();
+
+			var firstColor = existingColors.First();
+			var diff = value - firstColor.ColorizeValues.Base.Hue;
+
+			using var suspender = new ReactivitySuspender();
+			foreach (var color in existingColors)
+			{
+				var writeableColor = new WriteableColorizeValues(color.ColorizeValues);
+				writeableColor.Base.Hue += diff;
+				writeableColor.Shade.Hue += diff;
+				_dataRepo.SetColorizeValues(color.Id, writeableColor);
+			}
+		}
+		private sealed class IdWithColor
+		{
+			public IdWithColor(ReColorId id, IColorizeValues colorizeValues)
+			{
+				Id = id;
+				ColorizeValues = colorizeValues;
+			}
+			public ReColorId Id { get; }
+			public IColorizeValues ColorizeValues { get; }
 		}
 	}
 }

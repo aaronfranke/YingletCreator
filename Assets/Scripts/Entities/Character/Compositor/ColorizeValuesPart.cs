@@ -38,7 +38,15 @@ namespace Character.Compositor
 	{
 		public static Color GetColor(this IColorizeValuesPart c)
 		{
-			return Color.HSVToRGB(c.Hue, c.Saturation, c.Value);
+			return Color.HSVToRGB(Wrap01(c.Hue), Clamp01(c.Saturation), Clamp01(c.Value));
+		}
+		static float Wrap01(float input)
+		{
+			return ((input % 1f) + 1f) % 1f;
+		}
+		static float Clamp01(float input)
+		{
+			return Mathf.Clamp01(input);
 		}
 	}
 }

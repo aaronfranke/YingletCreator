@@ -1,6 +1,6 @@
+using Reactivity.Implementation;
 using System;
 using System.Collections.Generic;
-using Reactivity.Implementation;
 
 namespace Reactivity
 {
