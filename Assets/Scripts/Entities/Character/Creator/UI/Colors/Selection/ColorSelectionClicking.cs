@@ -1,13 +1,22 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 
 namespace Character.Creator.UI
 {
-	public class ColorSelectionClicking : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
+	public interface IColorSelectionClicking
+	{
+		event Action<bool> OnChange;
+	}
+
+	public class ColorSelectionClicking : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IColorSelectionClicking
 	{
 		private IColorActiveSelection _activeSelection;
 		private IColorSelectionReference _reference;
+
+		public event Action<bool> OnChange = delegate { };
+
 		private void Awake()
 		{
 			_activeSelection = this.GetComponentInParent<IColorActiveSelection>();
@@ -28,7 +37,8 @@ namespace Character.Creator.UI
 		void Handle()
 		{
 			bool union = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
-			_activeSelection.ToggleSelection(_reference.Id, union);
+			var result = _activeSelection.ToggleSelection(_reference.Id, union);
+			OnChange(result);
 		}
 
 	}

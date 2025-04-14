@@ -7,7 +7,7 @@ namespace Character.Creator.UI
 {
 	public interface IColorActiveSelection
 	{
-		void ToggleSelection(ReColorId id, bool union);
+		bool ToggleSelection(ReColorId id, bool union);
 		bool CheckSelected(ReColorId id);
 		bool AnySelected { get; }
 		IEnumerable<ReColorId> AllSelected { get; }
@@ -45,23 +45,26 @@ namespace Character.Creator.UI
 			return _selection.Contains(id);
 		}
 
-		public void ToggleSelection(ReColorId id, bool union)
+		public bool ToggleSelection(ReColorId id, bool union)
 		{
 			if (union)
 			{
 				if (_selection.Contains(id))
 				{
 					_selection.Remove(id);
+					return false;
 				}
 				else
 				{
 					_selection.Add(id);
+					return true;
 				}
 			}
 			else
 			{
 				_selection.Clear();
 				_selection.Add(id);
+				return true;
 			}
 		}
 	}
