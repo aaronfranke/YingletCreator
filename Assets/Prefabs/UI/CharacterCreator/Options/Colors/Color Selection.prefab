@@ -341,8 +341,8 @@ MonoBehaviour:
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
+  m_characterSpacing: 2
+  m_wordSpacing: 2
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
@@ -491,6 +491,7 @@ GameObject:
   - component: {fileID: 1503776989312228432}
   - component: {fileID: 1445327181359330200}
   - component: {fileID: 5089404016568886513}
+  - component: {fileID: 4286620972038052705}
   m_Layer: 5
   m_Name: Pivot
   m_TagString: Untagged
@@ -541,4 +542,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hoverScale: {x: 1.03, y: 1.15, z: 1}
+  _easeSettings: {fileID: 11400000, guid: d8a3ad6138eaebc48a87a03bcb2a5e67, type: 2}
+--- !u!114 &4286620972038052705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6184621639477216497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b214c5fb33e41449b85accfe3dd7484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _easeSettings: {fileID: 11400000, guid: d8a3ad6138eaebc48a87a03bcb2a5e67, type: 2}
