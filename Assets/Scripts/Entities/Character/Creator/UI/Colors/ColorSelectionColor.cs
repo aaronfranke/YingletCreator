@@ -31,8 +31,8 @@ namespace Character.Creator.UI
 		{
 			// Not yet reflecting anything
 			_image.color = Color.white;
-			_material.SetColor(BASE_COLOR_PROPERTY_ID, _reference.Id.ColorGroup.BaseDefaultColor.GetColor());
-			_material.SetColor(SHADE_COLOR_PROPERTY_ID, _reference.Id.ColorGroup.ShadeDefaultColor.GetColor());
+			_material.SetColor(BASE_COLOR_PROPERTY_ID, _reference.Id.ColorGroup.DefaultColors.Base.GetColor());
+			_material.SetColor(SHADE_COLOR_PROPERTY_ID, _reference.Id.ColorGroup.DefaultColors.Shade.GetColor());
 		}
 	}
 }

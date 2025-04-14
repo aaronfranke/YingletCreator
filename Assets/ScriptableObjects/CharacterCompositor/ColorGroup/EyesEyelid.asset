@@ -12,8 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee45e03f2dc3e2f4a82b3713ad9c84ac, type: 3}
   m_Name: EyesEyelid
   m_EditorClassIdentifier: 
-  _defaultColorValues:
-    _hueShift: 225
-    _multiplication: 1.212
-    _contrast: 1.26
-    _saturation: 1.63
+  _baseDefaultColor:
+    _hue: 0.08055
+    _saturation: 0.4
+    _value: 0.84
+  _shadeDefaultColor:
+    _hue: 0.08055
+    _saturation: 0.4
+    _value: 0.84
+  _defaultColors:
+    _base:
+      _hue: 0.08055
+      _saturation: 0.4
+      _value: 0.84
+    _shade:
+      _hue: 0.08055
+      _saturation: 0.4
+      _value: 0.84

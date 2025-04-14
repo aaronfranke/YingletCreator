@@ -28,11 +28,11 @@ namespace Character.Compositor
 			GUILayout.BeginHorizontal();
 			if (GUILayout.Button("Base to color picker"))
 			{
-				_colorPickerColor = myScript.BaseDefaultColor.GetColor();
+				_colorPickerColor = myScript.DefaultColors.Base.GetColor();
 			}
 			if (GUILayout.Button("Shade to color picker"))
 			{
-				_colorPickerColor = myScript.ShadeDefaultColor.GetColor();
+				_colorPickerColor = myScript.DefaultColors.Shade.GetColor();
 			}
 			GUILayout.EndHorizontal();
 			_colorPickerColor = EditorGUILayout.ColorField("Color Picker", _colorPickerColor);
@@ -40,14 +40,14 @@ namespace Character.Compositor
 			if (GUILayout.Button("Color picker to base"))
 			{
 				Undo.RecordObject(myScript, "Changed Selected Color");
-				((SerializableColorizeValues)myScript.BaseDefaultColor).Set(_colorPickerColor);
+				((SerializableColorizeValuesPart)myScript.DefaultColors.Base).Set(_colorPickerColor);
 				EditorUtility.SetDirty(myScript);
 				UpdateGraphics();
 			}
 			if (GUILayout.Button("Color picker to shade"))
 			{
 				Undo.RecordObject(myScript, "Changed Selected Color");
-				((SerializableColorizeValues)myScript.ShadeDefaultColor).Set(_colorPickerColor);
+				((SerializableColorizeValuesPart)myScript.DefaultColors.Shade).Set(_colorPickerColor);
 				EditorUtility.SetDirty(myScript);
 				UpdateGraphics();
 			}

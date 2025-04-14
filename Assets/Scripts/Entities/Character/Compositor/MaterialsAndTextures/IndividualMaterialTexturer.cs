@@ -96,8 +96,8 @@ namespace Character.Compositor
 
 		static void ApplyMixTexturePropsToMaterial(Material material, IMixTexture mixTexture)
 		{
-			var main = mixTexture.ReColorId?.ColorGroup.BaseDefaultColor.GetColor() ?? Color.white;
-			var shade = mixTexture.ReColorId?.ColorGroup.ShadeDefaultColor.GetColor() ?? Color.black;
+			var main = mixTexture.ReColorId?.ColorGroup.DefaultColors.Base.GetColor() ?? Color.white;
+			var shade = mixTexture.ReColorId?.ColorGroup.DefaultColors.Shade.GetColor() ?? Color.black;
 
 			material.SetColor(MAIN_COLOR_PROPERTY_ID, main);
 			material.SetColor(DARK_COLOR_PROPERTY_ID, shade);
