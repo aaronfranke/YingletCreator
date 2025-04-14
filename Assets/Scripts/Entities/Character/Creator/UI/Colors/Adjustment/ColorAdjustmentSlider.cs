@@ -1,18 +1,18 @@
-using Character.Data;
+using Assets.Scripts.Entities.Character.Compositor;
 using Reactivity;
-using UnityEngine;
 using UnityEngine.UI;
 
 namespace Character.Creator.UI
 {
-	public class CharacterCreatorSlider : ReactiveBehaviour
+	public class ColorAdjustmentSlider : ReactiveBehaviour
 	{
-		[SerializeField] CharacterSliderId _sliderId;
+		private IColorActiveSelection _activeSelection;
 		private ICustomizationSelectedDataRepository _dataRepo;
 		private Slider _slider;
 
 		private void Awake()
 		{
+			_activeSelection = this.GetComponentInParent<IColorActiveSelection>();
 			_dataRepo = this.GetComponentInParent<ICustomizationSelectedDataRepository>();
 			_slider = this.GetComponentInChildren<Slider>();
 			_slider.onValueChanged.AddListener(Slider_OnValueChanged);
@@ -31,13 +31,20 @@ namespace Character.Creator.UI
 
 		private void ReflectSliderValue()
 		{
-			_slider.value = _dataRepo.GetSliderValue(_sliderId);
+			var id = _activeSelection.FirstSelected;
+			if (!id) return;
+			_slider.value = _dataRepo.GetColorizeValues(id).Base.Hue;
 		}
 
 
 		private void Slider_OnValueChanged(float arg0)
 		{
-			_dataRepo.SetSliderValue(_sliderId, arg0);
+			var id = _activeSelection.FirstSelected;
+			if (!id) return;
+
+			var writeableColor = new WriteableColorizeValues(_dataRepo.GetColorizeValues(id));
+			writeableColor.Base.Hue = arg0;
+			_dataRepo.SetColorizeValues(id, writeableColor);
 		}
 	}
 }
