@@ -9,18 +9,27 @@ using UnityEngine.UI;
 
 namespace Character.Creator.UI
 {
-	public class ColorAdjustmentSlider : ReactiveBehaviour
+	public interface IColorAdjustmentSlider
+	{
+		public ColorAdjustmentSliderTarget Target { get; }
+	}
+
+	public class ColorAdjustmentSlider : ReactiveBehaviour, IColorAdjustmentSlider
 	{
 		[SerializeField] ColorAdjustmentSliderTarget _target;
 
 		private IColorActiveSelection _activeSelection;
 		private ICustomizationSelectedDataRepository _dataRepo;
+		private ILightDarkSelection _lightDarkSelection;
 		private Slider _slider;
+
+		public ColorAdjustmentSliderTarget Target => _target;
 
 		private void Awake()
 		{
 			_activeSelection = this.GetComponentInParent<IColorActiveSelection>();
 			_dataRepo = this.GetComponentInParent<ICustomizationSelectedDataRepository>();
+			_lightDarkSelection = this.GetComponentInParent<ILightDarkSelection>();
 			_slider = this.GetComponentInChildren<Slider>();
 			_slider.onValueChanged.AddListener(Slider_OnValueChanged);
 		}
@@ -40,7 +49,7 @@ namespace Character.Creator.UI
 		{
 			var id = _activeSelection.FirstSelected;
 			if (!id) return;
-			_slider.SetValueWithoutNotify(GetTargetVal(_dataRepo.GetColorizeValues(id).Base));
+			_slider.SetValueWithoutNotify(GetTargetVal(_dataRepo.GetColorizeValues(id)));
 		}
 
 
@@ -52,13 +61,16 @@ namespace Character.Creator.UI
 			var existingColors = ids.Select(id => new IdWithColor(id, _dataRepo.GetColorizeValues(id))).ToList();
 
 			var firstColor = existingColors.First();
-			var diff = value - GetTargetVal(firstColor.ColorizeValues.Base);
+			var diff = value - GetTargetVal(firstColor.ColorizeValues);
 
 			using var suspender = new ReactivitySuspender();
 			foreach (var color in existingColors)
 			{
 				var writeableColor = new WriteableColorizeValues(color.ColorizeValues);
-				AdjustTargetVal(writeableColor.Base, diff);
+				if (_lightDarkSelection.Light)
+				{
+					AdjustTargetVal(writeableColor.Base, diff);
+				}
 				AdjustTargetVal(writeableColor.Shade, diff);
 				_dataRepo.SetColorizeValues(color.Id, writeableColor);
 			}
@@ -74,8 +86,9 @@ namespace Character.Creator.UI
 			public IColorizeValues ColorizeValues { get; }
 		}
 
-		float GetTargetVal(IColorizeValuesPart part)
+		float GetTargetVal(IColorizeValues values)
 		{
+			var part = _lightDarkSelection.Light ? values.Base : values.Shade;
 			if (_target == ColorAdjustmentSliderTarget.Hue) return part.Hue;
 			else if (_target == ColorAdjustmentSliderTarget.Saturation) return part.Saturation;
 			else if (_target == ColorAdjustmentSliderTarget.Value) return part.Value;

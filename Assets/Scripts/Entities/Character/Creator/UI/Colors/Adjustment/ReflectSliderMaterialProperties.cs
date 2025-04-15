@@ -11,6 +11,7 @@ public class ReflectSliderMaterialProperties : ReactiveBehaviour
 	static readonly int VALUE = Shader.PropertyToID("_Value");
 	private ICustomizationSelectedDataRepository _dataRepo;
 	private IColorActiveSelection _activeSelection;
+	private ILightDarkSelection _lightDarkSelection;
 	private Image _image;
 	private Material _material;
 
@@ -18,6 +19,7 @@ public class ReflectSliderMaterialProperties : ReactiveBehaviour
 	{
 		_dataRepo = this.GetComponentInParent<ICustomizationSelectedDataRepository>();
 		_activeSelection = this.GetComponentInParent<IColorActiveSelection>();
+		_lightDarkSelection = this.GetComponentInParent<ILightDarkSelection>();
 		_image = this.GetComponent<Image>();
 		_material = new Material(_image.material);
 		_image.material = _material;
@@ -34,7 +36,7 @@ public class ReflectSliderMaterialProperties : ReactiveBehaviour
 		if (id == null) return;
 
 		var colors = _dataRepo.GetColorizeValues(id);
-		var color = colors.Base;
+		var color = _lightDarkSelection.Light ? colors.Base : colors.Shade;
 
 		_material.SetFloat(HUE, color.Hue);
 		_material.SetFloat(SATURATION, color.Saturation);
