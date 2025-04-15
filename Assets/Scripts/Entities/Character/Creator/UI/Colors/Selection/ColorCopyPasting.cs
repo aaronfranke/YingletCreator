@@ -1,5 +1,6 @@
 using Character.Compositor;
 using Reactivity;
+using System;
 using System.Linq;
 using UnityEngine;
 
@@ -9,12 +10,17 @@ namespace Character.Creator.UI
 	{
 		void Copy();
 		void Paste();
+		event Action Copied;
+		event Action Pasted;
 	}
 	public class ColorCopyPasting : MonoBehaviour, IColorCopyPasting
 	{
 		private ICustomizationSelectedDataRepository _dataRepository;
 		private IColorActiveSelection _activeSelection;
 		private IColorizeValues _copiedValue;
+
+		public event Action Copied = delegate { };
+		public event Action Pasted = delegate { };
 
 		void Awake()
 		{
@@ -40,6 +46,7 @@ namespace Character.Creator.UI
 			if (!id) return;
 
 			_copiedValue = _dataRepository.GetColorizeValues(id);
+			Copied();
 		}
 
 		public void Paste()
@@ -52,8 +59,8 @@ namespace Character.Creator.UI
 			foreach (var id in ids)
 			{
 				_dataRepository.SetColorizeValues(id, _copiedValue);
-
 			}
+			Pasted();
 		}
 	}
 }
