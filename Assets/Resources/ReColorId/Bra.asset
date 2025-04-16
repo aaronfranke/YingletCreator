@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4db867ccc3b54a4ab308bb659da15df, type: 3}
-  m_Name: UI-Select (Light)
+  m_Script: {fileID: 11500000, guid: 90e93a1a2762c7745bd997e92a7f9845, type: 3}
+  m_Name: Bra
   m_EditorClassIdentifier: 
-  _clip: {fileID: 8300000, guid: 2fdb649ab80b938459c23f738c11eea0, type: 3}
-  _volume: 0.35
-  _randomPitchRange: {x: 0.4, y: 0.54}
+  _colorGroup: {fileID: 11400000, guid: a963cbff4b53a4b438de824e82c6a951, type: 2}
+  _uniqueAssetId: 964e901922f6f2d498fc0d264cb46c0d

@@ -15,6 +15,9 @@ namespace Character.Creator.UI
 			{
 				Destroy(child.gameObject);
 			}
+		}
+		private void Start()
+		{
 			foreach (var toggleId in _toggleIds)
 			{
 				var go = GameObject.Instantiate(_togglePrefab, this.transform);
