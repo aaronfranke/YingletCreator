@@ -60,7 +60,22 @@ namespace Character.Creator
 			ObservableDictUtils<ReColorId, IColorizeValues>.SetOrUpdate(dataRepo.CustomizationData.ColorData.ColorizeValues, id, values);
 		}
 
-
+		public static bool GetToggle(this ICustomizationSelectedDataRepository dataRepo, CharacterToggleId id)
+		{
+			return dataRepo.CustomizationData.ToggleData.Toggles.Contains(id);
+		}
+		public static void FlipToggle(this ICustomizationSelectedDataRepository dataRepo, CharacterToggleId id)
+		{
+			bool exists = dataRepo.GetToggle(id);
+			if (exists)
+			{
+				dataRepo.CustomizationData.ToggleData.Toggles.Remove(id);
+			}
+			else
+			{
+				dataRepo.CustomizationData.ToggleData.Toggles.Add(id);
+			}
+		}
 	}
 
 }

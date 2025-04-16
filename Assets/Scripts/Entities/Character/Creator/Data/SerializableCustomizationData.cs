@@ -28,6 +28,7 @@ namespace Character.Creator
 
 		public SerializableCustomizationSliderData SliderData;
 		public SerializableCustomizationColorData ColorData;
+		public SerializableCustomizationToggleData ToggleData;
 
 		public SerializableCustomizationData(ObservableCustomizationData data)
 		{
@@ -35,6 +36,8 @@ namespace Character.Creator
 			CreationTime = data.CreationTime;
 			SliderData = new SerializableCustomizationSliderData(data.SliderData);
 			ColorData = new SerializableCustomizationColorData(data.ColorData);
+			ToggleData = new SerializableCustomizationToggleData(data.ToggleData);
+
 		}
 	}
 
@@ -92,5 +95,14 @@ namespace Character.Creator
 		}
 	}
 
+	[System.Serializable]
+	public sealed class SerializableCustomizationToggleData
+	{
+		public SerializableCustomizationToggleData(ObservableCustomizationToggleData data)
+		{
+			ToggleIds = data.Toggles.Select(t => t.UniqueAssetID).ToArray();
+		}
 
+		public string[] ToggleIds;
+	}
 }
