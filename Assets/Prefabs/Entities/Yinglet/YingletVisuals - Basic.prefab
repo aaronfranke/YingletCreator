@@ -221,6 +221,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3042515114649856921}
+  - {fileID: 7130791794820074391}
   - {fileID: 5025035913261184251}
   - {fileID: 6529575930122525476}
   m_Father: {fileID: 4256077204897904255}
@@ -614,8 +615,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textures:
-  - {fileID: 11400000, guid: 37e8c4cebf6a11b44bba549b577f2f3c, type: 2}
-  - {fileID: 11400000, guid: 6492f42815d1f4347a1f42f0c35258bf, type: 2}
   - {fileID: 11400000, guid: eee2dbe5d6ee5c640ad9c10f051b8625, type: 2}
   - {fileID: 11400000, guid: eac753ccf614f63428da85bef4e26c60, type: 2}
 --- !u!114 &5691230049441232822
@@ -936,7 +935,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _meshes:
   - {fileID: 11400000, guid: ab06503a183dd474f898976ab9d156c8, type: 2}
-  - {fileID: 11400000, guid: adfe061252c9f9f4f8c23b0959ef5bf3, type: 2}
 --- !u!1 &2076845509866701017
 GameObject:
   m_ObjectHideFlags: 0
@@ -1524,6 +1522,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6829835680795216904}
+  - {fileID: 6273114314127862746}
   - {fileID: 4974187243969974805}
   - {fileID: 1150628783054074862}
   m_Father: {fileID: 4256077204897904255}
@@ -1729,6 +1728,50 @@ MonoBehaviour:
   _applyMode: 1
   _advanced:
     _middle: 0.5
+--- !u!1 &6100494963279437888
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7130791794820074391}
+  - component: {fileID: 675694739241714181}
+  m_Layer: 0
+  m_Name: TextureGatherer - FromToggles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7130791794820074391
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6100494963279437888}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4736147725524022446}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &675694739241714181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6100494963279437888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7dca6b6e8550148a6d629e4295e6e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6720103447319718018
 GameObject:
   m_ObjectHideFlags: 0
@@ -1947,6 +1990,50 @@ MonoBehaviour:
   _applyMode: 1
   _advanced:
     _middle: 0.5
+--- !u!1 &7692291423808196688
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6273114314127862746}
+  - component: {fileID: 8760317250294467792}
+  m_Layer: 0
+  m_Name: MeshGatherer - FromToggles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6273114314127862746
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7692291423808196688}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4467667786261249746}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8760317250294467792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7692291423808196688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcebdc0934e4e214da332004a22fa23d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7693314114531336569
 GameObject:
   m_ObjectHideFlags: 0

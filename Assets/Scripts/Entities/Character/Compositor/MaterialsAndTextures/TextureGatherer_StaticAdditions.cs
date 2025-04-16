@@ -8,9 +8,9 @@ namespace Character.Compositor
 		[SerializeField] MixTexture[] _textures;
 		public void Mutate(ref ISet<IMixTexture> set)
 		{
-			foreach (var mesh in _textures)
+			foreach (var tex in _textures)
 			{
-				set.Add(mesh);
+				set.Add(tex);
 			}
 		}
 	}

@@ -1,3 +1,5 @@
+using Character.Compositor;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Character.Data
@@ -10,5 +12,11 @@ namespace Character.Data
 
 		[SerializeField] string _displayName;
 		public string DisplayName => _displayName;
+
+		[SerializeField] MeshWithMaterial[] _addedMeshes;
+		public IEnumerable<MeshWithMaterial> AddedMeshes => _addedMeshes;
+
+		[SerializeField] MixTexture[] _addedTextures;
+		public IEnumerable<MixTexture> AddedTextures => _addedTextures;
 	}
 }
