@@ -48,10 +48,13 @@ namespace Character.Compositor
 
 		private void ReflectTextureComposite()
 		{
+
 			CleanupRenderTextures();
 
 			var relevantTextures = _relevantMixTextures.Items.ToArray();
 			var sortedTextures = SortMixTextures(relevantTextures, _references.MixTextureOrdering);
+
+			if (_material.Material == null) return;
 
 			// Some materials have multiple textures (notably the eyes). Update them separately
 			var buckets = sortedTextures.GroupBy(p => p.TargetMaterialTexture);

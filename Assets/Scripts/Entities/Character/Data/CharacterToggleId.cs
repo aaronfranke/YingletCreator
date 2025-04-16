@@ -18,5 +18,8 @@ namespace Character.Data
 
 		[SerializeField] MixTexture[] _addedTextures;
 		public IEnumerable<MixTexture> AddedTextures => _addedTextures;
+
+		[SerializeField] EyeMixTextures _eyeTextures;
+		public EyeMixTextures EyeTextures => _eyeTextures;
 	}
 }
