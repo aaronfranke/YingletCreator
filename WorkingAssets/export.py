@@ -34,8 +34,6 @@ def export():
         # exportPath += bpy.path.basename(bpy.context.blend_data.filepath).split(".")[0]
         # exportPath += "/"
         exportPath += selectedObject.name
-        exportPath += ".fbx"
-        exportPath = os.path.abspath(exportPath)
         
         if (selectedObject.type == 'ARMATURE'):
              selectedObject.animation_data.action = bpy.data.actions.get("_T-Pose")
@@ -44,22 +42,36 @@ def export():
                 child.hide_viewport = False  # Ensure it's not hidden in viewport
         
         select_children_recursive(selectedObject, True)
-        bpy.ops.export_scene.fbx(
-            filepath = exportPath,
-            use_selection = True,
-            axis_forward = 'Z',
-            axis_up = 'Y',
-            bake_space_transform=True,
-            apply_scale_options='FBX_SCALE_ALL',
-            use_mesh_modifiers=True,  # Apply mirror; this prevents shape key usage. It might be possible to get this working with https://github.com/smokejohn/SKkeeper/tree/master
-            object_types={'MESH', 'ARMATURE'},  # Include only mesh and armature
-            use_armature_deform_only=True,  # Export only bones used for deformation
-            add_leaf_bones=False,  # Prevents extra bones from being added
-            bake_anim_simplify_factor = .45, # (Default 1) - The lower the value is, the higher the filesize. Feet also shuffle with this though
-            bake_anim_step = 1 # (Default 1) - How often frames are sampled
-        )
+        if (selectedObject.type == 'ARMATURE'):
+            export_fbx(exportPath, True)
+            export_fbx(exportPath + "-Meshes", False)
+        else:
+            export_fbx(exportPath, False)
         select_children_recursive(selectedObject, False)
-        
+
+def export_fbx(exportPath, animsOnly):
+    exportPath += ".fbx"
+    exportPath = os.path.abspath(exportPath)
+    object_types = {'MESH', 'ARMATURE'}
+    if (animsOnly):
+        object_types = {'ARMATURE'}
+    
+    bpy.ops.export_scene.fbx(
+        filepath = exportPath,
+        use_selection = True,
+        axis_forward = 'Z',
+        axis_up = 'Y',
+        bake_space_transform=True,
+        apply_scale_options='FBX_SCALE_ALL',
+        use_mesh_modifiers=True,  # Apply mirror; this prevents shape key usage. It might be possible to get this working with https://github.com/smokejohn/SKkeeper/tree/master
+        object_types=object_types,
+        bake_anim=animsOnly,
+        use_armature_deform_only=True,  # Export only bones used for deformation
+        add_leaf_bones=False,  # Prevents extra bones from being added
+        bake_anim_step = 1, # (Default 1) - How often frames are sampled
+        bake_anim_simplify_factor = .45 # (Default 1) - The lower the value is, the higher the filesize. Feet also shuffle with this though
+    )
+
 def select_children_recursive(obj, doSelect):
     obj.select_set(doSelect)
     for child in obj.children:
