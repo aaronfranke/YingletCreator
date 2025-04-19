@@ -38,8 +38,9 @@ def export():
         if (selectedObject.type == 'ARMATURE'):
              selectedObject.animation_data.action = bpy.data.actions.get("_T-Pose")
              for child in selectedObject.children:
-                child.hide_set(False)  # Make visible in viewport
-                child.hide_viewport = False  # Ensure it's not hidden in viewport
+                 hidden = "(PreApply)" in child.name # Don't export objects that for building other meshes
+                 child.hide_set(hidden)  # Visible in viewport
+                 child.hide_viewport = hidden  # Visible in viewport
         
         select_children_recursive(selectedObject, True)
         if (selectedObject.type == 'ARMATURE'):
