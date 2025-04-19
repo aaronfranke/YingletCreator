@@ -1,3 +1,5 @@
+using Character.Creator;
+using Character.Creator.UI;
 using UnityEditor;
 using UnityEngine;
 
@@ -52,6 +54,18 @@ namespace Character.Compositor
 				UpdateGraphics();
 			}
 			GUILayout.EndHorizontal();
+
+			if (GUILayout.Button("Character creator color to base+shade"))
+			{
+				Undo.RecordObject(myScript, "Changed Selected Color");
+				var activeSelection = FindFirstObjectByType<ColorActiveSelection>();
+				var dataRepo = FindFirstObjectByType<CustomizationSelectedDataRepository>();
+				var colorizeValues = dataRepo.GetColorizeValues(activeSelection.FirstSelected);
+				((SerializableColorizeValuesPart)myScript.DefaultColors.Base).Set(colorizeValues.Base);
+				((SerializableColorizeValuesPart)myScript.DefaultColors.Shade).Set(colorizeValues.Shade);
+				EditorUtility.SetDirty(myScript);
+				UpdateGraphics();
+			}
 		}
 
 		static void UpdateGraphics()

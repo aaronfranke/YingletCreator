@@ -40,6 +40,12 @@ namespace Character.Compositor
 		{
 			Color.RGBToHSV(color, out _hue, out _saturation, out _value);
 		}
+		public void Set(IColorizeValuesPart values)
+		{
+			_hue = values.Hue;
+			_saturation = values.Saturation;
+			_value = values.Value;
+		}
 	}
 	public static class ColorizeValuesExtensionMethods
 	{
