@@ -50,8 +50,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6206872914640931755, guid: a0196821afa880446b98e9f92cc3f254, type: 3}
       propertyPath: m_Name
-      value: WallRing
+      value: WallRingChain
       objectReference: {fileID: 0}
+    - target: {fileID: 6391051793813028048, guid: a0196821afa880446b98e9f92cc3f254, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 8260512910192245420, guid: 1a10cbecaa3fd6b4fbb491bb8fdf526b, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
