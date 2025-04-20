@@ -525,9 +525,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5708653247287790013}
+  - component: {fileID: 4581866693128864409}
   - component: {fileID: 7511759612726986536}
   m_Layer: 0
-  m_Name: Snout
+  m_Name: Bridge / Snout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -548,6 +549,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2487732463215768573}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4581866693128864409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342511447467616559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5846e7b1347e2ae41819519acf1b6113, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sliderId: {fileID: 11400000, guid: b07dd52ce06ddc944bab0faf7cda1099, type: 2}
+  _target: {fileID: 4475334553784219427}
+  _minOffset: {x: 0, y: -0.005, z: 0}
+  _maxOffset: {x: 0, y: 0.027, z: 0}
 --- !u!114 &7511759612726986536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2280,6 +2297,11 @@ Transform:
 --- !u!4 &4470017840301814326 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1406725741792677903, guid: 35d13f895066c40418a4e9183ee89880, type: 3}
+  m_PrefabInstance: {fileID: 3282279776456958521}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4475334553784219427 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1411479367849907482, guid: 35d13f895066c40418a4e9183ee89880, type: 3}
   m_PrefabInstance: {fileID: 3282279776456958521}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &4492358670157863201 stripped
