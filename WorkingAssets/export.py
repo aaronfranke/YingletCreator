@@ -94,5 +94,8 @@ def get_collection_path(obj_name):
 # Rather than trying to undo things ourselves, just revert the file back to what it was right before we applied this
 bpy.ops.wm.save_mainfile()
 export()
+
+# the only reason we're doing this rn is because i'm too lazy to re-hide stuff
+# I guess it's also causing the pose to stay as-is which is nice
 bpy.ops.wm.revert_mainfile()
 
