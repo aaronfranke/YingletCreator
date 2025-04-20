@@ -4,25 +4,24 @@ using UnityEngine;
 
 public class ApplySliderAsRotation : MonoBehaviour, IApplyableCustomization
 {
-    [SerializeField] CharacterSliderId _sliderId;
-    [SerializeField] Transform _target;
-    [SerializeField] Vector3 _eulerAngles;
-    [SerializeField] AnimationCurve _applyAmountBySliderVal;
+	[SerializeField] CharacterSliderId _sliderId;
+	[SerializeField] Transform _target;
+	[SerializeField] Vector3 _eulerAngles;
+	[SerializeField] AnimationCurve _applyAmountBySliderVal;
 
-    ICustomizationSelectedDataRepository _dataRepository;
+	ICustomizationSelectedDataRepository _dataRepository;
 
-    private void Awake()
-    {
-        _dataRepository = GetComponentInParent<ICustomizationSelectedDataRepository>();
-    }
+	private void Awake()
+	{
+		_dataRepository = GetComponentInParent<ICustomizationSelectedDataRepository>();
+	}
 
-    public void Apply()
-    {
-        var sliderValue = _dataRepository.GetSliderValue(_sliderId);
+	public void Apply()
+	{
+		var sliderValue = _dataRepository.GetSliderValue(_sliderId);
 
-        var p = _applyAmountBySliderVal.Evaluate(sliderValue);
-        if (p < 0.01f) return; // Don't apply if it won't be relevant
+		var p = _applyAmountBySliderVal.Evaluate(sliderValue);
 
-        _target.transform.localRotation = _target.transform.localRotation * Quaternion.Euler(_eulerAngles * p);
-    }
+		_target.transform.localRotation = _target.transform.localRotation * Quaternion.Euler(_eulerAngles * p);
+	}
 }
