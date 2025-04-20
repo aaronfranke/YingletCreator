@@ -17,14 +17,6 @@ public class VertexColorBakingLogic
 			var bakedData = targetObject.GetComponent<BakedVertexColorData>();
 			if (bakedData != null)
 			{
-				var meshFilter = targetObject.GetComponent<MeshFilter>();
-				if (meshFilter != null && PrefabUtility.IsPartOfPrefabInstance(meshFilter))
-				{
-					// This code is just not working :(
-					PrefabUtility.RevertObjectOverride(meshFilter, InteractionMode.AutomatedAction);
-					PrefabUtility.RecordPrefabInstancePropertyModifications(meshFilter);
-				}
-
 				Undo.DestroyObjectImmediate(bakedData);
 			}
 		}
@@ -99,6 +91,24 @@ public class VertexColorBakingLogic
 					color = Color.Lerp(color, targetColor, power);
 				}
 				return color;
+			}
+		}
+	}
+	public static void RevertChildMeshFilters(Transform root)
+	{
+		if (root == null) return;
+
+		var targetObjects = root.GetComponentsInChildren<Transform>();
+
+		for (int i = 0; i < targetObjects.Length; i++)
+		{
+			var targetObject = targetObjects[i];
+			var meshFilter = targetObject.GetComponent<MeshFilter>();
+			if (meshFilter != null && PrefabUtility.IsPartOfPrefabInstance(meshFilter))
+			{
+				// This code is just not working :(
+				PrefabUtility.RevertObjectOverride(meshFilter, InteractionMode.AutomatedAction);
+				PrefabUtility.RecordPrefabInstancePropertyModifications(meshFilter);
 			}
 		}
 	}
