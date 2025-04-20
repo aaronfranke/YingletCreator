@@ -111,6 +111,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
+    ShowEvenInEditor: 0
 --- !u!1 &165750747635733454
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,7 +123,7 @@ GameObject:
   - component: {fileID: 7400674699792421560}
   - component: {fileID: 4006543454656635925}
   - component: {fileID: 1935380798388357028}
-  - component: {fileID: 5644108241845671500}
+  - component: {fileID: 1283811060798082374}
   m_Layer: 0
   m_Name: Passage (1)
   m_TagString: Untagged
@@ -198,7 +199,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5644108241845671500
+--- !u!114 &1283811060798082374
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -361,7 +362,7 @@ GameObject:
   - component: {fileID: 5418350577627148485}
   - component: {fileID: 644741941688459311}
   - component: {fileID: 225154928708687880}
-  - component: {fileID: 2017466678695472772}
+  - component: {fileID: 8954177689799766337}
   m_Layer: 0
   m_Name: Cobweb
   m_TagString: Untagged
@@ -450,7 +451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _obfuscate: 0
---- !u!114 &2017466678695472772
+--- !u!114 &8954177689799766337
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -480,7 +481,7 @@ GameObject:
   - component: {fileID: 5900699635148314073}
   - component: {fileID: 5503342684362878226}
   - component: {fileID: 4062448374658193805}
-  - component: {fileID: 1466431710556688898}
+  - component: {fileID: 1264004999514867075}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -557,7 +558,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1466431710556688898
+--- !u!114 &1264004999514867075
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1046,7 +1047,7 @@ GameObject:
   - component: {fileID: 8005882272258961553}
   - component: {fileID: 427947320401940864}
   - component: {fileID: 3809514693052543071}
-  - component: {fileID: 4470129947675623910}
+  - component: {fileID: 263793965254897272}
   m_Layer: 0
   m_Name: Cobweb (2)
   m_TagString: Untagged
@@ -1135,7 +1136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _obfuscate: 0
---- !u!114 &4470129947675623910
+--- !u!114 &263793965254897272
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1165,7 +1166,7 @@ GameObject:
   - component: {fileID: 8276247423054534893}
   - component: {fileID: 2025372998871614272}
   - component: {fileID: 6629453478926293133}
-  - component: {fileID: 1500665767575691714}
+  - component: {fileID: 1127086143053975058}
   m_Layer: 0
   m_Name: WoodCrate (2)
   m_TagString: Untagged
@@ -1241,7 +1242,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1500665767575691714
+--- !u!114 &1127086143053975058
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1416,7 +1417,7 @@ GameObject:
   - component: {fileID: 7955205411020191150}
   - component: {fileID: 301755173002954535}
   - component: {fileID: 9065566852045813207}
-  - component: {fileID: 2550995706301706673}
+  - component: {fileID: 4318676709844405768}
   m_Layer: 0
   m_Name: WoodCrate
   m_TagString: Untagged
@@ -1492,7 +1493,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2550995706301706673
+--- !u!114 &4318676709844405768
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1672,7 +1673,7 @@ GameObject:
   - component: {fileID: 685926260969215342}
   - component: {fileID: 4485760574723747861}
   - component: {fileID: 5567676900633093511}
-  - component: {fileID: 892372715970948730}
+  - component: {fileID: 2242715900134171585}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -1771,7 +1772,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &892372715970948730
+--- !u!114 &2242715900134171585
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2000,7 +2001,7 @@ GameObject:
   - component: {fileID: 3302814010569104235}
   - component: {fileID: 503024502073344869}
   - component: {fileID: 1562556750024698888}
-  - component: {fileID: 3054023245117448077}
+  - component: {fileID: 115398042174744301}
   m_Layer: 0
   m_Name: Chair
   m_TagString: Untagged
@@ -2076,7 +2077,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3054023245117448077
+--- !u!114 &115398042174744301
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2325,7 +2326,7 @@ GameObject:
   - component: {fileID: 1668482123912809724}
   - component: {fileID: 870933410228458105}
   - component: {fileID: 5890554629152349342}
-  - component: {fileID: 8507218030858975191}
+  - component: {fileID: 7410666632340706727}
   m_Layer: 0
   m_Name: Wall (1)
   m_TagString: Untagged
@@ -2424,7 +2425,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &8507218030858975191
+--- !u!114 &7410666632340706727
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2780,7 +2781,7 @@ GameObject:
   - component: {fileID: 6224527922461463167}
   - component: {fileID: 1763080015630137463}
   - component: {fileID: 231966979510859151}
-  - component: {fileID: 4105837599477733204}
+  - component: {fileID: 1792921435390607750}
   m_Layer: 0
   m_Name: Cobweb
   m_TagString: Untagged
@@ -2869,7 +2870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _obfuscate: 0
---- !u!114 &4105837599477733204
+--- !u!114 &1792921435390607750
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2899,7 +2900,7 @@ GameObject:
   - component: {fileID: 4725816174972019653}
   - component: {fileID: 4966792744971727856}
   - component: {fileID: 6863458091286620268}
-  - component: {fileID: 6101674774021928128}
+  - component: {fileID: 6448986932019218759}
   m_Layer: 0
   m_Name: WoodCrate (1)
   m_TagString: Untagged
@@ -2975,7 +2976,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6101674774021928128
+--- !u!114 &6448986932019218759
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3024,7 +3025,7 @@ GameObject:
   - component: {fileID: 6266948596441220854}
   - component: {fileID: 224425767064862349}
   - component: {fileID: 6869976769807451859}
-  - component: {fileID: 9032586936466053642}
+  - component: {fileID: 6123938807169955375}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -3101,7 +3102,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &9032586936466053642
+--- !u!114 &6123938807169955375
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3526,7 +3527,7 @@ GameObject:
   - component: {fileID: 9005298926359753769}
   - component: {fileID: 7714824299140036176}
   - component: {fileID: 863075221431811965}
-  - component: {fileID: 4834643408714030025}
+  - component: {fileID: 6226907632131916241}
   m_Layer: 0
   m_Name: Passage
   m_TagString: Untagged
@@ -3602,7 +3603,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4834643408714030025
+--- !u!114 &6226907632131916241
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3717,7 +3718,7 @@ GameObject:
   - component: {fileID: 4479163578749147170}
   - component: {fileID: 1701848596051674109}
   - component: {fileID: 8253516625433740063}
-  - component: {fileID: 7683848306640769525}
+  - component: {fileID: 4730132869600679728}
   m_Layer: 0
   m_Name: Chair (1)
   m_TagString: Untagged
@@ -3793,7 +3794,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7683848306640769525
+--- !u!114 &4730132869600679728
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3939,7 +3940,7 @@ GameObject:
   - component: {fileID: 6399327690001148688}
   - component: {fileID: 6722160086155130227}
   - component: {fileID: 3864386937588284605}
-  - component: {fileID: 8408751722815402070}
+  - component: {fileID: 4589958757289054570}
   m_Layer: 0
   m_Name: Cobweb (1)
   m_TagString: Untagged
@@ -4028,7 +4029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _obfuscate: 0
---- !u!114 &8408751722815402070
+--- !u!114 &4589958757289054570
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4107,7 +4108,7 @@ GameObject:
   - component: {fileID: 9029590468555281732}
   - component: {fileID: 887027821092125192}
   - component: {fileID: 558037843654274672}
-  - component: {fileID: 3218070538577489826}
+  - component: {fileID: 523780584374200106}
   m_Layer: 0
   m_Name: Wall (3)
   m_TagString: Untagged
@@ -4206,7 +4207,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &3218070538577489826
+--- !u!114 &523780584374200106
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4504,7 +4505,7 @@ GameObject:
   - component: {fileID: 3300640653812442555}
   - component: {fileID: 3475714864258446404}
   - component: {fileID: 6656355698181234679}
-  - component: {fileID: 7391886570838127476}
+  - component: {fileID: 3715364180973468416}
   m_Layer: 0
   m_Name: Cobweb
   m_TagString: Untagged
@@ -4593,7 +4594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _obfuscate: 0
---- !u!114 &7391886570838127476
+--- !u!114 &3715364180973468416
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4624,7 +4625,7 @@ GameObject:
   - component: {fileID: 7390061106595074709}
   - component: {fileID: 8091733357184387364}
   - component: {fileID: 4941173824372220500}
-  - component: {fileID: 5339964321421830981}
+  - component: {fileID: 805771358168421960}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -4723,7 +4724,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &5339964321421830981
+--- !u!114 &805771358168421960
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5099,7 +5100,7 @@ GameObject:
   - component: {fileID: 7330950745664075504}
   - component: {fileID: 7709097827761741433}
   - component: {fileID: 4170588126984196276}
-  - component: {fileID: 6149675240374263482}
+  - component: {fileID: 8851451397293601761}
   m_Layer: 0
   m_Name: Wall (4)
   m_TagString: Untagged
@@ -5198,7 +5199,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &6149675240374263482
+--- !u!114 &8851451397293601761
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5428,7 +5429,7 @@ GameObject:
   - component: {fileID: 8619622866669911307}
   - component: {fileID: 889070469572255347}
   - component: {fileID: 2332463760709725067}
-  - component: {fileID: 7615941052350209529}
+  - component: {fileID: 3165604661415206345}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -5527,7 +5528,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &7615941052350209529
+--- !u!114 &3165604661415206345
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5825,7 +5826,7 @@ GameObject:
   - component: {fileID: 6309240098344368622}
   - component: {fileID: 7098371115646860925}
   - component: {fileID: 6938832515517387398}
-  - component: {fileID: 50232230140768572}
+  - component: {fileID: 3210711707023878738}
   m_Layer: 0
   m_Name: Wall (2)
   m_TagString: Untagged
@@ -5924,7 +5925,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &50232230140768572
+--- !u!114 &3210711707023878738
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6174,7 +6175,7 @@ GameObject:
   - component: {fileID: 476252533713700967}
   - component: {fileID: 6328440397279921109}
   - component: {fileID: 6895491465560145621}
-  - component: {fileID: 3588558428702479605}
+  - component: {fileID: 5696440376325233002}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -6273,7 +6274,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &3588558428702479605
+--- !u!114 &5696440376325233002
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6503,7 +6504,7 @@ GameObject:
   - component: {fileID: 7590228943499289613}
   - component: {fileID: 8962837408345607318}
   - component: {fileID: 458857459641853223}
-  - component: {fileID: 8951912276620594363}
+  - component: {fileID: 6532032363995873757}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -6601,7 +6602,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &8951912276620594363
+--- !u!114 &6532032363995873757
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6770,7 +6771,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8273853820042922268, guid: 1f9fc5be5a2e13e438d9d3ca19278fd0, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5647401663696095477}
+      addedObject: {fileID: 1775258384423734292}
   m_SourcePrefab: {fileID: 100100000, guid: 1f9fc5be5a2e13e438d9d3ca19278fd0, type: 3}
 --- !u!4 &3636125359238136415 stripped
 Transform:
@@ -6782,7 +6783,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8273853820042922268, guid: 1f9fc5be5a2e13e438d9d3ca19278fd0, type: 3}
   m_PrefabInstance: {fileID: 2030188822766938897}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5647401663696095477
+--- !u!114 &1775258384423734292
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7066,7 +7067,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8273853820042922268, guid: 1f9fc5be5a2e13e438d9d3ca19278fd0, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 376212578521683717}
+      addedObject: {fileID: 6182972897747656341}
   m_SourcePrefab: {fileID: 100100000, guid: 1f9fc5be5a2e13e438d9d3ca19278fd0, type: 3}
 --- !u!4 &714413320390545341 stripped
 Transform:
@@ -7078,7 +7079,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8273853820042922268, guid: 1f9fc5be5a2e13e438d9d3ca19278fd0, type: 3}
   m_PrefabInstance: {fileID: 2859973112596768499}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &376212578521683717
+--- !u!114 &6182972897747656341
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7354,17 +7355,17 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4754544819230704000, guid: 74e4f09a649415a4194023881687de8b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2024792711811799613}
+      addedObject: {fileID: 8032445813103419481}
     - targetCorrespondingSourceObject: {fileID: 7761778031016271809, guid: 74e4f09a649415a4194023881687de8b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8624047078059291925}
+      addedObject: {fileID: 8618168835618020215}
   m_SourcePrefab: {fileID: 100100000, guid: 74e4f09a649415a4194023881687de8b, type: 3}
 --- !u!1 &135879665945729994 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4754544819230704000, guid: 74e4f09a649415a4194023881687de8b, type: 3}
   m_PrefabInstance: {fileID: 4618780637037288010}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2024792711811799613
+--- !u!114 &8032445813103419481
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7459,7 +7460,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7761778031016271809, guid: 74e4f09a649415a4194023881687de8b, type: 3}
   m_PrefabInstance: {fileID: 4618780637037288010}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8624047078059291925
+--- !u!114 &8618168835618020215
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7900,14 +7901,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5821561686651113275, guid: fa15f9c609f67fd41bbd8f59d8cc4078, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 9003724258343158025}
+      addedObject: {fileID: 8489478753037197744}
   m_SourcePrefab: {fileID: 100100000, guid: fa15f9c609f67fd41bbd8f59d8cc4078, type: 3}
 --- !u!1 &761068316260654618 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5821561686651113275, guid: fa15f9c609f67fd41bbd8f59d8cc4078, type: 3}
   m_PrefabInstance: {fileID: 6504759286048510241}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &9003724258343158025
+--- !u!114 &8489478753037197744
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
