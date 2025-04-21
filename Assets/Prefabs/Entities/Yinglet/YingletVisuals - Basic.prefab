@@ -1109,6 +1109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1150628783054074862}
   - component: {fileID: 7287477866535530238}
+  - component: {fileID: 8504813338410630825}
   m_Layer: 0
   m_Name: MeshGatherer - SliderChanges
   m_TagString: Untagged
@@ -1144,6 +1145,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _toRemove: {fileID: 11400000, guid: fb65c04c5ee1c2b4a8c1e844c417deb2, type: 2}
+  _sliderId: {fileID: 11400000, guid: fa3977f1c956dc44d8d6d73016c02006, type: 2}
+  _minimumValue: 0.05
+--- !u!114 &8504813338410630825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2548367694284228455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7da9e498ef796fe4197b7b6dbc1082ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _toRemove: {fileID: 11400000, guid: bd120e367ba926d4fae698e6471d95a8, type: 2}
   _sliderId: {fileID: 11400000, guid: fa3977f1c956dc44d8d6d73016c02006, type: 2}
   _minimumValue: 0.05
 --- !u!1 &2978443696257732816
