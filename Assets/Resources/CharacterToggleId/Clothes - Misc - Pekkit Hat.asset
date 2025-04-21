@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
-  m_Name: Pattern - Head - Bottom
+  m_Name: Clothes - Misc - Pekkit Hat
   m_EditorClassIdentifier: 
-  _uniqueAssetId: 92e587c6ef711894c9f0a01f99e2dcf0
-  _displayName: Bottom
-  _addedMeshes: []
+  _uniqueAssetId: ba444d2e9c5df2c419e2cc9651c3fe2b
+  _displayName: Goblin Hat
+  _addedMeshes:
+  - {fileID: 11400000, guid: 86f0a541a508613478a66de1db60b342, type: 2}
   _addedTextures:
-  - {fileID: 11400000, guid: a320692dd8f32a14bb1f68af531d3239, type: 2}
-  - {fileID: 11400000, guid: b500c4ab4b0357240b4f3b4d662a9f4e, type: 2}
+  - {fileID: 11400000, guid: 7cb644b0811ebc74bb6e201dbb810415, type: 2}
+  - {fileID: 11400000, guid: 4221f657905694045a0f2b2972152ec7, type: 2}
+  - {fileID: 11400000, guid: 9919c196f1f0e1b418b6c7a5a298af4e, type: 2}
   _eyeTextures: {fileID: 0}
