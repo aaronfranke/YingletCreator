@@ -21,5 +21,8 @@ namespace Character.Data
 
 		[SerializeField] EyeMixTextures _eyeTextures;
 		public EyeMixTextures EyeTextures => _eyeTextures;
+
+		[SerializeField] GameObject _roomPrefab;
+		public GameObject RoomPrefab => _roomPrefab;
 	}
 }
