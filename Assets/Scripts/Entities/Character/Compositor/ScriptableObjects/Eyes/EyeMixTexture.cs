@@ -1,4 +1,6 @@
 using Character.Data;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
@@ -36,5 +38,6 @@ namespace Character.Compositor
 
 		public TargetMaterialTexture TargetMaterialTexture => _individualReferences.TargetMaterialTexture;
 
+		public IEnumerable<MeshTag> MaskedMeshTags => Enumerable.Empty<MeshTag>();
 	}
 }

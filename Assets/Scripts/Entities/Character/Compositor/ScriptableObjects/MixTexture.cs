@@ -1,4 +1,5 @@
 using Character.Data;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Character.Compositor
@@ -33,6 +34,8 @@ namespace Character.Compositor
 		bool Sortable { get; }
 
 		TargetMaterialTexture TargetMaterialTexture { get; }
+
+		public IEnumerable<MeshTag> MaskedMeshTags { get; }
 	}
 
 	[CreateAssetMenu(fileName = "MixTexture", menuName = "Scriptable Objects/Character Compositor/MixTexture")]
@@ -42,6 +45,7 @@ namespace Character.Compositor
 		[SerializeField] MaterialDescription _targetMaterialDescription;
 		[SerializeField] Texture2D _grayscale;
 		[SerializeField] Texture2D _mask;
+		[SerializeField] MeshTag[] _maskedMeshTags;
 
 		public ReColorId ReColorId => _reColorId;
 
@@ -54,6 +58,8 @@ namespace Character.Compositor
 		public bool Sortable => true;
 
 		public TargetMaterialTexture TargetMaterialTexture => TargetMaterialTexture.MainTexture;
+
+		public IEnumerable<MeshTag> MaskedMeshTags => _maskedMeshTags;
 
 	}
 

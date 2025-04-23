@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Character.Compositor
 {
-	public class MeshGatherer_Mask : MonoBehaviour, IMeshGathererMutator
+	public class MeshGatherer_MaskFromMeshes : MonoBehaviour, IMeshGathererMutator
 	{
 		public void Mutate(ref ISet<MeshWithMaterial> set)
 		{
