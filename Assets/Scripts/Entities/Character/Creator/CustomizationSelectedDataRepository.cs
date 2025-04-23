@@ -1,6 +1,7 @@
 using Character.Compositor;
 using Character.Data;
 using Reactivity;
+using System.Linq;
 
 namespace Character.Creator
 {
@@ -66,6 +67,7 @@ namespace Character.Creator
 		}
 		public static void FlipToggle(this ICustomizationSelectedDataRepository dataRepo, CharacterToggleId id)
 		{
+			using var suspender = new ReactivitySuspender();
 			bool exists = dataRepo.GetToggle(id);
 			if (exists)
 			{
@@ -74,6 +76,18 @@ namespace Character.Creator
 			else
 			{
 				dataRepo.CustomizationData.ToggleData.Toggles.Add(id);
+
+				if (id.Group)
+				{
+					var togglesToRemove = dataRepo.CustomizationData.ToggleData.Toggles
+						.Where(toggle => toggle.Group == id.Group && toggle != id)
+						.ToList();
+					foreach (var toggleToRemove in togglesToRemove)
+					{
+						dataRepo.CustomizationData.ToggleData.Toggles.Remove(toggleToRemove);
+					}
+
+				}
 			}
 		}
 	}

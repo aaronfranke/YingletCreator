@@ -1,7 +1,6 @@
 using Reactivity;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 namespace Character.Compositor
 {
@@ -44,7 +43,6 @@ namespace Character.Compositor
 				}
 			}
 
-			Debug.Log("Removing: " + string.Join(", ", toRemove.Select(t => t.name)));
 			foreach (var mesh in toRemove)
 			{
 				set.Remove(mesh);
