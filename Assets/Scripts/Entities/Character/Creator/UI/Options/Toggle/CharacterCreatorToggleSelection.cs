@@ -1,12 +1,9 @@
-using Character.Data;
 using Reactivity;
 
 namespace Character.Creator.UI
 {
 	public class CharacterCreatorToggleSelection : ReactiveBehaviour, ISelectable
 	{
-		public CharacterToggleId ToggleId { get; set; }
-
 		Computed<bool> _selected;
 		private ICustomizationSelectedDataRepository _dataRepo;
 		private ICharacterCreatorToggleReference _reference;
