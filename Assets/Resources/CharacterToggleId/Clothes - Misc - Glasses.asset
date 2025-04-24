@@ -14,8 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueAssetId: 2e5456473b57bba439ab0588f9b15ab3
   _displayName: Glasses
+  _group: {fileID: 0}
   _addedMeshes:
   - {fileID: 11400000, guid: 0018c43d9f9844142847099eef16ac5c, type: 2}
   _addedTextures:
   - {fileID: 11400000, guid: 7804afe28d363be4d924eacf0fff2caa, type: 2}
   _eyeTextures: {fileID: 0}
+  _roomPrefab: {fileID: 0}
+  _preview:
+    _sprite: {fileID: -2089028038, guid: 15341dd2853879d4694c63f593796b80, type: 3}
