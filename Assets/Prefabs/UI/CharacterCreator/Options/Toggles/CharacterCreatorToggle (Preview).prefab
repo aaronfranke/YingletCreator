@@ -416,7 +416,7 @@ GameObject:
   - component: {fileID: 382857995544801506}
   - component: {fileID: 7235562677982648111}
   - component: {fileID: 2670837431321310937}
-  - component: {fileID: 773322038086557778}
+  - component: {fileID: 1117682514999999760}
   m_Layer: 5
   m_Name: CharacterCreatorToggle (Preview)
   m_TagString: Untagged
@@ -587,7 +587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _soundEffect: {fileID: 11400000, guid: 508bf4032cf09064f92b0aee9be30176, type: 2}
---- !u!114 &773322038086557778
+--- !u!114 &1117682514999999760
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -596,10 +596,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4834466209950376475}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6e6669a11675f743bbb6e489ef69d5a, type: 3}
+  m_Script: {fileID: 11500000, guid: a59216fbd0e9c444b84a3d7492873c16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _soundEffect: {fileID: 11400000, guid: 66f9c6c60fe90fd4bb4a8aa7d90d09a8, type: 2}
+  _soundOn: {fileID: 11400000, guid: 36f34cfbee9739a40b875110e2331463, type: 2}
+  _soundOff: {fileID: 11400000, guid: 7e0a91e7eaba529439e6cbde2269bfe6, type: 2}
 --- !u!1 &4990695248862270480
 GameObject:
   m_ObjectHideFlags: 0

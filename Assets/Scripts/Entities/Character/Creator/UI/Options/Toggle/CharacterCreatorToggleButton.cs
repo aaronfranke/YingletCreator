@@ -1,13 +1,16 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Character.Creator.UI
 {
-	public class CharacterCreatorToggleButton : MonoBehaviour
+	public class CharacterCreatorToggleButton : MonoBehaviour, IUserToggleEvents
 	{
 		private ICustomizationSelectedDataRepository _dataRepo;
 		private ICharacterCreatorToggleReference _reference;
 		private Button _button;
+
+		public event Action<bool> UserToggled;
 
 		void Awake()
 		{
@@ -25,7 +28,13 @@ namespace Character.Creator.UI
 
 		private void Button_OnClick()
 		{
+			var from = _dataRepo.GetToggle(_reference.ToggleId);
 			_dataRepo.FlipToggle(_reference.ToggleId);
+			var to = _dataRepo.GetToggle(_reference.ToggleId);
+			if (from != to)
+			{
+				UserToggled?.Invoke(to);
+			}
 		}
 	}
 }
