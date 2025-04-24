@@ -17,6 +17,8 @@ namespace Character.Compositor
 		private EnumerableDictReflector<MeshWithMaterial, MeshObjectWithMaterialDescription> _enumerableReflector;
 		private Dictionary<string, Transform> _boneMap;
 
+		const float ExtentsFactor = 2;
+
 		IEnumerable<MeshObjectWithMaterialDescription> IMeshGeneration.Meshes => _enumerableReflector.Values;
 
 		void Awake()
@@ -38,6 +40,12 @@ namespace Character.Compositor
 				return _boneMap[b.name];
 			}
 			).ToArray();
+
+			// We have dynamic animations, so we need to do extend the bounds a lil' bit
+			var newBounds = skinnedMeshRenderer.localBounds;
+			newBounds.extents *= ExtentsFactor;
+			skinnedMeshRenderer.localBounds = newBounds;
+
 			return new MeshObjectWithMaterialDescription(newGO, mesh.MaterialDescription);
 		}
 		private void Removed(MeshObjectWithMaterialDescription obj)
