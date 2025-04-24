@@ -39,7 +39,7 @@ namespace Snapshotter
 
 		static void SnapshotsToTexture(SnapshotterReferences references, CharacterToggleId[] toggles, int totalTexSize)
 		{
-			var camPos = AssetDatabase.LoadAssetAtPath<SnapshotterCameraPosition>(CameraPosRelativePath);
+			var defaultCamPos = AssetDatabase.LoadAssetAtPath<SnapshotterCameraPosition>(CameraPosRelativePath);
 
 			string text = File.ReadAllText(PresetPath);
 			var serializedData = JsonUtility.FromJson<SerializableCustomizationData>(text);
@@ -60,6 +60,7 @@ namespace Snapshotter
 				{
 					observableData.ToggleData.FlipToggle(toggle);
 				}
+				var camPos = toggle.Preview.CameraPosition ?? defaultCamPos;
 				var sParams = new SnapshotterParams(camPos, observableData);
 				var rt = SnapshotterUtils.Snapshot(references, sParams);
 

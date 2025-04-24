@@ -1,4 +1,5 @@
 using Character.Compositor;
+using Snapshotter;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,6 +38,9 @@ namespace Character.Data
 	{
 		[SerializeField] Sprite _sprite;
 		public Sprite Sprite => _sprite;
+
+		[SerializeField] SnapshotterCameraPosition _cameraPosition;
+		public SnapshotterCameraPosition CameraPosition => _cameraPosition;
 
 
 #if UNITY_EDITOR
