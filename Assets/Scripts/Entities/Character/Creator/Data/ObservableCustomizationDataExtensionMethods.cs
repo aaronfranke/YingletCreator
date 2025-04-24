@@ -1,0 +1,41 @@
+﻿using Character.Data;
+using Reactivity;
+using System.Linq;
+
+namespace Character.Creator
+{
+	public static class ObservableCustomizationDataExtensionMethods
+	{
+
+		public static bool GetToggle(this ObservableCustomizationToggleData data, CharacterToggleId id)
+		{
+			return data.Toggles.Contains(id);
+		}
+
+		public static void FlipToggle(this ObservableCustomizationToggleData data, CharacterToggleId id)
+		{
+			using var suspender = new ReactivitySuspender();
+			bool exists = data.GetToggle(id);
+			if (exists)
+			{
+				data.Toggles.Remove(id);
+			}
+			else
+			{
+				data.Toggles.Add(id);
+
+				if (id.Group)
+				{
+					var togglesToRemove = data.Toggles
+						.Where(toggle => toggle.Group == id.Group && toggle != id)
+						.ToList();
+					foreach (var toggleToRemove in togglesToRemove)
+					{
+						data.Toggles.Remove(toggleToRemove);
+					}
+
+				}
+			}
+		}
+	}
+}

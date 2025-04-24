@@ -5,44 +5,50 @@ using UnityEngine;
 
 namespace Snapshotter
 {
-    public sealed class SnapshotterTest
-    {
-        const string ReferencesRelativePath = "Assets/Scripts/Entities/Snapshotter/SnapshotterReferences.asset";
-        const string CameraPosRelativePath = "Assets/Scripts/Entities/Snapshotter/CameraPositions/_Default.asset";
-        public const string OutputPath = "Assets/Scripts/Entities/Snapshotter/_TestGenerated.png";
-        const string PresetPath = "Assets/StreamingAssets/PresetYings/KassenAkoll.yingsave";
+	public sealed class SnapshotterTest
+	{
+		const string ReferencesRelativePath = "Assets/Scripts/Entities/Snapshotter/SnapshotterReferences.asset";
+		const string CameraPosRelativePath = "Assets/Scripts/Entities/Snapshotter/CameraPositions/_Default.asset";
+		public const string OutputPath = "Assets/Scripts/Entities/Snapshotter/Generated/Test.png";
+		const string PresetPath = "Assets/StreamingAssets/PresetYings/KassenAkoll.yingsave";
 
-        [MenuItem("Custom/Test Snapshotter")]
-        public static void TestSnapshotter()
-        {
-            var references = AssetDatabase.LoadAssetAtPath<SnapshotterReferences>(ReferencesRelativePath);
-            var camPos = AssetDatabase.LoadAssetAtPath<SnapshotterCameraPosition>(CameraPosRelativePath);
+		[MenuItem("Custom/Snapshotter/Test Portrait")]
+		public static void TestSnapshotter()
+		{
+			if (!EditorApplication.isPlaying)
+			{
+				Debug.LogError("Snapshotting logic can only be ran while playing");
+				return;
+			}
 
-            string text = File.ReadAllText(PresetPath);
-            var serializedData = JsonUtility.FromJson<SerializableCustomizationData>(text);
-            var observableData = new ObservableCustomizationData(serializedData);
+			var references = AssetDatabase.LoadAssetAtPath<SnapshotterReferences>(ReferencesRelativePath);
+			var camPos = AssetDatabase.LoadAssetAtPath<SnapshotterCameraPosition>(CameraPosRelativePath);
 
-            var sParams = new SnapshotterParams(camPos, observableData);
-            var rt = SnapshotterUtils.Snapshot(references, sParams);
+			string text = File.ReadAllText(PresetPath);
+			var serializedData = JsonUtility.FromJson<SerializableCustomizationData>(text);
+			var observableData = new ObservableCustomizationData(serializedData);
 
-            // Create Texture2D and read pixels
-            RenderTexture.active = rt;
-            Texture2D tex = new Texture2D(rt.width, rt.height, TextureFormat.RGBA32, false);
-            tex.ReadPixels(new Rect(0, 0, rt.width, rt.height), 0, 0);
-            tex.Apply();
-            RenderTexture.active = null;
+			var sParams = new SnapshotterParams(camPos, observableData);
+			var rt = SnapshotterUtils.Snapshot(references, sParams);
 
-            // Encode to PNG
-            byte[] pngData = tex.EncodeToPNG();
-            File.WriteAllBytes(OutputPath, pngData);
-            Debug.Log("Saved PNG to: " + OutputPath);
+			// Create Texture2D and read pixels
+			RenderTexture.active = rt;
+			Texture2D tex = new Texture2D(rt.width, rt.height, TextureFormat.RGBA32, false);
+			tex.ReadPixels(new Rect(0, 0, rt.width, rt.height), 0, 0);
+			tex.Apply();
+			RenderTexture.active = null;
 
-            // Refresh AssetDatabase to show the new file
-            AssetDatabase.Refresh();
+			// Encode to PNG
+			byte[] pngData = tex.EncodeToPNG();
+			File.WriteAllBytes(OutputPath, pngData);
+			Debug.Log("Saved PNG to: " + OutputPath);
 
-            // Cleanup
-            GameObject.DestroyImmediate(rt);
-            GameObject.DestroyImmediate(tex);
-        }
-    }
+			// Refresh AssetDatabase to show the new file
+			AssetDatabase.Refresh();
+
+			// Cleanup
+			GameObject.DestroyImmediate(rt);
+			GameObject.DestroyImmediate(tex);
+		}
+	}
 }

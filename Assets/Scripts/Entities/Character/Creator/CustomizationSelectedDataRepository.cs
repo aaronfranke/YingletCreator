@@ -1,7 +1,6 @@
 using Character.Compositor;
 using Character.Data;
 using Reactivity;
-using System.Linq;
 
 namespace Character.Creator
 {
@@ -63,32 +62,11 @@ namespace Character.Creator
 
 		public static bool GetToggle(this ICustomizationSelectedDataRepository dataRepo, CharacterToggleId id)
 		{
-			return dataRepo.CustomizationData.ToggleData.Toggles.Contains(id);
+			return dataRepo.CustomizationData.ToggleData.GetToggle(id);
 		}
 		public static void FlipToggle(this ICustomizationSelectedDataRepository dataRepo, CharacterToggleId id)
 		{
-			using var suspender = new ReactivitySuspender();
-			bool exists = dataRepo.GetToggle(id);
-			if (exists)
-			{
-				dataRepo.CustomizationData.ToggleData.Toggles.Remove(id);
-			}
-			else
-			{
-				dataRepo.CustomizationData.ToggleData.Toggles.Add(id);
-
-				if (id.Group)
-				{
-					var togglesToRemove = dataRepo.CustomizationData.ToggleData.Toggles
-						.Where(toggle => toggle.Group == id.Group && toggle != id)
-						.ToList();
-					foreach (var toggleToRemove in togglesToRemove)
-					{
-						dataRepo.CustomizationData.ToggleData.Toggles.Remove(toggleToRemove);
-					}
-
-				}
-			}
+			dataRepo.CustomizationData.ToggleData.FlipToggle(id);
 		}
 	}
 
