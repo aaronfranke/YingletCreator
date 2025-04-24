@@ -85,6 +85,7 @@ Shader "Custom/OffsetEye"
                 
                 if (col.a < _AlphaCutoff)
                     discard;
+                col.a = 1;
                 return col;
             }
             ENDHLSL
