@@ -2,14 +2,15 @@ using Character.Creator;
 using Character.Data;
 using Reactivity;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Character.Compositor
 {
 
-	public class MeshGatherer_RemoveAtLowSliderValue : ReactiveBehaviour, IMeshGathererMutator
+	public class MeshGatherer_MaskAtLowSliderValue : ReactiveBehaviour, IMeshGathererMutator
 	{
-		[SerializeField] MeshWithMaterial _toRemove;
+		[SerializeField] MeshTag _toRemove;
 		[SerializeField] CharacterSliderId _sliderId;
 		[SerializeField] float _minimumValue;
 
@@ -32,7 +33,11 @@ namespace Character.Compositor
 		{
 			if (_constrain.Val)
 			{
-				meshes.Remove(_toRemove);
+				var toRemove = meshes.Where(m => m.Tags.Contains(_toRemove)).ToList();
+				foreach (var m in toRemove)
+				{
+					meshes.Remove(m);
+				}
 			}
 		}
 	}
