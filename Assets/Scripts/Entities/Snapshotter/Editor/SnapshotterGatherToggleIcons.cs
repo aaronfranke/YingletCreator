@@ -121,12 +121,12 @@ namespace Snapshotter
 			var sprites = AssetDatabase.LoadAllAssetsAtPath(spriteSheetPath)
 				.Select(s => s as Sprite)
 				.Where(s => s != null)
-				.ToArray();
-			Debug.Assert(toggles.Length == sprites.Length);
+				.ToDictionary((sprite) => sprite.name);
+			Debug.Assert(toggles.Length == sprites.Keys.Count());
 			for (int i = 0; i < toggles.Length; i++)
 			{
 				var toggle = toggles[i];
-				var sprite = sprites[i];
+				var sprite = sprites[toggle.name];
 				toggle.Preview.SetSprite(sprite);
 				EditorUtility.SetDirty(toggle);
 			}
