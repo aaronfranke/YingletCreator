@@ -18,6 +18,11 @@ namespace Character.Creator
 			bool exists = data.GetToggle(id);
 			if (exists)
 			{
+				if (id.Group && id.Group.MustHaveOne)
+				{
+					bool anotherExists = data.Toggles.Any(other => other != id && other.Group == id.Group);
+					if (!anotherExists) return;
+				}
 				data.Toggles.Remove(id);
 			}
 			else
