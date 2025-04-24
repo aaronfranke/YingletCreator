@@ -27,5 +27,23 @@ namespace Character.Data
 
 		[SerializeField] GameObject _roomPrefab;
 		public GameObject RoomPrefab => _roomPrefab;
+
+		[SerializeField] CharacterTogglePreviewData _preview;
+		public CharacterTogglePreviewData Preview => _preview;
+	}
+
+	[System.Serializable]
+	public class CharacterTogglePreviewData
+	{
+		[SerializeField] Sprite _sprite;
+		public Sprite Sprite => _sprite;
+
+
+#if UNITY_EDITOR
+		public void SetSprite(Sprite sprite)
+		{
+			_sprite = sprite;
+		}
+#endif
 	}
 }
