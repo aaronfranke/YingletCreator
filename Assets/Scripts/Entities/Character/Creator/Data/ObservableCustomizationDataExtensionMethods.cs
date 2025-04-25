@@ -1,6 +1,7 @@
 ﻿using Character.Data;
 using Reactivity;
 using System.Linq;
+using UnityEngine;
 
 namespace Character.Creator
 {
@@ -14,8 +15,18 @@ namespace Character.Creator
 
 		public static void FlipToggle(this ObservableCustomizationToggleData data, CharacterToggleId id)
 		{
+
 			using var suspender = new ReactivitySuspender();
 			bool exists = data.GetToggle(id);
+
+			if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.LeftControl))
+			{
+				// Easter egg: Ignore rules if holding both down
+				if (exists) data.Toggles.Remove(id);
+				else data.Toggles.Add(id);
+				return;
+			}
+
 			if (exists)
 			{
 				if (id.Group && id.Group.MustHaveOne)
