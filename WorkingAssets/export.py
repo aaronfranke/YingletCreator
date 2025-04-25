@@ -38,7 +38,8 @@ def export():
         if (selectedObject.type == 'ARMATURE'):
              selectedObject.animation_data.action = bpy.data.actions.get("_T-Pose")
              for child in selectedObject.children:
-                 hidden = "(PreApply)" in child.name # Don't export objects that for building other meshes
+                 # Don't export objects that for building other meshes
+                 hidden = ("(PreApply)" in child.name) or ("(Ignore)" in child.name) 
                  child.hide_set(hidden)  # Visible in viewport
                  child.hide_viewport = hidden  # Visible in viewport
         

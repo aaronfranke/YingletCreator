@@ -559,10 +559,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hair - Kass
+      name: Hair - Kass - Front
       rect:
         serializedVersion: 2
-        x: 128
+        x: 384
         y: 384
         width: 128
         height: 128
@@ -581,10 +581,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hair - Pekkit
+      name: Hair - Pekkit - Front
       rect:
         serializedVersion: 2
-        x: 256
+        x: 640
         y: 384
         width: 128
         height: 128
@@ -603,10 +603,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hair - Vizlet
+      name: Hair - Vizlet - Front
       rect:
         serializedVersion: 2
-        x: 384
+        x: 896
         y: 384
         width: 128
         height: 128
@@ -628,8 +628,8 @@ TextureImporter:
       name: Pattern - Body - Chest
       rect:
         serializedVersion: 2
-        x: 512
-        y: 384
+        x: 0
+        y: 512
         width: 128
         height: 128
       alignment: 0
@@ -650,8 +650,8 @@ TextureImporter:
       name: Pattern - Body - Legs
       rect:
         serializedVersion: 2
-        x: 640
-        y: 384
+        x: 128
+        y: 512
         width: 128
         height: 128
       alignment: 0
@@ -672,8 +672,8 @@ TextureImporter:
       name: Pattern - Head - Bottom
       rect:
         serializedVersion: 2
-        x: 768
-        y: 384
+        x: 256
+        y: 512
         width: 128
         height: 128
       alignment: 0
@@ -694,8 +694,8 @@ TextureImporter:
       name: Pattern - Head - Ear Dots
       rect:
         serializedVersion: 2
-        x: 896
-        y: 384
+        x: 384
+        y: 512
         width: 128
         height: 128
       alignment: 0
@@ -716,7 +716,7 @@ TextureImporter:
       name: Pattern - Head - Ear Tips
       rect:
         serializedVersion: 2
-        x: 0
+        x: 512
         y: 512
         width: 128
         height: 128
@@ -738,7 +738,7 @@ TextureImporter:
       name: Pattern - Head - Hard Blush
       rect:
         serializedVersion: 2
-        x: 128
+        x: 640
         y: 512
         width: 128
         height: 128
@@ -760,7 +760,7 @@ TextureImporter:
       name: Pattern - Head - Nose
       rect:
         serializedVersion: 2
-        x: 256
+        x: 768
         y: 512
         width: 128
         height: 128
@@ -782,7 +782,7 @@ TextureImporter:
       name: Pattern - Head - Top
       rect:
         serializedVersion: 2
-        x: 384
+        x: 896
         y: 512
         width: 128
         height: 128
@@ -804,8 +804,8 @@ TextureImporter:
       name: Pattern - Head - Whiskers
       rect:
         serializedVersion: 2
-        x: 512
-        y: 512
+        x: 0
+        y: 640
         width: 128
         height: 128
       alignment: 0
@@ -826,8 +826,8 @@ TextureImporter:
       name: TailTuft - Regular
       rect:
         serializedVersion: 2
-        x: 768
-        y: 512
+        x: 256
+        y: 640
         width: 128
         height: 128
       alignment: 0
@@ -848,8 +848,8 @@ TextureImporter:
       name: zRoom - Dungeon
       rect:
         serializedVersion: 2
-        x: 896
-        y: 512
+        x: 384
+        y: 640
         width: 128
         height: 128
       alignment: 0
@@ -870,7 +870,7 @@ TextureImporter:
       name: zRoom - Kass Room
       rect:
         serializedVersion: 2
-        x: 0
+        x: 512
         y: 640
         width: 128
         height: 128
@@ -892,7 +892,7 @@ TextureImporter:
       name: zRoom - Outdoors
       rect:
         serializedVersion: 2
-        x: 128
+        x: 640
         y: 640
         width: 128
         height: 128
@@ -977,10 +977,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hair - Bald
+      name: Hair - Bald - Front
       rect:
         serializedVersion: 2
-        x: 0
+        x: 128
         y: 384
         width: 128
         height: 128
@@ -1002,8 +1002,8 @@ TextureImporter:
       name: TailTuft - None
       rect:
         serializedVersion: 2
-        x: 640
-        y: 512
+        x: 128
+        y: 640
         width: 128
         height: 128
       alignment: 0
@@ -1016,6 +1016,94 @@ TextureImporter:
       bones: []
       spriteID: 740916012a78699de2d9e24dcb55ce66
       internalID: -1042508429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hair - Bald - Back
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d4126f0b967ca0dd4c7918446885649
+      internalID: -553015257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hair - Kass - Back
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 644f78080b8c3ed318ad189bc9d5b847
+      internalID: -269876889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hair - Pekkit - Back
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce27d51a3b004f105e00c3b080019207
+      internalID: -1101066458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hair - Vizlet - Back
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d20a7fcc8c64256a6a3b86eea1c2af1e
+      internalID: 293514677
       vertices: []
       indices: 
       edges: []

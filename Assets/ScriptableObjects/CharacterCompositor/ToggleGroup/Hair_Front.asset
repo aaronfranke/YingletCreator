@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91a97101bf56fc9409c1b7dcc5a40bdd, type: 3}
-  m_Name: Hair
+  m_Script: {fileID: 11500000, guid: 2080570dde925a24c980626358471fdd, type: 3}
+  m_Name: Hair_Front
   m_EditorClassIdentifier: 
-  Position: {x: -0.13943616, y: 0.91750824, z: -0.29928002}
-  Rotation: {x: 7.9068465, y: 41.42512, z: -0.00306322}
+  _mustHaveOne: 1
