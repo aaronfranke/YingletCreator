@@ -17,7 +17,7 @@ namespace Character.Compositor
 		private EnumerableDictReflector<MeshWithMaterial, MeshObjectWithMaterialDescription> _enumerableReflector;
 		private Dictionary<string, Transform> _boneMap;
 
-		const float ExtentsFactor = 2;
+		const float ExtentsFactor = 1;
 
 		IEnumerable<MeshObjectWithMaterialDescription> IMeshGeneration.Meshes => _enumerableReflector.Values;
 
@@ -43,7 +43,7 @@ namespace Character.Compositor
 
 			// We have dynamic animations, so we need to do extend the bounds a lil' bit
 			var newBounds = skinnedMeshRenderer.localBounds;
-			newBounds.extents *= ExtentsFactor;
+			newBounds.extents += Vector3.one * ExtentsFactor;
 			skinnedMeshRenderer.localBounds = newBounds;
 
 			return new MeshObjectWithMaterialDescription(newGO, mesh.MaterialDescription);
