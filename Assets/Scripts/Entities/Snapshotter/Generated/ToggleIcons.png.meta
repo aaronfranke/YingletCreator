@@ -342,7 +342,7 @@ TextureImporter:
       name: Face - Eye - Pekkit
       rect:
         serializedVersion: 2
-        x: 128
+        x: 256
         y: 256
         width: 128
         height: 128
@@ -364,7 +364,7 @@ TextureImporter:
       name: Face - Eye - Vizlet
       rect:
         serializedVersion: 2
-        x: 256
+        x: 384
         y: 256
         width: 128
         height: 128
@@ -386,7 +386,7 @@ TextureImporter:
       name: Face - Mouth - Kass
       rect:
         serializedVersion: 2
-        x: 384
+        x: 512
         y: 256
         width: 128
         height: 128
@@ -408,7 +408,7 @@ TextureImporter:
       name: Face - Mouth - Pekkit
       rect:
         serializedVersion: 2
-        x: 512
+        x: 768
         y: 256
         width: 128
         height: 128
@@ -430,7 +430,7 @@ TextureImporter:
       name: Face - Mouth - Vizlet
       rect:
         serializedVersion: 2
-        x: 640
+        x: 896
         y: 256
         width: 128
         height: 128
@@ -452,7 +452,7 @@ TextureImporter:
       name: Fluff - Chest
       rect:
         serializedVersion: 2
-        x: 128
+        x: 384
         y: 384
         width: 128
         height: 128
@@ -474,7 +474,7 @@ TextureImporter:
       name: Fluff - Crotch
       rect:
         serializedVersion: 2
-        x: 256
+        x: 512
         y: 384
         width: 128
         height: 128
@@ -496,7 +496,7 @@ TextureImporter:
       name: Fluff - Elbows
       rect:
         serializedVersion: 2
-        x: 384
+        x: 640
         y: 384
         width: 128
         height: 128
@@ -518,7 +518,7 @@ TextureImporter:
       name: Fluff - Knees
       rect:
         serializedVersion: 2
-        x: 512
+        x: 768
         y: 384
         width: 128
         height: 128
@@ -540,7 +540,7 @@ TextureImporter:
       name: Fluff - Shoulders
       rect:
         serializedVersion: 2
-        x: 640
+        x: 896
         y: 384
         width: 128
         height: 128
@@ -562,7 +562,7 @@ TextureImporter:
       name: Hair - Kass - Front
       rect:
         serializedVersion: 2
-        x: 128
+        x: 384
         y: 512
         width: 128
         height: 128
@@ -584,7 +584,7 @@ TextureImporter:
       name: Hair - Pekkit - Front
       rect:
         serializedVersion: 2
-        x: 512
+        x: 768
         y: 512
         width: 128
         height: 128
@@ -606,8 +606,8 @@ TextureImporter:
       name: Hair - Vizlet - Front
       rect:
         serializedVersion: 2
-        x: 768
-        y: 512
+        x: 0
+        y: 640
         width: 128
         height: 128
       alignment: 0
@@ -628,8 +628,8 @@ TextureImporter:
       name: Pattern - Body - Chest
       rect:
         serializedVersion: 2
-        x: 896
-        y: 512
+        x: 128
+        y: 640
         width: 128
         height: 128
       alignment: 0
@@ -650,7 +650,7 @@ TextureImporter:
       name: Pattern - Body - Legs
       rect:
         serializedVersion: 2
-        x: 0
+        x: 256
         y: 640
         width: 128
         height: 128
@@ -672,7 +672,7 @@ TextureImporter:
       name: Pattern - Head - Bottom
       rect:
         serializedVersion: 2
-        x: 128
+        x: 384
         y: 640
         width: 128
         height: 128
@@ -694,7 +694,7 @@ TextureImporter:
       name: Pattern - Head - Ear Dots
       rect:
         serializedVersion: 2
-        x: 256
+        x: 512
         y: 640
         width: 128
         height: 128
@@ -716,7 +716,7 @@ TextureImporter:
       name: Pattern - Head - Ear Tips
       rect:
         serializedVersion: 2
-        x: 384
+        x: 640
         y: 640
         width: 128
         height: 128
@@ -738,7 +738,7 @@ TextureImporter:
       name: Pattern - Head - Hard Blush
       rect:
         serializedVersion: 2
-        x: 512
+        x: 768
         y: 640
         width: 128
         height: 128
@@ -760,7 +760,7 @@ TextureImporter:
       name: Pattern - Head - Nose
       rect:
         serializedVersion: 2
-        x: 640
+        x: 896
         y: 640
         width: 128
         height: 128
@@ -782,8 +782,8 @@ TextureImporter:
       name: Pattern - Head - Top
       rect:
         serializedVersion: 2
-        x: 768
-        y: 640
+        x: 0
+        y: 768
         width: 128
         height: 128
       alignment: 0
@@ -804,8 +804,8 @@ TextureImporter:
       name: Pattern - Head - Whiskers
       rect:
         serializedVersion: 2
-        x: 896
-        y: 640
+        x: 128
+        y: 768
         width: 128
         height: 128
       alignment: 0
@@ -826,7 +826,7 @@ TextureImporter:
       name: TailTuft - Regular
       rect:
         serializedVersion: 2
-        x: 128
+        x: 384
         y: 768
         width: 128
         height: 128
@@ -848,7 +848,7 @@ TextureImporter:
       name: zRoom - Dungeon
       rect:
         serializedVersion: 2
-        x: 384
+        x: 640
         y: 768
         width: 128
         height: 128
@@ -870,7 +870,7 @@ TextureImporter:
       name: zRoom - Kass Room
       rect:
         serializedVersion: 2
-        x: 512
+        x: 768
         y: 768
         width: 128
         height: 128
@@ -892,7 +892,7 @@ TextureImporter:
       name: zRoom - Outdoors
       rect:
         serializedVersion: 2
-        x: 640
+        x: 896
         y: 768
         width: 128
         height: 128
@@ -914,8 +914,8 @@ TextureImporter:
       name: Face - Tooth - Normal
       rect:
         serializedVersion: 2
-        x: 896
-        y: 256
+        x: 128
+        y: 384
         width: 128
         height: 128
       alignment: 0
@@ -936,7 +936,7 @@ TextureImporter:
       name: Face - Tooth - Small
       rect:
         serializedVersion: 2
-        x: 0
+        x: 256
         y: 384
         width: 128
         height: 128
@@ -958,8 +958,8 @@ TextureImporter:
       name: Face - Tooth - None
       rect:
         serializedVersion: 2
-        x: 768
-        y: 256
+        x: 0
+        y: 384
         width: 128
         height: 128
       alignment: 0
@@ -980,8 +980,8 @@ TextureImporter:
       name: Hair - Bald - Front
       rect:
         serializedVersion: 2
-        x: 896
-        y: 384
+        x: 128
+        y: 512
         width: 128
         height: 128
       alignment: 0
@@ -1002,7 +1002,7 @@ TextureImporter:
       name: TailTuft - None
       rect:
         serializedVersion: 2
-        x: 0
+        x: 256
         y: 768
         width: 128
         height: 128
@@ -1024,8 +1024,8 @@ TextureImporter:
       name: Hair - Bald - Back
       rect:
         serializedVersion: 2
-        x: 768
-        y: 384
+        x: 0
+        y: 512
         width: 128
         height: 128
       alignment: 0
@@ -1046,7 +1046,7 @@ TextureImporter:
       name: Hair - Kass - Back
       rect:
         serializedVersion: 2
-        x: 0
+        x: 256
         y: 512
         width: 128
         height: 128
@@ -1068,7 +1068,7 @@ TextureImporter:
       name: Hair - Pekkit - Back
       rect:
         serializedVersion: 2
-        x: 384
+        x: 640
         y: 512
         width: 128
         height: 128
@@ -1090,7 +1090,7 @@ TextureImporter:
       name: Hair - Vizlet - Back
       rect:
         serializedVersion: 2
-        x: 640
+        x: 896
         y: 512
         width: 128
         height: 128
@@ -1200,7 +1200,7 @@ TextureImporter:
       name: TailTuft - Vizlet
       rect:
         serializedVersion: 2
-        x: 256
+        x: 512
         y: 768
         width: 128
         height: 128
@@ -1266,7 +1266,7 @@ TextureImporter:
       name: Hair - Lopin - Front
       rect:
         serializedVersion: 2
-        x: 256
+        x: 512
         y: 512
         width: 128
         height: 128
@@ -1280,6 +1280,50 @@ TextureImporter:
       bones: []
       spriteID: e94295aabf8ab11056f624089b37bd14
       internalID: -1471062859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Face - Eye - Lopin
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 511ef4f499c4ecff1b0308161daea560
+      internalID: 168185684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Face - Mouth - Lopin
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e97a34a71a551ceba1e2bdec09dd6ac5
+      internalID: 1720031357
       vertices: []
       indices: 
       edges: []
