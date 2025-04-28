@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f73ebcfc55667f4088e845c4544d5dd, type: 3}
+  m_Name: Lopin
+  m_EditorClassIdentifier: 
+  _fill: {fileID: 2800000, guid: ea7dd97c11f5e8045a89f60b5496c3c2, type: 3}
+  _eyelid: {fileID: 2800000, guid: eb286f081fe66924e9c79d7496ff2d7f, type: 3}
+  _outline: {fileID: 2800000, guid: f84f30a3a93077b4d937721252b1ffbc, type: 3}
+  _pupil: {fileID: 2800000, guid: c960f3b2bc826d04eafff049aebb9c8c, type: 3}
