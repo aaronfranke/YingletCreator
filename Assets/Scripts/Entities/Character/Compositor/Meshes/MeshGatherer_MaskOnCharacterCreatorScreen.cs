@@ -32,6 +32,7 @@ namespace Character.Compositor
 
 		public void Mutate(ref ISet<MeshWithMaterial> meshes)
 		{
+			if (!enabled) return;
 			if (_onPage.Val)
 			{
 				var toRemove = meshes.Where(m => m.Tags.Contains(_toRemove)).ToList();
