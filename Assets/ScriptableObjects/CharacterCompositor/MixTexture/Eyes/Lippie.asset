@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f73ebcfc55667f4088e845c4544d5dd, type: 3}
+  m_Name: Lippie
+  m_EditorClassIdentifier: 
+  _fill: {fileID: 2800000, guid: 108b783eb27689b44ae32e49f0ee9dc3, type: 3}
+  _eyelid: {fileID: 2800000, guid: 84fa9153983a46a43a57517085807fc1, type: 3}
+  _outline: {fileID: 2800000, guid: d393756a91efec74f8dfcce078c187d4, type: 3}
+  _pupil: {fileID: 2800000, guid: dbd98b883140bda429830d4f4d41ac0a, type: 3}

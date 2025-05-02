@@ -1083,7 +1083,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3064146132108325590, guid: ad0aca7f3ad17734eb63ec116524e79c, type: 3}
       propertyPath: _toggleIds.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3064146132108325590, guid: ad0aca7f3ad17734eb63ec116524e79c, type: 3}
       propertyPath: '_toggleIds.Array.data[0]'
@@ -1105,6 +1105,10 @@ PrefabInstance:
       propertyPath: '_toggleIds.Array.data[4]'
       value: 
       objectReference: {fileID: 11400000, guid: 02261a66dca37a8488589b8058508eec, type: 2}
+    - target: {fileID: 3064146132108325590, guid: ad0aca7f3ad17734eb63ec116524e79c, type: 3}
+      propertyPath: '_toggleIds.Array.data[5]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 9a70c4ec7b7ec334fbae8584941f042a, type: 2}
     - target: {fileID: 4503042509806528223, guid: ad0aca7f3ad17734eb63ec116524e79c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

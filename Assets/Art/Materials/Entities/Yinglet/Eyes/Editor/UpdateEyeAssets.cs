@@ -15,7 +15,7 @@ public class UpdateEyeAssets
 	static void Apply()
 	{
 		var transparentPixels = CreateTransparentPixels();
-		var expressionNames = Enum.GetNames(typeof(EyeExpression));
+		var totalExpressionNames = Enum.GetNames(typeof(EyeExpression));
 
 		var eyeTextureFolders = Directory.GetDirectories(RAW_TEXTURE_PATH);
 		foreach (var eyeTextureFolder in eyeTextureFolders)
@@ -29,7 +29,7 @@ public class UpdateEyeAssets
 				asset = ScriptableObject.CreateInstance<EyeMixTextures>();
 				AssetDatabase.CreateAsset(asset, destinationPath);
 			}
-			var textureSize = expressionNames.Length;
+			var textureSize = totalExpressionNames.Length;
 
 			asset._pupil = LoadTex("Pupil");
 			asset._outline = GenerateAndLoadTex("Outline", true);
@@ -59,13 +59,23 @@ public class UpdateEyeAssets
 
 			Texture2D GenerateAndLoadTex(string textureName, bool mustExist)
 			{
-				var expressionRelativePaths = expressionNames.Select(e => Path.Combine(e, textureName)).ToArray();
+				var availableExpressionNames = totalExpressionNames.Select(originalName =>
+				{
+					if (!Directory.Exists(Path.Combine(eyeTextureFolder, originalName)))
+					{
+						// No folder for this expression? Resort to normal
+						return EyeExpression.Normal.ToString();
+					}
+					return originalName;
+				});
+
+				var expressionRelativePaths = availableExpressionNames.Select(e => Path.Combine(e, textureName)).ToArray();
 				// Ensure all the textures are readable
 				foreach (var relPath in expressionRelativePaths)
 				{
 					UpdateTextureSettings(Path.Combine(eyeTextureFolder, relPath + ".png"), false);
 				}
-				var texture2Ds = expressionRelativePaths.Select(e => LoadTex(e, mustExist)).ToArray();
+				var texture2Ds = expressionRelativePaths.Select(relativePath => LoadTex(relativePath, mustExist)).ToArray();
 				// int texSize = texture2Ds.FirstOrDefault(t => t != null)?.width ?? 64;
 				int texSize = SIZE;
 
