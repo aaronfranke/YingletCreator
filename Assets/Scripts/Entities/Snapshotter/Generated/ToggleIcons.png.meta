@@ -848,7 +848,7 @@ TextureImporter:
       name: zRoom - Dungeon
       rect:
         serializedVersion: 2
-        x: 128
+        x: 384
         y: 512
         width: 128
         height: 128
@@ -870,7 +870,7 @@ TextureImporter:
       name: zRoom - Kass Room
       rect:
         serializedVersion: 2
-        x: 256
+        x: 512
         y: 512
         width: 128
         height: 128
@@ -892,7 +892,7 @@ TextureImporter:
       name: zRoom - Outdoors
       rect:
         serializedVersion: 2
-        x: 512
+        x: 768
         y: 512
         width: 128
         height: 128
@@ -1376,7 +1376,7 @@ TextureImporter:
       name: zRoom - Ladies Parlour
       rect:
         serializedVersion: 2
-        x: 384
+        x: 640
         y: 512
         width: 128
         height: 128
@@ -1574,8 +1574,8 @@ TextureImporter:
       name: Whiskers - None
       rect:
         serializedVersion: 2
-        x: 1920
-        y: 384
+        x: 0
+        y: 512
         width: 128
         height: 128
       alignment: 0
@@ -1596,7 +1596,7 @@ TextureImporter:
       name: Whiskers - Normal
       rect:
         serializedVersion: 2
-        x: 0
+        x: 128
         y: 512
         width: 128
         height: 128
@@ -1610,6 +1610,50 @@ TextureImporter:
       bones: []
       spriteID: a9af4c4a5c5cfaf642eac5b5e609aaaf
       internalID: -2039566419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Whiskers - Fuzzy
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9c21927bef5a8a98b3737282d0fe8df
+      internalID: 307960382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Whiskers - Sharp
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 723e29168c7e438790a8b8f5fe1ad247
+      internalID: -522494487
       vertices: []
       indices: 
       edges: []
