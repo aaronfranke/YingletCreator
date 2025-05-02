@@ -28,6 +28,7 @@ namespace Character.Creator
 			SliderData = new(serializableData.SliderData);
 			ColorData = new(serializableData.ColorData);
 			ToggleData = new(serializableData.ToggleData);
+			CustomizationDataUpgradeUtils.UpgradeIfNeeded(this, serializableData.Version);
 		}
 	}
 

@@ -95,7 +95,11 @@ namespace Character.Creator
 		{
 			// Serialize the data
 			var data = _selectionData.CustomizationData;
-			data.Name.Val += DUPLICATE_SUFFIX;
+			bool debugButtonsHeld = Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.LeftCommand);
+			if (!debugButtonsHeld)
+			{
+				data.Name.Val += DUPLICATE_SUFFIX;
+			}
 			var serializedData = new SerializableCustomizationData(data);
 			serializedData.CreationTime = DateTime.Now;
 

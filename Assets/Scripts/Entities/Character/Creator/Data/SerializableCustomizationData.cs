@@ -10,9 +10,14 @@ namespace Character.Creator
 	[System.Serializable]
 	public sealed class SerializableCustomizationData
 	{
+		const int CURRENT_VERSION = 1;
+
 		public string Name;
 
 		public string CreationTimeString;
+
+		public int Version;
+
 		public DateTime CreationTime
 		{
 			get
@@ -32,6 +37,7 @@ namespace Character.Creator
 
 		public SerializableCustomizationData(ObservableCustomizationData data)
 		{
+			Version = CURRENT_VERSION; // If we're saving off of observable data, put us on the latest version
 			Name = data.Name.Val;
 			CreationTime = data.CreationTime;
 			SliderData = new SerializableCustomizationSliderData(data.SliderData);
