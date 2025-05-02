@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Character.Compositor
 {
 
-	public interface IMixTexture
+	public interface IMixTexture : ITaggableCharacterElement
 	{
 
 		/// <summary>
@@ -34,8 +34,6 @@ namespace Character.Compositor
 		bool Sortable { get; }
 
 		TargetMaterialTexture TargetMaterialTexture { get; }
-
-		public IEnumerable<MeshTag> MaskedMeshTags { get; }
 	}
 
 	[CreateAssetMenu(fileName = "MixTexture", menuName = "Scriptable Objects/Character Compositor/MixTexture")]
@@ -45,7 +43,8 @@ namespace Character.Compositor
 		[SerializeField] MaterialDescription _targetMaterialDescription;
 		[SerializeField] Texture2D _grayscale;
 		[SerializeField] Texture2D _mask;
-		[SerializeField] MeshTag[] _maskedMeshTags;
+		[SerializeField] CharacterElementTag[] _tags;
+		[SerializeField] CharacterElementTag[] _maskedTags;
 
 		public ReColorId ReColorId => _reColorId;
 
@@ -59,8 +58,8 @@ namespace Character.Compositor
 
 		public TargetMaterialTexture TargetMaterialTexture => TargetMaterialTexture.MainTexture;
 
-		public IEnumerable<MeshTag> MaskedMeshTags => _maskedMeshTags;
-
+		public IEnumerable<CharacterElementTag> Tags => _tags;
+		public IEnumerable<CharacterElementTag> MaskedTags => _maskedTags;
 	}
 
 	public enum TargetMaterialTexture

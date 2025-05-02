@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace Character.Compositor
 {
-	public class MeshGatherer_MaskFromMeshes : MonoBehaviour, IMeshGathererMutator
+	public class TextureGatherer_MaskFromTextures : MonoBehaviour, ITextureGathererMutator
 	{
-		public void Mutate(ref ISet<MeshWithMaterial> set)
+		public void Mutate(ref ISet<IMixTexture> set)
 		{
 			var maskedTags = new HashSet<CharacterElementTag>();
 			foreach (var mesh in set)
@@ -17,7 +17,7 @@ namespace Character.Compositor
 				}
 			}
 
-			var toRemove = new List<MeshWithMaterial>();
+			var toRemove = new List<IMixTexture>();
 			foreach (var mesh in set)
 			{
 				if (mesh.Tags.Any(tag => maskedTags.Contains(tag)))

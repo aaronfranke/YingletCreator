@@ -7,7 +7,7 @@ namespace Character.Compositor
 	public class MeshGatherer_MaskFromTextures : ReactiveBehaviour, IMeshGathererMutator
 	{
 		private ITextureGatherer _textureGatherer;
-		EnumerableSetReflector<MeshTag> _maskedTags = new();
+		EnumerableSetReflector<CharacterElementTag> _maskedTags = new();
 
 
 		void Awake()
@@ -18,11 +18,11 @@ namespace Character.Compositor
 
 		private void ComputeMaskedTags()
 		{
-			var set = new HashSet<MeshTag>();
+			var set = new HashSet<CharacterElementTag>();
 			var relevantTextures = _textureGatherer.AllRelevantTextures.ToList();
 			foreach (var relevantTexture in relevantTextures)
 			{
-				foreach (var maskTag in relevantTexture.MaskedMeshTags)
+				foreach (var maskTag in relevantTexture.MaskedTags)
 				{
 					set.Add(maskTag);
 				}

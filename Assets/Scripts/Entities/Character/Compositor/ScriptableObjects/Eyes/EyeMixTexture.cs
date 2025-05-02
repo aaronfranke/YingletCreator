@@ -38,6 +38,7 @@ namespace Character.Compositor
 
 		public TargetMaterialTexture TargetMaterialTexture => _individualReferences.TargetMaterialTexture;
 
-		public IEnumerable<MeshTag> MaskedMeshTags => Enumerable.Empty<MeshTag>();
+		public IEnumerable<CharacterElementTag> Tags => Enumerable.Empty<CharacterElementTag>();
+		public IEnumerable<CharacterElementTag> MaskedTags => Enumerable.Empty<CharacterElementTag>();
 	}
 }

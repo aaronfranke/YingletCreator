@@ -5,16 +5,16 @@ namespace Character.Compositor
 {
 
 	[CreateAssetMenu(fileName = "MeshWithMaterial", menuName = "Scriptable Objects/Character Compositor/MeshWithMaterial")]
-	public class MeshWithMaterial : ScriptableObject
+	public class MeshWithMaterial : ScriptableObject, ITaggableCharacterElement
 	{
 		[SerializeField] GameObject _skinnedMeshRendererPrefab;
 		[SerializeField] MaterialDescription _materialWithDescription;
-		[SerializeField] MeshTag[] _tags;
-		[SerializeField] MeshTag[] _maskedTags;
+		[SerializeField] CharacterElementTag[] _tags;
+		[SerializeField] CharacterElementTag[] _maskedTags;
 
 		public GameObject SkinnedMeshRendererPrefab => _skinnedMeshRendererPrefab;
 		public MaterialDescription MaterialDescription => _materialWithDescription;
-		public IEnumerable<MeshTag> Tags => _tags;
-		public IEnumerable<MeshTag> MaskedTags => _maskedTags;
+		public IEnumerable<CharacterElementTag> Tags => _tags;
+		public IEnumerable<CharacterElementTag> MaskedTags => _maskedTags;
 	}
 }

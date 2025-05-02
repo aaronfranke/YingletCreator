@@ -10,7 +10,7 @@ namespace Character.Compositor
 
 	public class MeshGatherer_MaskAtLowSliderValue : ReactiveBehaviour, IMeshGathererMutator
 	{
-		[SerializeField] MeshTag _toRemove;
+		[SerializeField] CharacterElementTag _toRemove;
 		[SerializeField] CharacterSliderId _sliderId;
 		[SerializeField] float _minimumValue;
 

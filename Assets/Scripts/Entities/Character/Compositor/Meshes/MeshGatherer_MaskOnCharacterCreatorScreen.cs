@@ -9,7 +9,7 @@ namespace Character.Compositor
 
 	public class MeshGatherer_MaskOnCharacterCreatorScreen : ReactiveBehaviour, IMeshGathererMutator
 	{
-		[SerializeField] MeshTag _toRemove;
+		[SerializeField] CharacterElementTag _toRemove;
 		[SerializeField] ClipboardSelectionType _clipboardType;
 
 		IClipboardSelection _clipboardSelection;
