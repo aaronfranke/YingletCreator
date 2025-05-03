@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
-  m_Name: Clothes - Misc - Lippie Neck
+  m_Name: Clothes - Neck - Torc w Gem
   m_EditorClassIdentifier: 
   _uniqueAssetId: 0b904ed71cd73b3469f440b4805e2bf2
-  _displayName: Thick Necklace w/ Gem
-  _group: {fileID: 0}
+  _displayName: Torc w/ Gem
+  _group: {fileID: 11400000, guid: 7ec3e8f0214553d4cad95929aad3e5b3, type: 2}
   _addedMeshes:
   - {fileID: 11400000, guid: 37758eff617835f4b943d3adfbe056fb, type: 2}
   - {fileID: 11400000, guid: e15fc5c6925cc6847876aa28419f52e0, type: 2}
@@ -24,5 +24,5 @@ MonoBehaviour:
   _eyeTextures: {fileID: 0}
   _roomPrefab: {fileID: 0}
   _preview:
-    _sprite: {fileID: 1109710470, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _sprite: {fileID: 249801517, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: 2c2f53fc7a9a235459b7510522a5f236, type: 2}
