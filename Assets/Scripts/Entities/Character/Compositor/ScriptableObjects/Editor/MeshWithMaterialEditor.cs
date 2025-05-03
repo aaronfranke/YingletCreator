@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Character.Compositor
 {
-	[CustomEditor(typeof(MeshWithMaterial))]
+	[CustomEditor(typeof(MeshWithMaterial)), CanEditMultipleObjects]
 	public class MeshWithMaterialEditor : Editor
 	{
 		public override void OnInspectorGUI()

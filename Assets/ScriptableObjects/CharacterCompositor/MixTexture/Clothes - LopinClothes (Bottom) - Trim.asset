@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b503c82202b52da46953cf1868a9b4a5, type: 3}
-  m_Name: Clothes - LopinClothes - Trim
+  m_Name: Clothes - LopinClothes (Bottom) - Trim
   m_EditorClassIdentifier: 
-  _reColorId: {fileID: 11400000, guid: 29169b50d13a9b149ab007f294eb7d55, type: 2}
-  _targetMaterialDescription: {fileID: 11400000, guid: 817bc96af81c0db4ca7b81c5ce9a8436, type: 2}
+  _reColorId: {fileID: 11400000, guid: 245a7ca72c357ed498b2f41c41ff9e6b, type: 2}
+  _targetMaterialDescription: {fileID: 11400000, guid: faf5b3b0f88031948947b023fb9eeae4, type: 2}
   _grayscale: {fileID: 2800000, guid: 9525dc91b7170984ca9bf46372312bbb, type: 3}
   _mask: {fileID: 0}
-  _maskedMeshTags: []
+  _tags: []
+  _maskedTags: []
