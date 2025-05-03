@@ -118,10 +118,11 @@ namespace Character.Compositor
 
 		static IEnumerable<IMixTexture> SortMixTextures(IEnumerable<IMixTexture> mixTextures, MixTextureOrdering mixTextureOrdering)
 		{
+			var sourceArray = mixTextureOrdering.OrderedMixTextures.ToArray();
 			var mixTextureToOrder = new Dictionary<IMixTexture, int>();
-			for (int i = 0; i < mixTextureOrdering.OrderedMixTextures.Length; i++)
+			for (int i = 0; i < sourceArray.Length; i++)
 			{
-				mixTextureToOrder[mixTextureOrdering.OrderedMixTextures[i]] = i;
+				mixTextureToOrder[sourceArray[i]] = i;
 			}
 			return mixTextures.OrderBy(m =>
 			{
