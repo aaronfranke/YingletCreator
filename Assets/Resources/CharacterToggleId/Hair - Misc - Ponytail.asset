@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
+  m_Name: Hair - Misc - Ponytail
+  m_EditorClassIdentifier: 
+  _uniqueAssetId: 42125a23c85ffaf4b9da2024ea28801e
+  _displayName: Ponytail
+  _group: {fileID: 0}
+  _addedMeshes:
+  - {fileID: 11400000, guid: e182348161dcd734aa00b97fd9b60b44, type: 2}
+  - {fileID: 11400000, guid: 55deeb22e6a24fb4a9dee38fc61c61e5, type: 2}
+  _addedTextures:
+  - {fileID: 11400000, guid: 37e8c4cebf6a11b44bba549b577f2f3c, type: 2}
+  - {fileID: 11400000, guid: daa6ea5d8e6a5e34b9050ce9d7f4f62d, type: 2}
+  _eyeTextures: {fileID: 0}
+  _roomPrefab: {fileID: 0}
+  _preview:
+    _sprite: {fileID: -1097378742, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _cameraPosition: {fileID: 11400000, guid: b20f1f396d368a1499ab7712dfba3e58, type: 2}
