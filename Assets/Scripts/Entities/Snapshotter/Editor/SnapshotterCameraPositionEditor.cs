@@ -38,9 +38,17 @@ namespace Snapshotter
 			{
 				SnapshotterCameraPosition snapshot = (SnapshotterCameraPosition)target;
 				SceneView sceneView = SceneView.lastActiveSceneView;
-				sceneView.pivot = snapshot.Position;
-				sceneView.rotation = Quaternion.Euler(snapshot.Rotation);
+				//sceneView.pivot = snapshot.Position;
+				//sceneView.rotation = Quaternion.Euler(snapshot.Rotation);
+				sceneView.LookAtDirect(snapshot.Position, Quaternion.Euler(snapshot.Rotation));
 				SceneView.lastActiveSceneView.Repaint();
+			}
+			if (GUILayout.Button("Move Game Camera Here"))
+			{
+				SnapshotterCameraPosition snapshot = (SnapshotterCameraPosition)target;
+				var cam = FindFirstObjectByType<Camera>();
+				cam.transform.position = snapshot.Position;
+				cam.transform.rotation = Quaternion.Euler(snapshot.Rotation);
 			}
 		}
 	}
