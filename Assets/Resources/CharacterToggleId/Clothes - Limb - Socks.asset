@@ -10,17 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
-  m_Name: Clothes - Misc - Anklet
+  m_Name: Clothes - Limb - Socks
   m_EditorClassIdentifier: 
-  _uniqueAssetId: 74bd7ae86a71084459761900085b9f3d
-  _displayName: Anklet
-  _group: {fileID: 11400000, guid: 47a4cbb61be7d224bb7178414ad1bb45, type: 2}
-  _addedMeshes:
-  - {fileID: 11400000, guid: 8d1b5b29eb95f134c9bc6f81bdb1f45a, type: 2}
+  _uniqueAssetId: 11e308b6c85bf3647b36a4966bb46764
+  _displayName: Socks
+  _group: {fileID: 11400000, guid: cd5db93d24b5fe342b338ec10d83c2b7, type: 2}
+  _addedMeshes: []
   _addedTextures:
-  - {fileID: 11400000, guid: 3fec1b1bb8a4836439bbaeff36893711, type: 2}
+  - {fileID: 11400000, guid: e01863403f01b9045977dcc96ababfb9, type: 2}
   _eyeTextures: {fileID: 0}
   _roomPrefab: {fileID: 0}
   _preview:
-    _sprite: {fileID: -1457755470, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _sprite: {fileID: 1038587778, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: ac012c3e212c77547b9d71f82e51ebfe, type: 2}
