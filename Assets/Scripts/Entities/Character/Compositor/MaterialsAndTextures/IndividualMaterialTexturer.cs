@@ -19,9 +19,6 @@ namespace Character.Compositor
 		static readonly int MAIN_COLOR_PROPERTY_ID = Shader.PropertyToID("_Color");
 		static readonly int DARK_COLOR_PROPERTY_ID = Shader.PropertyToID("_DarkColor");
 
-		static readonly int OUTLINE_PROPERTY_ID = Shader.PropertyToID("_Outline");
-		static readonly int PUPIL_PROPERTY_ID = Shader.PropertyToID("_Pupil");
-
 		private IndividualMaterialTexturerReferences _references;
 		private MaterialWithDescription _material;
 		EnumerableSetReflector<IMixTexture> _relevantMixTextures;
@@ -88,12 +85,7 @@ namespace Character.Compositor
 			}
 
 			var renderTexture = renderTextures.Finalize();
-			if (materialTexture == TargetMaterialTexture.MainTexture)
-				_material.Material.mainTexture = renderTexture;
-			else if (materialTexture == TargetMaterialTexture.Outline)
-				_material.Material.SetTexture(OUTLINE_PROPERTY_ID, renderTexture);
-			else if (materialTexture == TargetMaterialTexture.Pupil)
-				_material.Material.SetTexture(PUPIL_PROPERTY_ID, renderTexture);
+			_material.Material.ApplyTexture(renderTexture, materialTexture);
 			return renderTexture;
 		}
 

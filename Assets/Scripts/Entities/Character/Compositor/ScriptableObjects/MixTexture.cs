@@ -56,7 +56,7 @@ namespace Character.Compositor
 
 		public bool Sortable => true;
 
-		public TargetMaterialTexture TargetMaterialTexture => TargetMaterialTexture.MainTexture;
+		public virtual TargetMaterialTexture TargetMaterialTexture => TargetMaterialTexture.MainTexture;
 
 		public IEnumerable<CharacterElementTag> Tags => _tags;
 		public IEnumerable<CharacterElementTag> MaskedTags => _maskedTags;
@@ -65,7 +65,9 @@ namespace Character.Compositor
 	public enum TargetMaterialTexture
 	{
 		MainTexture,
-		Outline, // Used in the eye texture; covers the pupil
-		Pupil // Used in the eye texture
+		Outline, // Used in the eye material; covers the pupil
+		Pupil, // Used in the eye material
+		Mouth, // Used in the mouth material; includes line and teeth
+		MouthMask, // Used in the mouth material; the center that designates what should be alpha clipped out
 	}
 }
