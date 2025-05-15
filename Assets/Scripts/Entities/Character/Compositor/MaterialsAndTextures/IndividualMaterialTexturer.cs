@@ -59,12 +59,22 @@ namespace Character.Compositor
 			{
 				if (!bucket.Any()) continue;
 				var rt = UpdateMaterialTexture(bucket.Key, bucket);
-				_cachedRenderTextures.Add(rt);
+				if (rt != null) // Certain targets don't actually create a render texture
+				{
+					_cachedRenderTextures.Add(rt);
+				}
 			}
 		}
 
 		RenderTexture UpdateMaterialTexture(TargetMaterialTexture materialTexture, IEnumerable<IMixTexture> applicableMixTextures)
 		{
+			// Special case, use mask directly
+			if (materialTexture == TargetMaterialTexture.MouthMask)
+			{
+				_material.Material.ApplyTexture(applicableMixTextures.First().Grayscale, materialTexture);
+				return null;
+			}
+
 			int largestSize = applicableMixTextures.Any() ? applicableMixTextures.Max(m => m.Grayscale.width) : 1;
 			var renderTextures = new DoubleBufferedRenderTexture(largestSize);
 
