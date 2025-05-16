@@ -21,6 +21,7 @@ public sealed class DoubleBufferedRenderTexture
 		RenderTexture CreateRT()
 		{
 			var rt = new RenderTexture(textureSize, textureSize, 0);
+			rt.wrapMode = TextureWrapMode.Clamp;
 			rt.Create();
 
 			return rt;
