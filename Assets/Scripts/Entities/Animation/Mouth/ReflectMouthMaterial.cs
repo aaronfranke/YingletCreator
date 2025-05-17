@@ -26,7 +26,7 @@ public class ReflectMouthMaterial : ReactiveBehaviour
 		var openAmount = _expressions.OpenAmount;
 		var mat = _headGatherer.HeadMaterial;
 
-		mat.SetFloat(UVMAP_PROPERTY_ID, openAmount == MouthOpenAmount.Closed ? 0 : 1);
+		mat.SetFloat(UVMAP_PROPERTY_ID, (float)openAmount / ((float)MouthOpenAmount.MAX - 1));
 		mat.SetFloat(EXPRESSION_OPEN_PROPERTY_ID, MouthOpenAmount.MAX - 1 - openAmount);
 	}
 }

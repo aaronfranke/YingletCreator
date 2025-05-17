@@ -11,9 +11,8 @@ public enum MouthExpression
 public enum MouthOpenAmount
 {
 	Closed,
-	// Ajar
-	// Open
-	WideOpen,
+	Ajar,
+	Open,
 	MAX
 }
 
@@ -26,7 +25,7 @@ public interface IMouthExpressions
 public class MouthExpressions : MonoBehaviour, IMouthExpressions
 {
 	Observable<MouthExpression> _expression = new();
-	Observable<MouthOpenAmount> _openAmount = new(MouthOpenAmount.WideOpen);
+	Observable<MouthOpenAmount> _openAmount = new(MouthOpenAmount.Closed);
 
 	public MouthExpression Expression => _expression.Val;
 	public MouthOpenAmount OpenAmount => _openAmount.Val;

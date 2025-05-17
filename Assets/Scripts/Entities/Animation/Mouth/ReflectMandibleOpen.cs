@@ -12,7 +12,8 @@ public class ReflectMandibleOpen : ReactiveBehaviour
 	static Dictionary<MouthOpenAmount, float> _rotationMap = new()
 	{
 		{ MouthOpenAmount.Closed, 0 },
-		{ MouthOpenAmount.WideOpen, 30 }
+		{ MouthOpenAmount.Ajar, 15 },
+		{ MouthOpenAmount.Open, 30 }
 	};
 
 	private void Awake()
