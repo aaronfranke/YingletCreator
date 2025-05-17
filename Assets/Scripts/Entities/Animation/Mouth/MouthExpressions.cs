@@ -13,6 +13,7 @@ public enum MouthOpenAmount
 	Closed,
 	Ajar,
 	Open,
+	PLACEHOLDER, // The fourth slot is currently empty
 	MAX
 }
 
@@ -32,6 +33,6 @@ public class MouthExpressions : MonoBehaviour, IMouthExpressions
 
 	public void EditorOpen()
 	{
-		_openAmount.Val = (MouthOpenAmount)((int)(_openAmount.Val + 1) % (int)MouthOpenAmount.MAX);
+		_openAmount.Val = (MouthOpenAmount)((int)(_openAmount.Val + 1) % (int)MouthOpenAmount.PLACEHOLDER);
 	}
 }

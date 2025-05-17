@@ -75,8 +75,13 @@ namespace Character.Compositor
 				return null;
 			}
 
-			int largestSize = applicableMixTextures.Any() ? applicableMixTextures.Max(m => m.Grayscale.width) : 1;
-			var renderTextures = new DoubleBufferedRenderTexture(largestSize);
+			Vector2Int largestSizes = applicableMixTextures.Any()
+				? new Vector2Int(
+					applicableMixTextures.Max(m => m.Grayscale.width),
+					applicableMixTextures.Max(m => m.Grayscale.height))
+				: new Vector2Int(1, 1);
+
+			var renderTextures = new DoubleBufferedRenderTexture(largestSizes);
 
 			foreach (var applicableMixTexture in applicableMixTextures)
 			{

@@ -13,14 +13,14 @@ public sealed class DoubleBufferedRenderTexture
 	RenderTexture _upToDate;
 	RenderTexture _backup;
 
-	public DoubleBufferedRenderTexture(int textureSize)
+	public DoubleBufferedRenderTexture(Vector2Int textureSize)
 	{
 		_upToDate = CreateRT();
 		_backup = CreateRT();
 
 		RenderTexture CreateRT()
 		{
-			var rt = new RenderTexture(textureSize, textureSize, 0);
+			var rt = new RenderTexture(textureSize.x, textureSize.y, 0);
 			rt.wrapMode = TextureWrapMode.Clamp;
 			rt.Create();
 
