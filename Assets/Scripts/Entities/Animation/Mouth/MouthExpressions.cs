@@ -4,8 +4,10 @@ using UnityEngine;
 public enum MouthExpression
 {
 	Grin,
-	// Frown
-	// O
+	Frown,
+	Muse,
+	PLACEHOLDER, // The fourth slot is currently empty
+	MAX
 }
 
 public enum MouthOpenAmount

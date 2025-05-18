@@ -14,7 +14,7 @@ public class UpdateEyeAssets
 	[MenuItem("Custom/Update Eye Assets")]
 	static void Apply()
 	{
-		var transparentPixels = CreateTransparentPixels();
+		var transparentPixels = TexGenerationUtils.CreateTransparentPixels(new Vector2Int(SIZE, SIZE));
 		var totalExpressionNames = Enum.GetNames(typeof(EyeExpression));
 
 		var eyeTextureFolders = Directory.GetDirectories(RAW_TEXTURE_PATH);
@@ -73,7 +73,7 @@ public class UpdateEyeAssets
 				// Ensure all the textures are readable
 				foreach (var relPath in expressionRelativePaths)
 				{
-					UpdateTextureSettings(Path.Combine(eyeTextureFolder, relPath + ".png"), false);
+					TexGenerationUtils.UpdateTextureSettings(Path.Combine(eyeTextureFolder, relPath + ".png"), false);
 				}
 				var texture2Ds = expressionRelativePaths.Select(relativePath => LoadTex(relativePath, mustExist)).ToArray();
 				// int texSize = texture2Ds.FirstOrDefault(t => t != null)?.width ?? 64;
@@ -92,38 +92,13 @@ public class UpdateEyeAssets
 				var outputPath = Path.Combine(eyeTextureFolder, $"{outputName}.png");
 				File.WriteAllBytes(outputPath, pngData);
 				AssetDatabase.Refresh();
-				UpdateTextureSettings(outputPath, false);
+				TexGenerationUtils.UpdateTextureSettings(outputPath, false);
 
 				var generatedTex = LoadTex(outputName);
 				return generatedTex;
 			}
 
-			void UpdateTextureSettings(string path, bool compress)
-			{
-				var importer = AssetImporter.GetAtPath(path) as TextureImporter;
-				if (importer == null) return; // This asset may not exist
-				importer.isReadable = true;
-				importer.alphaIsTransparency = true;
-				importer.compressionQuality = compress ? 3 : 100; // Source textures shouldn't be compressed
-				importer.sRGBTexture = true; // These are used for grayscale
-				importer.SaveAndReimport();
-			}
 		}
-	}
-
-	static Color[] CreateTransparentPixels()
-	{
-		Texture2D texture = new Texture2D(SIZE, SIZE, TextureFormat.RGBA32, false);
-
-		Color transparentColor = new Color(0, 0, 0, 0); // Fully transparent
-		Color[] pixels = new Color[SIZE * SIZE];
-
-		for (int i = 0; i < pixels.Length; i++)
-		{
-			pixels[i] = transparentColor;
-		}
-
-		return pixels;
 	}
 
 	static bool ContainsEyelidFile(string folderPath)
