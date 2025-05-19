@@ -574,7 +574,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4597470727765073895, guid: a2ecef12542028c45ba2827645e52edb, type: 3}
       propertyPath: _sprites.Array.size
-      value: 6
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4597470727765073895, guid: a2ecef12542028c45ba2827645e52edb, type: 3}
       propertyPath: '_sprites.Array.data[0]'
@@ -583,15 +583,15 @@ PrefabInstance:
     - target: {fileID: 4597470727765073895, guid: a2ecef12542028c45ba2827645e52edb, type: 3}
       propertyPath: '_sprites.Array.data[1]'
       value: 
-      objectReference: {fileID: -520726471, guid: b7c084ebd17255245a3d008925cbab8f, type: 3}
+      objectReference: {fileID: -1721921204, guid: b7c084ebd17255245a3d008925cbab8f, type: 3}
     - target: {fileID: 4597470727765073895, guid: a2ecef12542028c45ba2827645e52edb, type: 3}
       propertyPath: '_sprites.Array.data[2]'
       value: 
-      objectReference: {fileID: -1189271933, guid: b7c084ebd17255245a3d008925cbab8f, type: 3}
+      objectReference: {fileID: 994173113, guid: b7c084ebd17255245a3d008925cbab8f, type: 3}
     - target: {fileID: 4597470727765073895, guid: a2ecef12542028c45ba2827645e52edb, type: 3}
       propertyPath: '_sprites.Array.data[3]'
       value: 
-      objectReference: {fileID: -1721921204, guid: b7c084ebd17255245a3d008925cbab8f, type: 3}
+      objectReference: {fileID: -520726471, guid: b7c084ebd17255245a3d008925cbab8f, type: 3}
     - target: {fileID: 4597470727765073895, guid: a2ecef12542028c45ba2827645e52edb, type: 3}
       propertyPath: '_sprites.Array.data[4]'
       value: 
@@ -599,7 +599,19 @@ PrefabInstance:
     - target: {fileID: 4597470727765073895, guid: a2ecef12542028c45ba2827645e52edb, type: 3}
       propertyPath: '_sprites.Array.data[5]'
       value: 
+      objectReference: {fileID: -1763710545, guid: b7c084ebd17255245a3d008925cbab8f, type: 3}
+    - target: {fileID: 4597470727765073895, guid: a2ecef12542028c45ba2827645e52edb, type: 3}
+      propertyPath: '_sprites.Array.data[6]'
+      value: 
+      objectReference: {fileID: -1189271933, guid: b7c084ebd17255245a3d008925cbab8f, type: 3}
+    - target: {fileID: 4597470727765073895, guid: a2ecef12542028c45ba2827645e52edb, type: 3}
+      propertyPath: '_sprites.Array.data[7]'
+      value: 
       objectReference: {fileID: -1337125017, guid: b7c084ebd17255245a3d008925cbab8f, type: 3}
+    - target: {fileID: 4597470727765073895, guid: a2ecef12542028c45ba2827645e52edb, type: 3}
+      propertyPath: '_sprites.Array.data[8]'
+      value: 
+      objectReference: {fileID: -1301303025, guid: b7c084ebd17255245a3d008925cbab8f, type: 3}
     - target: {fileID: 6124570744858238323, guid: a2ecef12542028c45ba2827645e52edb, type: 3}
       propertyPath: m_Name
       value: ExpressionGroup
@@ -1400,6 +1412,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Default Expression
       objectReference: {fileID: 0}
+    - target: {fileID: 5439298331649893336, guid: 486ef458379136340a98742772b8ca70, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 9178892905060266212, guid: 486ef458379136340a98742772b8ca70, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1816,7 +1832,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739304276860080370, guid: 881912b96e74a83458f93b64ce30c4b3, type: 3}
       propertyPath: m_Size
-      value: 0.60967183
+      value: 0.60757315
       objectReference: {fileID: 0}
     - target: {fileID: 3739304276860080370, guid: 881912b96e74a83458f93b64ce30c4b3, type: 3}
       propertyPath: m_Value

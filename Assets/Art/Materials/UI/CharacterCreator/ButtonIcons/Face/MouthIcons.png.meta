@@ -144,8 +144,8 @@ TextureImporter:
       name: MouthIcons_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
+        x: 64
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -166,7 +166,7 @@ TextureImporter:
       name: MouthIcons_3
       rect:
         serializedVersion: 2
-        x: 32
+        x: 0
         y: 64
         width: 32
         height: 32
@@ -188,8 +188,8 @@ TextureImporter:
       name: MouthIcons_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
+        x: 32
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -210,8 +210,8 @@ TextureImporter:
       name: MouthIcons_5
       rect:
         serializedVersion: 2
-        x: 32
-        y: 32
+        x: 64
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -224,6 +224,72 @@ TextureImporter:
       bones: []
       spriteID: 1b138f2b375ca0d42a8377d536556907
       internalID: -1337125017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MouthIcons_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e908e6e465e93664683132387206fbd1
+      internalID: 994173113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MouthIcons_7
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a1ed8fa218f3754aa94c47459ff2a5c
+      internalID: -1763710545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MouthIcons_8
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87362657019bc9e4cbc29883bc18e25d
+      internalID: -1301303025
       vertices: []
       indices: 
       edges: []
@@ -248,6 +314,9 @@ TextureImporter:
       MouthIcons_3: -1721921204
       MouthIcons_4: -2071564043
       MouthIcons_5: -1337125017
+      MouthIcons_6: 994173113
+      MouthIcons_7: -1763710545
+      MouthIcons_8: -1301303025
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
