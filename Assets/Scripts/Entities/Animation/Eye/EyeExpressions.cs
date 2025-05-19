@@ -6,10 +6,10 @@ public enum EyeExpression
     Normal,
     Squint,
     Closed,
-    // Angry
-    // Sad
     // HappyClosed
     // Suprised
+    // Angry
+    // Sad
     // SadClosed
 }
 
