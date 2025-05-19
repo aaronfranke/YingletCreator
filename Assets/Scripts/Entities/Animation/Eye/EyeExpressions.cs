@@ -5,7 +5,12 @@ public enum EyeExpression
 {
     Normal,
     Squint,
-    Closed
+    Closed,
+    // Angry
+    // Sad
+    // HappyClosed
+    // Suprised
+    // SadClosed
 }
 
 public class EyeExpressions : MonoBehaviour
