@@ -1,3 +1,5 @@
+using Character.Creator;
+using Character.Data;
 using Reactivity;
 using UnityEngine;
 
@@ -25,16 +27,40 @@ public interface IMouthExpressions
 	MouthOpenAmount OpenAmount { get; }
 }
 
-public class MouthExpressions : MonoBehaviour, IMouthExpressions
+public class MouthExpressions : ReactiveBehaviour, IMouthExpressions
 {
-	Observable<MouthExpression> _expression = new();
-	Observable<MouthOpenAmount> _openAmount = new(MouthOpenAmount.Closed);
+	[SerializeField] CharacterIntId _intId;
+	private ICustomizationSelectedDataRepository _dataRepo;
 
-	public MouthExpression Expression => _expression.Val;
-	public MouthOpenAmount OpenAmount => _openAmount.Val;
+	Computed<int> _intValueComputed;
+	Computed<MouthExpression> _expressionComputed;
+	Computed<MouthOpenAmount> _openAmountComputed;
 
-	public void EditorOpen()
+	public MouthExpression Expression => _expressionComputed.Val;
+	public MouthOpenAmount OpenAmount => _openAmountComputed.Val;
+
+
+	void Awake()
 	{
-		_openAmount.Val = (MouthOpenAmount)((int)(_openAmount.Val + 1) % (int)MouthOpenAmount.PLACEHOLDER);
+		_dataRepo = this.GetComponentInParent<ICustomizationSelectedDataRepository>();
+		_intValueComputed = CreateComputed(ComputeDefaultIntValue);
+		_expressionComputed = CreateComputed(ComputeDefaultExpression);
+		_openAmountComputed = CreateComputed(ComputeDefaultOpenAmount);
 	}
+
+	private int ComputeDefaultIntValue()
+	{
+		return _dataRepo.GetInt(_intId);
+	}
+
+	private MouthExpression ComputeDefaultExpression()
+	{
+		return (MouthExpression)(_intValueComputed.Val / 3);
+	}
+
+	private MouthOpenAmount ComputeDefaultOpenAmount()
+	{
+		return (MouthOpenAmount)(_intValueComputed.Val % 3);
+	}
+
 }
