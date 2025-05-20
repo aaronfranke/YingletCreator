@@ -13,6 +13,7 @@ namespace Character.Creator
 		public ObservableCustomizationSliderData SliderData { get; }
 		public ObservableCustomizationColorData ColorData { get; }
 		public ObservableCustomizationToggleData ToggleData { get; }
+		public ObservableCustomizationNumberData NumberData { get; }
 		public DateTime CreationTime { get; }
 
 		//ICustomizationToggleData ToggleData { get; }
@@ -28,6 +29,7 @@ namespace Character.Creator
 			SliderData = new(serializableData.SliderData);
 			ColorData = new(serializableData.ColorData);
 			ToggleData = new(serializableData.ToggleData);
+			NumberData = new();
 			CustomizationDataUpgradeUtils.UpgradeIfNeeded(this, serializableData.Version);
 		}
 	}
@@ -77,5 +79,10 @@ namespace Character.Creator
 		}
 
 		public ObservableHashSet<CharacterToggleId> Toggles { get; } = new();
+	}
+
+	public sealed class ObservableCustomizationNumberData
+	{
+		public ObservableDict<CharacterIntId, Observable<int>> IntValues { get; } = new();
 	}
 }

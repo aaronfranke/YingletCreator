@@ -114,6 +114,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8803350643665777082}
     m_Modifications:
+    - target: {fileID: 845965568010191042, guid: d0830518a5b4e9646ba423076afb4969, type: 3}
+      propertyPath: _intId
+      value: 
+      objectReference: {fileID: 11400000, guid: 1490a3cd97e05b34bb4efe5ed5513346, type: 2}
     - target: {fileID: 1555330824945860620, guid: d0830518a5b4e9646ba423076afb4969, type: 3}
       propertyPath: _sprites.Array.size
       value: 8
@@ -2331,6 +2335,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8803350643665777082}
     m_Modifications:
+    - target: {fileID: 845965568010191042, guid: d0830518a5b4e9646ba423076afb4969, type: 3}
+      propertyPath: _intId
+      value: 
+      objectReference: {fileID: 11400000, guid: 6ccdbae82063b23438cc6d12818d35a0, type: 2}
     - target: {fileID: 1555330824945860620, guid: d0830518a5b4e9646ba423076afb4969, type: 3}
       propertyPath: _sprites.Array.size
       value: 9

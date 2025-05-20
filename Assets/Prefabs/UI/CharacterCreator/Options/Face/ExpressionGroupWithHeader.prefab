@@ -172,6 +172,7 @@ GameObject:
   - component: {fileID: 3760412180640760442}
   - component: {fileID: 3842484807177107371}
   - component: {fileID: 1555330824945860620}
+  - component: {fileID: 845965568010191042}
   m_Layer: 5
   m_Name: ExpressionGroup
   m_TagString: Untagged
@@ -237,6 +238,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sprites: []
   _prefab: {fileID: 4834466209950376475, guid: ca8a8dc381f1ab64eabc2da6b8ec72cd, type: 3}
+--- !u!114 &845965568010191042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9125984740206887576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dba2b762af0ca842bc66314776b3143, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _intId: {fileID: 0}
 --- !u!1001 &5130260069494070159
 PrefabInstance:
   m_ObjectHideFlags: 0

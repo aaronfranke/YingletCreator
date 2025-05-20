@@ -20,7 +20,7 @@ namespace Character.Creator.UI
 			{
 				var sprite = _sprites[i];
 				var go = GameObject.Instantiate(_prefab, this.transform);
-				go.GetComponent<ExpressionToggle>().Setup(sprite);
+				go.GetComponent<IExpressionToggle>().Setup(i, sprite);
 			}
 		}
 	}
