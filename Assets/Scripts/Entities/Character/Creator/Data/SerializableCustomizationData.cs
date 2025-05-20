@@ -31,9 +31,11 @@ namespace Character.Creator
 			set => CreationTimeString = value.ToString("o");
 		}
 
+
 		public SerializableCustomizationSliderData SliderData;
 		public SerializableCustomizationColorData ColorData;
 		public SerializableCustomizationToggleData ToggleData;
+		public SerializableCustomizationNumberData NumberData;
 
 		public SerializableCustomizationData(ObservableCustomizationData data)
 		{
@@ -43,9 +45,10 @@ namespace Character.Creator
 			SliderData = new SerializableCustomizationSliderData(data.SliderData);
 			ColorData = new SerializableCustomizationColorData(data.ColorData);
 			ToggleData = new SerializableCustomizationToggleData(data.ToggleData);
-
+			NumberData = new SerializableCustomizationNumberData(data.NumberData);
 		}
 	}
+
 
 	[System.Serializable]
 	public sealed class SerializableCustomizationSliderData
@@ -110,5 +113,31 @@ namespace Character.Creator
 		}
 
 		public string[] ToggleIds;
+	}
+
+
+
+	[System.Serializable]
+	public sealed class SerializableCustomizationNumberData
+	{
+		public SerializableCustomizationNumberData(ObservableCustomizationNumberData data)
+		{
+			IntValues = data.IntValues.Select(kvp => new NumberIdIntPair(kvp.Key.UniqueAssetID, kvp.Value.Val)).ToArray();
+		}
+
+		public NumberIdIntPair[] IntValues;
+
+		[System.Serializable]
+		public sealed class NumberIdIntPair
+		{
+			public NumberIdIntPair(string id, int value)
+			{
+				Id = id;
+				Value = value;
+
+			}
+			public string Id;
+			public int Value;
+		}
 	}
 }

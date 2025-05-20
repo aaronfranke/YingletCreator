@@ -16,12 +16,6 @@ namespace Character.Creator
 		public ObservableCustomizationNumberData NumberData { get; }
 		public DateTime CreationTime { get; }
 
-		//ICustomizationToggleData ToggleData { get; }
-		//ICustomizationColorData ColorData { get; }
-		// string Name { get; }
-		// Author?
-		// LastUpdateDate?
-
 		public ObservableCustomizationData(SerializableCustomizationData serializableData)
 		{
 			Name.Val = serializableData.Name;
@@ -29,7 +23,7 @@ namespace Character.Creator
 			SliderData = new(serializableData.SliderData);
 			ColorData = new(serializableData.ColorData);
 			ToggleData = new(serializableData.ToggleData);
-			NumberData = new();
+			NumberData = new(serializableData.NumberData);
 			CustomizationDataUpgradeUtils.UpgradeIfNeeded(this, serializableData.Version);
 		}
 	}
@@ -42,7 +36,7 @@ namespace Character.Creator
 			foreach (var sliderValue in sliderData.SliderValues)
 			{
 				var key = ResourceLoader.Load<CharacterSliderId>(sliderValue.Id);
-				SliderValues[key] = new Observable<float>(sliderValue.Value);
+				SliderValues[key] = new(sliderValue.Value);
 			}
 		}
 
@@ -60,7 +54,7 @@ namespace Character.Creator
 			foreach (var colorizeValues in colorData.ColorizeValues)
 			{
 				var key = ResourceLoader.Load<ReColorId>(colorizeValues.Id);
-				ColorizeValues[key] = new Observable<IColorizeValues>(colorizeValues.Values);
+				ColorizeValues[key] = new(colorizeValues.Values);
 			}
 		}
 
@@ -83,6 +77,16 @@ namespace Character.Creator
 
 	public sealed class ObservableCustomizationNumberData
 	{
+		public ObservableCustomizationNumberData(SerializableCustomizationNumberData numberData)
+		{
+			if (numberData?.IntValues == null) return;
+			foreach (var sliderValue in numberData.IntValues)
+			{
+				var key = ResourceLoader.Load<CharacterIntId>(sliderValue.Id);
+				IntValues[key] = new(sliderValue.Value);
+			}
+		}
+
 		public ObservableDict<CharacterIntId, Observable<int>> IntValues { get; } = new();
 	}
 }
