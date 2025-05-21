@@ -22,6 +22,9 @@
             "m_Id": "6c4a439106974a149ae513824ec97eee"
         },
         {
+            "m_Id": "5fd42992f40b4879b9ab8bab6b7afbee"
+        },
+        {
             "m_Id": "723eeb895a2e4f66840e0f4c9692112d"
         }
     ],
@@ -116,6 +119,9 @@
         },
         {
             "m_Id": "3714b7853b154c59b21965ffefbc4d7c"
+        },
+        {
+            "m_Id": "e5b764d1ad874d9fa115a7633d3fa64a"
         }
     ],
     "m_GroupDatas": [
@@ -479,6 +485,20 @@
         {
             "m_OutputSlot": {
                 "m_Node": {
+                    "m_Id": "e5b764d1ad874d9fa115a7633d3fa64a"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "c410596631f9486392357eb2f9621e2f"
+                },
+                "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
                     "m_Id": "ebae94ba4c844012be50206ee3a4b162"
                 },
                 "m_SlotId": 2
@@ -772,8 +792,8 @@
     "m_ObjectId": "1d2308776ebb4acd85a141fcc7dfec89",
     "m_Title": "Overlay mouth on base texture",
     "m_Position": {
-        "x": -334.99981689453127,
-        "y": 288.0
+        "x": -334.999755859375,
+        "y": 287.9999694824219
     }
 }
 
@@ -950,6 +970,9 @@
         },
         {
             "m_Id": "1383bd7ca63a45b594ea0e4c48beb2b6"
+        },
+        {
+            "m_Id": "5fd42992f40b4879b9ab8bab6b7afbee"
         },
         {
             "m_Id": "6c4a439106974a149ae513824ec97eee"
@@ -1186,6 +1209,21 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "A",
     "m_StageCapability": 2,
+    "m_Value": 0.0,
+    "m_DefaultValue": 0.0,
+    "m_Labels": []
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
+    "m_ObjectId": "41466c1c77c74e1c8aa644e38fd24552",
+    "m_Id": 0,
+    "m_DisplayName": "Expression",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
@@ -1641,6 +1679,34 @@
     "m_PreviewMode": 0,
     "m_CustomColors": {
         "m_SerializableColors": []
+    }
+}
+
+{
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
+    "m_ObjectId": "5fd42992f40b4879b9ab8bab6b7afbee",
+    "m_Guid": {
+        "m_GuidSerialized": "03252bd4-3b49-469b-bdcc-b332a7b84cd9"
+    },
+    "m_Name": "Expression",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "Expression",
+    "m_DefaultReferenceName": "_Expression",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": 9.0,
+    "m_FloatType": 2,
+    "m_RangeValues": {
+        "x": 0.0,
+        "y": 1.0
     }
 }
 
@@ -3161,7 +3227,7 @@
     "m_ObjectId": "d85a7701a63d481f8635f8c1eda87866",
     "m_Title": "Total # expressions",
     "m_Position": {
-        "x": -1642.9998779296875,
+        "x": -1642.999755859375,
         "y": 962.0
     }
 }
@@ -3246,6 +3312,42 @@
     "m_Position": {
         "x": -270.99981689453127,
         "y": 1218.000244140625
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "e5b764d1ad874d9fa115a7633d3fa64a",
+    "m_Group": {
+        "m_Id": "e9c6761393bb44fabe75347b303890d7"
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -2270.000244140625,
+            "y": 1015.0000610351563,
+            "width": 132.0,
+            "height": 33.99993896484375
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "41466c1c77c74e1c8aa644e38fd24552"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "5fd42992f40b4879b9ab8bab6b7afbee"
     }
 }
 
@@ -3400,7 +3502,7 @@
     "m_Title": "Sample Textures",
     "m_Position": {
         "x": -1053.0,
-        "y": 110.00005340576172
+        "y": 110.00006866455078
     }
 }
 

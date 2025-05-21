@@ -8,6 +8,7 @@ public class ReflectMouthMaterial : ReactiveBehaviour
 
 
 	static readonly int UVMAP_PROPERTY_ID = Shader.PropertyToID("_UVMap");
+	static readonly int EXPRESSION_PROPERTY_ID = Shader.PropertyToID("_Expression");
 	static readonly int EXPRESSION_OPEN_PROPERTY_ID = Shader.PropertyToID("_ExpressionOpen");
 
 	private void Awake()
@@ -18,7 +19,15 @@ public class ReflectMouthMaterial : ReactiveBehaviour
 
 	void Start()
 	{
+		AddReflector(ReflectExpression);
 		AddReflector(ReflectOpen);
+	}
+
+	private void ReflectExpression()
+	{
+		var mat = _headGatherer.HeadMaterial;
+		var expression = _expressions.Expression;
+		mat.SetFloat(EXPRESSION_PROPERTY_ID, (float)expression);
 	}
 
 	private void ReflectOpen()
