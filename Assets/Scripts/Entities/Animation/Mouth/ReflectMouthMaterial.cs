@@ -1,4 +1,5 @@
 using Reactivity;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ReflectMouthMaterial : ReactiveBehaviour
@@ -11,6 +12,22 @@ public class ReflectMouthMaterial : ReactiveBehaviour
 	static readonly int EXPRESSION_PROPERTY_ID = Shader.PropertyToID("_Expression");
 	static readonly int EXPRESSION_OPEN_PROPERTY_ID = Shader.PropertyToID("_ExpressionOpen");
 
+
+	static Dictionary<MouthOpenAmount, float> _defaultUvMap = new()
+	{
+		{ MouthOpenAmount.Closed, 0 },
+		{ MouthOpenAmount.Ajar, 0.5f },
+		{ MouthOpenAmount.Open, 1f }
+	};
+
+
+	static Dictionary<MouthOpenAmount, float> _museRotationUvMap = new()
+	{
+		{ MouthOpenAmount.Closed, 0 },
+		{ MouthOpenAmount.Ajar, 0.38f },
+		{ MouthOpenAmount.Open, 0.72f }
+	};
+
 	private void Awake()
 	{
 		_headGatherer = this.GetComponent<IHeadGatherer>();
@@ -19,23 +36,19 @@ public class ReflectMouthMaterial : ReactiveBehaviour
 
 	void Start()
 	{
-		AddReflector(ReflectExpression);
-		AddReflector(ReflectOpen);
+		AddReflector(Reflect);
 	}
 
-	private void ReflectExpression()
+	private void Reflect()
 	{
 		var mat = _headGatherer.HeadMaterial;
 		var expression = _expressions.Expression;
-		mat.SetFloat(EXPRESSION_PROPERTY_ID, (float)expression);
-	}
-
-	private void ReflectOpen()
-	{
 		var openAmount = _expressions.OpenAmount;
-		var mat = _headGatherer.HeadMaterial;
 
-		mat.SetFloat(UVMAP_PROPERTY_ID, (float)openAmount / ((float)MouthOpenAmount.Open));
+		mat.SetFloat(EXPRESSION_PROPERTY_ID, (float)expression);
 		mat.SetFloat(EXPRESSION_OPEN_PROPERTY_ID, MouthOpenAmount.MAX - 1 - openAmount);
+
+		var uvMap = expression == MouthExpression.Muse ? _museRotationUvMap : _defaultUvMap;
+		mat.SetFloat(UVMAP_PROPERTY_ID, uvMap[openAmount]);
 	}
 }

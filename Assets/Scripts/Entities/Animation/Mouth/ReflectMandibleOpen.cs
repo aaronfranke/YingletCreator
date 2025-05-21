@@ -9,11 +9,19 @@ public class ReflectMandibleOpen : ReactiveBehaviour
 	IMouthExpressions _expressions;
 	private Quaternion _originalRotation;
 
-	static Dictionary<MouthOpenAmount, float> _rotationMap = new()
+	static Dictionary<MouthOpenAmount, float> _defaultRotationMap = new()
 	{
 		{ MouthOpenAmount.Closed, 0 },
 		{ MouthOpenAmount.Ajar, 15 },
 		{ MouthOpenAmount.Open, 30 }
+	};
+
+
+	static Dictionary<MouthOpenAmount, float> _museRotationMap = new()
+	{
+		{ MouthOpenAmount.Closed, 0 },
+		{ MouthOpenAmount.Ajar, 11.5f },
+		{ MouthOpenAmount.Open, 21.5f }
 	};
 
 	private void Awake()
@@ -29,8 +37,10 @@ public class ReflectMandibleOpen : ReactiveBehaviour
 
 	private void Reflect()
 	{
+		var expression = _expressions.Expression;
 		var openAmount = _expressions.OpenAmount;
-		var rotationAmount = _rotationMap[openAmount];
-		_mandibleBone.localRotation = _originalRotation * Quaternion.Euler(rotationAmount, 0, 0);
+
+		var rotationMap = expression == MouthExpression.Muse ? _museRotationMap : _defaultRotationMap;
+		_mandibleBone.localRotation = _originalRotation * Quaternion.Euler(rotationMap[openAmount], 0, 0);
 	}
 }

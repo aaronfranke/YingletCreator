@@ -67,10 +67,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AlphaClippingVal: 0.6
+    - _Expression: 9
+    - _ExpressionOpen: 3
     - _MouthClippingVal: 0.12
+    - _MouthOutlineClippingVal: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
     - _UV: 0
+    - _UVMap: 0
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1
