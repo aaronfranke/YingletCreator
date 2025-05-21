@@ -27,6 +27,8 @@ public class MouthCompositeEditor : Editor
 
 			GenerateCompositeTexture(inputPaths, outputPath);
 
+			if (!mouthComposite.HasMask) return;
+
 			var inputMaskPaths = inputPaths.Select(path => path.Replace(".png", "-Mask.png")).ToArray();
 			string outputMaskPath = Path.Combine(assetDir, assetName + "-GeneratedMask.png");
 			GenerateCompositeTexture(inputMaskPaths, outputMaskPath);

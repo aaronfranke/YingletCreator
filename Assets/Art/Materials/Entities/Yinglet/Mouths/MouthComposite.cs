@@ -12,5 +12,7 @@ public class MouthComposite : ScriptableObject
 	public Texture2D Grin;
 	public Texture2D Frown;
 	public Texture2D Muse;
+
+	public bool HasMask = true;
 }
 
