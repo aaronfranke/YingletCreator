@@ -17,7 +17,7 @@ public enum MouthOpenAmount
 	Closed,
 	Ajar,
 	Open,
-	PLACEHOLDER, // The fourth slot is currently empty
+	WideOpen,
 	MAX
 }
 
@@ -55,12 +55,12 @@ public class MouthExpressions : ReactiveBehaviour, IMouthExpressions
 
 	private MouthExpression ComputeDefaultExpression()
 	{
-		return (MouthExpression)(_intValueComputed.Val / 3);
+		return (MouthExpression)(_intValueComputed.Val / 4);
 	}
 
 	private MouthOpenAmount ComputeDefaultOpenAmount()
 	{
-		return (MouthOpenAmount)(_intValueComputed.Val % 3);
+		return (MouthOpenAmount)(_intValueComputed.Val % 4);
 	}
 
 }
