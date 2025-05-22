@@ -16,7 +16,7 @@ public class ReflectMouthMaterial : ReactiveBehaviour
 	static Dictionary<MouthOpenAmount, float> _defaultUvMap = new()
 	{
 		{ MouthOpenAmount.Closed, 0 },
-		{ MouthOpenAmount.Ajar, 0.27f },
+		{ MouthOpenAmount.Ajar, 0.255f },
 		{ MouthOpenAmount.Open, 0.5f },
 		{ MouthOpenAmount.WideOpen, 1f }
 	};
@@ -25,7 +25,7 @@ public class ReflectMouthMaterial : ReactiveBehaviour
 	static Dictionary<MouthOpenAmount, float> _museRotationUvMap = new()
 	{
 		{ MouthOpenAmount.Closed, 0 },
-		{ MouthOpenAmount.Ajar, 0.19f },
+		{ MouthOpenAmount.Ajar, 0.18f },
 		{ MouthOpenAmount.Open, 0.35f },
 		{ MouthOpenAmount.WideOpen, 0.64f }
 	};
