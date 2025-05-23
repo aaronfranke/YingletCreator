@@ -34,10 +34,6 @@ public class ReflectMouthMaterial : ReactiveBehaviour
 	{
 		_headGatherer = this.GetComponent<IHeadGatherer>();
 		_expressions = this.GetComponent<IMouthExpressions>();
-	}
-
-	void Start()
-	{
 		AddReflector(Reflect);
 	}
 

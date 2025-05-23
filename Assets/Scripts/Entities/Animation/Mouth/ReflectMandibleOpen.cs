@@ -30,10 +30,6 @@ public class ReflectMandibleOpen : ReactiveBehaviour
 	{
 		_expressions = this.GetComponent<IMouthExpressions>();
 		_originalRotation = _mandibleBone.localRotation;
-	}
-
-	void Start()
-	{
 		AddReflector(Reflect);
 	}
 
