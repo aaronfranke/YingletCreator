@@ -143,6 +143,66 @@ MonoBehaviour:
   _applyMode: 1
   _advanced:
     _middle: 0.5
+--- !u!1 &195350314626794375
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6695916205094996836}
+  - component: {fileID: 5822045624257963331}
+  - component: {fileID: 4554476015469128726}
+  m_Layer: 0
+  m_Name: EyeControl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6695916205094996836
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195350314626794375}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4041256890071865057}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5822045624257963331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195350314626794375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae0c8f06c18bda042bbfc3c2764318c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigRoot: {fileID: 4256077204897904255}
+--- !u!114 &4554476015469128726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195350314626794375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf86c807ba0e25148b2f45054fc3ce71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _squintTime: 0.02
+  _closedTime: 0.09
 --- !u!1 &295193141807768341
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,6 +399,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1178409061704119440}
+  - {fileID: 6695916205094996836}
   - {fileID: 94200243092318085}
   m_Father: {fileID: 4256077204897904255}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

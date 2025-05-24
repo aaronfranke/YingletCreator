@@ -1,60 +1,60 @@
-using System.Collections;
+using Reactivity;
 using UnityEngine;
 
 public enum EyeExpression
 {
-    Normal,
-    Squint,
-    Closed,
-    // HappyClosed
-    // Suprised
-    // Angry
-    // Sad
-    // SadClosed
+	Normal,
+	Squint,
+	Closed,
+	// HappyClosed
+	// Suprised
+	// Angry
+	// Sad
+	// SadClosed
 }
 
-public class EyeExpressions : MonoBehaviour
+/// <summary>
+/// Interface that can either add or remove meshes from the set
+/// </summary>
+public interface IEyeExpressionMutator
 {
-    [SerializeField] float _squintTime = .015f;
-    [SerializeField] float _closedTime = .03f;
+	/// <summary>
+	/// Reflectively called, giving the implementation the opportunity to override the expression
+	/// </summary>
+	public EyeExpression Mutate(EyeExpression input);
+}
 
-    private IEyeGatherer _eyeGatherer;
-    private IBlinkTimer _blinkTimer;
-    static readonly int EXPRESSION_PROPERTY_ID = Shader.PropertyToID("_Expression");
 
-    void Awake()
-    {
-        _eyeGatherer = this.GetComponentInParent<IEyeGatherer>();
-        _blinkTimer = this.GetComponent<IBlinkTimer>();
+public class EyeExpressions : ReactiveBehaviour
+{
+	private IEyeGatherer _eyeGatherer;
+	private IEyeExpressionMutator[] _mutators;
+	static readonly int EXPRESSION_PROPERTY_ID = Shader.PropertyToID("_Expression");
 
-        _blinkTimer.OnBlink += BlinkTimer_OnBlink;
-    }
+	void Awake()
+	{
+		_eyeGatherer = this.GetComponentInParent<IEyeGatherer>();
+		_mutators = this.GetComponentsInChildren<IEyeExpressionMutator>();
+		AddReflector(ReflectEyeExpression);
+	}
 
-    void OnDestroy()
-    {
-        _blinkTimer.OnBlink -= BlinkTimer_OnBlink;
-    }
+	private void ReflectEyeExpression()
+	{
+		var expression = EyeExpression.Normal;
 
-    private void BlinkTimer_OnBlink()
-    {
-        StartCoroutine(Blink());
-    }
-    IEnumerator Blink()
-    {
-        SetEyesToExpression(EyeExpression.Squint);
-        yield return new WaitForSeconds(_squintTime);
-        SetEyesToExpression(EyeExpression.Closed);
-        yield return new WaitForSeconds(_closedTime);
-        SetEyesToExpression(EyeExpression.Squint);
-        yield return new WaitForSeconds(_squintTime);
-        SetEyesToExpression(EyeExpression.Normal);
-    }
+		foreach (var mutator in _mutators)
+		{
+			expression = mutator.Mutate(expression);
+		}
 
-    void SetEyesToExpression(EyeExpression eyeExpression)
-    {
-        foreach (var eyeMaterial in _eyeGatherer.EyeMaterials)
-        {
-            eyeMaterial.SetInteger(EXPRESSION_PROPERTY_ID, (int)eyeExpression);
-        }
-    }
+		SetEyesToExpression(expression);
+	}
+
+	void SetEyesToExpression(EyeExpression eyeExpression)
+	{
+		foreach (var eyeMaterial in _eyeGatherer.EyeMaterials)
+		{
+			eyeMaterial.SetInteger(EXPRESSION_PROPERTY_ID, (int)eyeExpression);
+		}
+	}
 }
