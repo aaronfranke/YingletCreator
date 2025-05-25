@@ -220,11 +220,8 @@ PrefabInstance:
       insertIndex: 2
       addedObject: {fileID: 2001633019658231977}
     - targetCorrespondingSourceObject: {fileID: 195350314626794375, guid: 0d9ff1f1a68f6df40859b8161b49c04f, type: 3}
-      insertIndex: -1
+      insertIndex: 4
       addedObject: {fileID: 33141956658527109}
-    - targetCorrespondingSourceObject: {fileID: 195350314626794375, guid: 0d9ff1f1a68f6df40859b8161b49c04f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3449178910552945298}
     - targetCorrespondingSourceObject: {fileID: 195350314626794375, guid: 0d9ff1f1a68f6df40859b8161b49c04f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3171408562936708414}
@@ -267,18 +264,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _squintTime: 0.02
   _closedTime: 0.09
---- !u!114 &3449178910552945298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 791053993093962534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50e440787009b9143957127f2ca38a72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3171408562936708414
 MonoBehaviour:
   m_ObjectHideFlags: 0

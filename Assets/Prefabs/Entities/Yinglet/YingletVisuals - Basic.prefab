@@ -154,6 +154,7 @@ GameObject:
   - component: {fileID: 6695916205094996836}
   - component: {fileID: 5822045624257963331}
   - component: {fileID: 4554476015469128726}
+  - component: {fileID: 2851223354375186995}
   m_Layer: 0
   m_Name: EyeControl
   m_TagString: Untagged
@@ -201,8 +202,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf86c807ba0e25148b2f45054fc3ce71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _squintTime: 0.02
-  _closedTime: 0.09
+--- !u!114 &2851223354375186995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195350314626794375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e440787009b9143957127f2ca38a72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &295193141807768341
 GameObject:
   m_ObjectHideFlags: 0
