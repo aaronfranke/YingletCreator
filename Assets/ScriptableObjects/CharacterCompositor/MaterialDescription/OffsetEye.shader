@@ -3,7 +3,7 @@ Shader "Custom/OffsetEye"
     Properties
     {
         _MainTex ("Main Texture", 2D) = "white" {}
-        _Outline ("Outline", 2D) = "white" {}
+        _Eyelid ("Eyelid", 2D) = "white" {}
         _Pupil ("Pupil", 2D) = "white" {}
         _AlphaCutoff ("Alpha Cutoff", Range(0,1)) = 0.5
         _DepthOffset ("Depth Offset", Float) = 0.0
@@ -26,7 +26,7 @@ Shader "Custom/OffsetEye"
 
             
             TEXTURE2D(_MainTex); SAMPLER(sampler_MainTex);
-            TEXTURE2D(_Outline); SAMPLER(sampler_Outline);
+            TEXTURE2D(_Eyelid); SAMPLER(sampler_Eyelid);
             TEXTURE2D(_Pupil); SAMPLER(sampler_Pupil);
             float _AlphaCutoff;
             float _DepthOffset;
@@ -65,23 +65,24 @@ Shader "Custom/OffsetEye"
 
             float4 frag (v2f i) : SV_Target
             {
-                const int MAX_EXPRESSIONS = 3; 
+                const int COLUMNS = 4; 
+                const int ROWS = 2; 
 
                 float2 pupilOffset = float2(_PupilOffsetX, _PupilOffsetY);
                 float2 expressionUV = i.uv;
-                expressionUV.x += _Expression;
+                expressionUV += float2(_Expression % COLUMNS, (ROWS - 1) - floor(_Expression / COLUMNS));
 
-                expressionUV.x /= MAX_EXPRESSIONS;
+                expressionUV /= float2(COLUMNS, ROWS);
 
                 float4 mainTex = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, expressionUV);
-                float4 outline = SAMPLE_TEXTURE2D(_Outline, sampler_Outline, expressionUV);
+                float4 eyelid = SAMPLE_TEXTURE2D(_Eyelid, sampler_Eyelid, expressionUV);
                 float4 pupil = SAMPLE_TEXTURE2D(_Pupil, sampler_Pupil, i.uv + pupilOffset);
 
 
                 float4 col = mainTex;
                 col.rgb = lerp(col.rgb, pupil.rgb, pupil.a);
-                col.rgb = lerp(col.rgb, outline.rgb, outline.a);
-                col.a = max(mainTex.a, outline.a);
+                col.rgb = lerp(col.rgb, eyelid.rgb, eyelid.a);
+                col.a = max(mainTex.a, eyelid.a);
                 
                 if (col.a < _AlphaCutoff)
                     discard;

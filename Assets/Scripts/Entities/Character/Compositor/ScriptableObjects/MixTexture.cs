@@ -65,7 +65,7 @@ namespace Character.Compositor
 	public enum TargetMaterialTexture
 	{
 		MainTexture,
-		Outline, // Used in the eye material; covers the pupil
+		Eyelid, // Used in the eye material; covers the pupil
 		Pupil, // Used in the eye material
 		Mouth, // Used in the mouth material; includes line and teeth
 		MouthMask, // Used in the mouth material; the center that designates what should be alpha clipped out
