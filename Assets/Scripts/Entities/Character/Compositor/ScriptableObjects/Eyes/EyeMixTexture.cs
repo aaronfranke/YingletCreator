@@ -13,18 +13,20 @@ namespace Character.Compositor
 	{
 		private readonly Texture2D _texture;
 		private readonly EyeMixTextureReferences _references;
-		private readonly EyeIndividualMixTextureReferences _individualReferences;
+		private readonly TargetMaterialTexture _target;
+		private readonly ReColorId _reColorId;
 		private readonly bool _isLeft;
 
-		public EyeMixTexture(Texture2D texture, EyeMixTextureReferences references, EyeIndividualMixTextureReferences individualReferences, bool isLeft)
+		public EyeMixTexture(Texture2D texture, EyeMixTextureReferences references, TargetMaterialTexture target, ReColorId reColorId, bool isLeft)
 		{
 			_texture = texture;
 			_references = references;
-			_individualReferences = individualReferences;
+			_target = target;
+			_reColorId = reColorId;
 			_isLeft = isLeft;
 		}
 
-		public ReColorId ReColorId => _isLeft ? _individualReferences.LeftReColorId : _individualReferences.RightReColorId;
+		public ReColorId ReColorId => _reColorId;
 
 		public MaterialDescription TargetMaterialDescription => _isLeft ? _references.LeftMaterialDescription : _references.RightMaterialDescription;
 
@@ -36,7 +38,7 @@ namespace Character.Compositor
 
 		public bool Sortable => false;
 
-		public TargetMaterialTexture TargetMaterialTexture => _individualReferences.TargetMaterialTexture;
+		public TargetMaterialTexture TargetMaterialTexture => _target;
 
 		public IEnumerable<CharacterElementTag> Tags => Enumerable.Empty<CharacterElementTag>();
 		public IEnumerable<CharacterElementTag> MaskedTags => Enumerable.Empty<CharacterElementTag>();

@@ -36,24 +36,46 @@ public class UpdateEyeAssets
 
 			var fill = LoadTex(Path.Combine(eyeTextureFolder, "Fill.png"));
 			var eyelid = LoadTex(Path.Combine(eyeTextureFolder, "Eyelid.png"));
-			asset.EditorSetTextures(fill, eyelid, pupil);
+			bool eyelidContainsNonBlackPixel = ContainsNonBlackPixel(eyelid);
+			asset.EditorSetTextures(fill, eyelid, pupil, eyelidContainsNonBlackPixel);
 
 			EditorUtility.SetDirty(asset);
 			AssetDatabase.SaveAssets();
 		}
 	}
 
-
 	static Texture2D LoadTex(string path)
 	{
-		var expectedPath = Path.Combine(path);
-		var tex2d = AssetDatabase.LoadAssetAtPath<Texture2D>(expectedPath);
+		TextureImporter importer = (TextureImporter)TextureImporter.GetAtPath(path);
+		if (importer == null)
+		{
+			Debug.LogWarning($"Failed to find expected importer at {path}");
+			return null;
+		}
+		importer.isReadable = true;
+		importer.alphaIsTransparency = true;
+		AssetDatabase.ImportAsset(path);
+
+		var tex2d = AssetDatabase.LoadAssetAtPath<Texture2D>(path);
 		if (tex2d == null)
 		{
-			Debug.LogWarning($"Failed to find expected tex2d at {expectedPath}");
+			Debug.LogWarning($"Failed to find expected tex2d at {path}");
+			return null;
 		}
-		tex2d.alphaIsTransparency = true;
-		EditorUtility.SetDirty(tex2d);
 		return tex2d;
+	}
+
+	static bool ContainsNonBlackPixel(Texture2D tex)
+	{
+		var pixels = tex.GetPixels();
+		foreach (var pixel in pixels)
+		{
+			if (pixel.r > 0.5f && pixel.a > 0.5f)
+			{
+				return true;
+			}
+		}
+		return false;
+
 	}
 }
