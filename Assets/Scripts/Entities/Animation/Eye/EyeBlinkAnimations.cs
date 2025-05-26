@@ -19,7 +19,7 @@ public class EyeBlinkAnimations : MonoBehaviour, IEyeExpressionMutator
 
 	Observable<BlinkState> _blinkState = new Observable<BlinkState>();
 
-	Dictionary<EyeExpression, Dictionary<BlinkState, EyeExpression>> _blinkMap = new()
+	static Dictionary<EyeExpression, Dictionary<BlinkState, EyeExpression>> _blinkMap = new()
 	{
 		{ EyeExpression.Normal, new Dictionary<BlinkState, EyeExpression> {
 			{ BlinkState.Normal, EyeExpression.Normal },
@@ -28,13 +28,38 @@ public class EyeBlinkAnimations : MonoBehaviour, IEyeExpressionMutator
 		}},
 		{ EyeExpression.Squint, new Dictionary<BlinkState, EyeExpression> {
 			{ BlinkState.Normal, EyeExpression.Squint },
-			{ BlinkState.Squint, EyeExpression.Closed },
+			{ BlinkState.Squint, EyeExpression.Squint },
 			{ BlinkState.Closed, EyeExpression.Closed }
 		}},
 		{ EyeExpression.Closed, new Dictionary<BlinkState, EyeExpression> {
 			{ BlinkState.Normal, EyeExpression.Closed },
 			{ BlinkState.Squint, EyeExpression.Closed },
 			{ BlinkState.Closed, EyeExpression.Closed }
+		}},
+		{ EyeExpression.ClosedHappy, new Dictionary<BlinkState, EyeExpression> {
+			{ BlinkState.Normal, EyeExpression.ClosedHappy },
+			{ BlinkState.Squint, EyeExpression.ClosedHappy },
+			{ BlinkState.Closed, EyeExpression.ClosedHappy }
+		}},
+		{ EyeExpression.Shocked, new Dictionary<BlinkState, EyeExpression> {
+			{ BlinkState.Normal, EyeExpression.Shocked },
+			{ BlinkState.Squint, EyeExpression.Shocked },
+			{ BlinkState.Closed, EyeExpression.ClosedEnergy}
+		}},
+		{ EyeExpression.Angry, new Dictionary<BlinkState, EyeExpression> {
+			{ BlinkState.Normal, EyeExpression.Angry },
+			{ BlinkState.Squint, EyeExpression.Angry },
+			{ BlinkState.Closed, EyeExpression.ClosedEnergy }
+		}},
+		{ EyeExpression.Sad, new Dictionary<BlinkState, EyeExpression> {
+			{ BlinkState.Normal, EyeExpression.Sad },
+			{ BlinkState.Squint, EyeExpression.Sad },
+			{ BlinkState.Closed, EyeExpression.Closed }
+		}},
+		{ EyeExpression.ClosedEnergy, new Dictionary<BlinkState, EyeExpression> {
+			{ BlinkState.Normal, EyeExpression.ClosedEnergy },
+			{ BlinkState.Squint, EyeExpression.ClosedEnergy },
+			{ BlinkState.Closed, EyeExpression.ClosedEnergy }
 		}},
 	};
 

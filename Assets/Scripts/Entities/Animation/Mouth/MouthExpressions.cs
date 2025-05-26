@@ -30,8 +30,8 @@ public interface IMouthExpressions
 public class MouthExpressions : ReactiveBehaviour, IMouthExpressions
 {
 	[SerializeField] CharacterIntId _intId;
-	private ICustomizationSelectedDataRepository _dataRepo;
 
+	private ICustomizationSelectedDataRepository _dataRepo;
 	Computed<int> _intValueComputed;
 	Computed<MouthExpression> _expressionComputed;
 	Computed<MouthOpenAmount> _openAmountComputed;

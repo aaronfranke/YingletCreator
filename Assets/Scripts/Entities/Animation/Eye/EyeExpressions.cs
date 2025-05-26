@@ -1,3 +1,5 @@
+using Character.Creator;
+using Character.Data;
 using Reactivity;
 using UnityEngine;
 
@@ -6,11 +8,11 @@ public enum EyeExpression
 	Normal,
 	Squint,
 	Closed,
-	// HappyClosed
-	// Suprised
-	// Angry
-	// Sad
-	// SadClosed
+	ClosedHappy,
+	Shocked,
+	Angry,
+	Sad,
+	ClosedEnergy
 }
 
 /// <summary>
@@ -27,20 +29,32 @@ public interface IEyeExpressionMutator
 
 public class EyeExpressions : ReactiveBehaviour
 {
+	[SerializeField] CharacterIntId _intId;
+
+	private ICustomizationSelectedDataRepository _dataRepo;
 	private IEyeGatherer _eyeGatherer;
 	private IEyeExpressionMutator[] _mutators;
+	private Computed<EyeExpression> _defaultExpressionComputed;
 	static readonly int EXPRESSION_PROPERTY_ID = Shader.PropertyToID("_Expression");
 
 	void Awake()
 	{
+		_dataRepo = this.GetComponentInParent<ICustomizationSelectedDataRepository>();
 		_eyeGatherer = this.GetComponentInParent<IEyeGatherer>();
 		_mutators = this.GetComponentsInChildren<IEyeExpressionMutator>();
+		_defaultExpressionComputed = CreateComputed(ComputeDefaultExpression);
 		AddReflector(ReflectEyeExpression);
+	}
+
+
+	private EyeExpression ComputeDefaultExpression()
+	{
+		return (EyeExpression)(_dataRepo.GetInt(_intId));
 	}
 
 	private void ReflectEyeExpression()
 	{
-		var expression = EyeExpression.Normal;
+		var expression = _defaultExpressionComputed.Val;
 
 		foreach (var mutator in _mutators)
 		{
