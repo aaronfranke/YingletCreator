@@ -26,8 +26,12 @@ public interface IEyeExpressionMutator
 	public EyeExpression Mutate(EyeExpression input);
 }
 
+public interface IEyeExpressions
+{
+	public EyeExpression DefaultExpression { get; }
+}
 
-public class EyeExpressions : ReactiveBehaviour
+public class EyeExpressions : ReactiveBehaviour, IEyeExpressions
 {
 	[SerializeField] CharacterIntId _intId;
 
@@ -36,6 +40,8 @@ public class EyeExpressions : ReactiveBehaviour
 	private IEyeExpressionMutator[] _mutators;
 	private Computed<EyeExpression> _defaultExpressionComputed;
 	static readonly int EXPRESSION_PROPERTY_ID = Shader.PropertyToID("_Expression");
+
+	public EyeExpression DefaultExpression => _defaultExpressionComputed.Val;
 
 	void Awake()
 	{
