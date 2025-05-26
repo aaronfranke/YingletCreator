@@ -156,6 +156,7 @@ GameObject:
   - component: {fileID: 4554476015469128726}
   - component: {fileID: 2851223354375186995}
   - component: {fileID: 685790435111097818}
+  - component: {fileID: 8176280444732768433}
   m_Layer: 0
   m_Name: EyeControl
   m_TagString: Untagged
@@ -228,6 +229,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c9e434375a3d24791bd96e2c30e539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8176280444732768433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195350314626794375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced8c5d2d25731045ad7f1f26b55a9fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigRoot: {fileID: 4256077204897904255}
+  _blinkEaseSettings:
+    _curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: -0.6648305
+        outSlope: -0.6648305
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.2078295
+      - serializedVersion: 3
+        time: 0.32
+        value: 0.005372096
+        inSlope: -0.7543247
+        outSlope: 3.0996537
+        tangentMode: 1
+        weightedMode: 0
+        inWeight: 0.15734583
+        outWeight: 0.041539222
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0.287806
+        outSlope: 0.287806
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.136923
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    _duration: 0.3
 --- !u!1 &295193141807768341
 GameObject:
   m_ObjectHideFlags: 0
