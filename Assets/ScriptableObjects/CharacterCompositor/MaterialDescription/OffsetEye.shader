@@ -9,6 +9,7 @@ Shader "Custom/OffsetEye"
         _DepthOffset ("Depth Offset", Float) = 0.0
         _PupilOffsetX ("Pupil Offset X", Range(-0.35,0.2)) = 0.0
         _PupilOffsetY ("Pupil Offset Y", Range(-0.31,.22)) = 0.0
+        _PupilScale ("Pupil Scale", Range(0,2)) = 1.0
         _Expression ("Expression", Integer) = 1
     }
     SubShader
@@ -32,6 +33,7 @@ Shader "Custom/OffsetEye"
             float _DepthOffset;
             float _PupilOffsetX;
             float _PupilOffsetY;
+            float _PupilScale;
             int _Expression;
 
             struct appdata_t
@@ -69,14 +71,17 @@ Shader "Custom/OffsetEye"
                 const int ROWS = 2; 
 
                 float2 pupilOffset = float2(_PupilOffsetX, _PupilOffsetY);
+
                 float2 expressionUV = i.uv;
                 expressionUV += float2(_Expression % COLUMNS, (ROWS - 1) - floor(_Expression / COLUMNS));
-
                 expressionUV /= float2(COLUMNS, ROWS);
+
+                float2 center = float2(0.5, 0.5);
+                float2 pupilUV = (i.uv - center + pupilOffset) / _PupilScale + center;
 
                 float4 mainTex = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, expressionUV);
                 float4 eyelid = SAMPLE_TEXTURE2D(_Eyelid, sampler_Eyelid, expressionUV);
-                float4 pupil = SAMPLE_TEXTURE2D(_Pupil, sampler_Pupil, i.uv + pupilOffset);
+                float4 pupil = SAMPLE_TEXTURE2D(_Pupil, sampler_Pupil, pupilUV);
 
 
                 float4 col = mainTex;

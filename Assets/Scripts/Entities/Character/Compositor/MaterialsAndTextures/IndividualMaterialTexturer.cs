@@ -69,7 +69,7 @@ namespace Character.Compositor
 		RenderTexture UpdateMaterialTexture(TargetMaterialTexture materialTexture, IEnumerable<IMixTexture> applicableMixTextures)
 		{
 			// Special case, use mask directly
-			if (materialTexture == TargetMaterialTexture.MouthMask)
+			if (materialTexture == TargetMaterialTexture.MouthMask || materialTexture == TargetMaterialTexture.Pupil)
 			{
 				_material.Material.ApplyTexture(applicableMixTextures.First().Grayscale, materialTexture);
 				return null;
