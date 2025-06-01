@@ -4,7 +4,7 @@ namespace Snapshotter
 {
 	public static class SnapshotterUtils
 	{
-		public static RenderTexture Snapshot(ISnapshotterReferences references, SnapshotterParams sParams)
+		public static RenderTexture Snapshot(ISnapshotterReferences references, SnapshotterParams sParams, RenderTexture renderTexture = null)
 		{
 			//var stopWatch = new Stopwatch();
 			//stopWatch.Start();
@@ -13,13 +13,21 @@ namespace Snapshotter
 			using var cameraHandler = new SnapshotterCameraHandler(references, sParams);
 			cameraHandler.OffsetPosByScale(prefabHandler.GetYScale());
 
-
-			var rt = new RenderTexture(references.SizeInPixels, references.SizeInPixels, 24);
-			rt.Create();
-			cameraHandler.RenderTo(rt);
+			if (renderTexture == null)
+			{
+				renderTexture = CreateRenderTexture(references);
+			}
+			cameraHandler.RenderTo(renderTexture);
 
 			//UnityEngine.Debug.Log($"Snapshot took {stopWatch.ElapsedMilliseconds}ms");
-			return rt;
+			return renderTexture;
+		}
+
+		public static RenderTexture CreateRenderTexture(ISnapshotterReferences references)
+		{
+			var renderTexture = new RenderTexture(references.SizeInPixels, references.SizeInPixels, 24);
+			renderTexture.Create();
+			return renderTexture;
 		}
 	}
 }

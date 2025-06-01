@@ -12,12 +12,12 @@ namespace Character.Creator.UI
 	{
 		private ICustomizationSelection _selection;
 		private Computed<bool> _selected;
-		private Observable<CachedYingletReference> _reference = new();
+		private CachedYingletReference _reference;
 
-		public CachedYingletReference Reference => _reference.Val;
+		public CachedYingletReference Reference => _reference;
 		public IReadOnlyObservable<bool> Selected => _selected;
 
-		void Awake()
+		void Start()
 		{
 			_selection = this.GetComponentInParent<ICustomizationSelection>();
 			_selected = CreateComputed(ComputeSelected);
@@ -25,12 +25,12 @@ namespace Character.Creator.UI
 
 		public void Setup(CachedYingletReference reference)
 		{
-			_reference.Val = reference;
+			_reference = reference;
 		}
 
 		bool ComputeSelected()
 		{
-			return _reference.Val == _selection.Selected;
+			return _reference == _selection.Selected;
 		}
 	}
 }
