@@ -95,13 +95,13 @@ namespace Character.Creator
 		{
 			// Serialize the data
 			var data = _selectionData.CustomizationData;
-			bool debugButtonsHeld = Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.LeftCommand);
+			bool debugButtonsHeld = Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.LeftControl);
 			if (!debugButtonsHeld)
 			{
 				data.Name.Val += DUPLICATE_SUFFIX;
 			}
 			var serializedData = new SerializableCustomizationData(data);
-			serializedData.CreationTime = DateTime.Now;
+			serializedData.CreationTime = debugButtonsHeld ? data.CreationTime : DateTime.Now;
 
 			// Write it to disk
 			string rootFolder = _locationProvider.CustomFolderRoot;
