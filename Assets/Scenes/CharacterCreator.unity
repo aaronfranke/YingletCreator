@@ -2183,7 +2183,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _zoomPos: {x: -0.22, y: 0.97, z: -0.5}
   _zoomRot: {x: 15, y: 0, z: 0}
-  _scrollSensitivity: 1
+  _scrollSensitivity: 2
+  _lerpPower: 5
 --- !u!1001 &392153853
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class ZoomInOnScroll : MonoBehaviour
 	[SerializeField] float _scrollSensitivity = 1f;
 	[SerializeField] float _lerpPower = 5f;
 
+	IYingletHeightProvider _heightProvider;
 	Vector3 _startPos;
 	Quaternion _startRot;
 	Quaternion _zoomRotQuaternion;
@@ -15,6 +16,7 @@ public class ZoomInOnScroll : MonoBehaviour
 
 	void Start()
 	{
+		_heightProvider = this.GetCharacterCreatorComponent<IYingletHeightProvider>();
 		_startPos = transform.localPosition;
 		_startRot = transform.localRotation;
 		_zoomRotQuaternion = Quaternion.Euler(_zoomRot);
@@ -29,8 +31,9 @@ public class ZoomInOnScroll : MonoBehaviour
 			_targetPercent = Mathf.Clamp01(_targetPercent);
 		}
 
+		var zoomOffset = new Vector3(0, _heightProvider.YScale - 1, 0);
 		_currentPercent = Mathf.Lerp(_currentPercent, _targetPercent, Time.deltaTime * _lerpPower);
-		transform.localPosition = Vector3.Lerp(_startPos, _zoomPos, _currentPercent);
+		transform.localPosition = Vector3.Lerp(_startPos, _zoomPos + zoomOffset, _currentPercent);
 		transform.localRotation = Quaternion.Lerp(_startRot, _zoomRotQuaternion, _currentPercent);
 	}
 }
