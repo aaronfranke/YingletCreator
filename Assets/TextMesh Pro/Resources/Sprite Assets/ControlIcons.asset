@@ -53,6 +53,11 @@ MonoBehaviour:
     m_GlyphIndex: 2
     m_Scale: 1
     m_Name: MouseMiddle
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 3
+    m_Scale: 1
+    m_Name: QWEASD
   m_GlyphTable:
   - m_Index: 0
     m_Metrics:
@@ -102,6 +107,22 @@ MonoBehaviour:
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
     sprite: {fileID: 622977802, guid: a23590877c3bfe3479c852b699aece42, type: 3}
+  - m_Index: 3
+    m_Metrics:
+      m_Width: 64
+      m_Height: 64
+      m_HorizontalBearingX: -1
+      m_HorizontalBearingY: 42.7
+      m_HorizontalAdvance: 61.01
+    m_GlyphRect:
+      m_X: 192
+      m_Y: 192
+      m_Width: 64
+      m_Height: 64
+    m_Scale: 2.5
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+    sprite: {fileID: -646604821, guid: a23590877c3bfe3479c852b699aece42, type: 3}
   spriteInfoList: []
   fallbackSpriteAssets: []
 --- !u!21 &1599938593161683569
