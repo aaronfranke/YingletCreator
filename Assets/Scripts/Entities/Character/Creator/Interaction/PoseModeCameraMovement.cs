@@ -5,22 +5,27 @@ using UnityEngine;
 public class PoseModeCameraMovement : MonoBehaviour
 {
 	[SerializeField] float _moveSpeed = 5f;
+	[SerializeField] float _moveSmoothTime = 0.08f;
 	[SerializeField] float _rotateSpeed = 30f;
 	private IClipboardSelection _clipboardSelection;
 	private Vector3 _eulerRotation;
+	private Vector3 _targetPosition;
+	private Vector3 _moveVelocity;
+
 	static Dictionary<KeyCode, Vector3> _moveBindings = new()
-	{
-		{ KeyCode.W, Vector3.forward },
-		{ KeyCode.S, Vector3.back },
-		{ KeyCode.A, Vector3.left },
-		{ KeyCode.D, Vector3.right },
-		{ KeyCode.Q, Vector3.down },
-		{ KeyCode.E, Vector3.up }
-	};
+		{
+			{ KeyCode.W, Vector3.forward },
+			{ KeyCode.S, Vector3.back },
+			{ KeyCode.A, Vector3.left },
+			{ KeyCode.D, Vector3.right },
+			{ KeyCode.Q, Vector3.down },
+			{ KeyCode.E, Vector3.up }
+		};
 
 	private void Awake()
 	{
 		_clipboardSelection = this.GetCharacterCreatorComponent<IClipboardSelection>();
+		_targetPosition = transform.position;
 	}
 
 	void Update()
@@ -28,13 +33,13 @@ public class PoseModeCameraMovement : MonoBehaviour
 		if (_clipboardSelection.Selection.Val != ClipboardSelectionType.PhotoMode)
 		{
 			_eulerRotation = transform.localEulerAngles;
+			_targetPosition = transform.position;
 			return;
 		}
 
 		UpdatePosition();
 		UpdateRotation();
 	}
-
 
 	void UpdatePosition()
 	{
@@ -52,10 +57,13 @@ public class PoseModeCameraMovement : MonoBehaviour
 		{
 			// Move relative to the transform's orientation
 			Vector3 worldMove = transform.TransformDirection(direction);
-
-			transform.position += worldMove.normalized * _moveSpeed * Time.deltaTime;
+			_targetPosition += worldMove.normalized * _moveSpeed * Time.deltaTime;
 		}
+
+		// Smoothly move towards the target position
+		transform.position = Vector3.SmoothDamp(transform.position, _targetPosition, ref _moveVelocity, _moveSmoothTime);
 	}
+
 	private void UpdateRotation()
 	{
 		// Only rotate when right mouse button is held
