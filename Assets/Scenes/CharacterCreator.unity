@@ -2181,6 +2181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b3d61f97f8396d40b1f65d97abf414c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _nonGuiHoverable: {fileID: 863511680}
   _zoomPos: {x: -0.22, y: 0.97, z: -0.5}
   _zoomRot: {x: 15, y: 0, z: 0}
   _scrollSensitivity: 2
@@ -5491,7 +5492,7 @@ GameObject:
   - component: {fileID: 863511678}
   - component: {fileID: 863511680}
   m_Layer: 5
-  m_Name: ClickThrough
+  m_Name: NonGUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
