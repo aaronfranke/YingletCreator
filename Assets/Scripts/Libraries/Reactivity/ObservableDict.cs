@@ -116,8 +116,17 @@ namespace Reactivity
 		public bool IsReadOnly =>
 		throw new System.NotImplementedException();
 
-		IEnumerable<K> IReadOnlyDictionary<K, V>.Keys =>
-		throw new System.NotImplementedException();
+		IEnumerable<K> IReadOnlyDictionary<K, V>.Keys
+		{
+			get
+			{
+				enumerableNotifier.Track();
+				return dict
+					.Where(kvp => kvp.Value.Exists)
+					.Select(kvp => kvp.Key)
+					.ToArray();
+			}
+		}
 
 		IEnumerable<V> IReadOnlyDictionary<K, V>.Values =>
 		throw new System.NotImplementedException();

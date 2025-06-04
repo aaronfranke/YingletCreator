@@ -30,7 +30,7 @@ public class PoseModeCameraMovement : MonoBehaviour
 
 	void Update()
 	{
-		if (_clipboardSelection.Selection.Val != ClipboardSelectionType.PhotoMode)
+		if (_clipboardSelection.Selection.Val != ClipboardSelectionType.Pose)
 		{
 			_eulerRotation = transform.localEulerAngles;
 			_targetPosition = transform.position;

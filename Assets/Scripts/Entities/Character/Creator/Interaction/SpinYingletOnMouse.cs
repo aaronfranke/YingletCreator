@@ -14,7 +14,7 @@ public class SpinYingletOnMouse : MonoBehaviour
 	void Update()
 	{
 		// Early return if we're in photo mode
-		if (_clipboardSelection.Selection.Val == ClipboardSelectionType.PhotoMode) return;
+		if (_clipboardSelection.Selection.Val == ClipboardSelectionType.Pose) return;
 
 		if (Input.GetMouseButton(1))
 		{

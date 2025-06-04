@@ -29,7 +29,7 @@ public class InstructionsText : ReactiveBehaviour
 
 	private InstructionsType ComputeInstructionType()
 	{
-		bool isPose = _clipboardSelection.Selection.Val == ClipboardSelectionType.PhotoMode;
+		bool isPose = _clipboardSelection.Selection.Val == ClipboardSelectionType.Pose;
 		return isPose ? InstructionsType.CameraPose : InstructionsType.Main;
 	}
 	private void ReflectText()

@@ -82,7 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb8b035d42fd259468244821b766a053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _yingPortraitPrefab: {fileID: 580242429759820414, guid: 84eaece8a881d914394e4f27bfcecce9, type: 3}
+  _yingPortraitPrefab: {fileID: 4986014460513308007, guid: d2726af5b4af70a42a36206d0bf8183e, type: 3}
   _group: 0
 --- !u!1 &2293448529994657996
 GameObject:
@@ -721,7 +721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb8b035d42fd259468244821b766a053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _yingPortraitPrefab: {fileID: 580242429759820414, guid: 84eaece8a881d914394e4f27bfcecce9, type: 3}
+  _yingPortraitPrefab: {fileID: 4986014460513308007, guid: d2726af5b4af70a42a36206d0bf8183e, type: 3}
   _group: 1
 --- !u!1 &5038907522847342357
 GameObject:
@@ -1419,7 +1419,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3512307546995425619, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
       propertyPath: m_Name
-      value: Page - Camera
+      value: Page - Pose
       objectReference: {fileID: 0}
     - target: {fileID: 4099649964880116737, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
       propertyPath: m_AnchorMax.y

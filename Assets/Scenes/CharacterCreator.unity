@@ -6132,7 +6132,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7175447081968278156, guid: 7e30779a13c9ea0439f4425093c4be4e, type: 3}
       propertyPath: m_Name
-      value: Page - Camera
+      value: Page - Pose
       objectReference: {fileID: 0}
     - target: {fileID: 7497620193262623321, guid: 7e30779a13c9ea0439f4425093c4be4e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -6398,6 +6398,7 @@ GameObject:
   - component: {fileID: 954353169}
   - component: {fileID: 954353175}
   - component: {fileID: 954353172}
+  - component: {fileID: 954353177}
   m_Layer: 0
   m_Name: CharacterCreator
   m_TagString: Untagged
@@ -6507,6 +6508,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4adbde2f029830c4785eea67dce8359e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &954353177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954353168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9de6dcb58ca163b46b981eedfd154dda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &957036852

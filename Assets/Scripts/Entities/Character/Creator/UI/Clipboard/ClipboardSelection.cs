@@ -13,7 +13,7 @@ namespace Character.Creator.UI
 		Colors,
 		Sliders,
 		Background,
-		PhotoMode
+		Pose
 	}
 
 	public interface IClipboardSelection
