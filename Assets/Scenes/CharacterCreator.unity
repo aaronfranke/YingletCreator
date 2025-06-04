@@ -1964,6 +1964,7 @@ GameObject:
   m_Component:
   - component: {fileID: 306049436}
   - component: {fileID: 306049437}
+  - component: {fileID: 306049438}
   m_Layer: 0
   m_Name: Yinglet
   m_TagString: Untagged
@@ -1999,6 +2000,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9af5b40a72dfdf94db8aef68b9bb7448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &306049438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306049435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ed059b7efd6cc3419f2d996a7545d8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _disableOnSelection: 7
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -5507,7 +5521,7 @@ MonoBehaviour:
   _mainInstructions: <sprite name="MouseRight"> (Hold) - Rotate        <sprite name="MouseMiddle">
     - Zoom
   _cameraPoseInstructions: <sprite name="MouseLeft"> - Select Ying        <sprite
-    name="MouseRight"> (Hold) - Rotate        <sprite name="QWEASD"> - Move
+    name="MouseRight"> (Hold) - Rotate Cam        <sprite name="QWEASD"> - Move Cam
 --- !u!1 &863511676
 GameObject:
   m_ObjectHideFlags: 0
