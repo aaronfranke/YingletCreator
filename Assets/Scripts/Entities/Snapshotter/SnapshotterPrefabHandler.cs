@@ -11,11 +11,12 @@ namespace Snapshotter
 		public SnapshotterPrefabHandler(ISnapshotterReferences references, SnapshotterParams sParams)
 		{
 			_references = references;
-			_references.YingletPrefab.SetActive(false); // Set inactive so we can set the data repository before everything Start's
-
-			_yingletInstance = GameObject.Instantiate(_references.YingletPrefab);
-			_yingletInstance.GetComponent<SnapshotterDataRepository>().Setup(sParams.Data);
-			_yingletInstance.SetActive(true);
+			using (_references.YingletPrefab.TemporarilyDisable())
+			{
+				_yingletInstance = GameObject.Instantiate(_references.YingletPrefab);
+				_yingletInstance.GetComponent<SnapshotterDataRepository>().Setup(sParams.Data);
+				_yingletInstance.SetActive(true);
+			}
 			foreach (var snapshottable in _yingletInstance.GetComponentsInChildren<ISnapshottable>())
 			{
 				snapshottable.PrepareForSnapshot();
