@@ -27,16 +27,6 @@ public class ColliderHoverManager : MonoBehaviour, IColliderHoverManager
 			.Select(itemsHit => itemsHit.collider.GetComponent<IHoverable>())
 			.FirstOrDefault(hit => hit != null);
 		_currentlyHovered.Val = firstHoverableHit;
-		if (firstHoverableHit != null)
-		{
-			Debug.Log(((MonoBehaviour)firstHoverableHit).gameObject.name);
-
-		}
-		else
-		{
-			Debug.Log("Nothing");
-
-		}
 	}
 
 	float GetMaxDistance(Ray ray)
