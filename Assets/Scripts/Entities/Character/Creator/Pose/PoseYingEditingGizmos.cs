@@ -1,4 +1,3 @@
-using Character.Creator.UI;
 using Reactivity;
 
 public class PoseYingEditingGizmos : ReactiveBehaviour
@@ -22,8 +21,7 @@ public class PoseYingEditingGizmos : ReactiveBehaviour
 		var currentlyEditing = _poseData.CurrentlyEditing;
 		if (currentlyEditing == null) return;
 
-		// TODO: Add in transform and fix this
-		//this.transform.position = hovered.transform.position;
-		//this.transform.localScale = hovered.transform.localScale;
+		this.transform.position = currentlyEditing.GameObject.transform.position;
+		this.transform.localScale = currentlyEditing.GameObject.transform.localScale;
 	}
 }

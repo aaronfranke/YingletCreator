@@ -20,7 +20,7 @@ namespace Character.Creator.UI
 			var currentlyHovered = _hoveredProvider.HoveredPoseYing;
 			if (currentlyHovered == null) return;
 
-			_poseData.CurrentlyEditing = currentlyHovered.Reference;
+			_poseData.CurrentlyEditing = currentlyHovered;
 		}
 	}
 }
