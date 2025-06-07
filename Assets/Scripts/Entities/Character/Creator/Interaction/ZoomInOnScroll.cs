@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class ZoomInOnScroll : MonoBehaviour
 {
-	[SerializeField] UiHoverable _nonGuiHoverable;
 	[SerializeField] Vector3 _zoomPos;
 	[SerializeField] Vector3 _zoomRot;
 	[SerializeField] float _scrollSensitivity = 1f;
 	[SerializeField] float _lerpPower = 5f;
 
+	IUiHoverManager _uiHoverManager;
 	IClipboardSelection _clipboardSelection;
 	IYingletHeightProvider _heightProvider;
 	Vector3 _startPos;
@@ -19,6 +19,7 @@ public class ZoomInOnScroll : MonoBehaviour
 
 	void Start()
 	{
+		_uiHoverManager = Singletons.GetSingleton<IUiHoverManager>();
 		_clipboardSelection = this.GetCharacterCreatorComponent<IClipboardSelection>();
 		_heightProvider = this.GetCharacterCreatorComponent<IYingletHeightProvider>();
 		_startPos = transform.localPosition;
@@ -28,7 +29,6 @@ public class ZoomInOnScroll : MonoBehaviour
 
 	void Update()
 	{
-
 		// Early return if we're in photo mode
 		if (_clipboardSelection.Selection.Val == ClipboardSelectionType.Pose) return;
 
@@ -37,8 +37,8 @@ public class ZoomInOnScroll : MonoBehaviour
 	}
 	void UpdateTargetPercent()
 	{
-		// Early return if we're hovering over GUI
-		if (!_nonGuiHoverable.Hovered.Val) return;
+		// Early return if we're hovering over UI
+		if (_uiHoverManager.HoveringUi) return;
 
 		float scroll = Input.GetAxisRaw("Mouse ScrollWheel");
 		if (Mathf.Abs(scroll) > 0.0001f)

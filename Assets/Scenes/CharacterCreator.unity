@@ -2291,7 +2291,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b3d61f97f8396d40b1f65d97abf414c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nonGuiHoverable: {fileID: 863511680}
   _zoomPos: {x: -0.22, y: 0.97, z: -0.5}
   _zoomRot: {x: 15, y: 0, z: 0}
   _scrollSensitivity: 2
@@ -5636,6 +5635,7 @@ GameObject:
   - component: {fileID: 863511679}
   - component: {fileID: 863511678}
   - component: {fileID: 863511680}
+  - component: {fileID: 863511681}
   m_Layer: 5
   m_Name: NonGUI
   m_TagString: Untagged
@@ -5698,6 +5698,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c1f1f7ff1b5cda46bd79014f44d30a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &863511681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863511676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dfe31696ce9f1f45bbf3aae9e8fd075, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &900786176
 GameObject:
   m_ObjectHideFlags: 0
@@ -5709,6 +5721,7 @@ GameObject:
   - component: {fileID: 900786177}
   - component: {fileID: 900786178}
   - component: {fileID: 900786179}
+  - component: {fileID: 900786181}
   - component: {fileID: 900786180}
   m_Layer: 0
   m_Name: Managers
@@ -5770,6 +5783,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca66cd07b69ad6048a0a05caba138d17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &900786181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900786176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b64b4fdcc706bf64c95f90f67c1ea22e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &910679606

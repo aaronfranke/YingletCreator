@@ -12,11 +12,24 @@ public class ColliderHoverManager : MonoBehaviour, IColliderHoverManager
 	const float MaxRaycastDistance = 50f;
 
 	Observable<IHoverable> _currentlyHovered = new();
+	private IUiHoverManager _uiHoverManager;
 
 	public IHoverable CurrentlyHovered => _currentlyHovered.Val;
 
+	void Awake()
+	{
+		_uiHoverManager = Singletons.GetSingleton<IUiHoverManager>();
+	}
+
 	private void Update()
 	{
+		if (_uiHoverManager.HoveringUi)
+		{
+			// If we're hovering UI, we shouldn't be hovering colliders
+			_currentlyHovered.Val = null;
+			return;
+		}
+
 		// Ray from camera through mouse position
 		var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
