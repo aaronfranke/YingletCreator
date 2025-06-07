@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ZoomInOnScroll : MonoBehaviour
 {
-	[SerializeField] Hoverable _nonGuiHoverable;
+	[SerializeField] UiHoverable _nonGuiHoverable;
 	[SerializeField] Vector3 _zoomPos;
 	[SerializeField] Vector3 _zoomRot;
 	[SerializeField] float _scrollSensitivity = 1f;

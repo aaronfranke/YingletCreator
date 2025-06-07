@@ -4,7 +4,7 @@ using UnityEngine;
 public class MakeCanvasGroupVisibleOnHoverAndCursorMovement : ReactiveBehaviour
 {
 	// Let this become visible based on something else's hover state
-	[SerializeField] Hoverable _hoverable;
+	[SerializeField] UiHoverable _hoverable;
 	[SerializeField] SharedEaseSettings _easeSettings;
 	private CanvasGroup _canvasGroup;
 	private Coroutine _transitionCoroutine;

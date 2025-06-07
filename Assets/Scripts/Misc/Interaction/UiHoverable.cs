@@ -2,7 +2,7 @@ using Reactivity;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Hoverable : MonoBehaviour, IHoverable, IPointerEnterHandler, IPointerExitHandler
+public class UiHoverable : MonoBehaviour, IHoverable, IPointerEnterHandler, IPointerExitHandler
 {
 	Observable<bool> _hovered = new(false);
 
