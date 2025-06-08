@@ -18,6 +18,12 @@ public interface IPoseData
 	PoseYing CurrentlyEditing { get; set; }
 
 	/// <summary>
+	/// If the ying selected for editing an eventh selection
+	/// This is used to swap between ying pose data pages
+	/// </summary>
+	bool EditingEven { get; }
+
+	/// <summary>
 	/// Adds or removes the given ying to the pose data
 	/// </summary>
 	void ToggleYing(CachedYingletReference ying);
@@ -30,10 +36,21 @@ public interface IPoseData
 internal class PoseData : MonoBehaviour, IPoseData
 {
 	Observable<PoseYing> _currentlyEditing = new();
+	Observable<bool> _editingEven = new(true);
 	ObservableDict<CachedYingletReference, object> _data = new();
 
 	public IReadOnlyDictionary<CachedYingletReference, object> Data => _data;
-	public PoseYing CurrentlyEditing { get => _currentlyEditing.Val; set => _currentlyEditing.Val = value; }
+	public PoseYing CurrentlyEditing
+	{
+		get => _currentlyEditing.Val;
+		set
+		{
+			if (_currentlyEditing.Val == value) return;
+			_currentlyEditing.Val = value;
+			_editingEven.Val = !_editingEven.Val; // Toggle this
+		}
+	}
+	public bool EditingEven => _editingEven.Val;
 
 	public void Clear()
 	{

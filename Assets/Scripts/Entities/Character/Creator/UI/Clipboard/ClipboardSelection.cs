@@ -1,5 +1,4 @@
 using Reactivity;
-using System.Linq;
 using UnityEngine;
 
 namespace Character.Creator.UI
@@ -21,7 +20,8 @@ namespace Character.Creator.UI
 		Observable<ClipboardSelectionType> Selection { get; }
 
 		void SetSelection(ClipboardSelectionType selection);
-		IPage GetPageWithType(ClipboardSelectionType type);
+
+		Transform transform { get; }
 	}
 
 	public class ClipboardSelection : MonoBehaviour, IClipboardSelection
@@ -38,12 +38,6 @@ namespace Character.Creator.UI
 		public void SetSelection(ClipboardSelectionType selection)
 		{
 			Selection.Val = selection;
-		}
-
-		public IPage GetPageWithType(ClipboardSelectionType type)
-		{
-			var page = this.GetComponentsInChildren<IPage>(true).FirstOrDefault(page => page.GetComponent<IClipboardElementSelection>().Type == type);
-			return page;
 		}
 	}
 }

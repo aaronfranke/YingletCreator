@@ -1,5 +1,13 @@
 using Character.Creator.UI;
 using Reactivity;
+using UnityEngine;
+
+enum PoseClipboardElementPageType
+{
+	Base,
+	YingEven,
+	YingOdd
+}
 
 /// <summary>
 /// The pose page is special in that it's actually also comprised of pages for the individual yings
@@ -7,6 +15,8 @@ using Reactivity;
 /// </summary>
 public class PoseClipboardElementSelection : ReactiveBehaviour, ISelectable
 {
+	[SerializeField] PoseClipboardElementPageType _type;
+
 	Computed<bool> _isSelected;
 	private IClipboardElementSelection _clipboardElementSelection;
 	private IPoseData _poseData;
@@ -22,6 +32,23 @@ public class PoseClipboardElementSelection : ReactiveBehaviour, ISelectable
 
 	private bool ComputeIsSelected()
 	{
-		return _clipboardElementSelection.Selected.Val && _poseData.CurrentlyEditing == null;
+		bool poseBookmarkSelected = _clipboardElementSelection.Selected.Val;
+		if (!poseBookmarkSelected) return false;
+
+
+		bool isEditingSomething = _poseData.CurrentlyEditing != null;
+		if (_type == PoseClipboardElementPageType.Base)
+		{
+			return !isEditingSomething;
+		}
+		else if (_type == PoseClipboardElementPageType.YingEven)
+		{
+			return isEditingSomething && _poseData.EditingEven;
+		}
+		else /* Odd */
+		{
+			return isEditingSomething && !_poseData.EditingEven;
+
+		}
 	}
 }

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 namespace Character.Creator.UI
@@ -50,9 +51,28 @@ namespace Character.Creator.UI
 			var selectiontype = realBookmark.GetComponent<IClipboardElementSelection>().Type;
 			_elementSelection.Type = selectiontype;
 
-			_page = this.GetComponentInParent<IClipboardSelection>().GetPageWithType(selectiontype);
+			_page = GetAssociatedPage(selectiontype);
 
 			_clipboardOrdering.SendToLayer(this.transform, ClipboardLayer.Back);
+		}
+
+		IPage GetAssociatedPage(ClipboardSelectionType type)
+		{
+			var root = this.GetComponentInParent<IClipboardSelection>().transform;
+
+			// We might have multiple pages corresponding to a real bookmark
+			// Map the fakebookmark to them based on index
+			var myIndex = root
+				.GetComponentsInChildren<FakeBookmark>()
+				.Where(b => b._elementSelection.Type == type)
+				.ToList()
+				.IndexOf(this);
+			var page = root
+				.GetComponentsInChildren<IPage>(true)
+				.Where(page => page.GetComponent<IClipboardElementSelection>().Type == type)
+				.ToArray()
+				[myIndex];
+			return page;
 		}
 
 		private void Selected_OnChanged(bool wasSelected, bool isSelected)
