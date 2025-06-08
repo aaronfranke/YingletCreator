@@ -12,6 +12,7 @@ public class PoseGizmoDragging : MonoBehaviour, IPoseGizmo
 	IColliderHoverManager _hoverManager;
 	private IPoseData _poseData;
 	private IColliderHoverable _colliderHoverable;
+	private IDragSfx _dragSfx;
 	private Coroutine _activeDrag;
 	Observable<bool> _dragging = new();
 
@@ -22,6 +23,7 @@ public class PoseGizmoDragging : MonoBehaviour, IPoseGizmo
 		_hoverManager = Singletons.GetSingleton<IColliderHoverManager>();
 		_poseData = this.GetComponentInParent<IPoseData>();
 		_colliderHoverable = this.GetComponent<IColliderHoverable>();
+		_dragSfx = this.GetComponent<IDragSfx>(); // should probably have another layer of separation via event instead but w/e
 	}
 	void Update()
 	{
@@ -52,11 +54,12 @@ public class PoseGizmoDragging : MonoBehaviour, IPoseGizmo
 		{
 			Vector3 mouseWorldPos = GetMouseWorldPositionOnXZPlane(xzPlane);
 			Vector3 newTargetPos = mouseWorldPos + offset;
-
-			// Keep the target on the XZ plane (y=0)
 			newTargetPos.y = 0f;
-			target.position = newTargetPos;
 
+			float distance = Vector3.Distance(newTargetPos, target.position);
+			if (distance > .01f) _dragSfx.Change(distance);
+
+			target.position = newTargetPos;
 			yield return null;
 		}
 

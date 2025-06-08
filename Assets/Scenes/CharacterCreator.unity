@@ -2657,6 +2657,7 @@ GameObject:
   - component: {fileID: 627090409}
   - component: {fileID: 627090411}
   - component: {fileID: 627090410}
+  - component: {fileID: 627090412}
   m_Layer: 0
   m_Name: TranslateGizmo
   m_TagString: Untagged
@@ -2723,6 +2724,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7bedf4f14f393459b0b6b7adf29487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &627090412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627090406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44f131490dbe8d94a9055f6765d63a20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sound: {fileID: 11400000, guid: 28451689ba236ab4e93d914e2dc78cac, type: 2}
+  _volumeDecreaseSpeed: 5
+  _sliderDeltaToVolume: 8
+  _minimumVolumeToAdd: 0.35
 --- !u!1001 &642646382
 PrefabInstance:
   m_ObjectHideFlags: 0
