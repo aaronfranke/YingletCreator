@@ -1,13 +1,21 @@
+using Reactivity;
 using System.Collections;
 using UnityEngine;
 
-public class PoseGizmoDragging : MonoBehaviour
+public interface IPoseGizmo
 {
+	bool Dragging { get; }
+}
 
+public class PoseGizmoDragging : MonoBehaviour, IPoseGizmo
+{
 	IColliderHoverManager _hoverManager;
 	private IPoseData _poseData;
 	private IColliderHoverable _colliderHoverable;
 	private Coroutine _activeDrag;
+	Observable<bool> _dragging = new();
+
+	public bool Dragging => _dragging.Val;
 
 	private void Awake()
 	{
@@ -24,12 +32,12 @@ public class PoseGizmoDragging : MonoBehaviour
 		if (_hoverManager.CurrentlyHovered != _colliderHoverable) return;
 
 		_activeDrag = StartCoroutine(Drag());
-
 	}
 
 	IEnumerator Drag()
 	{
 		using var hoverDisable = _hoverManager.DisableHovering();
+		_dragging.Val = true;
 		var target = _poseData.CurrentlyEditing.GameObject.transform;
 
 		// Store the initial offset between the target and the mouse hit point on the XZ plane
@@ -53,6 +61,7 @@ public class PoseGizmoDragging : MonoBehaviour
 		}
 
 		_activeDrag = null;
+		_dragging.Val = false;
 	}
 
 	// Helper method to get the world position on the XZ plane under the mouse

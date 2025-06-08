@@ -34,7 +34,7 @@ internal class PoseData : MonoBehaviour, IPoseData
 	{
 		if (_data.ContainsKey(ying))
 		{
-			if (CurrentlyEditing.Reference == ying)
+			if (CurrentlyEditing?.Reference == ying)
 			{
 				CurrentlyEditing = null;
 			}
