@@ -4,17 +4,17 @@ using UnityEngine;
 
 public interface IColliderHoverManager
 {
-	IHoverable CurrentlyHovered { get; }
+	IColliderHoverable CurrentlyHovered { get; }
 }
 
 public class ColliderHoverManager : MonoBehaviour, IColliderHoverManager
 {
 	const float MaxRaycastDistance = 50f;
 
-	Observable<IHoverable> _currentlyHovered = new();
+	Observable<IColliderHoverable> _currentlyHovered = new();
 	private IUiHoverManager _uiHoverManager;
 
-	public IHoverable CurrentlyHovered => _currentlyHovered.Val;
+	public IColliderHoverable CurrentlyHovered => _currentlyHovered.Val;
 
 	void Awake()
 	{
@@ -37,8 +37,11 @@ public class ColliderHoverManager : MonoBehaviour, IColliderHoverManager
 
 		var itemsHit = Physics.RaycastAll(ray, maxDistance);
 		var firstHoverableHit = itemsHit
-			.Select(itemsHit => itemsHit.collider.GetComponent<IHoverable>())
-			.FirstOrDefault(hit => hit != null);
+			.Select(itemsHit => itemsHit.collider.GetComponentInParent<IColliderHoverable>())
+			.Where(i => i != null)
+			.Distinct()
+			.OrderByDescending(i => i.PriorityFudge)
+			.FirstOrDefault();
 		_currentlyHovered.Val = firstHoverableHit;
 	}
 

@@ -15,7 +15,7 @@ namespace Character.Creator.UI
 		private IUiHoverManager _uiHoverManager;
 		private IColliderHoverManager _colliderHoverManager;
 
-		public event Action<PoseYing>? OnPoseYingChanged;
+		public event Action<PoseYing> OnPoseYingChanged;
 
 		private void Awake()
 		{
