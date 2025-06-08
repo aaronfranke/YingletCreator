@@ -21,6 +21,11 @@ public interface IPoseData
 	/// Adds or removes the given ying to the pose data
 	/// </summary>
 	void ToggleYing(CachedYingletReference ying);
+
+	/// <summary>
+	/// Clear all data out
+	/// </summary>
+	void Clear();
 }
 internal class PoseData : MonoBehaviour, IPoseData
 {
@@ -29,6 +34,12 @@ internal class PoseData : MonoBehaviour, IPoseData
 
 	public IReadOnlyDictionary<CachedYingletReference, object> Data => _data;
 	public PoseYing CurrentlyEditing { get => _currentlyEditing.Val; set => _currentlyEditing.Val = value; }
+
+	public void Clear()
+	{
+		_currentlyEditing.Val = null;
+		_data.Clear();
+	}
 
 	public void ToggleYing(CachedYingletReference ying)
 	{
