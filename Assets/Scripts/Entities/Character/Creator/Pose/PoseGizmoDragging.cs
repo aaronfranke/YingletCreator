@@ -48,6 +48,8 @@ public class PoseGizmoDragging : MonoBehaviour, IPoseGizmo
 		Plane xzPlane = new Plane(Vector3.up, Vector3.zero);
 
 		Vector3 initialTargetPos = target.position;
+		float initialTargetRot = target.rotation.eulerAngles.y;
+
 		Vector3 initialMousePos = GetMouseWorldPositionOnXZPlane(xzPlane);
 		Vector3 lastMousePos = initialMousePos;
 
@@ -61,10 +63,12 @@ public class PoseGizmoDragging : MonoBehaviour, IPoseGizmo
 			// Cache the old position
 			lastMousePos = currentMousePos;
 
-			_dragLogic.UpdateTransform(target, initialMousePos, currentMousePos, initialTargetPos);
+			_dragLogic.UpdateTransform(target, initialMousePos, currentMousePos, initialTargetPos, initialTargetRot);
 
 			yield return null;
 		}
+
+		this.transform.localRotation = Quaternion.identity;
 
 		_activeDrag = null;
 		_dragging.Val = false;
