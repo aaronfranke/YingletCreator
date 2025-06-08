@@ -2655,6 +2655,8 @@ GameObject:
   m_Component:
   - component: {fileID: 627090407}
   - component: {fileID: 627090409}
+  - component: {fileID: 627090411}
+  - component: {fileID: 627090410}
   m_Layer: 0
   m_Name: TranslateGizmo
   m_TagString: Untagged
@@ -2696,6 +2698,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _priorityFudge: 1
+--- !u!114 &627090410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627090406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 597a9cee9cc2a3f4db32aa57b8292d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundEffect: {fileID: 11400000, guid: 508bf4032cf09064f92b0aee9be30176, type: 2}
+--- !u!114 &627090411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627090406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca7bedf4f14f393459b0b6b7adf29487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &642646382
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7571,7 +7598,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f7be9310de862484a9374b785e8da219, type: 3}
-  m_Color: {r: 0.42745098, g: 0.4392157, b: 0.5372549, a: 1}
+  m_Color: {r: 0.5372549, g: 0.5372549, b: 0.5372549, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
