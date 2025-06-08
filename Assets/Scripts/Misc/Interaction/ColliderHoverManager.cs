@@ -1,10 +1,13 @@
 using Reactivity;
+using System;
 using System.Linq;
 using UnityEngine;
 
 public interface IColliderHoverManager
 {
 	IColliderHoverable CurrentlyHovered { get; }
+
+	IDisposable DisableHovering();
 }
 
 public class ColliderHoverManager : MonoBehaviour, IColliderHoverManager
@@ -13,6 +16,7 @@ public class ColliderHoverManager : MonoBehaviour, IColliderHoverManager
 
 	Observable<IColliderHoverable> _currentlyHovered = new();
 	private IUiHoverManager _uiHoverManager;
+	bool _disabled = false;
 
 	public IColliderHoverable CurrentlyHovered => _currentlyHovered.Val;
 
@@ -23,13 +27,21 @@ public class ColliderHoverManager : MonoBehaviour, IColliderHoverManager
 
 	private void Update()
 	{
+		_currentlyHovered.Val = CalculateColliderHoverable();
+	}
+
+	IColliderHoverable CalculateColliderHoverable()
+	{
+		if (_disabled)
+		{
+			return null;
+		}
+
 		if (_uiHoverManager.HoveringUi)
 		{
 			// If we're hovering UI, we shouldn't be hovering colliders
-			_currentlyHovered.Val = null;
-			return;
+			return null;
 		}
-
 		// Ray from camera through mouse position
 		var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -42,7 +54,8 @@ public class ColliderHoverManager : MonoBehaviour, IColliderHoverManager
 			.Distinct()
 			.OrderByDescending(i => i.PriorityFudge)
 			.FirstOrDefault();
-		_currentlyHovered.Val = firstHoverableHit;
+
+		return firstHoverableHit;
 	}
 
 	float GetMaxDistance(Ray ray)
@@ -58,5 +71,14 @@ public class ColliderHoverManager : MonoBehaviour, IColliderHoverManager
 		float maxDistance = Mathf.Min(MaxRaycastDistance, tPlane > 0 ? tPlane : MaxRaycastDistance);
 
 		return maxDistance;
+	}
+
+	public IDisposable DisableHovering()
+	{
+		_disabled = true;
+		return new BasicActionDisposable(() =>
+		{
+			_disabled = false;
+		});
 	}
 }

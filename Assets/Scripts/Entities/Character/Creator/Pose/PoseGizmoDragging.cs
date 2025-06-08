@@ -29,6 +29,7 @@ public class PoseGizmoDragging : MonoBehaviour
 
 	IEnumerator Drag()
 	{
+		using var hoverDisable = _hoverManager.DisableHovering();
 		var target = _poseData.CurrentlyEditing.GameObject.transform;
 
 		// Store the initial offset between the target and the mouse hit point on the XZ plane
