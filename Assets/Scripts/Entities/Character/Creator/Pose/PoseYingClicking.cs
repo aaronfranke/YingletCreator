@@ -56,6 +56,9 @@ namespace Character.Creator.UI
 
 		void SetEditing(PoseYing poseYing)
 		{
+			// Early return so we don't also play sounds if it's the same ying
+			if (_poseData.CurrentlyEditing == poseYing) return;
+
 			_poseData.CurrentlyEditing = poseYing;
 			OnPoseYingChanged?.Invoke(poseYing);
 		}
