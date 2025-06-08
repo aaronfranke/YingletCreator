@@ -1,43 +1,34 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
-public class SliderSfx : MonoBehaviour
+public interface IDragSfx
 {
-	[SerializeField] private SoundEffect _changePage;
+	void Change(float delta);
+}
+
+public class DragSfx : MonoBehaviour, IDragSfx
+{
+	[SerializeField] private SoundEffect _sound;
 	[SerializeField] float _volumeDecreaseSpeed;
 	[SerializeField] float _sliderDeltaToVolume;
 	[SerializeField] float _minimumVolumeToAdd;
 
 	private IAudioPlayer _audioPlayer;
-	private Slider _slider;
 	private Coroutine _coroutine;
-	private float _previousValue = 0.5f;
 	float _volume = 0f;
 	private AudioSource _currentAudioPlayer;
 
 	private void Awake()
 	{
 		_audioPlayer = Singletons.GetSingleton<IAudioPlayer>();
-		_slider = this.GetComponent<Slider>();
-
-		_slider.onValueChanged.AddListener(Slider_OnValueChanged);
 	}
 
-	private void Slider_OnValueChanged(float value)
+	public void Change(float delta)
 	{
-		if (EventSystem.current.currentSelectedGameObject != _slider.gameObject)
-		{
-			return;
-		}
-
-		float delta = Mathf.Abs(value - _previousValue);
 		_volume = Mathf.Max(_minimumVolumeToAdd, _volume);
 		_volume = Mathf.Clamp01(_volume + delta * _sliderDeltaToVolume);
 
 		this.StartCoroutineIfNotAlreadyRunning(ref _coroutine, Play());
-		_previousValue = value;
 	}
 
 	private void OnDisable()
@@ -46,19 +37,14 @@ public class SliderSfx : MonoBehaviour
 		StopPlaying();
 	}
 
-	private void OnDestroy()
-	{
-		_slider.onValueChanged.RemoveListener(Slider_OnValueChanged);
-	}
-
 	IEnumerator Play()
 	{
-		_currentAudioPlayer = _audioPlayer.Play(_changePage, new AudioPlayOptions() { AutoDestroy = false });
+		_currentAudioPlayer = _audioPlayer.Play(_sound, new AudioPlayOptions() { AutoDestroy = false });
 		_currentAudioPlayer.loop = true;
 
 		while (_volume > -1f)
 		{
-			_currentAudioPlayer.volume = Mathf.Clamp01(_volume) * _changePage.Volume;
+			_currentAudioPlayer.volume = Mathf.Clamp01(_volume) * _sound.Volume;
 			_volume -= _volumeDecreaseSpeed * Time.deltaTime;
 			yield return null;
 		}

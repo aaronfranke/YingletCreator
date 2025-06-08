@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 8770826494274368939}
   - component: {fileID: 4357520146187839528}
   - component: {fileID: 8043894469582816291}
+  - component: {fileID: 1126117371057668740}
   - component: {fileID: 4975192960482198083}
   - component: {fileID: 5627904170679125815}
   - component: {fileID: 2877811975182521717}
@@ -196,6 +197,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _changePage: {fileID: 11400000, guid: 28451689ba236ab4e93d914e2dc78cac, type: 2}
+  _volumeDecreaseSpeed: 5
+  _sliderDeltaToVolume: 12
+  _minimumVolumeToAdd: 0.35
+--- !u!114 &1126117371057668740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329357176275329270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44f131490dbe8d94a9055f6765d63a20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sound: {fileID: 11400000, guid: 28451689ba236ab4e93d914e2dc78cac, type: 2}
   _volumeDecreaseSpeed: 5
   _sliderDeltaToVolume: 12
   _minimumVolumeToAdd: 0.35
