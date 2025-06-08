@@ -12,6 +12,7 @@ public class PoseGizmoDragging : MonoBehaviour, IPoseGizmo
 	IColliderHoverManager _hoverManager;
 	private IPoseData _poseData;
 	private IColliderHoverable _colliderHoverable;
+	private IPoseGizmoDragLogic _dragLogic;
 	private IDragSfx _dragSfx;
 	private Coroutine _activeDrag;
 	Observable<bool> _dragging = new();
@@ -23,6 +24,7 @@ public class PoseGizmoDragging : MonoBehaviour, IPoseGizmo
 		_hoverManager = Singletons.GetSingleton<IColliderHoverManager>();
 		_poseData = this.GetComponentInParent<IPoseData>();
 		_colliderHoverable = this.GetComponent<IColliderHoverable>();
+		_dragLogic = this.GetComponent<IPoseGizmoDragLogic>();
 		_dragSfx = this.GetComponent<IDragSfx>(); // should probably have another layer of separation via event instead but w/e
 	}
 	void Update()
@@ -46,20 +48,21 @@ public class PoseGizmoDragging : MonoBehaviour, IPoseGizmo
 		Plane xzPlane = new Plane(Vector3.up, Vector3.zero);
 
 		Vector3 initialTargetPos = target.position;
-		Vector3 initialMouseWorldPos = GetMouseWorldPositionOnXZPlane(xzPlane);
-
-		Vector3 offset = initialTargetPos - initialMouseWorldPos;
+		Vector3 initialMousePos = GetMouseWorldPositionOnXZPlane(xzPlane);
+		Vector3 lastMousePos = initialMousePos;
 
 		while (Input.GetMouseButton(0))
 		{
-			Vector3 mouseWorldPos = GetMouseWorldPositionOnXZPlane(xzPlane);
-			Vector3 newTargetPos = mouseWorldPos + offset;
-			newTargetPos.y = 0f;
-
-			float distance = Vector3.Distance(newTargetPos, target.position);
+			// Calculate new mouse pos
+			Vector3 currentMousePos = GetMouseWorldPositionOnXZPlane(xzPlane);
+			// Play SFX if it has changed
+			float distance = Vector3.Distance(currentMousePos, target.position);
 			if (distance > .01f) _dragSfx.Change(distance);
+			// Cache the old position
+			lastMousePos = currentMousePos;
 
-			target.position = newTargetPos;
+			_dragLogic.UpdateTransform(target, initialMousePos, currentMousePos, initialTargetPos);
+
 			yield return null;
 		}
 
