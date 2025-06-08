@@ -42,7 +42,8 @@ namespace Character.Creator.UI
 
 		public IPage GetPageWithType(ClipboardSelectionType type)
 		{
-			return this.GetComponentsInChildren<IPage>(true).FirstOrDefault(page => page.GetComponent<IClipboardElementSelection>().Type == type);
+			var page = this.GetComponentsInChildren<IPage>(true).FirstOrDefault(page => page.GetComponent<IClipboardElementSelection>().Type == type);
+			return page;
 		}
 	}
 }

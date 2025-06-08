@@ -58,7 +58,7 @@ public class PoseGizmoDragging : MonoBehaviour, IPoseGizmo
 			// Calculate new mouse pos
 			Vector3 currentMousePos = GetMouseWorldPositionOnXZPlane(xzPlane);
 			// Play SFX if it has changed
-			float distance = Vector3.Distance(currentMousePos, target.position);
+			float distance = Vector3.Distance(currentMousePos, lastMousePos);
 			if (distance > .01f) _dragSfx.Change(distance);
 			// Cache the old position
 			lastMousePos = currentMousePos;

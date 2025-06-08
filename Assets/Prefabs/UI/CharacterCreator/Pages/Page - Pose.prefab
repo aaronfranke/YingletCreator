@@ -446,12 +446,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Left Click - Pose Yinglet
-
-    Right Click - (Hold) Move Camera
-
-    WASDQE
-    - Move Camera'
+  m_text: TODO
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 31289117d6afe2c449a86f120137f0d5, type: 2}
   m_sharedMaterial: {fileID: 211475481123427812, guid: 31289117d6afe2c449a86f120137f0d5, type: 2}
@@ -931,6 +926,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Strike a Pose
       objectReference: {fileID: 0}
+    - target: {fileID: 4920883411348114028, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
+      propertyPath: m_PreferredHeight
+      value: 85.06
+      objectReference: {fileID: 0}
     - target: {fileID: 4933058571705587622, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1051,13 +1050,33 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4933058571705587622, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4460433407453291959}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3512307546995425619, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 268948950741414695}
   m_SourcePrefab: {fileID: 100100000, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
 --- !u!224 &1684285384163724409 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4933058571705587622, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
   m_PrefabInstance: {fileID: 5992731998584773599}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7175447081968278156 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3512307546995425619, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
+  m_PrefabInstance: {fileID: 5992731998584773599}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &268948950741414695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7175447081968278156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72423a19630232a4a9e7b2e1eae45206, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7768313448971904990 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4099649964880116737, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}

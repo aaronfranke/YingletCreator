@@ -6492,12 +6492,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5691890116872387495, guid: 66cf973f0124a7942935ec6ed6e6d99e, type: 3}
       propertyPath: m_Name
-      value: Bookmark - Photo
+      value: Bookmark - Pose
       objectReference: {fileID: 0}
     - target: {fileID: 5691890116872387495, guid: 66cf973f0124a7942935ec6ed6e6d99e, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5924901043375494973, guid: 66cf973f0124a7942935ec6ed6e6d99e, type: 3}
+      propertyPath: _visualOnlyPrefab
+      value: 
+      objectReference: {fileID: 2600035953527576560, guid: ef321cc8b20c5b448878503b8a459c3e, type: 3}
     - target: {fileID: 6371993550489696553, guid: 66cf973f0124a7942935ec6ed6e6d99e, type: 3}
       propertyPath: m_Sprite
       value: 
