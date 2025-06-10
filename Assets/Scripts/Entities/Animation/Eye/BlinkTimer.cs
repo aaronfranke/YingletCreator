@@ -23,9 +23,14 @@ public class BlinkTimer : MonoBehaviour, IBlinkTimer
 		EyeExpression.ClosedEnergy,
 	};
 
-	void Start()
+	void Awake()
 	{
 		_eyeExpressions = this.GetComponent<IEyeExpressions>();
+	}
+
+	void OnEnable()
+	{
+		// Must be OnEnable instead of Start since the coroutine stops when this gets disabled and re-enabled
 		StartCoroutine(RepeatedBlinks());
 	}
 
@@ -34,7 +39,6 @@ public class BlinkTimer : MonoBehaviour, IBlinkTimer
 		while (true)
 		{
 			yield return new WaitForSeconds(Random.Range(_blinkTimeRange.x, _blinkTimeRange.y));
-
 			// Don't blink antenna if the eye is already closed
 			if (!IGNORE_EXPRESSIONS.Contains(_eyeExpressions.BaseExpression))
 			{
