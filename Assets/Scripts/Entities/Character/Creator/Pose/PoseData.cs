@@ -69,7 +69,7 @@ internal class PoseData : MonoBehaviour, IPoseData
 		}
 		else
 		{
-			_data.Add(ying, new YingPoseData());
+			_data.Add(ying, new YingPoseData(ying.CachedData));
 		}
 	}
 }
