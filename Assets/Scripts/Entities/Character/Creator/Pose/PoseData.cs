@@ -5,11 +5,10 @@ using UnityEngine;
 
 public interface IPoseData
 {
-
 	/// <summary>
 	/// The pose data for all the yings that have been selected by the user in the UI
 	/// </summary>
-	IReadOnlyDictionary<CachedYingletReference, object> Data { get; }
+	IReadOnlyDictionary<CachedYingletReference, IYingPoseData> Data { get; }
 
 	/// <summary>
 	/// The individual ying that has been last been clicked by the user in the scene view
@@ -37,9 +36,9 @@ internal class PoseData : MonoBehaviour, IPoseData
 {
 	Observable<PoseYing> _currentlyEditing = new();
 	Observable<bool> _editingEven = new(true);
-	ObservableDict<CachedYingletReference, object> _data = new();
+	ObservableDict<CachedYingletReference, IYingPoseData> _data = new();
 
-	public IReadOnlyDictionary<CachedYingletReference, object> Data => _data;
+	public IReadOnlyDictionary<CachedYingletReference, IYingPoseData> Data => _data;
 	public PoseYing CurrentlyEditing
 	{
 		get => _currentlyEditing.Val;
@@ -70,7 +69,7 @@ internal class PoseData : MonoBehaviour, IPoseData
 		}
 		else
 		{
-			_data.Add(ying, new());
+			_data.Add(ying, new YingPoseData());
 		}
 	}
 }
