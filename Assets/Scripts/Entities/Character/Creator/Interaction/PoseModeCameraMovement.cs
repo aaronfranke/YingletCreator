@@ -26,14 +26,25 @@ public class PoseModeCameraMovement : MonoBehaviour
 	{
 		_clipboardSelection = this.GetCharacterCreatorComponent<IClipboardSelection>();
 		_targetPosition = transform.position;
+		_clipboardSelection.Selection.OnChanged += ClipboardSelection_OnChanged;
+	}
+	private void OnDestroy()
+	{
+		_clipboardSelection.Selection.OnChanged -= ClipboardSelection_OnChanged;
+	}
+
+	private void ClipboardSelection_OnChanged(ClipboardSelectionType from, ClipboardSelectionType to)
+	{
+		if (from != ClipboardSelectionType.Pose) return;
+		// Reset the position/rotation
+		_eulerRotation = transform.localEulerAngles;
+		_targetPosition = transform.position;
 	}
 
 	void Update()
 	{
 		if (_clipboardSelection.Selection.Val != ClipboardSelectionType.Pose)
 		{
-			_eulerRotation = transform.localEulerAngles;
-			_targetPosition = transform.position;
 			return;
 		}
 
