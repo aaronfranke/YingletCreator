@@ -1,20 +1,15 @@
-using Character.Creator;
-using Character.Data;
 using Reactivity;
-using UnityEngine;
 
-public class MouthExpressionsMutator_Default : ReactiveBehaviour, IMouthExpressionsMutator
+public class MouthExpressionsMutator_Pose : ReactiveBehaviour, IMouthExpressionsMutator
 {
-	[SerializeField] CharacterIntId _intId;
-
-	private ICustomizationSelectedDataRepository _dataRepo;
+	private IPoseYingDataRepository _dataRepo;
 	Computed<int> _intValueComputed;
 	Computed<MouthExpression> _defaultExpressionComputed;
 	Computed<MouthOpenAmount> _defaultOpenAmountComputed;
 
 	void Awake()
 	{
-		_dataRepo = this.GetComponentInParent<ICustomizationSelectedDataRepository>();
+		_dataRepo = this.GetComponentInParent<IPoseYingDataRepository>();
 		_intValueComputed = CreateComputed(ComputeDefaultIntValue);
 		_defaultExpressionComputed = CreateComputed(ComputeDefaultExpression);
 		_defaultOpenAmountComputed = CreateComputed(ComputeDefaultOpenAmount);
@@ -22,17 +17,17 @@ public class MouthExpressionsMutator_Default : ReactiveBehaviour, IMouthExpressi
 
 	private int ComputeDefaultIntValue()
 	{
-		return _dataRepo.GetInt(_intId);
+		return _dataRepo.YingPoseData.MouthExpressionNum;
 	}
 
 	private MouthExpression ComputeDefaultExpression()
 	{
-		return GetExpressionFromInt(_intValueComputed.Val);
+		return MouthExpressionsMutator_Default.GetExpressionFromInt(_intValueComputed.Val);
 	}
 
 	private MouthOpenAmount ComputeDefaultOpenAmount()
 	{
-		return GetOpenAmountFromInt(_intValueComputed.Val);
+		return MouthExpressionsMutator_Default.GetOpenAmountFromInt(_intValueComputed.Val);
 	}
 
 	public void Mutate(ref MouthExpression expression, ref MouthOpenAmount openAmount)
@@ -40,8 +35,4 @@ public class MouthExpressionsMutator_Default : ReactiveBehaviour, IMouthExpressi
 		expression = _defaultExpressionComputed.Val;
 		openAmount = _defaultOpenAmountComputed.Val;
 	}
-
-	const int Columns = 4;
-	public static MouthExpression GetExpressionFromInt(int i) => (MouthExpression)(i / Columns);
-	public static MouthOpenAmount GetOpenAmountFromInt(int i) => (MouthOpenAmount)(i % Columns);
 }
