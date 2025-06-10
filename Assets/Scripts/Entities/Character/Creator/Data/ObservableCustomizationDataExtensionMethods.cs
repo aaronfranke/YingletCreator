@@ -53,5 +53,14 @@ namespace Character.Creator
 				}
 			}
 		}
+
+		public static int GetInt(this ObservableCustomizationNumberData data, CharacterIntId id)
+		{
+			if (data.IntValues.TryGetValue(id, out Observable<int> value))
+			{
+				return value.Val;
+			}
+			return 0;
+		}
 	}
 }

@@ -6,6 +6,8 @@ public class ReflectMandibleOpen : ReactiveBehaviour
 {
 	[SerializeField] Transform _mandibleBone;
 
+	Computed<Quaternion> _angle;
+
 	IMouthExpressions _expressions;
 	private Quaternion _originalRotation;
 
@@ -30,15 +32,28 @@ public class ReflectMandibleOpen : ReactiveBehaviour
 	{
 		_expressions = this.GetComponent<IMouthExpressions>();
 		_originalRotation = _mandibleBone.localRotation;
-		AddReflector(Reflect);
+		_angle = this.CreateComputed(Reflect);
 	}
 
-	private void Reflect()
+	private void LateUpdate()
+	{
+		// Some animations are (accidentally) overriding this
+		// Rather than hunt them all down, let's just set this here
+		// In the future, it might be better to instead have the blender script strip those nodes on export
+		_mandibleBone.localRotation = _angle.Val;
+	}
+
+	private Quaternion Reflect()
 	{
 		var expression = _expressions.Expression;
 		var openAmount = _expressions.OpenAmount;
 
 		var rotationMap = expression == MouthExpression.Muse ? _museRotationMap : _defaultRotationMap;
-		_mandibleBone.localRotation = _originalRotation * Quaternion.Euler(rotationMap[openAmount], 0, 0);
+		var angle = _originalRotation * Quaternion.Euler(rotationMap[openAmount], 0, 0);
+
+		// Also reflect this since the LateUpdate won't run in time if there's an animation
+		_mandibleBone.localRotation = angle;
+		return angle;
 	}
+
 }

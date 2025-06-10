@@ -71,11 +71,7 @@ namespace Character.Creator
 
 		public static int GetInt(this ICustomizationSelectedDataRepository dataRepo, CharacterIntId id)
 		{
-			if (dataRepo.CustomizationData.NumberData.IntValues.TryGetValue(id, out Observable<int> value))
-			{
-				return value.Val;
-			}
-			return 0;
+			return dataRepo.CustomizationData.NumberData.GetInt(id);
 		}
 		public static void SetInt(this ICustomizationSelectedDataRepository dataRepo, CharacterIntId id, int value)
 		{
