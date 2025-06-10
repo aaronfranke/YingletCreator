@@ -10,7 +10,7 @@ enum BlinkState
 	Closed
 }
 
-public class EyeBlinkAnimations : MonoBehaviour, IEyeExpressionMutator
+public class EyeExpressionsMutator_Blink : MonoBehaviour, ICurrentEyeExpressionMutator
 {
 	[SerializeField] float _squintTime = .015f;
 	[SerializeField] float _closedTime = .03f;

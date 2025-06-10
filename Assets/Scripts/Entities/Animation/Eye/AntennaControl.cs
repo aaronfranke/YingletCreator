@@ -64,7 +64,7 @@ public class AntennaControl : ReactiveBehaviour
 
 	void ReflectEyeExpression()
 	{
-		var angles = GetAngles();
+		var angles = GetFromToAngles();
 		SetAntennaRotations(angles.y);
 	}
 
@@ -72,15 +72,15 @@ public class AntennaControl : ReactiveBehaviour
 	{
 		CoroutineUtils.StartEaseCoroutine(this, ref _blinkCoroutine, _blinkEaseSettings, p =>
 		{
-			var angles = GetAngles();
+			var angles = GetFromToAngles();
 			float angle = Mathf.Lerp(angles.x, angles.y, p);
 			SetAntennaRotations(angle);
 		});
 	}
 
-	Vector2 GetAngles()
+	Vector2 GetFromToAngles()
 	{
-		var expression = _eyeExpressions.DefaultExpression;
+		var expression = _eyeExpressions.BaseExpression;
 
 		if (!ANGLE_MAPPING.TryGetValue(expression, out var angle))
 		{

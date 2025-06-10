@@ -1,7 +1,4 @@
-using Character.Creator;
-using Character.Data;
 using Reactivity;
-using UnityEngine;
 
 public enum MouthExpression
 {
@@ -27,40 +24,38 @@ public interface IMouthExpressions
 	MouthOpenAmount OpenAmount { get; }
 }
 
+public interface IMouthExpressionsMutator
+{
+
+	public void Mutate(ref MouthExpression expression, ref MouthOpenAmount openAmount);
+}
+
 public class MouthExpressions : ReactiveBehaviour, IMouthExpressions
 {
-	[SerializeField] CharacterIntId _intId;
+	private Observable<MouthExpression> _expression = new();
+	private Observable<MouthOpenAmount> _openAmount = new();
+	private IMouthExpressionsMutator[] _mutators;
 
-	private ICustomizationSelectedDataRepository _dataRepo;
-	Computed<int> _intValueComputed;
-	Computed<MouthExpression> _expressionComputed;
-	Computed<MouthOpenAmount> _openAmountComputed;
-
-	public MouthExpression Expression => _expressionComputed.Val;
-	public MouthOpenAmount OpenAmount => _openAmountComputed.Val;
-
+	public MouthExpression Expression => _expression.Val;
+	public MouthOpenAmount OpenAmount => _openAmount.Val;
 
 	void Awake()
 	{
-		_dataRepo = this.GetComponentInParent<ICustomizationSelectedDataRepository>();
-		_intValueComputed = CreateComputed(ComputeDefaultIntValue);
-		_expressionComputed = CreateComputed(ComputeDefaultExpression);
-		_openAmountComputed = CreateComputed(ComputeDefaultOpenAmount);
+		_mutators = this.GetComponents<IMouthExpressionsMutator>();
+		AddReflector(Reflect);
 	}
 
-	private int ComputeDefaultIntValue()
+	private void Reflect()
 	{
-		return _dataRepo.GetInt(_intId);
+		var expression = MouthExpression.Grin;
+		var openAmount = MouthOpenAmount.Closed;
+		foreach (var mutator in _mutators)
+		{
+			mutator.Mutate(ref expression, ref openAmount);
+		}
+		_expression.Val = expression;
+		_openAmount.Val = openAmount;
 	}
-
-	private MouthExpression ComputeDefaultExpression()
-	{
-		return (MouthExpression)(_intValueComputed.Val / 4);
-	}
-
-	private MouthOpenAmount ComputeDefaultOpenAmount()
-	{
-		return (MouthOpenAmount)(_intValueComputed.Val % 4);
-	}
-
 }
+
+

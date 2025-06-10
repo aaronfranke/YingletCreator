@@ -1,7 +1,4 @@
-using Character.Creator;
-using Character.Data;
 using Reactivity;
-using UnityEngine;
 
 public enum EyeExpression
 {
@@ -15,9 +12,6 @@ public enum EyeExpression
 	ClosedEnergy
 }
 
-/// <summary>
-/// Interface that can either add or remove meshes from the set
-/// </summary>
 public interface IEyeExpressionMutator
 {
 	/// <summary>
@@ -25,62 +19,55 @@ public interface IEyeExpressionMutator
 	/// </summary>
 	public EyeExpression Mutate(EyeExpression input);
 }
+public interface IBaseEyeExpressionMutator : IEyeExpressionMutator { }
+public interface ICurrentEyeExpressionMutator : IEyeExpressionMutator { }
 
 public interface IEyeExpressions
 {
-	public EyeExpression DefaultExpression { get; }
+	/// <summary>
+	/// The base expression is the expression pre-blink
+	/// This is exposed separately since it's used for things like controlling antennas
+	/// </summary>
+	public EyeExpression BaseExpression { get; }
+
+	/// <summary>
+	/// The current expression is what's currently shown
+	/// If the ying is blinking, this will reflect that even if the default is open
+	/// </summary>
 	public EyeExpression CurrentExpression { get; }
 }
 
 public class EyeExpressions : ReactiveBehaviour, IEyeExpressions
 {
-	[SerializeField] CharacterIntId _intId;
 
-	private ICustomizationSelectedDataRepository _dataRepo;
-	private IEyeGatherer _eyeGatherer;
-	private IEyeExpressionMutator[] _mutators;
-	private Computed<EyeExpression> _defaultExpressionComputed;
-	private Computed<EyeExpression> _expressionComputed;
-	static readonly int EXPRESSION_PROPERTY_ID = Shader.PropertyToID("_Expression");
+	private IBaseEyeExpressionMutator[] _baseMutators;
+	private ICurrentEyeExpressionMutator[] _currentMutators;
+	private Observable<EyeExpression> _baseExpression = new();
+	private Observable<EyeExpression> _currentExpression = new();
 
-	public EyeExpression DefaultExpression => _defaultExpressionComputed.Val;
-	public EyeExpression CurrentExpression => _expressionComputed.Val;
+	public EyeExpression BaseExpression => _baseExpression.Val;
+	public EyeExpression CurrentExpression => _currentExpression.Val;
 
 	void Awake()
 	{
-		_dataRepo = this.GetComponentInParent<ICustomizationSelectedDataRepository>();
-		_eyeGatherer = this.GetComponentInParent<IEyeGatherer>();
-		_mutators = this.GetComponentsInChildren<IEyeExpressionMutator>();
-		_defaultExpressionComputed = CreateComputed(ComputeDefaultExpression);
-		_expressionComputed = CreateComputed(ComputeExpression);
-		AddReflector(ReflectEyeExpression);
+		_baseMutators = this.GetComponentsInChildren<IBaseEyeExpressionMutator>();
+		_currentMutators = this.GetComponentsInChildren<ICurrentEyeExpressionMutator>();
+		AddReflector(Reflect);
 	}
 
-	private EyeExpression ComputeDefaultExpression()
+	private void Reflect()
 	{
-		return (EyeExpression)(_dataRepo.GetInt(_intId));
-	}
-
-	private EyeExpression ComputeExpression()
-	{
-		var expression = _defaultExpressionComputed.Val;
-		foreach (var mutator in _mutators)
+		var expression = EyeExpression.Normal;
+		// First pass, get things that qualify as a 
+		foreach (var mutator in _baseMutators)
 		{
 			expression = mutator.Mutate(expression);
 		}
-		return expression;
-	}
-
-	private void ReflectEyeExpression()
-	{
-		SetEyesToExpression(_expressionComputed.Val);
-	}
-
-	void SetEyesToExpression(EyeExpression eyeExpression)
-	{
-		foreach (var eyeMaterial in _eyeGatherer.EyeMaterials)
+		_baseExpression.Val = expression;
+		foreach (var mutator in _currentMutators)
 		{
-			eyeMaterial.SetInteger(EXPRESSION_PROPERTY_ID, (int)eyeExpression);
+			expression = mutator.Mutate(expression);
 		}
+		_currentExpression.Val = expression;
 	}
 }

@@ -36,7 +36,7 @@ public class BlinkTimer : MonoBehaviour, IBlinkTimer
 			yield return new WaitForSeconds(Random.Range(_blinkTimeRange.x, _blinkTimeRange.y));
 
 			// Don't blink antenna if the eye is already closed
-			if (!IGNORE_EXPRESSIONS.Contains(_eyeExpressions.DefaultExpression))
+			if (!IGNORE_EXPRESSIONS.Contains(_eyeExpressions.BaseExpression))
 			{
 				OnBlink();
 			}
