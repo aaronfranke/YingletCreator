@@ -72,6 +72,7 @@ namespace Character.Creator.UI
 				.Where(page => page.GetComponent<IClipboardElementSelection>().Type == type)
 				.ToArray()
 				[myIndex];
+			//Debug.Log($"{this.gameObject.name} bookmark found page {((Component)page).gameObject.name}");
 			return page;
 		}
 
