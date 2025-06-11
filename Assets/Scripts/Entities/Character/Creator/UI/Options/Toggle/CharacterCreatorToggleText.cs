@@ -8,7 +8,7 @@ namespace Character.Creator.UI
 		private void Start()
 		{
 			var text = this.GetComponent<TMP_Text>();
-			text.text = this.GetComponentInParent<ICharacterCreatorToggleReference>().ToggleId.DisplayName;
+			text.text = this.GetComponentInParent<ICharacterCreatorToggleReference>().DisplayName;
 		}
 	}
 }

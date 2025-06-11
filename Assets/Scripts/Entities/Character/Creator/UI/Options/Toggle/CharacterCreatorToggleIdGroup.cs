@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Character.Creator.UI
 {
-	public class CharacterCreatorToggleGroup : MonoBehaviour
+	public class CharacterCreatorToggleIdGroup : MonoBehaviour
 	{
 		[SerializeField] CharacterToggleId[] _toggleIds;
 		[SerializeField] GameObject _togglePrefab;
@@ -21,7 +21,7 @@ namespace Character.Creator.UI
 			foreach (var toggleId in _toggleIds)
 			{
 				var go = GameObject.Instantiate(_togglePrefab, this.transform);
-				go.GetComponent<ICharacterCreatorToggleReference>().ToggleId = toggleId;
+				go.GetComponent<ICharacterCreatorToggleIdReference>().ToggleId = toggleId;
 			}
 		}
 	}

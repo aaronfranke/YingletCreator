@@ -2,18 +2,18 @@ using Reactivity;
 
 namespace Character.Creator.UI
 {
-	public class CharacterCreatorToggleSelection : ReactiveBehaviour, ISelectable
+	public class CharacterCreatorToggleIdSelection : ReactiveBehaviour, ISelectable
 	{
 		Computed<bool> _selected;
 		private ICustomizationSelectedDataRepository _dataRepo;
-		private ICharacterCreatorToggleReference _reference;
+		private ICharacterCreatorToggleIdReference _reference;
 
 		public IReadOnlyObservable<bool> Selected => _selected;
 
 		void Awake()
 		{
 			_dataRepo = this.GetComponentInParent<ICustomizationSelectedDataRepository>();
-			_reference = this.GetComponent<ICharacterCreatorToggleReference>();
+			_reference = this.GetComponent<ICharacterCreatorToggleIdReference>();
 		}
 
 		void Start()

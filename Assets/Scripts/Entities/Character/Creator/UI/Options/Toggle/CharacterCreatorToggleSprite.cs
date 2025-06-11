@@ -8,7 +8,7 @@ namespace Character.Creator.UI
 		private void Start()
 		{
 			var image = this.GetComponent<Image>();
-			image.sprite = this.GetComponentInParent<ICharacterCreatorToggleReference>().ToggleId.Preview.Sprite;
+			image.sprite = this.GetComponentInParent<ICharacterCreatorToggleReference>().Sprite;
 		}
 	}
 }

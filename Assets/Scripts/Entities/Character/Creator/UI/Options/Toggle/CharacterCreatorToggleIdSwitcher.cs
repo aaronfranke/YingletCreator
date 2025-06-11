@@ -3,15 +3,15 @@ using UnityEngine.UI;
 
 namespace Character.Creator.UI
 {
-	public class CharacterCreatorToggle : ReactiveBehaviour
+	public class CharacterCreatorToggleIdSwitcher : ReactiveBehaviour
 	{
 		private ICustomizationSelectedDataRepository _dataRepo;
-		private ICharacterCreatorToggleReference _reference;
+		private ICharacterCreatorToggleIdReference _reference;
 		private Toggle _toggle;
 
 		private void Awake()
 		{
-			_reference = this.GetComponent<ICharacterCreatorToggleReference>();
+			_reference = this.GetComponent<ICharacterCreatorToggleIdReference>();
 			_dataRepo = this.GetComponentInParent<ICustomizationSelectedDataRepository>();
 			_toggle = this.GetComponentInChildren<Toggle>();
 			_toggle.onValueChanged.AddListener(Toggle_OnValueChanged);
