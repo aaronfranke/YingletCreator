@@ -11,6 +11,7 @@ public interface IYingPoseData
 	string Name { get; }
 	int EyeExpressionNum { get; set; }
 	int MouthExpressionNum { get; set; }
+	PoseId Pose { get; set; }
 }
 
 internal sealed class YingPoseData : IYingPoseData
@@ -33,9 +34,10 @@ internal sealed class YingPoseData : IYingPoseData
 
 	Observable<int> _eyeExpressionNum = new();
 	Observable<int> _mouthExpressionNum = new();
+	Observable<PoseId> _pose = new();
 
 	public string Name { get; }
 	public int EyeExpressionNum { get => _eyeExpressionNum.Val; set => _eyeExpressionNum.Val = value; }
 	public int MouthExpressionNum { get => _mouthExpressionNum.Val; set => _mouthExpressionNum.Val = value; }
-
+	public PoseId Pose { get => _pose.Val; set => _pose.Val = value; }
 }
