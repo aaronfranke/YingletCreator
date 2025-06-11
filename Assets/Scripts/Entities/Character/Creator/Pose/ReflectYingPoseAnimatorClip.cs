@@ -1,19 +1,23 @@
 using Reactivity;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ReflectYingPoseAnimatorClip : ReactiveBehaviour
 {
 	private IPoseYingDataRepository _dataRepo;
+	private Animator _animator;
 	private AnimatorOverrideController _overrideController;
+	private AnimationClip _originalClip;
 
 	private void Start()
 	{
 		_dataRepo = this.GetComponentInParent<IPoseYingDataRepository>();
-		var animator = this.GetComponent<Animator>();
+		_animator = this.GetComponent<Animator>();
 
-		var originalController = animator.runtimeAnimatorController;
+		var originalController = _animator.runtimeAnimatorController;
 		_overrideController = new AnimatorOverrideController(originalController);
-		animator.runtimeAnimatorController = _overrideController;
+		_animator.runtimeAnimatorController = _overrideController;
+		_originalClip = _overrideController.animationClips[0];
 
 		AddReflector(Reflect);
 	}
@@ -23,7 +27,7 @@ public class ReflectYingPoseAnimatorClip : ReactiveBehaviour
 		var clip = _dataRepo.YingPoseData.Pose?.Clip;
 		if (clip == null) return;
 
-		var clips = _overrideController.animationClips;
-		_overrideController[clips[0].name] = clip;
+		_overrideController.ApplyOverrides(new List<KeyValuePair<AnimationClip, AnimationClip>>() { new(_originalClip, clip) });
+
 	}
 }
