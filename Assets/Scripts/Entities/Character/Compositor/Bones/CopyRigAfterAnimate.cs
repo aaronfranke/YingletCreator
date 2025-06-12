@@ -10,7 +10,7 @@ using UnityEngine;
 /// So I've decided to make a second rig. This script will force it to match the first rig right after the update
 /// This will allow me to recklessly apply whatever I want to this rig with the reassurance that it will all be fresh the next frame
 /// </summary>
-public class CopyRigAfterAnimate : MonoBehaviour, ISnapshottable
+public class CopyRigAfterAnimate : MonoBehaviour, ISnapshottableComponent
 {
 	[SerializeField] Transform _sourceRoot;
 	[SerializeField] Transform _sourceTransform;

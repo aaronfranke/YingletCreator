@@ -10,7 +10,7 @@ internal interface IApplyableCustomization
 /// <summary>
 /// We want to apply all of these options in order, as some affect others
 /// </summary>
-public class ApplyCustomizationsAfterAnimate : MonoBehaviour, ISnapshottable
+public class ApplyCustomizationsAfterAnimate : MonoBehaviour, ISnapshottableComponent
 {
     private IEnumerable<IApplyableCustomization> _applyable;
 

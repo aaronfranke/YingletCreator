@@ -17,7 +17,7 @@ namespace Snapshotter
 				_yingletInstance.GetComponent<SnapshotterDataRepository>().Setup(sParams.Data);
 				_yingletInstance.SetActive(true);
 			}
-			foreach (var snapshottable in _yingletInstance.GetComponentsInChildren<ISnapshottable>())
+			foreach (var snapshottable in _yingletInstance.GetComponentsInChildren<ISnapshottableComponent>())
 			{
 				snapshottable.PrepareForSnapshot();
 			}
