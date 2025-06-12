@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Snapshotter
@@ -15,6 +16,9 @@ namespace Snapshotter
 			{
 				_yingletInstance = GameObject.Instantiate(_references.YingletPrefab);
 				_yingletInstance.GetComponent<SnapshotterDataRepository>().Setup(sParams.Data);
+
+				ApplyPoseIfPresent(_yingletInstance, sParams.Pose);
+
 				_yingletInstance.SetActive(true);
 			}
 			foreach (var snapshottable in _yingletInstance.GetComponentsInChildren<ISnapshottableComponent>())
@@ -22,6 +26,17 @@ namespace Snapshotter
 				snapshottable.PrepareForSnapshot();
 			}
 			SetLayerRecursively(_yingletInstance, _references.LayerIndex);
+		}
+
+		static void ApplyPoseIfPresent(GameObject yingletInstance, AnimationClip pose)
+		{
+			if (pose == null) return;
+			var animator = yingletInstance.GetComponentInChildren<Animator>();
+			var originalController = animator.runtimeAnimatorController;
+			var overrideController = new AnimatorOverrideController(originalController);
+			animator.runtimeAnimatorController = overrideController;
+			var originalClip = overrideController.animationClips[0];
+			overrideController.ApplyOverrides(new List<KeyValuePair<AnimationClip, AnimationClip>>() { new(originalClip, pose) });
 		}
 
 		static void SetLayerRecursively(GameObject obj, int layer)

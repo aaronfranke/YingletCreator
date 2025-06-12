@@ -55,6 +55,9 @@ namespace Snapshotter
 
 				var observableData = new ObservableCustomizationData(serializedData);
 
+				var camPos = snapshottable.Preview.CameraPosition ?? defaultCamPos;
+				var sParams = new SnapshotterParams(camPos, observableData);
+
 				// Kinda hacky casting but w/e
 				if (snapshottable is CharacterToggleId toggle)
 				{
@@ -63,9 +66,11 @@ namespace Snapshotter
 						observableData.ToggleData.FlipToggle(toggle);
 					}
 				}
+				if (snapshottable is PoseId pose)
+				{
+					sParams.Pose = pose.Clip;
+				}
 
-				var camPos = snapshottable.Preview.CameraPosition ?? defaultCamPos;
-				var sParams = new SnapshotterParams(camPos, observableData);
 				var rt = SnapshotterUtils.Snapshot(references, sParams);
 
 				// Create Texture2D and read pixels
