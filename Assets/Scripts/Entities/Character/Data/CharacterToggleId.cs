@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Character.Data
 {
 	[CreateAssetMenu(fileName = "Toggle", menuName = "Scriptable Objects/Character Data/CharacterToggleId")]
-	public class CharacterToggleId : ScriptableObject, IHasUniqueAssetId
+	public class CharacterToggleId : ScriptableObject, IHasUniqueAssetId, ISnapshottableScriptableObject
 	{
 		[SerializeField, HideInInspector] string _uniqueAssetId;
 		public string UniqueAssetID { get => _uniqueAssetId; set => _uniqueAssetId = value; }

@@ -9,16 +9,12 @@ namespace Snapshotter
 		public const string OutputPath = "Assets/Scripts/Entities/Snapshotter/Generated/ToggleIcons.png";
 
 		[MenuItem("Custom/Snapshotter/Generate Toggle Icons")]
-		public static void TestSnapshotter()
+		public static void GenerateToggleIcons()
 		{
 
-			var toggles = GetAllToggles();
+			var toggles = Resources.LoadAll<CharacterToggleId>(nameof(CharacterToggleId));
 			SnapshotToSpriteSheetUtils.SnapshotToTexAndApply(toggles, OutputPath);
 
-		}
-		static CharacterToggleId[] GetAllToggles()
-		{
-			return Resources.LoadAll<CharacterToggleId>(nameof(CharacterToggleId));
 		}
 	}
 }

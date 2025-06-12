@@ -18,7 +18,7 @@ namespace Snapshotter
 		const string CameraPosRelativePath = "Assets/Scripts/Entities/Snapshotter/CameraPositions/_Default.asset";
 		const string PresetPath = "Assets/Scripts/Entities/Snapshotter/SnapshotYing.yingsave";
 
-		public static void SnapshotToTexAndApply(CharacterToggleId[] toggles, string outputPath)
+		public static void SnapshotToTexAndApply(ISnapshottableScriptableObject[] snapshottables, string outputPath)
 		{
 			if (!EditorApplication.isPlaying)
 			{
@@ -26,16 +26,16 @@ namespace Snapshotter
 				return;
 			}
 
-			Debug.Log($"Generating icons for {toggles.Length} toggles");
+			Debug.Log($"Generating icons for {snapshottables.Length} snapshottables");
 			var references = AssetDatabase.LoadAssetAtPath<SnapshotterReferences>(ReferencesRelativePath);
-			int totalTexSize = CalculateTotalTextureSize(references.SizeInPixels, toggles.Length);
+			int totalTexSize = CalculateTotalTextureSize(references.SizeInPixels, snapshottables.Length);
 
-			SnapshotsToTexture(references, toggles, outputPath, totalTexSize);
-			SpliceSpriteSheet(references, toggles, outputPath, totalTexSize);
-			ApplySpriteSheetToToggles(toggles, outputPath);
+			SnapshotsToTexture(references, snapshottables, outputPath, totalTexSize);
+			SpliceSpriteSheet(references, snapshottables, outputPath, totalTexSize);
+			ApplySpriteSheetToSnapshottables(snapshottables, outputPath);
 		}
 
-		static void SnapshotsToTexture(SnapshotterReferences references, CharacterToggleId[] toggles, string outputPath, int totalTexSize)
+		static void SnapshotsToTexture(SnapshotterReferences references, ISnapshottableScriptableObject[] snapshottables, string outputPath, int totalTexSize)
 		{
 			var defaultCamPos = AssetDatabase.LoadAssetAtPath<SnapshotterCameraPosition>(CameraPosRelativePath);
 
@@ -48,17 +48,23 @@ namespace Snapshotter
 			Texture2D tex = new Texture2D(totalTexSize, totalTexSize, TextureFormat.RGBA32, false);
 			MakeTransparent(tex);
 
-			for (int i = 0; i < toggles.Length; i++)
+			for (int i = 0; i < snapshottables.Length; i++)
 			{
-				var toggle = toggles[i];
-				EditorUtility.DisplayProgressBar("Snapshot Toggle Icon Previews", $"Generating icon ({i}/{toggles.Length}) - ${toggle.DisplayName}", i / (float)toggles.Length);
+				var snapshottable = snapshottables[i];
+				EditorUtility.DisplayProgressBar("Snapshot Icon Previews", $"Generating icon ({i}/{snapshottables.Length}) - '{snapshottable.DisplayName}'", i / (float)snapshottables.Length);
 
 				var observableData = new ObservableCustomizationData(serializedData);
-				if (!observableData.ToggleData.GetToggle(toggle)) // Accounts for the defaults
+
+				// Kinda hacky casting but w/e
+				if (snapshottable is CharacterToggleId toggle)
 				{
-					observableData.ToggleData.FlipToggle(toggle);
+					if (!observableData.ToggleData.GetToggle(toggle)) // Accounts for the defaults
+					{
+						observableData.ToggleData.FlipToggle(toggle);
+					}
 				}
-				var camPos = toggle.Preview.CameraPosition ?? defaultCamPos;
+
+				var camPos = snapshottable.Preview.CameraPosition ?? defaultCamPos;
 				var sParams = new SnapshotterParams(camPos, observableData);
 				var rt = SnapshotterUtils.Snapshot(references, sParams);
 
@@ -84,21 +90,21 @@ namespace Snapshotter
 			GameObject.DestroyImmediate(tex);
 		}
 
-		static void SpliceSpriteSheet(SnapshotterReferences references, CharacterToggleId[] toggles, string outputPath, int totalTexSize)
+		static void SpliceSpriteSheet(SnapshotterReferences references, ISnapshottableScriptableObject[] snapshottables, string outputPath, int totalTexSize)
 		{
-			SpriteRect[] spriteRects = new SpriteRect[toggles.Length];
+			SpriteRect[] spriteRects = new SpriteRect[snapshottables.Length];
 			int index = 0;
 
-			for (int i = 0; i < toggles.Length; i++)
+			for (int i = 0; i < snapshottables.Length; i++)
 			{
-				var toggle = toggles[i];
+				var snapshottable = snapshottables[i];
 				var offset = GetOffsetFromIndex(i, references.SizeInPixels, totalTexSize);
 
 				SpriteRect meta = new SpriteRect();
 				meta.rect = new Rect(offset.x, offset.y, references.SizeInPixels, references.SizeInPixels); // note: origin is bottom-left
-				meta.name = toggle.name;
+				meta.name = snapshottable.name;
 				meta.pivot = new Vector2(0.5f, 0.5f); // center pivot
-				meta.spriteID = GenerateDeterministicSpriteId(toggle.UniqueAssetID);
+				meta.spriteID = GenerateDeterministicSpriteId(snapshottable.UniqueAssetID);
 				spriteRects[index++] = meta;
 			}
 
@@ -113,20 +119,21 @@ namespace Snapshotter
 			AssetDatabase.ImportAsset(outputPath, ImportAssetOptions.ForceUpdate);
 		}
 
-		private static void ApplySpriteSheetToToggles(CharacterToggleId[] toggles, string outputPath)
+		private static void ApplySpriteSheetToSnapshottables(ISnapshottableScriptableObject[] snapshottables, string outputPath)
 		{
 			string spriteSheetPath = outputPath;
 			var sprites = AssetDatabase.LoadAllAssetsAtPath(spriteSheetPath)
 				.Select(s => s as Sprite)
 				.Where(s => s != null)
 				.ToDictionary((sprite) => sprite.name);
-			Debug.Assert(toggles.Length == sprites.Keys.Count());
-			for (int i = 0; i < toggles.Length; i++)
+			// If this is getting hit, there's a good chance the texture isn't set up as a sprite (should probably do that programatically but w/e)
+			Debug.Assert(snapshottables.Length == sprites.Keys.Count());
+			for (int i = 0; i < snapshottables.Length; i++)
 			{
-				var toggle = toggles[i];
-				var sprite = sprites[toggle.name];
-				toggle.Preview.SetSprite(sprite);
-				EditorUtility.SetDirty(toggle);
+				var snapshottable = snapshottables[i];
+				var sprite = sprites[snapshottable.name];
+				snapshottable.Preview.SetSprite(sprite);
+				EditorUtility.SetDirty((ScriptableObject)snapshottable);
 			}
 			AssetDatabase.SaveAssets();
 		}
