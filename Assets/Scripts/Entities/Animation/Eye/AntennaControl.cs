@@ -28,6 +28,7 @@ public class AntennaControl : ReactiveBehaviour
 	private IEyeExpressions _eyeExpressions;
 	private IBlinkTimer _blinkTimer;
 	private IEnumerable<Antenna> _antennas;
+	Observable<float> _angle = new();
 	Coroutine _blinkCoroutine;
 
 	static readonly Dictionary<EyeExpression, Vector2Int> ANGLE_MAPPING = new()
@@ -52,6 +53,7 @@ public class AntennaControl : ReactiveBehaviour
 		if (!_antennas.Any()) Debug.LogWarning("Did not find any antennas to control");
 
 		AddReflector(ReflectEyeExpression);
+		AddReflector(ReflectAngleToAntenna);
 
 		if (_blinkTimer != null) _blinkTimer.OnBlink += BlinkTimer_OnBlink;
 	}
@@ -62,10 +64,23 @@ public class AntennaControl : ReactiveBehaviour
 		if (_blinkTimer != null) _blinkTimer.OnBlink -= BlinkTimer_OnBlink;
 	}
 
+	private void LateUpdate()
+	{
+		// Like with the mandible bone control, some animations might accidentally be overwriting this bone
+		// Just force it to the angle we want every update
+		ApplyAngleToAntenna();
+	}
+
 	void ReflectEyeExpression()
 	{
+		// As the expression changes, immediately update the angle
+		// This is most relevant for snapshots where LateUpdate is never called
 		var angles = GetFromToAngles();
-		SetAntennaRotations(angles.y);
+		_angle.Val = angles.y;
+	}
+	void ReflectAngleToAntenna()
+	{
+		ApplyAngleToAntenna();
 	}
 
 	private void BlinkTimer_OnBlink()
@@ -73,8 +88,7 @@ public class AntennaControl : ReactiveBehaviour
 		CoroutineUtils.StartEaseCoroutine(this, ref _blinkCoroutine, _blinkEaseSettings, p =>
 		{
 			var angles = GetFromToAngles();
-			float angle = Mathf.Lerp(angles.x, angles.y, p);
-			SetAntennaRotations(angle);
+			_angle.Val = Mathf.Lerp(angles.x, angles.y, p);
 		});
 	}
 
@@ -91,11 +105,13 @@ public class AntennaControl : ReactiveBehaviour
 		return angle;
 	}
 
-	void SetAntennaRotations(float angle)
+	void ApplyAngleToAntenna()
 	{
+		var angle = _angle.Val;
 		foreach (var antenna in _antennas)
 		{
 			antenna.SetRotation(angle);
 		}
 	}
+
 }
