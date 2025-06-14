@@ -564,7 +564,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2856285391814807395, guid: 8a71cdc11f243d14592ecc7a2d0bae64, type: 3}
       propertyPath: m_Name
-      value: CharacterPoseToggleGroup
+      value: Group - Toggle
       objectReference: {fileID: 0}
     - target: {fileID: 7283257434747349425, guid: 8a71cdc11f243d14592ecc7a2d0bae64, type: 3}
       propertyPath: m_AnchorMax.y
@@ -672,7 +672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9084386858715068141, guid: 8a71cdc11f243d14592ecc7a2d0bae64, type: 3}
       propertyPath: _poseIds.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9084386858715068141, guid: 8a71cdc11f243d14592ecc7a2d0bae64, type: 3}
       propertyPath: '_poseIds.Array.data[0]'
@@ -689,11 +689,11 @@ PrefabInstance:
     - target: {fileID: 9084386858715068141, guid: 8a71cdc11f243d14592ecc7a2d0bae64, type: 3}
       propertyPath: '_poseIds.Array.data[3]'
       value: 
-      objectReference: {fileID: 11400000, guid: 9872828087070734ca03e66d894df1b9, type: 2}
+      objectReference: {fileID: 11400000, guid: 24d912129fa98eb43a0b79c9dcc9e056, type: 2}
     - target: {fileID: 9084386858715068141, guid: 8a71cdc11f243d14592ecc7a2d0bae64, type: 3}
       propertyPath: '_poseIds.Array.data[4]'
       value: 
-      objectReference: {fileID: 11400000, guid: be0c1d12ff122f04b9996fb7fd5a7cc6, type: 2}
+      objectReference: {fileID: 11400000, guid: 078ab2e658eecc74792b5a42bdef5479, type: 2}
     - target: {fileID: 9084386858715068141, guid: 8a71cdc11f243d14592ecc7a2d0bae64, type: 3}
       propertyPath: '_poseIds.Array.data[5]'
       value: 
@@ -718,7 +718,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2856285391814807395, guid: 8a71cdc11f243d14592ecc7a2d0bae64, type: 3}
       propertyPath: m_Name
-      value: CharacterPoseToggleGroup (2)
+      value: Group - Pair
       objectReference: {fileID: 0}
     - target: {fileID: 7283257434747349425, guid: 8a71cdc11f243d14592ecc7a2d0bae64, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1901,7 +1901,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2856285391814807395, guid: 8a71cdc11f243d14592ecc7a2d0bae64, type: 3}
       propertyPath: m_Name
-      value: CharacterPoseToggleGroup (1)
+      value: Group - Misc
       objectReference: {fileID: 0}
     - target: {fileID: 7283257434747349425, guid: 8a71cdc11f243d14592ecc7a2d0bae64, type: 3}
       propertyPath: m_AnchorMax.y
