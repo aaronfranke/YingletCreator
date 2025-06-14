@@ -100,8 +100,8 @@ TextureImporter:
       name: Idle
       rect:
         serializedVersion: 2
-        x: 384
-        y: 0
+        x: 0
+        y: 128
         width: 128
         height: 128
       alignment: 0
@@ -122,7 +122,7 @@ TextureImporter:
       name: Point
       rect:
         serializedVersion: 2
-        x: 0
+        x: 384
         y: 128
         width: 128
         height: 128
@@ -144,8 +144,8 @@ TextureImporter:
       name: Smekk A
       rect:
         serializedVersion: 2
-        x: 256
-        y: 128
+        x: 128
+        y: 256
         width: 128
         height: 128
       alignment: 0
@@ -166,8 +166,8 @@ TextureImporter:
       name: Smekk B
       rect:
         serializedVersion: 2
-        x: 384
-        y: 128
+        x: 256
+        y: 256
         width: 128
         height: 128
       alignment: 0
@@ -188,7 +188,7 @@ TextureImporter:
       name: T-Pose
       rect:
         serializedVersion: 2
-        x: 0
+        x: 384
         y: 256
         width: 128
         height: 128
@@ -276,8 +276,8 @@ TextureImporter:
       name: Reflective
       rect:
         serializedVersion: 2
-        x: 128
-        y: 128
+        x: 0
+        y: 256
         width: 128
         height: 128
       alignment: 0
@@ -290,6 +290,72 @@ TextureImporter:
       bones: []
       spriteID: eef75c3d40561fd1a8133a0fabf98d3a
       internalID: 184632922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Greetings
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5033f591df8511c1fda4d8cc9a801ee8
+      internalID: -439223138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Over Shoulder
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e0dd91571768955b4e8948235261391
+      internalID: -1995516919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Philosopher
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b978e08cb86e16898a873b079a65e5fe
+      internalID: 584624853
       vertices: []
       indices: 
       edges: []
