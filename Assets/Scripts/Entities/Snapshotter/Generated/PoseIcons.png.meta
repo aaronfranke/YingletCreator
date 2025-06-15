@@ -144,7 +144,7 @@ TextureImporter:
       name: Smekk A
       rect:
         serializedVersion: 2
-        x: 128
+        x: 256
         y: 256
         width: 128
         height: 128
@@ -166,7 +166,7 @@ TextureImporter:
       name: Smekk B
       rect:
         serializedVersion: 2
-        x: 256
+        x: 384
         y: 256
         width: 128
         height: 128
@@ -188,8 +188,8 @@ TextureImporter:
       name: T-Pose
       rect:
         serializedVersion: 2
-        x: 384
-        y: 256
+        x: 0
+        y: 384
         width: 128
         height: 128
       alignment: 0
@@ -276,7 +276,7 @@ TextureImporter:
       name: Reflective
       rect:
         serializedVersion: 2
-        x: 0
+        x: 128
         y: 256
         width: 128
         height: 128
@@ -356,6 +356,28 @@ TextureImporter:
       bones: []
       spriteID: b978e08cb86e16898a873b079a65e5fe
       internalID: 584624853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Refined
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebb48dcd23999e28000cc0798c0f33bb
+      internalID: -524678788
       vertices: []
       indices: 
       edges: []
