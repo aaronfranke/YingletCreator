@@ -11,7 +11,7 @@ namespace Character.Creator.UI
 	{
 		public PoseId PoseId { get; set; }
 
-		public string DisplayName => PoseId.name;
+		public string DisplayName => PoseId.DisplayName;
 
 		public Sprite Sprite => PoseId.Preview.Sprite;
 	}

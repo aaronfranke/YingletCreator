@@ -12,9 +12,13 @@ namespace Character.Data
 		[SerializeField] AnimationClip _clip;
 		public AnimationClip Clip => _clip;
 
+		// Filenames can't contain special characters I want for some things
+		[SerializeField] string _overrideName;
+		public string OverrideName => _overrideName;
+
 		[SerializeField] CharacterTogglePreviewData _preview;
 		public CharacterTogglePreviewData Preview => _preview;
 
-		public string DisplayName => name;
+		public string DisplayName => string.IsNullOrWhiteSpace(_overrideName) ? name : _overrideName;
 	}
 }
