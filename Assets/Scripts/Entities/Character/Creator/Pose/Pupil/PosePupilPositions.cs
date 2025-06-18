@@ -5,11 +5,13 @@ public class PosePupilPositions : MonoBehaviour, IDragHandler, IInitializePotent
 {
 	private RectTransform _rectTransform;
 	private IPosePupilUiData _pupilData;
+	private IDragSfx _dragSfx;
 
 	void Awake()
 	{
 		_rectTransform = GetComponent<RectTransform>();
 		_pupilData = GetComponent<IPosePupilUiData>();
+		_dragSfx = GetComponent<IDragSfx>();
 	}
 	public void OnDrag(PointerEventData eventData)
 	{
@@ -28,7 +30,10 @@ public class PosePupilPositions : MonoBehaviour, IDragHandler, IInitializePotent
 			Mathf.InverseLerp(rect.xMin, rect.xMax, localPoint.x),
 			Mathf.InverseLerp(rect.yMin, rect.yMax, localPoint.y)
 		);
-		_pupilData.PupilPosition = new Vector2(.5f, .5f) - normalized;
+		var from = _pupilData.PupilPosition;
+		var to = new Vector2(.5f, .5f) - normalized;
+		_pupilData.PupilPosition = to;
+		_dragSfx.Change(Vector2.Distance(from, to));
 	}
 
 	public virtual void OnInitializePotentialDrag(PointerEventData eventData)
