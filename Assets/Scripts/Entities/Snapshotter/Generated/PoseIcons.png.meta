@@ -100,8 +100,8 @@ TextureImporter:
       name: Idle
       rect:
         serializedVersion: 2
-        x: 896
-        y: 128
+        x: 128
+        y: 256
         width: 128
         height: 128
       alignment: 0
@@ -122,7 +122,7 @@ TextureImporter:
       name: Point Down
       rect:
         serializedVersion: 2
-        x: 0
+        x: 256
         y: 384
         width: 128
         height: 128
@@ -232,7 +232,7 @@ TextureImporter:
       name: Big Mood
       rect:
         serializedVersion: 2
-        x: 256
+        x: 512
         y: 0
         width: 128
         height: 128
@@ -254,7 +254,7 @@ TextureImporter:
       name: Confident
       rect:
         serializedVersion: 2
-        x: 512
+        x: 768
         y: 0
         width: 128
         height: 128
@@ -276,7 +276,7 @@ TextureImporter:
       name: Reflective
       rect:
         serializedVersion: 2
-        x: 640
+        x: 896
         y: 384
         width: 128
         height: 128
@@ -298,7 +298,7 @@ TextureImporter:
       name: Greetings
       rect:
         serializedVersion: 2
-        x: 384
+        x: 640
         y: 128
         width: 128
         height: 128
@@ -320,8 +320,8 @@ TextureImporter:
       name: Over Shoulder
       rect:
         serializedVersion: 2
-        x: 768
-        y: 256
+        x: 0
+        y: 384
         width: 128
         height: 128
       alignment: 0
@@ -342,8 +342,8 @@ TextureImporter:
       name: Philosopher
       rect:
         serializedVersion: 2
-        x: 896
-        y: 256
+        x: 128
+        y: 384
         width: 128
         height: 128
       alignment: 0
@@ -364,7 +364,7 @@ TextureImporter:
       name: Refined
       rect:
         serializedVersion: 2
-        x: 512
+        x: 768
         y: 384
         width: 128
         height: 128
@@ -408,7 +408,7 @@ TextureImporter:
       name: Bless
       rect:
         serializedVersion: 2
-        x: 384
+        x: 640
         y: 0
         width: 128
         height: 128
@@ -430,7 +430,7 @@ TextureImporter:
       name: Curtsy
       rect:
         serializedVersion: 2
-        x: 640
+        x: 896
         y: 0
         width: 128
         height: 128
@@ -452,8 +452,8 @@ TextureImporter:
       name: Embarassed
       rect:
         serializedVersion: 2
-        x: 768
-        y: 0
+        x: 0
+        y: 128
         width: 128
         height: 128
       alignment: 0
@@ -474,8 +474,8 @@ TextureImporter:
       name: Exhausted
       rect:
         serializedVersion: 2
-        x: 896
-        y: 0
+        x: 128
+        y: 128
         width: 128
         height: 128
       alignment: 0
@@ -496,7 +496,7 @@ TextureImporter:
       name: Fabulous
       rect:
         serializedVersion: 2
-        x: 0
+        x: 256
         y: 128
         width: 128
         height: 128
@@ -518,7 +518,7 @@ TextureImporter:
       name: Flattered
       rect:
         serializedVersion: 2
-        x: 128
+        x: 384
         y: 128
         width: 128
         height: 128
@@ -540,7 +540,7 @@ TextureImporter:
       name: Flop
       rect:
         serializedVersion: 2
-        x: 256
+        x: 512
         y: 128
         width: 128
         height: 128
@@ -562,7 +562,7 @@ TextureImporter:
       name: Happying
       rect:
         serializedVersion: 2
-        x: 512
+        x: 768
         y: 128
         width: 128
         height: 128
@@ -584,7 +584,7 @@ TextureImporter:
       name: Hesitant
       rect:
         serializedVersion: 2
-        x: 640
+        x: 896
         y: 128
         width: 128
         height: 128
@@ -606,8 +606,8 @@ TextureImporter:
       name: Hunter
       rect:
         serializedVersion: 2
-        x: 768
-        y: 128
+        x: 0
+        y: 256
         width: 128
         height: 128
       alignment: 0
@@ -628,7 +628,7 @@ TextureImporter:
       name: Lay
       rect:
         serializedVersion: 2
-        x: 0
+        x: 256
         y: 256
         width: 128
         height: 128
@@ -650,7 +650,7 @@ TextureImporter:
       name: Leap
       rect:
         serializedVersion: 2
-        x: 128
+        x: 384
         y: 256
         width: 128
         height: 128
@@ -672,7 +672,7 @@ TextureImporter:
       name: Made of Yinglet
       rect:
         serializedVersion: 2
-        x: 256
+        x: 512
         y: 256
         width: 128
         height: 128
@@ -694,7 +694,7 @@ TextureImporter:
       name: Modest
       rect:
         serializedVersion: 2
-        x: 384
+        x: 640
         y: 256
         width: 128
         height: 128
@@ -716,7 +716,7 @@ TextureImporter:
       name: O Hoo Hoo
       rect:
         serializedVersion: 2
-        x: 512
+        x: 768
         y: 256
         width: 128
         height: 128
@@ -738,7 +738,7 @@ TextureImporter:
       name: Ouroboros
       rect:
         serializedVersion: 2
-        x: 640
+        x: 896
         y: 256
         width: 128
         height: 128
@@ -760,7 +760,7 @@ TextureImporter:
       name: Point Over
       rect:
         serializedVersion: 2
-        x: 128
+        x: 384
         y: 384
         width: 128
         height: 128
@@ -782,7 +782,7 @@ TextureImporter:
       name: Proper Welcome
       rect:
         serializedVersion: 2
-        x: 256
+        x: 512
         y: 384
         width: 128
         height: 128
@@ -804,7 +804,7 @@ TextureImporter:
       name: Proud
       rect:
         serializedVersion: 2
-        x: 384
+        x: 640
         y: 384
         width: 128
         height: 128
@@ -826,8 +826,8 @@ TextureImporter:
       name: Scheme
       rect:
         serializedVersion: 2
-        x: 768
-        y: 384
+        x: 0
+        y: 512
         width: 128
         height: 128
       alignment: 0
@@ -848,50 +848,6 @@ TextureImporter:
       name: Shocked
       rect:
         serializedVersion: 2
-        x: 896
-        y: 384
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7208a7aa5231ebb3646c979dcd73651f
-      internalID: 682911580
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Shoulder Hug A
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 512
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f66b417055b2bd2bc43d374f8ee205b9
-      internalID: -874935582
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Shoulder Hug B
-      rect:
-        serializedVersion: 2
         x: 128
         y: 512
         width: 128
@@ -904,8 +860,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f4adb312cf526c8c56aea66ee1a68f8
-      internalID: 1513225147
+      spriteID: 7208a7aa5231ebb3646c979dcd73651f
+      internalID: 682911580
       vertices: []
       indices: 
       edges: []
@@ -1038,6 +994,50 @@ TextureImporter:
       bones: []
       spriteID: f4f9940db295b111f8c0592982250547
       internalID: 668478707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Back Hugged
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d5bc150ec9a9a2cdbe420003114328b
+      internalID: 29452038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Back Hugger
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 190933ccdfaed335c855821ba367531c
+      internalID: 1805325318
       vertices: []
       indices: 
       edges: []
