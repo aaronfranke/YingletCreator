@@ -31,11 +31,11 @@ public class PosePupilUiData : MonoBehaviour, IPosePupilUiData
 			var lastVal = _poseData.Data.PupilData.Val;
 			if (_isLeft)
 			{
-				_poseData.Data.PupilData.Val = new YingPosePupilData(value.y, value.x, lastVal.XRightOffset);
+				_poseData.Data.PupilData.Val = new PupilOffsets(value.y, value.x, lastVal.XRightOffset);
 			}
 			else
 			{
-				_poseData.Data.PupilData.Val = new YingPosePupilData(value.y, lastVal.XLeftOffset, value.x);
+				_poseData.Data.PupilData.Val = new PupilOffsets(value.y, lastVal.XLeftOffset, value.x);
 			}
 		}
 	}
