@@ -11,6 +11,13 @@ public interface IYingPoseData
 	string Name { get; }
 	int EyeExpressionNum { get; set; }
 	int MouthExpressionNum { get; set; }
+
+	/// <summary>
+	/// Currently un-implemented
+	/// I thought I could get away with just doing a -1 scale on the x-axis, but that fucks the normals up
+	/// What we probably actually need is an IAnimationJob implementation
+	/// Honestly I should be using that for a lot of stuff instead of my weirdo two-rig psychopath setup
+	/// </summary>
 	bool Mirror { get; set; }
 	PoseId Pose { get; set; }
 	PupilOffsets PupilData { get; set; }
@@ -29,11 +36,11 @@ internal sealed class YingPoseData : IYingPoseData
 		// Hard referencing them like this is a little cringe, but I also don't care about pose mode
 		var eyeKey = ResourceLoader.Load<CharacterIntId>("1490a3cd97e05b34bb4efe5ed5513346");
 		var mouthKey = ResourceLoader.Load<CharacterIntId>("6ccdbae82063b23438cc6d12818d35a0");
-
-		// TODO: Also load default pose here
+		var poseKey = ResourceLoader.Load<PoseId>("5c1ee6caa6f3f6c439595b0f1c5a27d4");
 
 		_eyeExpressionNum.Val = observableData.NumberData.GetInt(eyeKey);
 		_mouthExpressionNum.Val = observableData.NumberData.GetInt(mouthKey);
+		_pose.Val = poseKey;
 
 		_pupilData = new Observable<PupilOffsets>(PupilOffsetMutator_Default.InherentOffset);
 	}
