@@ -19,7 +19,7 @@ public class PosePupilUiData : MonoBehaviour, IPosePupilUiData
 		{
 			var data = _poseData.Data;
 			if (data == null) return Vector2.zero;
-			var pupilData = data.PupilData.Val;
+			var pupilData = data.PupilData;
 			return _isLeft
 				? pupilData.GetLeftEyeOffsets()
 				: pupilData.GetRightEyeOffsets();
@@ -28,14 +28,14 @@ public class PosePupilUiData : MonoBehaviour, IPosePupilUiData
 		{
 			if (_poseData.Data == null) return;
 
-			var lastVal = _poseData.Data.PupilData.Val;
+			var lastVal = _poseData.Data.PupilData;
 			if (_isLeft)
 			{
-				_poseData.Data.PupilData.Val = new PupilOffsets(value.y, value.x, lastVal.XRightOffset);
+				_poseData.Data.PupilData = new PupilOffsets(value.y, value.x, lastVal.XRightOffset);
 			}
 			else
 			{
-				_poseData.Data.PupilData.Val = new PupilOffsets(value.y, lastVal.XLeftOffset, value.x);
+				_poseData.Data.PupilData = new PupilOffsets(value.y, lastVal.XLeftOffset, value.x);
 			}
 		}
 	}

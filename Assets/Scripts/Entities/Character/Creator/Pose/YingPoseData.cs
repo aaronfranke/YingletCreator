@@ -12,7 +12,7 @@ public interface IYingPoseData
 	int EyeExpressionNum { get; set; }
 	int MouthExpressionNum { get; set; }
 	PoseId Pose { get; set; }
-	Observable<PupilOffsets> PupilData { get; }
+	PupilOffsets PupilData { get; set; }
 }
 
 internal sealed class YingPoseData : IYingPoseData
@@ -29,18 +29,22 @@ internal sealed class YingPoseData : IYingPoseData
 		var eyeKey = ResourceLoader.Load<CharacterIntId>("1490a3cd97e05b34bb4efe5ed5513346");
 		var mouthKey = ResourceLoader.Load<CharacterIntId>("6ccdbae82063b23438cc6d12818d35a0");
 
+		// TODO: Also load default pose here
+
 		_eyeExpressionNum.Val = observableData.NumberData.GetInt(eyeKey);
 		_mouthExpressionNum.Val = observableData.NumberData.GetInt(mouthKey);
+
+		_pupilData = new Observable<PupilOffsets>(PupilOffsetMutator_Default.InherentOffset);
 	}
 
 	Observable<int> _eyeExpressionNum = new();
 	Observable<int> _mouthExpressionNum = new();
 	Observable<PoseId> _pose = new();
-	Observable<PupilOffsets> _pupilData = new();
+	Observable<PupilOffsets> _pupilData;
 
 	public string Name { get; }
 	public int EyeExpressionNum { get => _eyeExpressionNum.Val; set => _eyeExpressionNum.Val = value; }
 	public int MouthExpressionNum { get => _mouthExpressionNum.Val; set => _mouthExpressionNum.Val = value; }
 	public PoseId Pose { get => _pose.Val; set => _pose.Val = value; }
-	public Observable<PupilOffsets> PupilData => _pupilData;
+	public PupilOffsets PupilData { get => _pupilData.Val; set => _pupilData.Val = value; }
 }

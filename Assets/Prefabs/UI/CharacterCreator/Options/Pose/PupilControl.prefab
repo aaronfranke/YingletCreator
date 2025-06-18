@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 2918044215538404999}
   - component: {fileID: 333888819117268422}
   - component: {fileID: 4802816952768506704}
+  - component: {fileID: 7595599647690298917}
+  - component: {fileID: 4601017372764247024}
   m_Layer: 5
   m_Name: PupilControl
   m_TagString: Untagged
@@ -62,7 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 4e91975f41f2d124081f917bfe65353a, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.8392157}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -132,3 +134,31 @@ MonoBehaviour:
   _volumeDecreaseSpeed: 5
   _sliderDeltaToVolume: 8
   _minimumVolumeToAdd: 0.35
+--- !u!114 &7595599647690298917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8720253295623231668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f69ff8125e40a47449ca4647251489b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetColor: {r: 1, g: 1, b: 1, a: 1}
+  _targets:
+  - {fileID: 5574947359725766910}
+  _easeSettings: {fileID: 11400000, guid: b7c4e41d6d0b15f429c9f00caa92d59c, type: 2}
+--- !u!114 &4601017372764247024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8720253295623231668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1f1f7ff1b5cda46bd79014f44d30a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

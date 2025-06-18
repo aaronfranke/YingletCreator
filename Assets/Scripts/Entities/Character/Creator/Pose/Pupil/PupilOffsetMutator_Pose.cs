@@ -11,6 +11,6 @@ internal sealed class PupilOffsetMutator_Pose : MonoBehaviour, IPupilOffsetMutat
 
 	public PupilOffsets Mutate(PupilOffsets input)
 	{
-		return _dataRepo.YingPoseData.PupilData.Val;
+		return _dataRepo.YingPoseData.PupilData;
 	}
 }
