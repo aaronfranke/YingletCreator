@@ -41,9 +41,6 @@ public class ReflectSliderMaterialProperties : ReactiveBehaviour
 		_material.SetFloat(HUE, color.Hue);
 		_material.SetFloat(SATURATION, color.Saturation);
 		_material.SetFloat(VALUE, color.Value);
-
-		// lil' hack to get this to render properly
-		_image.enabled = false;
-		_image.enabled = true;
+		_image.SuperDirtyMaterial();
 	}
 }

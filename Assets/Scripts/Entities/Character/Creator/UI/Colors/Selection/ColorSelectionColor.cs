@@ -36,9 +36,7 @@ namespace Character.Creator.UI
 
 			_material.SetColor(BASE_COLOR_PROPERTY_ID, colorizeValues.Base.GetColor());
 			_material.SetColor(SHADE_COLOR_PROPERTY_ID, colorizeValues.Shade.GetColor());
-			// Neither _image.SetMaterialDirty() nor _image.SetAllDirty(); seem to force this to update, so do this hack
-			_image.enabled = false;
-			_image.enabled = true;
+			_image.SuperDirtyMaterial();
 		}
 	}
 }
