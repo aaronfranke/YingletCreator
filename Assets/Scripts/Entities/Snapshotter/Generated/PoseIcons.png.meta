@@ -122,7 +122,7 @@ TextureImporter:
       name: Point Down
       rect:
         serializedVersion: 2
-        x: 256
+        x: 128
         y: 384
         width: 128
         height: 128
@@ -144,7 +144,7 @@ TextureImporter:
       name: Smekk A
       rect:
         serializedVersion: 2
-        x: 384
+        x: 256
         y: 512
         width: 128
         height: 128
@@ -166,7 +166,7 @@ TextureImporter:
       name: Smekk B
       rect:
         serializedVersion: 2
-        x: 512
+        x: 384
         y: 512
         width: 128
         height: 128
@@ -188,7 +188,7 @@ TextureImporter:
       name: T-Pose
       rect:
         serializedVersion: 2
-        x: 640
+        x: 512
         y: 512
         width: 128
         height: 128
@@ -276,7 +276,7 @@ TextureImporter:
       name: Reflective
       rect:
         serializedVersion: 2
-        x: 896
+        x: 768
         y: 384
         width: 128
         height: 128
@@ -320,8 +320,8 @@ TextureImporter:
       name: Over Shoulder
       rect:
         serializedVersion: 2
-        x: 0
-        y: 384
+        x: 896
+        y: 256
         width: 128
         height: 128
       alignment: 0
@@ -342,7 +342,7 @@ TextureImporter:
       name: Philosopher
       rect:
         serializedVersion: 2
-        x: 128
+        x: 0
         y: 384
         width: 128
         height: 128
@@ -364,7 +364,7 @@ TextureImporter:
       name: Refined
       rect:
         serializedVersion: 2
-        x: 768
+        x: 640
         y: 384
         width: 128
         height: 128
@@ -735,32 +735,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Ouroboros
-      rect:
-        serializedVersion: 2
-        x: 896
-        y: 256
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2cce3001dc5410df1165a0c1413834f9
-      internalID: 180867430
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Point Over
       rect:
         serializedVersion: 2
-        x: 384
+        x: 256
         y: 384
         width: 128
         height: 128
@@ -782,7 +760,7 @@ TextureImporter:
       name: Proper Welcome
       rect:
         serializedVersion: 2
-        x: 512
+        x: 384
         y: 384
         width: 128
         height: 128
@@ -804,7 +782,7 @@ TextureImporter:
       name: Proud
       rect:
         serializedVersion: 2
-        x: 640
+        x: 512
         y: 384
         width: 128
         height: 128
@@ -826,8 +804,8 @@ TextureImporter:
       name: Scheme
       rect:
         serializedVersion: 2
-        x: 0
-        y: 512
+        x: 896
+        y: 384
         width: 128
         height: 128
       alignment: 0
@@ -848,7 +826,7 @@ TextureImporter:
       name: Shocked
       rect:
         serializedVersion: 2
-        x: 128
+        x: 0
         y: 512
         width: 128
         height: 128
@@ -870,7 +848,7 @@ TextureImporter:
       name: Sit
       rect:
         serializedVersion: 2
-        x: 256
+        x: 128
         y: 512
         width: 128
         height: 128
@@ -892,7 +870,7 @@ TextureImporter:
       name: Thumbs Up
       rect:
         serializedVersion: 2
-        x: 768
+        x: 640
         y: 512
         width: 128
         height: 128
@@ -914,7 +892,7 @@ TextureImporter:
       name: Why
       rect:
         serializedVersion: 2
-        x: 896
+        x: 768
         y: 512
         width: 128
         height: 128
@@ -936,8 +914,8 @@ TextureImporter:
       name: Woe-Is-Me
       rect:
         serializedVersion: 2
-        x: 0
-        y: 640
+        x: 896
+        y: 512
         width: 128
         height: 128
       alignment: 0
@@ -958,7 +936,7 @@ TextureImporter:
       name: Yaaaay
       rect:
         serializedVersion: 2
-        x: 128
+        x: 0
         y: 640
         width: 128
         height: 128
@@ -980,7 +958,7 @@ TextureImporter:
       name: Yink
       rect:
         serializedVersion: 2
-        x: 256
+        x: 128
         y: 640
         width: 128
         height: 128
