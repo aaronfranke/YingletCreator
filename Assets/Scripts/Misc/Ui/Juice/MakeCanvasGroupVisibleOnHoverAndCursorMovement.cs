@@ -15,7 +15,7 @@ public class MakeCanvasGroupVisibleOnHoverAndCursorMovement : ReactiveBehaviour
 	private Vector3 _lastMousePosition;
 	private float _lastMovementTime;
 	const float CURSOR_MOVE_TIME = 1.8f;
-	const float CURSOR_MOVE_TIME_NO_UI = 0.9f;
+	const float CURSOR_MOVE_TIME_NO_UI = 0.5f;
 
 	private void Awake()
 	{

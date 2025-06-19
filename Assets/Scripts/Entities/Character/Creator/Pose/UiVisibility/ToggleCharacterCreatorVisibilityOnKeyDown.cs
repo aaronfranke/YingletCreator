@@ -21,7 +21,7 @@ namespace Character.Creator.UI
 			bool isVisible = _visibilityControl.IsVisible.Val;
 			if (isPoseMode || !isVisible)
 			{
-				if (Input.GetKeyDown(KeyCode.LeftShift))
+				if (Input.GetKeyDown(KeyCode.LeftControl))
 				{
 					_visibilityControl.Toggle();
 				}
