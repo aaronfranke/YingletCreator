@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PosePupilPositions : MonoBehaviour, IDragHandler, IInitializePotentialDragHandler
+public class PosePupilPositions : MonoBehaviour, IDragHandler, IInitializePotentialDragHandler, IPointerClickHandler
 {
 	private RectTransform _rectTransform;
 	private IPosePupilUiData _pupilData;
@@ -13,13 +13,25 @@ public class PosePupilPositions : MonoBehaviour, IDragHandler, IInitializePotent
 		_pupilData = GetComponent<IPosePupilUiData>();
 		_dragSfx = GetComponent<IDragSfx>();
 	}
+
 	public void OnDrag(PointerEventData eventData)
 	{
 		eventData.Use();
+		ApplyPupilPosition(Input.mousePosition);
+	}
+
+	public void OnPointerClick(PointerEventData eventData)
+	{
+		eventData.Use();
+		ApplyPupilPosition(eventData.position);
+	}
+
+	private void ApplyPupilPosition(Vector2 screenPosition)
+	{
 		Vector2 localPoint;
 		RectTransformUtility.ScreenPointToLocalPointInRectangle(
 			_rectTransform,
-			Input.mousePosition,
+			screenPosition,
 			null,
 			out localPoint
 		);
