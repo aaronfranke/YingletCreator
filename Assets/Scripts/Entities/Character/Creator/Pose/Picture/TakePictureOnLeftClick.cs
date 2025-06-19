@@ -5,11 +5,20 @@ using System.Collections;
 using System.IO;
 using UnityEngine;
 
-public class TakePictureOnLeftClick : MonoBehaviour
+public interface ITakePictureEvents
+{
+	event Action PictureTaken;
+}
+
+public class TakePictureOnLeftClick : MonoBehaviour, ITakePictureEvents
 {
 	private ICustomizationSaveFolderProvider _locationProvider;
 	private ICharacterCreatorVisibilityControl _visibilityControl;
 	private Camera _camera;
+
+	float _lastPicTime = 0;
+
+	public event Action PictureTaken;
 
 	private void Start()
 	{
@@ -23,6 +32,9 @@ public class TakePictureOnLeftClick : MonoBehaviour
 		// Early return if we're showing UI (aka not in photo mode)
 		if (_visibilityControl.IsVisible.Val) return;
 
+		// Don't let the user take too many pics
+		if (Time.time < _lastPicTime + 1.5f) return;
+
 		if (Input.GetMouseButtonDown(0))
 		{
 			StartCoroutine(TakePicture());
@@ -31,6 +43,11 @@ public class TakePictureOnLeftClick : MonoBehaviour
 
 	IEnumerator TakePicture()
 	{
+		// Play the sound effects and stuff immediately
+		PictureTaken?.Invoke();
+		_lastPicTime = Time.time;
+		yield return null;
+
 		yield return new WaitForEndOfFrame();
 		var screenResolution = Screen.currentResolution;
 		var resolution = new Vector2Int(screenResolution.width, screenResolution.height);

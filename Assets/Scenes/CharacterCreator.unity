@@ -5659,9 +5659,9 @@ MonoBehaviour:
   _poseEditingYing: <sprite name="MouseLeft"> - Move / Unselect Ying        <sprite
     name="MouseRight"> - Rotate Cam        <sprite name="QWEASD"> - Move Cam       
     <sprite name="Ctrl"> - Cam Mode
-  _poseCameraMode: <sprite name="MouseLeft"> (Hold) - Take Picture        <sprite
-    name="MouseRight"> - Rotate Cam        <sprite name="QWEASD"> - Move Cam       
-    <sprite name="Ctrl"> - Exit Cam Mode
+  _poseCameraMode: <sprite name="MouseLeft"> - Take Picture        <sprite name="MouseRight">
+    - Rotate Cam        <sprite name="QWEASD"> - Move Cam        <sprite name="Ctrl">
+    - Exit Cam Mode
 --- !u!1 &863511676
 GameObject:
   m_ObjectHideFlags: 0
@@ -6617,6 +6617,7 @@ GameObject:
   - component: {fileID: 954353183}
   - component: {fileID: 954353182}
   - component: {fileID: 954353185}
+  - component: {fileID: 954353186}
   m_Layer: 0
   m_Name: CharacterCreator
   m_TagString: Untagged
@@ -6840,6 +6841,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e8244f39e1b10844aa8593f5493e57b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &954353186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954353168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee7f8d2342f55a94fb03e221b34cf0ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pictureTaken: {fileID: 11400000, guid: f7ff928eb159c4a45abef09b2e9cc9cd, type: 2}
 --- !u!1001 &967768912
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8827,6 +8841,10 @@ PrefabInstance:
       propertyPath: m_Size
       value: 0.3505553
       objectReference: {fileID: 0}
+    - target: {fileID: 8670253413328044593, guid: c2f8e4ce3cccf764ebc3ff65b174f664, type: 3}
+      propertyPath: m_Value
+      value: 0.9999999
+      objectReference: {fileID: 0}
     - target: {fileID: 8781380728098532259, guid: c2f8e4ce3cccf764ebc3ff65b174f664, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -10644,6 +10662,10 @@ PrefabInstance:
     - target: {fileID: 8670253413328044593, guid: c2f8e4ce3cccf764ebc3ff65b174f664, type: 3}
       propertyPath: m_Size
       value: 0.3505553
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670253413328044593, guid: c2f8e4ce3cccf764ebc3ff65b174f664, type: 3}
+      propertyPath: m_Value
+      value: 0.9999999
       objectReference: {fileID: 0}
     - target: {fileID: 8781380728098532259, guid: c2f8e4ce3cccf764ebc3ff65b174f664, type: 3}
       propertyPath: m_AnchorMax.y
@@ -13948,7 +13970,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6932617733741298738, guid: efd2f4fd4af88cc4db7369507780defe, type: 3}
       propertyPath: m_Value
-      value: 1
+      value: 0.9999998
       objectReference: {fileID: 0}
     - target: {fileID: 7000843661711436412, guid: efd2f4fd4af88cc4db7369507780defe, type: 3}
       propertyPath: m_AnchorMax.x
@@ -14532,6 +14554,121 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6040414689901860678, guid: 7e1ec7d010166d742aabf5768e34844d, type: 3}
   m_PrefabInstance: {fileID: 1287984749}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1305183663
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1305183664}
+  - component: {fileID: 1305183666}
+  - component: {fileID: 1305183665}
+  - component: {fileID: 1305183667}
+  m_Layer: 5
+  m_Name: CameraFlash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1305183664
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305183663}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1687597798}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1305183665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305183663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1305183666
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305183663}
+  m_CullTransparentMesh: 1
+--- !u!114 &1305183667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305183663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cc04d7acbbc11643970faa3775cea3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _easeSettings:
+    _curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 1
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 1
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    _duration: 0.3
+  _from: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &1305558004
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15453,6 +15590,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 863511677}
+  - {fileID: 1305183664}
   - {fileID: 1664386493}
   - {fileID: 982014579}
   - {fileID: 910679607}
