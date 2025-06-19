@@ -7,20 +7,25 @@ using UnityEngine;
 enum InstructionsType
 {
 	Main,
-	CameraPose
+	Pose_NoEditing,
+	Pose_EditingYing
 }
 
 public class InstructionsText : ReactiveBehaviour
 {
-	[SerializeField][TextArea] string _mainInstructions;
-	[SerializeField][TextArea] string _cameraPoseInstructions;
+	[SerializeField][TextArea] string _main;
+	[SerializeField][TextArea] string _poseNoEditing;
+	[SerializeField][TextArea] string _poseEditingYing;
+
 	private IClipboardSelection _clipboardSelection;
+	private IPoseData _poseData;
 	private TMP_Text _text;
 	Computed<InstructionsType> _instructionsType;
 
 	void Start()
 	{
 		_clipboardSelection = this.GetCharacterCreatorComponent<IClipboardSelection>();
+		_poseData = this.GetComponentInParent<IPoseData>();
 		_text = this.GetComponent<TMPro.TMP_Text>();
 		_instructionsType = CreateComputed(ComputeInstructionType);
 		AddReflector(ReflectText);
@@ -30,14 +35,23 @@ public class InstructionsText : ReactiveBehaviour
 	private InstructionsType ComputeInstructionType()
 	{
 		bool isPose = _clipboardSelection.Selection.Val == ClipboardSelectionType.Pose;
-		return isPose ? InstructionsType.CameraPose : InstructionsType.Main;
+		if (!isPose)
+		{
+			return InstructionsType.Main;
+		}
+		bool isEditing = _poseData.CurrentlyEditing != null;
+
+		return isEditing
+			? InstructionsType.Pose_EditingYing
+			: InstructionsType.Pose_NoEditing;
 	}
 	private void ReflectText()
 	{
 		_text.text = _instructionsType.Val switch
 		{
-			InstructionsType.Main => _mainInstructions,
-			InstructionsType.CameraPose => _cameraPoseInstructions,
+			InstructionsType.Main => _main,
+			InstructionsType.Pose_NoEditing => _poseNoEditing,
+			InstructionsType.Pose_EditingYing => _poseEditingYing,
 			_ => throw new ArgumentOutOfRangeException()
 		};
 	}
