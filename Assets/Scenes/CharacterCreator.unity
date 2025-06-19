@@ -5625,8 +5625,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a858f419de294b4697b02544ff944a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainInstructions: 
-  _cameraPoseInstructions: 
   _main: <sprite name="MouseRight"> (Hold) - Rotate        <sprite name="MouseMiddle">
     - Zoom
   _poseNoEditing: <sprite name="MouseLeft"> - Select Ying        <sprite name="MouseRight">
@@ -6569,6 +6567,9 @@ GameObject:
   - component: {fileID: 954353178}
   - component: {fileID: 954353179}
   - component: {fileID: 954353180}
+  - component: {fileID: 954353184}
+  - component: {fileID: 954353183}
+  - component: {fileID: 954353182}
   m_Layer: 0
   m_Name: CharacterCreator
   m_TagString: Untagged
@@ -6741,6 +6742,43 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4b7979b5ac75fa4584a618108e79add, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &954353182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954353168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5448b86f62b2574c8fb5921ad30dd8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundEffect: {fileID: 11400000, guid: 3e4f4e8d39e21ba4a8428fdb2f987ca0, type: 2}
+--- !u!114 &954353183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954353168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 715d17f5bbac9474c88295714c2d0fb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &954353184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954353168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdeb26bffc7e0cf46aed0c25679938c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &967768912
