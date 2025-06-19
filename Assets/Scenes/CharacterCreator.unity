@@ -1924,6 +1924,8 @@ GameObject:
   m_Component:
   - component: {fileID: 188084376}
   - component: {fileID: 188084377}
+  - component: {fileID: 188084379}
+  - component: {fileID: 188084378}
   m_Layer: 0
   m_Name: HoverCircle
   m_TagString: Untagged
@@ -1957,6 +1959,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6bcd9e2d1c356f44181c3f7c489e6147, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &188084378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188084375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9229288ad10ac9944bbf53214699c9c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &188084379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188084375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e260c7d2d1e4919438681b5afc6d3200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &191466094
@@ -15568,6 +15594,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1728655780}
   - component: {fileID: 1728655781}
+  - component: {fileID: 1728655783}
+  - component: {fileID: 1728655782}
   m_Layer: 0
   m_Name: EditingCircle
   m_TagString: Untagged
@@ -15602,6 +15630,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 274a92b3f99bdf94b83f7fc9b2ebf986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1728655782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728655779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9229288ad10ac9944bbf53214699c9c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1728655783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728655779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e260c7d2d1e4919438681b5afc6d3200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1734918150

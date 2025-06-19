@@ -3,6 +3,7 @@ using Reactivity;
 public class PoseYingHoverCircle : ReactiveBehaviour
 {
 	private IPoseData _poseData;
+	private ISmartDisabler _smartDisabler;
 	private IHoveredPoseYingProvider _activelyHoveredProvider;
 
 	Computed<bool> _shouldShowThis;
@@ -10,6 +11,7 @@ public class PoseYingHoverCircle : ReactiveBehaviour
 	private void Awake()
 	{
 		_poseData = this.GetComponentInParent<IPoseData>();
+		_smartDisabler = this.GetComponent<ISmartDisabler>();
 		_activelyHoveredProvider = this.GetComponentInParent<IHoveredPoseYingProvider>();
 		_shouldShowThis = this.CreateComputed(ShouldShowThis);
 		AddReflector(ReflectHovered);
@@ -29,7 +31,7 @@ public class PoseYingHoverCircle : ReactiveBehaviour
 
 	private void ReflectHovered()
 	{
-		this.gameObject.SetActive(_shouldShowThis.Val);
+		_smartDisabler.SetActive(_shouldShowThis.Val, this);
 	}
 
 	void LateUpdate()

@@ -3,17 +3,19 @@ using Reactivity;
 public class PoseYingEditingGizmos : ReactiveBehaviour
 {
 	private IPoseData _poseData;
+	private ISmartDisabler _smartDisabler;
 
 	private void Awake()
 	{
 		_poseData = this.GetComponentInParent<IPoseData>();
+		_smartDisabler = this.GetComponent<ISmartDisabler>();
 		AddReflector(ReflectSelected);
 	}
 
 	private void ReflectSelected()
 	{
 		var currentlyEditing = _poseData.CurrentlyEditing;
-		this.gameObject.SetActive(currentlyEditing != null);
+		_smartDisabler.SetActive(currentlyEditing != null, this);
 	}
 
 	void LateUpdate()

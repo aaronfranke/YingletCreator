@@ -37,6 +37,11 @@ public class PoseGizmoColoring : ReactiveBehaviour
 		{
 			to = _hoveredColor;
 		}
+		if (!this.isActiveAndEnabled)
+		{
+			_spriteRenderer.color = to;
+			return;
+		}
 		this.StartEaseCoroutine(ref _transitionCoroutine, _easeSettings, p => _spriteRenderer.color = Color.LerpUnclamped(from, to, p));
 	}
 }

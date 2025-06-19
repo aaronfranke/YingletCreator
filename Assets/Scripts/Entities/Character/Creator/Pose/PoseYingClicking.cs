@@ -11,6 +11,7 @@ namespace Character.Creator.UI
 	internal class PoseYingClicking : MonoBehaviour, IPoseYingletClicking
 	{
 		private IPoseData _poseData;
+		private ICharacterCreatorVisibilityControl _visibilityControl;
 		private IHoveredPoseYingProvider _hoveredProvider;
 		private IUiHoverManager _uiHoverManager;
 		private IColliderHoverManager _colliderHoverManager;
@@ -20,12 +21,19 @@ namespace Character.Creator.UI
 		private void Awake()
 		{
 			_poseData = this.GetComponent<IPoseData>();
+			_visibilityControl = this.GetComponentInParent<ICharacterCreatorVisibilityControl>();
 			_hoveredProvider = this.GetComponent<IHoveredPoseYingProvider>();
 			_uiHoverManager = Singletons.GetSingleton<IUiHoverManager>();
 			_colliderHoverManager = Singletons.GetSingleton<IColliderHoverManager>();
 		}
 		private void Update()
 		{
+			if (_visibilityControl.IsVisible.Val == false)
+			{
+				// If the character creator UI isn't visible, we shouldn't be clicking on yings
+				return;
+			}
+
 			bool lmbClicked = Input.GetMouseButtonDown(0);
 			if (!lmbClicked) return;
 

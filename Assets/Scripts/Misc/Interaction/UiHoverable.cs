@@ -17,4 +17,9 @@ public class UiHoverable : MonoBehaviour, IHoverable, IPointerEnterHandler, IPoi
 	{
 		_hovered.Val = false;
 	}
+
+	void OnDisable()
+	{
+		_hovered.Val = false;
+	}
 }
