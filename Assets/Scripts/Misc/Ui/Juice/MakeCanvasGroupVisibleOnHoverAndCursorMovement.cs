@@ -1,3 +1,4 @@
+using Character.Creator.UI;
 using Reactivity;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ public class MakeCanvasGroupVisibleOnHoverAndCursorMovement : ReactiveBehaviour
 	// Let this become visible based on something else's hover state
 	[SerializeField] UiHoverable _hoverable;
 	[SerializeField] SharedEaseSettings _easeSettings;
+	private ICharacterCreatorVisibilityControl _visibilityControl;
 	private CanvasGroup _canvasGroup;
 	private Coroutine _transitionCoroutine;
 	private Observable<bool> _cursorMovedRecently = new(false);
@@ -13,9 +15,11 @@ public class MakeCanvasGroupVisibleOnHoverAndCursorMovement : ReactiveBehaviour
 	private Vector3 _lastMousePosition;
 	private float _lastMovementTime;
 	const float CURSOR_MOVE_TIME = 1.8f;
+	const float CURSOR_MOVE_TIME_NO_UI = 0.9f;
 
 	private void Awake()
 	{
+		_visibilityControl = this.GetComponentInParent<ICharacterCreatorVisibilityControl>();
 		_canvasGroup = this.GetComponent<CanvasGroup>();
 		_canvasGroup.alpha = 0;
 	}
@@ -36,7 +40,9 @@ public class MakeCanvasGroupVisibleOnHoverAndCursorMovement : ReactiveBehaviour
 			_lastMousePosition = currentMousePosition;
 		}
 
-		_cursorMovedRecently.Val = (Time.time - _lastMovementTime) <= CURSOR_MOVE_TIME;
+		// Hide instructions slightly faster if the UI is not visible
+		float moveTime = (_visibilityControl.IsVisible.Val) ? CURSOR_MOVE_TIME : CURSOR_MOVE_TIME_NO_UI;
+		_cursorMovedRecently.Val = (Time.time - _lastMovementTime) <= moveTime;
 	}
 
 	private bool CreateComputed()

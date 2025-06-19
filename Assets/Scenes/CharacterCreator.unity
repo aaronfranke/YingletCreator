@@ -5633,6 +5633,9 @@ MonoBehaviour:
   _poseEditingYing: <sprite name="MouseLeft"> - Move / Unselect Ying        <sprite
     name="MouseRight"> - Rotate Cam        <sprite name="QWEASD"> - Move Cam       
     <sprite name="Shift"> - Cam Mode
+  _poseCameraMode: <sprite name="MouseLeft"> (Hold) - Take Picture        <sprite
+    name="MouseRight"> - Rotate Cam        <sprite name="QWEASD"> - Move Cam       
+    <sprite name="Shift"> - Exit Cam Mode
 --- !u!1 &863511676
 GameObject:
   m_ObjectHideFlags: 0
