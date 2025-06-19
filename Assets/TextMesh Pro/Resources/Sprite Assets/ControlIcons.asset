@@ -58,6 +58,11 @@ MonoBehaviour:
     m_GlyphIndex: 3
     m_Scale: 1
     m_Name: QWEASD
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 4
+    m_Scale: 1
+    m_Name: Shift
   m_GlyphTable:
   - m_Index: 0
     m_Metrics:
@@ -123,6 +128,22 @@ MonoBehaviour:
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
     sprite: {fileID: -646604821, guid: a23590877c3bfe3479c852b699aece42, type: 3}
+  - m_Index: 4
+    m_Metrics:
+      m_Width: 64
+      m_Height: 64
+      m_HorizontalBearingX: -4
+      m_HorizontalBearingY: 39.54
+      m_HorizontalAdvance: 56.1
+    m_GlyphRect:
+      m_X: 0
+      m_Y: 128
+      m_Width: 64
+      m_Height: 64
+    m_Scale: 3
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+    sprite: {fileID: 332394728, guid: a23590877c3bfe3479c852b699aece42, type: 3}
   spriteInfoList: []
   fallbackSpriteAssets: []
 --- !u!21 &1599938593161683569

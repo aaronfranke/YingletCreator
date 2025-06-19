@@ -5534,7 +5534,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: <sprite name="MouseLeft"> - Select Ying        <sprite name="MouseRight">
-    (Hold) - Rotate        |<sprite name="QWEASD">| - Move
+    (Hold) - Rotate        |<sprite name="Shift">| - Move
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 31289117d6afe2c449a86f120137f0d5, type: 2}
   m_sharedMaterial: {fileID: 211475481123427812, guid: 31289117d6afe2c449a86f120137f0d5, type: 2}
@@ -5628,9 +5628,11 @@ MonoBehaviour:
   _main: <sprite name="MouseRight"> (Hold) - Rotate        <sprite name="MouseMiddle">
     - Zoom
   _poseNoEditing: <sprite name="MouseLeft"> - Select Ying        <sprite name="MouseRight">
-    - Rotate Cam        <sprite name="QWEASD"> - Move Cam
+    - Rotate Cam        <sprite name="QWEASD"> - Move Cam        <sprite name="Shift">
+    - Cam Mode
   _poseEditingYing: <sprite name="MouseLeft"> - Move / Unselect Ying        <sprite
-    name="MouseRight"> - Rotate Cam        <sprite name="QWEASD"> - Move Cam
+    name="MouseRight"> - Rotate Cam        <sprite name="QWEASD"> - Move Cam       
+    <sprite name="Shift"> - Cam Mode
 --- !u!1 &863511676
 GameObject:
   m_ObjectHideFlags: 0
