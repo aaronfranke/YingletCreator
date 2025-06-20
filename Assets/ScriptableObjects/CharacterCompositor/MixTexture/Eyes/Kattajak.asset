@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f73ebcfc55667f4088e845c4544d5dd, type: 3}
+  m_Name: Kattajak
+  m_EditorClassIdentifier: 
+  _fill: {fileID: 2800000, guid: 9ce35373825437c46af3fbb15b85a167, type: 3}
+  _eyelid: {fileID: 2800000, guid: 1b6664a4887f19c4a8fbc62eec24d0e9, type: 3}
+  _pupil: {fileID: 2800000, guid: c9ef7f83c599d8f4b988c925e351d6f5, type: 3}
+  _coloredEyelid: 0
