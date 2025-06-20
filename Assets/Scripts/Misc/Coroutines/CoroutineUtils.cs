@@ -40,6 +40,12 @@ public static class CoroutineUtils
 
 	public static void StartEaseCoroutine(this MonoBehaviour monoBehaviour, ref Coroutine existingCoroutine, IEaseSettings settings, Action<float> apply, Action onComplete = null)
 	{
+		if (!monoBehaviour.isActiveAndEnabled)
+		{
+			apply(1);
+			if (onComplete != null) onComplete();
+			return;
+		}
 		StopAndStartCoroutine(monoBehaviour, ref existingCoroutine, Ease(settings, apply, onComplete));
 	}
 
