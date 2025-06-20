@@ -68,7 +68,7 @@ public class PoseModeCameraMovement : MonoBehaviour
 		{
 			// Move relative to the transform's orientation
 			Vector3 worldMove = transform.TransformDirection(direction);
-			_targetPosition += worldMove.normalized * _moveSpeed * Time.deltaTime;
+			_targetPosition += worldMove.normalized * _moveSpeed * LimitedDeltaTime;
 		}
 
 		// Smoothly move towards the target position
@@ -85,8 +85,10 @@ public class PoseModeCameraMovement : MonoBehaviour
 		var rotateAngles = new Vector3(-mouseY, mouseX, 0);
 		if (rotateAngles.magnitude < 0.001f) return;
 
-		float rotateAmount = (Time.deltaTime * _rotateSpeed);
+		float rotateAmount = (LimitedDeltaTime * _rotateSpeed);
 		_eulerRotation += rotateAngles * rotateAmount;
 		transform.localRotation = Quaternion.Euler(_eulerRotation);
 	}
+
+	float LimitedDeltaTime => Mathf.Min(Time.deltaTime, 0.3f);
 }
