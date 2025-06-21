@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ef325111c9647d499e7fe4af01b122d, type: 3}
-  m_Name: Clothes_Scarf
+  m_Name: Clothes_Scarf_Lopin
   m_EditorClassIdentifier: 
-  _skinnedMeshRendererPrefab: {fileID: -6554211642996099659, guid: 9b3a5683425c5544fb57ef931f753022, type: 3}
+  _skinnedMeshRendererPrefab: {fileID: -5826633122935979586, guid: 9b3a5683425c5544fb57ef931f753022, type: 3}
   _materialWithDescription: {fileID: 11400000, guid: 1bf6391e124e18843bf17d56ad919c6f, type: 2}
   _tags: []
-  _maskedTags: []
+  _maskedTags:
+  - {fileID: 11400000, guid: c0ce8e7200c663b4ca0d87195ee87ac1, type: 2}
