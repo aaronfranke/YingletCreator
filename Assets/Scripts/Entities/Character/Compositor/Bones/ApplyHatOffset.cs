@@ -37,7 +37,6 @@ public class ApplyHatOffset : ReactiveBehaviour, IApplyableCustomization
 	public void Apply()
 	{
 		var offset = _computeOffset.Val;
-		Debug.Log("Applying offset of " + offset + " to hat bone " + _target.name, this);
 		_target.transform.localPosition += Vector3.up * offset;
 
 	}
