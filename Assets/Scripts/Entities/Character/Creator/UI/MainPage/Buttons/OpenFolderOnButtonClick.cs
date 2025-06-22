@@ -5,27 +5,41 @@ using UnityEngine.UI;
 
 namespace Character.Creator.UI
 {
-    public class OpenFolderOnButtonClick : MonoBehaviour
-    {
-        private Button _button;
-        private ICustomizationSaveFolderProvider _folderProvider;
+	public enum OpenFolderOnClickType
+	{
+		Custom,
+		Photos
+	}
 
-        private void Awake()
-        {
-            _button = this.GetComponent<Button>();
-            _button.onClick.AddListener(Button_OnClick);
+	public class OpenFolderOnButtonClick : MonoBehaviour
+	{
+		[SerializeField] private OpenFolderOnClickType _type;
 
-            _folderProvider = this.GetComponentInParent<ICustomizationSaveFolderProvider>();
-        }
+		private Button _button;
+		private ICustomizationSaveFolderProvider _folderProvider;
 
-        private void OnDestroy()
-        {
-            _button.onClick.RemoveListener(Button_OnClick);
-        }
+		private void Awake()
+		{
+			_button = this.GetComponent<Button>();
+			_button.onClick.AddListener(Button_OnClick);
 
-        private void Button_OnClick()
-        {
-            Process.Start("explorer.exe", _folderProvider.CustomFolderRoot);
-        }
-    }
+			_folderProvider = this.GetComponentInParent<ICustomizationSaveFolderProvider>();
+		}
+
+		private void OnDestroy()
+		{
+			_button.onClick.RemoveListener(Button_OnClick);
+		}
+
+		private void Button_OnClick()
+		{
+			var folder = _type switch
+			{
+				OpenFolderOnClickType.Custom => _folderProvider.CustomFolderRoot,
+				OpenFolderOnClickType.Photos => _folderProvider.PhotoRoot,
+				_ => _folderProvider.CustomFolderRoot
+			};
+			Process.Start("explorer.exe", folder);
+		}
+	}
 }
