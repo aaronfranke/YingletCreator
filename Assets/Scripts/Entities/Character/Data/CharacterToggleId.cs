@@ -29,6 +29,9 @@ namespace Character.Data
 		[SerializeField] GameObject _roomPrefab;
 		public GameObject RoomPrefab => _roomPrefab;
 
+		[SerializeField] CharacterToggleComponent[] _components;
+		public CharacterToggleComponent[] Components => _components;
+
 		[SerializeField] CharacterTogglePreviewData _preview;
 		public CharacterTogglePreviewData Preview => _preview;
 	}
