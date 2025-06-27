@@ -51,16 +51,69 @@ namespace Character.Creator.UI
 
 		public void Paste()
 		{
-			if (_copiedValue == null) return;
+			var value = _copiedValue;
+
+			// Little hack to paste real colors in from hex codes; might make this real in the future
+			if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.LeftAlt))
+			{
+				var colorFromClipboard = GetColorFromClipboard();
+				if (colorFromClipboard != null)
+				{
+					value = new ColorizeValuesFromRealColor((Color)colorFromClipboard);
+				}
+			}
+
+			if (value == null) return;
 
 			var ids = _activeSelection.AllSelected.ToList();
 
 			using var suspender = new ReactivitySuspender();
 			foreach (var id in ids)
 			{
-				_dataRepository.SetColorizeValues(id, _copiedValue);
+				_dataRepository.SetColorizeValues(id, value);
 			}
 			Pasted();
 		}
+
+		public Color? GetColorFromClipboard()
+		{
+			string clipboardText = GUIUtility.systemCopyBuffer;
+			if (string.IsNullOrWhiteSpace(clipboardText)) return null;
+			if (!clipboardText.StartsWith("#")) clipboardText = "#" + clipboardText;
+			if (ColorUtility.TryParseHtmlString(clipboardText, out Color color))
+			{
+				return color;
+			}
+			return null;
+		}
+	}
+	class ColorizeValuesFromRealColor : IColorizeValues
+	{
+		private readonly IColorizeValuesPart _part;
+
+		public ColorizeValuesFromRealColor(Color color)
+		{
+			_part = new ColorizeValuesFromRealColorPart(color);
+		}
+
+		public IColorizeValuesPart Base => _part;
+
+		public IColorizeValuesPart Shade => _part;
+	}
+	class ColorizeValuesFromRealColorPart : IColorizeValuesPart
+	{
+		public ColorizeValuesFromRealColorPart(Color color)
+		{
+			Color.RGBToHSV(color, out var hue, out var saturation, out var value);
+			Hue = hue;
+			Saturation = saturation;
+			Value = value;
+		}
+
+		public float Hue { get; }
+
+		public float Saturation { get; }
+
+		public float Value { get; }
 	}
 }
