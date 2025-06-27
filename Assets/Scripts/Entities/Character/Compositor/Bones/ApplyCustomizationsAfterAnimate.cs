@@ -4,7 +4,8 @@ using UnityEngine;
 
 internal interface IApplyableCustomization
 {
-    void Apply();
+	void Apply();
+	bool isActiveAndEnabled { get; }
 }
 
 /// <summary>
@@ -12,24 +13,25 @@ internal interface IApplyableCustomization
 /// </summary>
 public class ApplyCustomizationsAfterAnimate : MonoBehaviour, ISnapshottableComponent
 {
-    private IEnumerable<IApplyableCustomization> _applyable;
+	private IEnumerable<IApplyableCustomization> _applyable;
 
-    private void Awake()
-    {
-        _applyable = this.GetComponentsInChildren<IApplyableCustomization>();
-    }
+	private void Awake()
+	{
+		_applyable = this.GetComponentsInChildren<IApplyableCustomization>();
+	}
 
-    // Do this every frame in late-update so it happens after the animator
-    private void LateUpdate()
-    {
-        foreach (var a in _applyable)
-        {
-            a.Apply();
-        }
-    }
+	// Do this every frame in late-update so it happens after the animator
+	private void LateUpdate()
+	{
+		foreach (var a in _applyable)
+		{
+			if (!a.isActiveAndEnabled) continue;
+			a.Apply();
+		}
+	}
 
-    public void PrepareForSnapshot()
-    {
-        LateUpdate();
-    }
+	public void PrepareForSnapshot()
+	{
+		LateUpdate();
+	}
 }
