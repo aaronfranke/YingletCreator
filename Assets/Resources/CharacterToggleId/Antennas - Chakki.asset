@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
-  m_Name: Fluff - Elbows
+  m_Name: Antennas - Chakki
   m_EditorClassIdentifier: 
-  _uniqueAssetId: 963453ceeba3b024883a23679fa41e01
-  _displayName: Elbows
-  _groups: []
+  _uniqueAssetId: f970a5e453ab6aa439092546f3e2b8b0
+  _displayName: Butterfly
+  _groups:
+  - {fileID: 11400000, guid: e8f11b947a64cac4986e0b54f6ac740b, type: 2}
   _addedMeshes:
-  - {fileID: 11400000, guid: 250a9bd921b834f42ac1274edc3cf4fd, type: 2}
+  - {fileID: 11400000, guid: 54b9d281dc1b84340b99e74885e85a97, type: 2}
   _addedTextures: []
   _eyeTextures: {fileID: 0}
   _roomPrefab: {fileID: 0}
   _components: []
   _preview:
-    _sprite: {fileID: -420956898, guid: 15341dd2853879d4694c63f593796b80, type: 3}
-    _cameraPosition: {fileID: 11400000, guid: 2043f11cb36628d49a26aab7a5c84c6c, type: 2}
+    _sprite: {fileID: 934148523, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _cameraPosition: {fileID: 11400000, guid: 3a4af34d07e4cfb46adabd44c51f84ab, type: 2}
