@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueAssetId: 6e3ca150b62f6fa42a433fc7c3d6a970
   _displayName: Ivenmoth Uniform
-  _group: {fileID: 11400000, guid: 14901bc6611d3d54d98993552fb8d05e, type: 2}
+  _groups:
+  - {fileID: 11400000, guid: 83e476b94deb4f64d89399d0aa93cdac, type: 2}
+  - {fileID: 11400000, guid: 14901bc6611d3d54d98993552fb8d05e, type: 2}
   _addedMeshes:
   - {fileID: 11400000, guid: 528ab3f152900de40aed63ba630414ba, type: 2}
   - {fileID: 11400000, guid: d625371d0f5a60b41925236db3f70883, type: 2}

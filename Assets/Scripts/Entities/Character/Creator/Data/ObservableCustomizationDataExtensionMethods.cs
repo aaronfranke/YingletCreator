@@ -29,10 +29,14 @@ namespace Character.Creator
 
 			if (exists)
 			{
-				if (id.Group && id.Group.MustHaveOne)
+				// Early return if there must be one toggle of this type
+				foreach (var group in id.Groups)
 				{
-					bool anotherExists = data.Toggles.Any(other => other != id && other.Group == id.Group);
-					if (!anotherExists) return;
+					if (group.MustHaveOne)
+					{
+						bool anotherExists = data.Toggles.Any(other => other != id && other.Groups.Contains(group));
+						if (!anotherExists) return;
+					}
 				}
 				data.Toggles.Remove(id);
 			}
@@ -40,16 +44,15 @@ namespace Character.Creator
 			{
 				data.Toggles.Add(id);
 
-				if (id.Group)
+				foreach (var group in id.Groups)
 				{
 					var togglesToRemove = data.Toggles
-						.Where(toggle => toggle.Group == id.Group && toggle != id)
+						.Where(toggle => toggle != id && toggle.Groups.Contains(group))
 						.ToList();
 					foreach (var toggleToRemove in togglesToRemove)
 					{
 						data.Toggles.Remove(toggleToRemove);
 					}
-
 				}
 			}
 		}

@@ -14,8 +14,8 @@ namespace Character.Data
 		[SerializeField] string _displayName;
 		public string DisplayName => _displayName;
 
-		[SerializeField] CharacterToggleGroup _group;
-		public CharacterToggleGroup Group => _group;
+		[SerializeField] public CharacterToggleGroup[] _groups;
+		public CharacterToggleGroup[] Groups => _groups;
 
 		[SerializeField] MeshWithMaterial[] _addedMeshes;
 		public IEnumerable<MeshWithMaterial> AddedMeshes => _addedMeshes;

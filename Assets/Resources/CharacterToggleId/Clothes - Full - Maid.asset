@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueAssetId: 59ced6d8872850d45ba9506c907cb5d1
   _displayName: Maid
-  _group: {fileID: 11400000, guid: 14901bc6611d3d54d98993552fb8d05e, type: 2}
+  _groups:
+  - {fileID: 11400000, guid: 83e476b94deb4f64d89399d0aa93cdac, type: 2}
+  - {fileID: 11400000, guid: 14901bc6611d3d54d98993552fb8d05e, type: 2}
   _addedMeshes:
   - {fileID: 11400000, guid: 26ab8d3b834366345b25516c69212892, type: 2}
   - {fileID: 11400000, guid: 3fbc461e98f542548bf27326b222e4f8, type: 2}

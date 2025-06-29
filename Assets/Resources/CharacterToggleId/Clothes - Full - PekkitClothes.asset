@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueAssetId: fb6f1ff361209ab4bb7c2241fae3aeb5
   _displayName: Goblin Dress
-  _group: {fileID: 11400000, guid: 14901bc6611d3d54d98993552fb8d05e, type: 2}
+  _groups:
+  - {fileID: 11400000, guid: 83e476b94deb4f64d89399d0aa93cdac, type: 2}
+  - {fileID: 11400000, guid: 14901bc6611d3d54d98993552fb8d05e, type: 2}
   _addedMeshes:
   - {fileID: 11400000, guid: 3c28c244b5a7fbb4e9dce8d6929a286e, type: 2}
   - {fileID: 11400000, guid: 0d352b828d1c2f74f843b3cf4d97dfb4, type: 2}

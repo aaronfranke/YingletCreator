@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueAssetId: a53db4b760325734cbcc14dd8837b14a
   _displayName: Matriarch Robes
-  _group: {fileID: 11400000, guid: 14901bc6611d3d54d98993552fb8d05e, type: 2}
+  _groups:
+  - {fileID: 11400000, guid: 83e476b94deb4f64d89399d0aa93cdac, type: 2}
+  - {fileID: 11400000, guid: 14901bc6611d3d54d98993552fb8d05e, type: 2}
   _addedMeshes:
   - {fileID: 11400000, guid: b157ef39bcd6ff340a15b84c6920e1b3, type: 2}
   - {fileID: 11400000, guid: 0d352b828d1c2f74f843b3cf4d97dfb4, type: 2}
