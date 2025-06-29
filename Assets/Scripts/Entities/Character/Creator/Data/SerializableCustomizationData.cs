@@ -10,7 +10,8 @@ namespace Character.Creator
 	[System.Serializable]
 	public sealed class SerializableCustomizationData
 	{
-		const int CURRENT_VERSION = 1;
+		// Used in <see cref="CustomizationDataUpgradeUtils"/>
+		const int CURRENT_VERSION = 2;
 
 		public string Name;
 
