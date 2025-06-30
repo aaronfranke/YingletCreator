@@ -12,14 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee45e03f2dc3e2f4a82b3713ad9c84ac, type: 3}
   m_Name: Flesh
   m_EditorClassIdentifier: 
-  _baseDefaultColor:
-    _hue: 0.061111104
-    _saturation: 0.4878049
-    _value: 0.96470594
-  _shadeDefaultColor:
-    _hue: 0.056497168
-    _saturation: 0.50212765
-    _value: 0.9215687
   _defaultColors:
     _base:
       _hue: 0.061111104
@@ -27,5 +19,5 @@ MonoBehaviour:
       _value: 0.96470594
     _shade:
       _hue: 0.056497168
-      _saturation: 0.50212765
-      _value: 0.9215687
+      _saturation: 0.54
+      _value: 0.913
