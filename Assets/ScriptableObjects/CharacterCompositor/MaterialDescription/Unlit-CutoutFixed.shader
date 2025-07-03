@@ -12,6 +12,8 @@ Shader "Custom/UnlitCutoutFixed"
 
         Pass
         {
+            Cull Off // Two-sided
+
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
