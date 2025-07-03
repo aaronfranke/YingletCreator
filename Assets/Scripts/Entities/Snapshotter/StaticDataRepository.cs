@@ -13,6 +13,5 @@ public class StaticDataRepository : MonoBehaviour, ICustomizationSelectedDataRep
 		string text = File.ReadAllText(_pathToYing);
 		var serializedData = JsonUtility.FromJson<SerializableCustomizationData>(text);
 		CustomizationData = new(serializedData);
-		Debug.Log("set the data");
 	}
 }
