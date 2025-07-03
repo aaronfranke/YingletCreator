@@ -1542,13 +1542,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9081375925230903845}
-  - component: {fileID: 6751175146377103108}
   - component: {fileID: 161898182547868386}
   - component: {fileID: 6239321374392324234}
-  - component: {fileID: 7710211458242965728}
+  - component: {fileID: 38101852643726894}
   - component: {fileID: 7344815673196078727}
-  - component: {fileID: 6853211589170148434}
-  - component: {fileID: 8277589479067980228}
+  - component: {fileID: 200398080046191755}
   m_Layer: 0
   m_Name: Chubby-Neck
   m_TagString: Untagged
@@ -1571,23 +1569,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4569224055405630439}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6751175146377103108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3139896974918424443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: cb6328e618ffbbc49909adccfb8fa6c7, type: 2}
-  _minSize: {x: 0.95, y: 1, z: 0.95}
-  _maxSize: {x: 1.09, y: 1, z: 1.05}
-  _applyMode: 1
-  _target: {fileID: 5680618417257419596}
 --- !u!114 &161898182547868386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1616,11 +1597,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sliderId: {fileID: 11400000, guid: cb6328e618ffbbc49909adccfb8fa6c7, type: 2}
-  _minSize: {x: 0.9, y: 1, z: 0.95}
-  _maxSize: {x: 1.2, y: 1, z: 1.05}
+  _minSize: {x: 0.92, y: 1, z: 0.92}
+  _maxSize: {x: 1.08, y: 1, z: 1.08}
   _applyMode: 1
-  _target: {fileID: 3784174606523137947}
---- !u!114 &7710211458242965728
+  _target: {fileID: 4492358670157863201}
+--- !u!114 &38101852643726894
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1629,11 +1610,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3139896974918424443}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7897b392fe3290c4e84fc9d2ad16a83d, type: 3}
+  m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bonesToDetach:
-  - {fileID: 3784174606523137947}
+  _sliderId: {fileID: 11400000, guid: 9340d1881351c0f4c94809a00946a5d7, type: 2}
+  _minSize: {x: 0.92, y: 1, z: 0.92}
+  _maxSize: {x: 1.08, y: 1, z: 1.08}
+  _applyMode: 1
+  _target: {fileID: 4492358670157863201}
 --- !u!114 &7344815673196078727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1647,25 +1631,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sliderId: {fileID: 11400000, guid: cb6328e618ffbbc49909adccfb8fa6c7, type: 2}
-  _minSize: {x: 0.7, y: 1, z: 0.9}
-  _maxSize: {x: 1.47, y: 1, z: 1.1}
+  _minSize: {x: 0.92, y: 1, z: 0.92}
+  _maxSize: {x: 1.08, y: 1, z: 1.08}
   _applyMode: 1
-  _target: {fileID: 2921978387039867207}
---- !u!114 &6853211589170148434
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3139896974918424443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7897b392fe3290c4e84fc9d2ad16a83d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bonesToDetach:
-  - {fileID: 2921978387039867207}
---- !u!114 &8277589479067980228
+  _target: {fileID: 1790092576762160158}
+--- !u!114 &200398080046191755
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1677,11 +1647,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: cb6328e618ffbbc49909adccfb8fa6c7, type: 2}
-  _minSize: {x: 0.65, y: 1, z: 0.85}
-  _maxSize: {x: 1.4, y: 1, z: 1.28}
+  _sliderId: {fileID: 11400000, guid: 9340d1881351c0f4c94809a00946a5d7, type: 2}
+  _minSize: {x: 0.92, y: 1, z: 0.92}
+  _maxSize: {x: 1.08, y: 1, z: 1.08}
   _applyMode: 1
-  _target: {fileID: 4674834374388199728}
+  _target: {fileID: 1790092576762160158}
 --- !u!1 &3192563437372034910
 GameObject:
   m_ObjectHideFlags: 0
