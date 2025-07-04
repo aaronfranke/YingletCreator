@@ -44,7 +44,6 @@ namespace Character.Compositor
 		[SerializeField] Texture2D _grayscale;
 		[SerializeField] Texture2D _mask;
 		[SerializeField] CharacterElementTag[] _tags;
-		[SerializeField] CharacterElementTag[] _maskedTags;
 
 		public ReColorId ReColorId => _reColorId;
 

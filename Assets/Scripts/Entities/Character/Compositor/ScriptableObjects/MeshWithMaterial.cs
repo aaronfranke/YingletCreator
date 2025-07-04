@@ -10,7 +10,6 @@ namespace Character.Compositor
 		[SerializeField] GameObject _skinnedMeshRendererPrefab;
 		[SerializeField] MaterialDescription _materialWithDescription;
 		[SerializeField] CharacterElementTag[] _tags;
-		[SerializeField] CharacterElementTag[] _maskedTags;
 
 		public GameObject SkinnedMeshRendererPrefab => _skinnedMeshRendererPrefab;
 		public MaterialDescription MaterialDescription => _materialWithDescription;
