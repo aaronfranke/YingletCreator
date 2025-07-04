@@ -59,7 +59,6 @@ namespace Character.Compositor
 		public virtual TargetMaterialTexture TargetMaterialTexture => TargetMaterialTexture.MainTexture;
 
 		public IEnumerable<CharacterElementTag> Tags => _tags;
-		public IEnumerable<CharacterElementTag> MaskedTags => _maskedTags;
 	}
 
 	public enum TargetMaterialTexture

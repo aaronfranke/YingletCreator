@@ -12,7 +12,6 @@ namespace Character.Compositor
 	public interface ITaggableCharacterElement
 	{
 		IEnumerable<CharacterElementTag> Tags { get; }
-		IEnumerable<CharacterElementTag> MaskedTags { get; }
 	}
 
 }

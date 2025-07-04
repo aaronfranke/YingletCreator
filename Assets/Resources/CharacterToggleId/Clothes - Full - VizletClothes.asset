@@ -30,7 +30,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2025c262757b93b449ea9074ef99ad13, type: 2}
   _eyeTextures: {fileID: 0}
   _roomPrefab: {fileID: 0}
-  _components: []
+  _components:
+  - {fileID: 11400000, guid: 3f1f4ba2c6a0db94b81e4c1bcb269c33, type: 2}
   _preview:
     _sprite: {fileID: 643276493, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: 05a5f89117304c04a99288d3a8404208, type: 2}

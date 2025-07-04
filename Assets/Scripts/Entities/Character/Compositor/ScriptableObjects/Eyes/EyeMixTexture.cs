@@ -41,6 +41,5 @@ namespace Character.Compositor
 		public TargetMaterialTexture TargetMaterialTexture => _target;
 
 		public IEnumerable<CharacterElementTag> Tags => Enumerable.Empty<CharacterElementTag>();
-		public IEnumerable<CharacterElementTag> MaskedTags => Enumerable.Empty<CharacterElementTag>();
 	}
 }

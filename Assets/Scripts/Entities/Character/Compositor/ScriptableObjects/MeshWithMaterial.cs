@@ -15,6 +15,5 @@ namespace Character.Compositor
 		public GameObject SkinnedMeshRendererPrefab => _skinnedMeshRendererPrefab;
 		public MaterialDescription MaterialDescription => _materialWithDescription;
 		public IEnumerable<CharacterElementTag> Tags => _tags;
-		public IEnumerable<CharacterElementTag> MaskedTags => _maskedTags;
 	}
 }

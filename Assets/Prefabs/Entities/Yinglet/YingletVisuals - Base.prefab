@@ -363,7 +363,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2485421119396331072}
-  - component: {fileID: 256332620307098488}
   - component: {fileID: 8157409077967586679}
   m_Layer: 0
   m_Name: MeshGatherer - Mask
@@ -387,18 +386,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4467667786261249746}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &256332620307098488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 525980725735257124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b916f60824f238d48a99eae7f6bbb9fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8157409077967586679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2878,6 +2865,7 @@ GameObject:
   - component: {fileID: 4256077204897904255}
   - component: {fileID: 1171032844985239950}
   - component: {fileID: 7565683739965832196}
+  - component: {fileID: 7798926055407119770}
   m_Layer: 0
   m_Name: CompositedYinglet
   m_TagString: Untagged
@@ -2928,6 +2916,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dacd48916125a5249bbfc5abdcd2c540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7798926055407119770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7768275107933138602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18e6de94e48831442ac1f9420ad1dc32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7955868827986065471
