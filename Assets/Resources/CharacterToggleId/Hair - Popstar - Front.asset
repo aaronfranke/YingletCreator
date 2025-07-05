@@ -10,18 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
-  m_Name: Hair - Misc - Ahoge (OverEye)
+  m_Name: Hair - Popstar - Front
   m_EditorClassIdentifier: 
-  _uniqueAssetId: 35d94fcb6c554d348919ac537f7fa3fb
-  _displayName: Ahoge (Over Eye)
-  _groups: []
+  _uniqueAssetId: e674130aaf91ded4eab8d9374b375696
+  _displayName: Popstar
+  _groups:
+  - {fileID: 11400000, guid: b905ab7173a64ab4cbcec39daeb3702c, type: 2}
   _addedMeshes:
-  - {fileID: 11400000, guid: 60004763fe177194d810a7bda6c13e5e, type: 2}
+  - {fileID: 11400000, guid: 7b8043250b5490c4f95d0475ec9a2792, type: 2}
   _addedTextures:
   - {fileID: 11400000, guid: 37e8c4cebf6a11b44bba549b577f2f3c, type: 2}
+  - {fileID: 11400000, guid: 9d3db0dfbcde441449000aac2ef24397, type: 2}
   _eyeTextures: {fileID: 0}
   _roomPrefab: {fileID: 0}
-  _components: []
+  _components:
+  - {fileID: 11400000, guid: 38768b53629bc34459dfb2f56b4a302d, type: 2}
   _preview:
-    _sprite: {fileID: 2075274251, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _sprite: {fileID: 109817368, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: 3a4af34d07e4cfb46adabd44c51f84ab, type: 2}
