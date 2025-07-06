@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
+  m_Name: Hair - Figgins - Front
+  m_EditorClassIdentifier: 
+  _uniqueAssetId: 439e024fdce8b6c47842db8271090793
+  _displayName: Ruffled
+  _groups:
+  - {fileID: 11400000, guid: b905ab7173a64ab4cbcec39daeb3702c, type: 2}
+  _addedMeshes:
+  - {fileID: 11400000, guid: 0608d2aee5336094cb020a00782ca155, type: 2}
+  _addedTextures:
+  - {fileID: 11400000, guid: 37e8c4cebf6a11b44bba549b577f2f3c, type: 2}
+  - {fileID: 11400000, guid: b82d3a74192347b4c919ee6d4caefbbb, type: 2}
+  _eyeTextures: {fileID: 0}
+  _roomPrefab: {fileID: 0}
+  _components:
+  - {fileID: 11400000, guid: 38768b53629bc34459dfb2f56b4a302d, type: 2}
+  _preview:
+    _sprite: {fileID: -934735584, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _cameraPosition: {fileID: 11400000, guid: 3a4af34d07e4cfb46adabd44c51f84ab, type: 2}
