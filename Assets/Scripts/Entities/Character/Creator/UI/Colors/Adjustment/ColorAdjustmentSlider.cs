@@ -97,7 +97,7 @@ namespace Character.Creator.UI
 
 		void AdjustTargetVal(WriteableColorizeValuesPart part, float diff)
 		{
-			if (_target == ColorAdjustmentSliderTarget.Hue) part.Hue += diff;
+			if (_target == ColorAdjustmentSliderTarget.Hue) part.Hue = (part.Hue + diff).Wrap01();
 			else if (_target == ColorAdjustmentSliderTarget.Saturation) part.Saturation += diff;
 			else if (_target == ColorAdjustmentSliderTarget.Value) part.Value += diff;
 			else throw new ArgumentException("Invalid target");

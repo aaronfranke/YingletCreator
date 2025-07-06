@@ -51,28 +51,47 @@ namespace Character.Creator.UI
 
 		public void Paste()
 		{
-			var value = _copiedValue;
+			bool pasteFromHexClipboard = Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.LeftAlt);
 
-			// Little hack to paste real colors in from hex codes; might make this real in the future
-			if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.LeftAlt))
+			if (pasteFromHexClipboard)
 			{
-				var colorFromClipboard = GetColorFromClipboard();
-				if (colorFromClipboard != null)
-				{
-					value = new ColorizeValuesFromRealColor((Color)colorFromClipboard);
-				}
+				PasteFromHexClipboard();
 			}
+			else
+			{
+				PasteFromCopied();
+			}
+		}
 
-			if (value == null) return;
+		void PasteFromCopied()
+		{
+			var copiedValue = _copiedValue;
+			if (copiedValue == null) return;
 
 			var ids = _activeSelection.AllSelected.ToList();
-
 			using var suspender = new ReactivitySuspender();
 			foreach (var id in ids)
 			{
-				_dataRepository.SetColorizeValues(id, value);
+				_dataRepository.SetColorizeValues(id, copiedValue);
 			}
 			Pasted();
+		}
+
+		void PasteFromHexClipboard()
+		{
+			var clipboardColor = GetColorFromClipboard();
+			if (clipboardColor == null) return;
+
+			var ids = _activeSelection.AllSelected.ToList();
+			using var suspender = new ReactivitySuspender();
+			foreach (var id in ids)
+			{
+				var existingColor = _dataRepository.GetColorizeValues(id);
+				var newColors = new ColorizeValuesFromRealColor(clipboardColor.Value, existingColor);
+				_dataRepository.SetColorizeValues(id, newColors);
+			}
+			Pasted();
+
 		}
 
 		public Color? GetColorFromClipboard()
@@ -87,33 +106,5 @@ namespace Character.Creator.UI
 			return null;
 		}
 	}
-	class ColorizeValuesFromRealColor : IColorizeValues
-	{
-		private readonly IColorizeValuesPart _part;
 
-		public ColorizeValuesFromRealColor(Color color)
-		{
-			_part = new ColorizeValuesFromRealColorPart(color);
-		}
-
-		public IColorizeValuesPart Base => _part;
-
-		public IColorizeValuesPart Shade => _part;
-	}
-	class ColorizeValuesFromRealColorPart : IColorizeValuesPart
-	{
-		public ColorizeValuesFromRealColorPart(Color color)
-		{
-			Color.RGBToHSV(color, out var hue, out var saturation, out var value);
-			Hue = hue;
-			Saturation = saturation;
-			Value = value;
-		}
-
-		public float Hue { get; }
-
-		public float Saturation { get; }
-
-		public float Value { get; }
-	}
 }
