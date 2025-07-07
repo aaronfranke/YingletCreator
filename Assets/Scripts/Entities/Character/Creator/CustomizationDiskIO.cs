@@ -41,7 +41,10 @@ namespace Character.Creator
 	/// </summary>
 	public interface ICustomizationDiskIO
 	{
-		void SaveSelected();
+		/// <summary>
+		/// Returns true if the save went through
+		/// </summary>
+		bool SaveSelected();
 		void DuplicateSelected();
 		void DeleteSelected();
 		IEnumerable<CachedYingletReference> LoadInitialYingData(CustomizationYingletGroup group);
@@ -66,14 +69,19 @@ namespace Character.Creator
 			_yingletRepository = this.GetComponent<ICustomizationYingletRepository>();
 		}
 
-		public void SaveSelected()
+		public bool SaveSelected()
 		{
+			if (_selectionReference.Selected == null) return false;
+			var isPreset = _selectionReference.Selected.Group == CustomizationYingletGroup.Preset;
+			bool debugButtonsHeld = Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.LeftAlt);
+			if (isPreset && !debugButtonsHeld) return false;
+
 			// Serialize the data
 			var data = _selectionData.CustomizationData;
 			var serializedData = new SerializableCustomizationData(data);
 
 			// Write it to disk
-			string rootFolder = _locationProvider.CustomFolderRoot;
+			string rootFolder = isPreset ? _locationProvider.PresetFolderRoot : _locationProvider.CustomFolderRoot;
 			string newYingletName = data.Name.Val;
 			var lastFilePath = _selectionReference.Selected.Path;
 			var newFilePath = GetUniqueAlphanumericFilePath(newYingletName, lastFilePath, rootFolder);
@@ -89,6 +97,7 @@ namespace Character.Creator
 			// Update our own reference
 			_selectionReference.Selected.CachedData = serializedData;
 			_selectionReference.Selected.Path = newFilePath;
+			return true;
 		}
 
 		public void DuplicateSelected()
