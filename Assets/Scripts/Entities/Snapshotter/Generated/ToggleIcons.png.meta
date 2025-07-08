@@ -144,8 +144,8 @@ TextureImporter:
       name: Clothes - Neck - Choker w Gem
       rect:
         serializedVersion: 2
-        x: 1920
-        y: 128
+        x: 0
+        y: 256
         width: 128
         height: 128
       alignment: 0
@@ -232,7 +232,7 @@ TextureImporter:
       name: Clothes - Undergarments - Bra
       rect:
         serializedVersion: 2
-        x: 0
+        x: 128
         y: 384
         width: 128
         height: 128
@@ -254,7 +254,7 @@ TextureImporter:
       name: Clothes - Undergarments - Bra (Trimmed)
       rect:
         serializedVersion: 2
-        x: 128
+        x: 256
         y: 384
         width: 128
         height: 128
@@ -276,7 +276,7 @@ TextureImporter:
       name: Clothes - Undergarments - Underwear
       rect:
         serializedVersion: 2
-        x: 640
+        x: 768
         y: 384
         width: 128
         height: 128
@@ -298,7 +298,7 @@ TextureImporter:
       name: Clothes - Undergarments - Underwear (Trimmed)
       rect:
         serializedVersion: 2
-        x: 768
+        x: 896
         y: 384
         width: 128
         height: 128
@@ -320,7 +320,7 @@ TextureImporter:
       name: Face - Eye - Kass
       rect:
         serializedVersion: 2
-        x: 128
+        x: 256
         y: 512
         width: 128
         height: 128
@@ -342,7 +342,7 @@ TextureImporter:
       name: Face - Eye - Pekkit
       rect:
         serializedVersion: 2
-        x: 768
+        x: 896
         y: 512
         width: 128
         height: 128
@@ -364,7 +364,7 @@ TextureImporter:
       name: Face - Eye - Vizlet
       rect:
         serializedVersion: 2
-        x: 1152
+        x: 1280
         y: 512
         width: 128
         height: 128
@@ -386,7 +386,7 @@ TextureImporter:
       name: Face - Mouth - Kass
       rect:
         serializedVersion: 2
-        x: 1408
+        x: 1536
         y: 512
         width: 128
         height: 128
@@ -408,7 +408,7 @@ TextureImporter:
       name: Face - Mouth - Pekkit
       rect:
         serializedVersion: 2
-        x: 1792
+        x: 1920
         y: 512
         width: 128
         height: 128
@@ -430,7 +430,7 @@ TextureImporter:
       name: Fluff - Chest
       rect:
         serializedVersion: 2
-        x: 1152
+        x: 1280
         y: 640
         width: 128
         height: 128
@@ -452,7 +452,7 @@ TextureImporter:
       name: Fluff - Crotch
       rect:
         serializedVersion: 2
-        x: 1280
+        x: 1408
         y: 640
         width: 128
         height: 128
@@ -474,7 +474,7 @@ TextureImporter:
       name: Fluff - Elbows
       rect:
         serializedVersion: 2
-        x: 1408
+        x: 1536
         y: 640
         width: 128
         height: 128
@@ -496,7 +496,7 @@ TextureImporter:
       name: Fluff - Knees
       rect:
         serializedVersion: 2
-        x: 1536
+        x: 1664
         y: 640
         width: 128
         height: 128
@@ -518,7 +518,7 @@ TextureImporter:
       name: Fluff - Shoulders
       rect:
         serializedVersion: 2
-        x: 1664
+        x: 1792
         y: 640
         width: 128
         height: 128
@@ -540,7 +540,7 @@ TextureImporter:
       name: Hair - Kass - Front
       rect:
         serializedVersion: 2
-        x: 256
+        x: 768
         y: 768
         width: 128
         height: 128
@@ -562,7 +562,7 @@ TextureImporter:
       name: Hair - Pekkit - Front
       rect:
         serializedVersion: 2
-        x: 256
+        x: 1152
         y: 896
         width: 128
         height: 128
@@ -584,8 +584,8 @@ TextureImporter:
       name: Hair - Vizlet - Front
       rect:
         serializedVersion: 2
-        x: 896
-        y: 896
+        x: 0
+        y: 1024
         width: 128
         height: 128
       alignment: 0
@@ -606,8 +606,8 @@ TextureImporter:
       name: Pattern - Body - Torso Line
       rect:
         serializedVersion: 2
-        x: 1152
-        y: 1024
+        x: 256
+        y: 1152
         width: 128
         height: 128
       alignment: 0
@@ -628,7 +628,7 @@ TextureImporter:
       name: Pattern - Body - Legs
       rect:
         serializedVersion: 2
-        x: 512
+        x: 1664
         y: 1024
         width: 128
         height: 128
@@ -650,7 +650,7 @@ TextureImporter:
       name: Pattern - Head - Bottom
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1152
         y: 1152
         width: 128
         height: 128
@@ -672,8 +672,8 @@ TextureImporter:
       name: Pattern - Ear - Dots
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 1024
+        x: 384
+        y: 1152
         width: 128
         height: 128
       alignment: 0
@@ -694,8 +694,8 @@ TextureImporter:
       name: Pattern - Ear - Tips
       rect:
         serializedVersion: 2
-        x: 1664
-        y: 1024
+        x: 768
+        y: 1152
         width: 128
         height: 128
       alignment: 0
@@ -716,7 +716,7 @@ TextureImporter:
       name: Pattern - Head - Hard Blush
       rect:
         serializedVersion: 2
-        x: 384
+        x: 1536
         y: 1152
         width: 128
         height: 128
@@ -738,7 +738,7 @@ TextureImporter:
       name: Pattern - Head - Nose
       rect:
         serializedVersion: 2
-        x: 640
+        x: 1792
         y: 1152
         width: 128
         height: 128
@@ -760,8 +760,8 @@ TextureImporter:
       name: Pattern - Head - Top
       rect:
         serializedVersion: 2
-        x: 1152
-        y: 1152
+        x: 256
+        y: 1280
         width: 128
         height: 128
       alignment: 0
@@ -782,8 +782,8 @@ TextureImporter:
       name: Pattern - Head - Whiskers
       rect:
         serializedVersion: 2
-        x: 1408
-        y: 1152
+        x: 512
+        y: 1280
         width: 128
         height: 128
       alignment: 0
@@ -804,8 +804,8 @@ TextureImporter:
       name: TailTuft - Regular
       rect:
         serializedVersion: 2
-        x: 1920
-        y: 1152
+        x: 1024
+        y: 1280
         width: 128
         height: 128
       alignment: 0
@@ -826,8 +826,8 @@ TextureImporter:
       name: zRoom - Dungeon
       rect:
         serializedVersion: 2
-        x: 896
-        y: 1280
+        x: 0
+        y: 1408
         width: 128
         height: 128
       alignment: 0
@@ -848,8 +848,8 @@ TextureImporter:
       name: zRoom - Kass Room
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 1280
+        x: 128
+        y: 1408
         width: 128
         height: 128
       alignment: 0
@@ -870,8 +870,8 @@ TextureImporter:
       name: zRoom - Outdoors
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 1280
+        x: 384
+        y: 1408
         width: 128
         height: 128
       alignment: 0
@@ -892,7 +892,7 @@ TextureImporter:
       name: Face - ShellTooth - Normal
       rect:
         serializedVersion: 2
-        x: 768
+        x: 896
         y: 640
         width: 128
         height: 128
@@ -914,7 +914,7 @@ TextureImporter:
       name: Face - ShellTooth - Small
       rect:
         serializedVersion: 2
-        x: 896
+        x: 1024
         y: 640
         width: 128
         height: 128
@@ -936,7 +936,7 @@ TextureImporter:
       name: Face - ShellTooth - None
       rect:
         serializedVersion: 2
-        x: 640
+        x: 768
         y: 640
         width: 128
         height: 128
@@ -958,8 +958,8 @@ TextureImporter:
       name: Hair - Bald - Front
       rect:
         serializedVersion: 2
-        x: 1920
-        y: 640
+        x: 0
+        y: 768
         width: 128
         height: 128
       alignment: 0
@@ -980,8 +980,8 @@ TextureImporter:
       name: TailTuft - None
       rect:
         serializedVersion: 2
-        x: 1792
-        y: 1152
+        x: 896
+        y: 1280
         width: 128
         height: 128
       alignment: 0
@@ -1002,7 +1002,7 @@ TextureImporter:
       name: Hair - Bald - Back
       rect:
         serializedVersion: 2
-        x: 1792
+        x: 1920
         y: 640
         width: 128
         height: 128
@@ -1024,7 +1024,7 @@ TextureImporter:
       name: Hair - Kass - Back
       rect:
         serializedVersion: 2
-        x: 128
+        x: 640
         y: 768
         width: 128
         height: 128
@@ -1046,7 +1046,7 @@ TextureImporter:
       name: Hair - Pekkit - Back
       rect:
         serializedVersion: 2
-        x: 128
+        x: 1024
         y: 896
         width: 128
         height: 128
@@ -1068,7 +1068,7 @@ TextureImporter:
       name: Hair - Vizlet - Back
       rect:
         serializedVersion: 2
-        x: 768
+        x: 1920
         y: 896
         width: 128
         height: 128
@@ -1134,7 +1134,7 @@ TextureImporter:
       name: Clothes - Tail - Tail Ribbon
       rect:
         serializedVersion: 2
-        x: 1280
+        x: 1408
         y: 256
         width: 128
         height: 128
@@ -1156,7 +1156,7 @@ TextureImporter:
       name: Clothes - Tail - Tail Bells
       rect:
         serializedVersion: 2
-        x: 1152
+        x: 1280
         y: 256
         width: 128
         height: 128
@@ -1178,7 +1178,7 @@ TextureImporter:
       name: TailTuft - Vizlet
       rect:
         serializedVersion: 2
-        x: 128
+        x: 1280
         y: 1280
         width: 128
         height: 128
@@ -1200,7 +1200,7 @@ TextureImporter:
       name: Clothes - Top - Lopin
       rect:
         serializedVersion: 2
-        x: 1664
+        x: 1792
         y: 256
         width: 128
         height: 128
@@ -1222,7 +1222,7 @@ TextureImporter:
       name: Clothes - Neck - Scarf - Lopin
       rect:
         serializedVersion: 2
-        x: 512
+        x: 640
         y: 256
         width: 128
         height: 128
@@ -1244,7 +1244,7 @@ TextureImporter:
       name: Hair - Lopin - Front
       rect:
         serializedVersion: 2
-        x: 1152
+        x: 1664
         y: 768
         width: 128
         height: 128
@@ -1266,7 +1266,7 @@ TextureImporter:
       name: Face - Eye - Lopin
       rect:
         serializedVersion: 2
-        x: 512
+        x: 640
         y: 512
         width: 128
         height: 128
@@ -1288,7 +1288,7 @@ TextureImporter:
       name: Face - Mouth - Lopin
       rect:
         serializedVersion: 2
-        x: 1664
+        x: 1792
         y: 512
         width: 128
         height: 128
@@ -1310,8 +1310,8 @@ TextureImporter:
       name: Hair - Zally - Back
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 896
+        x: 128
+        y: 1024
         width: 128
         height: 128
       alignment: 0
@@ -1332,8 +1332,8 @@ TextureImporter:
       name: Hair - Zally - Front
       rect:
         serializedVersion: 2
-        x: 1152
-        y: 896
+        x: 256
+        y: 1024
         width: 128
         height: 128
       alignment: 0
@@ -1354,8 +1354,8 @@ TextureImporter:
       name: zRoom - Ladies Parlour
       rect:
         serializedVersion: 2
-        x: 1152
-        y: 1280
+        x: 256
+        y: 1408
         width: 128
         height: 128
       alignment: 0
@@ -1376,7 +1376,7 @@ TextureImporter:
       name: Clothes - Top - Zally
       rect:
         serializedVersion: 2
-        x: 1792
+        x: 1920
         y: 256
         width: 128
         height: 128
@@ -1398,7 +1398,7 @@ TextureImporter:
       name: Face - Eye - Zally
       rect:
         serializedVersion: 2
-        x: 1280
+        x: 1408
         y: 512
         width: 128
         height: 128
@@ -1420,8 +1420,8 @@ TextureImporter:
       name: Face - Mouth - Zally
       rect:
         serializedVersion: 2
-        x: 1920
-        y: 512
+        x: 0
+        y: 640
         width: 128
         height: 128
       alignment: 0
@@ -1442,7 +1442,7 @@ TextureImporter:
       name: TailTuft - Spiky
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1152
         y: 1280
         width: 128
         height: 128
@@ -1464,8 +1464,8 @@ TextureImporter:
       name: TailTuft - Fuzzy
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 1152
+        x: 640
+        y: 1280
         width: 128
         height: 128
       alignment: 0
@@ -1486,7 +1486,7 @@ TextureImporter:
       name: Face - Mouth - Lippie
       rect:
         serializedVersion: 2
-        x: 1536
+        x: 1664
         y: 512
         width: 128
         height: 128
@@ -1508,7 +1508,7 @@ TextureImporter:
       name: Ears - Normal
       rect:
         serializedVersion: 2
-        x: 1024
+        x: 1152
         y: 384
         width: 128
         height: 128
@@ -1530,7 +1530,7 @@ TextureImporter:
       name: Face - Eye - Lippie
       rect:
         serializedVersion: 2
-        x: 384
+        x: 512
         y: 512
         width: 128
         height: 128
@@ -1552,7 +1552,7 @@ TextureImporter:
       name: Whiskers - None
       rect:
         serializedVersion: 2
-        x: 512
+        x: 1664
         y: 1280
         width: 128
         height: 128
@@ -1574,7 +1574,7 @@ TextureImporter:
       name: Whiskers - Normal
       rect:
         serializedVersion: 2
-        x: 640
+        x: 1792
         y: 1280
         width: 128
         height: 128
@@ -1596,7 +1596,7 @@ TextureImporter:
       name: Whiskers - Fuzzy
       rect:
         serializedVersion: 2
-        x: 384
+        x: 1536
         y: 1280
         width: 128
         height: 128
@@ -1618,7 +1618,7 @@ TextureImporter:
       name: Whiskers - Sharp
       rect:
         serializedVersion: 2
-        x: 768
+        x: 1920
         y: 1280
         width: 128
         height: 128
@@ -1640,7 +1640,7 @@ TextureImporter:
       name: Ears - Round
       rect:
         serializedVersion: 2
-        x: 1152
+        x: 1280
         y: 384
         width: 128
         height: 128
@@ -1662,7 +1662,7 @@ TextureImporter:
       name: Hair - Lippie - Back
       rect:
         serializedVersion: 2
-        x: 896
+        x: 1408
         y: 768
         width: 128
         height: 128
@@ -1684,7 +1684,7 @@ TextureImporter:
       name: Hair - Lippie - Front
       rect:
         serializedVersion: 2
-        x: 1024
+        x: 1536
         y: 768
         width: 128
         height: 128
@@ -1706,7 +1706,7 @@ TextureImporter:
       name: Hair - Misc - Ahoge (Front)
       rect:
         serializedVersion: 2
-        x: 1280
+        x: 1792
         y: 768
         width: 128
         height: 128
@@ -1725,11 +1725,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hair - Misc - HighPonytail
+      name: Hair - Misc - Ponytail - High
       rect:
         serializedVersion: 2
-        x: 1664
-        y: 768
+        x: 384
+        y: 896
         width: 128
         height: 128
       alignment: 0
@@ -1747,11 +1747,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hair - Misc - Ponytail
+      name: Hair - Misc - Ponytail - Back
       rect:
         serializedVersion: 2
-        x: 1792
-        y: 768
+        x: 256
+        y: 896
         width: 128
         height: 128
       alignment: 0
@@ -1838,7 +1838,7 @@ TextureImporter:
       name: Clothes - Top - Lippie
       rect:
         serializedVersion: 2
-        x: 1536
+        x: 1664
         y: 256
         width: 128
         height: 128
@@ -1860,7 +1860,7 @@ TextureImporter:
       name: Clothes - Neck - Torc w Gem
       rect:
         serializedVersion: 2
-        x: 768
+        x: 896
         y: 256
         width: 128
         height: 128
@@ -1882,7 +1882,7 @@ TextureImporter:
       name: Clothes - Neck - Choker
       rect:
         serializedVersion: 2
-        x: 1792
+        x: 1920
         y: 128
         width: 128
         height: 128
@@ -1904,7 +1904,7 @@ TextureImporter:
       name: Clothes - Neck - Torc
       rect:
         serializedVersion: 2
-        x: 640
+        x: 768
         y: 256
         width: 128
         height: 128
@@ -1926,8 +1926,8 @@ TextureImporter:
       name: Pattern - Body - Arms
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 896
+        x: 384
+        y: 1024
         width: 128
         height: 128
       alignment: 0
@@ -1948,8 +1948,8 @@ TextureImporter:
       name: Pattern - Body - Back Line
       rect:
         serializedVersion: 2
-        x: 1408
-        y: 896
+        x: 512
+        y: 1024
         width: 128
         height: 128
       alignment: 0
@@ -1970,8 +1970,8 @@ TextureImporter:
       name: Pattern - Body - Back Stripes
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 896
+        x: 640
+        y: 1024
         width: 128
         height: 128
       alignment: 0
@@ -1992,8 +1992,8 @@ TextureImporter:
       name: Pattern - Body - Body Dots
       rect:
         serializedVersion: 2
-        x: 1664
-        y: 896
+        x: 768
+        y: 1024
         width: 128
         height: 128
       alignment: 0
@@ -2014,8 +2014,8 @@ TextureImporter:
       name: Pattern - Body - Chest
       rect:
         serializedVersion: 2
-        x: 1792
-        y: 896
+        x: 896
+        y: 1024
         width: 128
         height: 128
       alignment: 0
@@ -2036,8 +2036,8 @@ TextureImporter:
       name: Pattern - Body - Crotch
       rect:
         serializedVersion: 2
-        x: 1920
-        y: 896
+        x: 1024
+        y: 1024
         width: 128
         height: 128
       alignment: 0
@@ -2058,7 +2058,7 @@ TextureImporter:
       name: Pattern - Body - Elbow
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1152
         y: 1024
         width: 128
         height: 128
@@ -2080,7 +2080,7 @@ TextureImporter:
       name: Pattern - Body - Feet
       rect:
         serializedVersion: 2
-        x: 128
+        x: 1280
         y: 1024
         width: 128
         height: 128
@@ -2102,7 +2102,7 @@ TextureImporter:
       name: Pattern - Body - Hands
       rect:
         serializedVersion: 2
-        x: 256
+        x: 1408
         y: 1024
         width: 128
         height: 128
@@ -2124,7 +2124,7 @@ TextureImporter:
       name: Pattern - Body - Knee
       rect:
         serializedVersion: 2
-        x: 384
+        x: 1536
         y: 1024
         width: 128
         height: 128
@@ -2146,7 +2146,7 @@ TextureImporter:
       name: Pattern - Body - Limb Stripes
       rect:
         serializedVersion: 2
-        x: 640
+        x: 1792
         y: 1024
         width: 128
         height: 128
@@ -2168,7 +2168,7 @@ TextureImporter:
       name: Pattern - Body - Shoulder
       rect:
         serializedVersion: 2
-        x: 768
+        x: 1920
         y: 1024
         width: 128
         height: 128
@@ -2190,8 +2190,8 @@ TextureImporter:
       name: Pattern - Body - Tail Stripes
       rect:
         serializedVersion: 2
-        x: 896
-        y: 1024
+        x: 0
+        y: 1152
         width: 128
         height: 128
       alignment: 0
@@ -2212,8 +2212,8 @@ TextureImporter:
       name: Pattern - Ear - Stripes
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 1024
+        x: 640
+        y: 1152
         width: 128
         height: 128
       alignment: 0
@@ -2234,8 +2234,8 @@ TextureImporter:
       name: Pattern - Head - Bandaid
       rect:
         serializedVersion: 2
-        x: 1792
-        y: 1024
+        x: 896
+        y: 1152
         width: 128
         height: 128
       alignment: 0
@@ -2256,8 +2256,8 @@ TextureImporter:
       name: Pattern - Head - Bandit
       rect:
         serializedVersion: 2
-        x: 1920
-        y: 1024
+        x: 1024
+        y: 1152
         width: 128
         height: 128
       alignment: 0
@@ -2278,7 +2278,7 @@ TextureImporter:
       name: Pattern - Head - Eyeshadow
       rect:
         serializedVersion: 2
-        x: 128
+        x: 1280
         y: 1152
         width: 128
         height: 128
@@ -2300,7 +2300,7 @@ TextureImporter:
       name: Pattern - Head - Lemur
       rect:
         serializedVersion: 2
-        x: 512
+        x: 1664
         y: 1152
         width: 128
         height: 128
@@ -2322,7 +2322,7 @@ TextureImporter:
       name: Pattern - Head - Platypus
       rect:
         serializedVersion: 2
-        x: 768
+        x: 1920
         y: 1152
         width: 128
         height: 128
@@ -2344,8 +2344,8 @@ TextureImporter:
       name: Pattern - Head - Raccoon
       rect:
         serializedVersion: 2
-        x: 896
-        y: 1152
+        x: 0
+        y: 1280
         width: 128
         height: 128
       alignment: 0
@@ -2366,8 +2366,8 @@ TextureImporter:
       name: Pattern - Head - Soft Blush
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 1152
+        x: 128
+        y: 1280
         width: 128
         height: 128
       alignment: 0
@@ -2388,8 +2388,8 @@ TextureImporter:
       name: Pattern - Head - Whisker Ends
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 1152
+        x: 384
+        y: 1280
         width: 128
         height: 128
       alignment: 0
@@ -2410,7 +2410,7 @@ TextureImporter:
       name: Clothes - Neck - Collar
       rect:
         serializedVersion: 2
-        x: 0
+        x: 128
         y: 256
         width: 128
         height: 128
@@ -2432,7 +2432,7 @@ TextureImporter:
       name: Clothes - Undergarments - Torn Crop Top
       rect:
         serializedVersion: 2
-        x: 512
+        x: 640
         y: 384
         width: 128
         height: 128
@@ -2454,7 +2454,7 @@ TextureImporter:
       name: Clothes - Neck - Collar w Spikes
       rect:
         serializedVersion: 2
-        x: 256
+        x: 384
         y: 256
         width: 128
         height: 128
@@ -2564,7 +2564,7 @@ TextureImporter:
       name: Clothes - Tail - Tail Band
       rect:
         serializedVersion: 2
-        x: 896
+        x: 1024
         y: 256
         width: 128
         height: 128
@@ -2586,7 +2586,7 @@ TextureImporter:
       name: Clothes - Tail - Tail Band w Spikes
       rect:
         serializedVersion: 2
-        x: 1024
+        x: 1152
         y: 256
         width: 128
         height: 128
@@ -2696,7 +2696,7 @@ TextureImporter:
       name: Face - Eye - Popstar
       rect:
         serializedVersion: 2
-        x: 896
+        x: 1024
         y: 512
         width: 128
         height: 128
@@ -2718,7 +2718,7 @@ TextureImporter:
       name: Face - MouthLipstick - Basic
       rect:
         serializedVersion: 2
-        x: 0
+        x: 128
         y: 640
         width: 128
         height: 128
@@ -2850,7 +2850,7 @@ TextureImporter:
       name: Ears - TornC
       rect:
         serializedVersion: 2
-        x: 1536
+        x: 1664
         y: 384
         width: 128
         height: 128
@@ -2872,8 +2872,8 @@ TextureImporter:
       name: Face - Eye - ElderlyFem
       rect:
         serializedVersion: 2
-        x: 1920
-        y: 384
+        x: 0
+        y: 512
         width: 128
         height: 128
       alignment: 0
@@ -2894,8 +2894,8 @@ TextureImporter:
       name: Pattern - Ear - Gradient
       rect:
         serializedVersion: 2
-        x: 1408
-        y: 1024
+        x: 512
+        y: 1152
         width: 128
         height: 128
       alignment: 0
@@ -2916,7 +2916,7 @@ TextureImporter:
       name: Whiskers - Droopy
       rect:
         serializedVersion: 2
-        x: 256
+        x: 1408
         y: 1280
         width: 128
         height: 128
@@ -2938,8 +2938,8 @@ TextureImporter:
       name: zRoom - SS5R
       rect:
         serializedVersion: 2
-        x: 1408
-        y: 1280
+        x: 512
+        y: 1408
         width: 128
         height: 128
       alignment: 0
@@ -2960,7 +2960,7 @@ TextureImporter:
       name: Face - Eye - Beizel
       rect:
         serializedVersion: 2
-        x: 1664
+        x: 1792
         y: 384
         width: 128
         height: 128
@@ -2982,7 +2982,7 @@ TextureImporter:
       name: Face - Eye - Kattajak
       rect:
         serializedVersion: 2
-        x: 256
+        x: 384
         y: 512
         width: 128
         height: 128
@@ -3004,7 +3004,7 @@ TextureImporter:
       name: Face - Eye - Round
       rect:
         serializedVersion: 2
-        x: 1024
+        x: 1152
         y: 512
         width: 128
         height: 128
@@ -3026,8 +3026,8 @@ TextureImporter:
       name: zRoom - Val Salia Residential
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 1280
+        x: 768
+        y: 1408
         width: 128
         height: 128
       alignment: 0
@@ -3048,7 +3048,7 @@ TextureImporter:
       name: Hair - Kattajak - Back
       rect:
         serializedVersion: 2
-        x: 384
+        x: 896
         y: 768
         width: 128
         height: 128
@@ -3070,7 +3070,7 @@ TextureImporter:
       name: Hair - Kattajak - Front
       rect:
         serializedVersion: 2
-        x: 512
+        x: 1024
         y: 768
         width: 128
         height: 128
@@ -3092,7 +3092,7 @@ TextureImporter:
       name: Hair - Short - Back
       rect:
         serializedVersion: 2
-        x: 512
+        x: 1664
         y: 896
         width: 128
         height: 128
@@ -3114,7 +3114,7 @@ TextureImporter:
       name: Hair - Short - Front
       rect:
         serializedVersion: 2
-        x: 640
+        x: 1792
         y: 896
         width: 128
         height: 128
@@ -3136,8 +3136,8 @@ TextureImporter:
       name: Hair - Mohawk - Back
       rect:
         serializedVersion: 2
-        x: 1920
-        y: 768
+        x: 768
+        y: 896
         width: 128
         height: 128
       alignment: 0
@@ -3158,7 +3158,7 @@ TextureImporter:
       name: Hair - Mohawk - Front
       rect:
         serializedVersion: 2
-        x: 0
+        x: 896
         y: 896
         width: 128
         height: 128
@@ -3180,7 +3180,7 @@ TextureImporter:
       name: Clothes - Neck - Scarf
       rect:
         serializedVersion: 2
-        x: 384
+        x: 512
         y: 256
         width: 128
         height: 128
@@ -3202,7 +3202,7 @@ TextureImporter:
       name: Face - ShellTooth - Dagger
       rect:
         serializedVersion: 2
-        x: 256
+        x: 384
         y: 640
         width: 128
         height: 128
@@ -3268,7 +3268,7 @@ TextureImporter:
       name: Clothes - Neck - Collar w Nametag
       rect:
         serializedVersion: 2
-        x: 128
+        x: 256
         y: 256
         width: 128
         height: 128
@@ -3290,7 +3290,7 @@ TextureImporter:
       name: Clothes - Tail - Tail Ribbon Loops
       rect:
         serializedVersion: 2
-        x: 1408
+        x: 1536
         y: 256
         width: 128
         height: 128
@@ -3312,7 +3312,7 @@ TextureImporter:
       name: Clothes - Undergarments - Bra Crossed
       rect:
         serializedVersion: 2
-        x: 256
+        x: 384
         y: 384
         width: 128
         height: 128
@@ -3334,7 +3334,7 @@ TextureImporter:
       name: Clothes - Undergarments - Bra Crossed (Trimmed)
       rect:
         serializedVersion: 2
-        x: 384
+        x: 512
         y: 384
         width: 128
         height: 128
@@ -3356,8 +3356,8 @@ TextureImporter:
       name: Hair - Misc - Ahoge (Top)
       rect:
         serializedVersion: 2
-        x: 1408
-        y: 768
+        x: 0
+        y: 896
         width: 128
         height: 128
       alignment: 0
@@ -3378,7 +3378,7 @@ TextureImporter:
       name: Hair - Poak - Front
       rect:
         serializedVersion: 2
-        x: 384
+        x: 1280
         y: 896
         width: 128
         height: 128
@@ -3400,7 +3400,7 @@ TextureImporter:
       name: Clothes - Neck - Bowtie
       rect:
         serializedVersion: 2
-        x: 1664
+        x: 1792
         y: 128
         width: 128
         height: 128
@@ -3422,7 +3422,7 @@ TextureImporter:
       name: Hair - Highlight
       rect:
         serializedVersion: 2
-        x: 0
+        x: 512
         y: 768
         width: 128
         height: 128
@@ -3444,7 +3444,7 @@ TextureImporter:
       name: Pattern - Head - Freckles
       rect:
         serializedVersion: 2
-        x: 256
+        x: 1408
         y: 1152
         width: 128
         height: 128
@@ -3466,8 +3466,8 @@ TextureImporter:
       name: TailTuft - Highlight
       rect:
         serializedVersion: 2
-        x: 1664
-        y: 1152
+        x: 768
+        y: 1280
         width: 128
         height: 128
       alignment: 0
@@ -3488,8 +3488,8 @@ TextureImporter:
       name: zRoom - Val Salia Residential (Night)
       rect:
         serializedVersion: 2
-        x: 1664
-        y: 1280
+        x: 896
+        y: 1408
         width: 128
         height: 128
       alignment: 0
@@ -3598,8 +3598,8 @@ TextureImporter:
       name: Clothes - Top - Zally (No Trim)
       rect:
         serializedVersion: 2
-        x: 1920
-        y: 256
+        x: 0
+        y: 384
         width: 128
         height: 128
       alignment: 0
@@ -3620,7 +3620,7 @@ TextureImporter:
       name: Face - Eye - Narklet
       rect:
         serializedVersion: 2
-        x: 640
+        x: 768
         y: 512
         width: 128
         height: 128
@@ -3642,7 +3642,7 @@ TextureImporter:
       name: Face - Eye - Chakki
       rect:
         serializedVersion: 2
-        x: 1792
+        x: 1920
         y: 384
         width: 128
         height: 128
@@ -3664,7 +3664,7 @@ TextureImporter:
       name: Face - Eye - ElderlyMasc
       rect:
         serializedVersion: 2
-        x: 0
+        x: 128
         y: 512
         width: 128
         height: 128
@@ -3686,7 +3686,7 @@ TextureImporter:
       name: Hair - KattajakB - Back
       rect:
         serializedVersion: 2
-        x: 640
+        x: 1152
         y: 768
         width: 128
         height: 128
@@ -3708,7 +3708,7 @@ TextureImporter:
       name: Hair - KattajakB - Front
       rect:
         serializedVersion: 2
-        x: 768
+        x: 1280
         y: 768
         width: 128
         height: 128
@@ -3730,7 +3730,7 @@ TextureImporter:
       name: Ears - TornA
       rect:
         serializedVersion: 2
-        x: 1280
+        x: 1408
         y: 384
         width: 128
         height: 128
@@ -3752,7 +3752,7 @@ TextureImporter:
       name: Ears - TornB
       rect:
         serializedVersion: 2
-        x: 1408
+        x: 1536
         y: 384
         width: 128
         height: 128
@@ -3774,8 +3774,8 @@ TextureImporter:
       name: Hair - Misc - EarHair
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 768
+        x: 128
+        y: 896
         width: 128
         height: 128
       alignment: 0
@@ -3796,7 +3796,7 @@ TextureImporter:
       name: Ears - Hairy
       rect:
         serializedVersion: 2
-        x: 896
+        x: 1024
         y: 384
         width: 128
         height: 128
@@ -3818,7 +3818,7 @@ TextureImporter:
       name: Face - ShellTooth - Bucktooth
       rect:
         serializedVersion: 2
-        x: 128
+        x: 256
         y: 640
         width: 128
         height: 128
@@ -3840,7 +3840,7 @@ TextureImporter:
       name: Face - ShellTooth - Large
       rect:
         serializedVersion: 2
-        x: 384
+        x: 512
         y: 640
         width: 128
         height: 128
@@ -3862,7 +3862,7 @@ TextureImporter:
       name: Face - ShellTooth - Mouse
       rect:
         serializedVersion: 2
-        x: 512
+        x: 640
         y: 640
         width: 128
         height: 128
@@ -3884,7 +3884,7 @@ TextureImporter:
       name: Face - ShellTooth - Tiny
       rect:
         serializedVersion: 2
-        x: 1024
+        x: 1152
         y: 640
         width: 128
         height: 128
@@ -3906,8 +3906,8 @@ TextureImporter:
       name: Pattern - Body - Tail Stripes 2
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 1024
+        x: 128
+        y: 1152
         width: 128
         height: 128
       alignment: 0
@@ -3920,6 +3920,226 @@ TextureImporter:
       bones: []
       spriteID: 8c06cab2f20aa2d95d2a59a237311720
       internalID: 1913971909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hair - Beizel - Front
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbf996c398d33907f137d7498cacfd10
+      internalID: 1751509185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hair - Misc - Ahoge (OverEye)
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 446400c2f8e5380e809eda3b0408f3c3
+      internalID: 2075274251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hair - Popstar - Back
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42b79e6f39fee3510ecfa5fca5ce479c
+      internalID: 1821402213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hair - Popstar - Front
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9263bb6480a32f575a6e518b0cae6b4
+      internalID: 109817368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clothes - Misc - Sunglasses
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a6d76e7b72a2503c96fef3888e8983c
+      internalID: 1130541691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hair - Figgins - Back
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d16c73fa06714a476be6f92db54632d2
+      internalID: -1480059764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hair - Figgins - Front
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0e372b689f7f4bb857be08e697a3411
+      internalID: 766489793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hair - Misc - Ponytail - Long
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f1d41c97deb8c4af89002055c70943f
+      internalID: 1855988247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hair - Misc - Ponytail - LongB
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3def693088533b79b0811faf1b92705f
+      internalID: -374847639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: zRoom - Transparent
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 1408
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36bae2d019f97047c6aee6663cd0d09d
+      internalID: 474932745
       vertices: []
       indices: 
       edges: []
