@@ -10,20 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
-  m_Name: Hair - Misc - HighPonytail
+  m_Name: Hair - Misc - Ponytail - Long
   m_EditorClassIdentifier: 
-  _uniqueAssetId: 91f693132926be94998be767f598ea47
-  _displayName: High Ponytail
-  _groups: []
+  _uniqueAssetId: 38fb3b3af6eea5a41966cc960869c604
+  _displayName: Ponytail (Long)
+  _groups:
+  - {fileID: 11400000, guid: afa6ef27aa0920645adf8aaad0e20b0c, type: 2}
   _addedMeshes:
-  - {fileID: 11400000, guid: 1b84eed098355854089316a77f325497, type: 2}
-  - {fileID: 11400000, guid: 04c0c9cc7df1cb94c8b49a2356980561, type: 2}
+  - {fileID: 11400000, guid: d3f321e0bad908a46a9d6504420c3a51, type: 2}
+  - {fileID: 11400000, guid: 157439dfc0b8343439c7bafe20d3fc11, type: 2}
   _addedTextures:
   - {fileID: 11400000, guid: 37e8c4cebf6a11b44bba549b577f2f3c, type: 2}
-  - {fileID: 11400000, guid: daa6ea5d8e6a5e34b9050ce9d7f4f62d, type: 2}
+  - {fileID: 11400000, guid: c15cc3781a975354a9f7edbdfcbbfc88, type: 2}
   _eyeTextures: {fileID: 0}
   _roomPrefab: {fileID: 0}
   _components: []
   _preview:
     _sprite: {fileID: -1984639328, guid: 15341dd2853879d4694c63f593796b80, type: 3}
-    _cameraPosition: {fileID: 11400000, guid: 9de88a168a4365c4d8d4c3c8eea141f8, type: 2}
+    _cameraPosition: {fileID: 11400000, guid: 9689795d523adb546ad1f6c0ca0a10fc, type: 2}
