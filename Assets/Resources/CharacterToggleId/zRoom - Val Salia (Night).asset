@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
-  m_Name: zRoom - Val Salia Residential
+  m_Name: zRoom - Val Salia (Night)
   m_EditorClassIdentifier: 
-  _uniqueAssetId: f42a63a344d7aff44bc6d7fb261e7cab
-  _displayName: Val Salia Residential
+  _uniqueAssetId: 16132a48fcb6cd74e9b61b5ec363ecc9
+  _displayName: Val Salia (Night)
   _groups:
   - {fileID: 11400000, guid: 593fc3c80bb2b7a4eaa2b80ba89f020f, type: 2}
   _addedMeshes: []
   _addedTextures: []
   _eyeTextures: {fileID: 0}
-  _roomPrefab: {fileID: 3747831475810700382, guid: c5429d1cea9b32342b5e8667e398ac17, type: 3}
-  _components: []
+  _roomPrefab: {fileID: 7969703373110260778, guid: 60fccb0573e4a0049b9fb912e33917a1, type: 3}
+  _components:
+  - {fileID: 11400000, guid: 4b972600fc41eb044b2c6df5adb291b1, type: 2}
   _preview:
-    _sprite: {fileID: -2078437343, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _sprite: {fileID: 0}
     _cameraPosition: {fileID: 0}
