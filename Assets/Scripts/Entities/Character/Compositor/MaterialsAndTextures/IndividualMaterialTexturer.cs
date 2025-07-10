@@ -1,5 +1,4 @@
-﻿
-using Character.Creator;
+﻿using Character.Creator;
 using Reactivity;
 using System;
 using System.Collections.Generic;
@@ -21,7 +20,7 @@ namespace Character.Compositor
 
 		private IndividualMaterialTexturerReferences _references;
 		private MaterialWithDescription _material;
-		EnumerableSetReflector<IMixTexture> _relevantMixTextures;
+		private EnumerableSetReflector<IMixTexture> _relevantMixTextures;
 		private Reflector _reflectRelevantMixTextures;
 		private Reflector _reflectTextureComposite;
 		private List<RenderTexture> _cachedRenderTextures = new List<RenderTexture>();
@@ -45,7 +44,6 @@ namespace Character.Compositor
 
 		private void ReflectTextureComposite()
 		{
-
 			CleanupRenderTextures();
 
 			var relevantTextures = _relevantMixTextures.Items.ToArray();
@@ -101,6 +99,13 @@ namespace Character.Compositor
 
 			var renderTexture = renderTextures.Finalize();
 			_material.Material.ApplyTexture(renderTexture, materialTexture);
+
+			// Ensure no render texture is left active
+			if (RenderTexture.active == renderTexture)
+			{
+				RenderTexture.active = null;
+			}
+
 			return renderTexture;
 		}
 
@@ -148,8 +153,16 @@ namespace Character.Compositor
 		{
 			foreach (var rt in _cachedRenderTextures)
 			{
-				rt.Release();
-				GameObject.Destroy(rt);
+				// Ensure the render texture is not active before releasing
+				if (RenderTexture.active == rt)
+				{
+					RenderTexture.active = null;
+				}
+				if (rt != null && rt.IsCreated())
+				{
+					rt.Release();
+					GameObject.Destroy(rt);
+				}
 			}
 			_cachedRenderTextures.Clear();
 		}
@@ -169,7 +182,6 @@ namespace Character.Compositor
 			DataRepository = dataRepository;
 			TextureGatherer = textureGatherer;
 			MixTextureOrdering = mixTextureOrdering;
-
 
 			BlitMaterial = new Material(IndividualMaterialTexturer.COLORIZE_SHADER);
 		}
