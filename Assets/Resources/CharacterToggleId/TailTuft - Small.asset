@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
+  m_Name: TailTuft - Small
+  m_EditorClassIdentifier: 
+  _uniqueAssetId: 55551d91f4117934fb6588746c855e92
+  _displayName: Small
+  _groups:
+  - {fileID: 11400000, guid: d3294cd046fb8c74099023de87c4c057, type: 2}
+  _addedMeshes:
+  - {fileID: 11400000, guid: fc4ccd1452529e24093931f899af126d, type: 2}
+  _addedTextures:
+  - {fileID: 11400000, guid: eee2dbe5d6ee5c640ad9c10f051b8625, type: 2}
+  - {fileID: 11400000, guid: 752aecb9a3a2d274aaa27156079a906e, type: 2}
+  _eyeTextures: {fileID: 0}
+  _roomPrefab: {fileID: 0}
+  _components: []
+  _preview:
+    _sprite: {fileID: -2090475270, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _cameraPosition: {fileID: 11400000, guid: 6644ba74460fac44c85059da15de82d6, type: 2}
