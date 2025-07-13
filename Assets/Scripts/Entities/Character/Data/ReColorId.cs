@@ -12,5 +12,8 @@ namespace Character.Data
 
 		[SerializeField, HideInInspector] string _uniqueAssetId;
 		public string UniqueAssetID { get => _uniqueAssetId; set => _uniqueAssetId = value; }
+
+		[SerializeField] string _overrideName;
+		public string DisplayName => string.IsNullOrWhiteSpace(_overrideName) ? this.name : _overrideName;
 	}
 }

@@ -16,7 +16,7 @@ namespace Character.Creator.UI
 		{
 			_reference = this.GetComponentInParent<IColorSelectionReference>();
 			_text = this.GetComponent<TMP_Text>();
-			_text.text = _reference.Id.name;
+			_text.text = _reference.Id.DisplayName;
 			_startMaterial = _text.fontMaterial;
 			AddReflector(ReflectTextMaterial);
 		}

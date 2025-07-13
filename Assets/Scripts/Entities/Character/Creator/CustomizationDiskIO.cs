@@ -136,7 +136,8 @@ namespace Character.Creator
 			var customYinglets = _yingletRepository.GetYinglets(CustomizationYingletGroup.Custom);
 			if (customYinglets.Any())
 			{
-				_selectionReference.Selected = customYinglets.ElementAt((index - 1) % customYinglets.Count());
+				int elementId = Mathf.Max(0, (index - 1) % customYinglets.Count());
+				_selectionReference.Selected = customYinglets.ElementAt(elementId);
 			}
 			else
 			{
