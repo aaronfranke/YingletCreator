@@ -15,5 +15,8 @@ namespace Character.Data
 
 		[SerializeField] string _overrideName;
 		public string DisplayName => string.IsNullOrWhiteSpace(_overrideName) ? this.name : _overrideName;
+
+		[SerializeField] bool _cleanupIfUnused = true;
+		public bool CleanupIfUnused => _cleanupIfUnused;
 	}
 }

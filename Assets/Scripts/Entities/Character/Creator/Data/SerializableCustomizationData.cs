@@ -1,5 +1,7 @@
 using Character.Compositor;
+using Character.Data;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Character.Creator
@@ -44,7 +46,7 @@ namespace Character.Creator
 			Name = data.Name.Val;
 			CreationTime = data.CreationTime;
 			SliderData = new SerializableCustomizationSliderData(data.SliderData);
-			ColorData = new SerializableCustomizationColorData(data.ColorData);
+			ColorData = new SerializableCustomizationColorData(data.ColorData, data.ToggleData);
 			ToggleData = new SerializableCustomizationToggleData(data.ToggleData);
 			NumberData = new SerializableCustomizationNumberData(data.NumberData);
 		}
@@ -81,9 +83,21 @@ namespace Character.Creator
 	[System.Serializable]
 	public sealed class SerializableCustomizationColorData
 	{
-		public SerializableCustomizationColorData(ObservableCustomizationColorData data)
+		public SerializableCustomizationColorData(ObservableCustomizationColorData data, ObservableCustomizationToggleData toggleData)
 		{
-			ColorizeValues = data.ColorizeValues.Select(kvp => new ColorizeValuesPair(kvp.Key.UniqueAssetID, new(kvp.Value.Val))).ToArray();
+			var actuallyUsedColors = new HashSet<ReColorId>();
+			foreach (var toggle in toggleData.Toggles)
+			{
+				foreach (var texture in toggle.AddedTextures)
+				{
+					actuallyUsedColors.Add(texture.ReColorId);
+				}
+			}
+
+			ColorizeValues = data.ColorizeValues
+				.Where(c => !c.Key.CleanupIfUnused || actuallyUsedColors.Contains(c.Key))
+				.Select(kvp => new ColorizeValuesPair(kvp.Key.UniqueAssetID, new(kvp.Value.Val)))
+				.ToArray();
 		}
 
 		/// <summary>
