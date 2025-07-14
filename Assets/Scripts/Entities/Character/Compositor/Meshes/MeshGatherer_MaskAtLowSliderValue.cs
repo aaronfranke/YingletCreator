@@ -33,7 +33,7 @@ namespace Character.Compositor
 		{
 			if (_constrain.Val)
 			{
-				var toRemove = meshes.Where(m => m.Tags.Contains(_toRemove)).ToList();
+				var toRemove = meshes.Where(m => m.Tags != null && m.Tags.Contains(_toRemove)).ToList();
 				foreach (var m in toRemove)
 				{
 					meshes.Remove(m);

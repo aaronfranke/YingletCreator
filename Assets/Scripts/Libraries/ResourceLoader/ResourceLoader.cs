@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -14,6 +15,26 @@ public static class ResourceLoader
 
 	public static T Load<T>(string id) where T : UnityEngine.Object, IHasUniqueAssetId
 	{
+		var cache = GetCache<T>();
+
+		if (cache.TryGetValue(id, out UnityEngine.Object obj))
+		{
+			return (T)obj;
+		}
+		else
+		{
+			throw new ArgumentException($"Failed to load id {id} for {typeof(T)}");
+		}
+	}
+	public static IEnumerable<T> LoadAll<T>() where T : UnityEngine.Object, IHasUniqueAssetId
+	{
+		var cache = GetCache<T>();
+
+		return cache.Values.Select(v => (T)v);
+	}
+
+	static Dictionary<string, UnityEngine.Object> GetCache<T>() where T : UnityEngine.Object, IHasUniqueAssetId
+	{
 		var type = typeof(T);
 		if (!_caches.TryGetValue(type, out var cache))
 		{
@@ -27,14 +48,7 @@ public static class ResourceLoader
 			}
 			_caches[type] = cache;
 		}
-
-		if (cache.TryGetValue(id, out UnityEngine.Object obj))
-		{
-			return (T)obj;
-		}
-		else
-		{
-			throw new ArgumentException($"Failed to load id {id} for {typeof(T)}");
-		}
+		return cache;
 	}
+
 }

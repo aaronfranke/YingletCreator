@@ -1,4 +1,5 @@
 using Character.Data;
+using System.Linq;
 using UnityEngine;
 
 
@@ -6,7 +7,7 @@ namespace Character.Creator.UI
 {
 	public class CharacterCreatorToggleIdGroup : MonoBehaviour
 	{
-		[SerializeField] CharacterToggleId[] _toggleIds;
+		[SerializeField] CharacterToggleOrderGroup _group;
 		[SerializeField] GameObject _togglePrefab;
 
 		private void Awake()
@@ -18,7 +19,12 @@ namespace Character.Creator.UI
 		}
 		private void Start()
 		{
-			foreach (var toggleId in _toggleIds)
+			var allToggles = ResourceLoader.LoadAll<CharacterToggleId>().ToArray();
+			var relevantToggles = allToggles
+				.Where(toggle => toggle.Order.Group == _group)
+				.OrderBy(toggle => toggle.Order.Index)
+				.ToArray();
+			foreach (var toggleId in relevantToggles)
 			{
 				var go = GameObject.Instantiate(_togglePrefab, this.transform);
 				go.GetComponent<ICharacterCreatorToggleIdReference>().ToggleId = toggleId;

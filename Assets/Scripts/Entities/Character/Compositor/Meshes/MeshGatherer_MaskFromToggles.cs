@@ -20,6 +20,7 @@ namespace Character.Compositor
 			var toRemove = new List<MeshWithMaterial>();
 			foreach (var mesh in set)
 			{
+				if (mesh.Tags == null) continue;
 				if (mesh.Tags.Any(tag => tags.Contains(tag)))
 				{
 					toRemove.Add(mesh);
