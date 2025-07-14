@@ -14,8 +14,8 @@ namespace Character.Data
 		[SerializeField] string _displayName;
 		public string DisplayName => _displayName;
 
-		[SerializeField] public CharacterToggleGroup[] _groups;
-		public CharacterToggleGroup[] Groups => _groups;
+		[SerializeField] public CharacterToggleEnforcementGroup[] _groups;
+		public CharacterToggleEnforcementGroup[] Groups => _groups;
 
 		[SerializeField] MeshWithMaterial[] _addedMeshes;
 		public IEnumerable<MeshWithMaterial> AddedMeshes => _addedMeshes;
@@ -34,6 +34,9 @@ namespace Character.Data
 
 		[SerializeField] CharacterTogglePreviewData _preview;
 		public CharacterTogglePreviewData Preview => _preview;
+
+		[SerializeField] CharacterToggleOrderData _order;
+		public CharacterToggleOrderData Order => _order;
 	}
 
 	[System.Serializable]
@@ -52,5 +55,15 @@ namespace Character.Data
 			_sprite = sprite;
 		}
 #endif
+	}
+
+	[System.Serializable]
+	public class CharacterToggleOrderData
+	{
+		[SerializeField] CharacterToggleOrderGroup _group;
+		public CharacterToggleOrderGroup Group => _group;
+
+		[SerializeField] int _index;
+		public int Index => _index;
 	}
 }
