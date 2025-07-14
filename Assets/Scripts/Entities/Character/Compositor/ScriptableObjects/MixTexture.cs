@@ -37,13 +37,14 @@ namespace Character.Compositor
 	}
 
 	[CreateAssetMenu(fileName = "MixTexture", menuName = "Scriptable Objects/Character Compositor/MixTexture")]
-	public class MixTexture : ScriptableObject, IMixTexture
+	public class MixTexture : ScriptableObject, IMixTexture, IOrderableScriptableObject<MixTextureOrderGroup>
 	{
 		[SerializeField] ReColorId _reColorId;
 		[SerializeField] MaterialDescription _targetMaterialDescription;
 		[SerializeField] Texture2D _grayscale;
 		[SerializeField] Texture2D _mask;
 		[SerializeField] CharacterElementTag[] _tags;
+		[SerializeField] MixTextureOrderData _order;
 
 		public ReColorId ReColorId => _reColorId;
 
@@ -58,6 +59,9 @@ namespace Character.Compositor
 		public virtual TargetMaterialTexture TargetMaterialTexture => TargetMaterialTexture.MainTexture;
 
 		public IEnumerable<CharacterElementTag> Tags => _tags;
+
+		public MixTextureOrderData Order => _order;
+		IOrderData<MixTextureOrderGroup> IOrderableScriptableObject<MixTextureOrderGroup>.Order => Order;
 	}
 
 	public enum TargetMaterialTexture
@@ -67,5 +71,15 @@ namespace Character.Compositor
 		Pupil, // Used in the eye material
 		Mouth, // Used in the mouth material; includes line and teeth
 		MouthMask, // Used in the mouth material; the center that designates what should be alpha clipped out
+	}
+
+	[System.Serializable]
+	public class MixTextureOrderData : IOrderData<MixTextureOrderGroup>
+	{
+		[SerializeField] MixTextureOrderGroup _group;
+		public MixTextureOrderGroup Group => _group;
+
+		[SerializeField] int _index;
+		public int Index => _index;
 	}
 }

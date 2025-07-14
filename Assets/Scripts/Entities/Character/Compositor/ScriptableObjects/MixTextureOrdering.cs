@@ -7,7 +7,7 @@ namespace Character.Compositor
 	[CreateAssetMenu(fileName = "MixTextureOrdering", menuName = "Scriptable Objects/Character Compositor/MixTextureOrdering")]
 	public class MixTextureOrdering : ScriptableObject
 	{
-		[SerializeField] MixTextureOrderGroup[] _groups;
+		[SerializeField] MixTextureOrderGroup_Old[] _groups;
 
 		public IEnumerable<MixTexture> OrderedMixTextures
 		{
@@ -24,7 +24,7 @@ namespace Character.Compositor
 		}
 	}
 	[System.Serializable]
-	public class MixTextureOrderGroup
+	public class MixTextureOrderGroup_Old
 	{
 		[SerializeField] string _name;
 		[SerializeField] MixTexture[] _mixTextures;

@@ -1,10 +1,10 @@
-using Character.Data;
+using Character.Compositor;
 using UnityEditor;
 
-[CustomEditor(typeof(CharacterToggleId)), CanEditMultipleObjects]
-public class CharacterToggleIdEditor : Editor
+[CustomEditor(typeof(MixTexture)), CanEditMultipleObjects]
+public class MixTextureEditor : Editor
 {
-	OrderableScriptableObjectGuiDisplayer<CharacterToggleId, CharacterToggleOrderGroup> _orderDisplayer = new();
+	OrderableScriptableObjectGuiDisplayer<MixTexture, MixTextureOrderGroup> _orderDisplayer = new();
 
 	private void OnEnable()
 	{
@@ -25,9 +25,9 @@ public class CharacterToggleIdEditor : Editor
 		_orderDisplayer.Display(GetGroup());
 	}
 
-	CharacterToggleOrderGroup GetGroup()
+	MixTextureOrderGroup GetGroup()
 	{
-		var toggleId = target as CharacterToggleId;
+		var toggleId = target as MixTexture;
 		return toggleId.Order.Group;
 	}
 }

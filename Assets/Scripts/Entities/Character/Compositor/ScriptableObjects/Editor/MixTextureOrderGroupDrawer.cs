@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Character.Compositor
 {
-	[CustomPropertyDrawer(typeof(MixTextureOrderGroup))]
+	[CustomPropertyDrawer(typeof(MixTextureOrderGroup_Old))]
 	public class MixTextureOrderGroupDrawer : PropertyDrawer
 	{
 		public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
