@@ -10,28 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
-  m_Name: Clothes - Full - Maid
+  m_Name: Clothes - Outfit - Poak
   m_EditorClassIdentifier: 
-  _uniqueAssetId: 59ced6d8872850d45ba9506c907cb5d1
-  _displayName: Maid
+  _uniqueAssetId: 122e4f8944499404f9173364d33bc996
+  _displayName: Patriarch Robes
   _groups:
   - {fileID: 11400000, guid: 83e476b94deb4f64d89399d0aa93cdac, type: 2}
   - {fileID: 11400000, guid: 14901bc6611d3d54d98993552fb8d05e, type: 2}
   _addedMeshes:
-  - {fileID: 11400000, guid: 26ab8d3b834366345b25516c69212892, type: 2}
-  - {fileID: 11400000, guid: 3fbc461e98f542548bf27326b222e4f8, type: 2}
-  - {fileID: 11400000, guid: 32e3e35775d04f1458dfe311f488feb0, type: 2}
-  - {fileID: 11400000, guid: 85fefd3156a584c40bd436d44b8971c4, type: 2}
+  - {fileID: 11400000, guid: 60894c683213daa449b2673f98ccb9fe, type: 2}
+  - {fileID: 11400000, guid: 64940c90153d0ed45b4125535b8e8624, type: 2}
+  - {fileID: 11400000, guid: 20213ba078456e243a238373b5fc7ce0, type: 2}
   _addedTextures:
-  - {fileID: 11400000, guid: 4e55db987a6630845b5661a8ddb64818, type: 2}
-  - {fileID: 11400000, guid: f91253674d5370d4ba4a889c41d186c3, type: 2}
+  - {fileID: 11400000, guid: 4ca189e660dd9094b86caed7e0371caf, type: 2}
   _eyeTextures: {fileID: 0}
   _roomPrefab: {fileID: 0}
   _components:
   - {fileID: 11400000, guid: 3f1f4ba2c6a0db94b81e4c1bcb269c33, type: 2}
   _preview:
-    _sprite: {fileID: -1229352344, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _sprite: {fileID: -1703237963, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: 05a5f89117304c04a99288d3a8404208, type: 2}
   _order:
     _group: {fileID: 11400000, guid: c369fb9b9aeccae4fad4d2d5cad4c7b4, type: 2}
-    _index: 400
+    _index: 150
