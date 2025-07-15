@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Character.Data
 {
 	[CreateAssetMenu(fileName = "Pose", menuName = "Scriptable Objects/Character Data/PoseId")]
-	public class PoseId : ScriptableObject, IHasUniqueAssetId, ISnapshottableScriptableObject
+	public class PoseId : ScriptableObject, IHasUniqueAssetId, ISnapshottableScriptableObject, IOrderableScriptableObject<PoseOrderGroup>
 	{
 		[SerializeField, HideInInspector] string _uniqueAssetId;
 		public string UniqueAssetID { get => _uniqueAssetId; set => _uniqueAssetId = value; }
@@ -20,5 +20,20 @@ namespace Character.Data
 		public CharacterTogglePreviewData Preview => _preview;
 
 		public string DisplayName => string.IsNullOrWhiteSpace(_overrideName) ? name : _overrideName;
+
+
+		[SerializeField] PoseOrderData _order;
+		public PoseOrderData Order => _order;
+		IOrderData<PoseOrderGroup> IOrderableScriptableObject<PoseOrderGroup>.Order => Order;
+	}
+
+	[System.Serializable]
+	public class PoseOrderData : IOrderData<PoseOrderGroup>
+	{
+		[SerializeField] PoseOrderGroup _group;
+		public PoseOrderGroup Group => _group;
+
+		[SerializeField] int _index;
+		public int Index => _index;
 	}
 }
