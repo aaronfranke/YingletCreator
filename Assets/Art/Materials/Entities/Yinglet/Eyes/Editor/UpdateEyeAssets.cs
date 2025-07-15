@@ -12,7 +12,7 @@ using UnityEngine;
 public class UpdateEyeAssets
 {
 	const string RAW_TEXTURE_PATH = "Assets/Art/Materials/Entities/Yinglet/Eyes/RawTextures";
-	const string SCRIPTABLE_OBJECT_OUTPUT_PATH = "Assets/ScriptableObjects/CharacterCompositor/MixTexture/Eyes/";
+	const string SCRIPTABLE_OBJECT_OUTPUT_PATH = "Assets/ScriptableObjects/CharacterCompositor/Eyes/";
 
 	[MenuItem("Custom/Update Eye Assets")]
 	static void Apply()

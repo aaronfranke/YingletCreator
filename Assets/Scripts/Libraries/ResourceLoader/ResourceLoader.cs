@@ -33,6 +33,17 @@ public static class ResourceLoader
 		return cache.Values.Select(v => (T)v);
 	}
 
+	/// <summary>
+	/// Kind of a hack to support MixTexture loading, which is only done in one place and doesn't have unique asset IDs
+	/// </summary>
+	public static IEnumerable<T> LoadAllNoCache<T>() where T : UnityEngine.Object
+	{
+		var type = typeof(T);
+		string folder = type.Name;
+		var all = Resources.LoadAll<T>(folder);
+		return all;
+	}
+
 	static Dictionary<string, UnityEngine.Object> GetCache<T>() where T : UnityEngine.Object, IHasUniqueAssetId
 	{
 		var type = typeof(T);
