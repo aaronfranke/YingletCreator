@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23201ff7e16e61d45a51244b77292c98, type: 3}
-  m_Name: MaskForTabardTop
+  m_Script: {fileID: 11500000, guid: 90e93a1a2762c7745bd997e92a7f9845, type: 3}
+  m_Name: Outfit - Beizel (Alt)
   m_EditorClassIdentifier: 
-  _maskedTags:
-  - {fileID: 11400000, guid: c0ce8e7200c663b4ca0d87195ee87ac1, type: 2}
-  - {fileID: 11400000, guid: 41908bd72f2c41d4f9acfe8772fb36f9, type: 2}
+  _colorGroup: {fileID: 11400000, guid: 9eac8949458ce794a817f4a1da8baa0a, type: 2}
+  _uniqueAssetId: 1d289513976a6b448bf77c3a46e4088b
+  _overrideName: Outfit (Alt)
+  _cleanupIfUnused: 1

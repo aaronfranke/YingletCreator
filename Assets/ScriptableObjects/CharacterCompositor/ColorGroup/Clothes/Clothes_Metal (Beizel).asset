@@ -9,9 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23201ff7e16e61d45a51244b77292c98, type: 3}
-  m_Name: MaskForTabardTop
+  m_Script: {fileID: 11500000, guid: ee45e03f2dc3e2f4a82b3713ad9c84ac, type: 3}
+  m_Name: Clothes_Metal (Beizel)
   m_EditorClassIdentifier: 
-  _maskedTags:
-  - {fileID: 11400000, guid: c0ce8e7200c663b4ca0d87195ee87ac1, type: 2}
-  - {fileID: 11400000, guid: 41908bd72f2c41d4f9acfe8772fb36f9, type: 2}
+  _defaultColors:
+    _base:
+      _hue: 0.610907
+      _saturation: 0
+      _value: 0.75686276
+    _shade:
+      _hue: 0.5933022
+      _saturation: 0.11005836
+      _value: 0.54445857
