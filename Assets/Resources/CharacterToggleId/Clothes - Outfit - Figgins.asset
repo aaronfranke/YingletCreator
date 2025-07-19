@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
+  m_Name: Clothes - Outfit - Figgins
+  m_EditorClassIdentifier: 
+  _uniqueAssetId: 93222d17d4cf0bc46b73fc42d52e8e38
+  _displayName: Coin & Trade Jacket
+  _groups:
+  - {fileID: 11400000, guid: 83e476b94deb4f64d89399d0aa93cdac, type: 2}
+  - {fileID: 11400000, guid: 14901bc6611d3d54d98993552fb8d05e, type: 2}
+  _addedMeshes:
+  - {fileID: 11400000, guid: bff10ac3a9cdb834789a8c3ca10c684d, type: 2}
+  - {fileID: 11400000, guid: c46c002736ca8dd43a8fb01d9f40fd86, type: 2}
+  _addedTextures:
+  - {fileID: 11400000, guid: 7c0bba7c5db45a54aa71021eb126cd6c, type: 2}
+  - {fileID: 11400000, guid: 129609b4944edc04ab1a6aa5e6e3835a, type: 2}
+  - {fileID: 11400000, guid: a158bc35372bdc6459412d38ece90290, type: 2}
+  - {fileID: 11400000, guid: 9dc1599a65e317c41998a289658d76bc, type: 2}
+  - {fileID: 11400000, guid: eaa96f4da9d51034982f7a817c6a4491, type: 2}
+  - {fileID: 11400000, guid: 0cefda7763f8c2e4a839acabcecb9afc, type: 2}
+  _eyeTextures: {fileID: 0}
+  _roomPrefab: {fileID: 0}
+  _components:
+  - {fileID: 11400000, guid: 32e0551c7d2c50e47be73f451199adb9, type: 2}
+  _preview:
+    _sprite: {fileID: 582983429, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _cameraPosition: {fileID: 11400000, guid: 05a5f89117304c04a99288d3a8404208, type: 2}
+  _order:
+    _group: {fileID: 11400000, guid: c369fb9b9aeccae4fad4d2d5cad4c7b4, type: 2}
+    _index: 250
