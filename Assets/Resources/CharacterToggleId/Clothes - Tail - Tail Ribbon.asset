@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Clothes - Tail - Tail Ribbon
   m_EditorClassIdentifier: 
   _uniqueAssetId: c7342d09e3bd8b54da7475c7a598d99c
-  _displayName: Ribbon Base
-  _groups: []
+  _displayName: Wrap
+  _groups:
+  - {fileID: 11400000, guid: 955054ed3d5bbdf4e8346849798bf388, type: 2}
   _addedMeshes: []
   _addedTextures:
   - {fileID: 11400000, guid: ec1d7aef0225d134181983c354c23150, type: 2}
