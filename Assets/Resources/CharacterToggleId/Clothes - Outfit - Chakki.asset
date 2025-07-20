@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
-  m_Name: Clothes - Outfit - Poak
+  m_Name: Clothes - Outfit - Chakki
   m_EditorClassIdentifier: 
-  _uniqueAssetId: 122e4f8944499404f9173364d33bc996
-  _displayName: Foodstuff Robes
+  _uniqueAssetId: 4270a8f8960050f44b35691f95971583
+  _displayName: Farming Dress
   _groups:
   - {fileID: 11400000, guid: 83e476b94deb4f64d89399d0aa93cdac, type: 2}
   - {fileID: 11400000, guid: 14901bc6611d3d54d98993552fb8d05e, type: 2}
   _addedMeshes:
-  - {fileID: 11400000, guid: 60894c683213daa449b2673f98ccb9fe, type: 2}
+  - {fileID: 11400000, guid: 42f74c56527a076489848c6e86177c7f, type: 2}
   - {fileID: 11400000, guid: 64940c90153d0ed45b4125535b8e8624, type: 2}
-  - {fileID: 11400000, guid: 20213ba078456e243a238373b5fc7ce0, type: 2}
   _addedTextures:
-  - {fileID: 11400000, guid: 4ca189e660dd9094b86caed7e0371caf, type: 2}
-  - {fileID: 11400000, guid: 92f6f19883dc5364f875954c93b9887e, type: 2}
-  - {fileID: 11400000, guid: 206b191cddad21a4786a55589ff5e45d, type: 2}
+  - {fileID: 11400000, guid: a7dd3aa5a666e1c4b88ceab0d1854040, type: 2}
+  - {fileID: 11400000, guid: 94520bb632db66d45b621be4124de211, type: 2}
+  - {fileID: 11400000, guid: 25ec0568944e17d46b0818c540ac535e, type: 2}
+  - {fileID: 11400000, guid: 2643d207099af5743827ce351d17bce1, type: 2}
   _eyeTextures: {fileID: 0}
   _roomPrefab: {fileID: 0}
   _components:
@@ -34,4 +34,4 @@ MonoBehaviour:
     _cameraPosition: {fileID: 11400000, guid: 05a5f89117304c04a99288d3a8404208, type: 2}
   _order:
     _group: {fileID: 11400000, guid: c369fb9b9aeccae4fad4d2d5cad4c7b4, type: 2}
-    _index: 150
+    _index: 350
