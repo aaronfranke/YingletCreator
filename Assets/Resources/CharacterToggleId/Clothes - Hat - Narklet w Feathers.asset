@@ -10,17 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
-  m_Name: Clothes - Hat - Narklet
+  m_Name: Clothes - Hat - Narklet w Feathers
   m_EditorClassIdentifier: 
-  _uniqueAssetId: 0e532113303abe5469b40105fa89518b
-  _displayName: Cowl
+  _uniqueAssetId: fa666c8136251f244b48901dd2f080f5
+  _displayName: Cowl w/ Feathers
   _groups:
   - {fileID: 11400000, guid: 79d28974154e5ec46b9a5f737f53aa30, type: 2}
   _addedMeshes:
   - {fileID: 11400000, guid: e71826c132766344b899e34a17600b57, type: 2}
+  - {fileID: 11400000, guid: a4b8d9b24b6b19141af6afbe5374ec06, type: 2}
   _addedTextures:
   - {fileID: 11400000, guid: 67efebfe1a7c32e46bea6195694b6fe1, type: 2}
   - {fileID: 11400000, guid: 886da58f81a90d14bbf19b7823449b0b, type: 2}
+  - {fileID: 11400000, guid: caf4def811ee2aa4aa931bc3ee184faf, type: 2}
   _eyeTextures: {fileID: 0}
   _roomPrefab: {fileID: 0}
   _components:
@@ -30,4 +32,4 @@ MonoBehaviour:
     _cameraPosition: {fileID: 11400000, guid: fac2921d43bc2c24380b3a43557dc741, type: 2}
   _order:
     _group: {fileID: 11400000, guid: 968c5f0717d8f674db03cab195bcd9c6, type: 2}
-    _index: 150
+    _index: 151

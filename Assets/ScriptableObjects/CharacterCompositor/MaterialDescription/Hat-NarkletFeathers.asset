@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90e93a1a2762c7745bd997e92a7f9845, type: 3}
-  m_Name: Hat - Narklet (Trim)
+  m_Script: {fileID: 11500000, guid: 5abe85b6b3c256740b47fde5142dc171, type: 3}
+  m_Name: Hat-NarkletFeathers
   m_EditorClassIdentifier: 
-  _colorGroup: {fileID: 11400000, guid: 0247f8e1329aa114f86c280ab887687e, type: 2}
-  _uniqueAssetId: c117d9f2c7e4e1148bbe7fafc2d22e18
-  _overrideName: Hat (Trim)
-  _cleanupIfUnused: 1
+  _referenceMaterial: {fileID: 2100000, guid: df831367e0d68e94e8827d04ed2366f2, type: 2}
