@@ -231,6 +231,11 @@ MonoBehaviour:
     ignoredTransforms: []
     colliders: []
     animated: 1
+  - rootTransform: {fileID: 5337755601887432652}
+    jiggleSettings: {fileID: 11400000, guid: 35b04241e99870f408c8e19ec8b91c95, type: 2}
+    ignoredTransforms: []
+    colliders: []
+    animated: 1
   wind: {x: 0, y: 0, z: 0}
   debugDraw: 0
 --- !u!1 &5692930480370429938
@@ -512,6 +517,11 @@ Transform:
 --- !u!4 &5041500456401345269 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5601181118861132372, guid: 0d9ff1f1a68f6df40859b8161b49c04f, type: 3}
+  m_PrefabInstance: {fileID: 597964421411788961}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5337755601887432652 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4782788759853225837, guid: 0d9ff1f1a68f6df40859b8161b49c04f, type: 3}
   m_PrefabInstance: {fileID: 597964421411788961}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &5670890397272141754 stripped
