@@ -9,7 +9,7 @@ public class UiHoverManager_NonUi : MonoBehaviour
 {
 	private void Awake()
 	{
-		var uiHoverManager = Singletons.GetSingleton<IUiHoverManager>();
+		var uiHoverManager = Singletons.GetSingleton<IWriteableUiHoverManager>();
 		uiHoverManager.RegisterNonUiHoverable(this.GetComponent<IHoverable>());
 	}
 }
