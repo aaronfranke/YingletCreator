@@ -17110,6 +17110,7 @@ GameObject:
   - component: {fileID: 2010978741}
   - component: {fileID: 2010978742}
   - component: {fileID: 2010978743}
+  - component: {fileID: 2010978744}
   m_Layer: 0
   m_Name: MenuButtonGroup
   m_TagString: Untagged
@@ -17181,6 +17182,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
+--- !u!114 &2010978744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010978740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0c1c333c3ac4ce478fbd4abfdf81ee9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _easeSettings: {fileID: 11400000, guid: 8fc803fea4e88b24a9b131c40344e8a4, type: 2}
+  _offset: {x: -500, y: 0, z: 0}
 --- !u!1 &2025203801 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2313077223542097023, guid: edd5cee6229a6aa47b970a7509394931, type: 3}
