@@ -9,7 +9,7 @@ public class ZoomInOnScroll : MonoBehaviour
 	[SerializeField] float _lerpPower = 5f;
 
 	IUiHoverManager _uiHoverManager;
-	IClipboardSelection _clipboardSelection;
+	IInPoseModeChecker _inPoseMode;
 	IYingletHeightProvider _heightProvider;
 	Vector3 _startPos;
 	Quaternion _startRot;
@@ -20,7 +20,7 @@ public class ZoomInOnScroll : MonoBehaviour
 	void Start()
 	{
 		_uiHoverManager = Singletons.GetSingleton<IUiHoverManager>();
-		_clipboardSelection = this.GetCharacterCreatorComponent<IClipboardSelection>();
+		_inPoseMode = this.GetCharacterCreatorComponent<IInPoseModeChecker>();
 		_heightProvider = this.GetCharacterCreatorComponent<IYingletHeightProvider>();
 		_startPos = transform.localPosition;
 		_startRot = transform.localRotation;
@@ -30,7 +30,7 @@ public class ZoomInOnScroll : MonoBehaviour
 	void Update()
 	{
 		// Early return if we're in photo mode
-		if (_clipboardSelection.Selection.Val == ClipboardSelectionType.Pose) return;
+		if (_inPoseMode.InPoseMode.Val) return;
 
 		UpdateTargetPercent();
 		UpdatePos();

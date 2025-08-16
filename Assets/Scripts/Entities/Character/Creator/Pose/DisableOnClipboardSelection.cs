@@ -6,7 +6,7 @@ namespace Character.Creator.Pose
 {
 	public class DisableOnClipboardSelection : ReactiveBehaviour
 	{
-		[SerializeField] ClipboardSelectionType _disableOnSelection = ClipboardSelectionType.Pose;
+		[SerializeField] ClipboardSelectionType _disableOnSelection;
 
 		private IClipboardSelection _clipboardSelection;
 

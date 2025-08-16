@@ -4,17 +4,17 @@ using UnityEngine;
 public class SpinYingletOnMouse : MonoBehaviour
 {
 	[SerializeField] float _spinSensitivity = 10f;
-	private IClipboardSelection _clipboardSelection;
+	private IInPoseModeChecker _inPoseMode;
 
 	private void Awake()
 	{
-		_clipboardSelection = this.GetCharacterCreatorComponent<IClipboardSelection>();
+		_inPoseMode = this.GetCharacterCreatorComponent<IInPoseModeChecker>();
 	}
 
 	void Update()
 	{
 		// Early return if we're in photo mode
-		if (_clipboardSelection.Selection.Val == ClipboardSelectionType.Pose) return;
+		if (_inPoseMode.InPoseMode.Val) return;
 
 		if (Input.GetMouseButton(1))
 		{

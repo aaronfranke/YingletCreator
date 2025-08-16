@@ -20,7 +20,7 @@ namespace Character.Creator.UI
 		[SerializeField][TextArea] string _poseEditingYing;
 		[SerializeField][TextArea] string _poseCameraMode;
 		private ICharacterCreatorVisibilityControl _visibilityControl;
-		private IClipboardSelection _clipboardSelection;
+		private IInPoseModeChecker _inPoseMode;
 		private IPoseData _poseData;
 		private TMP_Text _text;
 		Computed<InstructionsType> _instructionsType;
@@ -28,7 +28,7 @@ namespace Character.Creator.UI
 		void Start()
 		{
 			_visibilityControl = this.GetComponentInParent<ICharacterCreatorVisibilityControl>();
-			_clipboardSelection = this.GetCharacterCreatorComponent<IClipboardSelection>();
+			_inPoseMode = this.GetCharacterCreatorComponent<IInPoseModeChecker>();
 			_poseData = this.GetComponentInParent<IPoseData>();
 			_text = this.GetComponent<TMPro.TMP_Text>();
 			_instructionsType = CreateComputed(ComputeInstructionType);
@@ -45,7 +45,7 @@ namespace Character.Creator.UI
 			}
 
 			// Are we not in pose mode?
-			bool isPose = _clipboardSelection.Selection.Val == ClipboardSelectionType.Pose;
+			bool isPose = _inPoseMode.InPoseMode.Val;
 			if (!isPose)
 			{
 				return InstructionsType.Main;

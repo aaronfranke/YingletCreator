@@ -3,18 +3,6 @@ using UnityEngine;
 
 namespace Character.Creator.UI
 {
-	public enum ClipboardSelectionType
-	{
-		PresetsSaves,
-		FurHair,
-		EyesMouthEars,
-		Clothes,
-		Colors,
-		Sliders,
-		Background,
-		Pose
-	}
-
 	public interface IClipboardSelection
 	{
 		Observable<ClipboardSelectionType> Selection { get; }

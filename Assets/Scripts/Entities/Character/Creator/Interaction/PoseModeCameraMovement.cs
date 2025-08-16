@@ -7,7 +7,7 @@ public class PoseModeCameraMovement : MonoBehaviour
 	[SerializeField] float _moveSpeed = 5f;
 	[SerializeField] float _moveSmoothTime = 0.08f;
 	[SerializeField] float _rotateSpeed = 30f;
-	private IClipboardSelection _clipboardSelection;
+	private IInPoseModeChecker _inPoseMode;
 	private Vector3 _eulerRotation;
 	private Vector3 _targetPosition;
 	private Vector3 _moveVelocity;
@@ -24,18 +24,18 @@ public class PoseModeCameraMovement : MonoBehaviour
 
 	private void Awake()
 	{
-		_clipboardSelection = this.GetCharacterCreatorComponent<IClipboardSelection>();
+		_inPoseMode = this.GetCharacterCreatorComponent<IInPoseModeChecker>();
 		_targetPosition = transform.position;
-		_clipboardSelection.Selection.OnChanged += ClipboardSelection_OnChanged;
+		_inPoseMode.InPoseMode.OnChanged += InPoseMode_OnChanged;
 	}
 	private void OnDestroy()
 	{
-		_clipboardSelection.Selection.OnChanged -= ClipboardSelection_OnChanged;
+		_inPoseMode.InPoseMode.OnChanged -= InPoseMode_OnChanged;
 	}
 
-	private void ClipboardSelection_OnChanged(ClipboardSelectionType from, ClipboardSelectionType to)
+	private void InPoseMode_OnChanged(bool from, bool to)
 	{
-		if (from != ClipboardSelectionType.Pose) return;
+		if (!_inPoseMode.InPoseMode.Val) return;
 		// Reset the position/rotation
 		_eulerRotation = transform.localEulerAngles;
 		_targetPosition = transform.position;
@@ -43,7 +43,7 @@ public class PoseModeCameraMovement : MonoBehaviour
 
 	void Update()
 	{
-		if (_clipboardSelection.Selection.Val != ClipboardSelectionType.Pose)
+		if (!_inPoseMode.InPoseMode.Val)
 		{
 			return;
 		}

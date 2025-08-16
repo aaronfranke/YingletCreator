@@ -6,24 +6,24 @@ namespace Character.Creator.Pose
 	public class ClearPoseDataOnClipboardSelectionChange : MonoBehaviour
 	{
 
-		private IClipboardSelection _clipboardSelection;
+		private IInPoseModeChecker _inPoseMode;
 		private IPoseData _poseData;
 
 		void Start()
 		{
 			_poseData = this.GetComponentInParent<IPoseData>();
-			_clipboardSelection = this.GetCharacterCreatorComponent<IClipboardSelection>();
-			_clipboardSelection.Selection.OnChanged += Selection_OnChanged;
+			_inPoseMode = this.GetCharacterCreatorComponent<IInPoseModeChecker>();
+			_inPoseMode.InPoseMode.OnChanged += Selection_OnChanged;
 		}
 
 		private void OnDestroy()
 		{
-			_clipboardSelection.Selection.OnChanged -= Selection_OnChanged;
+			_inPoseMode.InPoseMode.OnChanged -= Selection_OnChanged;
 		}
 
-		private void Selection_OnChanged(ClipboardSelectionType from, ClipboardSelectionType to)
+		private void Selection_OnChanged(bool from, bool to)
 		{
-			if (from != ClipboardSelectionType.Pose) return;
+			if (from == false) return;
 
 			_poseData.Clear();
 		}
