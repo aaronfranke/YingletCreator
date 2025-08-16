@@ -3,19 +3,19 @@ using Reactivity;
 
 public class SmartDisableOnNoUi : ReactiveBehaviour
 {
-	private ICharacterCreatorVisibilityControl _visibilityControl;
+	private IPhotoModeState _photoModeState;
 	private ISmartDisabler _smartDisabler;
 
 	private void Start()
 	{
-		_visibilityControl = this.GetComponentInParent<ICharacterCreatorVisibilityControl>();
+		_photoModeState = this.GetComponentInParent<IPhotoModeState>();
 		_smartDisabler = this.GetComponent<ISmartDisabler>();
 		AddReflector(Reflect);
 	}
 
 	private void Reflect()
 	{
-		bool visible = _visibilityControl.IsVisible.Val;
-		_smartDisabler.SetActive(visible, this);
+		bool inPhotoMode = _photoModeState.IsInPhotoMode.Val;
+		_smartDisabler.SetActive(!inPhotoMode, this);
 	}
 }

@@ -13,7 +13,7 @@ public interface ITakePictureEvents
 public class TakePictureOnLeftClick : MonoBehaviour, ITakePictureEvents
 {
 	private ICustomizationSaveFolderProvider _locationProvider;
-	private ICharacterCreatorVisibilityControl _visibilityControl;
+	private IPhotoModeState _photoModeState;
 	private Camera _mainCamera;
 
 	float _lastPicTime = 0;
@@ -23,14 +23,14 @@ public class TakePictureOnLeftClick : MonoBehaviour, ITakePictureEvents
 	private void Start()
 	{
 		_locationProvider = this.GetComponentInParent<ICustomizationSaveFolderProvider>();
-		_visibilityControl = this.GetComponentInParent<ICharacterCreatorVisibilityControl>();
+		_photoModeState = this.GetComponentInParent<IPhotoModeState>();
 		_mainCamera = this.GetComponentInChildren<Camera>();
 	}
 
 	private void Update()
 	{
 		// Early return if we're showing UI (aka not in photo mode)
-		if (_visibilityControl.IsVisible.Val) return;
+		if (!_photoModeState.IsInPhotoMode.Val) return;
 
 		// Don't let the user take too many pics
 		if (Time.time < _lastPicTime + 1.5f) return;

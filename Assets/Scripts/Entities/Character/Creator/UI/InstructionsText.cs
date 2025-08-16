@@ -10,7 +10,7 @@ namespace Character.Creator.UI
 		Main,
 		Pose_NoEditing,
 		Pose_EditingYing,
-		Pose_CameraMode
+		Pose_PhotoMode
 	}
 
 	public class InstructionsText : ReactiveBehaviour
@@ -19,7 +19,7 @@ namespace Character.Creator.UI
 		[SerializeField][TextArea] string _poseNoEditing;
 		[SerializeField][TextArea] string _poseEditingYing;
 		[SerializeField][TextArea] string _poseCameraMode;
-		private ICharacterCreatorVisibilityControl _visibilityControl;
+		private IPhotoModeState _photoModeState;
 		private IInPoseModeChecker _inPoseMode;
 		private IPoseData _poseData;
 		private TMP_Text _text;
@@ -27,7 +27,7 @@ namespace Character.Creator.UI
 
 		void Start()
 		{
-			_visibilityControl = this.GetComponentInParent<ICharacterCreatorVisibilityControl>();
+			_photoModeState = this.GetComponentInParent<IPhotoModeState>();
 			_inPoseMode = this.GetCharacterCreatorComponent<IInPoseModeChecker>();
 			_poseData = this.GetComponentInParent<IPoseData>();
 			_text = this.GetComponent<TMPro.TMP_Text>();
@@ -38,10 +38,10 @@ namespace Character.Creator.UI
 
 		private InstructionsType ComputeInstructionType()
 		{
-			// Are we in no-UI camera mode?
-			if (!_visibilityControl.IsVisible.Val)
+			// Are we in no-UI photo mode?
+			if (!_photoModeState.IsInPhotoMode.Val)
 			{
-				return InstructionsType.Pose_CameraMode;
+				return InstructionsType.Pose_PhotoMode;
 			}
 
 			// Are we not in pose mode?
@@ -64,7 +64,7 @@ namespace Character.Creator.UI
 				InstructionsType.Main => _main,
 				InstructionsType.Pose_NoEditing => _poseNoEditing,
 				InstructionsType.Pose_EditingYing => _poseEditingYing,
-				InstructionsType.Pose_CameraMode => _poseCameraMode,
+				InstructionsType.Pose_PhotoMode => _poseCameraMode,
 				_ => throw new ArgumentOutOfRangeException()
 			};
 		}

@@ -7,7 +7,7 @@ public class MakeCanvasGroupVisibleOnHoverAndCursorMovement : ReactiveBehaviour
 	// Let this become visible based on something else's hover state
 	[SerializeField] UiHoverable _hoverable;
 	[SerializeField] SharedEaseSettings _easeSettings;
-	private ICharacterCreatorVisibilityControl _visibilityControl;
+	private IPhotoModeState _photoModeState;
 	private CanvasGroup _canvasGroup;
 	private Coroutine _transitionCoroutine;
 	private Observable<bool> _cursorMovedRecently = new(false);
@@ -19,7 +19,7 @@ public class MakeCanvasGroupVisibleOnHoverAndCursorMovement : ReactiveBehaviour
 
 	private void Awake()
 	{
-		_visibilityControl = this.GetComponentInParent<ICharacterCreatorVisibilityControl>();
+		_photoModeState = this.GetComponentInParent<IPhotoModeState>();
 		_canvasGroup = this.GetComponent<CanvasGroup>();
 		_canvasGroup.alpha = 0;
 	}
@@ -40,8 +40,8 @@ public class MakeCanvasGroupVisibleOnHoverAndCursorMovement : ReactiveBehaviour
 			_lastMousePosition = currentMousePosition;
 		}
 
-		// Hide instructions slightly faster if the UI is not visible
-		float moveTime = (_visibilityControl.IsVisible.Val) ? CURSOR_MOVE_TIME : CURSOR_MOVE_TIME_NO_UI;
+		// Hide instructions slightly faster if we're in photo mode
+		float moveTime = (_photoModeState.IsInPhotoMode.Val) ? CURSOR_MOVE_TIME_NO_UI : CURSOR_MOVE_TIME;
 		_cursorMovedRecently.Val = (Time.time - _lastMovementTime) <= moveTime;
 	}
 

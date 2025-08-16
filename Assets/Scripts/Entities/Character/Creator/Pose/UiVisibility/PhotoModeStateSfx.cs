@@ -2,23 +2,23 @@ using UnityEngine;
 
 namespace Character.Creator.UI
 {
-	public class CharacterCreatorVisibilitySfx : MonoBehaviour
+	public class PhotoModeStateSfx : MonoBehaviour
 	{
 		[SerializeField] SoundEffect _soundEffect;
 
 		private IAudioPlayer _audioPlayer;
-		private ICharacterCreatorVisibilityControl _visibilityControl;
+		private IPhotoModeState _photoModeState;
 
 		private void Awake()
 		{
 			_audioPlayer = Singletons.GetSingleton<IAudioPlayer>();
-			_visibilityControl = this.GetComponent<ICharacterCreatorVisibilityControl>();
-			_visibilityControl.IsVisible.OnChanged += VisibilityControl_OnChanged;
+			_photoModeState = this.GetComponent<IPhotoModeState>();
+			_photoModeState.IsInPhotoMode.OnChanged += VisibilityControl_OnChanged;
 		}
 
 		private void OnDestroy()
 		{
-			_visibilityControl.IsVisible.OnChanged -= VisibilityControl_OnChanged;
+			_photoModeState.IsInPhotoMode.OnChanged -= VisibilityControl_OnChanged;
 		}
 		private void VisibilityControl_OnChanged(bool arg1, bool arg2)
 		{

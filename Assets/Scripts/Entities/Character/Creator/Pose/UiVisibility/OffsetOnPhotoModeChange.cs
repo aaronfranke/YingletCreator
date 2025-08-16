@@ -1,12 +1,12 @@
 using Character.Creator.UI;
 using UnityEngine;
 
-public class OffsetOnVisibilityChange : MonoBehaviour
+public class OffsetOnPhotoModeChange : MonoBehaviour
 {
 	[SerializeField] SharedEaseSettings _easeSettings;
 	[SerializeField] Vector3 _offset;
 
-	private ICharacterCreatorVisibilityControl _visibilityControl;
+	private IPhotoModeState _photoModeState;
 	private Vector3 _originalPos;
 	private Coroutine _transitionCoroutine;
 
@@ -14,15 +14,15 @@ public class OffsetOnVisibilityChange : MonoBehaviour
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
 	{
-		_visibilityControl = this.GetComponentInParent<ICharacterCreatorVisibilityControl>();
+		_photoModeState = this.GetComponentInParent<IPhotoModeState>();
 		_originalPos = this.transform.localPosition;
-		_visibilityControl.IsVisible.OnChanged += OnVisibilityChanged;
+		_photoModeState.IsInPhotoMode.OnChanged += OnPhotoModeChanged;
 	}
 
-	private void OnVisibilityChanged(bool from, bool to)
+	private void OnPhotoModeChanged(bool from, bool to)
 	{
 		var fromPos = this.transform.localPosition;
-		var toPos = to ? _originalPos : _originalPos + _offset;
+		var toPos = to ? _originalPos + _offset : _originalPos;
 		this.StartEaseCoroutine(ref _transitionCoroutine, _easeSettings, p => this.transform.localPosition = Vector3.LerpUnclamped(fromPos, toPos, p));
 	}
 }
