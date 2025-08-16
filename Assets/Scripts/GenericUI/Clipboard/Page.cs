@@ -36,6 +36,12 @@ namespace Character.Creator.UI
 			this.gameObject.SetActive(false);
 			AddReflector(ReflectSelected);
 		}
+		private void OnEnable()
+		{
+			// The coroutine may have stopped when the whole clipboard was disabled
+			// Reset the color incase we were mid-tint
+			_tintImage.color = Color.clear;
+		}
 
 		private void ReflectSelected()
 		{
