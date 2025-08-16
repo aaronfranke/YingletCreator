@@ -2331,6 +2331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eee477b9126eaa42a617a5f6d97c76e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _type: 0
 --- !u!114 &6441786211628977680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2664,6 +2665,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4699317394819596005, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
+      propertyPath: _initialType
+      value: 
+      objectReference: {fileID: 11400000, guid: 5b5ff0c6111dcd74696f5fca53261f1a, type: 2}
     - target: {fileID: 4742878906958102486, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
       propertyPath: m_text
       value: Zhe Enclave
