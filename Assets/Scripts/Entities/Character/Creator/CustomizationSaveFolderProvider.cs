@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using UnityEngine;
 
@@ -13,6 +12,12 @@ namespace Character.Creator
 
 	public class CustomizationSaveFolderProvider : MonoBehaviour, ICustomizationSaveFolderProvider
 	{
+		private ISaveFolderProvider _saveFolderProvider;
+
+		private void Awake()
+		{
+			_saveFolderProvider = Singletons.GetSingleton<ISaveFolderProvider>();
+		}
 
 		string _presetFolderRoot;
 		public string PresetFolderRoot
@@ -29,16 +34,6 @@ namespace Character.Creator
 			}
 		}
 
-		string GameRoot
-		{
-			get
-			{
-				string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-				return Path.Combine(documentsPath, "My Games", Application.productName);
-			}
-
-		}
-
 		string _customFolderRoot;
 		public string CustomFolderRoot
 		{
@@ -46,7 +41,7 @@ namespace Character.Creator
 			{
 				if (_customFolderRoot == null)
 				{
-					string folder = Path.Combine(GameRoot, "CustomYings");
+					string folder = Path.Combine(_saveFolderProvider.GameRootFolderPath, "CustomYings");
 					if (!Directory.Exists(folder))
 					{
 						Directory.CreateDirectory(folder);
@@ -58,13 +53,14 @@ namespace Character.Creator
 		}
 
 		string _photoRoot;
+
 		public string PhotoRoot
 		{
 			get
 			{
 				if (_photoRoot == null)
 				{
-					string folder = Path.Combine(GameRoot, "Photos");
+					string folder = Path.Combine(_saveFolderProvider.GameRootFolderPath, "Photos");
 					if (!Directory.Exists(folder))
 					{
 						Directory.CreateDirectory(folder);
