@@ -11,9 +11,12 @@ public enum FpsCap
 public interface ISettings
 {
 	FpsCap FpsCap { get; }
+
+	float EffectVolume { get; }
 }
 
 public interface IWriteableSettings : ISettings
 {
 	new FpsCap FpsCap { get; set; }
+	new float EffectVolume { get; set; }
 }
