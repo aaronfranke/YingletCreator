@@ -1,5 +1,4 @@
-﻿
-using System.IO;
+﻿using System.IO;
 using UnityEngine;
 
 public interface ISettingsDiskIO
@@ -20,7 +19,13 @@ public class SettingsDiskIO : MonoBehaviour, ISettingsDiskIO
 
 	public ISettings LoadSettings()
 	{
-		return new SerializableSettings();
+		if (!File.Exists(_settingsFilePath))
+		{
+			// Settings file doesn't exist. Create one with defaults
+			return new SerializableSettings();
+		}
+		string text = File.ReadAllText(_settingsFilePath);
+		return JsonUtility.FromJson<SerializableSettings>(text);
 	}
 
 	public void SaveSettings(ISettings settings)
