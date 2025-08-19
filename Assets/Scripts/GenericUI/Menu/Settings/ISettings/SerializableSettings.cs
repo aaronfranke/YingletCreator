@@ -6,4 +6,12 @@ public sealed class SerializableSettings : ISettings
 
 	float _effectVolume = 1.0f;
 	public float EffectVolume => _effectVolume;
+
+	public SerializableSettings() { }
+
+	public SerializableSettings(ISettings settings)
+	{
+		_fpsCap = settings.FpsCap;
+		_effectVolume = settings.EffectVolume;
+	}
 }

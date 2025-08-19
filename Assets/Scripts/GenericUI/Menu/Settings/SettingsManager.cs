@@ -4,10 +4,12 @@ using UnityEngine;
 public interface ISettingsManager
 {
 	IWriteableSettings Settings { get; }
+
+	void SaveChangesToDisk();
 }
 public class SettingsManager : MonoBehaviour, ISettingsManager
 {
-	private ISettingsIO _settingsIO;
+	private ISettingsDiskIO _settingsIO;
 
 	Observable<IWriteableSettings> _settings = new();
 
@@ -15,8 +17,13 @@ public class SettingsManager : MonoBehaviour, ISettingsManager
 
 	private void Awake()
 	{
-		_settingsIO = Singletons.GetSingleton<ISettingsIO>();
+		_settingsIO = Singletons.GetSingleton<ISettingsDiskIO>();
 		var loadedSettings = _settingsIO.LoadSettings();
 		_settings.Val = new ObservableSettings(loadedSettings);
+	}
+
+	public void SaveChangesToDisk()
+	{
+		_settingsIO.SaveSettings(_settings.Val);
 	}
 }
