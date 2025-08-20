@@ -1,5 +1,6 @@
 using Reactivity;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public enum SoundSettingsSliderType
@@ -8,7 +9,7 @@ public enum SoundSettingsSliderType
 	MusicVolume
 }
 
-public class SliderSoundSettings : ReactiveBehaviour
+public class SliderSoundSettings : ReactiveBehaviour, IPointerUpHandler
 {
 	[SerializeField] private SoundSettingsSliderType _sliderType = SoundSettingsSliderType.EffectVolume;
 
@@ -41,8 +42,10 @@ public class SliderSoundSettings : ReactiveBehaviour
 	private void Slider_OnValueChanged(float arg0)
 	{
 		Volume = arg0;
+	}
 
-		// This is excessively serializing and writing to disk, but doing it on mouse up is a pain because you'd the pointer event is on a lower object
+	public void OnPointerUp(PointerEventData eventData)
+	{
 		_settingsManager.SaveChangesToDisk();
 	}
 
