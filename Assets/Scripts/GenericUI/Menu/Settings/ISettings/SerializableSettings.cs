@@ -9,11 +9,15 @@ public sealed class SerializableSettings : ISettings
 	[SerializeField] float _effectVolume = 1.0f;
 	public float EffectVolume => _effectVolume;
 
+	[SerializeField] float _musicVolume = 0.7f;
+	public float MusicVolume => _musicVolume;
+
 	public SerializableSettings() { }
 
 	public SerializableSettings(ISettings settings)
 	{
 		_fpsCap = settings.FpsCap;
 		_effectVolume = settings.EffectVolume;
+		_musicVolume = settings.MusicVolume;
 	}
 }

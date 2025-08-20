@@ -13,10 +13,12 @@ public interface ISettings
 	FpsCap FpsCap { get; }
 
 	float EffectVolume { get; }
+	float MusicVolume { get; }
 }
 
 public interface IWriteableSettings : ISettings
 {
 	new FpsCap FpsCap { get; set; }
 	new float EffectVolume { get; set; }
+	new float MusicVolume { get; set; }
 }
