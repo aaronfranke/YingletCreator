@@ -9,7 +9,7 @@ public class DisplaySettingsApplier : ReactiveBehaviour
 	{
 		_settingsManager = Singletons.GetSingleton<ISettingsManager>();
 		AddReflector(ReflectFpsCap);
-		AddReflector(ReflectScreenResolution);
+		AddReflector(ReflectScreenMode);
 	}
 
 	private void ReflectFpsCap()
@@ -19,8 +19,19 @@ public class DisplaySettingsApplier : ReactiveBehaviour
 		Application.targetFrameRate = fpsCap;
 	}
 
-	private void ReflectScreenResolution()
+	private void ReflectScreenMode()
 	{
-		Screen.SetResolution(1920, 1080, FullScreenMode.Windowed);
+		switch (_settingsManager.Settings.ScreenMode)
+		{
+			case ScreenMode.Windowed:
+				Screen.fullScreenMode = FullScreenMode.Windowed;
+				break;
+			case ScreenMode.Borderless:
+				Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+				break;
+			case ScreenMode.Fullscreen:
+				Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
+				break;
+		}
 	}
 }

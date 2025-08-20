@@ -8,9 +8,17 @@ public enum FpsCap
 	Unlimited = -1,
 }
 
+public enum ScreenMode
+{
+	Windowed,
+	Borderless,
+	Fullscreen
+}
+
 public interface ISettings
 {
 	FpsCap FpsCap { get; }
+	ScreenMode ScreenMode { get; }
 
 	float EffectVolume { get; }
 	float MusicVolume { get; }
@@ -19,6 +27,7 @@ public interface ISettings
 public interface IWriteableSettings : ISettings
 {
 	new FpsCap FpsCap { get; set; }
+	new ScreenMode ScreenMode { get; set; }
 	new float EffectVolume { get; set; }
 	new float MusicVolume { get; set; }
 }
