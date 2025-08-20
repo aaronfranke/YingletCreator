@@ -44,7 +44,6 @@ public abstract class MenuSettingsDropdown<T> : ReactiveBehaviour where T : Syst
 		{
 			_dropdown.options.Add(new TMP_Dropdown.OptionData(option.DisplayName));
 		}
-		;
 	}
 
 	private void ReflectDropdownValue()
