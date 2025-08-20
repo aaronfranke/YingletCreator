@@ -38,7 +38,6 @@ public class SliderSoundSettings : ReactiveBehaviour, IPointerUpHandler
 	{
 		_slider.SetValueWithoutNotify(Volume);
 	}
-
 	private void Slider_OnValueChanged(float arg0)
 	{
 		Volume = arg0;
