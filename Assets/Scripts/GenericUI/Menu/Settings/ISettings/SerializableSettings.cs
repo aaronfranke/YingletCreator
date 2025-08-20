@@ -9,6 +9,9 @@ public sealed class SerializableSettings : ISettings
 	[SerializeField] ScreenMode _screenMode = ScreenMode.Borderless;
 	public ScreenMode ScreenMode { get => _screenMode; }
 
+	[SerializeField] WindowSize _windowSize = WindowSize.Resolution1920x1080;
+	public WindowSize WindowSize { get => _windowSize; }
+
 	[SerializeField] float _effectVolume = 1.0f;
 	public float EffectVolume => _effectVolume;
 
@@ -21,6 +24,7 @@ public sealed class SerializableSettings : ISettings
 	{
 		_fpsCap = settings.FpsCap;
 		_screenMode = settings.ScreenMode;
+		_windowSize = settings.WindowSize;
 		_effectVolume = settings.EffectVolume;
 		_musicVolume = settings.MusicVolume;
 	}
