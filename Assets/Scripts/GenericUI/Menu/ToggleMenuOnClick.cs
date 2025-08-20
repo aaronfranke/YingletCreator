@@ -23,13 +23,13 @@ public class ToggleMenuOnClick : MonoBehaviour
 	private void Button_OnClick()
 	{
 		// Close it if it's already open
-		if (_menuManager.OpenMenu == _menuType)
+		if (_menuManager.OpenMenu.Val == _menuType)
 		{
-			_menuManager.OpenMenu = null;
+			_menuManager.OpenMenu.Val = null;
 		}
 		else
 		{
-			_menuManager.OpenMenu = _menuType;
+			_menuManager.OpenMenu.Val = _menuType;
 		}
 	}
 }

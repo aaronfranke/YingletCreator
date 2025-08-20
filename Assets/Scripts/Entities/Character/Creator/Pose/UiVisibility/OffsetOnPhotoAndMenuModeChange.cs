@@ -40,7 +40,7 @@ namespace Character.Creator.UI
 
 		private PhotoAndMenuState ComputePhotoAndMenuState()
 		{
-			if (_menuManager.OpenMenu != null)
+			if (_menuManager.OpenMenu.Val != null)
 			{
 				return PhotoAndMenuState.Menu;
 			}

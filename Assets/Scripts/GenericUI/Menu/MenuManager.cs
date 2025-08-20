@@ -6,11 +6,11 @@ using UnityEngine;
 /// </summary>
 public interface IMenuManager
 {
-	MenuType OpenMenu { get; set; }
+	Observable<MenuType> OpenMenu { get; }
 }
 
 public class MenuManager : MonoBehaviour, IMenuManager
 {
 	Observable<MenuType> _openMenu = new Observable<MenuType>(null);
-	public MenuType OpenMenu { get => _openMenu.Val; set => _openMenu.Val = value; }
+	public Observable<MenuType> OpenMenu => _openMenu;
 }

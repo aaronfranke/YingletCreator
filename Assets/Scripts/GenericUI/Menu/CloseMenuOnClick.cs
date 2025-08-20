@@ -12,6 +12,6 @@ public class CloseMenuOnClick : MonoBehaviour, IPointerClickHandler
 
 	public void OnPointerClick(PointerEventData eventData)
 	{
-		_menuManager.OpenMenu = null;
+		_menuManager.OpenMenu.Val = null;
 	}
 }

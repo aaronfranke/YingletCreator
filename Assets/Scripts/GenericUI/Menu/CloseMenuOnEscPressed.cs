@@ -13,7 +13,7 @@ public class CloseMenuOnEscPressed : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
-			_menuManager.OpenMenu = null;
+			_menuManager.OpenMenu.Val = null;
 		}
 	}
 }

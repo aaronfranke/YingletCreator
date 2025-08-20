@@ -16,6 +16,6 @@ public class MenuClipboardSelection : ReactiveBehaviour, ISelectable
 
 	private bool ComputeSelected()
 	{
-		return _menuManager.OpenMenu == _menuType;
+		return _menuManager.OpenMenu.Val == _menuType;
 	}
 }
