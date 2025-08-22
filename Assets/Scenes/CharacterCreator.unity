@@ -1671,6 +1671,7 @@ GameObject:
   - component: {fileID: 900786181}
   - component: {fileID: 900786180}
   - component: {fileID: 900786183}
+  - component: {fileID: 900786184}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -1759,6 +1760,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55d8446923b7cd44e843e62cc5f706f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &900786184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900786176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c32862d6a697d9418e1f40c87f02ef5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &926372145 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2313077223542097023, guid: edd5cee6229a6aa47b970a7509394931, type: 3}
@@ -1802,6 +1815,7 @@ GameObject:
   - component: {fileID: 954353182}
   - component: {fileID: 954353185}
   - component: {fileID: 954353186}
+  - component: {fileID: 954353187}
   m_Layer: 0
   m_Name: CharacterCreator
   m_TagString: Untagged
@@ -2038,6 +2052,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pictureTaken: {fileID: 11400000, guid: f7ff928eb159c4a45abef09b2e9cc9cd, type: 2}
+--- !u!114 &954353187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954353168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 171171b07d75133429864e3968c775b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &982014578
 GameObject:
   m_ObjectHideFlags: 0

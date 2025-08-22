@@ -49,6 +49,8 @@ namespace Character.Creator
 		void DeleteSelected();
 		IEnumerable<CachedYingletReference> LoadInitialYingData(CustomizationYingletGroup group);
 
+		event Action OnSaved;
+
 	}
 
 	public class CustomizationDiskIO : MonoBehaviour, ICustomizationDiskIO
@@ -60,6 +62,8 @@ namespace Character.Creator
 		private ICustomizationSelectedDataRepository _selectionData;
 		private ICustomizationSaveFolderProvider _locationProvider;
 		private ICustomizationYingletRepository _yingletRepository;
+
+		public event Action OnSaved = delegate { };
 
 		void Awake()
 		{
@@ -97,6 +101,8 @@ namespace Character.Creator
 			// Update our own reference
 			_selectionReference.Selected.CachedData = serializedData;
 			_selectionReference.Selected.Path = newFilePath;
+
+			OnSaved();
 			return true;
 		}
 
