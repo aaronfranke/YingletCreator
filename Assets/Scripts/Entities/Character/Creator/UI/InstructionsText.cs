@@ -39,7 +39,7 @@ namespace Character.Creator.UI
 		private InstructionsType ComputeInstructionType()
 		{
 			// Are we in no-UI photo mode?
-			if (!_photoModeState.IsInPhotoMode.Val)
+			if (_photoModeState.IsInPhotoMode.Val)
 			{
 				return InstructionsType.Pose_PhotoMode;
 			}
