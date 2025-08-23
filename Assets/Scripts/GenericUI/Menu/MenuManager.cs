@@ -11,6 +11,13 @@ public interface IMenuManager
 
 public class MenuManager : MonoBehaviour, IMenuManager
 {
-	Observable<MenuType> _openMenu = new Observable<MenuType>(null);
+	[SerializeField] MenuType _defaultMenu;
+
+	Observable<MenuType> _openMenu;
 	public Observable<MenuType> OpenMenu => _openMenu;
+
+	private void Awake()
+	{
+		_openMenu = new Observable<MenuType>(_defaultMenu);
+	}
 }

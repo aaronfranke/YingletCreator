@@ -36,6 +36,7 @@ namespace Character.Creator.UI
 			_photoAndMenuState = CreateComputed(ComputePhotoAndMenuState);
 
 			_photoAndMenuState.OnChanged += OnPhotoAndMenuStateChanged;
+			this.transform.localPosition = GetToPos(_photoAndMenuState.Val);
 		}
 
 		private PhotoAndMenuState ComputePhotoAndMenuState()
@@ -54,14 +55,19 @@ namespace Character.Creator.UI
 		private void OnPhotoAndMenuStateChanged(PhotoAndMenuState from, PhotoAndMenuState to)
 		{
 			var fromPos = this.transform.localPosition;
-			var toPos = to switch
+			var toPos = GetToPos(to);
+			this.StartEaseCoroutine(ref _transitionCoroutine, _easeSettings, p => this.transform.localPosition = Vector3.LerpUnclamped(fromPos, toPos, p));
+		}
+
+		Vector3 GetToPos(PhotoAndMenuState to)
+		{
+			return to switch
 			{
 				PhotoAndMenuState.None => _originalPos,
 				PhotoAndMenuState.Photo => _originalPos + _photoOffset,
 				PhotoAndMenuState.Menu => _originalPos + _menuOffset,
 				_ => _originalPos
 			};
-			this.StartEaseCoroutine(ref _transitionCoroutine, _easeSettings, p => this.transform.localPosition = Vector3.LerpUnclamped(fromPos, toPos, p));
 		}
 	}
 }
