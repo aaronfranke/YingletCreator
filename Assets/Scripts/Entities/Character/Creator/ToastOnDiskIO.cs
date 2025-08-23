@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class ToastOnDiskIO : MonoBehaviour
 {
-	private IToastMediator _toastMediator;
+	private IToastDisplay _toastDisplay;
 	private ICustomizationDiskIO _diskIO;
 
 	void Start()
 	{
-		_toastMediator = Singletons.GetSingleton<IToastMediator>();
+		_toastDisplay = Singletons.GetSingleton<IToastDisplay>();
 		_diskIO = this.GetComponent<ICustomizationDiskIO>();
 
 		_diskIO.OnSaved += DiskIO_OnSaved;
@@ -17,6 +17,6 @@ public class ToastOnDiskIO : MonoBehaviour
 
 	private void DiskIO_OnSaved()
 	{
-		_toastMediator.ShowToast("Yinglet saved as (insert path name here)");
+		_toastDisplay.Show("Yinglet saved as (insert path name here)");
 	}
 }
