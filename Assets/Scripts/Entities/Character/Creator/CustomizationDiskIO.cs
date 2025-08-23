@@ -49,7 +49,17 @@ namespace Character.Creator
 		void DeleteSelected();
 		IEnumerable<CachedYingletReference> LoadInitialYingData(CustomizationYingletGroup group);
 
-		event Action OnSaved;
+		/// <summary>
+		/// Event fired when a yinglet is saved to disk
+		/// Text is the name of the file
+		/// </summary>
+		event Action<string> OnSaved;
+
+		/// <summary>
+		/// Event fired when a yinglet is deleted
+		/// Text is the name of the file
+		/// </summary>
+		event Action<string> OnDeleted;
 
 	}
 
@@ -63,7 +73,8 @@ namespace Character.Creator
 		private ICustomizationSaveFolderProvider _locationProvider;
 		private ICustomizationYingletRepository _yingletRepository;
 
-		public event Action OnSaved = delegate { };
+		public event Action<string> OnSaved = delegate { };
+		public event Action<string> OnDeleted = delegate { }; // Added event implementation
 
 		void Awake()
 		{
@@ -102,7 +113,7 @@ namespace Character.Creator
 			_selectionReference.Selected.CachedData = serializedData;
 			_selectionReference.Selected.Path = newFilePath;
 
-			OnSaved();
+			OnSaved(Path.GetFileName(newFilePath));
 			return true;
 		}
 
@@ -128,12 +139,16 @@ namespace Character.Creator
 			var newReference = new CachedYingletReference(newFilePath, serializedData, CustomizationYingletGroup.Custom);
 			_yingletRepository.AddNewCustom(newReference);
 			_selectionReference.Selected = newReference;
+
+			OnSaved(Path.GetFileName(newFilePath));
 		}
 
 		public void DeleteSelected()
 		{
+			var filePath = _selectionReference.Selected.Path;
+
 			// Delete the file off disk
-			File.Delete(_selectionReference.Selected.Path);
+			File.Delete(filePath);
 
 			// Remove the reference
 			int index = _yingletRepository.DeleteCustom(_selectionReference.Selected);
@@ -149,6 +164,9 @@ namespace Character.Creator
 			{
 				_selectionReference.Selected = _yingletRepository.GetYinglets(CustomizationYingletGroup.Preset).First();
 			}
+
+			// Fire the OnDeleted event
+			OnDeleted(Path.GetFileName(filePath));
 		}
 
 		public IEnumerable<CachedYingletReference> LoadInitialYingData(CustomizationYingletGroup group)

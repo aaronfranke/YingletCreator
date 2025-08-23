@@ -7,7 +7,7 @@ using UnityEngine;
 
 public interface ITakePictureEvents
 {
-	event Action PictureTaken;
+	event Action<string> PictureTaken;
 }
 
 public class TakePictureOnLeftClick : MonoBehaviour, ITakePictureEvents
@@ -18,7 +18,7 @@ public class TakePictureOnLeftClick : MonoBehaviour, ITakePictureEvents
 
 	float _lastPicTime = 0;
 
-	public event Action PictureTaken;
+	public event Action<string> PictureTaken;
 
 	private void Start()
 	{
@@ -44,7 +44,8 @@ public class TakePictureOnLeftClick : MonoBehaviour, ITakePictureEvents
 	IEnumerator TakePicture()
 	{
 		// Play the sound effects and stuff immediately
-		PictureTaken?.Invoke();
+		var fullPath = GeneratePicturePath();
+		PictureTaken?.Invoke(Path.GetFileName(fullPath));
 		_lastPicTime = Time.time;
 		yield return null;
 
@@ -71,17 +72,23 @@ public class TakePictureOnLeftClick : MonoBehaviour, ITakePictureEvents
 		rt.Release();
 		Destroy(rt);
 
-		SavePicture(image);
+		SavePicture(image, fullPath);
 	}
 
-	void SavePicture(Texture2D image)
+	string GeneratePicturePath()
+	{
+
+		string fileName = $"Picture_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.png";
+		string fullPath = Path.Combine(_locationProvider.PhotoRoot, fileName);
+		return fullPath;
+	}
+
+	void SavePicture(Texture2D image, string fullPath)
 	{
 		// Save to desktop
 		byte[] bytes = image.EncodeToPNG();
 		Destroy(image);
 
-		string fileName = $"Picture_{DateTime.Now:yyyy-MM-dd_HH-mm-ss}.png";
-		string fullPath = Path.Combine(_locationProvider.PhotoRoot, fileName);
 		File.WriteAllBytes(fullPath, bytes);
 	}
 

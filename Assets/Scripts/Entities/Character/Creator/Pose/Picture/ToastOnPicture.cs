@@ -1,14 +1,13 @@
 using UnityEngine;
 
-public class PlaySoundOnPicture : MonoBehaviour
+public class ToastOnPicture : MonoBehaviour
 {
-	[SerializeField] private SoundEffect _pictureTaken;
-	private IAudioPlayer _audioPlayer;
+	private IToastDisplay _toastDisplay;
 	private ITakePictureEvents _picEvents;
 
 	private void Awake()
 	{
-		_audioPlayer = Singletons.GetSingleton<IAudioPlayer>();
+		_toastDisplay = Singletons.GetSingleton<IToastDisplay>();
 		_picEvents = this.GetComponent<ITakePictureEvents>();
 		_picEvents.PictureTaken += OnPictureTaken;
 	}
@@ -20,6 +19,6 @@ public class PlaySoundOnPicture : MonoBehaviour
 
 	private void OnPictureTaken(string fileName)
 	{
-		_audioPlayer.Play(_pictureTaken);
+		_toastDisplay.Show("Picture taken: " + fileName);
 	}
 }
