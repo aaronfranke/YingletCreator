@@ -66,7 +66,7 @@ namespace Character.Creator
 	public class CustomizationDiskIO : MonoBehaviour, ICustomizationDiskIO
 	{
 		const string EXTENSION = ".yingsave";
-		const string DUPLICATE_SUFFIX = " (copy)";
+		const string DUPLICATE_SUFFIX = " - Copy";
 
 		private ICustomizationSelection _selectionReference;
 		private ICustomizationSelectedDataRepository _selectionData;
