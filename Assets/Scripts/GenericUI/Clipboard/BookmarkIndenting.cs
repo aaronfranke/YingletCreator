@@ -6,7 +6,7 @@ namespace Character.Creator.UI
 	public class BookmarkIndenting : ReactiveBehaviour
 	{
 		[SerializeField] float _notSelectedIndent;
-		[SerializeField] EaseSettings _easeSettings;
+		[SerializeField] SharedEaseSettings _easeSettings;
 		private Vector3 _originalPos;
 		private ISelectable _selection;
 		private IHoverable _hoverable;
