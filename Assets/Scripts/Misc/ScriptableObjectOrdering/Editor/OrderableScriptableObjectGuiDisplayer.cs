@@ -40,7 +40,7 @@ class OrderableScriptableObjectGuiDisplayer<TScriptableObject, TGroup> where TSc
 		EditorGUILayout.Space();
 		EditorGUILayout.LabelField("Ordering in group:", EditorStyles.boldLabel);
 
-		_scrollPos = EditorGUILayout.BeginScrollView(_scrollPos, GUILayout.Height(200));
+		_scrollPos = EditorGUILayout.BeginScrollView(_scrollPos, GUILayout.Height(600));
 		foreach (var obj in _cachedObjects)
 		{
 			EditorGUILayout.ObjectField($"({obj.Order.Index}) {obj.name}", obj, typeof(TScriptableObject), false);
