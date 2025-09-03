@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
+  m_Name: Pattern - Head - Mask
+  m_EditorClassIdentifier: 
+  _uniqueAssetId: 2d728b50244fbdd4f9900ad45b956430
+  _displayName: Mask
+  _groups: []
+  _addedMeshes: []
+  _addedTextures:
+  - {fileID: 11400000, guid: 22692d172d7147444bfa7c0c0c23b88b, type: 2}
+  - {fileID: 11400000, guid: 048c282734f1afa45a0758a60e0e165e, type: 2}
+  _eyeTextures: {fileID: 0}
+  _roomPrefab: {fileID: 0}
+  _components: []
+  _preview:
+    _sprite: {fileID: -776579674, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _cameraPosition: {fileID: 11400000, guid: 850bf0f89ca3c0c498136d3f9febe1e8, type: 2}
+  _order:
+    _group: {fileID: 11400000, guid: 3d622c09a117a314e8d77c0606631bc1, type: 2}
+    _index: 1145
