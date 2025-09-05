@@ -77,11 +77,11 @@ namespace Character.Creator
 
 		public static bool GetToggle(this ICustomizationSelectedDataRepository dataRepo, CharacterToggleId id)
 		{
-			return dataRepo.CustomizationData.ToggleData.GetToggle(id);
+			return dataRepo.CustomizationData.GetToggle(id);
 		}
 		public static void FlipToggle(this ICustomizationSelectedDataRepository dataRepo, CharacterToggleId id)
 		{
-			dataRepo.CustomizationData.ToggleData.FlipToggle(id);
+			dataRepo.CustomizationData.FlipToggle(id);
 		}
 
 		public static int GetInt(this ICustomizationSelectedDataRepository dataRepo, CharacterIntId id)

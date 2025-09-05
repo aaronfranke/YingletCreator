@@ -12,14 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee45e03f2dc3e2f4a82b3713ad9c84ac, type: 3}
   m_Name: Hair
   m_EditorClassIdentifier: 
-  _baseDefaultColor:
-    _hue: 0.044642877
-    _saturation: 0.3862069
-    _value: 0.5686275
-  _shadeDefaultColor:
-    _hue: 0.018987337
-    _saturation: 0.5330189
-    _value: 0.5754717
   _defaultColors:
     _base:
       _hue: 0.044642877
@@ -29,3 +21,4 @@ MonoBehaviour:
       _hue: 0.018987337
       _saturation: 0.5330189
       _value: 0.5754717
+  _autoColorWithGroup: 1

@@ -61,9 +61,9 @@ namespace Snapshotter
 				// Kinda hacky casting but w/e
 				if (snapshottable is CharacterToggleId toggle)
 				{
-					if (!observableData.ToggleData.GetToggle(toggle)) // Accounts for the defaults
+					if (!observableData.GetToggle(toggle)) // Accounts for the defaults
 					{
-						observableData.ToggleData.FlipToggle(toggle);
+						observableData.FlipToggle(toggle);
 					}
 				}
 				if (snapshottable is PoseId pose)
