@@ -36,6 +36,7 @@ namespace Character.Creator
 		private ICharacterCreatorStateSnapshotter _stateSnapshotter;
 
 		List<CharacterCreatorStateSnapshot> _undoStack = new(); // Not actually a stack because we need to remove things from the front
+		List<CharacterCreatorStateSnapshot> _redoStack = new(); // Redo stack to store undone states
 
 		public event Action<string> UndoApplied;
 		public event Action NothingToUndo;
@@ -51,10 +52,30 @@ namespace Character.Creator
 		{
 			var undoState = _stateSnapshotter.GetStateSnapshot(action);
 			_undoStack.Add(undoState);
+
+			// Clear redo stack when new state is recorded
+			_redoStack.Clear();
 		}
 
 		public void TryRedo()
 		{
+			// Check if we even have anything to redo
+			if (!_redoStack.Any())
+			{
+				NothingToRedo?.Invoke();
+				return;
+			}
+
+			var futureState = _redoStack.Last();
+			_redoStack.RemoveAt(_redoStack.Count - 1);
+
+			// Before we apply the future state, save the current state to the undo stack
+			// There's probably some optimization that could be done here but whatever
+			var currentState = _stateSnapshotter.GetStateSnapshot(futureState.Action);
+			_undoStack.Add(currentState);
+
+			_stateSnapshotter.RestoreStateSnapshot(futureState);
+			RedoApplied?.Invoke(futureState.Action);
 		}
 
 		public void TryUndo()
@@ -66,10 +87,15 @@ namespace Character.Creator
 				return;
 			}
 
-			var state = _undoStack.Last();
+			var previousState = _undoStack.Last();
 			_undoStack.RemoveAt(_undoStack.Count - 1);
-			_stateSnapshotter.RestoreStateSnapshot(state);
-			UndoApplied?.Invoke(state.Action);
+
+			// Before we apply the previous state, save the current state to the redo stack
+			var currentState = _stateSnapshotter.GetStateSnapshot(previousState.Action);
+			_redoStack.Add(currentState);
+
+			_stateSnapshotter.RestoreStateSnapshot(previousState);
+			UndoApplied?.Invoke(previousState.Action);
 		}
 	}
 }
