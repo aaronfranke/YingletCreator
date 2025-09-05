@@ -55,6 +55,7 @@ namespace Character.Creator
 
 			// Clear redo stack when new state is recorded
 			_redoStack.Clear();
+			ClampStacksToMax();
 		}
 
 		public void TryRedo()
@@ -76,6 +77,7 @@ namespace Character.Creator
 
 			_stateSnapshotter.RestoreStateSnapshot(futureState);
 			RedoApplied?.Invoke(futureState.Action);
+			ClampStacksToMax();
 		}
 
 		public void TryUndo()
@@ -96,6 +98,21 @@ namespace Character.Creator
 
 			_stateSnapshotter.RestoreStateSnapshot(previousState);
 			UndoApplied?.Invoke(previousState.Action);
+			ClampStacksToMax();
+		}
+
+		const int MAX_STACK_SIZE = 16;
+		void ClampStacksToMax()
+		{
+			if (_undoStack.Count > MAX_STACK_SIZE)
+			{
+				_undoStack.RemoveRange(0, _undoStack.Count - MAX_STACK_SIZE);
+			}
+
+			if (_redoStack.Count > MAX_STACK_SIZE)
+			{
+				_redoStack.RemoveRange(0, _redoStack.Count - MAX_STACK_SIZE);
+			}
 		}
 	}
 }
