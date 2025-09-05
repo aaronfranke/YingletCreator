@@ -7,6 +7,7 @@ namespace Character.Creator.UI
 	public class CharacterCreatorToggleIdButton : MonoBehaviour, IUserToggleEvents
 	{
 		private ICustomizationSelectedDataRepository _dataRepo;
+		private ICharacterCreatorUndoManager _undoManager;
 		private ICharacterCreatorToggleIdReference _reference;
 		private Button _button;
 
@@ -15,6 +16,7 @@ namespace Character.Creator.UI
 		void Awake()
 		{
 			_dataRepo = this.GetComponentInParent<ICustomizationSelectedDataRepository>();
+			_undoManager = this.GetComponentInParent<ICharacterCreatorUndoManager>();
 			_reference = this.GetComponent<ICharacterCreatorToggleIdReference>();
 			_button = this.GetComponent<Button>();
 			_button.onClick.AddListener(Button_OnClick);
@@ -28,6 +30,7 @@ namespace Character.Creator.UI
 
 		private void Button_OnClick()
 		{
+			_undoManager.RecordState($"Toggle \"{_reference.ToggleId.DisplayName}\"");
 			var from = _dataRepo.GetToggle(_reference.ToggleId);
 			_dataRepo.FlipToggle(_reference.ToggleId);
 			var to = _dataRepo.GetToggle(_reference.ToggleId);
