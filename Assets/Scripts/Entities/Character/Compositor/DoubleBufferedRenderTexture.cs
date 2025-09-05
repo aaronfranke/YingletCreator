@@ -23,9 +23,18 @@ public sealed class DoubleBufferedRenderTexture
 			var rt = new RenderTexture(textureSize.x, textureSize.y, 0);
 			rt.wrapMode = TextureWrapMode.Clamp;
 			rt.Create();
+			ClearRt(rt, Color.clear);
 
 			return rt;
 		}
+	}
+
+	static void ClearRt(RenderTexture rt, Color clear)
+	{
+		var prev = RenderTexture.active;
+		RenderTexture.active = rt;
+		GL.Clear(true, true, clear);
+		RenderTexture.active = prev;
 	}
 
 	public void Blit(Material mat)
