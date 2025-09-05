@@ -5,6 +5,7 @@ using Reactivity;
 using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Character.Creator.UI
@@ -14,14 +15,16 @@ namespace Character.Creator.UI
 		public ColorAdjustmentSliderTarget Target { get; }
 	}
 
-	public class ColorAdjustmentSlider : ReactiveBehaviour, IColorAdjustmentSlider
+	public class ColorAdjustmentSlider : ReactiveBehaviour, IColorAdjustmentSlider, IPointerUpHandler
 	{
 		[SerializeField] ColorAdjustmentSliderTarget _target;
 
 		private IColorActiveSelection _activeSelection;
 		private ICustomizationSelectedDataRepository _dataRepo;
+		private ICharacterCreatorUndoManager _undoManager;
 		private ILightDarkSelection _lightDarkSelection;
 		private Slider _slider;
+		private bool _recordDragValue = true;
 
 		public ColorAdjustmentSliderTarget Target => _target;
 
@@ -29,6 +32,7 @@ namespace Character.Creator.UI
 		{
 			_activeSelection = this.GetComponentInParent<IColorActiveSelection>();
 			_dataRepo = this.GetComponentInParent<ICustomizationSelectedDataRepository>();
+			_undoManager = this.GetComponentInParent<ICharacterCreatorUndoManager>();
 			_lightDarkSelection = this.GetComponentInParent<ILightDarkSelection>();
 			_slider = this.GetComponentInChildren<Slider>();
 			_slider.onValueChanged.AddListener(Slider_OnValueChanged);
@@ -57,6 +61,13 @@ namespace Character.Creator.UI
 		{
 			var ids = _activeSelection.AllSelected.ToList();
 			if (!ids.Any()) return;
+
+			if (_recordDragValue)
+			{
+				// Only record to undo manager if we just started dragging this
+				_undoManager.RecordState($"Adjust colors {ids.First().name}");
+				_recordDragValue = false;
+			}
 
 			var existingColors = ids.Select(id => new IdWithColor(id, _dataRepo.GetColorizeValues(id))).ToList();
 
@@ -101,6 +112,11 @@ namespace Character.Creator.UI
 			else if (_target == ColorAdjustmentSliderTarget.Saturation) part.Saturation += diff;
 			else if (_target == ColorAdjustmentSliderTarget.Value) part.Value += diff;
 			else throw new ArgumentException("Invalid target");
+		}
+
+		public void OnPointerUp(PointerEventData eventData)
+		{
+			_recordDragValue = true;
 		}
 	}
 

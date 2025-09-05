@@ -7,12 +7,14 @@ namespace Character.Creator.UI
 	{
 		private ICustomizationSelectedDataRepository _dataRepo;
 		private ICharacterCreatorToggleIdReference _reference;
+		private ICharacterCreatorUndoManager _undoManager;
 		private Toggle _toggle;
 
 		private void Awake()
 		{
 			_reference = this.GetComponent<ICharacterCreatorToggleIdReference>();
 			_dataRepo = this.GetComponentInParent<ICustomizationSelectedDataRepository>();
+			_undoManager = this.GetComponentInParent<ICharacterCreatorUndoManager>();
 			_toggle = this.GetComponentInChildren<Toggle>();
 			_toggle.onValueChanged.AddListener(Toggle_OnValueChanged);
 		}
@@ -24,6 +26,7 @@ namespace Character.Creator.UI
 
 		private void Toggle_OnValueChanged(bool arg0)
 		{
+			_undoManager.RecordState($"Check \"{_reference.ToggleId.DisplayName}\"");
 			_dataRepo.FlipToggle(_reference.ToggleId);
 		}
 

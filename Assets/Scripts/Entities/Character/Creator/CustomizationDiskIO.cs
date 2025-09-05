@@ -153,6 +153,9 @@ namespace Character.Creator
 			// Remove the reference
 			int index = _yingletRepository.DeleteCustom(_selectionReference.Selected);
 
+			// Edge case: Undo of a delete action
+			if (index == -1) return;
+
 			// Select an adjacent item
 			var customYinglets = _yingletRepository.GetYinglets(CustomizationYingletGroup.Custom);
 			if (customYinglets.Any())

@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 5627904170679125815}
   - component: {fileID: 2877811975182521717}
   - component: {fileID: 7285440670096366270}
+  - component: {fileID: 7335501119689569529}
   m_Layer: 0
   m_Name: Slider
   m_TagString: Untagged
@@ -196,10 +197,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cad7d1c37a69a6641bd153cf68d4f1f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _changePage: {fileID: 11400000, guid: 28451689ba236ab4e93d914e2dc78cac, type: 2}
-  _volumeDecreaseSpeed: 5
-  _sliderDeltaToVolume: 12
-  _minimumVolumeToAdd: 0.35
 --- !u!114 &6391805359156671177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,6 +281,18 @@ MonoBehaviour:
   - {fileID: 4349264877703428412}
   - {fileID: 4462283557892632322}
   _easeSettings: {fileID: 11400000, guid: ad3eb6458a4db3b4ea509fc752842a97, type: 2}
+--- !u!114 &7335501119689569529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329357176275329270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047681926991c2f4098ca11fe8a5cb5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2976257005875304043
 GameObject:
   m_ObjectHideFlags: 0
