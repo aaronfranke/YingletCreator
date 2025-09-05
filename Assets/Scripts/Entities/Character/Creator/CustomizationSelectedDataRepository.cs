@@ -12,23 +12,38 @@ namespace Character.Creator
 		ObservableCustomizationData CustomizationData { get; }
 	}
 
-	public class CustomizationSelectedDataRepository : ReactiveBehaviour, ICustomizationSelectedDataRepository
+
+	/// <summary>
+	/// This is made available only for undo purposes; most consumers should not need to set this
+	/// </summary>
+	public interface IForceableCustomizationSelectedDataRepository : ICustomizationSelectedDataRepository
+	{
+		void ForceCustomizationData(SerializableCustomizationData cachedData);
+	}
+
+	public class CustomizationSelectedDataRepository : ReactiveBehaviour, IForceableCustomizationSelectedDataRepository
 	{
 		private ICustomizationSelection _selection;
-		private Computed<ObservableCustomizationData> _data;
+		private Observable<ObservableCustomizationData> _data = new();
 
 		public ObservableCustomizationData CustomizationData => _data.Val;
 
 		void Awake()
 		{
 			_selection = this.GetComponent<ICustomizationSelection>();
-			_data = CreateComputed(ComputeCustomizationData);
+			AddReflector(ReflectCustomizationData);
 		}
 
-		ObservableCustomizationData ComputeCustomizationData()
+		void ReflectCustomizationData()
 		{
+			// This used to be a computed, but with undo we want to be able to force the customization data to a specific state
 			var cachedData = _selection.Selected.CachedData;
-			return new ObservableCustomizationData(cachedData);
+			_data.Val = new ObservableCustomizationData(cachedData);
+		}
+
+		public void ForceCustomizationData(SerializableCustomizationData cachedData)
+		{
+			_data.Val = new ObservableCustomizationData(cachedData);
 		}
 	}
 

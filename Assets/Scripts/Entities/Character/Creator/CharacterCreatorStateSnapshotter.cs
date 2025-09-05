@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Reactivity;
+using UnityEngine;
 
 namespace Character.Creator
 {
@@ -25,20 +26,25 @@ namespace Character.Creator
 	internal class CharacterCreatorStateSnapshotter : MonoBehaviour, ICharacterCreatorStateSnapshotter
 	{
 		private ICustomizationSelection _selection;
+		private IForceableCustomizationSelectedDataRepository _dataRepository;
 
 		private void Awake()
 		{
 			_selection = this.GetComponent<ICustomizationSelection>();
+			_dataRepository = this.GetComponent<IForceableCustomizationSelectedDataRepository>();
 		}
 
 		public CharacterCreatorStateSnapshot GetStateSnapshot(string action)
 		{
-			return new CharacterCreatorStateSnapshot(action, _selection.Selected, null);
+			var cachedData = new SerializableCustomizationData(_dataRepository.CustomizationData);
+			return new CharacterCreatorStateSnapshot(action, _selection.Selected, cachedData);
 		}
 
 		public void RestoreStateSnapshot(CharacterCreatorStateSnapshot snapshot)
 		{
+			using var suspender = new ReactivitySuspender();
 			_selection.Selected = snapshot.Selected;
+			_dataRepository.ForceCustomizationData(snapshot.SerializedData);
 		}
 	}
 }
