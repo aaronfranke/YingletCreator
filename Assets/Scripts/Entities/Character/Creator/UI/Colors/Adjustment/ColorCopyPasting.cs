@@ -46,18 +46,22 @@ namespace Character.Creator.UI
 			var id = _activeSelection.FirstSelected;
 			if (!id) return;
 
-			var color = _dataRepository.GetColorizeValues(id).Base.GetColor();
-			var hexString = "#" + ColorUtility.ToHtmlStringRGB(color);
-			GUIUtility.systemCopyBuffer = hexString;
+			var baseHex = GetHexString(_dataRepository.GetColorizeValues(id).Base);
+			var shadeHex = GetHexString(_dataRepository.GetColorizeValues(id).Shade);
+			GUIUtility.systemCopyBuffer = $"{baseHex} {shadeHex}";
 
 			Copied();
 		}
 
+		static string GetHexString(IColorizeValuesPart part)
+		{
+			return "#" + ColorUtility.ToHtmlStringRGB(part.GetColor());
+		}
 
 		public void Paste()
 		{
-			var clipboardColor = GetColorFromClipboard();
-			if (clipboardColor == null)
+			var (baseColor, shadeColor) = GetColorsFromClipboard();
+			if (baseColor == null)
 			{
 				PasteFailedInvalidFormat();
 				return;
@@ -68,24 +72,49 @@ namespace Character.Creator.UI
 			foreach (var id in ids)
 			{
 				var existingColor = _dataRepository.GetColorizeValues(id);
-				var newColors = new ColorizeValuesFromRealColor(clipboardColor.Value, existingColor);
-				_dataRepository.SetColorizeValues(id, newColors);
+
+				var newColorizeValues = shadeColor == null
+					? new ColorizeValuesFromRealColor(baseColor.Value, existingColor)
+					: new ColorizeValuesFromRealColor(baseColor.Value, shadeColor.Value);
+				_dataRepository.SetColorizeValues(id, newColorizeValues);
 			}
 			Pasted();
-
 		}
 
-		public Color? GetColorFromClipboard()
+		static (Color?, Color?) GetColorsFromClipboard()
 		{
 			string clipboardText = GUIUtility.systemCopyBuffer;
-			if (string.IsNullOrWhiteSpace(clipboardText)) return null;
-			if (!clipboardText.StartsWith("#")) clipboardText = "#" + clipboardText;
-			if (ColorUtility.TryParseHtmlString(clipboardText, out Color color))
+
+			if (string.IsNullOrWhiteSpace(clipboardText)) return (null, null);
+
+			var colorParts = clipboardText.Trim().Split(" ", StringSplitOptions.RemoveEmptyEntries);
+
+			if (colorParts.Length == 1)
 			{
-				return color;
+				// Single color format
+				var color = ParseSingleColor(colorParts[0]);
+				return (color, null);
 			}
-			return null;
+			else if (colorParts.Length == 2)
+			{
+				// Two color format
+				var colorBase = ParseSingleColor(colorParts[0]);
+				var colorShade = ParseSingleColor(colorParts[1]);
+				return (colorBase, colorShade);
+			}
+
+			return (null, null);
+		}
+
+		static Color? ParseSingleColor(string colorString)
+		{
+			if (string.IsNullOrWhiteSpace(colorString)) return null;
+
+			string normalizedColor = colorString.Trim();
+			if (!normalizedColor.StartsWith("#"))
+				normalizedColor = "#" + normalizedColor;
+
+			return ColorUtility.TryParseHtmlString(normalizedColor, out Color color) ? color : null;
 		}
 	}
-
 }

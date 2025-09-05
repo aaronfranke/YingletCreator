@@ -13,6 +13,11 @@ namespace Character.Creator.UI
 			_base = new ColorizeValuesFromRealColorPart(color);
 			_shade = new ColorizeValuesFromRealColorPart(color, existing);
 		}
+		public ColorizeValuesFromRealColor(Color baseColor, Color shadeColor)
+		{
+			_base = new ColorizeValuesFromRealColorPart(baseColor);
+			_shade = new ColorizeValuesFromRealColorPart(shadeColor);
+		}
 
 		public IColorizeValuesPart Base => _base;
 
