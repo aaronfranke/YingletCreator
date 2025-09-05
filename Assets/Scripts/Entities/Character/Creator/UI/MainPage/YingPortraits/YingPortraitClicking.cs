@@ -32,7 +32,7 @@ namespace Character.Creator.UI
 
 		private void Button_OnClick()
 		{
-			_undoManager.RecordState($"Selected yinglet: {_reference.Reference.CachedData.Name}");
+			_undoManager.RecordState($"Selected yinglet \"{_reference.Reference.CachedData.Name}\"");
 			_selection.Selected = _reference.Reference;
 		}
 		void ReflectInteractable()

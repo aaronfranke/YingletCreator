@@ -1339,6 +1339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _copy: {fileID: 11400000, guid: 66f9c6c60fe90fd4bb4a8aa7d90d09a8, type: 2}
   _paste: {fileID: 11400000, guid: eb2a4e4271f711848aa0a8f19a29b79a, type: 2}
+  _failed: {fileID: 11400000, guid: d0306b7aa2f30274ba1d4b40ec993004, type: 2}
 --- !u!114 &327293048945335669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1363,8 +1364,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 145b577cc1b33b046a2802a8f7d8d1d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _copy: {fileID: 0}
-  _paste: {fileID: 0}
 --- !u!114 &3237248033162085029 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4223748227334262666, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}

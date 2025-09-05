@@ -65,7 +65,7 @@ namespace Character.Creator.UI
 			if (_recordDragValue)
 			{
 				// Only record to undo manager if we just started dragging this
-				_undoManager.RecordState($"Adjust colors {ids.First().name}");
+				_undoManager.RecordState($"Adjust colors \"{ids.First().name}\"");
 				_recordDragValue = false;
 			}
 

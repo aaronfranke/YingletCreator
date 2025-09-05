@@ -13,20 +13,26 @@ namespace Character.Creator.UI
 			_copyPasting = this.GetComponent<IColorCopyPasting>();
 			_copyPasting.Copied += CopyPasting_Copied;
 			_copyPasting.Pasted += CopyPasting_Pasted;
+			_copyPasting.PasteFailedInvalidFormat += CopyPasting_PasteFailedInvalidFormat;
 		}
 
 		private void OnDestroy()
 		{
 			_copyPasting.Copied -= CopyPasting_Copied;
 			_copyPasting.Pasted -= CopyPasting_Pasted;
+			_copyPasting.PasteFailedInvalidFormat -= CopyPasting_PasteFailedInvalidFormat;
 		}
 		private void CopyPasting_Copied()
 		{
-			_toastDisplay.Show("Color copied");
+			_toastDisplay.Show("Hex color copied to clipboard");
 		}
 		private void CopyPasting_Pasted()
 		{
-			_toastDisplay.Show("Color pasted");
+			_toastDisplay.Show("Hex color pasted from clipboard");
+		}
+		private void CopyPasting_PasteFailedInvalidFormat()
+		{
+			_toastDisplay.Show("Paste failed; no valid hex color on clipboard");
 		}
 	}
 }

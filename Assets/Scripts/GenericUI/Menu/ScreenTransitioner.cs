@@ -24,6 +24,7 @@ public class ScreenTransitioner : MonoBehaviour, IScreenTransitioner
 	{
 		_audioPlayer = Singletons.GetSingleton<IAudioPlayer>();
 		_image = this.GetComponent<Image>();
+		_image.material = new Material(_image.material); // Instance so we can modify it
 
 		_image.enabled = true;
 		SetVal(1);

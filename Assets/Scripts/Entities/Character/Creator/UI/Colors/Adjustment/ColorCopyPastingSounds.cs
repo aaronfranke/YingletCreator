@@ -6,6 +6,7 @@ namespace Character.Creator.UI
 	{
 		[SerializeField] private SoundEffect _copy;
 		[SerializeField] private SoundEffect _paste;
+		[SerializeField] private SoundEffect _failed;
 		private IAudioPlayer _audioPlayer;
 		private IColorCopyPasting _copyPasting;
 
@@ -15,12 +16,14 @@ namespace Character.Creator.UI
 			_copyPasting = this.GetComponent<IColorCopyPasting>();
 			_copyPasting.Copied += CopyPasting_Copied;
 			_copyPasting.Pasted += CopyPasting_Pasted;
+			_copyPasting.PasteFailedInvalidFormat += CopyPasting_PasteFailedInvalidFormat;
 		}
 
 		private void OnDestroy()
 		{
 			_copyPasting.Copied -= CopyPasting_Copied;
 			_copyPasting.Pasted -= CopyPasting_Pasted;
+			_copyPasting.PasteFailedInvalidFormat -= CopyPasting_PasteFailedInvalidFormat;
 		}
 		private void CopyPasting_Copied()
 		{
@@ -29,6 +32,10 @@ namespace Character.Creator.UI
 		private void CopyPasting_Pasted()
 		{
 			_audioPlayer.Play(_paste);
+		}
+		private void CopyPasting_PasteFailedInvalidFormat()
+		{
+			_audioPlayer.Play(_failed);
 		}
 	}
 }

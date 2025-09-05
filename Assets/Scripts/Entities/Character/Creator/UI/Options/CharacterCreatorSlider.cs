@@ -43,7 +43,7 @@ namespace Character.Creator.UI
 			if (_recordDragValue)
 			{
 				// Only record to undo manager if we just started dragging this
-				_undoManager.RecordState($"Adjust slider {_sliderId.name}");
+				_undoManager.RecordState($"Adjust slider \"{_sliderId.name}\"");
 				_recordDragValue = false;
 			}
 

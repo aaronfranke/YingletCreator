@@ -12,15 +12,16 @@ namespace Character.Creator.UI
 		void Paste();
 		event Action Copied;
 		event Action Pasted;
+		event Action PasteFailedInvalidFormat;
 	}
 	public class ColorCopyPasting : MonoBehaviour, IColorCopyPasting
 	{
 		private ICustomizationSelectedDataRepository _dataRepository;
 		private IColorActiveSelection _activeSelection;
-		private IColorizeValues _copiedValue;
 
 		public event Action Copied = delegate { };
 		public event Action Pasted = delegate { };
+		public event Action PasteFailedInvalidFormat = delegate { };
 
 		void Awake()
 		{
@@ -45,42 +46,22 @@ namespace Character.Creator.UI
 			var id = _activeSelection.FirstSelected;
 			if (!id) return;
 
-			_copiedValue = _dataRepository.GetColorizeValues(id);
+			var color = _dataRepository.GetColorizeValues(id).Base.GetColor();
+			var hexString = "#" + ColorUtility.ToHtmlStringRGB(color);
+			GUIUtility.systemCopyBuffer = hexString;
+
 			Copied();
 		}
 
+
 		public void Paste()
 		{
-			bool pasteFromHexClipboard = Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.LeftAlt);
-
-			if (pasteFromHexClipboard)
-			{
-				PasteFromHexClipboard();
-			}
-			else
-			{
-				PasteFromCopied();
-			}
-		}
-
-		void PasteFromCopied()
-		{
-			var copiedValue = _copiedValue;
-			if (copiedValue == null) return;
-
-			var ids = _activeSelection.AllSelected.ToList();
-			using var suspender = new ReactivitySuspender();
-			foreach (var id in ids)
-			{
-				_dataRepository.SetColorizeValues(id, copiedValue);
-			}
-			Pasted();
-		}
-
-		void PasteFromHexClipboard()
-		{
 			var clipboardColor = GetColorFromClipboard();
-			if (clipboardColor == null) return;
+			if (clipboardColor == null)
+			{
+				PasteFailedInvalidFormat();
+				return;
+			}
 
 			var ids = _activeSelection.AllSelected.ToList();
 			using var suspender = new ReactivitySuspender();
