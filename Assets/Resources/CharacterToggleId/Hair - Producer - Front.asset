@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
+  m_Name: Hair - Producer - Front
+  m_EditorClassIdentifier: 
+  _uniqueAssetId: 327a41493bf56d24fa8214b60bbc08fb
+  _displayName: Producer
+  _groups:
+  - {fileID: 11400000, guid: b905ab7173a64ab4cbcec39daeb3702c, type: 2}
+  _addedMeshes:
+  - {fileID: 11400000, guid: 0ea39910469514a4ab370b5fad2b67b6, type: 2}
+  _addedTextures:
+  - {fileID: 11400000, guid: 37e8c4cebf6a11b44bba549b577f2f3c, type: 2}
+  - {fileID: 11400000, guid: 30ebac40f666e5b44abc083702b50760, type: 2}
+  _eyeTextures: {fileID: 0}
+  _roomPrefab: {fileID: 0}
+  _components:
+  - {fileID: 11400000, guid: ccb390d86c733cd4e8aa2764ed338087, type: 2}
+  _preview:
+    _sprite: {fileID: -1377097187, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _cameraPosition: {fileID: 11400000, guid: 3a4af34d07e4cfb46adabd44c51f84ab, type: 2}
+  _order:
+    _group: {fileID: 11400000, guid: 98f6e1e9bd8f88d4aaaa01d4b1cc36eb, type: 2}
+    _index: 1190
