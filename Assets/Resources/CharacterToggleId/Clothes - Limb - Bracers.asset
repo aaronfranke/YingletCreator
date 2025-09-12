@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
-  m_Name: Clothes - Limb - Bracer
+  m_Name: Clothes - Limb - Bracers
   m_EditorClassIdentifier: 
-  _uniqueAssetId: d25500facecf69c4eb8a52d3d6b6653a
-  _displayName: Bracer
+  _uniqueAssetId: c33cee9e52803704b86e2a99950185ee
+  _displayName: Bracers
   _groups:
   - {fileID: 11400000, guid: 617549fcf0a3dec4a8b12b3dbdd12be6, type: 2}
   _addedMeshes:
-  - {fileID: 11400000, guid: e226f8236a4184f4cb4b8ddd1708e358, type: 2}
+  - {fileID: 11400000, guid: 13a5876a0b9ae9247a17eb28a7b4e9e1, type: 2}
   _addedTextures:
   - {fileID: 11400000, guid: ccca7fbcce9033346be6b75a4061b366, type: 2}
   _eyeTextures: {fileID: 0}
@@ -28,4 +28,4 @@ MonoBehaviour:
     _cameraPosition: {fileID: 11400000, guid: 005d0a3047e2fca45a7d687ce6b8b7fa, type: 2}
   _order:
     _group: {fileID: 11400000, guid: 9d9c766a28d59ce42833f23be82bf200, type: 2}
-    _index: 250
+    _index: 251
