@@ -10,28 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
-  m_Name: Clothes - Outfit - Maid
+  m_Name: Clothes - Outfit - Feeeena
   m_EditorClassIdentifier: 
-  _uniqueAssetId: 59ced6d8872850d45ba9506c907cb5d1
-  _displayName: Maid
+  _uniqueAssetId: 909f2f2b8fb54aa449d633bf4c926b2d
+  _displayName: Ruffled Frock
   _groups:
   - {fileID: 11400000, guid: 83e476b94deb4f64d89399d0aa93cdac, type: 2}
   - {fileID: 11400000, guid: 14901bc6611d3d54d98993552fb8d05e, type: 2}
   _addedMeshes:
-  - {fileID: 11400000, guid: 26ab8d3b834366345b25516c69212892, type: 2}
-  - {fileID: 11400000, guid: 3fbc461e98f542548bf27326b222e4f8, type: 2}
-  - {fileID: 11400000, guid: 32e3e35775d04f1458dfe311f488feb0, type: 2}
-  - {fileID: 11400000, guid: 85fefd3156a584c40bd436d44b8971c4, type: 2}
+  - {fileID: 11400000, guid: 189f72bfcb1016b4b8ed4665d2707f60, type: 2}
+  - {fileID: 11400000, guid: b35f210f1b07277478a290b8dabe3859, type: 2}
   _addedTextures:
-  - {fileID: 11400000, guid: 4e55db987a6630845b5661a8ddb64818, type: 2}
-  - {fileID: 11400000, guid: f91253674d5370d4ba4a889c41d186c3, type: 2}
+  - {fileID: 11400000, guid: da01711019b58aa418b955ef8814c378, type: 2}
+  - {fileID: 11400000, guid: 647d2d60194f0ea4fbf2bbc5360b368b, type: 2}
+  - {fileID: 11400000, guid: 8ca1ef09f93fd4a4bac21591d78e6963, type: 2}
+  - {fileID: 11400000, guid: ac59d9b147b8d624fbc98f5bb5105e2f, type: 2}
+  - {fileID: 11400000, guid: 7665912d74e21f840a8feee24e25f59c, type: 2}
   _eyeTextures: {fileID: 0}
   _roomPrefab: {fileID: 0}
   _components:
-  - {fileID: 11400000, guid: 3f1f4ba2c6a0db94b81e4c1bcb269c33, type: 2}
+  - {fileID: 11400000, guid: 33517ab6e3773b542a2b4e4ec2b36777, type: 2}
   _preview:
-    _sprite: {fileID: -1229352344, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _sprite: {fileID: 582983429, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: 05a5f89117304c04a99288d3a8404208, type: 2}
   _order:
     _group: {fileID: 11400000, guid: c369fb9b9aeccae4fad4d2d5cad4c7b4, type: 2}
-    _index: 500
+    _index: 400
