@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueAssetId: 11e308b6c85bf3647b36a4966bb46764
   _displayName: Socks
-  _groups: []
+  _groups:
+  - {fileID: 11400000, guid: cd5db93d24b5fe342b338ec10d83c2b7, type: 2}
   _addedMeshes: []
   _addedTextures:
   - {fileID: 11400000, guid: e01863403f01b9045977dcc96ababfb9, type: 2}
