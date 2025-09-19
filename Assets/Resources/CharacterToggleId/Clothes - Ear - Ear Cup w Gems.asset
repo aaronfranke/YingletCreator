@@ -10,21 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
-  m_Name: Clothes - Misc - Ear Cup
+  m_Name: Clothes - Ear - Ear Cup w Gems
   m_EditorClassIdentifier: 
-  _uniqueAssetId: fdcb7c4955e9ca541b3670c31ec59a56
-  _displayName: Ear Cup
+  _uniqueAssetId: 77c42603fc042474988630e91215625a
+  _displayName: Cup w/ Gems
   _groups:
   - {fileID: 11400000, guid: 8dbc24ae483522a4ebb56130feebc6a7, type: 2}
   _addedMeshes: []
   _addedTextures:
-  - {fileID: 11400000, guid: 719bb20480a0a0d42bff17fa3b23bb28, type: 2}
+  - {fileID: 11400000, guid: a6e30325e18f37f459a696585ebc4227, type: 2}
+  - {fileID: 11400000, guid: 1714361e652a8ca469f1bff6aa82fc9a, type: 2}
   _eyeTextures: {fileID: 0}
   _roomPrefab: {fileID: 0}
   _components: []
   _preview:
-    _sprite: {fileID: 1069841025, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _sprite: {fileID: 1768726539, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: 74682b4661004f249bae6d39d2fdfc64, type: 2}
   _order:
-    _group: {fileID: 11400000, guid: f3dd3a1859520774baec8f2cd658f558, type: 2}
-    _index: 600
+    _group: {fileID: 11400000, guid: 257051c3fafe9c442aabc8fff69df6cd, type: 2}
+    _index: 601
