@@ -139,6 +139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8569702060848219542}
   - component: {fileID: 8426336795460753091}
+  - component: {fileID: 4406430959769813023}
   m_Layer: 0
   m_Name: Jiggle
   m_TagString: Untagged
@@ -216,11 +217,6 @@ MonoBehaviour:
     ignoredTransforms: []
     colliders: []
     animated: 0
-  - rootTransform: {fileID: 7505593345787760248}
-    jiggleSettings: {fileID: 11400000, guid: 35b04241e99870f408c8e19ec8b91c95, type: 2}
-    ignoredTransforms: []
-    colliders: []
-    animated: 1
   - rootTransform: {fileID: 8699799648185244023}
     jiggleSettings: {fileID: 11400000, guid: 8453343dc1dd9ea45871b016eb291455, type: 2}
     ignoredTransforms: []
@@ -238,6 +234,53 @@ MonoBehaviour:
     animated: 1
   wind: {x: 0, y: 0, z: 0}
   debugDraw: 0
+--- !u!114 &4406430959769813023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4381694553895274096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a38654cc4a19eee4aa5ac931aa4ad32b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _baseJiggleSettings: {fileID: 11400000, guid: a54c4a3f8a22e374fbbcbf67b23a1624, type: 2}
+  _slider: {fileID: 11400000, guid: fa3977f1c956dc44d8d6d73016c02006, type: 2}
+  _sliderValToBlendPercent:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.05
+      value: 0
+      inSlope: 2.7370129
+      outSlope: 2.7370129
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.107185245
+    - serializedVersion: 3
+      time: 0.45
+      value: 1
+      inSlope: 1.9370378
+      outSlope: 0
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.14815913
+      outWeight: 0.20535523
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5692930480370429938
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _toRemove: {fileID: 11400000, guid: 31c5f7ad206082e4ab44db021311634f, type: 2}
-  _clipboardType: 1
+  _clipboardType: {fileID: 0}
 --- !u!1001 &597964421411788961
 PrefabInstance:
   m_ObjectHideFlags: 0
