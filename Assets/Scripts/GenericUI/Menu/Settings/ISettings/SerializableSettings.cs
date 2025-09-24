@@ -3,29 +3,35 @@
 [System.Serializable]
 public sealed class SerializableSettings : ISettings
 {
-	[SerializeField] FpsCap _fpsCap = FpsCap.Fps120;
-	public FpsCap FpsCap { get => _fpsCap; }
+    [SerializeField] FpsCap _fpsCap = FpsCap.Fps120;
+    public FpsCap FpsCap { get => _fpsCap; }
 
-	[SerializeField] ScreenMode _screenMode = ScreenMode.Borderless;
-	public ScreenMode ScreenMode { get => _screenMode; }
+    [SerializeField] ScreenMode _screenMode = ScreenMode.Borderless;
+    public ScreenMode ScreenMode { get => _screenMode; }
 
-	[SerializeField] WindowSize _windowSize = WindowSize.Resolution1920x1080;
-	public WindowSize WindowSize { get => _windowSize; }
+    [SerializeField] Vector2Int _displayResolution;
+    public Vector2Int DisplayResolution { get => _displayResolution; }
 
-	[SerializeField] float _effectVolume = 1.0f;
-	public float EffectVolume => _effectVolume;
+    [SerializeField] float _effectVolume = 1.0f;
+    public float EffectVolume => _effectVolume;
 
-	[SerializeField] float _musicVolume = 0.7f;
-	public float MusicVolume => _musicVolume;
+    [SerializeField] float _musicVolume = 0.7f;
+    public float MusicVolume => _musicVolume;
 
-	public SerializableSettings() { }
+    public SerializableSettings()
+    {
+        if (_displayResolution == Vector2Int.zero)
+        {
+            _displayResolution = new Vector2Int(Screen.currentResolution.width, Screen.currentResolution.height);
+        }
+    }
 
-	public SerializableSettings(ISettings settings)
-	{
-		_fpsCap = settings.FpsCap;
-		_screenMode = settings.ScreenMode;
-		_windowSize = settings.WindowSize;
-		_effectVolume = settings.EffectVolume;
-		_musicVolume = settings.MusicVolume;
-	}
+    public SerializableSettings(ISettings settings)
+    {
+        _fpsCap = settings.FpsCap;
+        _screenMode = settings.ScreenMode;
+        _displayResolution = settings.DisplayResolution;
+        _effectVolume = settings.EffectVolume;
+        _musicVolume = settings.MusicVolume;
+    }
 }
