@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5070783488083236990
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5362063258218170845}
+  - component: {fileID: 5571971483902973288}
+  m_Layer: 0
+  m_Name: MeshGatherer - FromPoseProps
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5362063258218170845
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5070783488083236990}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5203132945128745802}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5571971483902973288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5070783488083236990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8fcac84f0e6c174d9a91da3c2638d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8517826381487887768
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69,7 +113,10 @@ PrefabInstance:
     - {fileID: 2719141761899472902, guid: 0d9ff1f1a68f6df40859b8161b49c04f, type: 3}
     - {fileID: 8393152285203852672, guid: 0d9ff1f1a68f6df40859b8161b49c04f, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4467667786261249746, guid: 0d9ff1f1a68f6df40859b8161b49c04f, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 5362063258218170845}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 295193141807768341, guid: 0d9ff1f1a68f6df40859b8161b49c04f, type: 3}
       insertIndex: -1
@@ -133,6 +180,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5619fda33b3573469cbe940ee15ac9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &5203132945128745802 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4467667786261249746, guid: 0d9ff1f1a68f6df40859b8161b49c04f, type: 3}
+  m_PrefabInstance: {fileID: 8517826381487887768}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8227471168708032141 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 295193141807768341, guid: 0d9ff1f1a68f6df40859b8161b49c04f, type: 3}

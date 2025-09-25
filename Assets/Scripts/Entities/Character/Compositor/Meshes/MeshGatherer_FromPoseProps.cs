@@ -1,0 +1,25 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Character.Compositor
+{
+    public class MeshGatherer_FromPoseProps : MonoBehaviour, IMeshGathererMutator
+    {
+        private IPoseYingDataRepository _dataRepo;
+
+        void Awake()
+        {
+            _dataRepo = this.GetComponentInParent<IPoseYingDataRepository>();
+        }
+        public void Mutate(ref ISet<MeshWithMaterial> set)
+        {
+            var pose = _dataRepo.YingPoseData?.Pose;
+            if (pose == null) return;
+            if (pose.Props == null) return;
+            foreach (var prop in pose.Props)
+            {
+                set.Add(prop);
+            }
+        }
+    }
+}
