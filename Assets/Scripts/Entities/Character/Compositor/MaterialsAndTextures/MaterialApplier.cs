@@ -22,6 +22,11 @@ namespace Character.Compositor
             var meshes = _meshGeneration.Meshes;
             foreach (var mesh in meshes)
             {
+                if (mesh.MaterialDescription == null)
+                {
+                    // Props might not have a material description, don't try to replace them
+                    continue;
+                }
                 if (lookup.TryGetValue(mesh.MaterialDescription, out Material material))
                 {
                     mesh.MeshGO.GetComponent<Renderer>().material = material;
