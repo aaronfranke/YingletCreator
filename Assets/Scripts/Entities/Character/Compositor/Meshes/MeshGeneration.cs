@@ -50,6 +50,20 @@ namespace Character.Compositor
                 newBounds.extents += Vector3.one * ExtentsFactor;
                 skinnedMeshRenderer.localBounds = newBounds;
             }
+            if (mesh.BoneToAttachTo != null)
+            {
+                if (_boneMap.TryGetValue(mesh.BoneToAttachTo.BoneName, out var boneTransform))
+                {
+                    newGO.transform.SetParent(boneTransform, false);
+                    newGO.transform.localPosition = Vector3.zero;
+                    newGO.transform.localRotation = Quaternion.identity;
+                    newGO.transform.localScale = Vector3.one;
+                }
+                else
+                {
+                    Debug.LogWarning($"Bone {mesh.BoneToAttachTo} not found in rig.");
+                }
+            }
 
             return new MeshObjectWithMaterialDescription(newGO, mesh.MaterialDescription);
         }
