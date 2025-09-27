@@ -8,53 +8,47 @@ using Reactivity;
 /// </summary>
 public interface IYingPoseData
 {
-	string Name { get; }
-	int EyeExpressionNum { get; set; }
-	int MouthExpressionNum { get; set; }
+    string Name { get; }
+    int EyeExpressionNum { get; set; }
+    int MouthExpressionNum { get; set; }
 
-	/// <summary>
-	/// Currently un-implemented
-	/// I thought I could get away with just doing a -1 scale on the x-axis, but that fucks the normals up
-	/// What we probably actually need is an IAnimationJob implementation
-	/// Honestly I should be using that for a lot of stuff instead of my weirdo two-rig psychopath setup
-	/// </summary>
-	bool Mirror { get; set; }
-	PoseId Pose { get; set; }
-	PupilOffsets PupilData { get; set; }
+    bool Mirror { get; set; }
+    PoseId Pose { get; set; }
+    PupilOffsets PupilData { get; set; }
 }
 
 internal sealed class YingPoseData : IYingPoseData
 {
-	public YingPoseData(SerializableCustomizationData data)
-	{
-		// This isn't optimized; the visual ying itself is also doing this conversion
-		// Also, this repeatedly happens as the ying is selected/deselected
-		// But w/e we're all gonna die one day anyway so i'll eat the few ms to not care
-		var observableData = new ObservableCustomizationData(data);
-		Name = observableData.Name.Val;
+    public YingPoseData(SerializableCustomizationData data)
+    {
+        // This isn't optimized; the visual ying itself is also doing this conversion
+        // Also, this repeatedly happens as the ying is selected/deselected
+        // But w/e we're all gonna die one day anyway so i'll eat the few ms to not care
+        var observableData = new ObservableCustomizationData(data);
+        Name = observableData.Name.Val;
 
-		// Hard referencing them like this is a little cringe, but I also don't care about pose mode
-		var eyeKey = ResourceLoader.Load<CharacterIntId>("1490a3cd97e05b34bb4efe5ed5513346");
-		var mouthKey = ResourceLoader.Load<CharacterIntId>("6ccdbae82063b23438cc6d12818d35a0");
-		var poseKey = ResourceLoader.Load<PoseId>("5c1ee6caa6f3f6c439595b0f1c5a27d4");
+        // Hard referencing them like this is a little cringe, but I also don't care about pose mode
+        var eyeKey = ResourceLoader.Load<CharacterIntId>("1490a3cd97e05b34bb4efe5ed5513346");
+        var mouthKey = ResourceLoader.Load<CharacterIntId>("6ccdbae82063b23438cc6d12818d35a0");
+        var poseKey = ResourceLoader.Load<PoseId>("5c1ee6caa6f3f6c439595b0f1c5a27d4");
 
-		_eyeExpressionNum.Val = observableData.NumberData.GetInt(eyeKey);
-		_mouthExpressionNum.Val = observableData.NumberData.GetInt(mouthKey);
-		_pose.Val = poseKey;
+        _eyeExpressionNum.Val = observableData.NumberData.GetInt(eyeKey);
+        _mouthExpressionNum.Val = observableData.NumberData.GetInt(mouthKey);
+        _pose.Val = poseKey;
 
-		_pupilData = new Observable<PupilOffsets>(PupilOffsetMutator_Default.InherentOffset);
-	}
+        _pupilData = new Observable<PupilOffsets>(PupilOffsetMutator_Default.InherentOffset);
+    }
 
-	Observable<int> _eyeExpressionNum = new();
-	Observable<int> _mouthExpressionNum = new();
-	Observable<bool> _mirror = new();
-	Observable<PoseId> _pose = new();
-	Observable<PupilOffsets> _pupilData;
+    Observable<int> _eyeExpressionNum = new();
+    Observable<int> _mouthExpressionNum = new();
+    Observable<bool> _mirror = new();
+    Observable<PoseId> _pose = new();
+    Observable<PupilOffsets> _pupilData;
 
-	public string Name { get; }
-	public int EyeExpressionNum { get => _eyeExpressionNum.Val; set => _eyeExpressionNum.Val = value; }
-	public int MouthExpressionNum { get => _mouthExpressionNum.Val; set => _mouthExpressionNum.Val = value; }
-	public bool Mirror { get => _mirror.Val; set => _mirror.Val = value; }
-	public PoseId Pose { get => _pose.Val; set => _pose.Val = value; }
-	public PupilOffsets PupilData { get => _pupilData.Val; set => _pupilData.Val = value; }
+    public string Name { get; }
+    public int EyeExpressionNum { get => _eyeExpressionNum.Val; set => _eyeExpressionNum.Val = value; }
+    public int MouthExpressionNum { get => _mouthExpressionNum.Val; set => _mouthExpressionNum.Val = value; }
+    public bool Mirror { get => _mirror.Val; set => _mirror.Val = value; }
+    public PoseId Pose { get => _pose.Val; set => _pose.Val = value; }
+    public PupilOffsets PupilData { get => _pupilData.Val; set => _pupilData.Val = value; }
 }
