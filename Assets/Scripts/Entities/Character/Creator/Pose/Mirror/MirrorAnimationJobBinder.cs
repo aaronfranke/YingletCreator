@@ -1,4 +1,5 @@
 using Reactivity;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.Experimental.Animations;
@@ -30,6 +31,10 @@ public class MirrorAnimationJobBinder : ReactiveBehaviour
     void Reflect()
     {
         bool mirror = _dataRepo.YingPoseData.Mirror;
+        if (mirror && _dataRepo.YingPoseData.Pose.Props.Any())
+        {
+            mirror = false;
+        }
         if (mirror)
         {
             _graph.Play();
