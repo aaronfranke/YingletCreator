@@ -82,6 +82,7 @@ namespace Character.Compositor
         public static Dictionary<string, Transform> GetBoneMap(Transform root)
         {
             var transformMap = new Dictionary<string, Transform>();
+            transformMap[root.name] = root;
             AddChildrenToMap(root);
             return transformMap;
 
