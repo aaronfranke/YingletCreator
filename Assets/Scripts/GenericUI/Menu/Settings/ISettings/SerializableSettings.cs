@@ -15,7 +15,7 @@ public sealed class SerializableSettings : ISettings
     [SerializeField] float _effectVolume = 1.0f;
     public float EffectVolume => _effectVolume;
 
-    [SerializeField] float _musicVolume = 0.7f;
+    [SerializeField] float _musicVolume = 0.4f;
     public float MusicVolume => _musicVolume;
 
     public SerializableSettings()
