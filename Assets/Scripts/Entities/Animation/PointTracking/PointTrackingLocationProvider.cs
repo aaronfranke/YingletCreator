@@ -22,7 +22,8 @@ public class PointTrackingLocationProvider : MonoBehaviour, IPointTrackingLocati
     void Update()
     {
         var camForward = Camera.main.transform.forward;
-        Plane cursorPlane = new Plane(camForward, _headCenter.position - camForward * OffsetMouseFromPlane);
+        var planeCenter = _headCenter.position - camForward * OffsetMouseFromPlane;
+        Plane cursorPlane = new Plane(camForward, planeCenter);
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (!cursorPlane.Raycast(ray, out float enter))
@@ -31,7 +32,7 @@ public class PointTrackingLocationProvider : MonoBehaviour, IPointTrackingLocati
             return;
         }
         var hitPoint = ray.GetPoint(enter);
-        if (Vector3.Distance(hitPoint, _headCenter.transform.position) > MaxDistance)
+        if (Vector3.Distance(hitPoint, planeCenter) > MaxDistance)
         {
             _active.Val = false;
             return;

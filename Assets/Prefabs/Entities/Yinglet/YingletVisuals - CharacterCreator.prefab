@@ -45,6 +45,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14adb80681c65714ba9d6965865df84f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rootHeadBone: {fileID: 6479588012124577682}
+  _headCenter: {fileID: 1911497205368369982}
+  _rotationSpeed: 8
+  _maxAngle: 95
+  _chainWeights:
+  - {x: 0.65, y: 0.2}
+  - {x: 0.05, y: 0.15}
+  - {x: 0, y: 0.15}
+  - {x: 0, y: 0.15}
+  - {x: 0, y: 0.1}
 --- !u!114 &7980592475064340610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -552,6 +562,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _headCenter: {fileID: 1911497205368369982}
   MaxDistance: 0.5
+  OffsetMouseFromPlane: 0.32
 --- !u!1 &791053993093962534 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 195350314626794375, guid: 0d9ff1f1a68f6df40859b8161b49c04f, type: 3}
@@ -710,6 +721,11 @@ Transform:
 --- !u!4 &5670890397272141754 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5115923959350966043, guid: 0d9ff1f1a68f6df40859b8161b49c04f, type: 3}
+  m_PrefabInstance: {fileID: 597964421411788961}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6479588012124577682 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5881836964889675571, guid: 0d9ff1f1a68f6df40859b8161b49c04f, type: 3}
   m_PrefabInstance: {fileID: 597964421411788961}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7117104524931132624 stripped
