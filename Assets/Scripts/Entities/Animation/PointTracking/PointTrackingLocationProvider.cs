@@ -12,6 +12,7 @@ public class PointTrackingLocationProvider : MonoBehaviour, IPointTrackingLocati
     [SerializeField] Transform _headCenter;
 
     [SerializeField] float MaxDistance = 1.4f;
+    [SerializeField] float OffsetMouseFromPlane = .2f;
 
     Observable<bool> _active = new Observable<bool>(false);
 
@@ -20,7 +21,8 @@ public class PointTrackingLocationProvider : MonoBehaviour, IPointTrackingLocati
 
     void Update()
     {
-        Plane cursorPlane = new Plane(Camera.main.transform.forward, _headCenter.position);
+        var camForward = Camera.main.transform.forward;
+        Plane cursorPlane = new Plane(camForward, _headCenter.position - camForward * OffsetMouseFromPlane);
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (!cursorPlane.Raycast(ray, out float enter))
