@@ -14,6 +14,6 @@ public class DebugVisualizeHeadTrackingPoint : MonoBehaviour
     void LateUpdate()
     {
         this.transform.position = _pointLocationProvider.Position;
-        _mr.enabled = _pointLocationProvider.Active;
+        _mr.enabled = _pointLocationProvider.Active.Val;
     }
 }

@@ -5,19 +5,19 @@ public class RotateHeadTowardsPoint : MonoBehaviour
     [SerializeField] Transform _rootHeadBone;
     [SerializeField] Transform _headCenter;
 
-    [SerializeField] float _rotationSpeed = 8f;
-
     [SerializeField] float _maxAngle = 60f;
 
     [Tooltip("This corresponds to how much weight each bone down from the root should rotate by. This should not exceed 1 in either axis. No z-axis because we don't want to spin the head like that")]
     [SerializeField] Vector2[] _chainWeights;
 
     private IPointTrackingLocationProvider _locationProvider;
+    private IPointTrackingWeightProvider _weightProvider;
     private Transform[] _boneChain;
 
     private void Awake()
     {
         _locationProvider = GetComponentInParent<IPointTrackingLocationProvider>();
+        _weightProvider = GetComponentInParent<IPointTrackingWeightProvider>();
 
         // Collect bone chain upward from head
         _boneChain = new Transform[_chainWeights.Length];
@@ -31,8 +31,7 @@ public class RotateHeadTowardsPoint : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (!_locationProvider.Active) return;
-
+        if (_weightProvider.Weight < 0.001f) return;
         RotateChainTowards(_locationProvider.Position);
     }
 
@@ -54,7 +53,7 @@ public class RotateHeadTowardsPoint : MonoBehaviour
         for (int i = 0; i < _boneChain.Length; i++)
         {
             var bone = _boneChain[i];
-            var weight = _chainWeights[i];
+            var weight = _chainWeights[i] * _weightProvider.Weight;
             var weightedRot = Quaternion.Euler(eulerRotationAmount.x * weight.x, eulerRotationAmount.y * weight.y, 0);
             bone.localRotation = bone.localRotation * weightedRot;
         }

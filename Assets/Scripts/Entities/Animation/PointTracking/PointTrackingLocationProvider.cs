@@ -3,7 +3,7 @@ using UnityEngine;
 
 public interface IPointTrackingLocationProvider
 {
-    bool Active { get; }
+    IReadOnlyObservable<bool> Active { get; }
     Vector3 Position { get; }
 }
 
@@ -16,7 +16,7 @@ public class PointTrackingLocationProvider : MonoBehaviour, IPointTrackingLocati
 
     Observable<bool> _active = new Observable<bool>(false);
 
-    public bool Active => _active.Val;
+    public IReadOnlyObservable<bool> Active => _active;
     public Vector3 Position { get; private set; }
 
     void Update()
