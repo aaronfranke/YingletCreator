@@ -9,7 +9,6 @@ public class DisableSwayAnimationOnPointTracking : ReactiveBehaviour
 
     private int _layerIndex;
     private float _startWeight;
-    private Coroutine _coroutine;
 
     private void Start()
     {
