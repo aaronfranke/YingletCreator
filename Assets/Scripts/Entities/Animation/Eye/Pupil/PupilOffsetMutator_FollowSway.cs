@@ -1,4 +1,3 @@
-using Reactivity;
 using UnityEngine;
 
 public class PupilOffsetMutator_FollowSway : MonoBehaviour, IPupilOffsetMutator
@@ -9,19 +8,12 @@ public class PupilOffsetMutator_FollowSway : MonoBehaviour, IPupilOffsetMutator
     private Transform _root;
     private IPointTrackingWeightProvider _weightProvider;
     Vector3 _originalForward;
-    Observable<Vector2> _offset = new();
 
     void Awake()
     {
         _root = this.GetComponentInParent<YingletVisualsRoot>().transform;
         _weightProvider = this.GetComponentInParent<IPointTrackingWeightProvider>();
         _originalForward = GetHeadForward();
-        _offset.Val = CalculateOffset();
-    }
-
-    void Update()
-    {
-        _offset.Val = CalculateOffset();
     }
 
     private Vector3 GetHeadForward()
@@ -48,6 +40,7 @@ public class PupilOffsetMutator_FollowSway : MonoBehaviour, IPupilOffsetMutator
 
     public PupilOffsets Mutate(PupilOffsets input)
     {
-        return input.ShiftBothBy(_offset.Val);
+        var offset = CalculateOffset();
+        return input.ShiftBothBy(offset);
     }
 }
