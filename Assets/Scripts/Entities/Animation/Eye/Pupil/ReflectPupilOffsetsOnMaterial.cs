@@ -18,6 +18,7 @@ public class ReflectPupilOffsetsOnMaterial : MonoBehaviour
     {
         _eyeGatherer = this.GetComponentInParent<IEyeGatherer>();
         _offsetMutators = this.GetComponents<IPupilOffsetMutator>().Where(c => c.enabled).ToArray();
+        Update(); // Call once to rotate immediately. Needed for things like snapshotting
     }
 
     void Update()

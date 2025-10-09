@@ -8,15 +8,23 @@ public class PupilOffsetMutator_Wobble : ReactiveBehaviour, IPupilOffsetMutator
     [SerializeField] float _maxWobbleY;
     [SerializeField] Vector2 _wobbleTimeRange;
     [SerializeField] EaseSettings _wobbleEaseSettings;
+    [SerializeField] float _lookAtWeight = .3f;
+
+    IPointTrackingWeightProvider _weightProvider;
 
     Vector2 _wobbleAmount;
 
     Coroutine _moveEye;
 
+    private void Awake()
+    {
+        _weightProvider = this.GetComponentInParent<IPointTrackingWeightProvider>();
+    }
 
     public PupilOffsets Mutate(PupilOffsets input)
     {
-        return input.ShiftBothBy(_wobbleAmount);
+        float weight = Mathf.Lerp(1, _lookAtWeight, _weightProvider.Weight);
+        return input.ShiftBothBy(_wobbleAmount * weight);
     }
 
     void OnEnable()

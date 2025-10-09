@@ -7,8 +7,8 @@ Shader "Custom/OffsetEye"
         _Pupil ("Pupil", 2D) = "white" {}
         _AlphaCutoff ("Alpha Cutoff", Range(0,1)) = 0.5
         _DepthOffset ("Depth Offset", Float) = 0.0
-        _PupilOffsetX ("Pupil Offset X", Range(-0.35,0.2)) = 0.0
-        _PupilOffsetY ("Pupil Offset Y", Range(-0.31,.22)) = 0.0
+        _PupilOffsetX ("Pupil Offset X", Range(-0.35,0.27)) = 0.0
+        _PupilOffsetY ("Pupil Offset Y", Range(-0.31,.36)) = 0.0
         _PupilScale ("Pupil Scale", Range(0,2)) = 1.0
         _Expression ("Expression", Integer) = 1
     }
