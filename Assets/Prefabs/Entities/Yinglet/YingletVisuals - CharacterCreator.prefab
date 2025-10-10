@@ -78,7 +78,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rootHeadBone: {fileID: 6479588012124577682}
   _headCenter: {fileID: 1911497205368369982}
-  _maxAngle: 95
+  _realAngleToLimitedAngle:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.99916893
+      outSlope: 0.99916893
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 47.475834
+      value: 47.43638
+      inSlope: 0.9097923
+      outSlope: 0.9097923
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.11249953
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 93.61324
+      value: 68.20265
+      inSlope: 0.018444804
+      outSlope: 0.018444804
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.5664822
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   _chainWeights:
   - {x: 0.65, y: 0.2}
   - {x: 0.05, y: 0.15}

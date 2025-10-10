@@ -5,7 +5,7 @@ public class RotateHeadTowardsPoint : MonoBehaviour
     [SerializeField] Transform _rootHeadBone;
     [SerializeField] Transform _headCenter;
 
-    [SerializeField] float _maxAngle = 60f;
+    [SerializeField] AnimationCurve _realAngleToLimitedAngle;
 
     [Tooltip("This corresponds to how much weight each bone down from the root should rotate by. This should not exceed 1 in either axis. No z-axis because we don't want to spin the head like that")]
     [SerializeField] Vector2[] _chainWeights;
@@ -45,8 +45,8 @@ public class RotateHeadTowardsPoint : MonoBehaviour
         // We don't want characters turning super far, so clamp down on the possible angle
         rotationAmount.ToAngleAxis(out float angle, out Vector3 axis);
         if (angle > 180f) angle -= 360f; // normalize angle range
-        float clampedAngle = Mathf.Clamp(angle, -_maxAngle, _maxAngle);
-        var clampedRotationAmount = Quaternion.AngleAxis(clampedAngle, axis);
+        float limitedAngle = Mathf.Sign(angle) * _realAngleToLimitedAngle.Evaluate(Mathf.Abs(angle));
+        var clampedRotationAmount = Quaternion.AngleAxis(limitedAngle, axis);
 
         var eulerRotationAmount = clampedRotationAmount.eulerAngles.DirectionalizeEulerAngles();
 

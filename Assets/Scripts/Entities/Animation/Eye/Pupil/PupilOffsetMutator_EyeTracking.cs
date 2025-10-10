@@ -28,8 +28,9 @@ public class PupilOffsetMutator_EyeTracking : MonoBehaviour, IPupilOffsetMutator
 
         var rightOffset = _xAngleToPupilOffset.Evaluate(rightEyeAngles.x);
         var leftOffset = _xAngleToPupilOffset.Evaluate(-leftEyeAngles.x);
-        var averageYAngle = (rightEyeAngles.y + leftEyeAngles.y) / 2f;
-        var yOffset = -_yAngleToPupilOffset.Evaluate(averageYAngle); // Negate it because up is negative y in UV space
+        // Take the smaller of the angles. Originally I was trying to average them, but one can go crazy sometimes and idk why
+        var yAngle = Mathf.Abs(rightEyeAngles.y) > Mathf.Abs(leftEyeAngles.y) ? leftEyeAngles.y : rightEyeAngles.y;
+        var yOffset = -_yAngleToPupilOffset.Evaluate(yAngle); // Negate it because up is negative y in UV space
 
         // Eventually do weight lerping here from the original
         var lookOffsets = new PupilOffsets(yOffset, leftOffset, rightOffset);
@@ -48,7 +49,6 @@ public class PupilOffsetMutator_EyeTracking : MonoBehaviour, IPupilOffsetMutator
 
         // new Vector3(xAngle, 0f, zAngle) would be the actual euler angles needed to rotate the eye
         // but let's change the axis and signs to better match what we need
-
         return new Vector2(zAngle, -xAngle);
     }
 }
