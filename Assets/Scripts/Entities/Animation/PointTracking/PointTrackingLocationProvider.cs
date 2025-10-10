@@ -18,14 +18,32 @@ public class PointTrackingLocationProvider : MonoBehaviour, IPointTrackingLocati
     [SerializeField] float MaxDotProduct = 0;
 
     Observable<bool> _active = new Observable<bool>(false);
+    private IUiHoverManager _uiHoverManager;
 
     public IReadOnlyObservable<bool> Active => _active;
     public Vector3 Position { get; private set; }
 
     public Vector3 ForwardDir => -_forwardProvider.forward;
 
+    private void Awake()
+    {
+        // Might be better to feed some of these in via mutator components so this class is less bloated
+        _uiHoverManager = Singletons.GetSingleton<IUiHoverManager>();
+    }
+
     void Update()
     {
+        if (_uiHoverManager.HoveringUi)
+        {
+            _active.Val = false;
+            return;
+        }
+        if (Input.GetMouseButton(1)) // Might be spinning. Kind of hacky and would need to be made more generic with the ui hover manager if I ever bring this into a real game
+        {
+            _active.Val = false;
+            return;
+        }
+
         var camForward = Camera.main.transform.forward;
         var planeCenter = _headCenter.position - camForward * OffsetMouseFromPlane;
         Plane cursorPlane = new Plane(camForward, planeCenter);
