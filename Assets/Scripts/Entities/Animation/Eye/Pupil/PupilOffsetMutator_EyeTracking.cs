@@ -32,7 +32,8 @@ public class PupilOffsetMutator_EyeTracking : MonoBehaviour, IPupilOffsetMutator
         var yOffset = -_yAngleToPupilOffset.Evaluate(averageYAngle); // Negate it because up is negative y in UV space
 
         // Eventually do weight lerping here from the original
-        return new PupilOffsets(yOffset, leftOffset, rightOffset);
+        var lookOffsets = new PupilOffsets(yOffset, leftOffset, rightOffset);
+        return PupilOffsets.Lerp(input, lookOffsets, _weightProvider.Weight);
     }
 
     public static Vector2 GetEyeLookAngles(Transform eye, Vector3 targetPosition)

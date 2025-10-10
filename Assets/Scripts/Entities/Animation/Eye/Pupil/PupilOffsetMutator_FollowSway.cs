@@ -26,7 +26,8 @@ public class PupilOffsetMutator_FollowSway : MonoBehaviour, IPupilOffsetMutator
         var angle = GetYRotation(_originalForward, GetHeadForward());
         if (angle > 180) angle -= 360;
 
-        return new Vector2(angle * _degreesToOffsetMult, 0) * (1 - _weightProvider.Weight);
+        var weight = Mathf.Pow(1 - _weightProvider.Weight, 4); // Lower this significantly if we're doing any sort of looking. If we don't do this Pow, it snaps weirdly
+        return new Vector2(angle * _degreesToOffsetMult, 0) * weight;
     }
 
     public static float GetYRotation(Vector3 from, Vector3 to)

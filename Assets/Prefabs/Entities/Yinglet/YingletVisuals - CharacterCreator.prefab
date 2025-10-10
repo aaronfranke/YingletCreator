@@ -610,8 +610,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _headCenter: {fileID: 1911497205368369982}
-  MaxDistance: 0.5
+  _forwardProvider: {fileID: 6498669519867846687}
+  MaxDistance: 0.45
   OffsetMouseFromPlane: 0.15
+  MaxDotProduct: -0.5
 --- !u!114 &3138750891464664004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -921,6 +923,11 @@ Transform:
 --- !u!4 &6479588012124577682 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5881836964889675571, guid: 0d9ff1f1a68f6df40859b8161b49c04f, type: 3}
+  m_PrefabInstance: {fileID: 597964421411788961}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6498669519867846687 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5936742691922770110, guid: 0d9ff1f1a68f6df40859b8161b49c04f, type: 3}
   m_PrefabInstance: {fileID: 597964421411788961}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &7117104524931132624 stripped
