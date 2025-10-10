@@ -10,6 +10,13 @@ public class RotateHeadTowardsPoint : MonoBehaviour
     [Tooltip("This corresponds to how much weight each bone down from the root should rotate by. This should not exceed 1 in either axis. No z-axis because we don't want to spin the head like that")]
     [SerializeField] Vector2[] _chainWeights;
 
+    [Header("Tuning")]
+    [SerializeField] float SpringStrength = 40f;
+    [SerializeField] float Damping = 8f;
+    private Vector3 _velocity;
+    private Vector3 _currentEulerAngles;
+
+
     private IPointTrackingLocationProvider _locationProvider;
     private IPointTrackingWeightProvider _weightProvider;
     private Transform[] _boneChain;
@@ -31,7 +38,11 @@ public class RotateHeadTowardsPoint : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (_weightProvider.Weight < 0.001f) return;
+        if (_weightProvider.Weight < 0.001f)
+        {
+            _currentEulerAngles = Vector3.forward;
+            return;
+        }
         RotateChainTowards(_locationProvider.Position);
     }
 
@@ -49,12 +60,13 @@ public class RotateHeadTowardsPoint : MonoBehaviour
         var clampedRotationAmount = Quaternion.AngleAxis(limitedAngle, axis);
 
         var eulerRotationAmount = clampedRotationAmount.eulerAngles.DirectionalizeEulerAngles();
+        MathUtils.SpringDampTowards(ref _currentEulerAngles, ref _velocity, eulerRotationAmount, SpringStrength, Damping);
 
         for (int i = 0; i < _boneChain.Length; i++)
         {
             var bone = _boneChain[i];
             var weight = _chainWeights[i] * _weightProvider.Weight;
-            var weightedRot = Quaternion.Euler(eulerRotationAmount.x * weight.x, eulerRotationAmount.y * weight.y, 0);
+            var weightedRot = Quaternion.Euler(_currentEulerAngles.x * weight.x, _currentEulerAngles.y * weight.y, 0);
             bone.localRotation = bone.localRotation * weightedRot;
         }
     }

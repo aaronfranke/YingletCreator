@@ -8,6 +8,12 @@ public class PupilOffsetMutator_EyeTracking : MonoBehaviour, IPupilOffsetMutator
     [SerializeField] AnimationCurve _xAngleToPupilOffset;
     [SerializeField] AnimationCurve _yAngleToPupilOffset;
 
+    [Header("Tuning")]
+    [SerializeField] float SpringStrength = 40f;
+    [SerializeField] float Damping = 8f;
+    private PupilOffsets _velocity;
+    private PupilOffsets _current;
+
 
     private IPointTrackingLocationProvider _locationProvider;
     private IPointTrackingWeightProvider _weightProvider;
@@ -20,7 +26,11 @@ public class PupilOffsetMutator_EyeTracking : MonoBehaviour, IPupilOffsetMutator
 
     public PupilOffsets Mutate(PupilOffsets input)
     {
-        if (_weightProvider.Weight < 0.01f) return input; // No change if not tracking
+        if (_weightProvider.Weight < 0.01f)
+        {
+            _current = input;
+            return input; // No change if not tracking
+        }
 
 
         var rightEyeAngles = GetEyeLookAngles(_rightEye, _locationProvider.Position);
@@ -32,9 +42,9 @@ public class PupilOffsetMutator_EyeTracking : MonoBehaviour, IPupilOffsetMutator
         var yAngle = Mathf.Abs(rightEyeAngles.y) > Mathf.Abs(leftEyeAngles.y) ? leftEyeAngles.y : rightEyeAngles.y;
         var yOffset = -_yAngleToPupilOffset.Evaluate(yAngle); // Negate it because up is negative y in UV space
 
-        // Eventually do weight lerping here from the original
         var lookOffsets = new PupilOffsets(yOffset, leftOffset, rightOffset);
-        return PupilOffsets.Lerp(input, lookOffsets, _weightProvider.Weight);
+        MathUtils.SpringDampTowards(ref _current, ref _velocity, lookOffsets, SpringStrength, Damping);
+        return PupilOffsets.Lerp(input, _current, _weightProvider.Weight);
     }
 
     public static Vector2 GetEyeLookAngles(Transform eye, Vector3 targetPosition)

@@ -117,6 +117,8 @@ MonoBehaviour:
   - {x: 0, y: 0.15}
   - {x: 0, y: 0.15}
   - {x: 0, y: 0.1}
+  SpringStrength: 40
+  Damping: 7
 --- !u!114 &7980592475064340610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -813,6 +815,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  SpringStrength: 80
+  Damping: 25
 --- !u!114 &3171408562936708414
 MonoBehaviour:
   m_ObjectHideFlags: 0

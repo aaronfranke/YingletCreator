@@ -30,6 +30,32 @@ public struct PupilOffsets
         return HashCode.Combine(YOffset, XLeftOffset, XRightOffset);
     }
 
+    public static PupilOffsets operator +(PupilOffsets a, PupilOffsets b)
+    {
+        return new PupilOffsets(
+            a.YOffset + b.YOffset,
+            a.XLeftOffset + b.XLeftOffset,
+            a.XRightOffset + b.XRightOffset
+        );
+    }
+    public static PupilOffsets operator -(PupilOffsets a, PupilOffsets b)
+    {
+        return new PupilOffsets(
+            a.YOffset - b.YOffset,
+            a.XLeftOffset - b.XLeftOffset,
+            a.XRightOffset - b.XRightOffset
+        );
+    }
+    public static PupilOffsets operator *(PupilOffsets a, float scalar)
+    {
+        return new PupilOffsets(
+            a.YOffset * scalar,
+            a.XLeftOffset * scalar,
+            a.XRightOffset * scalar
+        );
+    }
+    public static PupilOffsets operator *(float scalar, PupilOffsets a) => a * scalar;
+
     public static PupilOffsets Lerp(PupilOffsets a, PupilOffsets b, float t)
     {
         return new PupilOffsets(
