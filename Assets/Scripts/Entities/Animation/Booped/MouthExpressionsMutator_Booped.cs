@@ -27,8 +27,8 @@ public class MouthExpressionsMutator_Booped : MonoBehaviour, IMouthExpressionsMu
 
     private void OnBooped()
     {
+        if (!this.isActiveAndEnabled) return;
         this.StopAndStartCoroutine(ref _boopCoroutine, Booped());
-        ;
     }
 
     IEnumerator Booped()

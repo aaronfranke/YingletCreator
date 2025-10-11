@@ -31,6 +31,8 @@ public class PlayAnimOnBooped : MonoBehaviour
 
     void OnBooped()
     {
+        if (!this.isActiveAndEnabled) return;
+
         _animator.Play(_stateNameHash, _layerIndex, 0);
         _animator.SetLayerWeight(_layerIndex, 1f);
         this.StopAndStartCoroutine(ref _removeWeightCoroutine, RemoveWeightAfterTime());

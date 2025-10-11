@@ -35,8 +35,8 @@ public class EyeExpressionsMutator_Booped : MonoBehaviour, ICurrentEyeExpression
 
     private void OnBooped()
     {
+        if (!this.isActiveAndEnabled) return;
         this.StopAndStartCoroutine(ref _boopCoroutine, Booped());
-        ;
     }
 
     IEnumerator Booped()
