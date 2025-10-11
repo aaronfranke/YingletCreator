@@ -28,6 +28,9 @@ public class CharacterCreatorMusicPlayer : MonoBehaviour
     private IMenuManager _menuManager;
     private AudioSource _source;
 
+    int _currentSong = 0;
+    private Coroutine _playPeretually;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -44,6 +47,16 @@ public class CharacterCreatorMusicPlayer : MonoBehaviour
         _source.Stop();
 
         StartCoroutine(StartAfterDelay());
+    }
+
+    private void Update()
+    {
+        // Little debug thing to skip songs
+        if (_playPeretually != null && Input.GetKeyDown(KeyCode.Keypad3))
+        {
+            IncrementSong();
+            this.StopAndStartCoroutine(ref _playPeretually, PlayMusicPerpetually());
+        }
     }
 
     private void OnDestroy()
@@ -78,17 +91,16 @@ public class CharacterCreatorMusicPlayer : MonoBehaviour
         _source.Stop();
 
         yield return new WaitForSeconds(_postTitleDelay);
-        StartCoroutine(PlayMusicPerpetually());
+        _playPeretually = StartCoroutine(PlayMusicPerpetually());
     }
 
     IEnumerator PlayMusicPerpetually()
     {
-        int currentSong = 0;
         while (true)
         {
             yield return new WaitForSeconds(_betweenMusicDelay);
 
-            var music = _gameMusic[currentSong];
+            var music = _gameMusic[_currentSong];
 
             _source.clip = music.Clip;
             _source.volume = music.Volume;
@@ -107,8 +119,13 @@ public class CharacterCreatorMusicPlayer : MonoBehaviour
             StartCoroutine(WaitAndFadeOut(music));
             yield return new WaitForSeconds(music.Clip.length * music.Repeats);
 
-            currentSong = (currentSong + 1) % _gameMusic.Length;
+            IncrementSong();
         }
+    }
+
+    void IncrementSong()
+    {
+        _currentSong = (_currentSong + 1) % _gameMusic.Length;
     }
 
     IEnumerator WaitAndRemoveLoop(GameMusicDefinition music)
