@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayAnimOnBooped : MonoBehaviour
@@ -6,6 +7,7 @@ public class PlayAnimOnBooped : MonoBehaviour
     private IBoopManager _boopManager;
     private int _layerIndex;
     private int _stateNameHash;
+    private Coroutine _removeWeightCoroutine;
 
     private void Awake()
     {
@@ -22,10 +24,21 @@ public class PlayAnimOnBooped : MonoBehaviour
     {
         _boopManager.OnBoop -= OnBooped;
     }
+    private void OnEnable()
+    {
+        _animator.SetLayerWeight(_layerIndex, 0f);
+    }
 
     void OnBooped()
     {
         _animator.Play(_stateNameHash, _layerIndex, 0);
         _animator.SetLayerWeight(_layerIndex, 1f);
+        this.StopAndStartCoroutine(ref _removeWeightCoroutine, RemoveWeightAfterTime());
+    }
+
+    IEnumerator RemoveWeightAfterTime()
+    {
+        yield return new WaitForSeconds(2.5f);
+        _animator.SetLayerWeight(_layerIndex, 0f);
     }
 }
