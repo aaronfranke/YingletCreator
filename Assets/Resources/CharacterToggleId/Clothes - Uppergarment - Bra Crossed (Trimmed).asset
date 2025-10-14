@@ -10,22 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
-  m_Name: Clothes - Undergarments - Bra Crossed
+  m_Name: Clothes - Uppergarment - Bra Crossed (Trimmed)
   m_EditorClassIdentifier: 
-  _uniqueAssetId: 2c339ce06c814414fa9e03a3af603d2c
-  _displayName: X Bra
+  _uniqueAssetId: d1c94282ba98a594cb518ed3a09895a9
+  _displayName: X Bra (Trimmed)
   _groups:
   - {fileID: 11400000, guid: 6dd32ec1f69e7f1408c7bfb987a0baba, type: 2}
   _addedMeshes: []
   _addedTextures:
   - {fileID: 11400000, guid: 5bf5d9be33e7c6e45b064a5250e52a63, type: 2}
+  - {fileID: 11400000, guid: b942461f92d64ca45acb9e40ef76a5de, type: 2}
   _eyeTextures: {fileID: 0}
   _roomPrefab: {fileID: 0}
   _components:
   - {fileID: 11400000, guid: 3960d8e88668e0540a7f990b457ce591, type: 2}
   _preview:
-    _sprite: {fileID: -93195373, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _sprite: {fileID: 987869365, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: b90935c439f664d4ab38d0ae144eb3a6, type: 2}
   _order:
     _group: {fileID: 11400000, guid: d82494d7798c5ef40a1cc0bd98d1b45a, type: 2}
-    _index: 300
+    _index: 400
