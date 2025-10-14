@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
-  m_Name: Clothes - Undergarments - Torn Crop Top
+  m_Name: Clothes - Undergarments - Briefs
   m_EditorClassIdentifier: 
-  _uniqueAssetId: e223a04e8345e0f42a92744aa6ea1780
-  _displayName: Torn Crop Top
+  _uniqueAssetId: 93227fcd57838bb48925a53e9f5363ad
+  _displayName: Briefs
   _groups:
-  - {fileID: 11400000, guid: 6dd32ec1f69e7f1408c7bfb987a0baba, type: 2}
+  - {fileID: 11400000, guid: 54ee6287f41d24e4285e1358bf552b69, type: 2}
   _addedMeshes: []
   _addedTextures:
-  - {fileID: 11400000, guid: 1d90c66946d99e749ac2fadc97d310cc, type: 2}
+  - {fileID: 11400000, guid: 77352865e7d57ca44896c7837979a1e6, type: 2}
   _eyeTextures: {fileID: 0}
   _roomPrefab: {fileID: 0}
   _components:
-  - {fileID: 11400000, guid: 173a28df5604e8a438d22f3f821fa8cc, type: 2}
+  - {fileID: 11400000, guid: ffb49066cbb69594ca4a517c02939747, type: 2}
   _preview:
-    _sprite: {fileID: -1786697027, guid: 15341dd2853879d4694c63f593796b80, type: 3}
-    _cameraPosition: {fileID: 11400000, guid: b90935c439f664d4ab38d0ae144eb3a6, type: 2}
+    _sprite: {fileID: -46474897, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _cameraPosition: {fileID: 11400000, guid: 765ed75ea6244a044bd7a65a37c8828e, type: 2}
   _order:
     _group: {fileID: 11400000, guid: d82494d7798c5ef40a1cc0bd98d1b45a, type: 2}
-    _index: 800
+    _index: 700
