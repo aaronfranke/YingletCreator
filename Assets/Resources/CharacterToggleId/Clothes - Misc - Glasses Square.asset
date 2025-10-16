@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
+  m_Name: Clothes - Misc - Glasses Square
+  m_EditorClassIdentifier: 
+  _uniqueAssetId: e9633890443baf04db723a3404a9deb3
+  _displayName: Glasses (Square)
+  _groups:
+  - {fileID: 11400000, guid: ac5bfa70e46b5af46a18855f0aac8033, type: 2}
+  _addedMeshes:
+  - {fileID: 11400000, guid: 70d462f43171ed14d8710dc29e75244a, type: 2}
+  _addedTextures:
+  - {fileID: 11400000, guid: 0864327e6292ff9489a967ab04471647, type: 2}
+  _eyeTextures: {fileID: 0}
+  _roomPrefab: {fileID: 0}
+  _components: []
+  _preview:
+    _sprite: {fileID: 1130541691, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _cameraPosition: {fileID: 11400000, guid: 850bf0f89ca3c0c498136d3f9febe1e8, type: 2}
+  _order:
+    _group: {fileID: 11400000, guid: f3dd3a1859520774baec8f2cd658f558, type: 2}
+    _index: 150
