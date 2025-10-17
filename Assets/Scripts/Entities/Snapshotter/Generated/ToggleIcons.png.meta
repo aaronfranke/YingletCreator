@@ -716,7 +716,7 @@ TextureImporter:
       name: Pattern - Head - Hard Blush
       rect:
         serializedVersion: 2
-        x: 1152
+        x: 1280
         y: 1664
         width: 128
         height: 128
@@ -735,11 +735,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pattern - Head - Nose
+      name: Pattern - Head - Snout (Soft)
       rect:
         serializedVersion: 2
-        x: 1664
-        y: 1664
+        x: 256
+        y: 1792
         width: 128
         height: 128
       alignment: 0
@@ -760,7 +760,7 @@ TextureImporter:
       name: Pattern - Head - Top
       rect:
         serializedVersion: 2
-        x: 128
+        x: 640
         y: 1792
         width: 128
         height: 128
@@ -782,7 +782,7 @@ TextureImporter:
       name: Pattern - Head - Whiskers
       rect:
         serializedVersion: 2
-        x: 384
+        x: 896
         y: 1792
         width: 128
         height: 128
@@ -804,7 +804,7 @@ TextureImporter:
       name: TailTuft - Regular
       rect:
         serializedVersion: 2
-        x: 896
+        x: 1408
         y: 1792
         width: 128
         height: 128
@@ -914,7 +914,7 @@ TextureImporter:
       name: TailTuft - None
       rect:
         serializedVersion: 2
-        x: 768
+        x: 1280
         y: 1792
         width: 128
         height: 128
@@ -1112,7 +1112,7 @@ TextureImporter:
       name: TailTuft - Vizlet
       rect:
         serializedVersion: 2
-        x: 1408
+        x: 1920
         y: 1792
         width: 128
         height: 128
@@ -1354,7 +1354,7 @@ TextureImporter:
       name: TailTuft - Spiky
       rect:
         serializedVersion: 2
-        x: 1280
+        x: 1792
         y: 1792
         width: 128
         height: 128
@@ -1376,7 +1376,7 @@ TextureImporter:
       name: TailTuft - Fuzzy
       rect:
         serializedVersion: 2
-        x: 512
+        x: 1024
         y: 1792
         width: 128
         height: 128
@@ -1464,8 +1464,8 @@ TextureImporter:
       name: Whiskers - None
       rect:
         serializedVersion: 2
-        x: 1920
-        y: 1792
+        x: 384
+        y: 1920
         width: 128
         height: 128
       alignment: 0
@@ -1486,7 +1486,7 @@ TextureImporter:
       name: Whiskers - Normal
       rect:
         serializedVersion: 2
-        x: 0
+        x: 512
         y: 1920
         width: 128
         height: 128
@@ -1508,8 +1508,8 @@ TextureImporter:
       name: Whiskers - Fuzzy
       rect:
         serializedVersion: 2
-        x: 1792
-        y: 1792
+        x: 256
+        y: 1920
         width: 128
         height: 128
       alignment: 0
@@ -1530,7 +1530,7 @@ TextureImporter:
       name: Whiskers - Sharp
       rect:
         serializedVersion: 2
-        x: 128
+        x: 640
         y: 1920
         width: 128
         height: 128
@@ -2212,7 +2212,7 @@ TextureImporter:
       name: Pattern - Head - Lemur
       rect:
         serializedVersion: 2
-        x: 1280
+        x: 1408
         y: 1664
         width: 128
         height: 128
@@ -2278,7 +2278,7 @@ TextureImporter:
       name: Pattern - Head - Soft Blush
       rect:
         serializedVersion: 2
-        x: 0
+        x: 512
         y: 1792
         width: 128
         height: 128
@@ -2300,7 +2300,7 @@ TextureImporter:
       name: Pattern - Head - Whisker Ends
       rect:
         serializedVersion: 2
-        x: 256
+        x: 768
         y: 1792
         width: 128
         height: 128
@@ -2828,8 +2828,8 @@ TextureImporter:
       name: Whiskers - Droopy
       rect:
         serializedVersion: 2
-        x: 1664
-        y: 1792
+        x: 128
+        y: 1920
         width: 128
         height: 128
       alignment: 0
@@ -3290,7 +3290,7 @@ TextureImporter:
       name: Pattern - Head - Freckles
       rect:
         serializedVersion: 2
-        x: 1024
+        x: 1152
         y: 1664
         width: 128
         height: 128
@@ -3312,7 +3312,7 @@ TextureImporter:
       name: TailTuft - Highlight
       rect:
         serializedVersion: 2
-        x: 640
+        x: 1152
         y: 1792
         width: 128
         height: 128
@@ -4038,7 +4038,7 @@ TextureImporter:
       name: TailTuft - Small
       rect:
         serializedVersion: 2
-        x: 1152
+        x: 1664
         y: 1792
         width: 128
         height: 128
@@ -4060,7 +4060,7 @@ TextureImporter:
       name: TailTuft - Ripped
       rect:
         serializedVersion: 2
-        x: 1024
+        x: 1536
         y: 1792
         width: 128
         height: 128
@@ -4588,7 +4588,7 @@ TextureImporter:
       name: Pattern - Head - Mask
       rect:
         serializedVersion: 2
-        x: 1408
+        x: 1536
         y: 1664
         width: 128
         height: 128
@@ -4610,7 +4610,7 @@ TextureImporter:
       name: Pattern - Head - Nimbat
       rect:
         serializedVersion: 2
-        x: 1536
+        x: 1664
         y: 1664
         width: 128
         height: 128
@@ -4632,8 +4632,8 @@ TextureImporter:
       name: Whiskers - Clumped
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 1792
+        x: 0
+        y: 1920
         width: 128
         height: 128
       alignment: 0
@@ -5420,6 +5420,116 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Pattern - Head - Forehead
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1664
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7444e97d2f3346303593cf4e2222f53c
+      internalID: 502210156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pattern - Head - Sergal
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1792
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 436a6f1f528f6dba3dc530b0cf6926e3
+      internalID: 1065307322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pattern - Head - Snout (Hard)
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1792
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c05149c9f28d27c591f123e4e2910ded
+      internalID: -783371752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pattern - Head - Snout Lines
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1792
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8f6767f63578e5ddf9eb96d813b5aaf
+      internalID: -1895008227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pattern - Body - Speckles
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1920
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d12166a8487e90dff8dcff6855ceefb7
+      internalID: -1414598645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -5637,6 +5747,7 @@ TextureImporter:
       Pattern - Body - Limb Stripes: -1881668777
       Pattern - Body - Neck Stripes: 879949709
       Pattern - Body - Shoulder: -1555565086
+      Pattern - Body - Speckles: -1414598645
       Pattern - Body - Tail Feathered: 1916573907
       Pattern - Body - Tail Lemur: 1623868169
       Pattern - Body - Tail Stripes: 62267738
@@ -5657,6 +5768,7 @@ TextureImporter:
       Pattern - Head - Cheak Streaks: -1932905798
       Pattern - Head - Eye Markings: -1019857638
       Pattern - Head - Eyeshadow: -763749526
+      Pattern - Head - Forehead: 502210156
       Pattern - Head - Freckles: 1949927027
       Pattern - Head - Hard Blush: 603577784
       Pattern - Head - Lemur: -164850339
@@ -5665,6 +5777,10 @@ TextureImporter:
       Pattern - Head - Nose: 1920636684
       Pattern - Head - Platypus: 1983790582
       Pattern - Head - Raccoon: -580640414
+      Pattern - Head - Sergal: 1065307322
+      Pattern - Head - Snout (Hard): -783371752
+      Pattern - Head - Snout (Soft): 1920636684
+      Pattern - Head - Snout Lines: -1895008227
       Pattern - Head - Soft Blush: -1387980397
       Pattern - Head - Top: -1014016435
       Pattern - Head - Whisker Ends: 1971049281
