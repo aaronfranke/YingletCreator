@@ -10,23 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
-  m_Name: Hair - Lippie - Front
+  m_Name: Hair - Braids - Front
   m_EditorClassIdentifier: 
-  _uniqueAssetId: 5058334b0963ec241860cd6e6a90a6d8
-  _displayName: Loopies
+  _uniqueAssetId: 4a1080ec251cf824891478cae3d625a8
+  _displayName: Braids
   _groups:
   - {fileID: 11400000, guid: b905ab7173a64ab4cbcec39daeb3702c, type: 2}
   _addedMeshes:
-  - {fileID: 11400000, guid: 90cc87f3106edb24fa103e95b7c591ee, type: 2}
+  - {fileID: 11400000, guid: 68e76599d8f536b4b9edbbb60c875b56, type: 2}
+  - {fileID: 11400000, guid: b435bda48fa690d418cef4766f0c451b, type: 2}
   _addedTextures:
   - {fileID: 11400000, guid: 37e8c4cebf6a11b44bba549b577f2f3c, type: 2}
+  - {fileID: 11400000, guid: 6492f42815d1f4347a1f42f0c35258bf, type: 2}
+  - {fileID: 11400000, guid: 21e9de2c1838c6a4b907b4ee9f032edf, type: 2}
   _eyeTextures: {fileID: 0}
   _roomPrefab: {fileID: 0}
   _components:
-  - {fileID: 11400000, guid: 9af24f2c1f9cb96468ef60bed1eaafbc, type: 2}
+  - {fileID: 11400000, guid: 951ff33b1cc64e54789082d1e44b174e, type: 2}
   _preview:
-    _sprite: {fileID: 2098277700, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _sprite: {fileID: 128859020, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: 3a4af34d07e4cfb46adabd44c51f84ab, type: 2}
   _order:
     _group: {fileID: 11400000, guid: 98f6e1e9bd8f88d4aaaa01d4b1cc36eb, type: 2}
-    _index: 1100
+    _index: 1600
