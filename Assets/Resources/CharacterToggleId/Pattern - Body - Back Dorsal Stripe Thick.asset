@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
-  m_Name: Pattern - Body - Back Dorsal Stripe
+  m_Name: Pattern - Body - Back Dorsal Stripe Thick
   m_EditorClassIdentifier: 
-  _uniqueAssetId: e2ea6161267a88d4cb198956a9815e76
-  _displayName: Dorsal (Thin)
+  _uniqueAssetId: 1963a53431503fa4aa48c7854028346e
+  _displayName: Dorsal (Thick)
   _groups: []
   _addedMeshes: []
   _addedTextures:
   - {fileID: 11400000, guid: 88a042362a66aca44af3b99b0c9e07a5, type: 2}
+  - {fileID: 11400000, guid: 5aef8e69d35c5e948a972739fca3caab, type: 2}
   _eyeTextures: {fileID: 0}
   _roomPrefab: {fileID: 0}
   _components: []
@@ -26,4 +27,4 @@ MonoBehaviour:
     _cameraPosition: {fileID: 11400000, guid: df417758296cd9a47a189d671d553c7f, type: 2}
   _order:
     _group: {fileID: 11400000, guid: c7209408c9cee7e448fb6dbd0dcc36ac, type: 2}
-    _index: 1100
+    _index: 1099
