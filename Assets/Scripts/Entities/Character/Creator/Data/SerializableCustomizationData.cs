@@ -13,7 +13,7 @@ namespace Character.Creator
 	public sealed class SerializableCustomizationData
 	{
 		// Used in <see cref="CustomizationDataUpgradeUtils"/>
-		const int CURRENT_VERSION = 2;
+		const int CURRENT_VERSION = 3;
 
 		public string Name;
 

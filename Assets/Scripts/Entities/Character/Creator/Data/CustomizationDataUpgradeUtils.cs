@@ -21,6 +21,18 @@ namespace Character.Creator
 				var antennaToggle = ResourceLoader.Load<CharacterToggleId>("8cba46f50096a834fb85f242c51bb822");
 				data.ToggleData.Toggles.Add(antennaToggle);
 			}
+
+			if (version <= 2)
+			{
+				// Fixing bug: FurPattern - Lemur (Head) was using incorrect RecolorID
+				var dorsalLargeRecolorId = ResourceLoader.Load<ReColorId>("446eca6588d0cd549ae8ddce16157ed3");
+				var lemurHeadRecolorId = ResourceLoader.Load<ReColorId>("6b70aecca43a2ad41ad199c07badec8b");
+
+				if (data.ColorData.ColorizeValues.TryGetValue(dorsalLargeRecolorId, out var existingValues))
+				{
+					data.ColorData.ColorizeValues[lemurHeadRecolorId] = existingValues;
+				}
+			}
 		}
 	}
 }
