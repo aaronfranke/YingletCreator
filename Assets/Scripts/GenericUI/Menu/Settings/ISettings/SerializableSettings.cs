@@ -3,35 +3,38 @@
 [System.Serializable]
 public sealed class SerializableSettings : ISettings
 {
-    [SerializeField] FpsCap _fpsCap = FpsCap.Fps120;
-    public FpsCap FpsCap { get => _fpsCap; }
+	[SerializeField] FpsCap _fpsCap = FpsCap.Fps120;
+	public FpsCap FpsCap { get => _fpsCap; }
 
-    [SerializeField] ScreenMode _screenMode = ScreenMode.Borderless;
-    public ScreenMode ScreenMode { get => _screenMode; }
+	[SerializeField] ScreenMode _screenMode = ScreenMode.Borderless;
+	public ScreenMode ScreenMode { get => _screenMode; }
 
-    [SerializeField] Vector2Int _displayResolution;
-    public Vector2Int DisplayResolution { get => _displayResolution; }
+	[SerializeField] Vector2Int _displayResolution;
+	public Vector2Int DisplayResolution { get => _displayResolution; }
 
-    [SerializeField] float _effectVolume = 1.0f;
-    public float EffectVolume => _effectVolume;
+	[SerializeField] bool _uiTilt = true;
+	public bool UITilt => _uiTilt;
 
-    [SerializeField] float _musicVolume = 0.42f;
-    public float MusicVolume => _musicVolume;
+	[SerializeField] float _effectVolume = 1.0f;
+	public float EffectVolume => _effectVolume;
 
-    public SerializableSettings()
-    {
-        if (_displayResolution == Vector2Int.zero)
-        {
-            _displayResolution = new Vector2Int(Screen.currentResolution.width, Screen.currentResolution.height);
-        }
-    }
+	[SerializeField] float _musicVolume = 0.42f;
+	public float MusicVolume => _musicVolume;
 
-    public SerializableSettings(ISettings settings)
-    {
-        _fpsCap = settings.FpsCap;
-        _screenMode = settings.ScreenMode;
-        _displayResolution = settings.DisplayResolution;
-        _effectVolume = settings.EffectVolume;
-        _musicVolume = settings.MusicVolume;
-    }
+	public SerializableSettings()
+	{
+		if (_displayResolution == Vector2Int.zero)
+		{
+			_displayResolution = new Vector2Int(Screen.currentResolution.width, Screen.currentResolution.height);
+		}
+	}
+
+	public SerializableSettings(ISettings settings)
+	{
+		_fpsCap = settings.FpsCap;
+		_screenMode = settings.ScreenMode;
+		_displayResolution = settings.DisplayResolution;
+		_effectVolume = settings.EffectVolume;
+		_musicVolume = settings.MusicVolume;
+	}
 }
