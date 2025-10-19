@@ -8,6 +8,7 @@ public class PoseModeCameraMovement : MonoBehaviour
 	[SerializeField] float _moveSmoothTime = 0.08f;
 	[SerializeField] float _rotateSpeed = 30f;
 	[SerializeField] float _scrollToMovementFactor = 10f;
+	private IUiHoverManager _uiHoverManager;
 	private IInPoseModeChecker _inPoseMode;
 	private Vector3 _eulerRotation;
 	private Vector3 _targetPosition;
@@ -25,6 +26,8 @@ public class PoseModeCameraMovement : MonoBehaviour
 
 	private void Awake()
 	{
+
+		_uiHoverManager = Singletons.GetSingleton<IUiHoverManager>();
 		_inPoseMode = this.GetCharacterCreatorComponent<IInPoseModeChecker>();
 		_targetPosition = transform.position;
 		_inPoseMode.InPoseMode.OnChanged += InPoseMode_OnChanged;
@@ -57,6 +60,7 @@ public class PoseModeCameraMovement : MonoBehaviour
 
 	void UpdatePositionViaScroll()
 	{
+		if (_uiHoverManager.HoveringUi) return;
 		float scroll = Input.GetAxisRaw("Mouse ScrollWheel");
 		if (scroll != 0)
 		{
