@@ -10,6 +10,7 @@ public class PoseModeCameraMovement : MonoBehaviour
 	[SerializeField] float _scrollToMovementFactor = 10f;
 	private IUiHoverManager _uiHoverManager;
 	private IInPoseModeChecker _inPoseMode;
+	private IPoseCameraData _camData;
 	private Vector3 _eulerRotation;
 	private Vector3 _targetPosition;
 	private Vector3 _moveVelocity;
@@ -26,9 +27,9 @@ public class PoseModeCameraMovement : MonoBehaviour
 
 	private void Awake()
 	{
-
 		_uiHoverManager = Singletons.GetSingleton<IUiHoverManager>();
 		_inPoseMode = this.GetCharacterCreatorComponent<IInPoseModeChecker>();
+		_camData = GetComponentInParent<IPoseCameraData>();
 		_targetPosition = transform.position;
 		_inPoseMode.InPoseMode.OnChanged += InPoseMode_OnChanged;
 	}
@@ -65,7 +66,7 @@ public class PoseModeCameraMovement : MonoBehaviour
 		if (scroll != 0)
 		{
 			Vector3 worldMove = transform.TransformDirection(Vector3.forward);
-			_targetPosition += worldMove.normalized * _moveSpeed * scroll * _scrollToMovementFactor; // Don't delta-time this since scroll should be raw values
+			_targetPosition += worldMove.normalized * Speed * scroll * _scrollToMovementFactor; // Don't delta-time this since scroll should be raw values
 		}
 	}
 	void UpdatePositionViaWASD()
@@ -85,9 +86,11 @@ public class PoseModeCameraMovement : MonoBehaviour
 		{
 			// Move relative to the transform's orientation
 			Vector3 worldMove = transform.TransformDirection(direction);
-			_targetPosition += worldMove.normalized * _moveSpeed * LimitedDeltaTime;
+			_targetPosition += worldMove.normalized * Speed * LimitedDeltaTime;
 		}
 	}
+
+	float Speed => _moveSpeed * _camData.Speed;
 
 	void SmoothMoveRealTransform()
 	{
