@@ -19,6 +19,7 @@ public class PoseCameraFovSlider : ReactiveBehaviour
 	private new void OnDestroy()
 	{
 		base.OnDestroy();
+		if (_slider == null) return;
 		_slider.onValueChanged.RemoveListener(Slider_OnValueChanged);
 	}
 
