@@ -15,6 +15,9 @@ public sealed class SerializableSettings : ISettings
 	[SerializeField] bool _uiTilt = true;
 	public bool UITilt => _uiTilt;
 
+	[SerializeField] UnitSystem _unitSystem = UnitSystem.Metric;
+	public UnitSystem UnitSystem => _unitSystem;
+
 	[SerializeField] float _effectVolume = 1.0f;
 	public float EffectVolume => _effectVolume;
 
@@ -34,6 +37,8 @@ public sealed class SerializableSettings : ISettings
 		_fpsCap = settings.FpsCap;
 		_screenMode = settings.ScreenMode;
 		_displayResolution = settings.DisplayResolution;
+		_uiTilt = settings.UITilt;
+		_unitSystem = settings.UnitSystem;
 		_effectVolume = settings.EffectVolume;
 		_musicVolume = settings.MusicVolume;
 	}

@@ -16,6 +16,9 @@ public sealed class ObservableSettings : IWriteableSettings
 	Observable<bool> _uiTilt;
 	public bool UITilt { get => _uiTilt.Val; set => _uiTilt.Val = value; }
 
+	Observable<UnitSystem> _unitSystem;
+	public UnitSystem UnitSystem { get => _unitSystem.Val; set => _unitSystem.Val = value; }
+
 	Observable<float> _effectVolume;
 	public float EffectVolume { get => _effectVolume.Val; set => _effectVolume.Val = value; }
 
@@ -28,6 +31,7 @@ public sealed class ObservableSettings : IWriteableSettings
 		_screenMode = new Observable<ScreenMode>(loadedSettings.ScreenMode);
 		_displayResolution = new Observable<Vector2Int>(loadedSettings.DisplayResolution);
 		_uiTilt = new Observable<bool>(loadedSettings.UITilt);
+		_unitSystem = new Observable<UnitSystem>(loadedSettings.UnitSystem);
 		_effectVolume = new Observable<float>(loadedSettings.EffectVolume);
 		_musicVolume = new Observable<float>(loadedSettings.MusicVolume);
 	}

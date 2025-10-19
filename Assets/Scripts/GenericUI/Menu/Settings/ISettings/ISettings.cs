@@ -17,13 +17,20 @@ public enum ScreenMode
 	Fullscreen
 }
 
+public enum UnitSystem
+{
+	Metric,
+	Imperial,
+	Kassens
+}
+
 public interface ISettings
 {
 	FpsCap FpsCap { get; }
 	ScreenMode ScreenMode { get; }
 	Vector2Int DisplayResolution { get; }
 	bool UITilt { get; }
-
+	UnitSystem UnitSystem { get; }
 	float EffectVolume { get; }
 	float MusicVolume { get; }
 }
@@ -34,6 +41,7 @@ public interface IWriteableSettings : ISettings
 	new ScreenMode ScreenMode { get; set; }
 	new Vector2Int DisplayResolution { get; set; }
 	new bool UITilt { get; set; }
+	new UnitSystem UnitSystem { get; set; }
 	new float EffectVolume { get; set; }
 	new float MusicVolume { get; set; }
 }
