@@ -7,6 +7,7 @@ public class PoseModeCameraMovement : MonoBehaviour
 	[SerializeField] float _moveSpeed = 5f;
 	[SerializeField] float _moveSmoothTime = 0.08f;
 	[SerializeField] float _rotateSpeed = 30f;
+	[SerializeField] float _scrollToMovementFactor = 10f;
 	private IInPoseModeChecker _inPoseMode;
 	private Vector3 _eulerRotation;
 	private Vector3 _targetPosition;
@@ -48,11 +49,22 @@ public class PoseModeCameraMovement : MonoBehaviour
 			return;
 		}
 
-		UpdatePosition();
+		UpdatePositionViaScroll();
+		UpdatePositionViaWASD();
 		UpdateRotation();
+		SmoothMoveRealTransform();
 	}
 
-	void UpdatePosition()
+	void UpdatePositionViaScroll()
+	{
+		float scroll = Input.GetAxisRaw("Mouse ScrollWheel");
+		if (scroll != 0)
+		{
+			Vector3 worldMove = transform.TransformDirection(Vector3.forward);
+			_targetPosition += worldMove.normalized * _moveSpeed * scroll * _scrollToMovementFactor; // Don't delta-time this since scroll should be raw values
+		}
+	}
+	void UpdatePositionViaWASD()
 	{
 		Vector3 direction = Vector3.zero;
 
@@ -64,13 +76,17 @@ public class PoseModeCameraMovement : MonoBehaviour
 			}
 		}
 
+
 		if (direction != Vector3.zero)
 		{
 			// Move relative to the transform's orientation
 			Vector3 worldMove = transform.TransformDirection(direction);
 			_targetPosition += worldMove.normalized * _moveSpeed * LimitedDeltaTime;
 		}
+	}
 
+	void SmoothMoveRealTransform()
+	{
 		// Smoothly move towards the target position
 		transform.position = Vector3.SmoothDamp(transform.position, _targetPosition, ref _moveVelocity, _moveSmoothTime);
 	}
