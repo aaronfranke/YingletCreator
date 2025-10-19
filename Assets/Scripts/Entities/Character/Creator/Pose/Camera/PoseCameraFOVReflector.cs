@@ -21,6 +21,7 @@ public class PoseCameraFOVReflector : ReactiveBehaviour
 		if (!_inPoseMode.InPoseMode.Val)
 		{
 			Camera.main.fieldOfView = _originalFOV;
+			return;
 		}
 		Camera.main.fieldOfView = _camData.FieldOfView;
 	}
