@@ -108,10 +108,9 @@ public class PoseModeCameraMovement : MonoBehaviour
 		var rotateAngles = new Vector3(-mouseY, mouseX, 0);
 		if (rotateAngles.magnitude < 0.001f) return;
 
-		float rotateAmount = (LimitedDeltaTime * _rotateSpeed);
-		_eulerRotation += rotateAngles * rotateAmount;
+		_eulerRotation += rotateAngles * _rotateSpeed;
 		transform.localRotation = Quaternion.Euler(_eulerRotation);
 	}
 
-	float LimitedDeltaTime => Mathf.Min(Time.deltaTime, 0.3f);
+	float LimitedDeltaTime => Mathf.Min(Time.deltaTime, 0.04f);
 }
