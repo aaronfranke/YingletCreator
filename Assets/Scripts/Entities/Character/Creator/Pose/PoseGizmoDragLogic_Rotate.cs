@@ -2,6 +2,8 @@
 
 internal sealed class PoseGizmoDragLogic_Rotate : MonoBehaviour, IPoseGizmoDragLogic
 {
+	public bool DragOnXZPlane => true;
+
 	public void UpdateTransform(Transform target, Vector3 initialMousePos, Vector3 currentMousePos, Vector3 initialTargetPos, float initialTargetRot)
 	{
 		Vector2 initial = new Vector2(initialMousePos.x, initialMousePos.z);

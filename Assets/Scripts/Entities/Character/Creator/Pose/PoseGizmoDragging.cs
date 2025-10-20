@@ -44,19 +44,16 @@ public class PoseGizmoDragging : MonoBehaviour, IPoseGizmo
 		_dragging.Val = true;
 		var target = _poseData.CurrentlyEditing.GameObject.transform;
 
-		// Store the initial offset between the target and the mouse hit point on the XZ plane
-		Plane xzPlane = new Plane(Vector3.up, Vector3.zero);
-
 		Vector3 initialTargetPos = target.position;
 		float initialTargetRot = target.rotation.eulerAngles.y;
 
-		Vector3 initialMousePos = GetMouseWorldPositionOnXZPlane(xzPlane);
+		Vector3 initialMousePos = GetMousePositionOnAppropriateAxis(target);
 		Vector3 lastMousePos = initialMousePos;
 
 		while (Input.GetMouseButton(0))
 		{
 			// Calculate new mouse pos
-			Vector3 currentMousePos = GetMouseWorldPositionOnXZPlane(xzPlane);
+			Vector3 currentMousePos = GetMousePositionOnAppropriateAxis(target);
 			// Play SFX if it has changed
 			float distance = Vector3.Distance(currentMousePos, lastMousePos);
 			if (distance > .01f) _dragSfx.Change(distance);
@@ -74,12 +71,26 @@ public class PoseGizmoDragging : MonoBehaviour, IPoseGizmo
 		_dragging.Val = false;
 	}
 
+	Vector3 GetMousePositionOnAppropriateAxis(Transform target)
+	{
+		if (_dragLogic.DragOnXZPlane)
+		{
+			var xzPlane = new Plane(Vector3.up, target.transform.position);
+			return GetMouseWorldPositionOnPlane(target, xzPlane);
+		}
+		else
+		{
+			var planeFacingCamera = new Plane(-Camera.main.transform.forward, target.transform.position);
+			return GetMouseWorldPositionOnPlane(target, planeFacingCamera);
+		}
+	}
+
 	// Helper method to get the world position on the XZ plane under the mouse
-	private Vector3 GetMouseWorldPositionOnXZPlane(Plane xzPlane)
+	private Vector3 GetMouseWorldPositionOnPlane(Transform target, Plane plane)
 	{
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		float enter;
-		if (xzPlane.Raycast(ray, out enter))
+		if (plane.Raycast(ray, out enter))
 		{
 			return ray.GetPoint(enter);
 		}
