@@ -19,6 +19,9 @@ public sealed class ObservableSettings : IWriteableSettings
 	Observable<UnitSystem> _unitSystem;
 	public UnitSystem UnitSystem { get => _unitSystem.Val; set => _unitSystem.Val = value; }
 
+	Observable<DefaultCameraPosition> _defaultCameraPosition;
+	public DefaultCameraPosition DefaultCameraPosition { get => _defaultCameraPosition.Val; set => _defaultCameraPosition.Val = value; }
+
 	Observable<float> _effectVolume;
 	public float EffectVolume { get => _effectVolume.Val; set => _effectVolume.Val = value; }
 
@@ -32,6 +35,7 @@ public sealed class ObservableSettings : IWriteableSettings
 		_displayResolution = new Observable<Vector2Int>(loadedSettings.DisplayResolution);
 		_uiTilt = new Observable<bool>(loadedSettings.UITilt);
 		_unitSystem = new Observable<UnitSystem>(loadedSettings.UnitSystem);
+		_defaultCameraPosition = new Observable<DefaultCameraPosition>(loadedSettings.DefaultCameraPosition);
 		_effectVolume = new Observable<float>(loadedSettings.EffectVolume);
 		_musicVolume = new Observable<float>(loadedSettings.MusicVolume);
 	}

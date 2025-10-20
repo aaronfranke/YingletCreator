@@ -6,19 +6,24 @@ public class ZoomInOnScroll : MonoBehaviour
 	[SerializeField] Vector3 _zoomPos;
 	[SerializeField] Vector3 _zoomRot;
 	[SerializeField] float _scrollSensitivity = 1f;
-	[SerializeField] float _lerpPower = 5f;
+	[SerializeField] float _posSpringTime = 0.3f;
+	[SerializeField] float _rotSpringTime = 0.3f;
+	[SerializeField] Vector3 _frameOffset;
 
+	ISettingsManager _settingsManager;
 	IUiHoverManager _uiHoverManager;
 	IInPoseModeChecker _inPoseMode;
 	IYingletHeightProvider _heightProvider;
 	Vector3 _startPos;
 	Quaternion _startRot;
 	Quaternion _zoomRotQuaternion;
-	float _targetPercent = 0f;
-	float _currentPercent = 0;
+	float _percent = 0f;
+	private Vector3 _currentPosVel;
+	private Vector4 _currentRotVel;
 
 	void Start()
 	{
+		_settingsManager = Singletons.GetSingleton<ISettingsManager>();
 		_uiHoverManager = Singletons.GetSingleton<IUiHoverManager>();
 		_inPoseMode = this.GetCharacterCreatorComponent<IInPoseModeChecker>();
 		_heightProvider = this.GetCharacterCreatorComponent<IYingletHeightProvider>();
@@ -27,7 +32,7 @@ public class ZoomInOnScroll : MonoBehaviour
 		_zoomRotQuaternion = Quaternion.Euler(_zoomRot);
 	}
 
-	void Update()
+	void LateUpdate()
 	{
 		// Early return if we're in photo mode
 		if (_inPoseMode.InPoseMode.Val) return;
@@ -43,16 +48,29 @@ public class ZoomInOnScroll : MonoBehaviour
 		float scroll = Input.GetAxisRaw("Mouse ScrollWheel");
 		if (Mathf.Abs(scroll) > 0.0001f)
 		{
-			_targetPercent += scroll * _scrollSensitivity;
-			_targetPercent = Mathf.Clamp01(_targetPercent);
+			_percent += scroll * _scrollSensitivity;
+			_percent = Mathf.Clamp01(_percent);
 		}
 	}
 	private void UpdatePos()
 	{
 		var zoomOffset = new Vector3(0, _heightProvider.YScale - 1, 0);
-		_currentPercent = Mathf.Lerp(_currentPercent, _targetPercent, Time.deltaTime * _lerpPower);
-		transform.localPosition = Vector3.Lerp(_startPos, _zoomPos + zoomOffset, _currentPercent);
-		transform.localRotation = Quaternion.Lerp(_startRot, _zoomRotQuaternion, _currentPercent);
+		Vector3 targetPosition = Vector3.Lerp(GetFromPosition(), _zoomPos + zoomOffset, _percent);
+		Quaternion targetRotation = Quaternion.Lerp(_startRot, _zoomRotQuaternion, _percent);
+		transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _currentPosVel, _posSpringTime);
+		transform.rotation = transform.rotation.SmoothDamp(targetRotation, ref _currentRotVel, _rotSpringTime);
+	}
+
+	Vector3 GetFromPosition()
+	{
+		if (_settingsManager.Settings.DefaultCameraPosition == DefaultCameraPosition.Static)
+		{
+			return _startPos;
+		}
+		else
+		{
+			return _startPos + _frameOffset * Mathf.Max(_heightProvider.YScale - 1, -.99f);
+		}
 	}
 
 }

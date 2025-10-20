@@ -24,6 +24,12 @@ public enum UnitSystem
 	Kassens
 }
 
+public enum DefaultCameraPosition
+{
+	Static,
+	Frame
+}
+
 public interface ISettings
 {
 	FpsCap FpsCap { get; }
@@ -31,6 +37,7 @@ public interface ISettings
 	Vector2Int DisplayResolution { get; }
 	bool UITilt { get; }
 	UnitSystem UnitSystem { get; }
+	DefaultCameraPosition DefaultCameraPosition { get; }
 	float EffectVolume { get; }
 	float MusicVolume { get; }
 }
@@ -42,6 +49,7 @@ public interface IWriteableSettings : ISettings
 	new Vector2Int DisplayResolution { get; set; }
 	new bool UITilt { get; set; }
 	new UnitSystem UnitSystem { get; set; }
+	new DefaultCameraPosition DefaultCameraPosition { get; set; }
 	new float EffectVolume { get; set; }
 	new float MusicVolume { get; set; }
 }

@@ -929,7 +929,9 @@ MonoBehaviour:
   _zoomPos: {x: -0.22, y: 0.97, z: -0.5}
   _zoomRot: {x: 15, y: 0, z: 0}
   _scrollSensitivity: 2
-  _lerpPower: 5
+  _posSpringTime: 0.2
+  _rotSpringTime: 0.2
+  _frameOffset: {x: -0.59, y: 1.12, z: -1.09}
 --- !u!114 &335724987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1399,6 +1401,30 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7978323696518835871, guid: b411c5ce5ce33b3489caa9c4c10d2149, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299753621520506143, guid: b411c5ce5ce33b3489caa9c4c10d2149, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299753621520506143, guid: b411c5ce5ce33b3489caa9c4c10d2149, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299753621520506143, guid: b411c5ce5ce33b3489caa9c4c10d2149, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299753621520506143, guid: b411c5ce5ce33b3489caa9c4c10d2149, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299753621520506143, guid: b411c5ce5ce33b3489caa9c4c10d2149, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299753621520506143, guid: b411c5ce5ce33b3489caa9c4c10d2149, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}

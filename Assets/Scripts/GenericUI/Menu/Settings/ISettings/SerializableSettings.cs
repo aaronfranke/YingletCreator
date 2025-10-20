@@ -18,6 +18,9 @@ public sealed class SerializableSettings : ISettings
 	[SerializeField] UnitSystem _unitSystem = UnitSystem.Metric;
 	public UnitSystem UnitSystem => _unitSystem;
 
+	[SerializeField] DefaultCameraPosition _defaultCameraPosition = DefaultCameraPosition.Static;
+	public DefaultCameraPosition DefaultCameraPosition => _defaultCameraPosition;
+
 	[SerializeField] float _effectVolume = 1.0f;
 	public float EffectVolume => _effectVolume;
 
@@ -39,6 +42,7 @@ public sealed class SerializableSettings : ISettings
 		_displayResolution = settings.DisplayResolution;
 		_uiTilt = settings.UITilt;
 		_unitSystem = settings.UnitSystem;
+		_defaultCameraPosition = settings.DefaultCameraPosition;
 		_effectVolume = settings.EffectVolume;
 		_musicVolume = settings.MusicVolume;
 	}
