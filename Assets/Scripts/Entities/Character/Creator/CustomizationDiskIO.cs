@@ -113,6 +113,8 @@ namespace Character.Creator
 			_selectionReference.Selected.CachedData = serializedData;
 			_selectionReference.Selected.Path = newFilePath;
 
+			_selectionReference.SelectionIsDirty = false;
+
 			OnSaved(Path.GetFileName(newFilePath));
 			return true;
 		}

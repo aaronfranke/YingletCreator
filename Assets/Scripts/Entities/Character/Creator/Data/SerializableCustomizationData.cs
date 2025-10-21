@@ -39,6 +39,7 @@ namespace Character.Creator
 		public SerializableCustomizationColorData ColorData;
 		public SerializableCustomizationToggleData ToggleData;
 		public SerializableCustomizationNumberData NumberData;
+		// Note: If adding anything else, make sure you implement it in SerializableCustomizationDataComparison
 
 		public SerializableCustomizationData(ObservableCustomizationData data)
 		{

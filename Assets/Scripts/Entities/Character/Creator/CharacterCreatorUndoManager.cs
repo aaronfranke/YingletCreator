@@ -34,6 +34,7 @@ namespace Character.Creator
 	public class CharacterCreatorUndoManager : MonoBehaviour, ICharacterCreatorUndoManager
 	{
 		private ICharacterCreatorStateSnapshotter _stateSnapshotter;
+		ICustomizationSelection _customizationSelection;
 
 		List<CharacterCreatorStateSnapshot> _undoStack = new(); // Not actually a stack because we need to remove things from the front
 		List<CharacterCreatorStateSnapshot> _redoStack = new(); // Redo stack to store undone states
@@ -46,6 +47,7 @@ namespace Character.Creator
 		private void Awake()
 		{
 			_stateSnapshotter = this.GetComponent<ICharacterCreatorStateSnapshotter>();
+			_customizationSelection = this.GetComponent<ICustomizationSelection>();
 		}
 
 		public void RecordState(string action)
@@ -56,6 +58,9 @@ namespace Character.Creator
 			// Clear redo stack when new state is recorded
 			_redoStack.Clear();
 			ClampStacksToMax();
+
+			// It probably shouldn't be the responsibility of the undo manager to also keep track of what's "dirty", but this is a really convenient chokepoint for all that logic
+			_customizationSelection.SelectionIsDirty = true;
 		}
 
 		public void TryRedo()

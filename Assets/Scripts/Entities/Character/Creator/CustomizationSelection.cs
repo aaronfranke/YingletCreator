@@ -12,6 +12,8 @@ namespace Character.Creator
 		public CachedYingletReference Selected { get; }
 
 		public void SetSelected(CachedYingletReference reference, bool withConfirmation);
+
+		public bool SelectionIsDirty { get; set; }
 	}
 
 	public class CustomizationSelection : MonoBehaviour, ICustomizationSelection
@@ -42,10 +44,13 @@ namespace Character.Creator
 			}
 		}
 
+		public bool SelectionIsDirty { get; set; }
+
 		public void SetSelected(CachedYingletReference reference, bool withConfirmation)
 		{
-			// TODO: Add check if anything has changed
-			if (withConfirmation && _selected.Val.Group == CustomizationYingletGroup.Custom)
+			if (withConfirmation
+				&& _selected.Val.Group == CustomizationYingletGroup.Custom
+				&& SelectionIsDirty)
 			{
 				_confirmationManager.OpenConfirmation(new(
 					"Are you sure you want to switch yinglets?\n\nUnsaved changes will be lost.",
@@ -64,6 +69,7 @@ namespace Character.Creator
 
 				_undoManager.RecordState($"Selected yinglet \"{reference.CachedData.Name}\"");
 				_selected.Val = reference;
+				SelectionIsDirty = false;
 			}
 		}
 	}
