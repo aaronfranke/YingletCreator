@@ -46,9 +46,9 @@ namespace Character.Creator
 
 		public bool SelectionIsDirty { get; set; }
 
-		public void SetSelected(CachedYingletReference reference, bool withConfirmation)
+		public void SetSelected(CachedYingletReference reference, bool withConfirmationAndUndo)
 		{
-			if (withConfirmation
+			if (withConfirmationAndUndo
 				&& _selected.Val.Group == CustomizationYingletGroup.Custom
 				&& SelectionIsDirty)
 			{
@@ -66,8 +66,10 @@ namespace Character.Creator
 
 			void SetSelected()
 			{
-
-				_undoManager.RecordState($"Selected yinglet \"{reference.CachedData.Name}\"");
+				if (withConfirmationAndUndo)
+				{
+					_undoManager.RecordState($"Selected yinglet \"{reference.CachedData.Name}\"");
+				}
 				_selected.Val = reference;
 				SelectionIsDirty = false;
 			}
