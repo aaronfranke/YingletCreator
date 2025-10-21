@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum FpsCap
@@ -40,6 +41,7 @@ public interface ISettings
 	DefaultCameraPosition DefaultCameraPosition { get; }
 	float EffectVolume { get; }
 	float MusicVolume { get; }
+	List<string> DontShowConfirmationIdsAgain { get; } // Can't be a HashSet since that can't be serialized
 }
 
 public interface IWriteableSettings : ISettings
@@ -52,4 +54,5 @@ public interface IWriteableSettings : ISettings
 	new DefaultCameraPosition DefaultCameraPosition { get; set; }
 	new float EffectVolume { get; set; }
 	new float MusicVolume { get; set; }
+	new List<string> DontShowConfirmationIdsAgain { get; set; }
 }
