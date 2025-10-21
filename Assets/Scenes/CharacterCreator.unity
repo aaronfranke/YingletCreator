@@ -2383,6 +2383,8 @@ GameObject:
   - component: {fileID: 934013563}
   - component: {fileID: 934013564}
   - component: {fileID: 934013565}
+  - component: {fileID: 934013567}
+  - component: {fileID: 934013566}
   m_Layer: 5
   m_Name: ConfirmationDisplayer
   m_TagString: Untagged
@@ -2444,6 +2446,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _soundEffect: {fileID: 11400000, guid: 889aaf7b188be2a489ab305b9608d871, type: 2}
+--- !u!114 &934013566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934013560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa8f4294fe6c6584b8495468fd87b48f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &934013567
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934013560}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &954353168
 GameObject:
   m_ObjectHideFlags: 0
@@ -6768,7 +6794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.09433961, g: 0.05295478, b: 0.089564435, a: 0.78431374}
+  m_Color: {r: 0.09433961, g: 0.05295478, b: 0.089564435, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6802,9 +6828,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1580206022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d54a1b5e0a4336428ad191a24827268, type: 3}
+  m_Script: {fileID: 11500000, guid: ee377b38ddd7fe046958db9ef909b72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _targetColor: {r: 0.09411765, g: 0.05490196, b: 0.09019608, a: 0.78431374}
+  _targets:
+  - {fileID: 1580206024}
+  _easeSettings: {fileID: 11400000, guid: ad3eb6458a4db3b4ea509fc752842a97, type: 2}
 --- !u!1001 &1584103368
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19616,9 +19646,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3838835184827982382}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d54a1b5e0a4336428ad191a24827268, type: 3}
+  m_Script: {fileID: 11500000, guid: 257d48f74252e3a439527244a32699d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _easeInSettings: {fileID: 11400000, guid: c383a19f542828d4e8ea4641e6b68c7e, type: 2}
+  _easeOutSettings: {fileID: 11400000, guid: ad3eb6458a4db3b4ea509fc752842a97, type: 2}
 --- !u!1001 &7617726883341588729
 PrefabInstance:
   m_ObjectHideFlags: 0
