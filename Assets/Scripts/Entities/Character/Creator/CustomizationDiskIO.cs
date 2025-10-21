@@ -179,7 +179,10 @@ namespace Character.Creator
 		public IEnumerable<CachedYingletReference> LoadInitialYingData(CustomizationYingletGroup group)
 		{
 			var filePaths = GetYingPaths(group);
-			var references = filePaths.Select(path => new CachedYingletReference(path, LoadData(path), group)).ToList();
+			var references = filePaths
+				.Select(path => new CachedYingletReference(path, LoadData(path), group))
+				.Where(reference => reference.CachedData != null) // In case we got a corrupt yingsave file
+				.ToList();
 			references.Sort((a, b) => DateTime.Compare(a.CachedData.CreationTime, b.CachedData.CreationTime));
 			return references;
 		}
@@ -205,8 +208,16 @@ namespace Character.Creator
 		}
 		SerializableCustomizationData LoadData(string filePath)
 		{
-			string text = File.ReadAllText(filePath);
-			return JsonUtility.FromJson<SerializableCustomizationData>(text);
+			try
+			{
+				string text = File.ReadAllText(filePath);
+				return JsonUtility.FromJson<SerializableCustomizationData>(text);
+			}
+			catch (ArgumentException)
+			{
+				Debug.LogError($"Failed to read yinglet at path {filePath}");
+				return null;
+			}
 		}
 
 		string GetUniqueAlphanumericFilePath(string newYingletName, string lastFilePath, string folderPath)
