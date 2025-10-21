@@ -23,6 +23,12 @@ namespace Character.Creator
 
 			if (Input.GetKeyDown(KeyCode.Z))
 			{
+				// Ctrl + Shift + Z = Redo as well
+				if (Input.GetKey(KeyCode.LeftShift))
+				{
+					_undoManager.TryRedo();
+					return;
+				}
 				_undoManager.TryUndo();
 			}
 			else if (Input.GetKeyDown(KeyCode.Y))
