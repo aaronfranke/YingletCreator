@@ -32,7 +32,7 @@ namespace Character.Creator.UI
 			sb.Append("Editing");
 			if (!_lightDarkSelection.Light) sb.Append(" (Shade)");
 			sb.Append(": ");
-			sb.Append(firstSelected.name);
+			sb.Append(firstSelected.DisplayName);
 			if (allSelected.Length > 1)
 			{
 				sb.Append($" and {allSelected.Length - 1} other(s)");
