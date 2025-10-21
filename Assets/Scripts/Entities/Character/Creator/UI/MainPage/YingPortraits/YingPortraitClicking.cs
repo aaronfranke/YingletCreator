@@ -37,7 +37,7 @@ namespace Character.Creator.UI
 
 		private void Button_OnClick()
 		{
-			if (_selection.Selected.Group == CustomizationYingletGroup.Custom && _selection.SelectionIsDirty)
+			if (_selection.SelectionIsDirty)
 			{
 				_confirmationManager.OpenConfirmation(new(
 					"Are you sure you want to switch yinglets?\n\nUnsaved changes will be lost.",
