@@ -138,7 +138,7 @@ namespace Character.Creator
 			// Create a new reference and select it
 			var newReference = new CachedYingletReference(newFilePath, serializedData, CustomizationYingletGroup.Custom);
 			_yingletRepository.AddNewCustom(newReference);
-			_selectionReference.Selected = newReference;
+			_selectionReference.SetSelected(newReference, withConfirmation: false);
 
 			OnSaved(Path.GetFileName(newFilePath));
 		}
@@ -161,11 +161,15 @@ namespace Character.Creator
 			if (customYinglets.Any())
 			{
 				int elementId = Mathf.Max(0, (index - 1) % customYinglets.Count());
-				_selectionReference.Selected = customYinglets.ElementAt(elementId);
+				var newSelection = customYinglets.ElementAt(elementId);
+				_selectionReference.SetSelected(newSelection, withConfirmation: false);
 			}
 			else
 			{
-				_selectionReference.Selected = _yingletRepository.GetYinglets(CustomizationYingletGroup.Preset).First();
+				var newSelection = _yingletRepository.GetYinglets(CustomizationYingletGroup.Preset).First();
+				_selectionReference.SetSelected(newSelection, withConfirmation: false);
+
+
 			}
 
 			// Fire the OnDeleted event

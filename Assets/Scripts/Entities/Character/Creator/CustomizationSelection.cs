@@ -4,41 +4,67 @@ using UnityEngine;
 
 namespace Character.Creator
 {
-    /// <summary>
-    /// Returns observable data associated to the selected yinglet
-    /// </summary>
-    public interface ICustomizationSelection
-    {
-        public CachedYingletReference Selected { get; set; }
-    }
+	/// <summary>
+	/// Returns observable data associated to the selected yinglet
+	/// </summary>
+	public interface ICustomizationSelection
+	{
+		public CachedYingletReference Selected { get; }
 
-    public class CustomizationSelection : MonoBehaviour, ICustomizationSelection
-    {
-        private ICustomizationYingletRepository _yingletRepository;
+		public void SetSelected(CachedYingletReference reference, bool withConfirmation);
+	}
 
-        private Observable<CachedYingletReference> _selected = new Observable<CachedYingletReference>();
+	public class CustomizationSelection : MonoBehaviour, ICustomizationSelection
+	{
+		private ICustomizationYingletRepository _yingletRepository;
+		private ICharacterCreatorUndoManager _undoManager;
+		private IConfirmationManager _confirmationManager;
 
-        void Awake()
-        {
-            _yingletRepository = this.GetComponent<ICustomizationYingletRepository>();
+		private Observable<CachedYingletReference> _selected = new Observable<CachedYingletReference>();
 
-            // Try to select first preset, or first custom as a backup
-            var initialSelection = _yingletRepository.GetYinglets(CustomizationYingletGroup.Preset).FirstOrDefault();
-            if (initialSelection == null) initialSelection = _yingletRepository.GetYinglets(CustomizationYingletGroup.Custom).First();
-            _selected.Val = initialSelection;
-        }
+		void Awake()
+		{
+			_yingletRepository = this.GetComponent<ICustomizationYingletRepository>();
+			_undoManager = this.GetComponentInParent<ICharacterCreatorUndoManager>();
+			_confirmationManager = Singletons.GetSingleton<IConfirmationManager>();
 
-        public CachedYingletReference Selected
-        {
-            get
-            {
-                return _selected.Val;
-            }
-            set
-            {
-                _selected.Val = value;
-            }
-        }
-    }
+			// Try to select first preset, or first custom as a backup
+			var initialSelection = _yingletRepository.GetYinglets(CustomizationYingletGroup.Preset).FirstOrDefault();
+			if (initialSelection == null) initialSelection = _yingletRepository.GetYinglets(CustomizationYingletGroup.Custom).First();
+			_selected.Val = initialSelection;
+		}
 
+		public CachedYingletReference Selected
+		{
+			get
+			{
+				return _selected.Val;
+			}
+		}
+
+		public void SetSelected(CachedYingletReference reference, bool withConfirmation)
+		{
+			// TODO: Add check if anything has changed
+			if (withConfirmation && _selected.Val.Group == CustomizationYingletGroup.Custom)
+			{
+				_confirmationManager.OpenConfirmation(new(
+					"Are you sure you want to switch yinglets?\n\nUnsaved changes will be lost.",
+					"Discard Changes",
+					"change-yinglet-selection",
+					SetSelected));
+				return;
+			}
+			else
+			{
+				SetSelected();
+			}
+
+			void SetSelected()
+			{
+
+				_undoManager.RecordState($"Selected yinglet \"{reference.CachedData.Name}\"");
+				_selected.Val = reference;
+			}
+		}
+	}
 }

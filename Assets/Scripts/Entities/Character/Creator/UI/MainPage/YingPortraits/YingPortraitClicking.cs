@@ -6,14 +6,12 @@ namespace Character.Creator.UI
 	public class YingPortraitClicking : ReactiveBehaviour
 	{
 		private ICustomizationSelection _selection;
-		private ICharacterCreatorUndoManager _undoManager;
 		private IYingPortraitReference _reference;
 		private Button _button;
 
 		private void Awake()
 		{
 			_selection = this.GetComponentInParent<ICustomizationSelection>();
-			_undoManager = this.GetComponentInParent<ICharacterCreatorUndoManager>();
 			_reference = this.GetComponent<IYingPortraitReference>();
 			_button = this.GetComponent<Button>();
 			_button.onClick.AddListener(Button_OnClick);
@@ -32,8 +30,7 @@ namespace Character.Creator.UI
 
 		private void Button_OnClick()
 		{
-			_undoManager.RecordState($"Selected yinglet \"{_reference.Reference.CachedData.Name}\"");
-			_selection.Selected = _reference.Reference;
+			_selection.SetSelected(_reference.Reference, withConfirmation: true);
 		}
 		void ReflectInteractable()
 		{
