@@ -8,6 +8,7 @@ namespace Character.Creator.UI
 		private Button _button;
 		private ICustomizationDiskIO _diskIO;
 		private ICharacterCreatorUndoManager _undoManager;
+		private IConfirmationManager _confirmationManager;
 
 		private void Awake()
 		{
@@ -16,6 +17,7 @@ namespace Character.Creator.UI
 
 			_diskIO = this.GetComponentInParent<ICustomizationDiskIO>();
 			_undoManager = this.GetComponentInParent<ICharacterCreatorUndoManager>();
+			_confirmationManager = Singletons.GetSingleton<IConfirmationManager>();
 		}
 
 		private void OnDestroy()
@@ -24,6 +26,15 @@ namespace Character.Creator.UI
 		}
 
 		private void Button_OnClick()
+		{
+			_confirmationManager.OpenConfirmation(new(
+				"Are you sure you want to delete\nthis yinglet?\n\nThis action is irreversible.",
+				"Delete Yinglet",
+				"delete-yinglet",
+				ExecuteDelete));
+		}
+
+		void ExecuteDelete()
 		{
 			_undoManager.RecordState("Deleted yinglet");
 			_diskIO.DeleteSelected();
