@@ -7,17 +7,20 @@ namespace Character.Creator
 
 	public class CharacterCreatorUndoInput : MonoBehaviour
 	{
+		private IInputRestrictor _inputRestrictor;
 		private ICharacterCreatorUndoManager _undoManager;
 		private IInPoseModeChecker _inPoseMode;
 
 		private void Awake()
 		{
+			_inputRestrictor = Singletons.GetSingleton<IInputRestrictor>();
 			_undoManager = GetComponentInParent<ICharacterCreatorUndoManager>();
 			_inPoseMode = this.GetCharacterCreatorComponent<IInPoseModeChecker>();
 		}
 
 		private void Update()
 		{
+			if (!_inputRestrictor.InputAllowed) return; // Input not allowed
 			if (!Input.GetKey(KeyCode.LeftControl)) return; // Need to hold ctrl
 			if (_inPoseMode.InPoseMode.Val) return; // Need to not be in pose mode
 

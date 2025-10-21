@@ -15,7 +15,7 @@ public class ExecuteConfirmationOnClick : MonoBehaviour
 
 	private void OnDestroy()
 	{
-		_button.onClick.RemoveListener(Button_OnClick);
+		_button?.onClick.RemoveListener(Button_OnClick);
 	}
 
 	private void Button_OnClick()

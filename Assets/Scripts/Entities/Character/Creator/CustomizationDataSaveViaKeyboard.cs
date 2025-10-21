@@ -5,18 +5,21 @@ namespace Character.Creator
 	public class CustomizationDataSaveViaKeyboard : MonoBehaviour
 	{
 		[SerializeField] private SoundEffect _soundEffect;
+		private IInputRestrictor _inputRestrictor;
 		private IAudioPlayer _audioPlayer;
 		private ICustomizationDiskIO _diskIO;
 
 		private void Awake()
 		{
+			_inputRestrictor = Singletons.GetSingleton<IInputRestrictor>();
 			_audioPlayer = Singletons.GetSingleton<IAudioPlayer>();
 			_diskIO = this.GetComponent<ICustomizationDiskIO>();
 		}
 
 		void Update()
 		{
-			// Manual saving too
+			if (!_inputRestrictor.InputAllowed) return; // Input not allowed
+														// Manual saving too
 			if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.S))
 			{
 				bool succes = _diskIO.SaveSelected();
