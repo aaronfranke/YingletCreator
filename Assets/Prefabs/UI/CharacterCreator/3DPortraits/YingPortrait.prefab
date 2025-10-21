@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3288721736716856246}
   - component: {fileID: 3419349111549454154}
   - component: {fileID: 7929341903914403516}
-  - component: {fileID: 4729186732562993207}
+  - component: {fileID: 7542341823777576862}
   m_Layer: 5
   m_Name: YingPortrait
   m_TagString: Untagged
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _soundEffect: {fileID: 11400000, guid: 508bf4032cf09064f92b0aee9be30176, type: 2}
---- !u!114 &4729186732562993207
+--- !u!114 &7542341823777576862
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 580242429759820414}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6e6669a11675f743bbb6e489ef69d5a, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ce10dfafeba7914a8ee2a10cddddc0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _soundEffect: {fileID: 11400000, guid: 66f9c6c60fe90fd4bb4a8aa7d90d09a8, type: 2}

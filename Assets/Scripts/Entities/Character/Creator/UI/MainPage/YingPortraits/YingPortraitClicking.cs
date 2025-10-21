@@ -1,4 +1,5 @@
 using Reactivity;
+using System;
 using UnityEngine.UI;
 
 namespace Character.Creator.UI
@@ -7,12 +8,18 @@ namespace Character.Creator.UI
 	{
 		private ICustomizationSelection _selection;
 		private IYingPortraitReference _reference;
+		private ICharacterCreatorUndoManager _undoManager;
+		private IConfirmationManager _confirmationManager;
 		private Button _button;
+
+		public event Action OnSelected = delegate { };
 
 		private void Awake()
 		{
 			_selection = this.GetComponentInParent<ICustomizationSelection>();
 			_reference = this.GetComponent<IYingPortraitReference>();
+			_undoManager = this.GetComponentInParent<ICharacterCreatorUndoManager>();
+			_confirmationManager = Singletons.GetSingleton<IConfirmationManager>();
 			_button = this.GetComponent<Button>();
 			_button.onClick.AddListener(Button_OnClick);
 
@@ -30,7 +37,26 @@ namespace Character.Creator.UI
 
 		private void Button_OnClick()
 		{
-			_selection.SetSelected(_reference.Reference, withConfirmation: true);
+			if (_selection.Selected.Group == CustomizationYingletGroup.Custom && _selection.SelectionIsDirty)
+			{
+				_confirmationManager.OpenConfirmation(new(
+					"Are you sure you want to switch yinglets?\n\nUnsaved changes will be lost.",
+					"Discard Changes",
+					"change-yinglet-selection",
+					SetSelected));
+			}
+			else
+			{
+				SetSelected();
+			}
+
+
+			void SetSelected()
+			{
+				_undoManager.RecordState($"Selected yinglet \"{_reference.Reference.CachedData.Name}\"");
+				_selection.SetSelected(_reference.Reference);
+				OnSelected();
+			}
 		}
 		void ReflectInteractable()
 		{

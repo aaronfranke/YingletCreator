@@ -2444,7 +2444,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: ButtonWithIcon (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3580659800990517261, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -2454,6 +2455,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5297741707789648774, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6054774700020083790}
+    - targetCorrespondingSourceObject: {fileID: 5297741707789648774, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7392293781896376155}
   m_SourcePrefab: {fileID: 100100000, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
 --- !u!1 &910125567720290889 stripped
 GameObject:
@@ -2484,6 +2488,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98a2f9ac3d61fd8429718eded37b30e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7392293781896376155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910125567720290889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 871dc9a5f21914f48bd819d3bbcad735, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundEffect: {fileID: 11400000, guid: d0306b7aa2f30274ba1d4b40ec993004, type: 2}
 --- !u!224 &5806167695182547202 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1564878428003463373, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}

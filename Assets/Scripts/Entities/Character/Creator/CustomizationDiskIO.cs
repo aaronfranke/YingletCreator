@@ -140,7 +140,7 @@ namespace Character.Creator
 			// Create a new reference and select it
 			var newReference = new CachedYingletReference(newFilePath, serializedData, CustomizationYingletGroup.Custom);
 			_yingletRepository.AddNewCustom(newReference);
-			_selectionReference.SetSelected(newReference, withConfirmation: false);
+			_selectionReference.SetSelected(newReference);
 
 			OnSaved(Path.GetFileName(newFilePath));
 		}
@@ -164,12 +164,12 @@ namespace Character.Creator
 			{
 				int elementId = Mathf.Max(0, (index - 1) % customYinglets.Count());
 				var newSelection = customYinglets.ElementAt(elementId);
-				_selectionReference.SetSelected(newSelection, withConfirmation: false);
+				_selectionReference.SetSelected(newSelection);
 			}
 			else
 			{
 				var newSelection = _yingletRepository.GetYinglets(CustomizationYingletGroup.Preset).First();
-				_selectionReference.SetSelected(newSelection, withConfirmation: false);
+				_selectionReference.SetSelected(newSelection);
 
 
 			}

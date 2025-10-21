@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,9 @@ namespace Character.Creator.UI
 		private ICustomizationDiskIO _diskIO;
 		private ICharacterCreatorUndoManager _undoManager;
 		private IConfirmationManager _confirmationManager;
+
+
+		public event Action OnDelete = delegate { };
 
 		private void Awake()
 		{
@@ -38,6 +42,7 @@ namespace Character.Creator.UI
 		{
 			_undoManager.RecordState("Deleted yinglet");
 			_diskIO.DeleteSelected();
+			OnDelete();
 		}
 	}
 }
