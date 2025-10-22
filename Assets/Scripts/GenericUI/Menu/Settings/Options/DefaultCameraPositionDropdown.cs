@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+﻿using UnityEngine.Assertions;
 
 internal class DefaultCameraPositionDropdown : MenuSettingsDropdown<DefaultCameraPosition>
 {
