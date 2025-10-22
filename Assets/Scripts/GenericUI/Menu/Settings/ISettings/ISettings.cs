@@ -9,6 +9,7 @@ public enum FpsCap
 	Fps144 = 144,
 	Fps240 = 240,
 	Unlimited = -1,
+	VSync = -2,
 }
 
 public enum ScreenMode

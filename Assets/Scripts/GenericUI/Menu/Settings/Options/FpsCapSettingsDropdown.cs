@@ -17,7 +17,8 @@ internal class FpsCapSettingsDropdown : MenuSettingsDropdown<FpsCap>
 			new MenuSettingsDropdownOption("120 FPS", FpsCap.Fps120),
 			new MenuSettingsDropdownOption("144 FPS", FpsCap.Fps144),
 			new MenuSettingsDropdownOption("240 FPS", FpsCap.Fps240),
-			new MenuSettingsDropdownOption("Unlimited", FpsCap.Unlimited)
+			new MenuSettingsDropdownOption("Unlimited", FpsCap.Unlimited),
+			new MenuSettingsDropdownOption("Monitor (V-Sync)", FpsCap.VSync)
 		};
 		Assert.AreEqual(options.Length, System.Enum.GetValues(typeof(FpsCap)).Length, "Mismatch between defined options and enum values.");
 		return options;
