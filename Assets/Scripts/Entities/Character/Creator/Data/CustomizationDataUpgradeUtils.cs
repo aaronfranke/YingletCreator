@@ -1,4 +1,5 @@
 ﻿using Character.Data;
+using Reactivity;
 
 namespace Character.Creator
 {
@@ -6,6 +7,9 @@ namespace Character.Creator
 	{
 		public static void UpgradeIfNeeded(ObservableCustomizationData data, int version)
 		{
+			// We need to disable reactivity, since this can read from some of the observable data
+			using var disabler = new ReactivityDisabler();
+
 			// Max version number stored in <see cref="SerializableCustomizationData"/> 
 			if (version <= 0)
 			{
