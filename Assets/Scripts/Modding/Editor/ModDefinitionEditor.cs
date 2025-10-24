@@ -27,8 +27,11 @@ public class ModDefinitionEditor : Editor
 		DrawHorizontalLine(Color.gray);
 
 
-		EditorGUILayout.LabelField("Click the following button to gather new content added by this mod.");
-		EditorGUILayout.LabelField("All presets (.yingsave), toggles (CharacterToggleId), and Poses (PoseID) in this folder and below it will be included.");
+		EditorGUILayout.LabelField("Click the following button to gather created content in this folder directory. This includes:");
+		EditorGUILayout.LabelField(" • Presets (.yingsave)");
+		EditorGUILayout.LabelField(" • Toggles (CharacterToggleId)");
+		EditorGUILayout.LabelField(" • Poses (PoseID)");
+		EditorGUILayout.LabelField("Supporting textures, models, and ScriptableObject metadata will also be bundled.");
 
 		var modDefinition = (ModDefinition)target;
 
