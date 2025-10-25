@@ -17,7 +17,9 @@ using UnityEditor;
 /// </summary>
 public class ResourceProvider_WipMods : MonoBehaviour, IResourceProvider
 {
+#pragma warning disable 0414
 	[SerializeField] bool _logging = true;
+#pragma warning restore 0414
 
 	public void IngestContent(CompositeResources compositeResources)
 	{

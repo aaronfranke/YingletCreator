@@ -3,6 +3,7 @@ using UnityEngine;
 
 public interface IResourceProvider
 {
+	bool enabled { get; }
 	void IngestContent(CompositeResources compositeResources);
 }
 

@@ -7,9 +7,9 @@ using UnityEngine;
 [CustomEditor(typeof(ModDefinition))]
 public class ModDefinitionEditor : Editor
 {
-	const string ModExtension = ".yingmod";
-
 	SerializedProperty _modDisplayTitleProp;
+
+	static bool _generateManifestFiles = false;
 
 	void OnEnable()
 	{
@@ -33,6 +33,8 @@ public class ModDefinitionEditor : Editor
 		EditorGUILayout.LabelField("Supporting textures, models, and ScriptableObject metadata will also be bundled.");
 
 		var modDefinition = (ModDefinition)target;
+
+		_generateManifestFiles = GUILayout.Toggle(_generateManifestFiles, "Generate manifest files?");
 
 		if (GUILayout.Button("Bundle Content"))
 		{
@@ -71,7 +73,7 @@ public class ModDefinitionEditor : Editor
 	{
 		string modAssetPath = AssetDatabase.GetAssetPath(modDefinition);
 		var relativeFolder = Path.GetDirectoryName(modAssetPath);
-		string bundleFileName = Path.GetFileNameWithoutExtension(modAssetPath) + ModExtension;
+		string bundleFileName = Path.GetFileNameWithoutExtension(modAssetPath) + ModDefinition.ModExtension;
 
 		var assetPaths = GetAssetPathsInFolder(relativeFolder);
 
@@ -86,7 +88,10 @@ public class ModDefinitionEditor : Editor
 		};
 		var manifest = BuildPipeline.BuildAssetBundles(relativeFolder, new[] { build }, BuildAssetBundleOptions.None, EditorUserBuildSettings.activeBuildTarget);
 
-		DeleteAllManifestFiles(relativeFolder);
+		if (!_generateManifestFiles)
+		{
+			DeleteAllManifestFiles(relativeFolder);
+		}
 
 		EditorUtility.ClearProgressBar();
 
@@ -105,7 +110,7 @@ public class ModDefinitionEditor : Editor
 
 	static string[] GetAssetPathsInFolder(string relativeFolder)
 	{
-		string[] IgnoreExtensions = new[] { ".manifest", "", ModExtension }; // Don't consume anything generated or any folders
+		string[] IgnoreExtensions = new[] { ".manifest", "", ModDefinition.ModExtension }; // Don't consume anything generated or any folders
 
 		var assetGuids = AssetDatabase.FindAssets("", new[] { relativeFolder });
 		return assetGuids

@@ -48,6 +48,7 @@ public class CompositeResourceLoader : MonoBehaviour, ICompositeResourceLoader
 
 		foreach (var resourceProvider in resourceProviders)
 		{
+			if (!resourceProvider.enabled) continue;
 			resourceProvider.IngestContent(_compositeResources);
 		}
 	}
