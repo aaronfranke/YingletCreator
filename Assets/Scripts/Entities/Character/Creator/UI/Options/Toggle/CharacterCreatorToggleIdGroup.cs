@@ -7,11 +7,14 @@ namespace Character.Creator.UI
 {
 	public class CharacterCreatorToggleIdGroup : MonoBehaviour
 	{
+		private ICompositeResourceLoader _resourceLoader;
+
 		[SerializeField] CharacterToggleOrderGroup _group;
 		[SerializeField] GameObject _togglePrefab;
 
 		private void Awake()
 		{
+			_resourceLoader = Singletons.GetSingleton<ICompositeResourceLoader>();
 			foreach (Transform child in transform)
 			{
 				Destroy(child.gameObject);
@@ -19,7 +22,7 @@ namespace Character.Creator.UI
 		}
 		private void Start()
 		{
-			var allToggles = ResourceLoader.LoadAll<CharacterToggleId>().ToArray();
+			var allToggles = _resourceLoader.LoadAllToggleIds().ToArray();
 			var relevantToggles = allToggles
 				.Where(toggle => toggle.Order.Group == _group)
 				.OrderBy(toggle => toggle.Order.Index)

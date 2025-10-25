@@ -34,9 +34,16 @@ public interface IPoseData
 }
 internal class PoseData : MonoBehaviour, IPoseData
 {
+	ICompositeResourceLoader _resourceLoader;
+
 	Observable<PoseYing> _currentlyEditing = new();
 	Observable<bool> _editingEven = new(true);
 	ObservableDict<CachedYingletReference, IYingPoseData> _data = new();
+
+	private void Awake()
+	{
+		_resourceLoader = Singletons.GetSingleton<ICompositeResourceLoader>();
+	}
 
 	public IReadOnlyDictionary<CachedYingletReference, IYingPoseData> Data => _data;
 	public PoseYing CurrentlyEditing
@@ -69,7 +76,7 @@ internal class PoseData : MonoBehaviour, IPoseData
 		}
 		else
 		{
-			_data.Add(ying, new YingPoseData(ying.CachedData));
+			_data.Add(ying, new YingPoseData(ying.CachedData, _resourceLoader));
 		}
 	}
 }

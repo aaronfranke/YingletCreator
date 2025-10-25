@@ -21,18 +21,18 @@ public interface IYingPoseData
 
 internal sealed class YingPoseData : IYingPoseData
 {
-	public YingPoseData(SerializableCustomizationData data)
+	public YingPoseData(SerializableCustomizationData data, ICompositeResourceLoader resourceLoader)
 	{
 		// This isn't optimized; the visual ying itself is also doing this conversion
 		// Also, this repeatedly happens as the ying is selected/deselected
 		// But w/e we're all gonna die one day anyway so i'll eat the few ms to not care
-		var observableData = new ObservableCustomizationData(data);
+		var observableData = new ObservableCustomizationData(data, resourceLoader);
 		Name = observableData.Name.Val;
 
 		// Hard referencing them like this is a little cringe, but I also don't care about pose mode
-		var eyeKey = ResourceLoader.Load<CharacterIntId>("1490a3cd97e05b34bb4efe5ed5513346");
-		var mouthKey = ResourceLoader.Load<CharacterIntId>("6ccdbae82063b23438cc6d12818d35a0");
-		var poseKey = ResourceLoader.Load<PoseId>("5c1ee6caa6f3f6c439595b0f1c5a27d4");
+		var eyeKey = resourceLoader.LoadCharacterIntId("1490a3cd97e05b34bb4efe5ed5513346");
+		var mouthKey = resourceLoader.LoadCharacterIntId("6ccdbae82063b23438cc6d12818d35a0");
+		var poseKey = resourceLoader.LoadPoseId("5c1ee6caa6f3f6c439595b0f1c5a27d4");
 
 		_eyeExpressionNum.Val = observableData.NumberData.GetInt(eyeKey);
 		_mouthExpressionNum.Val = observableData.NumberData.GetInt(mouthKey);

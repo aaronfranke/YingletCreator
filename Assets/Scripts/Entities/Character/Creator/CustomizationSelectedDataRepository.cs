@@ -23,6 +23,7 @@ namespace Character.Creator
 
 	public class CustomizationSelectedDataRepository : ReactiveBehaviour, IForceableCustomizationSelectedDataRepository
 	{
+		private ICompositeResourceLoader _resourceLoader;
 		private ICustomizationSelection _selection;
 		private Observable<ObservableCustomizationData> _data = new();
 
@@ -30,6 +31,7 @@ namespace Character.Creator
 
 		void Awake()
 		{
+			_resourceLoader = Singletons.GetSingleton<ICompositeResourceLoader>();
 			_selection = this.GetComponent<ICustomizationSelection>();
 			AddReflector(ReflectCustomizationData);
 		}
@@ -38,12 +40,12 @@ namespace Character.Creator
 		{
 			// This used to be a computed, but with undo we want to be able to force the customization data to a specific state
 			var cachedData = _selection.Selected.CachedData;
-			_data.Val = new ObservableCustomizationData(cachedData);
+			_data.Val = new ObservableCustomizationData(cachedData, _resourceLoader);
 		}
 
 		public void ForceCustomizationData(SerializableCustomizationData cachedData)
 		{
-			_data.Val = new ObservableCustomizationData(cachedData);
+			_data.Val = new ObservableCustomizationData(cachedData, _resourceLoader);
 		}
 	}
 

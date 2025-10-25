@@ -10,8 +10,9 @@ public class StaticDataRepository : MonoBehaviour, ICustomizationSelectedDataRep
 
 	void Awake()
 	{
+		var resourceLoader = Singletons.GetSingleton<ICompositeResourceLoader>();
 		string text = File.ReadAllText(_pathToYing);
 		var serializedData = JsonUtility.FromJson<SerializableCustomizationData>(text);
-		CustomizationData = new(serializedData);
+		CustomizationData = new(serializedData, resourceLoader);
 	}
 }

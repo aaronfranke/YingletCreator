@@ -16,26 +16,26 @@ namespace Character.Creator
 		public ObservableCustomizationNumberData NumberData { get; }
 		public DateTime CreationTime { get; }
 
-		public ObservableCustomizationData(SerializableCustomizationData serializableData)
+		public ObservableCustomizationData(SerializableCustomizationData serializableData, ICompositeResourceLoader resourceLoader)
 		{
 			Name.Val = serializableData.Name;
 			CreationTime = serializableData.CreationTime;
-			SliderData = new(serializableData.SliderData);
-			ColorData = new(serializableData.ColorData);
-			ToggleData = new(serializableData.ToggleData);
-			NumberData = new(serializableData.NumberData);
-			CustomizationDataUpgradeUtils.UpgradeIfNeeded(this, serializableData.Version);
+			SliderData = new(serializableData.SliderData, resourceLoader);
+			ColorData = new(serializableData.ColorData, resourceLoader);
+			ToggleData = new(serializableData.ToggleData, resourceLoader);
+			NumberData = new(serializableData.NumberData, resourceLoader);
+			CustomizationDataUpgradeUtils.UpgradeIfNeeded(this, serializableData.Version, resourceLoader);
 		}
 	}
 
 	public sealed class ObservableCustomizationSliderData
 	{
-		public ObservableCustomizationSliderData(SerializableCustomizationSliderData sliderData)
+		public ObservableCustomizationSliderData(SerializableCustomizationSliderData sliderData, ICompositeResourceLoader resourceLoader)
 		{
 			if (sliderData?.SliderValues == null) return;
 			foreach (var sliderValue in sliderData.SliderValues)
 			{
-				var key = ResourceLoader.Load<CharacterSliderId>(sliderValue.Id);
+				var key = resourceLoader.LoadCharacterSliderId(sliderValue.Id);
 				SliderValues[key] = new(sliderValue.Value);
 			}
 		}
@@ -48,12 +48,12 @@ namespace Character.Creator
 
 	public sealed class ObservableCustomizationColorData
 	{
-		public ObservableCustomizationColorData(SerializableCustomizationColorData colorData)
+		public ObservableCustomizationColorData(SerializableCustomizationColorData colorData, ICompositeResourceLoader resourceLoader)
 		{
 			if (colorData?.ColorizeValues == null) return;
 			foreach (var colorizeValues in colorData.ColorizeValues)
 			{
-				var key = ResourceLoader.Load<ReColorId>(colorizeValues.Id);
+				var key = resourceLoader.LoadReColorId(colorizeValues.Id);
 				ColorizeValues[key] = new(colorizeValues.Values);
 			}
 		}
@@ -62,12 +62,12 @@ namespace Character.Creator
 	}
 	public sealed class ObservableCustomizationToggleData
 	{
-		public ObservableCustomizationToggleData(SerializableCustomizationToggleData toggleData)
+		public ObservableCustomizationToggleData(SerializableCustomizationToggleData toggleData, ICompositeResourceLoader resourceLoader)
 		{
 			if (toggleData?.ToggleIds == null) return;
 			foreach (var toggleIdString in toggleData.ToggleIds)
 			{
-				var toggleId = ResourceLoader.Load<CharacterToggleId>(toggleIdString);
+				var toggleId = resourceLoader.LoadCharacterToggleId(toggleIdString);
 				Toggles.Add(toggleId);
 			}
 		}
@@ -77,12 +77,12 @@ namespace Character.Creator
 
 	public sealed class ObservableCustomizationNumberData
 	{
-		public ObservableCustomizationNumberData(SerializableCustomizationNumberData numberData)
+		public ObservableCustomizationNumberData(SerializableCustomizationNumberData numberData, ICompositeResourceLoader resourceLoader)
 		{
 			if (numberData?.IntValues == null) return;
 			foreach (var sliderValue in numberData.IntValues)
 			{
-				var key = ResourceLoader.Load<CharacterIntId>(sliderValue.Id);
+				var key = resourceLoader.LoadCharacterIntId(sliderValue.Id);
 				IntValues[key] = new(sliderValue.Value);
 			}
 		}

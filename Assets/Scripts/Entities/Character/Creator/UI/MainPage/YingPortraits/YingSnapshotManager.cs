@@ -23,6 +23,7 @@ interface IYingSnapshotManagerReferences
 {
 	ISnapshotterReferences References { get; }
 	SnapshotterCameraPosition CameraPosition { get; }
+	ICompositeResourceLoader ResourceLoader { get; }
 	Coroutine StartCoroutine(IEnumerator routine);
 }
 
@@ -38,9 +39,16 @@ public class YingSnapshotManager : MonoBehaviour, IYingSnapshotManager, IYingSna
 	[SerializeField] SnapshotterCameraPosition _cameraPosition;
 
 	Dictionary<CachedYingletReference, DictValue> _snapshots = new();
+	private ICompositeResourceLoader _resourceLoader;
 
 	public ISnapshotterReferences References => _references;
 	public SnapshotterCameraPosition CameraPosition => _cameraPosition;
+	public ICompositeResourceLoader ResourceLoader => _resourceLoader;
+
+	private void Awake()
+	{
+		_resourceLoader = Singletons.GetSingleton<ICompositeResourceLoader>();
+	}
 
 	public IYingSnapshotRenderTexture GetRenderTexture(CachedYingletReference yingletData)
 	{
@@ -99,7 +107,7 @@ public class YingSnapshotManager : MonoBehaviour, IYingSnapshotManager, IYingSna
 
 		void Snapshot()
 		{
-			var observableData = new ObservableCustomizationData(_yingReference.CachedData);
+			var observableData = new ObservableCustomizationData(_yingReference.CachedData, _snapshotReferences.ResourceLoader);
 			RenderTexture = SnapshotterUtils.Snapshot(
 				_snapshotReferences.References,
 				new SnapshotterParams(_snapshotReferences.CameraPosition, observableData),

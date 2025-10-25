@@ -47,7 +47,7 @@ namespace Character.Compositor
 			CleanupRenderTextures();
 
 			var relevantTextures = _relevantMixTextures.Items.ToArray();
-			var sortedTextures = SortMixTextures(relevantTextures, _references.MixTextureOrdering);
+			var sortedTextures = SortMixTextures(relevantTextures, _references.MixTexturerOrderer);
 
 			if (_material.Material == null) return;
 
@@ -128,9 +128,9 @@ namespace Character.Compositor
 			material.SetColor(DARK_COLOR_PROPERTY_ID, shade);
 		}
 
-		static IEnumerable<IMixTexture> SortMixTextures(IEnumerable<IMixTexture> mixTextures, MixTextureOrdering mixTextureOrdering)
+		static IEnumerable<IMixTexture> SortMixTextures(IEnumerable<IMixTexture> mixTextures, IMixTextureOrderer mixTextureOrderer)
 		{
-			var sourceArray = mixTextureOrdering.OrderedMixTextures.ToArray();
+			var sourceArray = mixTextureOrderer.GetOrderedMixTextures().ToArray();
 			var mixTextureToOrder = new Dictionary<IMixTexture, int>();
 			for (int i = 0; i < sourceArray.Length; i++)
 			{
@@ -177,18 +177,18 @@ namespace Character.Compositor
 
 	internal sealed class IndividualMaterialTexturerReferences : IDisposable
 	{
-		public IndividualMaterialTexturerReferences(ICustomizationSelectedDataRepository dataRepository, ITextureGatherer textureGatherer, MixTextureOrdering mixTextureOrdering)
+		public IndividualMaterialTexturerReferences(ICustomizationSelectedDataRepository dataRepository, ITextureGatherer textureGatherer, IMixTextureOrderer mixTextureOrdererer)
 		{
 			DataRepository = dataRepository;
 			TextureGatherer = textureGatherer;
-			MixTextureOrdering = mixTextureOrdering;
+			MixTexturerOrderer = mixTextureOrdererer;
 
 			BlitMaterial = new Material(IndividualMaterialTexturer.COLORIZE_SHADER);
 		}
 
 		public ICustomizationSelectedDataRepository DataRepository { get; }
 		public ITextureGatherer TextureGatherer { get; }
-		public MixTextureOrdering MixTextureOrdering { get; }
+		public IMixTextureOrderer MixTexturerOrderer { get; }
 		public Material BlitMaterial { get; }
 
 		public void Dispose()

@@ -1,25 +1,24 @@
 using Character.Creator;
 using Reactivity;
 using System.Linq;
-using UnityEngine;
 
 namespace Character.Compositor
 {
 	public class TextureApplier : ReactiveBehaviour
 	{
-		[SerializeField] MixTextureOrdering _ordering;
-
+		private IMixTextureOrderer _mixTextureOrderer;
 		private IMaterialGeneration _materialGeneration;
 		private IndividualMaterialTexturerReferences _individualReferences;
 		private EnumerableDictReflector<MaterialWithDescription, IndividualMaterialTexturer> _enumerableReflector;
 
 		private void Awake()
 		{
+			_mixTextureOrderer = Singletons.GetSingleton<IMixTextureOrderer>();
 			_materialGeneration = this.GetCompositedYingletComponent<IMaterialGeneration>();
 			_individualReferences = new IndividualMaterialTexturerReferences(
 				this.GetComponentInParent<ICustomizationSelectedDataRepository>(),
 				this.GetComponent<ITextureGatherer>(),
-				_ordering);
+				_mixTextureOrderer);
 			_enumerableReflector = new(Create, Delete);
 			AddReflector(ReflectMaterials);
 		}

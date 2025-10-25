@@ -1,4 +1,3 @@
-using Character.Compositor;
 using Character.Data;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,16 +16,17 @@ namespace Character.Creator.UI
 	{
 		const int NoIdInsertionPointOffset = 10000;
 
-		[SerializeField] MixTextureOrdering _mixTextureOrdering;
-		[SerializeField] ReColorId _noIdInsertionPoint;
+		private IMixTextureOrderer _mixTextureOrderer;
 
+		[SerializeField] ReColorId _noIdInsertionPoint;
 		Dictionary<ReColorId, int> _valueLookup;
 
 		void Awake()
 		{
+			_mixTextureOrderer = Singletons.GetSingleton<IMixTextureOrderer>();
 			_valueLookup = new();
 			int value = 1;
-			foreach (var mixTexture in _mixTextureOrdering.OrderedMixTextures)
+			foreach (var mixTexture in _mixTextureOrderer.GetOrderedMixTextures())
 			{
 				// Use the mix texture ordering to determine recolor ID ordering (a separate ordering would be a headache)
 				var id = mixTexture.ReColorId;

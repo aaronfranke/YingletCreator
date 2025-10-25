@@ -21,12 +21,13 @@ namespace Snapshotter
 				return;
 			}
 
+			var resourceLoader = Singletons.GetSingleton<ICompositeResourceLoader>();
 			var references = AssetDatabase.LoadAssetAtPath<SnapshotterReferences>(ReferencesRelativePath);
 			var camPos = AssetDatabase.LoadAssetAtPath<SnapshotterCameraPosition>(CameraPosRelativePath);
 
 			string text = File.ReadAllText(PresetPath);
 			var serializedData = JsonUtility.FromJson<SerializableCustomizationData>(text);
-			var observableData = new ObservableCustomizationData(serializedData);
+			var observableData = new ObservableCustomizationData(serializedData, resourceLoader);
 
 			var sParams = new SnapshotterParams(camPos, observableData);
 			var rt = SnapshotterUtils.Snapshot(references, sParams);
