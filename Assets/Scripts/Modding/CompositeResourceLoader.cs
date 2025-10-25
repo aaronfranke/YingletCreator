@@ -2,7 +2,6 @@
 using Character.Compositor;
 using Character.Data;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -26,77 +25,69 @@ public interface ICompositeResourceLoader
 	IEnumerable<MixTexture> LoadMixTextures();
 }
 
+
+public sealed class CompositeResources
+{
+	public Dictionary<string, CharacterToggleId> ToggleIds { get; } = new();
+	public Dictionary<string, ReColorId> RecolorIds { get; } = new();
+	public Dictionary<string, CharacterSliderId> SliderIds { get; } = new();
+	public Dictionary<string, PoseId> PoseIds { get; } = new();
+	public Dictionary<string, CharacterIntId> IntIds { get; } = new();
+	public List<MixTexture> MixTextures { get; } = new();
+}
+
 public class CompositeResourceLoader : MonoBehaviour, ICompositeResourceLoader
 {
-	IDictionary<string, CharacterToggleId> _toggleIdCache;
-	IDictionary<string, ReColorId> _recolorIdCache;
-	IDictionary<string, CharacterSliderId> _sliderIdCache;
-	IDictionary<string, PoseId> _poseIdCache;
-	IDictionary<string, CharacterIntId> _intIdCache;
-	IEnumerable<MixTexture> _mixTextureCache;
+	private CompositeResources _compositeResources;
 
 	private void Awake()
 	{
-		// Load everything in immediately
-		_toggleIdCache = LoadIntoDictionary<CharacterToggleId>();
-		_recolorIdCache = LoadIntoDictionary<ReColorId>();
-		_sliderIdCache = LoadIntoDictionary<CharacterSliderId>();
-		_poseIdCache = LoadIntoDictionary<PoseId>();
-		_intIdCache = LoadIntoDictionary<CharacterIntId>();
-		_mixTextureCache = LoadIntoEnumerable<MixTexture>();
+		_compositeResources = new CompositeResources();
+
+		var resourceProviders = this.GetComponentsInChildren<IResourceProvider>();
+
+		foreach (var resourceProvider in resourceProviders)
+		{
+			resourceProvider.IngestContent(_compositeResources);
+		}
 	}
 
 	public CharacterIntId LoadCharacterIntId(string uniqueAssetId)
 	{
-		return _intIdCache[uniqueAssetId];
+		return _compositeResources.IntIds[uniqueAssetId];
 	}
 
 	public CharacterSliderId LoadCharacterSliderId(string uniqueAssetId)
 	{
-		return _sliderIdCache[uniqueAssetId];
+		return _compositeResources.SliderIds[uniqueAssetId];
 	}
 
 	public CharacterToggleId LoadCharacterToggleId(string uniqueAssetId)
 	{
-		return _toggleIdCache[uniqueAssetId];
+		return _compositeResources.ToggleIds[uniqueAssetId];
 	}
 
 	public PoseId LoadPoseId(string uniqueAssetId)
 	{
-		return _poseIdCache[uniqueAssetId];
+		return _compositeResources.PoseIds[uniqueAssetId];
 	}
 
 	public ReColorId LoadReColorId(string uniqueAssetId)
 	{
-		return _recolorIdCache[uniqueAssetId];
+		return _compositeResources.RecolorIds[uniqueAssetId];
 	}
 
 	public IEnumerable<PoseId> LoadAllPoseIds()
 	{
-		return _poseIdCache.Values;
+		return _compositeResources.PoseIds.Values;
 	}
 	public IEnumerable<CharacterToggleId> LoadAllToggleIds()
 	{
-		return _toggleIdCache.Values;
+		return _compositeResources.ToggleIds.Values;
 	}
 
 	public IEnumerable<MixTexture> LoadMixTextures()
 	{
-		return _mixTextureCache;
-	}
-
-
-	static IDictionary<string, T> LoadIntoDictionary<T>() where T : Object, IHasUniqueAssetId
-	{
-		var folder = typeof(T).Name;
-		var all = Resources.LoadAll<T>(folder);
-		return all.ToDictionary(t => t.UniqueAssetID, t => t);
-	}
-
-	static IEnumerable<T> LoadIntoEnumerable<T>() where T : Object
-	{
-		var folder = typeof(T).Name;
-		var all = Resources.LoadAll<T>(folder);
-		return all;
+		return _compositeResources.MixTextures;
 	}
 }
