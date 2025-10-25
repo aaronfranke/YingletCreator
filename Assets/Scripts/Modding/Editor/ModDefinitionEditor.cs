@@ -1,5 +1,4 @@
-using Character.Data;
-using System.Collections.Generic;
+using System;
 using System.IO;
 using System.Linq;
 using UnityEditor;
@@ -8,13 +7,13 @@ using UnityEngine;
 [CustomEditor(typeof(ModDefinition))]
 public class ModDefinitionEditor : Editor
 {
+	const string ModExtension = ".yingmod";
+
 	SerializedProperty _modDisplayTitleProp;
-	SerializedProperty _toggles;
 
 	void OnEnable()
 	{
 		_modDisplayTitleProp = serializedObject.FindProperty("_modDisplayTitle");
-		_toggles = serializedObject.FindProperty("_toggles");
 	}
 
 	public override void OnInspectorGUI()
@@ -27,7 +26,7 @@ public class ModDefinitionEditor : Editor
 		DrawHorizontalLine(Color.gray);
 
 
-		EditorGUILayout.LabelField("Click the following button to gather created content in this folder directory. This includes:");
+		EditorGUILayout.LabelField("Click the following button to generate a mod (.bundle) file. This bundle will include:");
 		EditorGUILayout.LabelField(" • Presets (.yingsave)");
 		EditorGUILayout.LabelField(" • Toggles (CharacterToggleId)");
 		EditorGUILayout.LabelField(" • Poses (PoseID)");
@@ -35,18 +34,10 @@ public class ModDefinitionEditor : Editor
 
 		var modDefinition = (ModDefinition)target;
 
-		if (GUILayout.Button("Gather Mod Content"))
+		if (GUILayout.Button("Bundle Content"))
 		{
-			GatherModContent(modDefinition);
+			BundleContent(modDefinition);
 		}
-
-		DrawHorizontalLine(Color.gray);
-
-		EditorGUILayout.LabelField("Content found:");
-		GUI.enabled = false;
-		_toggles.isExpanded = true;
-		EditorGUILayout.PropertyField(_toggles);
-		GUI.enabled = true;
 
 		serializedObject.ApplyModifiedProperties();
 	}
@@ -62,49 +53,101 @@ public class ModDefinitionEditor : Editor
 		EditorGUILayout.Space();
 	}
 
-	static void GatherModContent(ModDefinition modDefinition)
+	static void BundleContent(ModDefinition modDefinition)
 	{
-		// Find toggles under the mod's folder
-		var toggles = FindToggles(modDefinition)
-			.Where(t => t != null) // guard against any failed loads
-			.ToArray();
-
-		// Use a SerializedObject to modify the serialized _toggles array
-		var so = new SerializedObject(modDefinition);
-		var togglesProp = so.FindProperty("_toggles");
-
-		so.Update();
-
-		togglesProp.arraySize = toggles.Length;
-		for (int i = 0; i < toggles.Length; i++)
+		try
 		{
-			togglesProp.GetArrayElementAtIndex(i).objectReferenceValue = toggles[i];
+			BundleContentImpl(modDefinition);
 		}
-
-		so.ApplyModifiedProperties();
-
-		// Ensure the asset is marked dirty and saved to disk
-		EditorUtility.SetDirty(modDefinition);
-		AssetDatabase.SaveAssets();
-
-		Debug.Log($"Gather Mod Content ran: Found and assigned {toggles.Length} toggle(s) for '{modDefinition.name}'.");
+		catch (System.Exception ex)
+		{
+			EditorUtility.ClearProgressBar();
+			Debug.LogException(ex);
+			EditorUtility.DisplayDialog("Bundle Content", $"An error occurred while bundling: {ex.Message}\nSee Console for details.", "OK");
+		}
 	}
 
-	static IEnumerable<CharacterToggleId> FindToggles(ModDefinition root)
+	static void BundleContentImpl(ModDefinition modDefinition)
 	{
-		var assetPath = AssetDatabase.GetAssetPath(root);
+		string modAssetPath = AssetDatabase.GetAssetPath(modDefinition);
+		var relativeFolder = Path.GetDirectoryName(modAssetPath);
+		string bundleFileName = Path.GetFileNameWithoutExtension(modAssetPath) + ModExtension;
 
-		var folderPath = Path.GetDirectoryName(assetPath);
+		var assetPaths = GetAssetPathsInFolder(relativeFolder);
 
-		var guids = AssetDatabase.FindAssets($"t:{nameof(CharacterToggleId)}", new[] { folderPath });
+		AssignAssetBundleToAssets(assetPaths, bundleFileName);
 
-		var toggles = guids.Select(guid =>
+		EditorUtility.DisplayProgressBar("Building Bundle", $"Building {bundleFileName}...", 0.5f);
+
+		var build = new AssetBundleBuild()
 		{
-			var path = AssetDatabase.GUIDToAssetPath(guid);
-			return AssetDatabase.LoadAssetAtPath<CharacterToggleId>(path);
-		}).ToArray();
+			assetBundleName = bundleFileName,
+			assetNames = assetPaths
+		};
+		var manifest = BuildPipeline.BuildAssetBundles(relativeFolder, new[] { build }, BuildAssetBundleOptions.None, EditorUserBuildSettings.activeBuildTarget);
 
-		return toggles;
+		DeleteAllManifestFiles(relativeFolder);
+
+		EditorUtility.ClearProgressBar();
+
+		if (manifest == null)
+		{
+			EditorUtility.DisplayDialog("Bundle Content", "BuildAssetBundles returned null. See Console for details.", "OK");
+			return;
+		}
+
+		AssetDatabase.Refresh();
+
+		// Inform user and show the resulting file path
+		string outputBundlePath = Path.Combine(relativeFolder, bundleFileName);
+		EditorUtility.DisplayDialog("Bundle Content", $"Bundle built: {outputBundlePath}", "OK");
+	}
+
+	static string[] GetAssetPathsInFolder(string relativeFolder)
+	{
+		string[] IgnoreExtensions = new[] { ".manifest", "", ModExtension }; // Don't consume anything generated or any folders
+
+		var assetGuids = AssetDatabase.FindAssets("", new[] { relativeFolder });
+		return assetGuids
+			.Select(guid => AssetDatabase.GUIDToAssetPath(guid))
+			.Where(path =>
+			{
+				var ext = Path.GetExtension(path) ?? string.Empty;
+				return !IgnoreExtensions.Any(ignore => string.Equals(ext, ignore, StringComparison.OrdinalIgnoreCase));
+			})
+			.ToArray();
+	}
+
+	static void AssignAssetBundleToAssets(string[] assetPaths, string bundleName)
+	{
+		foreach (var assetPath in assetPaths)
+		{
+			var importer = AssetImporter.GetAtPath(assetPath);
+			if (importer != null && importer.assetBundleName != bundleName)
+			{
+				importer.assetBundleName = bundleName;
+				importer.SaveAndReimport();
+			}
+		}
+		AssetDatabase.RemoveUnusedAssetBundleNames(); // clean up any stale bundle names
+	}
+
+	static void DeleteAllManifestFiles(string relativeFolder)
+	{
+		string fullPath = Path.GetFullPath(relativeFolder);
+
+		// Delete all .manifest files (recursive)
+		foreach (string file in Directory.GetFiles(fullPath, "*.manifest", SearchOption.TopDirectoryOnly))
+		{
+			File.Delete(file);
+		}
+
+		// Delete the root manifest file (same name as folder, no extension)
+		string rootManifestPath = Path.Combine(fullPath, Path.GetFileName(fullPath));
+		if (File.Exists(rootManifestPath))
+		{
+			File.Delete(rootManifestPath);
+		}
 	}
 
 }

@@ -1,4 +1,3 @@
-using Character.Data;
 using UnityEngine;
 
 
@@ -10,8 +9,5 @@ public class ModDefinition : ScriptableObject, IHasUniqueAssetId
 
 	[SerializeField] string _modDisplayTitle = "Replace Me";
 	public string ModDisplayTitle => _modDisplayTitle;
-
-	[SerializeField] CharacterToggleId[] _toggles;
-	public CharacterToggleId[] Toggles => _toggles;
 
 }
