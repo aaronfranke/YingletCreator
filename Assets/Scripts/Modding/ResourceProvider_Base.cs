@@ -1,4 +1,6 @@
+using Character.Data;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public interface IResourceProvider
@@ -12,6 +14,12 @@ public class ResourceProvider_Base : MonoBehaviour, IResourceProvider
 	public void IngestContent(CompositeResources compositeResources)
 	{
 		// Load everything in immediately
+		var toggleIds = AddressableExtensionMethods.LoadAllOfTypeSync<CharacterToggleId>().ToArray();
+		foreach (var toggle in toggleIds)
+		{
+			compositeResources.ToggleIds[toggle.UniqueAssetID] = toggle;
+		}
+
 		LoadIntoDictionary(compositeResources.ToggleIds);
 		LoadIntoDictionary(compositeResources.RecolorIds);
 		LoadIntoDictionary(compositeResources.SliderIds);
