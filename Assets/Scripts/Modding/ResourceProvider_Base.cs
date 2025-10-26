@@ -1,4 +1,3 @@
-using Character.Data;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -13,13 +12,6 @@ public class ResourceProvider_Base : MonoBehaviour, IResourceProvider
 {
 	public void IngestContent(CompositeResources compositeResources)
 	{
-		// Load everything in immediately
-		var toggleIds = AddressableExtensionMethods.LoadAllOfTypeSync<CharacterToggleId>().ToArray();
-		foreach (var toggle in toggleIds)
-		{
-			compositeResources.ToggleIds[toggle.UniqueAssetID] = toggle;
-		}
-
 		LoadIntoDictionary(compositeResources.ToggleIds);
 		LoadIntoDictionary(compositeResources.RecolorIds);
 		LoadIntoDictionary(compositeResources.SliderIds);
@@ -31,9 +23,8 @@ public class ResourceProvider_Base : MonoBehaviour, IResourceProvider
 
 	static void LoadIntoDictionary<T>(IDictionary<string, T> dictionary) where T : Object, IHasUniqueAssetId
 	{
-		var folder = typeof(T).Name;
-		var all = Resources.LoadAll<T>(folder);
-		foreach (var item in all)
+		var items = AddressableExtensionMethods.LoadAllOfTypeSync<T>().ToArray();
+		foreach (var item in items)
 		{
 			dictionary[item.UniqueAssetID] = item;
 		}
@@ -41,9 +32,8 @@ public class ResourceProvider_Base : MonoBehaviour, IResourceProvider
 
 	static void LoadIntoList<T>(IList<T> list) where T : Object
 	{
-		var folder = typeof(T).Name;
-		var all = Resources.LoadAll<T>(folder);
-		foreach (var item in all)
+		var items = AddressableExtensionMethods.LoadAllOfTypeSync<T>().ToArray();
+		foreach (var item in items)
 		{
 			list.Add(item);
 		}

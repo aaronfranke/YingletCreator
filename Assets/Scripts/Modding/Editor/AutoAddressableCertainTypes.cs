@@ -1,3 +1,4 @@
+using Character.Compositor;
 using Character.Data;
 using System;
 using System.Linq;
@@ -8,7 +9,13 @@ using UnityEngine;
 
 public class AutoAddressableCertainTypes : AssetPostprocessor
 {
-	static Type[] TypesToAutoAddress = new Type[] { typeof(CharacterToggleId) };
+	static Type[] TypesToAutoAddress = new Type[] {
+		typeof(CharacterToggleId),
+		typeof(CharacterIntId),
+		typeof(CharacterSliderId),
+		typeof(MixTexture),
+		typeof(PoseId),
+		typeof(ReColorId) };
 
 	static void OnPostprocessAllAssets(
 		string[] importedAssets,
@@ -25,7 +32,8 @@ public class AutoAddressableCertainTypes : AssetPostprocessor
 			if (asset == null) continue;
 
 			var myType = asset.GetType();
-			if (!TypesToAutoAddress.Contains(myType)) continue;
+			var firstValidType = TypesToAutoAddress.FirstOrDefault(t => t.IsAssignableFrom(myType));
+			if (firstValidType == null) continue;
 
 			string guid = AssetDatabase.AssetPathToGUID(assetPath);
 			if (settings.FindAssetEntry(guid) != null) continue; // Already addressable
@@ -34,7 +42,7 @@ public class AutoAddressableCertainTypes : AssetPostprocessor
 
 			AddressableAssetEntry entry = settings.CreateOrMoveEntry(guid, addressableSettings.DefaultGroup, false, false);
 			entry.address = entry.guid;
-			entry.SetLabel(myType.Name, true);
+			entry.SetLabel(firstValidType.Name, true);
 			settings.SetDirty(AddressableAssetSettings.ModificationEvent.EntryCreated, entry, false);
 
 			Debug.Log($"[AutoAddressable] Marked {assetPath} as addressable.");
