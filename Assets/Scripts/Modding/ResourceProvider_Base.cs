@@ -12,6 +12,8 @@ public class ResourceProvider_Base : MonoBehaviour, IResourceProvider
 {
 	public void IngestContent(CompositeResources compositeResources)
 	{
+		///Addressables.InitializeAsync().WaitForCompletion();
+
 		LoadIntoDictionary(compositeResources.ToggleIds);
 		LoadIntoDictionary(compositeResources.RecolorIds);
 		LoadIntoDictionary(compositeResources.SliderIds);

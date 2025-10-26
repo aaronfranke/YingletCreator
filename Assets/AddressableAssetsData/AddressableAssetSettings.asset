@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: a33201c3b3992ad468807fd2fcef0c2e
   m_currentHash:
     serializedVersion: 2
-    Hash: 6f2bb1ddc3026f4c55b13138a5d7ef0d
+    Hash: b60bbd2947757f46859b8f25a3b52df2
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_CatalogRequestsTimeout: 0
@@ -54,7 +54,7 @@ MonoBehaviour:
     m_Id: 
   m_RemoteCatalogLoadPath:
     m_Id: 
-  m_ContentStateBuildPathProfileVariableName: 
+  m_ContentStateBuildPathProfileVariableName: <default settings path>
   m_CustomContentStateBuildPath: 
   m_ContentStateBuildPath: 
   m_BuildAddressablesWithPlayerBuild: 0
@@ -105,6 +105,7 @@ MonoBehaviour:
     - MixTexture
     - CharacterSliderId
     - PoseId
+    - CharacterIntId
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 741be6f111b67c542871ee535ae2a261, type: 2}
