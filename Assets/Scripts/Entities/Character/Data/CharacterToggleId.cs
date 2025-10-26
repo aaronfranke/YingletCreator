@@ -2,6 +2,7 @@ using Character.Compositor;
 using Snapshotter;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Character.Data
 {
@@ -61,8 +62,9 @@ namespace Character.Data
 	[System.Serializable]
 	public class CharacterToggleOrderData : IOrderData<CharacterToggleOrderGroup>
 	{
-		[SerializeField] CharacterToggleOrderGroup _group;
-		public CharacterToggleOrderGroup Group => _group;
+		public CharacterToggleOrderGroup Group => _groupReference.LoadSync();
+
+		[SerializeField] AssetReferenceT<CharacterToggleOrderGroup> _groupReference;
 
 		[SerializeField] int _index;
 		public int Index => _index;

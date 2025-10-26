@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
-  m_Name: Clothes - Limb - Socks (Long)
+  m_Name: Clothes - Legs - Socks (Long)
   m_EditorClassIdentifier: 
   _uniqueAssetId: 457ead1cc9ab88b45ab2b5ea2b00d3af
   _displayName: Socks (Long)
@@ -28,4 +28,10 @@ MonoBehaviour:
     _cameraPosition: {fileID: 11400000, guid: ac012c3e212c77547b9d71f82e51ebfe, type: 2}
   _order:
     _group: {fileID: 11400000, guid: 620eabfd9902de141bec8093be12337c, type: 2}
+    _groupReference:
+      m_AssetGUID: 620eabfd9902de141bec8093be12337c
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
     _index: 301

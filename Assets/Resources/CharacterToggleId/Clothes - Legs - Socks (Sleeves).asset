@@ -10,22 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
-  m_Name: Clothes - Limb - Greave
+  m_Name: Clothes - Legs - Socks (Sleeves)
   m_EditorClassIdentifier: 
-  _uniqueAssetId: acedc3112bacc774cb27ea120ce09410
-  _displayName: Greave
+  _uniqueAssetId: a5dd6b23af79cc749bb0280c13ee5452
+  _displayName: Footless Stockings
   _groups:
-  - {fileID: 11400000, guid: aca47c53647af084bb2f2a4b9712b96d, type: 2}
-  _addedMeshes:
-  - {fileID: 11400000, guid: 61d5c810cd4286741bcbc8a890336bd9, type: 2}
+  - {fileID: 11400000, guid: c36de4a7cd963774bac4517a38d801da, type: 2}
+  _addedMeshes: []
   _addedTextures:
-  - {fileID: 11400000, guid: 13877da93dc82fe45967e0c96e9e96d5, type: 2}
+  - {fileID: 11400000, guid: e30352966eae5754ebf4a89edcbf9677, type: 2}
   _eyeTextures: {fileID: 0}
   _roomPrefab: {fileID: 0}
   _components: []
   _preview:
-    _sprite: {fileID: 1918004210, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _sprite: {fileID: -391706750, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: ac012c3e212c77547b9d71f82e51ebfe, type: 2}
   _order:
     _group: {fileID: 11400000, guid: 620eabfd9902de141bec8093be12337c, type: 2}
-    _index: 200
+    _groupReference:
+      m_AssetGUID: 620eabfd9902de141bec8093be12337c
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    _index: 302
