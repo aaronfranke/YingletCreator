@@ -20,6 +20,17 @@ MonoBehaviour:
   _addedTextures:
   - {fileID: 11400000, guid: 6a7e2d7c4e9753345b9fa6655502f059, type: 2}
   - {fileID: 11400000, guid: 76141192e89208f4b8e5a3ea8349e80c, type: 2}
+  _addedTextureReferences:
+  - m_AssetGUID: 6a7e2d7c4e9753345b9fa6655502f059
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 76141192e89208f4b8e5a3ea8349e80c
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _eyeTextures: {fileID: 0}
   _roomPrefab: {fileID: 0}
   _components: []
@@ -27,7 +38,6 @@ MonoBehaviour:
     _sprite: {fileID: -1998838230, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: cb9ae1bc0f4d72942801b1afba50c91b, type: 2}
   _order:
-    _group: {fileID: 11400000, guid: 66c15201d1c9e134db83b08f69a70725, type: 2}
     _groupReference:
       m_AssetGUID: 66c15201d1c9e134db83b08f69a70725
       m_SubObjectName: 

@@ -1,0 +1,68 @@
+<linker>
+  <assembly fullname="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="BakedVertexColorData" preserve="all" />
+    <type fullname="Character.Compositor.CharacterBone" preserve="all" />
+    <type fullname="Character.Compositor.CharacterElementTag" preserve="all" />
+    <type fullname="Character.Compositor.CharacterElementTagMask" preserve="all" />
+    <type fullname="Character.Compositor.ColorGroup" preserve="all" />
+    <type fullname="Character.Compositor.EyeMixTextures" preserve="all" />
+    <type fullname="Character.Compositor.MaterialDescription" preserve="all" />
+    <type fullname="Character.Compositor.MeshWithMaterial" preserve="all" />
+    <type fullname="Character.Compositor.MixTexture" preserve="all" />
+    <type fullname="Character.Compositor.MixTextureOrderGroup" preserve="all" />
+    <type fullname="Character.Compositor.MixTextureWithMatTarget" preserve="all" />
+    <type fullname="Character.Data.CharacterIntId" preserve="all" />
+    <type fullname="Character.Data.CharacterSliderId" preserve="all" />
+    <type fullname="Character.Data.CharacterToggleEnforcementGroup" preserve="all" />
+    <type fullname="Character.Data.CharacterToggleId" preserve="all" />
+    <type fullname="Character.Data.CharacterToggleOrderGroup" preserve="all" />
+    <type fullname="Character.Data.NoToggleIcon" preserve="all" />
+    <type fullname="Character.Data.OffsetHatBone" preserve="all" />
+    <type fullname="Character.Data.PoseId" preserve="all" />
+    <type fullname="Character.Data.PoseOrderGroup" preserve="all" />
+    <type fullname="Character.Data.ReColorId" preserve="all" />
+    <type fullname="Character.Data.ToggleDisablesSlider" preserve="all" />
+    <type fullname="Character.Data.ToggleReplacesMesh" preserve="all" />
+    <type fullname="Snapshotter.SnapshotterCameraPosition" preserve="all" />
+    <type fullname="VertexColorBakingRoot" preserve="all" />
+    <type fullname="VertexColorLineLight" preserve="all" />
+    <type fullname="VertexColorObjectSettings" preserve="all" />
+    <type fullname="VertexColorPointLight" preserve="all" />
+    <type fullname="Character.Compositor.MixTextureOrderData" preserve="nothing" serialized="true" />
+    <type fullname="Character.Compositor.SerializableColorizeValues" preserve="nothing" serialized="true" />
+    <type fullname="Character.Compositor.SerializableColorizeValuesPart" preserve="nothing" serialized="true" />
+    <type fullname="Character.Data.CharacterToggleOrderData" preserve="nothing" serialized="true" />
+    <type fullname="Character.Data.CharacterTogglePreviewData" preserve="nothing" serialized="true" />
+    <type fullname="Character.Data.PoseOrderData" preserve="nothing" serialized="true" />
+    <type fullname="VertexColorBakingSettings" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="Unity.Addressables, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
+    <type fullname="UnityEngine.AddressableAssets.Addressables" preserve="all" />
+    <type fullname="UnityEngine.AddressableAssets.AssetReferenceT`1" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.AssetBundleProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.BundledAssetProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.InstanceProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.SceneProvider" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.AnimationClip" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.GameObject" preserve="all" />
+    <type fullname="UnityEngine.Material" preserve="all" />
+    <type fullname="UnityEngine.Mesh" preserve="all" />
+    <type fullname="UnityEngine.MeshFilter" preserve="all" />
+    <type fullname="UnityEngine.MeshRenderer" preserve="all" />
+    <type fullname="UnityEngine.Object" preserve="all" />
+    <type fullname="UnityEngine.Shader" preserve="all" />
+    <type fullname="UnityEngine.SkinnedMeshRenderer" preserve="all" />
+    <type fullname="UnityEngine.Sprite" preserve="all" />
+    <type fullname="UnityEngine.Texture2D" preserve="all" />
+    <type fullname="UnityEngine.Transform" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.PhysicsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.MeshCollider" preserve="all" />
+  </assembly>
+</linker>

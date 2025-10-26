@@ -1,6 +1,7 @@
 using Character.Compositor;
 using Snapshotter;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -21,8 +22,8 @@ namespace Character.Data
 		[SerializeField] MeshWithMaterial[] _addedMeshes;
 		public IEnumerable<MeshWithMaterial> AddedMeshes => _addedMeshes;
 
-		[SerializeField] MixTexture[] _addedTextures;
-		public IEnumerable<MixTexture> AddedTextures => _addedTextures;
+		[SerializeField] AssetReferenceT<MixTexture>[] _addedTextureReferences;
+		public IEnumerable<MixTexture> AddedTextures => _addedTextureReferences.Select(r => r.LoadSync());
 
 		[SerializeField] EyeMixTextures _eyeTextures;
 		public EyeMixTextures EyeTextures => _eyeTextures;
