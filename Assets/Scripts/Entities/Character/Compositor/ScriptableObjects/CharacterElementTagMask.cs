@@ -12,7 +12,7 @@ namespace Character.Compositor
 	[CreateAssetMenu(fileName = "CharacterElementTagMask", menuName = "Scriptable Objects/Character Compositor/CharacterElementTagMask")]
 	public class CharacterElementTagMask : CharacterToggleComponent, ICharacterElementTagMask
 	{
-		[SerializeField] CharacterElementTag[] _maskedTags;
+		[SerializeField] CharacterElementTag[] _maskedTags;  // TTODO
 		public IEnumerable<CharacterElementTag> MaskedTags => _maskedTags;
 	}
 

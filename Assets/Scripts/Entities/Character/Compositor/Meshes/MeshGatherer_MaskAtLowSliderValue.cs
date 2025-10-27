@@ -10,8 +10,8 @@ namespace Character.Compositor
 
 	public class MeshGatherer_MaskAtLowSliderValue : ReactiveBehaviour, IMeshGathererMutator
 	{
-		[SerializeField] CharacterElementTag _toRemove;
-		[SerializeField] CharacterSliderId _sliderId;
+		[SerializeField] CharacterElementTag _toRemove; // TTODO
+		[SerializeField] CharacterSliderId _sliderId;  // TTODO
 		[SerializeField] float _minimumValue;
 
 		ICustomizationSelectedDataRepository _dataRepository;

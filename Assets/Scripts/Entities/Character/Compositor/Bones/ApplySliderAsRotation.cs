@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ApplySliderAsRotation : MonoBehaviour, IApplyableCustomization
 {
-	[SerializeField] CharacterSliderId _sliderId;
+	[SerializeField] CharacterSliderId _sliderId; // TTODO
 	[SerializeField] Transform _target;
 	[SerializeField] Vector3 _eulerAngles;
 	[SerializeField] AnimationCurve _applyAmountBySliderVal;

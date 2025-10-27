@@ -7,15 +7,15 @@ namespace Character.Compositor
 	[CreateAssetMenu(fileName = "EyeMixTextureReferences", menuName = "Scriptable Objects/Character Compositor/EyeMixTextureReferences")]
 	public class EyeMixTextureReferences : ScriptableObject
 	{
-		[SerializeField] ReColorId _leftFillReColorId;
-		[SerializeField] ReColorId _rightFillReColorId;
-		[SerializeField] ReColorId _coloredEylidReColorId;
+		[SerializeField] ReColorId _leftFillReColorId;  // TTODO
+		[SerializeField] ReColorId _rightFillReColorId;  // TTODO
+		[SerializeField] ReColorId _coloredEylidReColorId;  // TTODO
 
 		[SerializeField] TargetMaterialTexture _fillTarget;
 		[SerializeField] TargetMaterialTexture _eyelidTarget;
 		[SerializeField] TargetMaterialTexture _pupilTarget;
-		[SerializeField] MaterialDescription _leftMaterialDescription;
-		[SerializeField] MaterialDescription _rightMaterialDescription;
+		[SerializeField] MaterialDescription _leftMaterialDescription;  // TTODO
+		[SerializeField] MaterialDescription _rightMaterialDescription;  // TTODO
 
 		public ReColorId LeftFillReColorId => _leftFillReColorId;
 		public ReColorId RightFillReColorId => _rightFillReColorId;

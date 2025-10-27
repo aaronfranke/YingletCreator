@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ApplySliderAsPosition : MonoBehaviour, IApplyableCustomization
 {
-	[SerializeField] CharacterSliderId _sliderId;
+	[SerializeField] CharacterSliderId _sliderId; // TTODO
 	[SerializeField] Transform _target;
 	[SerializeField] Vector3 _minOffset = Vector3.zero;
 	[SerializeField] Vector3 _maxOffset = Vector3.zero;

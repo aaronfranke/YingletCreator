@@ -12,7 +12,7 @@ public abstract class ApplySliderAsScaleBase : MonoBehaviour
 {
 	const float MIDDLE = 0.5f;
 
-	[SerializeField] CharacterSliderId _sliderId;
+	[SerializeField] CharacterSliderId _sliderId; // TTODO
 	[SerializeField] Vector3 _minSize = Vector3.one;
 	[SerializeField] Vector3 _maxSize = Vector3.one;
 	[SerializeField] ApplySliderMode _applyMode;
