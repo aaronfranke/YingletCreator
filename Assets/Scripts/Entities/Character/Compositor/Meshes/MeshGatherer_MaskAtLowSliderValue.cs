@@ -4,6 +4,7 @@ using Reactivity;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Character.Compositor
 {
@@ -11,7 +12,7 @@ namespace Character.Compositor
 	public class MeshGatherer_MaskAtLowSliderValue : ReactiveBehaviour, IMeshGathererMutator
 	{
 		[SerializeField] CharacterElementTag _toRemove; // TTODO
-		[SerializeField] CharacterSliderId _sliderId;  // TTODO
+		[SerializeField] AssetReferenceT<CharacterSliderId> _sliderReference;
 		[SerializeField] float _minimumValue;
 
 		ICustomizationSelectedDataRepository _dataRepository;
@@ -25,7 +26,7 @@ namespace Character.Compositor
 
 		bool ComputeConstrain()
 		{
-			var sliderValue = _dataRepository.GetSliderValue(_sliderId);
+			var sliderValue = _dataRepository.GetSliderValue(_sliderReference.LoadSync());
 			return sliderValue < 0.01f;
 		}
 

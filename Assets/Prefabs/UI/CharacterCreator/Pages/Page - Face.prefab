@@ -112,6 +112,10 @@ PrefabInstance:
       propertyPath: _sliderId
       value: 
       objectReference: {fileID: 11400000, guid: 75db571b47bc9984b9f43b41e35e5aed, type: 2}
+    - target: {fileID: 5654086965789810848, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
+      propertyPath: _sliderReference.m_AssetGUID
+      value: 75db571b47bc9984b9f43b41e35e5aed
+      objectReference: {fileID: 0}
     - target: {fileID: 5815950032440635209, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1141,6 +1145,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 8803350643665777082}
     m_Modifications:
     - target: {fileID: 2422521680099895170, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422521680099895170, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422521680099895170, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422521680099895170, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
       propertyPath: m_SizeDelta.x
       value: 22
       objectReference: {fileID: 0}
@@ -1232,6 +1248,18 @@ PrefabInstance:
       propertyPath: _sliderId
       value: 
       objectReference: {fileID: 11400000, guid: 79e9f884db5f7484c8401b8aece399ad, type: 2}
+    - target: {fileID: 5654086965789810848, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
+      propertyPath: _sliderReference.m_AssetGUID
+      value: 79e9f884db5f7484c8401b8aece399ad
+      objectReference: {fileID: 0}
+    - target: {fileID: 6074469956624041406, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6074469956624041406, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8939365489257322603, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
       propertyPath: m_text
       value: Size
@@ -1884,7 +1912,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739304276860080370, guid: 881912b96e74a83458f93b64ce30c4b3, type: 3}
       propertyPath: m_Size
-      value: 0
+      value: 0.48399997
       objectReference: {fileID: 0}
     - target: {fileID: 3739304276860080370, guid: 881912b96e74a83458f93b64ce30c4b3, type: 3}
       propertyPath: m_Value
@@ -2158,6 +2186,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 8803350643665777082}
     m_Modifications:
     - target: {fileID: 2422521680099895170, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422521680099895170, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422521680099895170, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422521680099895170, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
       propertyPath: m_SizeDelta.x
       value: 22
       objectReference: {fileID: 0}
@@ -2249,8 +2289,20 @@ PrefabInstance:
       propertyPath: _sliderId
       value: 
       objectReference: {fileID: 11400000, guid: 1f612937ab0366842a23029931da624a, type: 2}
+    - target: {fileID: 5654086965789810848, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
+      propertyPath: _sliderReference.m_AssetGUID
+      value: 1f612937ab0366842a23029931da624a
+      objectReference: {fileID: 0}
     - target: {fileID: 5815950032440635209, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6074469956624041406, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6074469956624041406, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8939365489257322603, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
@@ -3310,6 +3362,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 8803350643665777082}
     m_Modifications:
     - target: {fileID: 2422521680099895170, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422521680099895170, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422521680099895170, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422521680099895170, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
       propertyPath: m_SizeDelta.x
       value: 22
       objectReference: {fileID: 0}
@@ -3401,6 +3465,18 @@ PrefabInstance:
       propertyPath: _sliderId
       value: 
       objectReference: {fileID: 11400000, guid: d98605cdbc925b0438183332e063c4ff, type: 2}
+    - target: {fileID: 5654086965789810848, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
+      propertyPath: _sliderReference.m_AssetGUID
+      value: d98605cdbc925b0438183332e063c4ff
+      objectReference: {fileID: 0}
+    - target: {fileID: 6074469956624041406, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6074469956624041406, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8939365489257322603, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
       propertyPath: m_text
       value: Size

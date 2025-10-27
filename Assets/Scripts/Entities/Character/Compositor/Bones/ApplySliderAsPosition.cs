@@ -1,11 +1,12 @@
 using Character.Creator;
 using Character.Data;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 
 public class ApplySliderAsPosition : MonoBehaviour, IApplyableCustomization
 {
-	[SerializeField] CharacterSliderId _sliderId; // TTODO
+	[SerializeField] AssetReferenceT<CharacterSliderId> _sliderReference;
 	[SerializeField] Transform _target;
 	[SerializeField] Vector3 _minOffset = Vector3.zero;
 	[SerializeField] Vector3 _maxOffset = Vector3.zero;
@@ -26,7 +27,7 @@ public class ApplySliderAsPosition : MonoBehaviour, IApplyableCustomization
 
 	Vector3 GetOffset()
 	{
-		var sliderValue = _dataRepository.GetSliderValue(_sliderId);
+		var sliderValue = _dataRepository.GetSliderValue(_sliderReference.LoadSync());
 		var middle = 0.5f;
 		if (sliderValue < middle)
 		{

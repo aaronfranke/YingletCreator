@@ -3038,7 +3038,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739304276860080370, guid: 881912b96e74a83458f93b64ce30c4b3, type: 3}
       propertyPath: m_Size
-      value: 0.38150287
+      value: 0.38150284
       objectReference: {fileID: 0}
     - target: {fileID: 3739304276860080370, guid: 881912b96e74a83458f93b64ce30c4b3, type: 3}
       propertyPath: m_Value
@@ -3824,6 +3824,10 @@ PrefabInstance:
       propertyPath: _sliderId
       value: 
       objectReference: {fileID: 11400000, guid: 4d0e979e0e8bd1149a920d1c46963847, type: 2}
+    - target: {fileID: 5654086965789810848, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
+      propertyPath: _sliderReference.m_AssetGUID
+      value: 4d0e979e0e8bd1149a920d1c46963847
+      objectReference: {fileID: 0}
     - target: {fileID: 6074469956624041406, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -4096,6 +4100,10 @@ PrefabInstance:
       propertyPath: _sliderId
       value: 
       objectReference: {fileID: 11400000, guid: cd3d81f6ab74b7f41a91a8cc130d515b, type: 2}
+    - target: {fileID: 5654086965789810848, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
+      propertyPath: _sliderReference.m_AssetGUID
+      value: cd3d81f6ab74b7f41a91a8cc130d515b
+      objectReference: {fileID: 0}
     - target: {fileID: 6074469956624041406, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

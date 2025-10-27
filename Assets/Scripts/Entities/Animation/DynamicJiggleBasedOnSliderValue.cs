@@ -3,11 +3,12 @@ using Character.Data;
 using JigglePhysics;
 using Reactivity;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class DynamicJiggleBasedOnSliderValue : ReactiveBehaviour
 {
 	[SerializeField] JiggleSettings _baseJiggleSettings;
-	[SerializeField] CharacterSliderId _slider; // TTODO
+	[SerializeField] AssetReferenceT<CharacterSliderId> _sliderReference;
 	[SerializeField] AnimationCurve _sliderValToBlendPercent;
 
 	private ICustomizationSelectedDataRepository _dataRepo;
@@ -47,7 +48,7 @@ public class DynamicJiggleBasedOnSliderValue : ReactiveBehaviour
 
 	void ReflectSlider()
 	{
-		var sliderVal = _dataRepo.GetSliderValue(_slider);
+		var sliderVal = _dataRepo.GetSliderValue(_sliderReference.LoadSync());
 		_newSettingsData.blend = _sliderValToBlendPercent.Evaluate(sliderVal) * _originalBlend;
 		_newSettingsObject.SetData(_newSettingsData);
 	}
