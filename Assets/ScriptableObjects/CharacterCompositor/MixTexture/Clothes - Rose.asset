@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b503c82202b52da46953cf1868a9b4a5, type: 3}
   m_Name: Clothes - Rose
   m_EditorClassIdentifier: 
-  _reColorId: {fileID: 11400000, guid: de3e30cea3aade34ea35a6afa4058294, type: 2}
-  _targetMaterialDescription: {fileID: 11400000, guid: 191e050972790bd4caee03b9cf7697d8, type: 2}
+  _reColorIdReference:
+    m_AssetGUID: de3e30cea3aade34ea35a6afa4058294
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _targetMaterialDescriptionReference:
     m_AssetGUID: 191e050972790bd4caee03b9cf7697d8
     m_SubObjectName: 

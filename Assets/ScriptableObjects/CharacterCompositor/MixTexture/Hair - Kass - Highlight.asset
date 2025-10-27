@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b503c82202b52da46953cf1868a9b4a5, type: 3}
   m_Name: Hair - Kass - Highlight
   m_EditorClassIdentifier: 
-  _reColorId: {fileID: 11400000, guid: 3baed548810d15e438f0c3ecb81b012f, type: 2}
-  _targetMaterialDescription: {fileID: 11400000, guid: f044c0356f7c193469f2c093c892709e, type: 2}
+  _reColorIdReference:
+    m_AssetGUID: 3baed548810d15e438f0c3ecb81b012f
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _targetMaterialDescriptionReference:
     m_AssetGUID: f044c0356f7c193469f2c093c892709e
     m_SubObjectName: 

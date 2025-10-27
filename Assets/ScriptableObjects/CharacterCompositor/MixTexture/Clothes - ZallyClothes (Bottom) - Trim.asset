@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b503c82202b52da46953cf1868a9b4a5, type: 3}
   m_Name: Clothes - ZallyClothes (Bottom) - Trim
   m_EditorClassIdentifier: 
-  _reColorId: {fileID: 11400000, guid: b46555a4b4c6b3943a06bda2d1e108cb, type: 2}
-  _targetMaterialDescription: {fileID: 11400000, guid: faf5b3b0f88031948947b023fb9eeae4, type: 2}
+  _reColorIdReference:
+    m_AssetGUID: b46555a4b4c6b3943a06bda2d1e108cb
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _targetMaterialDescriptionReference:
     m_AssetGUID: faf5b3b0f88031948947b023fb9eeae4
     m_SubObjectName: 

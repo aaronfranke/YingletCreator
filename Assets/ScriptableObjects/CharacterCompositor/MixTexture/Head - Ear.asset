@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b503c82202b52da46953cf1868a9b4a5, type: 3}
   m_Name: Head - Ear
   m_EditorClassIdentifier: 
-  _reColorId: {fileID: 11400000, guid: 131a2e28fa25a43459c643f2e3a2675d, type: 2}
-  _targetMaterialDescription: {fileID: 11400000, guid: 48d8d82a82557e04db940f0877878de1, type: 2}
+  _reColorIdReference:
+    m_AssetGUID: 131a2e28fa25a43459c643f2e3a2675d
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _targetMaterialDescriptionReference:
     m_AssetGUID: 48d8d82a82557e04db940f0877878de1
     m_SubObjectName: 

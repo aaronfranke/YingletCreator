@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b503c82202b52da46953cf1868a9b4a5, type: 3}
   m_Name: Clothes - Undergarment - Underpants - Trim
   m_EditorClassIdentifier: 
-  _reColorId: {fileID: 11400000, guid: eeaf650367087a54ab4dc8b282b77d30, type: 2}
-  _targetMaterialDescription: {fileID: 11400000, guid: 0000dbc734a9450498cd8155fc145a66, type: 2}
+  _reColorIdReference:
+    m_AssetGUID: eeaf650367087a54ab4dc8b282b77d30
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _targetMaterialDescriptionReference:
     m_AssetGUID: 0000dbc734a9450498cd8155fc145a66
     m_SubObjectName: 

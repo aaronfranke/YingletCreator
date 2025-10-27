@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b503c82202b52da46953cf1868a9b4a5, type: 3}
   m_Name: Clothes - Hat - FeeeenaFeather
   m_EditorClassIdentifier: 
-  _reColorId: {fileID: 11400000, guid: fb53b6227afb41f48a307e2deeb2fc28, type: 2}
-  _targetMaterialDescription: {fileID: 11400000, guid: b57fd237955eb944c88158c4db702c8a, type: 2}
+  _reColorIdReference:
+    m_AssetGUID: fb53b6227afb41f48a307e2deeb2fc28
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _targetMaterialDescriptionReference:
     m_AssetGUID: b57fd237955eb944c88158c4db702c8a
     m_SubObjectName: 

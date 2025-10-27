@@ -40,14 +40,14 @@ namespace Character.Compositor
 	[CreateAssetMenu(fileName = "MixTexture", menuName = "Scriptable Objects/Character Compositor/MixTexture")]
 	public class MixTexture : ScriptableObject, IMixTexture, IOrderableScriptableObject<MixTextureOrderGroup>
 	{
-		[SerializeField] ReColorId _reColorId;
+		[SerializeField] AssetReferenceT<ReColorId> _reColorIdReference;
 		[SerializeField] AssetReferenceT<MaterialDescription> _targetMaterialDescriptionReference;
 		[SerializeField] Texture2D _grayscale;
 		[SerializeField] Texture2D _mask;
 		[SerializeField] CharacterElementTag[] _tags;
 		[SerializeField] MixTextureOrderData _order;
 
-		public ReColorId ReColorId => _reColorId;
+		public ReColorId ReColorId => _reColorIdReference.LoadSync();
 
 		public MaterialDescription TargetMaterialDescription => _targetMaterialDescriptionReference.LoadSync();
 

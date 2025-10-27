@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b503c82202b52da46953cf1868a9b4a5, type: 3}
   m_Name: Head - FurPattern - Bottom
   m_EditorClassIdentifier: 
-  _reColorId: {fileID: 11400000, guid: 9f9ca6d5f5fae584ebb1287249ed1d2a, type: 2}
-  _targetMaterialDescription: {fileID: 11400000, guid: 48d8d82a82557e04db940f0877878de1, type: 2}
+  _reColorIdReference:
+    m_AssetGUID: 9f9ca6d5f5fae584ebb1287249ed1d2a
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _targetMaterialDescriptionReference:
     m_AssetGUID: 48d8d82a82557e04db940f0877878de1
     m_SubObjectName: 

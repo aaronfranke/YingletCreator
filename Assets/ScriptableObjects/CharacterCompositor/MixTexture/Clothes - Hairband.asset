@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b503c82202b52da46953cf1868a9b4a5, type: 3}
   m_Name: Clothes - Hairband
   m_EditorClassIdentifier: 
-  _reColorId: {fileID: 11400000, guid: 9027fe77e3d625844b81d1269ef3e63a, type: 2}
-  _targetMaterialDescription: {fileID: 11400000, guid: 0f997316a2bf1d0459c896f348ee0744, type: 2}
+  _reColorIdReference:
+    m_AssetGUID: 9027fe77e3d625844b81d1269ef3e63a
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _targetMaterialDescriptionReference:
     m_AssetGUID: 0f997316a2bf1d0459c896f348ee0744
     m_SubObjectName: 

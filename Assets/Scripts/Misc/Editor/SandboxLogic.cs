@@ -21,7 +21,7 @@ public class SandboxLogic : MonoBehaviour
 			string path = AssetDatabase.GUIDToAssetPath(guid);
 			var asset = AssetDatabase.LoadAssetAtPath<MixTexture>(path);
 
-			//var referencePath = AssetDatabase.GetAssetPath(asset._targetMaterialDescription);
+			//var referencePath = AssetDatabase.GetAssetPath(asset._reColorId);
 			//if (string.IsNullOrWhiteSpace(referencePath))
 			//{
 			//	Debug.LogWarning($"{path} did not have a reference to set");
@@ -34,7 +34,7 @@ public class SandboxLogic : MonoBehaviour
 			//	continue;
 			//}
 			//GetOrCreateEntry(referenceGuid);
-			//asset._targetMaterialDescriptionReference = new(referenceGuid);
+			//asset._reColorIdReference = new(referenceGuid);
 
 
 

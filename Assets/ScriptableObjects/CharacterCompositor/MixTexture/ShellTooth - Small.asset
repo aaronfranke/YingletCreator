@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b503c82202b52da46953cf1868a9b4a5, type: 3}
   m_Name: ShellTooth - Small
   m_EditorClassIdentifier: 
-  _reColorId: {fileID: 11400000, guid: eebdf3d18fc8b3c49a496e16dccc8912, type: 2}
-  _targetMaterialDescription: {fileID: 11400000, guid: 047350e2a35df3c45a26cd141168ed10, type: 2}
+  _reColorIdReference:
+    m_AssetGUID: eebdf3d18fc8b3c49a496e16dccc8912
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _targetMaterialDescriptionReference:
     m_AssetGUID: 047350e2a35df3c45a26cd141168ed10
     m_SubObjectName: 

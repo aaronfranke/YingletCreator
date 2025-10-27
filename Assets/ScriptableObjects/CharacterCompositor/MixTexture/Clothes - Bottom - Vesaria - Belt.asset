@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b503c82202b52da46953cf1868a9b4a5, type: 3}
   m_Name: Clothes - Bottom - Vesaria - Belt
   m_EditorClassIdentifier: 
-  _reColorId: {fileID: 11400000, guid: 94adc0f2cbc327c40baf7857949459c5, type: 2}
-  _targetMaterialDescription: {fileID: 11400000, guid: faf5b3b0f88031948947b023fb9eeae4, type: 2}
+  _reColorIdReference:
+    m_AssetGUID: 94adc0f2cbc327c40baf7857949459c5
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _targetMaterialDescriptionReference:
     m_AssetGUID: faf5b3b0f88031948947b023fb9eeae4
     m_SubObjectName: 

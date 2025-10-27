@@ -6,6 +6,8 @@ public static class AddressableExtensionMethods
 {
 	public static T LoadSync<T>(this AssetReferenceT<T> assetReference) where T : Object
 	{
+		if (assetReference == null || string.IsNullOrWhiteSpace(assetReference.AssetGUID)) return null;
+
 		// Some of this is used in the editor where addressables aren't available, so we need a backdoor
 #if UNITY_EDITOR
 		if (!UnityEditor.EditorApplication.isPlaying)
