@@ -1,6 +1,7 @@
 using Character.Data;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Character.Compositor
 {
@@ -76,8 +77,8 @@ namespace Character.Compositor
 	[System.Serializable]
 	public class MixTextureOrderData : IOrderData<MixTextureOrderGroup>
 	{
-		[SerializeField] MixTextureOrderGroup _group;
-		public MixTextureOrderGroup Group => _group;
+		[SerializeField] AssetReferenceT<MixTextureOrderGroup> _groupReference;
+		public MixTextureOrderGroup Group => _groupReference.LoadSync();
 
 		[SerializeField] int _index;
 		public int Index => _index;

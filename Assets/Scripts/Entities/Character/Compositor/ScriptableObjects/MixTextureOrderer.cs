@@ -2,6 +2,7 @@ using Character.Compositor;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public interface IMixTextureOrderer
 {
@@ -10,7 +11,7 @@ public interface IMixTextureOrderer
 
 public class MixTextureOrderer : MonoBehaviour, IMixTextureOrderer
 {
-	[SerializeField] MixTextureOrderGroup[] _orderGroups;
+	[SerializeField] AssetReferenceT<MixTextureOrderGroup>[] _orderGroupReferences;
 	IEnumerable<MixTexture> _orderedMixTextures;
 
 	private void Awake()
@@ -19,7 +20,8 @@ public class MixTextureOrderer : MonoBehaviour, IMixTextureOrderer
 
 		List<MixTexture> _ordered = new();
 		var allMixTextures = resourceLoader.LoadMixTextures();
-		foreach (var group in _orderGroups)
+		var orderGroups = _orderGroupReferences.Select(o => o.LoadSync()).ToArray();
+		foreach (var group in orderGroups)
 		{
 			var groupMixTextures = allMixTextures
 				.Where(t => t.Order.Group == group)
