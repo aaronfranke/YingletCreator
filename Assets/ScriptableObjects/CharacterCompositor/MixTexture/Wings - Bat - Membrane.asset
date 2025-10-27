@@ -14,11 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _reColorId: {fileID: 11400000, guid: 131a2e28fa25a43459c643f2e3a2675d, type: 2}
   _targetMaterialDescription: {fileID: 11400000, guid: 666a10d2d9d38ac4183b796d67029f58, type: 2}
+  _targetMaterialDescriptionReference:
+    m_AssetGUID: 666a10d2d9d38ac4183b796d67029f58
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _grayscale: {fileID: 2800000, guid: 1a653452544fce7428e2aded503223d1, type: 3}
   _mask: {fileID: 0}
   _tags: []
   _order:
-    _group: {fileID: 11400000, guid: 4ca8823046351fb4e99fb852bbf9db3f, type: 2}
     _groupReference:
       m_AssetGUID: 4ca8823046351fb4e99fb852bbf9db3f
       m_SubObjectName: 

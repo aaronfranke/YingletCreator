@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Character.Compositor
 {
@@ -8,12 +9,12 @@ namespace Character.Compositor
 	public class MeshWithMaterial : ScriptableObject, ITaggableCharacterElement
 	{
 		[SerializeField] GameObject _skinnedMeshRendererPrefab;
-		[SerializeField] MaterialDescription _materialWithDescription;  // TTODO
+		[SerializeField] AssetReferenceT<MaterialDescription> _materialWithDescriptionReference;
 		[SerializeField] CharacterElementTag[] _tags;  // TTODO
 		[SerializeField] CharacterBone _boneToAttachTo;  // TTODO
 
 		public GameObject SkinnedMeshRendererPrefab => _skinnedMeshRendererPrefab;
-		public MaterialDescription MaterialDescription => _materialWithDescription;
+		public MaterialDescription MaterialDescription => _materialWithDescriptionReference.LoadSync();
 		public IEnumerable<CharacterElementTag> Tags => _tags;
 		public CharacterBone BoneToAttachTo => _boneToAttachTo;
 	}

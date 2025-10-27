@@ -1,5 +1,7 @@
-using Character.Compositor;
+﻿using Character.Compositor;
 using UnityEditor;
+using UnityEditor.AddressableAssets;
+using UnityEditor.AddressableAssets.Settings;
 using UnityEngine;
 
 /// <summary>
@@ -11,23 +13,28 @@ public class SandboxLogic : MonoBehaviour
 	[MenuItem("Custom/Run sandbox logic script")]
 	static void RunSandboxLogicScript()
 	{
+		AddressableAssetSettings settings = AddressableAssetSettingsDefaultObject.Settings;
+
 		string[] guids = AssetDatabase.FindAssets("t:MixTexture");
 		foreach (var guid in guids)
 		{
 			string path = AssetDatabase.GUIDToAssetPath(guid);
-			MixTexture asset = AssetDatabase.LoadAssetAtPath<MixTexture>(path);
+			var asset = AssetDatabase.LoadAssetAtPath<MixTexture>(path);
 
-
-			//var addedPath = AssetDatabase.GetAssetPath(asset.Order._group);
-			//var addedGuid = AssetDatabase.AssetPathToGUID(addedPath);
-			//if (string.IsNullOrEmpty(guid))
+			//var referencePath = AssetDatabase.GetAssetPath(asset._targetMaterialDescription);
+			//if (string.IsNullOrWhiteSpace(referencePath))
 			//{
-			//	Debug.LogWarning($"Added {asset.Order._group.name} not found in AssetDatabase");
+			//	Debug.LogWarning($"{path} did not have a reference to set");
 			//	continue;
 			//}
-			//asset.Order._groupReference = new(addedGuid);
-
-
+			//var referenceGuid = AssetDatabase.AssetPathToGUID(referencePath);
+			//if (string.IsNullOrEmpty(referenceGuid))
+			//{
+			//	Debug.LogWarning($"Added {referencePath} not found in AssetDatabase");
+			//	continue;
+			//}
+			//GetOrCreateEntry(referenceGuid);
+			//asset._targetMaterialDescriptionReference = new(referenceGuid);
 
 
 
@@ -50,5 +57,21 @@ public class SandboxLogic : MonoBehaviour
 			EditorUtility.SetDirty(asset);
 		}
 		AssetDatabase.SaveAssets();
+
+
+#pragma warning disable CS8321 // Local function is declared but never used
+		void GetOrCreateEntry(string referenceGuid)
+		{
+
+			AddressableAssetEntry entry = settings.FindAssetEntry(referenceGuid);
+			if (entry == null)
+			{
+				// Add new entry
+				entry = settings.CreateOrMoveEntry(referenceGuid, settings.DefaultGroup);
+				entry.address = referenceGuid;
+			}
+		}
+#pragma warning restore CS8321 // Local function is declared but never used
 	}
+
 }

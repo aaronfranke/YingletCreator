@@ -41,7 +41,7 @@ namespace Character.Compositor
 	public class MixTexture : ScriptableObject, IMixTexture, IOrderableScriptableObject<MixTextureOrderGroup>
 	{
 		[SerializeField] ReColorId _reColorId;
-		[SerializeField] MaterialDescription _targetMaterialDescription;
+		[SerializeField] AssetReferenceT<MaterialDescription> _targetMaterialDescriptionReference;
 		[SerializeField] Texture2D _grayscale;
 		[SerializeField] Texture2D _mask;
 		[SerializeField] CharacterElementTag[] _tags;
@@ -49,7 +49,7 @@ namespace Character.Compositor
 
 		public ReColorId ReColorId => _reColorId;
 
-		public MaterialDescription TargetMaterialDescription => _targetMaterialDescription;
+		public MaterialDescription TargetMaterialDescription => _targetMaterialDescriptionReference.LoadSync();
 
 		public Texture2D Grayscale => _grayscale;
 

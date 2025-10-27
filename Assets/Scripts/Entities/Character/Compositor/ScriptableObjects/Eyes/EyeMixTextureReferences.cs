@@ -1,5 +1,6 @@
 using Character.Data;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Character.Compositor
 {
@@ -14,8 +15,8 @@ namespace Character.Compositor
 		[SerializeField] TargetMaterialTexture _fillTarget;
 		[SerializeField] TargetMaterialTexture _eyelidTarget;
 		[SerializeField] TargetMaterialTexture _pupilTarget;
-		[SerializeField] MaterialDescription _leftMaterialDescription;  // TTODO
-		[SerializeField] MaterialDescription _rightMaterialDescription;  // TTODO
+		[SerializeField] AssetReferenceT<MaterialDescription> _leftMaterialDescriptionReference;
+		[SerializeField] AssetReferenceT<MaterialDescription> _rightMaterialDescriptionReference;
 
 		public ReColorId LeftFillReColorId => _leftFillReColorId;
 		public ReColorId RightFillReColorId => _rightFillReColorId;
@@ -25,8 +26,8 @@ namespace Character.Compositor
 		public TargetMaterialTexture EyelidTarget => _eyelidTarget;
 		public TargetMaterialTexture PupilTarget => _pupilTarget;
 
-		public MaterialDescription LeftMaterialDescription => _leftMaterialDescription;
-		public MaterialDescription RightMaterialDescription => _rightMaterialDescription;
+		public MaterialDescription LeftMaterialDescription => _leftMaterialDescriptionReference.LoadSync();
+		public MaterialDescription RightMaterialDescription => _rightMaterialDescriptionReference.LoadSync();
 	}
 
 }

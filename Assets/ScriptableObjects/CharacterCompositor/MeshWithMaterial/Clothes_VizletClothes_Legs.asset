@@ -14,6 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _skinnedMeshRendererPrefab: {fileID: -2708358897637567760, guid: 9b3a5683425c5544fb57ef931f753022, type: 3}
   _materialWithDescription: {fileID: 11400000, guid: 817bc96af81c0db4ca7b81c5ce9a8436, type: 2}
+  _materialWithDescriptionReference:
+    m_AssetGUID: 817bc96af81c0db4ca7b81c5ce9a8436
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _tags:
   - {fileID: 11400000, guid: 31c5f7ad206082e4ab44db021311634f, type: 2}
-  _maskedTags: []
+  _boneToAttachTo: {fileID: 0}
