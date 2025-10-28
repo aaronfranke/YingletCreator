@@ -1299,8 +1299,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c78eaddafa58ca1459e66697eb65ac1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mixTextureOrdering: {fileID: 11400000, guid: 24e382dfffbbace459bf4ad6dc633cdb, type: 2}
-  _noIdInsertionPoint: {fileID: 11400000, guid: eebdf3d18fc8b3c49a496e16dccc8912, type: 2}
+  _noIdInsertionPointReference:
+    m_AssetGUID: eebdf3d18fc8b3c49a496e16dccc8912
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
 --- !u!114 &5239588029708702728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1577,6 +1581,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Sat.
       objectReference: {fileID: 0}
+    - target: {fileID: 2028666646019431127, guid: dd581914ca7775347817025dc4084ea5, type: 3}
+      propertyPath: m_overflowMode
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2738369684476659426, guid: dd581914ca7775347817025dc4084ea5, type: 3}
       propertyPath: _target
       value: 1
@@ -1817,6 +1825,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Val.
       objectReference: {fileID: 0}
+    - target: {fileID: 2028666646019431127, guid: dd581914ca7775347817025dc4084ea5, type: 3}
+      propertyPath: m_overflowMode
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2738369684476659426, guid: dd581914ca7775347817025dc4084ea5, type: 3}
       propertyPath: _target
       value: 2
@@ -1950,6 +1962,10 @@ PrefabInstance:
     - target: {fileID: 2028666646019431127, guid: dd581914ca7775347817025dc4084ea5, type: 3}
       propertyPath: m_text
       value: Hue
+      objectReference: {fileID: 0}
+    - target: {fileID: 2028666646019431127, guid: dd581914ca7775347817025dc4084ea5, type: 3}
+      propertyPath: m_overflowMode
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3096010171094217710, guid: dd581914ca7775347817025dc4084ea5, type: 3}
       propertyPath: m_Name

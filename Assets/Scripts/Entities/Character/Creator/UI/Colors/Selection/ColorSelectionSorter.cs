@@ -2,6 +2,7 @@ using Character.Data;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 
 namespace Character.Creator.UI
@@ -18,7 +19,7 @@ namespace Character.Creator.UI
 
 		private IMixTextureOrderer _mixTextureOrderer;
 
-		[SerializeField] ReColorId _noIdInsertionPoint;
+		[SerializeField] AssetReferenceT<ReColorId> _noIdInsertionPointReference;
 		Dictionary<ReColorId, int> _valueLookup;
 
 		void Awake()
@@ -30,7 +31,7 @@ namespace Character.Creator.UI
 			{
 				// Use the mix texture ordering to determine recolor ID ordering (a separate ordering would be a headache)
 				var id = mixTexture.ReColorId;
-				if (id == _noIdInsertionPoint)
+				if (id == _noIdInsertionPointReference.LoadSync())
 				{
 					value += NoIdInsertionPointOffset;
 				}
