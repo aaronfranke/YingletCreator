@@ -2,11 +2,12 @@ using Character.Creator;
 using Character.Data;
 using Reactivity;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 
 public class EyeExpressionsMutator_Default : ReactiveBehaviour, IBaseEyeExpressionMutator
 {
-	[SerializeField] CharacterIntId _intId; // TTODO (probably)
+	[SerializeField] AssetReferenceT<CharacterIntId> _intIdReference;
 
 	private ICustomizationSelectedDataRepository _dataRepo;
 	private Computed<EyeExpression> _defaultExpressionComputed;
@@ -21,7 +22,7 @@ public class EyeExpressionsMutator_Default : ReactiveBehaviour, IBaseEyeExpressi
 
 	private EyeExpression ComputeDefaultExpression()
 	{
-		return (EyeExpression)(_dataRepo.GetInt(_intId));
+		return (EyeExpression)(_dataRepo.GetInt(_intIdReference.LoadSync()));
 	}
 
 

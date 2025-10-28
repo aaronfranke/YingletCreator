@@ -132,6 +132,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Size
       objectReference: {fileID: 0}
+    - target: {fileID: 8939365489257322603, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
+      propertyPath: m_overflowMode
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -260,6 +264,10 @@ PrefabInstance:
       propertyPath: _intId
       value: 
       objectReference: {fileID: 11400000, guid: 1490a3cd97e05b34bb4efe5ed5513346, type: 2}
+    - target: {fileID: 845965568010191042, guid: d0830518a5b4e9646ba423076afb4969, type: 3}
+      propertyPath: _intIdReference.m_AssetGUID
+      value: 1490a3cd97e05b34bb4efe5ed5513346
+      objectReference: {fileID: 0}
     - target: {fileID: 1555330824945860620, guid: d0830518a5b4e9646ba423076afb4969, type: 3}
       propertyPath: _sprites.Array.size
       value: 8
@@ -840,6 +848,10 @@ PrefabInstance:
       propertyPath: '_toggleIds.Array.data[5]'
       value: 
       objectReference: {fileID: 11400000, guid: b44f3f08ece24884bbc17521f9dc6daa, type: 2}
+    - target: {fileID: 3064146132108325590, guid: ad0aca7f3ad17734eb63ec116524e79c, type: 3}
+      propertyPath: _groupReference.m_AssetGUID
+      value: 0b46016e3148fc243857af3e63037578
+      objectReference: {fileID: 0}
     - target: {fileID: 4503042509806528223, guid: ad0aca7f3ad17734eb63ec116524e79c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1022,6 +1034,10 @@ PrefabInstance:
       propertyPath: '_toggleIds.Array.data[5]'
       value: 
       objectReference: {fileID: 11400000, guid: 5cec13b3466bfc347a2ce8ff16684f3d, type: 2}
+    - target: {fileID: 3064146132108325590, guid: ad0aca7f3ad17734eb63ec116524e79c, type: 3}
+      propertyPath: _groupReference.m_AssetGUID
+      value: 91df7f46bf6a25d4ea1f9db22d9ebad0
+      objectReference: {fileID: 0}
     - target: {fileID: 4503042509806528223, guid: ad0aca7f3ad17734eb63ec116524e79c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1264,6 +1280,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Size
       objectReference: {fileID: 0}
+    - target: {fileID: 8939365489257322603, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
+      propertyPath: m_overflowMode
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1448,6 +1468,10 @@ PrefabInstance:
       propertyPath: '_toggleIds.Array.data[5]'
       value: 
       objectReference: {fileID: 11400000, guid: 5cec13b3466bfc347a2ce8ff16684f3d, type: 2}
+    - target: {fileID: 3064146132108325590, guid: ad0aca7f3ad17734eb63ec116524e79c, type: 3}
+      propertyPath: _groupReference.m_AssetGUID
+      value: 66c15201d1c9e134db83b08f69a70725
+      objectReference: {fileID: 0}
     - target: {fileID: 4503042509806528223, guid: ad0aca7f3ad17734eb63ec116524e79c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1740,6 +1764,10 @@ PrefabInstance:
       propertyPath: '_toggleIds.Array.data[7]'
       value: 
       objectReference: {fileID: 11400000, guid: a2865c8734c3c6c44a7a6f0dc6847713, type: 2}
+    - target: {fileID: 3064146132108325590, guid: ad0aca7f3ad17734eb63ec116524e79c, type: 3}
+      propertyPath: _groupReference.m_AssetGUID
+      value: 14e4121401bb32f4fbb6cebcb01197ad
+      objectReference: {fileID: 0}
     - target: {fileID: 4503042509806528223, guid: ad0aca7f3ad17734eb63ec116524e79c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2309,6 +2337,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Length
       objectReference: {fileID: 0}
+    - target: {fileID: 8939365489257322603, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
+      propertyPath: m_overflowMode
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2419,6 +2451,10 @@ PrefabInstance:
       propertyPath: '_toggleIds.Array.data[13]'
       value: 
       objectReference: {fileID: 11400000, guid: a0740d7b487336d4a822e809403a6271, type: 2}
+    - target: {fileID: 3064146132108325590, guid: ad0aca7f3ad17734eb63ec116524e79c, type: 3}
+      propertyPath: _groupReference.m_AssetGUID
+      value: 5699db8d5196f504e85bf9f000e07a54
+      objectReference: {fileID: 0}
     - target: {fileID: 4503042509806528223, guid: ad0aca7f3ad17734eb63ec116524e79c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2647,6 +2683,10 @@ PrefabInstance:
       propertyPath: _intId
       value: 
       objectReference: {fileID: 11400000, guid: 6ccdbae82063b23438cc6d12818d35a0, type: 2}
+    - target: {fileID: 845965568010191042, guid: d0830518a5b4e9646ba423076afb4969, type: 3}
+      propertyPath: _intIdReference.m_AssetGUID
+      value: 6ccdbae82063b23438cc6d12818d35a0
+      objectReference: {fileID: 0}
     - target: {fileID: 1555330824945860620, guid: d0830518a5b4e9646ba423076afb4969, type: 3}
       propertyPath: _sprites.Array.size
       value: 12
@@ -3239,6 +3279,10 @@ PrefabInstance:
       propertyPath: '_toggleIds.Array.data[5]'
       value: 
       objectReference: {fileID: 11400000, guid: 5cec13b3466bfc347a2ce8ff16684f3d, type: 2}
+    - target: {fileID: 3064146132108325590, guid: ad0aca7f3ad17734eb63ec116524e79c, type: 3}
+      propertyPath: _groupReference.m_AssetGUID
+      value: 79ad7f820bca69a4b93d2dfb1a583eba
+      objectReference: {fileID: 0}
     - target: {fileID: 4503042509806528223, guid: ad0aca7f3ad17734eb63ec116524e79c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3480,6 +3524,10 @@ PrefabInstance:
     - target: {fileID: 8939365489257322603, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
       propertyPath: m_text
       value: Size
+      objectReference: {fileID: 0}
+    - target: {fileID: 8939365489257322603, guid: 7fa1a3e3c9b2b0a46823207fe5dd2cf2, type: 3}
+      propertyPath: m_overflowMode
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

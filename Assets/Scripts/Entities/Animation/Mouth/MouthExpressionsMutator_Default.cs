@@ -2,10 +2,11 @@ using Character.Creator;
 using Character.Data;
 using Reactivity;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class MouthExpressionsMutator_Default : ReactiveBehaviour, IMouthExpressionsMutator
 {
-	[SerializeField] CharacterIntId _intId; // TTODO (probably)
+	[SerializeField] AssetReferenceT<CharacterIntId> _intIdReference;
 
 	private ICustomizationSelectedDataRepository _dataRepo;
 	Computed<int> _intValueComputed;
@@ -22,7 +23,7 @@ public class MouthExpressionsMutator_Default : ReactiveBehaviour, IMouthExpressi
 
 	private int ComputeDefaultIntValue()
 	{
-		return _dataRepo.GetInt(_intId);
+		return _dataRepo.GetInt(_intIdReference.LoadSync());
 	}
 
 	private MouthExpression ComputeDefaultExpression()

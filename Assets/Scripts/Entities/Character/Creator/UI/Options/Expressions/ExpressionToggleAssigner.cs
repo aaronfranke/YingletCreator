@@ -1,5 +1,6 @@
 ﻿using Character.Data;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Character.Creator.UI
 {
@@ -10,8 +11,10 @@ namespace Character.Creator.UI
 
 	internal class ExpressionToggleAssigner : MonoBehaviour, IExpressionToggleAssigner
 	{
-		[SerializeField] CharacterIntId _intId;
+		[SerializeField] AssetReferenceT<CharacterIntId> _intIdReference;
 		private ICustomizationSelectedDataRepository _dataRepo;
+
+		CharacterIntId IntId => _intIdReference.LoadSync();
 
 		void Awake()
 		{
@@ -22,12 +25,12 @@ namespace Character.Creator.UI
 		{
 			get
 			{
-				return _dataRepo.GetInt(_intId);
+				return _dataRepo.GetInt(IntId);
 
 			}
 			set
 			{
-				_dataRepo.SetInt(_intId, value);
+				_dataRepo.SetInt(IntId, value);
 			}
 		}
 	}

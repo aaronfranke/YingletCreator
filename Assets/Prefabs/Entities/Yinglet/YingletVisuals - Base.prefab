@@ -64,7 +64,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 285390a88659b8341a200a4d4b62dc60, type: 2}
   _sliderReference:
     m_AssetGUID: 285390a88659b8341a200a4d4b62dc60
     m_SubObjectName: 
@@ -87,7 +86,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 285390a88659b8341a200a4d4b62dc60, type: 2}
   _sliderReference:
     m_AssetGUID: 285390a88659b8341a200a4d4b62dc60
     m_SubObjectName: 
@@ -125,7 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 285390a88659b8341a200a4d4b62dc60, type: 2}
   _sliderReference:
     m_AssetGUID: 285390a88659b8341a200a4d4b62dc60
     m_SubObjectName: 
@@ -148,7 +145,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 285390a88659b8341a200a4d4b62dc60, type: 2}
   _sliderReference:
     m_AssetGUID: 285390a88659b8341a200a4d4b62dc60
     m_SubObjectName: 
@@ -235,7 +231,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d2231dc4dd69ee418e84df1503d5839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _intId: {fileID: 11400000, guid: 1490a3cd97e05b34bb4efe5ed5513346, type: 2}
+  _intIdReference:
+    m_AssetGUID: 1490a3cd97e05b34bb4efe5ed5513346
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 1
 --- !u!114 &872174562979513826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -579,7 +580,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: cd3d81f6ab74b7f41a91a8cc130d515b, type: 2}
   _sliderReference:
     m_AssetGUID: cd3d81f6ab74b7f41a91a8cc130d515b
     m_SubObjectName: 
@@ -602,7 +602,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: cd3d81f6ab74b7f41a91a8cc130d515b, type: 2}
   _sliderReference:
     m_AssetGUID: cd3d81f6ab74b7f41a91a8cc130d515b
     m_SubObjectName: 
@@ -625,7 +624,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 4d0e979e0e8bd1149a920d1c46963847, type: 2}
   _sliderReference:
     m_AssetGUID: 4d0e979e0e8bd1149a920d1c46963847
     m_SubObjectName: 
@@ -648,7 +646,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 4d0e979e0e8bd1149a920d1c46963847, type: 2}
   _sliderReference:
     m_AssetGUID: 4d0e979e0e8bd1149a920d1c46963847
     m_SubObjectName: 
@@ -705,7 +702,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: a0128ac2edc512848bbce2569020ba09, type: 2}
   _sliderReference:
     m_AssetGUID: a0128ac2edc512848bbce2569020ba09
     m_SubObjectName: 
@@ -728,7 +724,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 361b59cc953d5b848ab615052a8cc677, type: 2}
   _sliderReference:
     m_AssetGUID: 361b59cc953d5b848ab615052a8cc677
     m_SubObjectName: 
@@ -785,7 +780,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 7f2e7741beb1d904e8de304147a3b7a1, type: 2}
   _sliderReference:
     m_AssetGUID: 7f2e7741beb1d904e8de304147a3b7a1
     m_SubObjectName: 
@@ -808,7 +802,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 7f2e7741beb1d904e8de304147a3b7a1, type: 2}
   _sliderReference:
     m_AssetGUID: 7f2e7741beb1d904e8de304147a3b7a1
     m_SubObjectName: 
@@ -831,7 +824,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5846e7b1347e2ae41819519acf1b6113, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: b07dd52ce06ddc944bab0faf7cda1099, type: 2}
   _sliderReference:
     m_AssetGUID: b07dd52ce06ddc944bab0faf7cda1099
     m_SubObjectName: 
@@ -886,7 +878,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: ceb566035193f8f4790ab5db0d8de917, type: 2}
   _sliderReference:
     m_AssetGUID: ceb566035193f8f4790ab5db0d8de917
     m_SubObjectName: 
@@ -909,7 +900,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc56ed84e1958fd449d9f5552a441c02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: ceb566035193f8f4790ab5db0d8de917, type: 2}
   _sliderReference:
     m_AssetGUID: ceb566035193f8f4790ab5db0d8de917
     m_SubObjectName: 
@@ -998,7 +988,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: fa3977f1c956dc44d8d6d73016c02006, type: 2}
   _sliderReference:
     m_AssetGUID: fa3977f1c956dc44d8d6d73016c02006
     m_SubObjectName: 
@@ -1021,7 +1010,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: fa3977f1c956dc44d8d6d73016c02006, type: 2}
   _sliderReference:
     m_AssetGUID: fa3977f1c956dc44d8d6d73016c02006
     m_SubObjectName: 
@@ -1044,7 +1032,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc56ed84e1958fd449d9f5552a441c02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: fa3977f1c956dc44d8d6d73016c02006, type: 2}
   _sliderReference:
     m_AssetGUID: fa3977f1c956dc44d8d6d73016c02006
     m_SubObjectName: 
@@ -1098,7 +1085,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc56ed84e1958fd449d9f5552a441c02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: fa3977f1c956dc44d8d6d73016c02006, type: 2}
   _sliderReference:
     m_AssetGUID: fa3977f1c956dc44d8d6d73016c02006
     m_SubObjectName: 
@@ -1187,7 +1173,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 75db571b47bc9984b9f43b41e35e5aed, type: 2}
   _sliderReference:
     m_AssetGUID: 75db571b47bc9984b9f43b41e35e5aed
     m_SubObjectName: 
@@ -1210,7 +1195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 75db571b47bc9984b9f43b41e35e5aed, type: 2}
   _sliderReference:
     m_AssetGUID: 75db571b47bc9984b9f43b41e35e5aed
     m_SubObjectName: 
@@ -1233,7 +1217,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc56ed84e1958fd449d9f5552a441c02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: b07dd52ce06ddc944bab0faf7cda1099, type: 2}
   _sliderReference:
     m_AssetGUID: b07dd52ce06ddc944bab0faf7cda1099
     m_SubObjectName: 
@@ -1287,7 +1270,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc56ed84e1958fd449d9f5552a441c02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: b07dd52ce06ddc944bab0faf7cda1099, type: 2}
   _sliderReference:
     m_AssetGUID: b07dd52ce06ddc944bab0faf7cda1099
     m_SubObjectName: 
@@ -1442,7 +1424,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 1950f49510ae2d94baf82b264de753b3, type: 2}
   _sliderReference:
     m_AssetGUID: 1950f49510ae2d94baf82b264de753b3
     m_SubObjectName: 
@@ -1465,7 +1446,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 1950f49510ae2d94baf82b264de753b3, type: 2}
   _sliderReference:
     m_AssetGUID: 1950f49510ae2d94baf82b264de753b3
     m_SubObjectName: 
@@ -1488,7 +1468,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 1950f49510ae2d94baf82b264de753b3, type: 2}
   _sliderReference:
     m_AssetGUID: 1950f49510ae2d94baf82b264de753b3
     m_SubObjectName: 
@@ -1511,7 +1490,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 1950f49510ae2d94baf82b264de753b3, type: 2}
   _sliderReference:
     m_AssetGUID: 1950f49510ae2d94baf82b264de753b3
     m_SubObjectName: 
@@ -1567,7 +1545,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: d98605cdbc925b0438183332e063c4ff, type: 2}
   _sliderReference:
     m_AssetGUID: d98605cdbc925b0438183332e063c4ff
     m_SubObjectName: 
@@ -1590,7 +1567,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: d98605cdbc925b0438183332e063c4ff, type: 2}
   _sliderReference:
     m_AssetGUID: d98605cdbc925b0438183332e063c4ff
     m_SubObjectName: 
@@ -1646,7 +1622,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _toRemove: {fileID: 11400000, guid: ce50c1b739626554f82ed65a97cf3b8d, type: 2}
-  _sliderId: {fileID: 11400000, guid: fa3977f1c956dc44d8d6d73016c02006, type: 2}
   _sliderReference:
     m_AssetGUID: fa3977f1c956dc44d8d6d73016c02006
     m_SubObjectName: 
@@ -1762,7 +1737,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: cb6328e618ffbbc49909adccfb8fa6c7, type: 2}
   _sliderReference:
     m_AssetGUID: cb6328e618ffbbc49909adccfb8fa6c7
     m_SubObjectName: 
@@ -1785,7 +1759,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 9340d1881351c0f4c94809a00946a5d7, type: 2}
   _sliderReference:
     m_AssetGUID: 9340d1881351c0f4c94809a00946a5d7
     m_SubObjectName: 
@@ -1808,7 +1781,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: cb6328e618ffbbc49909adccfb8fa6c7, type: 2}
   _sliderReference:
     m_AssetGUID: cb6328e618ffbbc49909adccfb8fa6c7
     m_SubObjectName: 
@@ -1831,7 +1803,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 9340d1881351c0f4c94809a00946a5d7, type: 2}
   _sliderReference:
     m_AssetGUID: 9340d1881351c0f4c94809a00946a5d7
     m_SubObjectName: 
@@ -1906,7 +1877,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: c86880d076675524389b0e7b6d220c5c, type: 2}
   _sliderReference:
     m_AssetGUID: c86880d076675524389b0e7b6d220c5c
     m_SubObjectName: 
@@ -1929,7 +1899,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: c86880d076675524389b0e7b6d220c5c, type: 2}
   _sliderReference:
     m_AssetGUID: c86880d076675524389b0e7b6d220c5c
     m_SubObjectName: 
@@ -1967,7 +1936,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: c86880d076675524389b0e7b6d220c5c, type: 2}
   _sliderReference:
     m_AssetGUID: c86880d076675524389b0e7b6d220c5c
     m_SubObjectName: 
@@ -1990,7 +1958,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: c86880d076675524389b0e7b6d220c5c, type: 2}
   _sliderReference:
     m_AssetGUID: c86880d076675524389b0e7b6d220c5c
     m_SubObjectName: 
@@ -2171,7 +2138,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 57b33d24d369809478b4d9c2de0ccb0c, type: 2}
   _sliderReference:
     m_AssetGUID: 57b33d24d369809478b4d9c2de0ccb0c
     m_SubObjectName: 
@@ -2194,7 +2160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 57b33d24d369809478b4d9c2de0ccb0c, type: 2}
   _sliderReference:
     m_AssetGUID: 57b33d24d369809478b4d9c2de0ccb0c
     m_SubObjectName: 
@@ -2217,7 +2182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 57b33d24d369809478b4d9c2de0ccb0c, type: 2}
   _sliderReference:
     m_AssetGUID: 57b33d24d369809478b4d9c2de0ccb0c
     m_SubObjectName: 
@@ -2240,7 +2204,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 57b33d24d369809478b4d9c2de0ccb0c, type: 2}
   _sliderReference:
     m_AssetGUID: 57b33d24d369809478b4d9c2de0ccb0c
     m_SubObjectName: 
@@ -2263,7 +2226,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 57b33d24d369809478b4d9c2de0ccb0c, type: 2}
   _sliderReference:
     m_AssetGUID: 57b33d24d369809478b4d9c2de0ccb0c
     m_SubObjectName: 
@@ -2286,7 +2248,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 57b33d24d369809478b4d9c2de0ccb0c, type: 2}
   _sliderReference:
     m_AssetGUID: 57b33d24d369809478b4d9c2de0ccb0c
     m_SubObjectName: 
@@ -2309,7 +2270,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 57b33d24d369809478b4d9c2de0ccb0c, type: 2}
   _sliderReference:
     m_AssetGUID: 57b33d24d369809478b4d9c2de0ccb0c
     m_SubObjectName: 
@@ -2332,7 +2292,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 57b33d24d369809478b4d9c2de0ccb0c, type: 2}
   _sliderReference:
     m_AssetGUID: 57b33d24d369809478b4d9c2de0ccb0c
     m_SubObjectName: 
@@ -2456,7 +2415,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: cb6328e618ffbbc49909adccfb8fa6c7, type: 2}
   _sliderReference:
     m_AssetGUID: cb6328e618ffbbc49909adccfb8fa6c7
     m_SubObjectName: 
@@ -2493,7 +2451,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: cb6328e618ffbbc49909adccfb8fa6c7, type: 2}
   _sliderReference:
     m_AssetGUID: cb6328e618ffbbc49909adccfb8fa6c7
     m_SubObjectName: 
@@ -2530,7 +2487,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: cb6328e618ffbbc49909adccfb8fa6c7, type: 2}
   _sliderReference:
     m_AssetGUID: cb6328e618ffbbc49909adccfb8fa6c7
     m_SubObjectName: 
@@ -2567,7 +2523,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: cb6328e618ffbbc49909adccfb8fa6c7, type: 2}
   _sliderReference:
     m_AssetGUID: cb6328e618ffbbc49909adccfb8fa6c7
     m_SubObjectName: 
@@ -2957,7 +2912,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36e2312c7b745ac498a46e80bd9b3980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _intId: {fileID: 11400000, guid: 6ccdbae82063b23438cc6d12818d35a0, type: 2}
+  _intIdReference:
+    m_AssetGUID: 6ccdbae82063b23438cc6d12818d35a0
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
 --- !u!114 &6595762691771620985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3035,7 +2995,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 0453af362a8ce58478c6f1bbaeac7fa1, type: 2}
   _sliderReference:
     m_AssetGUID: 0453af362a8ce58478c6f1bbaeac7fa1
     m_SubObjectName: 
@@ -3058,7 +3017,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 0453af362a8ce58478c6f1bbaeac7fa1, type: 2}
   _sliderReference:
     m_AssetGUID: 0453af362a8ce58478c6f1bbaeac7fa1
     m_SubObjectName: 
@@ -3081,7 +3039,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 9f55e1d77d8671a47a81d5a028770d46, type: 2}
   _sliderReference:
     m_AssetGUID: 9f55e1d77d8671a47a81d5a028770d46
     m_SubObjectName: 
@@ -3183,7 +3140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 79e9f884db5f7484c8401b8aece399ad, type: 2}
   _sliderReference:
     m_AssetGUID: 79e9f884db5f7484c8401b8aece399ad
     m_SubObjectName: 
@@ -3206,7 +3162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 79e9f884db5f7484c8401b8aece399ad, type: 2}
   _sliderReference:
     m_AssetGUID: 79e9f884db5f7484c8401b8aece399ad
     m_SubObjectName: 
@@ -3229,7 +3184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 1f612937ab0366842a23029931da624a, type: 2}
   _sliderReference:
     m_AssetGUID: 1f612937ab0366842a23029931da624a
     m_SubObjectName: 
@@ -3252,7 +3206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 1f612937ab0366842a23029931da624a, type: 2}
   _sliderReference:
     m_AssetGUID: 1f612937ab0366842a23029931da624a
     m_SubObjectName: 
@@ -3562,7 +3515,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dd27d34eee8ef244955f69544ffead9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 3c841704acd790c4e8c5c77026ff5aca, type: 2}
   _sliderReference:
     m_AssetGUID: 3c841704acd790c4e8c5c77026ff5aca
     m_SubObjectName: 
@@ -3633,7 +3585,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dd27d34eee8ef244955f69544ffead9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 3c841704acd790c4e8c5c77026ff5aca, type: 2}
   _sliderReference:
     m_AssetGUID: 3c841704acd790c4e8c5c77026ff5aca
     m_SubObjectName: 
@@ -3709,7 +3660,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb32ff45f38db7f4c8cb25ea9379095d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderId: {fileID: 11400000, guid: 9340d1881351c0f4c94809a00946a5d7, type: 2}
   _sliderReference:
     m_AssetGUID: 9340d1881351c0f4c94809a00946a5d7
     m_SubObjectName: 
