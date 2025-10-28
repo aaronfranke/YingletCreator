@@ -1,4 +1,4 @@
-﻿using Character.Compositor;
+﻿using Character.Data;
 using UnityEditor;
 using UnityEditor.AddressableAssets;
 using UnityEditor.AddressableAssets.Settings;
@@ -15,13 +15,13 @@ public class SandboxLogic : MonoBehaviour
 	{
 		AddressableAssetSettings settings = AddressableAssetSettingsDefaultObject.Settings;
 
-		string[] guids = AssetDatabase.FindAssets("t:MixTexture");
+		string[] guids = AssetDatabase.FindAssets("t:PoseId");
 		foreach (var guid in guids)
 		{
 			string path = AssetDatabase.GUIDToAssetPath(guid);
-			var asset = AssetDatabase.LoadAssetAtPath<MixTexture>(path);
+			var asset = AssetDatabase.LoadAssetAtPath<PoseId>(path);
 
-			//var referencePath = AssetDatabase.GetAssetPath(asset._reColorId);
+			//var referencePath = AssetDatabase.GetAssetPath(asset.Order._group);
 			//if (string.IsNullOrWhiteSpace(referencePath))
 			//{
 			//	Debug.LogWarning($"{path} did not have a reference to set");
@@ -34,11 +34,7 @@ public class SandboxLogic : MonoBehaviour
 			//	continue;
 			//}
 			//GetOrCreateEntry(referenceGuid);
-			//asset._reColorIdReference = new(referenceGuid);
-
-
-
-
+			//asset.Order._groupReference = new(referenceGuid);
 
 			//var list = new List<AssetReferenceT<MixTexture>>();
 			//foreach (var added in asset._addedTextures)
