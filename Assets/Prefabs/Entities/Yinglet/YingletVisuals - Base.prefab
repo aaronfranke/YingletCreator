@@ -1621,7 +1621,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7da9e498ef796fe4197b7b6dbc1082ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _toRemove: {fileID: 11400000, guid: ce50c1b739626554f82ed65a97cf3b8d, type: 2}
+  _toRemoveReference:
+    m_AssetGUID: ce50c1b739626554f82ed65a97cf3b8d
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _sliderReference:
     m_AssetGUID: fa3977f1c956dc44d8d6d73016c02006
     m_SubObjectName: 
@@ -2012,16 +2017,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a9827bcce571a14a86398cc21d68a70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _meshes:
-  - {fileID: 11400000, guid: aba7cec6e2ecde94ab2722038e840a79, type: 2}
-  - {fileID: 11400000, guid: 70029988de889364392f892c2b0745f0, type: 2}
-  - {fileID: 11400000, guid: dd22b41c53992324b8faad6bd3986334, type: 2}
-  - {fileID: 11400000, guid: b6ba7c9b3e627444da1c88677819eab5, type: 2}
-  - {fileID: 11400000, guid: be81bf07b2d6c324c867d70f0a6a30a9, type: 2}
-  - {fileID: 11400000, guid: b03148187b5d40f4c993ed03c4a3d022, type: 2}
-  - {fileID: 11400000, guid: 3160ec369448e0e429917437b0f687f9, type: 2}
-  - {fileID: 11400000, guid: 600f99d0c0d231f4e9a7fca9611166b6, type: 2}
-  - {fileID: 11400000, guid: fb65c04c5ee1c2b4a8c1e844c417deb2, type: 2}
+  _meshReferences:
+  - m_AssetGUID: aba7cec6e2ecde94ab2722038e840a79
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 70029988de889364392f892c2b0745f0
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: dd22b41c53992324b8faad6bd3986334
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: b6ba7c9b3e627444da1c88677819eab5
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: be81bf07b2d6c324c867d70f0a6a30a9
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: b03148187b5d40f4c993ed03c4a3d022
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 3160ec369448e0e429917437b0f687f9
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 600f99d0c0d231f4e9a7fca9611166b6
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: fb65c04c5ee1c2b4a8c1e844c417deb2
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
 --- !u!1 &4953571675693884537
 GameObject:
   m_ObjectHideFlags: 0

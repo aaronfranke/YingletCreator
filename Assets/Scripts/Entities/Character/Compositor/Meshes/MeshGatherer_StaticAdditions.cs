@@ -1,14 +1,16 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Character.Compositor
 {
 	public class MeshGatherer_StaticAdditions : MonoBehaviour, IMeshGathererMutator
 	{
-		[SerializeField] MeshWithMaterial[] _meshes;  // TTODO
+		[SerializeField] AssetReferenceT<MeshWithMaterial>[] _meshReferences;
 		public void Mutate(ref ISet<MeshWithMaterial> set)
 		{
-			foreach (var mesh in _meshes)
+			foreach (var mesh in _meshReferences.Select(m => m.LoadSync()))
 			{
 				set.Add(mesh);
 			}

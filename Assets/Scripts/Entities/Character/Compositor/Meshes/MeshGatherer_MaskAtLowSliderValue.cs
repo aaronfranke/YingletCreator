@@ -11,7 +11,7 @@ namespace Character.Compositor
 
 	public class MeshGatherer_MaskAtLowSliderValue : ReactiveBehaviour, IMeshGathererMutator
 	{
-		[SerializeField] CharacterElementTag _toRemove; // TTODO
+		[SerializeField] AssetReferenceT<CharacterElementTag> _toRemoveReference;
 		[SerializeField] AssetReferenceT<CharacterSliderId> _sliderReference;
 		[SerializeField] float _minimumValue;
 
@@ -34,7 +34,7 @@ namespace Character.Compositor
 		{
 			if (_constrain.Val)
 			{
-				var toRemove = meshes.Where(m => m.Tags != null && m.Tags.Contains(_toRemove)).ToList();
+				var toRemove = meshes.Where(m => m.Tags != null && m.Tags.Contains(_toRemoveReference.LoadSync())).ToList();
 				foreach (var m in toRemove)
 				{
 					meshes.Remove(m);
