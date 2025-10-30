@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Body_TailFluff_Small
   m_EditorClassIdentifier: 
   _skinnedMeshRendererPrefab: {fileID: 5716375729495605519, guid: 9b3a5683425c5544fb57ef931f753022, type: 3}
-  _materialWithDescription: {fileID: 11400000, guid: 43f22daa3141aaa48a171b23cdfd3e6a, type: 2}
   _materialWithDescriptionReference:
     m_AssetGUID: 43f22daa3141aaa48a171b23cdfd3e6a
     m_SubObjectName: 
@@ -21,4 +20,10 @@ MonoBehaviour:
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
   _tags: []
-  _boneToAttachTo: {fileID: 0}
+  _tagReferences: []
+  _boneToAttachToReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0

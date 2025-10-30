@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Clothes - Top - Vesaria - Boobs
   m_EditorClassIdentifier: 
   _skinnedMeshRendererPrefab: {fileID: -7971714552489221997, guid: 9b3a5683425c5544fb57ef931f753022, type: 3}
-  _materialWithDescription: {fileID: 11400000, guid: 817bc96af81c0db4ca7b81c5ce9a8436, type: 2}
   _materialWithDescriptionReference:
     m_AssetGUID: 817bc96af81c0db4ca7b81c5ce9a8436
     m_SubObjectName: 
@@ -23,4 +22,20 @@ MonoBehaviour:
   _tags:
   - {fileID: 11400000, guid: 31c5f7ad206082e4ab44db021311634f, type: 2}
   - {fileID: 11400000, guid: ce50c1b739626554f82ed65a97cf3b8d, type: 2}
-  _boneToAttachTo: {fileID: 0}
+  _tagReferences:
+  - m_AssetGUID: 31c5f7ad206082e4ab44db021311634f
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: ce50c1b739626554f82ed65a97cf3b8d
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  _boneToAttachToReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0

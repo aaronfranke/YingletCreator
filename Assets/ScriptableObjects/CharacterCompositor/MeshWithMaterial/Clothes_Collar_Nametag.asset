@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Clothes_Collar_Nametag
   m_EditorClassIdentifier: 
   _skinnedMeshRendererPrefab: {fileID: 6161266350946132456, guid: 9b3a5683425c5544fb57ef931f753022, type: 3}
-  _materialWithDescription: {fileID: 11400000, guid: 1bf6391e124e18843bf17d56ad919c6f, type: 2}
   _materialWithDescriptionReference:
     m_AssetGUID: 1bf6391e124e18843bf17d56ad919c6f
     m_SubObjectName: 
@@ -21,4 +20,10 @@ MonoBehaviour:
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
   _tags: []
-  _boneToAttachTo: {fileID: 0}
+  _tagReferences: []
+  _boneToAttachToReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0

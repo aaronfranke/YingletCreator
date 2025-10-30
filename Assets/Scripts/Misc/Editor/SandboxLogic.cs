@@ -1,4 +1,4 @@
-﻿using Character.Data;
+﻿using Character.Compositor;
 using UnityEditor;
 using UnityEditor.AddressableAssets;
 using UnityEditor.AddressableAssets.Settings;
@@ -15,11 +15,11 @@ public class SandboxLogic : MonoBehaviour
 	{
 		AddressableAssetSettings settings = AddressableAssetSettingsDefaultObject.Settings;
 
-		string[] guids = AssetDatabase.FindAssets("t:CharacterToggleId");
+		string[] guids = AssetDatabase.FindAssets("t:MixTexture");
 		foreach (var guid in guids)
 		{
 			string path = AssetDatabase.GUIDToAssetPath(guid);
-			var asset = AssetDatabase.LoadAssetAtPath<CharacterToggleId>(path);
+			var asset = AssetDatabase.LoadAssetAtPath<MixTexture>(path);
 
 			//var referencePath = AssetDatabase.GetAssetPath(asset.Order._group);
 			//if (string.IsNullOrWhiteSpace(referencePath))
@@ -36,8 +36,8 @@ public class SandboxLogic : MonoBehaviour
 			//GetOrCreateEntry(referenceGuid);
 			//asset.Order._groupReference = new(referenceGuid);
 
-			//var list = new List<AssetReferenceT<CharacterToggleComponent>>();
-			//foreach (var added in asset._components)
+			//var list = new List<AssetReferenceT<CharacterElementTag>>();
+			//foreach (var added in asset._tags)
 			//{
 			//	var addedPath = AssetDatabase.GetAssetPath(added);
 			//	var addedGuid = AssetDatabase.AssetPathToGUID(addedPath);
@@ -49,7 +49,7 @@ public class SandboxLogic : MonoBehaviour
 			//	GetOrCreateEntry(addedGuid);
 			//	list.Add(new(addedGuid));
 			//}
-			//asset._componentReferences = list.ToArray();
+			//asset._tagReferences = list.ToArray();
 
 			EditorUtility.SetDirty(asset);
 		}

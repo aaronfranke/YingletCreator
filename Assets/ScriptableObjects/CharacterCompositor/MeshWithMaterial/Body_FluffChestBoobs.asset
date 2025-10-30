@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Body_FluffChestBoobs
   m_EditorClassIdentifier: 
   _skinnedMeshRendererPrefab: {fileID: -5057897615776337430, guid: 9b3a5683425c5544fb57ef931f753022, type: 3}
-  _materialWithDescription: {fileID: 11400000, guid: 0000dbc734a9450498cd8155fc145a66, type: 2}
   _materialWithDescriptionReference:
     m_AssetGUID: 0000dbc734a9450498cd8155fc145a66
     m_SubObjectName: 
@@ -22,4 +21,15 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   _tags:
   - {fileID: 11400000, guid: c0ce8e7200c663b4ca0d87195ee87ac1, type: 2}
-  _boneToAttachTo: {fileID: 0}
+  _tagReferences:
+  - m_AssetGUID: c0ce8e7200c663b4ca0d87195ee87ac1
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  _boneToAttachToReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0

@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Clothes - Hat - Ribbon
   m_EditorClassIdentifier: 
   _skinnedMeshRendererPrefab: {fileID: -2321995480229623836, guid: 9b3a5683425c5544fb57ef931f753022, type: 3}
-  _materialWithDescription: {fileID: 11400000, guid: 0f997316a2bf1d0459c896f348ee0744, type: 2}
   _materialWithDescriptionReference:
     m_AssetGUID: 0f997316a2bf1d0459c896f348ee0744
     m_SubObjectName: 
@@ -21,4 +20,10 @@ MonoBehaviour:
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
   _tags: []
-  _boneToAttachTo: {fileID: 0}
+  _tagReferences: []
+  _boneToAttachToReference:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0

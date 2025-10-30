@@ -1,5 +1,6 @@
 using Character.Data;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -44,7 +45,7 @@ namespace Character.Compositor
 		[SerializeField] AssetReferenceT<MaterialDescription> _targetMaterialDescriptionReference;
 		[SerializeField] Texture2D _grayscale;
 		[SerializeField] Texture2D _mask;
-		[SerializeField] CharacterElementTag[] _tags;
+		[SerializeField] AssetReferenceT<CharacterElementTag>[] _tagReferences;
 		[SerializeField] MixTextureOrderData _order;
 
 		public ReColorId ReColorId => _reColorIdReference.LoadSync();
@@ -59,7 +60,7 @@ namespace Character.Compositor
 
 		public virtual TargetMaterialTexture TargetMaterialTexture => TargetMaterialTexture.MainTexture;
 
-		public IEnumerable<CharacterElementTag> Tags => _tags;
+		public IEnumerable<CharacterElementTag> Tags => _tagReferences.Select(r => r.LoadSync());
 
 		public MixTextureOrderData Order => _order;
 		IOrderData<MixTextureOrderGroup> IOrderableScriptableObject<MixTextureOrderGroup>.Order => Order;
