@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Easel
   m_EditorClassIdentifier: 
   _skinnedMeshRendererPrefab: {fileID: 4281173175589445707, guid: 760fb048590005f42a1bfb57163ad3cc, type: 3}
-  _materialWithDescription: {fileID: 0}
   _materialWithDescriptionReference:
     m_AssetGUID: 
     m_SubObjectName: 
@@ -22,3 +21,9 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   _tags: []
   _boneToAttachTo: {fileID: 11400000, guid: 000c07413275646418d07ef6b13f2964, type: 2}
+  _boneToAttachToReference:
+    m_AssetGUID: 000c07413275646418d07ef6b13f2964
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
