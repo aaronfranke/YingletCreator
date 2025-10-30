@@ -17,8 +17,6 @@ MonoBehaviour:
   _groups:
   - {fileID: 11400000, guid: 6dd32ec1f69e7f1408c7bfb987a0baba, type: 2}
   _addedMeshes: []
-  _addedTextures:
-  - {fileID: 11400000, guid: 8b7760e3cc6e4e14d8d4eb082393a789, type: 2}
   _addedTextureReferences:
   - m_AssetGUID: 8b7760e3cc6e4e14d8d4eb082393a789
     m_SubObjectName: 
@@ -30,6 +28,17 @@ MonoBehaviour:
   _components:
   - {fileID: 11400000, guid: 3960d8e88668e0540a7f990b457ce591, type: 2}
   - {fileID: 11400000, guid: 173a28df5604e8a438d22f3f821fa8cc, type: 2}
+  _componentReferences:
+  - m_AssetGUID: 3960d8e88668e0540a7f990b457ce591
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 173a28df5604e8a438d22f3f821fa8cc
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _preview:
     _sprite: {fileID: -1667397494, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: b90935c439f664d4ab38d0ae144eb3a6, type: 2}

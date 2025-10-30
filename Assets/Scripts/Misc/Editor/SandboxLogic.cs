@@ -15,11 +15,11 @@ public class SandboxLogic : MonoBehaviour
 	{
 		AddressableAssetSettings settings = AddressableAssetSettingsDefaultObject.Settings;
 
-		string[] guids = AssetDatabase.FindAssets("t:PoseId");
+		string[] guids = AssetDatabase.FindAssets("t:CharacterToggleId");
 		foreach (var guid in guids)
 		{
 			string path = AssetDatabase.GUIDToAssetPath(guid);
-			var asset = AssetDatabase.LoadAssetAtPath<PoseId>(path);
+			var asset = AssetDatabase.LoadAssetAtPath<CharacterToggleId>(path);
 
 			//var referencePath = AssetDatabase.GetAssetPath(asset.Order._group);
 			//if (string.IsNullOrWhiteSpace(referencePath))
@@ -36,8 +36,8 @@ public class SandboxLogic : MonoBehaviour
 			//GetOrCreateEntry(referenceGuid);
 			//asset.Order._groupReference = new(referenceGuid);
 
-			//var list = new List<AssetReferenceT<MixTexture>>();
-			//foreach (var added in asset._addedTextures)
+			//var list = new List<AssetReferenceT<CharacterToggleComponent>>();
+			//foreach (var added in asset._components)
 			//{
 			//	var addedPath = AssetDatabase.GetAssetPath(added);
 			//	var addedGuid = AssetDatabase.AssetPathToGUID(addedPath);
@@ -46,9 +46,10 @@ public class SandboxLogic : MonoBehaviour
 			//		Debug.LogWarning($"Added {added.name} not found in AssetDatabase");
 			//		continue;
 			//	}
-			//	list.Add(new AssetReferenceT<MixTexture>(addedGuid));
+			//	GetOrCreateEntry(addedGuid);
+			//	list.Add(new(addedGuid));
 			//}
-			//asset._addedTextureReferences = list.ToArray();
+			//asset._componentReferences = list.ToArray();
 
 			EditorUtility.SetDirty(asset);
 		}

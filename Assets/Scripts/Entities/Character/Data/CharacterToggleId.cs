@@ -31,8 +31,8 @@ namespace Character.Data
 		[SerializeField] GameObject _roomPrefab;
 		public GameObject RoomPrefab => _roomPrefab;
 
-		[SerializeField] CharacterToggleComponent[] _components;
-		public CharacterToggleComponent[] Components => _components;
+		[SerializeField] AssetReferenceT<CharacterToggleComponent>[] _componentReferences;
+		public IEnumerable<CharacterToggleComponent> Components => _componentReferences.Select(r => r.LoadSync());
 
 		[SerializeField] CharacterTogglePreviewData _preview;
 		public CharacterTogglePreviewData Preview => _preview;

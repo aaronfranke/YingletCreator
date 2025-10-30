@@ -22,10 +22,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d625371d0f5a60b41925236db3f70883, type: 2}
   - {fileID: 11400000, guid: ebbf7853e4d648b4998f2fbfda8bc041, type: 2}
   - {fileID: 11400000, guid: bd120e367ba926d4fae698e6471d95a8, type: 2}
-  _addedTextures:
-  - {fileID: 11400000, guid: cc22d16358fe5d942bda54973d31fce6, type: 2}
-  - {fileID: 11400000, guid: 2985dcef85b768243ad0f5406877d388, type: 2}
-  - {fileID: 11400000, guid: 9d75ee431bf55ec4596f9506e4c4da7d, type: 2}
   _addedTextureReferences:
   - m_AssetGUID: cc22d16358fe5d942bda54973d31fce6
     m_SubObjectName: 
@@ -47,6 +43,17 @@ MonoBehaviour:
   _components:
   - {fileID: 11400000, guid: 3f1f4ba2c6a0db94b81e4c1bcb269c33, type: 2}
   - {fileID: 11400000, guid: fa8dc294596c0ca4ca77b40dd865b4d8, type: 2}
+  _componentReferences:
+  - m_AssetGUID: 3f1f4ba2c6a0db94b81e4c1bcb269c33
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: fa8dc294596c0ca4ca77b40dd865b4d8
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _preview:
     _sprite: {fileID: 1513239800, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: 05a5f89117304c04a99288d3a8404208, type: 2}

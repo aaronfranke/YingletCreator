@@ -19,9 +19,6 @@ MonoBehaviour:
   _addedMeshes:
   - {fileID: 11400000, guid: c8c65c5487ca41744808e3c3c207ad66, type: 2}
   - {fileID: 11400000, guid: 706adb5fcc7ce454cb78f7ebf3e21049, type: 2}
-  _addedTextures:
-  - {fileID: 11400000, guid: d94898c54c7abec47b70de35b5754e88, type: 2}
-  - {fileID: 11400000, guid: a4d300f7e6744934fbe77b8e6646c005, type: 2}
   _addedTextureReferences:
   - m_AssetGUID: d94898c54c7abec47b70de35b5754e88
     m_SubObjectName: 
@@ -37,6 +34,12 @@ MonoBehaviour:
   _roomPrefab: {fileID: 0}
   _components:
   - {fileID: 11400000, guid: b8ba4addb94bc2a47b423c3523f51d71, type: 2}
+  _componentReferences:
+  - m_AssetGUID: b8ba4addb94bc2a47b423c3523f51d71
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _preview:
     _sprite: {fileID: -958753796, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: 2c2f53fc7a9a235459b7510522a5f236, type: 2}
