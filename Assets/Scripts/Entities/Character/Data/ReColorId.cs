@@ -8,8 +8,7 @@ namespace Character.Data
 	[CreateAssetMenu(fileName = "", menuName = "Scriptable Objects/Character Data/ReColorId")]
 	public class ReColorId : ScriptableObject, IHasUniqueAssetId
 	{
-		public ColorGroup _colorGroup;
-		public AssetReferenceT<ColorGroup> _colorGroupReference;
+		[SerializeField] AssetReferenceT<ColorGroup> _colorGroupReference;
 		public ColorGroup ColorGroup => _colorGroupReference.LoadSync();
 
 		[SerializeField, HideInInspector] string _uniqueAssetId;

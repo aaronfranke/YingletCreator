@@ -19,6 +19,17 @@ MonoBehaviour:
   _addedMeshes:
   - {fileID: 11400000, guid: 1b84eed098355854089316a77f325497, type: 2}
   - {fileID: 11400000, guid: 04c0c9cc7df1cb94c8b49a2356980561, type: 2}
+  _addedMeshReferences:
+  - m_AssetGUID: 1b84eed098355854089316a77f325497
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 04c0c9cc7df1cb94c8b49a2356980561
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _addedTextureReferences:
   - m_AssetGUID: 37e8c4cebf6a11b44bba549b577f2f3c
     m_SubObjectName: 
@@ -32,7 +43,6 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   _eyeTextures: {fileID: 0}
   _roomPrefab: {fileID: 0}
-  _components: []
   _componentReferences: []
   _preview:
     _sprite: {fileID: -1984639328, guid: 15341dd2853879d4694c63f593796b80, type: 3}

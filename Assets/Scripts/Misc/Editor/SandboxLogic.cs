@@ -15,29 +15,31 @@ public class SandboxLogic : MonoBehaviour
 	{
 		AddressableAssetSettings settings = AddressableAssetSettingsDefaultObject.Settings;
 
-		string[] guids = AssetDatabase.FindAssets("t:ReColorId");
+		string[] guids = AssetDatabase.FindAssets("t:PoseId");
 		foreach (var guid in guids)
 		{
 			string path = AssetDatabase.GUIDToAssetPath(guid);
-			var asset = AssetDatabase.LoadAssetAtPath<ReColorId>(path);
+			var asset = AssetDatabase.LoadAssetAtPath<PoseId>(path);
 
-			var referencePath = AssetDatabase.GetAssetPath(asset._colorGroup);
-			if (string.IsNullOrWhiteSpace(referencePath))
-			{
-				Debug.LogWarning($"{path} did not have a reference to set");
-				continue;
-			}
-			var referenceGuid = AssetDatabase.AssetPathToGUID(referencePath);
-			if (string.IsNullOrEmpty(referenceGuid))
-			{
-				Debug.LogWarning($"Added {referencePath} not found in AssetDatabase");
-				continue;
-			}
-			GetOrCreateEntry(referenceGuid);
-			asset._colorGroupReference = new(referenceGuid);
+			//var referencePath = AssetDatabase.GetAssetPath(asset._toReplace);
+			//if (string.IsNullOrWhiteSpace(referencePath))
+			//{
+			//	Debug.LogWarning($"{path} did not have a reference to set");
+			//	continue;
+			//}
+			//var referenceGuid = AssetDatabase.AssetPathToGUID(referencePath);
+			//if (string.IsNullOrEmpty(referenceGuid))
+			//{
+			//	Debug.LogWarning($"Added {referencePath} not found in AssetDatabase");
+			//	continue;
+			//}
+			//GetOrCreateEntry(referenceGuid);
+			//asset._toReplaceReference = new(referenceGuid);
 
-			//var list = new List<AssetReferenceT<CharacterElementTag>>();
-			//foreach (var added in asset._tags)
+			//var list = new List<AssetReferenceT<MeshWithMaterial>>();
+			//var items = asset._props;
+			//if (items == null) continue;
+			//foreach (var added in items)
 			//{
 			//	var addedPath = AssetDatabase.GetAssetPath(added);
 			//	var addedGuid = AssetDatabase.AssetPathToGUID(addedPath);
@@ -49,7 +51,7 @@ public class SandboxLogic : MonoBehaviour
 			//	GetOrCreateEntry(addedGuid);
 			//	list.Add(new(addedGuid));
 			//}
-			//asset._tagReferences = list.ToArray();
+			//asset._propReferences = list.ToArray();
 
 			EditorUtility.SetDirty(asset);
 		}

@@ -1,6 +1,7 @@
 using Character.Compositor;
 using Snapshotter;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -19,8 +20,8 @@ namespace Character.Data
 		[SerializeField] string _overrideName;
 		public string OverrideName => _overrideName;
 
-		[SerializeField] MeshWithMaterial[] _props;
-		public IEnumerable<MeshWithMaterial> Props => _props;
+		[SerializeField] AssetReferenceT<MeshWithMaterial>[] _propReferences;
+		public IEnumerable<MeshWithMaterial> Props => _propReferences.Select(r => r.LoadSync());
 
 		[SerializeField] CharacterTogglePreviewData _preview;
 		public CharacterTogglePreviewData Preview => _preview;
