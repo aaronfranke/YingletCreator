@@ -1,4 +1,4 @@
-﻿using Character.Compositor;
+﻿using Character.Data;
 using UnityEditor;
 using UnityEditor.AddressableAssets;
 using UnityEditor.AddressableAssets.Settings;
@@ -15,26 +15,26 @@ public class SandboxLogic : MonoBehaviour
 	{
 		AddressableAssetSettings settings = AddressableAssetSettingsDefaultObject.Settings;
 
-		string[] guids = AssetDatabase.FindAssets("t:MixTexture");
+		string[] guids = AssetDatabase.FindAssets("t:ReColorId");
 		foreach (var guid in guids)
 		{
 			string path = AssetDatabase.GUIDToAssetPath(guid);
-			var asset = AssetDatabase.LoadAssetAtPath<MixTexture>(path);
+			var asset = AssetDatabase.LoadAssetAtPath<ReColorId>(path);
 
-			//var referencePath = AssetDatabase.GetAssetPath(asset.Order._group);
-			//if (string.IsNullOrWhiteSpace(referencePath))
-			//{
-			//	Debug.LogWarning($"{path} did not have a reference to set");
-			//	continue;
-			//}
-			//var referenceGuid = AssetDatabase.AssetPathToGUID(referencePath);
-			//if (string.IsNullOrEmpty(referenceGuid))
-			//{
-			//	Debug.LogWarning($"Added {referencePath} not found in AssetDatabase");
-			//	continue;
-			//}
-			//GetOrCreateEntry(referenceGuid);
-			//asset.Order._groupReference = new(referenceGuid);
+			var referencePath = AssetDatabase.GetAssetPath(asset._colorGroup);
+			if (string.IsNullOrWhiteSpace(referencePath))
+			{
+				Debug.LogWarning($"{path} did not have a reference to set");
+				continue;
+			}
+			var referenceGuid = AssetDatabase.AssetPathToGUID(referencePath);
+			if (string.IsNullOrEmpty(referenceGuid))
+			{
+				Debug.LogWarning($"Added {referencePath} not found in AssetDatabase");
+				continue;
+			}
+			GetOrCreateEntry(referenceGuid);
+			asset._colorGroupReference = new(referenceGuid);
 
 			//var list = new List<AssetReferenceT<CharacterElementTag>>();
 			//foreach (var added in asset._tags)

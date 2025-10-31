@@ -1,5 +1,6 @@
 using Character.Compositor;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Character.Data
 {
@@ -7,8 +8,9 @@ namespace Character.Data
 	[CreateAssetMenu(fileName = "", menuName = "Scriptable Objects/Character Data/ReColorId")]
 	public class ReColorId : ScriptableObject, IHasUniqueAssetId
 	{
-		[SerializeField] ColorGroup _colorGroup;
-		public ColorGroup ColorGroup => _colorGroup;
+		public ColorGroup _colorGroup;
+		public AssetReferenceT<ColorGroup> _colorGroupReference;
+		public ColorGroup ColorGroup => _colorGroupReference.LoadSync();
 
 		[SerializeField, HideInInspector] string _uniqueAssetId;
 		public string UniqueAssetID { get => _uniqueAssetId; set => _uniqueAssetId = value; }
