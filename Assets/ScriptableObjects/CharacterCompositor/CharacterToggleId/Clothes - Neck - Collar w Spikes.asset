@@ -16,9 +16,12 @@ MonoBehaviour:
   _displayName: Collar w/ Spikes
   _groups:
   - {fileID: 11400000, guid: 7ec3e8f0214553d4cad95929aad3e5b3, type: 2}
-  _addedMeshes:
-  - {fileID: 11400000, guid: 9e35ba160f0d4914e843854ae2c227aa, type: 2}
-  - {fileID: 11400000, guid: 0725072cd2bca8644ae65050321cafb1, type: 2}
+  _groupReferences:
+  - m_AssetGUID: 7ec3e8f0214553d4cad95929aad3e5b3
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _addedMeshReferences:
   - m_AssetGUID: 9e35ba160f0d4914e843854ae2c227aa
     m_SubObjectName: 

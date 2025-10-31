@@ -17,10 +17,17 @@ MonoBehaviour:
   _groups:
   - {fileID: 11400000, guid: 83e476b94deb4f64d89399d0aa93cdac, type: 2}
   - {fileID: 11400000, guid: 14901bc6611d3d54d98993552fb8d05e, type: 2}
-  _addedMeshes:
-  - {fileID: 11400000, guid: 60894c683213daa449b2673f98ccb9fe, type: 2}
-  - {fileID: 11400000, guid: 64940c90153d0ed45b4125535b8e8624, type: 2}
-  - {fileID: 11400000, guid: 20213ba078456e243a238373b5fc7ce0, type: 2}
+  _groupReferences:
+  - m_AssetGUID: 83e476b94deb4f64d89399d0aa93cdac
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 14901bc6611d3d54d98993552fb8d05e
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _addedMeshReferences:
   - m_AssetGUID: 60894c683213daa449b2673f98ccb9fe
     m_SubObjectName: 

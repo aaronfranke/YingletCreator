@@ -16,10 +16,12 @@ MonoBehaviour:
   _displayName: Scouting Attire
   _groups:
   - {fileID: 11400000, guid: 83e476b94deb4f64d89399d0aa93cdac, type: 2}
-  _addedMeshes:
-  - {fileID: 11400000, guid: 2fd36ec2b7c4de14f8df39dcb74c8ff4, type: 2}
-  - {fileID: 11400000, guid: 81978d69d12910748a7aa1f8f58a2711, type: 2}
-  - {fileID: 11400000, guid: 64940c90153d0ed45b4125535b8e8624, type: 2}
+  _groupReferences:
+  - m_AssetGUID: 83e476b94deb4f64d89399d0aa93cdac
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _addedMeshReferences:
   - m_AssetGUID: 2fd36ec2b7c4de14f8df39dcb74c8ff4
     m_SubObjectName: 

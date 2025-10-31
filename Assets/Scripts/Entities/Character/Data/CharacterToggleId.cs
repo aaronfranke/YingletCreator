@@ -16,8 +16,8 @@ namespace Character.Data
 		[SerializeField] string _displayName;
 		public string DisplayName => _displayName;
 
-		[SerializeField] public CharacterToggleEnforcementGroup[] _groups;
-		public CharacterToggleEnforcementGroup[] Groups => _groups;
+		[SerializeField] AssetReferenceT<CharacterToggleEnforcementGroup>[] _groupReferences;
+		public IEnumerable<CharacterToggleEnforcementGroup> Groups => _groupReferences.Select(r => r.LoadSync());
 
 		[SerializeField] AssetReferenceT<MeshWithMaterial>[] _addedMeshReferences;
 		public IEnumerable<MeshWithMaterial> AddedMeshes => _addedMeshReferences.Select(r => r.LoadSync());

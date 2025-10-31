@@ -15,11 +15,11 @@ public class SandboxLogic : MonoBehaviour
 	{
 		AddressableAssetSettings settings = AddressableAssetSettingsDefaultObject.Settings;
 
-		string[] guids = AssetDatabase.FindAssets("t:PoseId");
+		string[] guids = AssetDatabase.FindAssets("t:CharacterToggleId");
 		foreach (var guid in guids)
 		{
 			string path = AssetDatabase.GUIDToAssetPath(guid);
-			var asset = AssetDatabase.LoadAssetAtPath<PoseId>(path);
+			var asset = AssetDatabase.LoadAssetAtPath<CharacterToggleId>(path);
 
 			//var referencePath = AssetDatabase.GetAssetPath(asset._toReplace);
 			//if (string.IsNullOrWhiteSpace(referencePath))
@@ -36,8 +36,8 @@ public class SandboxLogic : MonoBehaviour
 			//GetOrCreateEntry(referenceGuid);
 			//asset._toReplaceReference = new(referenceGuid);
 
-			//var list = new List<AssetReferenceT<MeshWithMaterial>>();
-			//var items = asset._props;
+			//var list = new List<AssetReferenceT<CharacterToggleEnforcementGroup>>();
+			//var items = asset._groups;
 			//if (items == null) continue;
 			//foreach (var added in items)
 			//{
@@ -51,7 +51,7 @@ public class SandboxLogic : MonoBehaviour
 			//	GetOrCreateEntry(addedGuid);
 			//	list.Add(new(addedGuid));
 			//}
-			//asset._propReferences = list.ToArray();
+			//asset._groupReferences = list.ToArray();
 
 			EditorUtility.SetDirty(asset);
 		}

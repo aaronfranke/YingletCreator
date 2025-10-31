@@ -16,10 +16,12 @@ MonoBehaviour:
   _displayName: Scavenging Shirt
   _groups:
   - {fileID: 11400000, guid: 83e476b94deb4f64d89399d0aa93cdac, type: 2}
-  _addedMeshes:
-  - {fileID: 11400000, guid: 373ca6ed0afd931448924ab3e3b63c3e, type: 2}
-  - {fileID: 11400000, guid: 98fe93dca010c6e48aca6dd73bc30185, type: 2}
-  - {fileID: 11400000, guid: 64940c90153d0ed45b4125535b8e8624, type: 2}
+  _groupReferences:
+  - m_AssetGUID: 83e476b94deb4f64d89399d0aa93cdac
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _addedMeshReferences:
   - m_AssetGUID: 373ca6ed0afd931448924ab3e3b63c3e
     m_SubObjectName: 

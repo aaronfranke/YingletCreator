@@ -16,9 +16,12 @@ MonoBehaviour:
   _displayName: Capelet
   _groups:
   - {fileID: 11400000, guid: 83e476b94deb4f64d89399d0aa93cdac, type: 2}
-  _addedMeshes:
-  - {fileID: 11400000, guid: 7090ad717b512534c819e04560edd154, type: 2}
-  - {fileID: 11400000, guid: e15ec3639fc552a438be50f8289ff82c, type: 2}
+  _groupReferences:
+  - m_AssetGUID: 83e476b94deb4f64d89399d0aa93cdac
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _addedMeshReferences:
   - m_AssetGUID: 7090ad717b512534c819e04560edd154
     m_SubObjectName: 
