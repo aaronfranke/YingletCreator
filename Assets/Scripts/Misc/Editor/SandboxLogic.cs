@@ -15,13 +15,13 @@ public class SandboxLogic : MonoBehaviour
 	{
 		AddressableAssetSettings settings = AddressableAssetSettingsDefaultObject.Settings;
 
-		string[] guids = AssetDatabase.FindAssets("t:MaterialDescription");
+		string[] guids = AssetDatabase.FindAssets("t:MixTexture");
 		foreach (var guid in guids)
 		{
 			string path = AssetDatabase.GUIDToAssetPath(guid);
-			var asset = AssetDatabase.LoadAssetAtPath<MaterialDescription>(path);
+			var asset = AssetDatabase.LoadAssetAtPath<MixTexture>(path);
 
-			//var referencePath = AssetDatabase.GetAssetPath(asset._referenceMaterial);
+			//var referencePath = AssetDatabase.GetAssetPath(asset._mask);
 			//if (string.IsNullOrWhiteSpace(referencePath))
 			//{
 			//	Debug.LogWarning($"{path} did not have a reference to set");
@@ -34,7 +34,7 @@ public class SandboxLogic : MonoBehaviour
 			//	continue;
 			//}
 			//GetOrCreateEntry(referenceGuid);
-			//asset._materialReference = new(referenceGuid);
+			//asset._maskReference = new(referenceGuid);
 
 			//var list = new List<AssetReferenceT<CharacterToggleEnforcementGroup>>();
 			//var items = asset._groups;

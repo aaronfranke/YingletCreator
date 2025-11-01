@@ -43,8 +43,8 @@ namespace Character.Compositor
 	{
 		[SerializeField] AssetReferenceT<ReColorId> _reColorIdReference;
 		[SerializeField] AssetReferenceT<MaterialDescription> _targetMaterialDescriptionReference;
-		[SerializeField] Texture2D _grayscale;
-		[SerializeField] Texture2D _mask;
+		[SerializeField] AssetReferenceT<Texture2D> _grayscaleReference;
+		[SerializeField] AssetReferenceT<Texture2D> _maskReference;
 		[SerializeField] AssetReferenceT<CharacterElementTag>[] _tagReferences;
 		[SerializeField] MixTextureOrderData _order;
 
@@ -52,9 +52,9 @@ namespace Character.Compositor
 
 		public MaterialDescription TargetMaterialDescription => _targetMaterialDescriptionReference.LoadSync();
 
-		public Texture2D Grayscale => _grayscale;
+		public Texture2D Grayscale => _grayscaleReference.LoadSync();
 
-		public Texture2D Mask => _mask;
+		public Texture2D Mask => _maskReference.LoadSync();
 
 		public bool Sortable => true;
 
