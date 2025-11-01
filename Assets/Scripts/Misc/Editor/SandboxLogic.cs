@@ -1,4 +1,4 @@
-﻿using Character.Data;
+﻿using Character.Compositor;
 using UnityEditor;
 using UnityEditor.AddressableAssets;
 using UnityEditor.AddressableAssets.Settings;
@@ -15,13 +15,13 @@ public class SandboxLogic : MonoBehaviour
 	{
 		AddressableAssetSettings settings = AddressableAssetSettingsDefaultObject.Settings;
 
-		string[] guids = AssetDatabase.FindAssets("t:CharacterToggleId");
+		string[] guids = AssetDatabase.FindAssets("t:MaterialDescription");
 		foreach (var guid in guids)
 		{
 			string path = AssetDatabase.GUIDToAssetPath(guid);
-			var asset = AssetDatabase.LoadAssetAtPath<CharacterToggleId>(path);
+			var asset = AssetDatabase.LoadAssetAtPath<MaterialDescription>(path);
 
-			//var referencePath = AssetDatabase.GetAssetPath(asset._toReplace);
+			//var referencePath = AssetDatabase.GetAssetPath(asset._referenceMaterial);
 			//if (string.IsNullOrWhiteSpace(referencePath))
 			//{
 			//	Debug.LogWarning($"{path} did not have a reference to set");
@@ -34,7 +34,7 @@ public class SandboxLogic : MonoBehaviour
 			//	continue;
 			//}
 			//GetOrCreateEntry(referenceGuid);
-			//asset._toReplaceReference = new(referenceGuid);
+			//asset._materialReference = new(referenceGuid);
 
 			//var list = new List<AssetReferenceT<CharacterToggleEnforcementGroup>>();
 			//var items = asset._groups;
