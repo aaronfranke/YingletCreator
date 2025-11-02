@@ -1,15 +1,16 @@
-using System;
+ï»¿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEditor;
+using UnityEditor.AddressableAssets;
+using UnityEditor.AddressableAssets.Settings;
 using UnityEngine;
 
 [CustomEditor(typeof(ModDefinition))]
 public class ModDefinitionEditor : Editor
 {
 	SerializedProperty _modDisplayTitleProp;
-
-	static bool _generateManifestFiles = false;
 
 	void OnEnable()
 	{
@@ -27,16 +28,14 @@ public class ModDefinitionEditor : Editor
 
 
 		EditorGUILayout.LabelField("Click the following button to generate a mod (.bundle) file. This bundle will include:");
-		EditorGUILayout.LabelField(" • Presets (.yingsave)");
-		EditorGUILayout.LabelField(" • Toggles (CharacterToggleId)");
-		EditorGUILayout.LabelField(" • Poses (PoseID)");
+		EditorGUILayout.LabelField(" â€¢ Presets (.yingsave)");
+		EditorGUILayout.LabelField(" â€¢ Toggles (CharacterToggleId)");
+		EditorGUILayout.LabelField(" â€¢ Poses (PoseID)");
 		EditorGUILayout.LabelField("Supporting textures, models, and ScriptableObject metadata will also be bundled.");
 
 		var modDefinition = (ModDefinition)target;
 
-		_generateManifestFiles = GUILayout.Toggle(_generateManifestFiles, "Generate manifest files?");
-
-		if (GUILayout.Button("Bundle Content"))
+		if (GUILayout.Button("Build Mod"))
 		{
 			BundleContent(modDefinition);
 		}
@@ -59,9 +58,16 @@ public class ModDefinitionEditor : Editor
 	{
 		try
 		{
-			BundleContentImpl(modDefinition);
+			EditorUtility.DisplayProgressBar("Building mod", $"Assigning assets to appropriate group...", 0.3f);
+			var assetPaths = GetAssetPathsForModDefinition(modDefinition);
+			string groupName = $"mod-{modDefinition.UniqueAssetID}";
+			MoveAddressablesToGroup(assetPaths, groupName);
+
+			EditorUtility.ClearProgressBar();
+			EditorUtility.DisplayDialog("Mod Built", $"Mod contents built to: TBD", "OK");
+
 		}
-		catch (System.Exception ex)
+		catch (Exception ex)
 		{
 			EditorUtility.ClearProgressBar();
 			Debug.LogException(ex);
@@ -69,43 +75,13 @@ public class ModDefinitionEditor : Editor
 		}
 	}
 
-	static void BundleContentImpl(ModDefinition modDefinition)
+	static string[] GetAssetPathsForModDefinition(ModDefinition modDefinition)
 	{
 		string modAssetPath = AssetDatabase.GetAssetPath(modDefinition);
 		var relativeFolder = Path.GetDirectoryName(modAssetPath);
 		string bundleFileName = Path.GetFileNameWithoutExtension(modAssetPath) + ModDefinition.ModExtension;
 
-		var assetPaths = GetAssetPathsInFolder(relativeFolder);
-
-		AssignAssetBundleToAssets(assetPaths, bundleFileName);
-
-		EditorUtility.DisplayProgressBar("Building Bundle", $"Building {bundleFileName}...", 0.5f);
-
-		var build = new AssetBundleBuild()
-		{
-			assetBundleName = bundleFileName,
-			assetNames = assetPaths
-		};
-		var manifest = BuildPipeline.BuildAssetBundles(relativeFolder, new[] { build }, BuildAssetBundleOptions.None, EditorUserBuildSettings.activeBuildTarget);
-
-		if (!_generateManifestFiles)
-		{
-			DeleteAllManifestFiles(relativeFolder);
-		}
-
-		EditorUtility.ClearProgressBar();
-
-		if (manifest == null)
-		{
-			EditorUtility.DisplayDialog("Bundle Content", "BuildAssetBundles returned null. See Console for details.", "OK");
-			return;
-		}
-
-		AssetDatabase.Refresh();
-
-		// Inform user and show the resulting file path
-		string outputBundlePath = Path.Combine(relativeFolder, bundleFileName);
-		EditorUtility.DisplayDialog("Bundle Content", $"Bundle built: {outputBundlePath}", "OK");
+		return GetAssetPathsInFolder(relativeFolder);
 	}
 
 	static string[] GetAssetPathsInFolder(string relativeFolder)
@@ -123,36 +99,48 @@ public class ModDefinitionEditor : Editor
 			.ToArray();
 	}
 
-	static void AssignAssetBundleToAssets(string[] assetPaths, string bundleName)
+	static void MoveAddressablesToGroup(IEnumerable<string> assetRelativePaths, string targetGroupName)
 	{
-		foreach (var assetPath in assetPaths)
+		var settings = AddressableAssetSettingsDefaultObject.Settings;
+
+		// Find or create the target group
+		AddressableAssetGroup targetGroup = settings.FindGroup(targetGroupName);
+		if (targetGroup == null)
 		{
-			var importer = AssetImporter.GetAtPath(assetPath);
-			if (importer != null && importer.assetBundleName != bundleName)
+			Debug.Log($"Existing group for {targetGroupName} not found. Creating it now...");
+			targetGroup = settings.CreateGroup(
+				targetGroupName,
+				false, false, false, null,
+				typeof(UnityEditor.AddressableAssets.Settings.GroupSchemas.BundledAssetGroupSchema),
+				typeof(UnityEditor.AddressableAssets.Settings.GroupSchemas.ContentUpdateGroupSchema)
+			);
+		}
+
+		foreach (string relativePath in assetRelativePaths)
+		{
+			string guid = AssetDatabase.AssetPathToGUID(relativePath);
+			if (string.IsNullOrEmpty(guid))
 			{
-				importer.assetBundleName = bundleName;
-				importer.SaveAndReimport();
+				Debug.LogWarning($"Could not resolve GUID for: {relativePath}");
+				continue;
 			}
+
+			var entry = settings.FindAssetEntry(guid);
+			if (entry == null)
+			{
+				// Any relevant asset should have been made auto addressable by the script
+				continue;
+			}
+
+			if (entry.parentGroup == targetGroup)
+			{
+				continue; // Already in the appropriate group
+			}
+			entry.parentGroup = targetGroup;
+			settings.SetDirty(AddressableAssetSettings.ModificationEvent.EntryCreated, entry, false);
 		}
-		AssetDatabase.RemoveUnusedAssetBundleNames(); // clean up any stale bundle names
+
+		AssetDatabase.SaveAssets();
+		AssetDatabase.Refresh();
 	}
-
-	static void DeleteAllManifestFiles(string relativeFolder)
-	{
-		string fullPath = Path.GetFullPath(relativeFolder);
-
-		// Delete all .manifest files (recursive)
-		foreach (string file in Directory.GetFiles(fullPath, "*.manifest", SearchOption.TopDirectoryOnly))
-		{
-			File.Delete(file);
-		}
-
-		// Delete the root manifest file (same name as folder, no extension)
-		string rootManifestPath = Path.Combine(fullPath, Path.GetFileName(fullPath));
-		if (File.Exists(rootManifestPath))
-		{
-			File.Delete(rootManifestPath);
-		}
-	}
-
 }

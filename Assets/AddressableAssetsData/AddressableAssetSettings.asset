@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: a33201c3b3992ad468807fd2fcef0c2e
   m_currentHash:
     serializedVersion: 2
-    Hash: df75ad80439a028228400b6279785387
+    Hash: 73733dbf39e93a7fce2ac23d486faede
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_CatalogRequestsTimeout: 0
@@ -60,6 +60,7 @@ MonoBehaviour:
   m_BuildAddressablesWithPlayerBuild: 0
   m_overridePlayerVersion: '[UnityEditor.PlayerSettings.bundleVersion]'
   m_GroupAssets:
+  - {fileID: 11400000, guid: 28b34460b73181f4fa8a35e8aef0db41, type: 2}
   - {fileID: 11400000, guid: 623b3a0d473dad54aa3dbf940450812e, type: 2}
   m_BuildSettings:
     m_LogResourceManagerExceptions: 1
@@ -106,6 +107,7 @@ MonoBehaviour:
     - CharacterSliderId
     - PoseId
     - CharacterIntId
+    - ModDefinition
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 741be6f111b67c542871ee535ae2a261, type: 2}

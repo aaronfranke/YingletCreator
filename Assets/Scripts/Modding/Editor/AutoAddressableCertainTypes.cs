@@ -15,7 +15,8 @@ public class AutoAddressableCertainTypes : AssetPostprocessor
 		typeof(CharacterSliderId),
 		typeof(MixTexture),
 		typeof(PoseId),
-		typeof(ReColorId) };
+		typeof(ReColorId),
+		typeof(ModDefinition) };
 
 	static void OnPostprocessAllAssets(
 		string[] importedAssets,
