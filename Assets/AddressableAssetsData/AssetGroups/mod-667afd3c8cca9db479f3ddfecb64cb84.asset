@@ -14,7 +14,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: mod-667afd3c8cca9db479f3ddfecb64cb84
   m_GUID: 93f3fea9b6455c042b370f1068f85d49
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 667afd3c8cca9db479f3ddfecb64cb84
+    m_Address: 667afd3c8cca9db479f3ddfecb64cb84
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ModDefinition
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7fbe3b8616da42645a994e2b55e8ffa1
+    m_Address: 7fbe3b8616da42645a994e2b55e8ffa1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - ReColorId
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c0d0ae0ef4785204a895884a05fcb54e
+    m_Address: c0d0ae0ef4785204a895884a05fcb54e
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MixTexture
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ed5205bcb2617f8498f40236e18fdaec
+    m_Address: ed5205bcb2617f8498f40236e18fdaec
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - CharacterToggleId
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 583a154613a0ab64d8a1e9ecc60c2d06, type: 2}
   m_SchemaSet:

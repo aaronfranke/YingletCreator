@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using UnityEditor;
 using UnityEditor.AddressableAssets;
+using UnityEditor.AddressableAssets.Build;
 using UnityEditor.AddressableAssets.Settings;
 using UnityEngine;
 
@@ -59,9 +60,13 @@ public class ModDefinitionEditor : Editor
 		try
 		{
 			EditorUtility.DisplayProgressBar("Building mod", $"Assigning assets to appropriate group...", 0.3f);
+			var addressableSettings = AddressableAssetSettingsDefaultObject.Settings;
+			var group = GetOrCreateModGroup(addressableSettings, modDefinition);
 			var assetPaths = GetAssetPathsForModDefinition(modDefinition);
-			string groupName = $"mod-{modDefinition.UniqueAssetID}";
-			MoveAddressablesToGroup(assetPaths, groupName);
+			MoveAddressablesToGroup(assetPaths, addressableSettings, group);
+
+			EditorUtility.DisplayProgressBar("Building mod", $"Building group...", 0.6f);
+			BuildGroup(addressableSettings, group);
 
 			EditorUtility.ClearProgressBar();
 			EditorUtility.DisplayDialog("Mod Built", $"Mod contents built to: TBD", "OK");
@@ -75,11 +80,28 @@ public class ModDefinitionEditor : Editor
 		}
 	}
 
+	static AddressableAssetGroup GetOrCreateModGroup(AddressableAssetSettings addressableSettings, ModDefinition modDefinition)
+	{
+		string groupName = $"mod-{modDefinition.UniqueAssetID}";
+
+		AddressableAssetGroup targetGroup = addressableSettings.FindGroup(groupName);
+		if (targetGroup == null)
+		{
+			Debug.Log($"Existing group for {groupName} not found. Creating it now...");
+			targetGroup = addressableSettings.CreateGroup(
+				groupName,
+				false, false, false, null,
+				typeof(UnityEditor.AddressableAssets.Settings.GroupSchemas.BundledAssetGroupSchema),
+				typeof(UnityEditor.AddressableAssets.Settings.GroupSchemas.ContentUpdateGroupSchema)
+			);
+		}
+		return targetGroup;
+	}
+
 	static string[] GetAssetPathsForModDefinition(ModDefinition modDefinition)
 	{
 		string modAssetPath = AssetDatabase.GetAssetPath(modDefinition);
 		var relativeFolder = Path.GetDirectoryName(modAssetPath);
-		string bundleFileName = Path.GetFileNameWithoutExtension(modAssetPath) + ModDefinition.ModExtension;
 
 		return GetAssetPathsInFolder(relativeFolder);
 	}
@@ -99,23 +121,8 @@ public class ModDefinitionEditor : Editor
 			.ToArray();
 	}
 
-	static void MoveAddressablesToGroup(IEnumerable<string> assetRelativePaths, string targetGroupName)
+	static void MoveAddressablesToGroup(IEnumerable<string> assetRelativePaths, AddressableAssetSettings addressableSettings, AddressableAssetGroup group)
 	{
-		var settings = AddressableAssetSettingsDefaultObject.Settings;
-
-		// Find or create the target group
-		AddressableAssetGroup targetGroup = settings.FindGroup(targetGroupName);
-		if (targetGroup == null)
-		{
-			Debug.Log($"Existing group for {targetGroupName} not found. Creating it now...");
-			targetGroup = settings.CreateGroup(
-				targetGroupName,
-				false, false, false, null,
-				typeof(UnityEditor.AddressableAssets.Settings.GroupSchemas.BundledAssetGroupSchema),
-				typeof(UnityEditor.AddressableAssets.Settings.GroupSchemas.ContentUpdateGroupSchema)
-			);
-		}
-
 		foreach (string relativePath in assetRelativePaths)
 		{
 			string guid = AssetDatabase.AssetPathToGUID(relativePath);
@@ -125,22 +132,36 @@ public class ModDefinitionEditor : Editor
 				continue;
 			}
 
-			var entry = settings.FindAssetEntry(guid);
+			var entry = addressableSettings.FindAssetEntry(guid);
 			if (entry == null)
 			{
 				// Any relevant asset should have been made auto addressable by the script
 				continue;
 			}
 
-			if (entry.parentGroup == targetGroup)
+			if (entry.parentGroup == group)
 			{
 				continue; // Already in the appropriate group
 			}
-			entry.parentGroup = targetGroup;
-			settings.SetDirty(AddressableAssetSettings.ModificationEvent.EntryCreated, entry, false);
+			addressableSettings.CreateOrMoveEntry(guid, group);
 		}
 
 		AssetDatabase.SaveAssets();
 		AssetDatabase.Refresh();
+	}
+
+	static void BuildGroup(AddressableAssetSettings addressableSettings, AddressableAssetGroup group)
+	{
+		string buildPath = "Build/Mods";
+		Directory.CreateDirectory(buildPath);
+
+		var ctx = new AddressablesPlayerBuildResult();
+		var buildInput = new AddressablesDataBuilderInput(addressableSettings)
+		{
+
+		};
+
+		IDataBuilder builder = addressableSettings.ActivePlayerDataBuilder;
+		var result = builder.BuildData<AddressablesPlayerBuildResult>(buildInput);
 	}
 }
