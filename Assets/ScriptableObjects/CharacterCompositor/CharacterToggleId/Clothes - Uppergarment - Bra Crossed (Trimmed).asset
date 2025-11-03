@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueAssetId: d1c94282ba98a594cb518ed3a09895a9
   _displayName: X Bra (Trimmed)
-  _groups:
-  - {fileID: 11400000, guid: 6dd32ec1f69e7f1408c7bfb987a0baba, type: 2}
   _groupReferences:
   - m_AssetGUID: 6dd32ec1f69e7f1408c7bfb987a0baba
     m_SubObjectName: 
@@ -45,6 +43,12 @@ MonoBehaviour:
   _preview:
     _sprite: {fileID: 987869365, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: b90935c439f664d4ab38d0ae144eb3a6, type: 2}
+    _cameraPositionReference:
+      m_AssetGUID: b90935c439f664d4ab38d0ae144eb3a6
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
   _order:
     _groupReference:
       m_AssetGUID: d82494d7798c5ef40a1cc0bd98d1b45a

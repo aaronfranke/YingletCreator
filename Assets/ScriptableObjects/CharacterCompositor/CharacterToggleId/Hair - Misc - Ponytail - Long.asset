@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueAssetId: 38fb3b3af6eea5a41966cc960869c604
   _displayName: Ponytail (Long)
-  _groups:
-  - {fileID: 11400000, guid: afa6ef27aa0920645adf8aaad0e20b0c, type: 2}
   _groupReferences:
   - m_AssetGUID: afa6ef27aa0920645adf8aaad0e20b0c
     m_SubObjectName: 
@@ -50,6 +48,12 @@ MonoBehaviour:
   _preview:
     _sprite: {fileID: 1855988247, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: 9689795d523adb546ad1f6c0ca0a10fc, type: 2}
+    _cameraPositionReference:
+      m_AssetGUID: 9689795d523adb546ad1f6c0ca0a10fc
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
   _order:
     _groupReference:
       m_AssetGUID: 05a058e822839214783e4ebfc4519043

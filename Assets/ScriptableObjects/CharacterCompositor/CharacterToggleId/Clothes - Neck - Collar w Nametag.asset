@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueAssetId: 6ae8c08741624b846b6910407c260a74
   _displayName: Pet Collar
-  _groups:
-  - {fileID: 11400000, guid: 7ec3e8f0214553d4cad95929aad3e5b3, type: 2}
   _groupReferences:
   - m_AssetGUID: 7ec3e8f0214553d4cad95929aad3e5b3
     m_SubObjectName: 
@@ -55,6 +53,12 @@ MonoBehaviour:
   _preview:
     _sprite: {fileID: -69158272, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: 2c2f53fc7a9a235459b7510522a5f236, type: 2}
+    _cameraPositionReference:
+      m_AssetGUID: 2c2f53fc7a9a235459b7510522a5f236
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
   _order:
     _groupReference:
       m_AssetGUID: dd46932d61702e64dbb3afd229683715

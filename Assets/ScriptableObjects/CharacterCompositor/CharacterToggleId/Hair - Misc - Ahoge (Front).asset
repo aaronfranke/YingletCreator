@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueAssetId: b755fce0c573b7d45bf0fa0429d1b729
   _displayName: Ahoge (Front)
-  _groups: []
   _groupReferences: []
   _addedMeshReferences:
   - m_AssetGUID: 8f41ee2f9bf8da14dbaaf54de8613c5b
@@ -34,6 +33,12 @@ MonoBehaviour:
   _preview:
     _sprite: {fileID: 468486629, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: 3a4af34d07e4cfb46adabd44c51f84ab, type: 2}
+    _cameraPositionReference:
+      m_AssetGUID: 3a4af34d07e4cfb46adabd44c51f84ab
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
   _order:
     _groupReference:
       m_AssetGUID: 05a058e822839214783e4ebfc4519043

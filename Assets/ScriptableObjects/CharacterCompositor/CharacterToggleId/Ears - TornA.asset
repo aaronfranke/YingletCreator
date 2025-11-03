@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueAssetId: f1be0e21780d0634d91dd44ae653b1d5
   _displayName: Torn A
-  _groups:
-  - {fileID: 11400000, guid: 60dd3c94df992f54992dfacc394f04fa, type: 2}
   _groupReferences:
   - m_AssetGUID: 60dd3c94df992f54992dfacc394f04fa
     m_SubObjectName: 
@@ -35,6 +33,12 @@ MonoBehaviour:
   _preview:
     _sprite: {fileID: -1653561406, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: 82d8e169472b91a469905b58be370a72, type: 2}
+    _cameraPositionReference:
+      m_AssetGUID: 82d8e169472b91a469905b58be370a72
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
   _order:
     _groupReference:
       m_AssetGUID: 0b46016e3148fc243857af3e63037578

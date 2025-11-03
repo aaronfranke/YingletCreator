@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueAssetId: 787cd5d6f7244b8449b462beba971ad8
   _displayName: Bat Wings
-  _groups: []
   _groupReferences: []
   _addedMeshReferences:
   - m_AssetGUID: a05b2b3dc7162674b8f2d6db972c8fb2
@@ -39,6 +38,12 @@ MonoBehaviour:
   _preview:
     _sprite: {fileID: 1368008261, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: b3647963b772a104cb260e9bf9304ac4, type: 2}
+    _cameraPositionReference:
+      m_AssetGUID: b3647963b772a104cb260e9bf9304ac4
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
   _order:
     _groupReference:
       m_AssetGUID: f3dd3a1859520774baec8f2cd658f558

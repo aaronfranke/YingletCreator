@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueAssetId: 1963a53431503fa4aa48c7854028346e
   _displayName: Dorsal (Thick)
-  _groups: []
   _groupReferences: []
   _addedMeshReferences: []
   _addedTextureReferences:
@@ -34,6 +33,12 @@ MonoBehaviour:
   _preview:
     _sprite: {fileID: -1326256734, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: df417758296cd9a47a189d671d553c7f, type: 2}
+    _cameraPositionReference:
+      m_AssetGUID: df417758296cd9a47a189d671d553c7f
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
   _order:
     _groupReference:
       m_AssetGUID: c7209408c9cee7e448fb6dbd0dcc36ac

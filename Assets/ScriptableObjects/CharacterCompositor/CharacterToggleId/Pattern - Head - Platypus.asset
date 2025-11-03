@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueAssetId: faa40f50298c8be4b8b014ff0661785e
   _displayName: Platypus
-  _groups: []
   _groupReferences: []
   _addedMeshReferences: []
   _addedTextureReferences:
@@ -29,6 +28,12 @@ MonoBehaviour:
   _preview:
     _sprite: {fileID: 1983790582, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: 850bf0f89ca3c0c498136d3f9febe1e8, type: 2}
+    _cameraPositionReference:
+      m_AssetGUID: 850bf0f89ca3c0c498136d3f9febe1e8
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
   _order:
     _groupReference:
       m_AssetGUID: 3d622c09a117a314e8d77c0606631bc1

@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueAssetId: 8e0f50a2025ced345ae97ed4fd271af5
   _displayName: Bracelet w/ Spikes
-  _groups:
-  - {fileID: 11400000, guid: 0485aeb31487746498f4877cae4f2574, type: 2}
   _groupReferences:
   - m_AssetGUID: 0485aeb31487746498f4877cae4f2574
     m_SubObjectName: 
@@ -50,6 +48,12 @@ MonoBehaviour:
   _preview:
     _sprite: {fileID: 227420889, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: a344b2e2c675dd945a1384bc25282055, type: 2}
+    _cameraPositionReference:
+      m_AssetGUID: a344b2e2c675dd945a1384bc25282055
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
   _order:
     _groupReference:
       m_AssetGUID: 9d9c766a28d59ce42833f23be82bf200

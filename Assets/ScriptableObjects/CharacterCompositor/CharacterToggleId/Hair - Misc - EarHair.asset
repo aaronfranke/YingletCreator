@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueAssetId: c03995f4d574f11499850e173725e544
   _displayName: Ear Hair
-  _groups: []
   _groupReferences: []
   _addedMeshReferences:
   - m_AssetGUID: a9a55c550ea64044085e643c780f992f
@@ -39,6 +38,12 @@ MonoBehaviour:
   _preview:
     _sprite: {fileID: 997993103, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: e9a1f388a928f2d44b808767f71bfd0d, type: 2}
+    _cameraPositionReference:
+      m_AssetGUID: e9a1f388a928f2d44b808767f71bfd0d
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
   _order:
     _groupReference:
       m_AssetGUID: 05a058e822839214783e4ebfc4519043

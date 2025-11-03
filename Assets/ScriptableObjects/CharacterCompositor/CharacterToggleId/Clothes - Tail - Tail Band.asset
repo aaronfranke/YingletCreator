@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueAssetId: b70cbf70144823241b71aa4a9971a290
   _displayName: Band
-  _groups:
-  - {fileID: 11400000, guid: 955054ed3d5bbdf4e8346849798bf388, type: 2}
   _groupReferences:
   - m_AssetGUID: 955054ed3d5bbdf4e8346849798bf388
     m_SubObjectName: 
@@ -40,6 +38,12 @@ MonoBehaviour:
   _preview:
     _sprite: {fileID: -1267692635, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: 78d7f646aadf77f42ad2d6de7a778b88, type: 2}
+    _cameraPositionReference:
+      m_AssetGUID: 78d7f646aadf77f42ad2d6de7a778b88
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
   _order:
     _groupReference:
       m_AssetGUID: d40e8785c476c194fa5eb6ebd456636e

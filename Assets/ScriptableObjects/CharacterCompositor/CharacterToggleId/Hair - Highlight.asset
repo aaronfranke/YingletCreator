@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueAssetId: 2bc201bad9e38c64d99163d7786caa3e
   _displayName: Highlights
-  _groups: []
   _groupReferences: []
   _addedMeshReferences: []
   _addedTextureReferences:
@@ -34,6 +33,12 @@ MonoBehaviour:
   _preview:
     _sprite: {fileID: 0}
     _cameraPosition: {fileID: 11400000, guid: 3a4af34d07e4cfb46adabd44c51f84ab, type: 2}
+    _cameraPositionReference:
+      m_AssetGUID: 3a4af34d07e4cfb46adabd44c51f84ab
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
   _order:
     _groupReference:
       m_AssetGUID: 3aafd4490e1ecdf4bb0428a9cb87978e

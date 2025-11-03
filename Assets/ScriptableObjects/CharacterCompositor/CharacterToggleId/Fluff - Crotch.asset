@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueAssetId: a8a61efa8b900d7428742f87e4f6f3df
   _displayName: Crotch
-  _groups: []
   _groupReferences: []
   _addedMeshReferences:
   - m_AssetGUID: 50aec42f2662d7344b9a4caf839eb2f6
@@ -29,6 +28,12 @@ MonoBehaviour:
   _preview:
     _sprite: {fileID: -1073568147, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: 765ed75ea6244a044bd7a65a37c8828e, type: 2}
+    _cameraPositionReference:
+      m_AssetGUID: 765ed75ea6244a044bd7a65a37c8828e
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
   _order:
     _groupReference:
       m_AssetGUID: 3b703cdb2b652284380dee445e1ee055

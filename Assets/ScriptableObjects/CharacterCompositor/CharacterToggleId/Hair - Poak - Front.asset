@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueAssetId: e492b2aa3cf710543a759dfbc055802a
   _displayName: Bedhead
-  _groups:
-  - {fileID: 11400000, guid: b905ab7173a64ab4cbcec39daeb3702c, type: 2}
   _groupReferences:
   - m_AssetGUID: b905ab7173a64ab4cbcec39daeb3702c
     m_SubObjectName: 
@@ -50,6 +48,12 @@ MonoBehaviour:
   _preview:
     _sprite: {fileID: -1932525614, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: 3a4af34d07e4cfb46adabd44c51f84ab, type: 2}
+    _cameraPositionReference:
+      m_AssetGUID: 3a4af34d07e4cfb46adabd44c51f84ab
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
   _order:
     _groupReference:
       m_AssetGUID: 98f6e1e9bd8f88d4aaaa01d4b1cc36eb

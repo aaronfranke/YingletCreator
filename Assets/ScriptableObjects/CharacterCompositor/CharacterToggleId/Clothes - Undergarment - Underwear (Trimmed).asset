@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueAssetId: 57f5b0a077e7c974289b15e465ec5dbd
   _displayName: Underwear (Trimmed)
-  _groups:
-  - {fileID: 11400000, guid: 54ee6287f41d24e4285e1358bf552b69, type: 2}
   _groupReferences:
   - m_AssetGUID: 54ee6287f41d24e4285e1358bf552b69
     m_SubObjectName: 
@@ -45,6 +43,12 @@ MonoBehaviour:
   _preview:
     _sprite: {fileID: -425180995, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: 765ed75ea6244a044bd7a65a37c8828e, type: 2}
+    _cameraPositionReference:
+      m_AssetGUID: 765ed75ea6244a044bd7a65a37c8828e
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
   _order:
     _groupReference:
       m_AssetGUID: d82494d7798c5ef40a1cc0bd98d1b45a

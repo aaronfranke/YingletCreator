@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueAssetId: 1e7581c9fe6a8924bb317f86ab7880ed
   _displayName: Hairy
-  _groups:
-  - {fileID: 11400000, guid: 60dd3c94df992f54992dfacc394f04fa, type: 2}
   _groupReferences:
   - m_AssetGUID: 60dd3c94df992f54992dfacc394f04fa
     m_SubObjectName: 
@@ -40,6 +38,12 @@ MonoBehaviour:
   _preview:
     _sprite: {fileID: 772456070, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: e9a1f388a928f2d44b808767f71bfd0d, type: 2}
+    _cameraPositionReference:
+      m_AssetGUID: e9a1f388a928f2d44b808767f71bfd0d
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
   _order:
     _groupReference:
       m_AssetGUID: 0b46016e3148fc243857af3e63037578

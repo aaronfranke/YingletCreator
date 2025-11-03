@@ -1,4 +1,4 @@
-﻿using Character.Compositor;
+﻿using Character.Data;
 using UnityEditor;
 using UnityEditor.AddressableAssets;
 using UnityEditor.AddressableAssets.Settings;
@@ -15,13 +15,13 @@ public class SandboxLogic : MonoBehaviour
 	{
 		AddressableAssetSettings settings = AddressableAssetSettingsDefaultObject.Settings;
 
-		string[] guids = AssetDatabase.FindAssets("t:MixTexture");
+		string[] guids = AssetDatabase.FindAssets("t:CharacterToggleId");
 		foreach (var guid in guids)
 		{
 			string path = AssetDatabase.GUIDToAssetPath(guid);
-			var asset = AssetDatabase.LoadAssetAtPath<MixTexture>(path);
+			var asset = AssetDatabase.LoadAssetAtPath<CharacterToggleId>(path);
 
-			//var referencePath = AssetDatabase.GetAssetPath(asset._mask);
+			//var referencePath = AssetDatabase.GetAssetPath(asset.Preview._cameraPosition);
 			//if (string.IsNullOrWhiteSpace(referencePath))
 			//{
 			//	Debug.LogWarning($"{path} did not have a reference to set");
@@ -34,7 +34,7 @@ public class SandboxLogic : MonoBehaviour
 			//	continue;
 			//}
 			//GetOrCreateEntry(referenceGuid);
-			//asset._maskReference = new(referenceGuid);
+			//asset.Preview._cameraPositionReference = new(referenceGuid);
 
 			//var list = new List<AssetReferenceT<CharacterToggleEnforcementGroup>>();
 			//var items = asset._groups;

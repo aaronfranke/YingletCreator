@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueAssetId: 11e308b6c85bf3647b36a4966bb46764
   _displayName: Socks
-  _groups:
-  - {fileID: 11400000, guid: cd5db93d24b5fe342b338ec10d83c2b7, type: 2}
   _groupReferences:
   - m_AssetGUID: cd5db93d24b5fe342b338ec10d83c2b7
     m_SubObjectName: 
@@ -35,6 +33,12 @@ MonoBehaviour:
   _preview:
     _sprite: {fileID: 1038587778, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: ac012c3e212c77547b9d71f82e51ebfe, type: 2}
+    _cameraPositionReference:
+      m_AssetGUID: ac012c3e212c77547b9d71f82e51ebfe
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
   _order:
     _groupReference:
       m_AssetGUID: 620eabfd9902de141bec8093be12337c

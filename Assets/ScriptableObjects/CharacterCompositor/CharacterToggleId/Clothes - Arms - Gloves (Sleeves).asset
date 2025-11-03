@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueAssetId: 061359cbcc94abf44bb7b12bca1e00b7
   _displayName: Sleeves
-  _groups:
-  - {fileID: 11400000, guid: 39d7df5eb78c12941a66954f07f604c7, type: 2}
   _groupReferences:
   - m_AssetGUID: 39d7df5eb78c12941a66954f07f604c7
     m_SubObjectName: 
@@ -35,6 +33,12 @@ MonoBehaviour:
   _preview:
     _sprite: {fileID: 567304899, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: a344b2e2c675dd945a1384bc25282055, type: 2}
+    _cameraPositionReference:
+      m_AssetGUID: a344b2e2c675dd945a1384bc25282055
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
   _order:
     _groupReference:
       m_AssetGUID: 9d9c766a28d59ce42833f23be82bf200

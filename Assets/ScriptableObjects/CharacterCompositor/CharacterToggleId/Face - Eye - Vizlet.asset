@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueAssetId: 50e14220da9c7c44bbd8f21a9e1892cd
   _displayName: Sophisticated
-  _groups:
-  - {fileID: 11400000, guid: f884cbfef1452e344962a5b55f10edd9, type: 2}
   _groupReferences:
   - m_AssetGUID: f884cbfef1452e344962a5b55f10edd9
     m_SubObjectName: 
@@ -30,6 +28,12 @@ MonoBehaviour:
   _preview:
     _sprite: {fileID: -1237601796, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: 850bf0f89ca3c0c498136d3f9febe1e8, type: 2}
+    _cameraPositionReference:
+      m_AssetGUID: 850bf0f89ca3c0c498136d3f9febe1e8
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
   _order:
     _groupReference:
       m_AssetGUID: 5699db8d5196f504e85bf9f000e07a54

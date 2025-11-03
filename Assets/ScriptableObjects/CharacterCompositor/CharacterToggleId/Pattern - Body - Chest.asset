@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueAssetId: 9be4c4c7d7c335b4f90fe51a0297dd28
   _displayName: Chest
-  _groups: []
   _groupReferences: []
   _addedMeshReferences: []
   _addedTextureReferences:
@@ -29,6 +28,12 @@ MonoBehaviour:
   _preview:
     _sprite: {fileID: 1320365348, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: c4f69fa1c598d79449595cff5f978c7b, type: 2}
+    _cameraPositionReference:
+      m_AssetGUID: c4f69fa1c598d79449595cff5f978c7b
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
   _order:
     _groupReference:
       m_AssetGUID: c7209408c9cee7e448fb6dbd0dcc36ac

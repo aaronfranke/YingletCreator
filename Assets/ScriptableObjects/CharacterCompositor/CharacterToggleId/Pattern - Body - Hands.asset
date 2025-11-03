@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueAssetId: 4b7e66f86494ff44a8461f3ad9cc945c
   _displayName: Hands
-  _groups: []
   _groupReferences: []
   _addedMeshReferences: []
   _addedTextureReferences:
@@ -29,6 +28,12 @@ MonoBehaviour:
   _preview:
     _sprite: {fileID: -167762302, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: a344b2e2c675dd945a1384bc25282055, type: 2}
+    _cameraPositionReference:
+      m_AssetGUID: a344b2e2c675dd945a1384bc25282055
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
   _order:
     _groupReference:
       m_AssetGUID: c7209408c9cee7e448fb6dbd0dcc36ac

@@ -14,9 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueAssetId: 7a26e7cdcf353dc408710ed31319536c
   _displayName: Gloves (Long)
-  _groups:
-  - {fileID: 11400000, guid: 13bd5f8d68241cd4c9014be90c266899, type: 2}
-  - {fileID: 11400000, guid: 39d7df5eb78c12941a66954f07f604c7, type: 2}
   _groupReferences:
   - m_AssetGUID: 13bd5f8d68241cd4c9014be90c266899
     m_SubObjectName: 
@@ -41,6 +38,12 @@ MonoBehaviour:
   _preview:
     _sprite: {fileID: -1484051246, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: a344b2e2c675dd945a1384bc25282055, type: 2}
+    _cameraPositionReference:
+      m_AssetGUID: a344b2e2c675dd945a1384bc25282055
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
   _order:
     _groupReference:
       m_AssetGUID: 9d9c766a28d59ce42833f23be82bf200

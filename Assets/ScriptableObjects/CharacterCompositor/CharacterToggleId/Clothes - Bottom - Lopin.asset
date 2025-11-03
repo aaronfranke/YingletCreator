@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueAssetId: 78696f86dd5208843bca71e24d076507
   _displayName: Fancy Rat Pants
-  _groups:
-  - {fileID: 11400000, guid: 14901bc6611d3d54d98993552fb8d05e, type: 2}
   _groupReferences:
   - m_AssetGUID: 14901bc6611d3d54d98993552fb8d05e
     m_SubObjectName: 
@@ -55,6 +53,12 @@ MonoBehaviour:
   _preview:
     _sprite: {fileID: -822569242, guid: 15341dd2853879d4694c63f593796b80, type: 3}
     _cameraPosition: {fileID: 11400000, guid: 389e40160dafa374d9796f55f6499c21, type: 2}
+    _cameraPositionReference:
+      m_AssetGUID: 389e40160dafa374d9796f55f6499c21
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
   _order:
     _groupReference:
       m_AssetGUID: a1ca54624f3ed244ca63c71315daa031

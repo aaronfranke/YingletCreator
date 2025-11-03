@@ -48,8 +48,8 @@ namespace Character.Data
 		[SerializeField] Sprite _sprite;
 		public Sprite Sprite => _sprite;
 
-		[SerializeField] SnapshotterCameraPosition _cameraPosition;
-		public SnapshotterCameraPosition CameraPosition => _cameraPosition;
+		[SerializeField] AssetReferenceT<SnapshotterCameraPosition> _cameraPositionReference;
+		public SnapshotterCameraPosition CameraPosition => _cameraPositionReference.LoadSync();
 
 
 #if UNITY_EDITOR
