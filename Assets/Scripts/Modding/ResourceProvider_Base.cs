@@ -25,7 +25,7 @@ public class ResourceProvider_Base : MonoBehaviour, IResourceProvider
 
 	static void LoadIntoDictionary<T>(IDictionary<string, T> dictionary) where T : Object, IHasUniqueAssetId
 	{
-		var items = AddressableExtensionMethods.LoadAllOfTypeSync<T>().ToArray();
+		var items = AssetReferenceT<T>.LoadAllOfTypeSync().ToArray();
 		foreach (var item in items)
 		{
 			dictionary[item.UniqueAssetID] = item;
@@ -34,7 +34,7 @@ public class ResourceProvider_Base : MonoBehaviour, IResourceProvider
 
 	static void LoadIntoList<T>(IList<T> list) where T : Object
 	{
-		var items = AddressableExtensionMethods.LoadAllOfTypeSync<T>().ToArray();
+		var items = AssetReferenceT<T>.LoadAllOfTypeSync().ToArray();
 		foreach (var item in items)
 		{
 			list.Add(item);

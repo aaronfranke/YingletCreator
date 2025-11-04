@@ -1,7 +1,5 @@
 ﻿using Character.Data;
 using UnityEditor;
-using UnityEditor.AddressableAssets;
-using UnityEditor.AddressableAssets.Settings;
 using UnityEngine;
 
 /// <summary>
@@ -13,7 +11,6 @@ public class SandboxLogic : MonoBehaviour
 	[MenuItem("Custom/Run sandbox logic script")]
 	static void RunSandboxLogicScript()
 	{
-		AddressableAssetSettings settings = AddressableAssetSettingsDefaultObject.Settings;
 
 		string[] guids = AssetDatabase.FindAssets("t:CharacterToggleId");
 		foreach (var guid in guids)
@@ -56,21 +53,5 @@ public class SandboxLogic : MonoBehaviour
 			EditorUtility.SetDirty(asset);
 		}
 		AssetDatabase.SaveAssets();
-
-
-#pragma warning disable CS8321 // Local function is declared but never used
-		void GetOrCreateEntry(string referenceGuid)
-		{
-
-			AddressableAssetEntry entry = settings.FindAssetEntry(referenceGuid);
-			if (entry == null)
-			{
-				// Add new entry
-				entry = settings.CreateOrMoveEntry(referenceGuid, settings.DefaultGroup);
-				entry.address = referenceGuid;
-			}
-		}
-#pragma warning restore CS8321 // Local function is declared but never used
 	}
-
 }

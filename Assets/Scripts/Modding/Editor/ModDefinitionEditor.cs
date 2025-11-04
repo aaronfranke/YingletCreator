@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEditor;
-using UnityEditor.AddressableAssets;
-using UnityEditor.AddressableAssets.Build;
-using UnityEditor.AddressableAssets.Settings;
 using UnityEngine;
 
 [CustomEditor(typeof(ModDefinition))]
@@ -59,14 +55,16 @@ public class ModDefinitionEditor : Editor
 	{
 		try
 		{
-			EditorUtility.DisplayProgressBar("Building mod", $"Assigning assets to appropriate group...", 0.3f);
-			var addressableSettings = AddressableAssetSettingsDefaultObject.Settings;
-			var group = GetOrCreateModGroup(addressableSettings, modDefinition);
-			var assetPaths = GetAssetPathsForModDefinition(modDefinition);
-			MoveAddressablesToGroup(assetPaths, addressableSettings, group);
+			// TTODO
+			//string groupName = $"mod-{modDefinition.UniqueAssetID}";
+			//EditorUtility.DisplayProgressBar("Building mod", $"Assigning assets to appropriate group...", 0.3f);
+			//var addressableSettings = AddressableAssetSettingsDefaultObject.Settings;
+			//var group = GetOrCreateModGroup(addressableSettings, modDefinition);
+			//var assetPaths = GetAssetPathsForModDefinition(modDefinition);
+			//MoveAddressablesToGroup(assetPaths, addressableSettings, group);
 
 			EditorUtility.DisplayProgressBar("Building mod", $"Building group...", 0.6f);
-			BuildGroup(addressableSettings, group);
+			//BuildGroup(addressableSettings, group);
 
 			EditorUtility.ClearProgressBar();
 			EditorUtility.DisplayDialog("Mod Built", $"Mod contents built to: TBD", "OK");
@@ -78,24 +76,6 @@ public class ModDefinitionEditor : Editor
 			Debug.LogException(ex);
 			EditorUtility.DisplayDialog("Bundle Content", $"An error occurred while bundling: {ex.Message}\nSee Console for details.", "OK");
 		}
-	}
-
-	static AddressableAssetGroup GetOrCreateModGroup(AddressableAssetSettings addressableSettings, ModDefinition modDefinition)
-	{
-		string groupName = $"mod-{modDefinition.UniqueAssetID}";
-
-		AddressableAssetGroup targetGroup = addressableSettings.FindGroup(groupName);
-		if (targetGroup == null)
-		{
-			Debug.Log($"Existing group for {groupName} not found. Creating it now...");
-			targetGroup = addressableSettings.CreateGroup(
-				groupName,
-				false, false, false, null,
-				typeof(UnityEditor.AddressableAssets.Settings.GroupSchemas.BundledAssetGroupSchema),
-				typeof(UnityEditor.AddressableAssets.Settings.GroupSchemas.ContentUpdateGroupSchema)
-			);
-		}
-		return targetGroup;
 	}
 
 	static string[] GetAssetPathsForModDefinition(ModDefinition modDefinition)
@@ -119,49 +99,5 @@ public class ModDefinitionEditor : Editor
 				return !IgnoreExtensions.Any(ignore => string.Equals(ext, ignore, StringComparison.OrdinalIgnoreCase));
 			})
 			.ToArray();
-	}
-
-	static void MoveAddressablesToGroup(IEnumerable<string> assetRelativePaths, AddressableAssetSettings addressableSettings, AddressableAssetGroup group)
-	{
-		foreach (string relativePath in assetRelativePaths)
-		{
-			string guid = AssetDatabase.AssetPathToGUID(relativePath);
-			if (string.IsNullOrEmpty(guid))
-			{
-				Debug.LogWarning($"Could not resolve GUID for: {relativePath}");
-				continue;
-			}
-
-			var entry = addressableSettings.FindAssetEntry(guid);
-			if (entry == null)
-			{
-				// Any relevant asset should have been made auto addressable by the script
-				continue;
-			}
-
-			if (entry.parentGroup == group)
-			{
-				continue; // Already in the appropriate group
-			}
-			addressableSettings.CreateOrMoveEntry(guid, group);
-		}
-
-		AssetDatabase.SaveAssets();
-		AssetDatabase.Refresh();
-	}
-
-	static void BuildGroup(AddressableAssetSettings addressableSettings, AddressableAssetGroup group)
-	{
-		string buildPath = "../BuiltMods/";
-		Directory.CreateDirectory(buildPath);
-
-		var ctx = new AddressablesPlayerBuildResult();
-		var buildInput = new AddressablesDataBuilderInput(addressableSettings)
-		{
-
-		};
-
-		IDataBuilder builder = addressableSettings.ActivePlayerDataBuilder;
-		var result = builder.BuildData<AddressablesPlayerBuildResult>(buildInput);
 	}
 }

@@ -3,7 +3,7 @@ using Character.Compositor;
 using Character.Data;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
+
 
 /// <summary>
 /// Loads resources combining:

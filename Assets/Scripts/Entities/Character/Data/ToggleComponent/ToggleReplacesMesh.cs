@@ -1,6 +1,6 @@
 using Character.Compositor;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
+
 
 namespace Character.Data
 {

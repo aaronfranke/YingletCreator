@@ -1,7 +1,7 @@
 using Character.Data;
 using Reactivity;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
+
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
