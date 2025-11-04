@@ -152,7 +152,7 @@ public class ModDefinitionEditor : Editor
 
 	static void BuildGroup(AddressableAssetSettings addressableSettings, AddressableAssetGroup group)
 	{
-		string buildPath = "Build/Mods";
+		string buildPath = "../BuiltMods/";
 		Directory.CreateDirectory(buildPath);
 
 		var ctx = new AddressablesPlayerBuildResult();
