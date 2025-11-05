@@ -35,7 +35,7 @@ namespace Character.Creator
 			if (sliderData?.SliderValues == null) return;
 			foreach (var sliderValue in sliderData.SliderValues)
 			{
-				var key = resourceLoader.LoadCharacterSliderId(sliderValue.Id);
+				var key = resourceLoader.Load<CharacterSliderId>(sliderValue.Id);
 				SliderValues[key] = new(sliderValue.Value);
 			}
 		}
@@ -53,7 +53,7 @@ namespace Character.Creator
 			if (colorData?.ColorizeValues == null) return;
 			foreach (var colorizeValues in colorData.ColorizeValues)
 			{
-				var key = resourceLoader.LoadReColorId(colorizeValues.Id);
+				var key = resourceLoader.Load<ReColorId>(colorizeValues.Id);
 				ColorizeValues[key] = new(colorizeValues.Values);
 			}
 		}
@@ -67,7 +67,7 @@ namespace Character.Creator
 			if (toggleData?.ToggleIds == null) return;
 			foreach (var toggleIdString in toggleData.ToggleIds)
 			{
-				var toggleId = resourceLoader.LoadCharacterToggleId(toggleIdString);
+				var toggleId = resourceLoader.Load<CharacterToggleId>(toggleIdString);
 				Toggles.Add(toggleId);
 			}
 		}
@@ -82,7 +82,7 @@ namespace Character.Creator
 			if (numberData?.IntValues == null) return;
 			foreach (var sliderValue in numberData.IntValues)
 			{
-				var key = resourceLoader.LoadCharacterIntId(sliderValue.Id);
+				var key = resourceLoader.Load<CharacterIntId>(sliderValue.Id);
 				IntValues[key] = new(sliderValue.Value);
 			}
 		}
