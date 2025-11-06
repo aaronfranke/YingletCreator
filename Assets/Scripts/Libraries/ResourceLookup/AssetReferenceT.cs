@@ -16,6 +16,14 @@ public class AssetReferenceT<T> : AssetReference where T : UnityEngine.Object
 	{
 		if (!_cached)
 		{
+#if UNITY_EDITOR
+			if (CompositeResourceLoader.Instance == null) // For editor scripts that try to read off this
+			{
+				return EditorAsset as T;
+			}
+#endif
+
+
 			_cachedVal = CompositeResourceLoader.Instance.Load<T>(m_AssetGUID);
 			_cached = true;
 		}
@@ -33,6 +41,11 @@ public class AssetReferenceT<T> : AssetReference where T : UnityEngine.Object
 			return asset;
 		}
 	}
+
+	public override Type GetAssetType()
+	{
+		return typeof(T);
+	}
 #endif
 }
 
@@ -47,6 +60,11 @@ public class AssetReference
 	public virtual UnityEngine.Object EditorAsset
 	{
 		get => null;
+	}
+
+	public virtual Type GetAssetType()
+	{
+		return typeof(UnityEngine.Object);
 	}
 
 	public static string GetGuidFor(UnityEngine.Object obj)

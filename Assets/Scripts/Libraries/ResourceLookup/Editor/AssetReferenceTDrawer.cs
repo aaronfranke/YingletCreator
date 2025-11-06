@@ -22,7 +22,7 @@ class AssetReferenceDrawer : PropertyDrawer
 
 		string labelText = label.text;
 
-		var m_AssetRefObject = property.GetActualObjectForSerializedProperty<AssetReference>(fieldInfo, ref labelText);
+		var assetReferenceObject = property.GetActualObjectForSerializedProperty<AssetReference>(fieldInfo, ref labelText);
 
 		labelText = ObjectNames.NicifyVariableName(labelText);
 		if (labelText != label.text || string.IsNullOrEmpty(label.text))
@@ -30,7 +30,7 @@ class AssetReferenceDrawer : PropertyDrawer
 			label = new GUIContent(labelText, label.tooltip);
 		}
 
-		var asset = m_AssetRefObject.EditorAsset;
+		var asset = assetReferenceObject.EditorAsset;
 
 		bool isOverride = property.prefabOverride;
 
@@ -48,7 +48,7 @@ class AssetReferenceDrawer : PropertyDrawer
 		{
 			GUI.backgroundColor = new Color(0.4f, 0.85f, 1f);
 		}
-		var updatedAsset = EditorGUI.ObjectField(labelRect, GUIContent.none, m_AssetRefObject.EditorAsset, typeof(UnityEngine.Object), false);
+		var updatedAsset = EditorGUI.ObjectField(labelRect, GUIContent.none, assetReferenceObject.EditorAsset, assetReferenceObject.GetAssetType(), false);
 		GUI.backgroundColor = originalColor;
 
 		EditorGUI.BeginChangeCheck();
