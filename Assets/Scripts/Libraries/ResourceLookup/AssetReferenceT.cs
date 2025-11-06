@@ -1,4 +1,5 @@
 using System;
+using UnityEditor;
 using UnityEngine;
 
 /// <summary>
@@ -6,11 +7,8 @@ using UnityEngine;
 /// I ultimately found that system far too heavy handed to use
 /// </summary>
 [Serializable]
-public class AssetReferenceT<T> where T : UnityEngine.Object
+public class AssetReferenceT<T> : AssetReference where T : UnityEngine.Object
 {
-	// Using this naming convention for compatibility reasons after migrating off of Addressables
-	[SerializeField] string m_AssetGUID;
-
 	bool _cached = false; // Can't rely on nullability because the value might be null
 	T _cachedVal;
 
@@ -24,4 +22,38 @@ public class AssetReferenceT<T> where T : UnityEngine.Object
 
 		return _cachedVal;
 	}
+
+#if UNITY_EDITOR
+	public override UnityEngine.Object EditorAsset
+	{
+		get
+		{
+			var path = AssetDatabase.GUIDToAssetPath(m_AssetGUID);
+			var asset = UnityEditor.AssetDatabase.LoadAssetAtPath<T>(path);
+			return asset;
+		}
+	}
+#endif
+}
+
+public class AssetReference
+{
+	// Using this naming convention for compatibility reasons after migrating off of Addressables
+	[SerializeField] protected string m_AssetGUID;
+
+#if UNITY_EDITOR
+	public string AssetGUID => m_AssetGUID;
+
+	public virtual UnityEngine.Object EditorAsset
+	{
+		get => null;
+	}
+
+	public static string GetGuidFor(UnityEngine.Object obj)
+	{
+		var path = AssetDatabase.GetAssetPath(obj);
+		var guid = AssetDatabase.GUIDFromAssetPath(path);
+		return guid.ToString();
+	}
+#endif
 }
