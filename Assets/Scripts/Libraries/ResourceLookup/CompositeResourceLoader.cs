@@ -97,3 +97,10 @@ public class CompositeResourceLoader : MonoBehaviour, ICompositeResourceLoader
 		return _cachedTextures;
 	}
 }
+
+internal interface IResourceProvider
+{
+	void Setup(); // We don't want these to act right away in case they aren't used
+	T Load<T>(string guid) where T : UnityEngine.Object;
+	IEnumerable<T> LoadAll<T>() where T : UnityEngine.Object;
+}

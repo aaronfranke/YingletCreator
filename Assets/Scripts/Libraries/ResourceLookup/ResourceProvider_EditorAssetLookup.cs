@@ -1,14 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-internal interface IResourceProvider
-{
-	T Load<T>(string guid) where T : UnityEngine.Object;
-	IEnumerable<T> LoadAll<T>() where T : UnityEngine.Object;
-}
 
 internal sealed class ResourceProvider_EditorAssetLookup : IResourceProvider
 {
+	public void Setup() { } // No setup needed
+
 	public T Load<T>(string guid) where T : UnityEngine.Object
 	{
 		if (string.IsNullOrWhiteSpace(guid)) return null;
