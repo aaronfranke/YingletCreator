@@ -9,8 +9,6 @@ public class ModDefinitionEditor : Editor
 {
 	SerializedProperty _modDisplayTitleProp;
 
-	[SerializeField] ResourceLookupTable _resourceLookupTable;
-
 	void OnEnable()
 	{
 		_modDisplayTitleProp = serializedObject.FindProperty("_modDisplayTitle");
@@ -57,22 +55,26 @@ public class ModDefinitionEditor : Editor
 	{
 		try
 		{
-
 			string modAssetPath = AssetDatabase.GetAssetPath(modDefinition);
+			string modRelativeFolder = Path.GetDirectoryName(modAssetPath);
 			string bundleFileName = Path.GetFileNameWithoutExtension(modAssetPath) + ModDefinition.ModExtension;
-			var outputFolder = GetOutputFolder();
+			string outputFolder = GetOutputFolder();
 
-			EditorUtility.DisplayProgressBar($"Building Mod - {bundleFileName}", "Assigning assets to bundle...", 0.2f);
-			var assetPaths = GetAssetPathsForModDefinition(modDefinition);
+			EditorUtility.DisplayProgressBar($"Building Mod - {bundleFileName}", "Assigning assets to bundle...", 0.1f);
+			var assetPaths = GetAssetPathsInFolder(modRelativeFolder);
 			AssignAssetBundleToAssets(assetPaths, modDefinition.UniqueAssetID);
 
-			EditorUtility.DisplayProgressBar($"Building Mod - {bundleFileName}", $"Creating asset lookup table...", 0.2f);
-			// TODO
+			EditorUtility.DisplayProgressBar($"Building Mod - {bundleFileName}", $"Creating asset lookup table...", 0.3f);
+			modDefinition.EditorSetTable(ResourceTablePopulationUtils.PopulateLookupTable(modRelativeFolder, true));
 
-			EditorUtility.DisplayProgressBar($"Building Mod - {bundleFileName}", "Building bundle...", 0.6f);
+			EditorUtility.DisplayProgressBar($"Building Mod - {bundleFileName}", "Saving updated properties on ModDefinition...", 0.7f);
+			EditorUtility.SetDirty(modDefinition);
+			AssetDatabase.SaveAssets();
+
+			EditorUtility.DisplayProgressBar($"Building Mod - {bundleFileName}", "Building bundle...", 0.7f);
 			BuildBundle(outputFolder, bundleFileName, assetPaths);
 
-			EditorUtility.DisplayProgressBar($"Building Mod - {bundleFileName}", "Cleaning up...", 0.8f);
+			EditorUtility.DisplayProgressBar($"Building Mod - {bundleFileName}", "Cleaning up...", 0.9f);
 			DeleteAllManifestFiles(outputFolder);
 
 			EditorUtility.ClearProgressBar();
@@ -85,14 +87,6 @@ public class ModDefinitionEditor : Editor
 			Debug.LogException(ex);
 			EditorUtility.DisplayDialog("Bundle Content", $"An error occurred while bundling: {ex.Message}\nSee Console for details.", "OK");
 		}
-	}
-
-	static string[] GetAssetPathsForModDefinition(ModDefinition modDefinition)
-	{
-		string modAssetPath = AssetDatabase.GetAssetPath(modDefinition);
-		var relativeFolder = Path.GetDirectoryName(modAssetPath);
-
-		return GetAssetPathsInFolder(relativeFolder);
 	}
 
 	static string[] GetAssetPathsInFolder(string relativeFolder)

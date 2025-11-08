@@ -14,5 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueAssetId: 667afd3c8cca9db479f3ddfecb64cb84
   _modDisplayTitle: Star Pack
-  _toggles:
-  - {fileID: 11400000, guid: ed5205bcb2617f8498f40236e18fdaec, type: 2}
+  _table:
+    Resources:
+    - Guid: c0d0ae0ef4785204a895884a05fcb54e
+      Object: {fileID: 11400000, guid: c0d0ae0ef4785204a895884a05fcb54e, type: 2}
+    - Guid: 7fbe3b8616da42645a994e2b55e8ffa1
+      Object: {fileID: 11400000, guid: 7fbe3b8616da42645a994e2b55e8ffa1, type: 2}
+    - Guid: 4024e817def281246ab3650df5749b6e
+      Object: {fileID: 2800000, guid: 4024e817def281246ab3650df5749b6e, type: 3}
+    - Guid: ed5205bcb2617f8498f40236e18fdaec
+      Object: {fileID: 11400000, guid: ed5205bcb2617f8498f40236e18fdaec, type: 2}
+    - Guid: 667afd3c8cca9db479f3ddfecb64cb84
+      Object: {fileID: 11400000}

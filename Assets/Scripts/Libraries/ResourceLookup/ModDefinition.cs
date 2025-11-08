@@ -12,4 +12,16 @@ public class ModDefinition : ScriptableObject, IHasUniqueAssetId
 	[SerializeField] string _modDisplayTitle = "Replace Me";
 	public string ModDisplayTitle => _modDisplayTitle;
 
+	[SerializeField, HideInInspector] ResourceLookupTable _table;
+
+#if UNITY_EDITOR
+
+	public void EditorSetTable(ResourceLookupTable table)
+	{
+		_table = table;
+		UnityEditor.EditorUtility.SetDirty(this);
+		UnityEditor.AssetDatabase.SaveAssets();
+	}
+#endif
+
 }
