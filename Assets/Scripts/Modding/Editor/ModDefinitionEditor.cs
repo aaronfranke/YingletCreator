@@ -9,6 +9,8 @@ public class ModDefinitionEditor : Editor
 {
 	SerializedProperty _modDisplayTitleProp;
 
+	[SerializeField] ResourceLookupTable _resourceLookupTable;
+
 	void OnEnable()
 	{
 		_modDisplayTitleProp = serializedObject.FindProperty("_modDisplayTitle");
@@ -18,13 +20,13 @@ public class ModDefinitionEditor : Editor
 	{
 		serializedObject.Update();
 
-		EditorGUILayout.LabelField("This is the title that will display in-game and on the Steam workshop:");
+		EditorGUILayout.LabelField("This is the title that will display on the about page:");
 		EditorGUILayout.PropertyField(_modDisplayTitleProp);
 
 		DrawHorizontalLine(Color.gray);
 
 
-		EditorGUILayout.LabelField("Click the following button to generate a mod (.bundle) file. This bundle will include:");
+		EditorGUILayout.LabelField("Click the following button to generate a mod (.bundle) file. This bundle will include all of the following items nested in this folder:");
 		EditorGUILayout.LabelField(" • Presets (.yingsave)");
 		EditorGUILayout.LabelField(" • Toggles (CharacterToggleId)");
 		EditorGUILayout.LabelField(" • Poses (PoseID)");
@@ -55,20 +57,27 @@ public class ModDefinitionEditor : Editor
 	{
 		try
 		{
-			// TTODO
-			//string groupName = $"mod-{modDefinition.UniqueAssetID}";
-			//EditorUtility.DisplayProgressBar("Building mod", $"Assigning assets to appropriate group...", 0.3f);
-			//var addressableSettings = AddressableAssetSettingsDefaultObject.Settings;
-			//var group = GetOrCreateModGroup(addressableSettings, modDefinition);
-			//var assetPaths = GetAssetPathsForModDefinition(modDefinition);
-			//MoveAddressablesToGroup(assetPaths, addressableSettings, group);
 
-			EditorUtility.DisplayProgressBar("Building mod", $"Building group...", 0.6f);
-			//BuildGroup(addressableSettings, group);
+			string modAssetPath = AssetDatabase.GetAssetPath(modDefinition);
+			string bundleFileName = Path.GetFileNameWithoutExtension(modAssetPath) + ModDefinition.ModExtension;
+			var outputFolder = GetOutputFolder();
+
+			EditorUtility.DisplayProgressBar($"Building Mod - {bundleFileName}", "Assigning assets to bundle...", 0.2f);
+			var assetPaths = GetAssetPathsForModDefinition(modDefinition);
+			AssignAssetBundleToAssets(assetPaths, modDefinition.UniqueAssetID);
+
+			EditorUtility.DisplayProgressBar($"Building Mod - {bundleFileName}", $"Creating asset lookup table...", 0.2f);
+			// TODO
+
+			EditorUtility.DisplayProgressBar($"Building Mod - {bundleFileName}", "Building bundle...", 0.6f);
+			BuildBundle(outputFolder, bundleFileName, assetPaths);
+
+			EditorUtility.DisplayProgressBar($"Building Mod - {bundleFileName}", "Cleaning up...", 0.8f);
+			DeleteAllManifestFiles(outputFolder);
 
 			EditorUtility.ClearProgressBar();
-			EditorUtility.DisplayDialog("Mod Built", $"Mod contents built to: TBD", "OK");
-
+			EditorUtility.RevealInFinder(Path.Combine(outputFolder, bundleFileName));
+			EditorUtility.DisplayDialog($"Mod Built - {bundleFileName}", $"Mod contents built to: {outputFolder}", "OK");
 		}
 		catch (Exception ex)
 		{
@@ -88,16 +97,66 @@ public class ModDefinitionEditor : Editor
 
 	static string[] GetAssetPathsInFolder(string relativeFolder)
 	{
-		string[] IgnoreExtensions = new[] { ".manifest", "", ModDefinition.ModExtension }; // Don't consume anything generated or any folders
 
 		var assetGuids = AssetDatabase.FindAssets("", new[] { relativeFolder });
 		return assetGuids
 			.Select(guid => AssetDatabase.GUIDToAssetPath(guid))
-			.Where(path =>
-			{
-				var ext = Path.GetExtension(path) ?? string.Empty;
-				return !IgnoreExtensions.Any(ignore => string.Equals(ext, ignore, StringComparison.OrdinalIgnoreCase));
-			})
 			.ToArray();
+	}
+
+	static void AssignAssetBundleToAssets(string[] assetPaths, string bundleName)
+	{
+		foreach (var assetPath in assetPaths)
+		{
+			var importer = AssetImporter.GetAtPath(assetPath);
+			if (importer != null && importer.assetBundleName != bundleName)
+			{
+				importer.assetBundleName = bundleName;
+				importer.SaveAndReimport();
+			}
+		}
+		AssetDatabase.RemoveUnusedAssetBundleNames(); // clean up any stale bundle names
+	}
+
+	static string GetOutputFolder()
+	{
+		var projectRoot = Directory.GetParent(Application.dataPath).FullName;
+		var outputFolder = Path.Combine(projectRoot, "Builds", "Mods");
+		return outputFolder;
+	}
+
+	static void BuildBundle(string outputFolder, string bundleFileName, string[] assetPaths)
+	{
+		if (!Directory.Exists(outputFolder))
+		{
+			Directory.CreateDirectory(outputFolder);
+		}
+		var build = new AssetBundleBuild()
+		{
+			assetBundleName = bundleFileName,
+			assetNames = assetPaths
+		};
+		var buildParams = new BuildAssetBundlesParameters()
+		{
+			outputPath = outputFolder,
+			bundleDefinitions = new[] { build },
+			targetPlatform = EditorUserBuildSettings.activeBuildTarget
+		};
+		var manifest = BuildPipeline.BuildAssetBundles(buildParams);
+	}
+
+	static void DeleteAllManifestFiles(string outputFolder)
+	{
+		// Delete all .manifest files (recursive)
+		foreach (string file in Directory.GetFiles(outputFolder, "*.manifest", SearchOption.TopDirectoryOnly))
+		{
+			File.Delete(file);
+		}
+
+		var modsFile = Path.Combine(outputFolder, "Mods");
+		if (File.Exists(modsFile))
+		{
+			File.Delete(modsFile);
+		}
 	}
 }
