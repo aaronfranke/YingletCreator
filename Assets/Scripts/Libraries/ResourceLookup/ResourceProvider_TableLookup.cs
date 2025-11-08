@@ -17,6 +17,11 @@ internal sealed class ResourceProvider_TableLookup : MonoBehaviour, IResourcePro
 
 	public T Load<T>(string guid) where T : Object
 	{
+		if (string.IsNullOrEmpty(guid))
+		{
+			return null;
+		}
+
 		bool loaded = _dictionary.TryGetValue(guid, out Object obj);
 		if (!loaded)
 		{

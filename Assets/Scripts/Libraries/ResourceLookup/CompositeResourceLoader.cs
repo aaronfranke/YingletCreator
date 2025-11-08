@@ -47,6 +47,7 @@ public class CompositeResourceLoader : MonoBehaviour, ICompositeResourceLoader
 		Instance = this;
 
 		_provider = GetProvider();
+		_provider.Setup();
 
 		_cachedPoses = _provider.LoadAll<PoseId>();
 		_cachedToggles = _provider.LoadAll<CharacterToggleId>();
@@ -100,6 +101,7 @@ public class CompositeResourceLoader : MonoBehaviour, ICompositeResourceLoader
 
 internal interface IResourceProvider
 {
+	void Setup();
 	T Load<T>(string guid) where T : UnityEngine.Object;
 	IEnumerable<T> LoadAll<T>() where T : UnityEngine.Object;
 }
