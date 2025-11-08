@@ -31,7 +31,10 @@ enum CompositeResourceLoadMethod
 
 public class CompositeResourceLoader : MonoBehaviour, ICompositeResourceLoader
 {
+#pragma warning disable CS0414 // Only used if editor enabled
 	[SerializeField] CompositeResourceLoadMethod _loadMethod = CompositeResourceLoadMethod.EditorAssetLookup;
+#pragma warning restore CS0414
+
 
 	// Not a fan of this kind of singleton pattern, but exposing the loading otherwise is a major pain in the ass
 	// Since loading logic happens from so many different locations

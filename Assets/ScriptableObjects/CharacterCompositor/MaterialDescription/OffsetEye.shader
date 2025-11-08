@@ -67,8 +67,8 @@ Shader "Custom/OffsetEye"
 
             float4 frag (v2f i) : SV_Target
             {
-                const int COLUMNS = 4; 
-                const int ROWS = 2; 
+                const uint COLUMNS = 4; 
+                const uint ROWS = 2; 
 
                 float2 pupilOffset = float2(_PupilOffsetX, _PupilOffsetY);
 
