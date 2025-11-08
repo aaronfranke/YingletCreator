@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 
-internal sealed class ResourceProvider_EditorAssetLookup : IResourceProvider
+internal sealed class ResourceProvider_EditorAssetLookup : MonoBehaviour, IResourceProvider
 {
 	public void Setup() { } // No setup needed
 

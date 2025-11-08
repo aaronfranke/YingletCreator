@@ -72,8 +72,8 @@ public class CompositeResourceLoader : MonoBehaviour, ICompositeResourceLoader
 #endif
 		return actualLoadMethod switch
 		{
-			CompositeResourceLoadMethod.EditorAssetLookup => new ResourceProvider_EditorAssetLookup(),
-			CompositeResourceLoadMethod.SerializedTableLookup => throw new NotImplementedException(),
+			CompositeResourceLoadMethod.EditorAssetLookup => this.GetComponent<ResourceProvider_EditorAssetLookup>(),
+			CompositeResourceLoadMethod.SerializedTableLookup => this.GetComponent<ResourceProvider_TableLookup>(),
 			_ => throw new ArgumentException($"No composite resource loader for {actualLoadMethod}")
 		};
 	}
@@ -100,7 +100,6 @@ public class CompositeResourceLoader : MonoBehaviour, ICompositeResourceLoader
 
 internal interface IResourceProvider
 {
-	void Setup(); // We don't want these to act right away in case they aren't used
 	T Load<T>(string guid) where T : UnityEngine.Object;
 	IEnumerable<T> LoadAll<T>() where T : UnityEngine.Object;
 }

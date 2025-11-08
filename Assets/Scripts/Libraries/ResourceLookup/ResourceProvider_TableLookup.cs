@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 
-internal sealed class ResourceProvider_TableLookup : IResourceProvider
+internal sealed class ResourceProvider_TableLookup : MonoBehaviour, IResourceProvider
 {
 	[SerializeField] DefaultResourceLookupTable _defaultResourceTable;
-	private Dictionary<string, UnityEngine.Object> _dictionary;
+	private Dictionary<string, Object> _dictionary;
 
 	public void Setup()
 	{
@@ -15,14 +15,30 @@ internal sealed class ResourceProvider_TableLookup : IResourceProvider
 		_defaultResourceTable = null; // Don't need this hogging memory any more
 	}
 
-	public T Load<T>(string guid) where T : UnityEngine.Object
+	public T Load<T>(string guid) where T : Object
 	{
-		throw new NotImplementedException();
+		bool loaded = _dictionary.TryGetValue(guid, out Object obj);
+		if (!loaded)
+		{
+			Debug.LogError($"Couldn't find guid {guid} of type {typeof(T).Name} in lookup table; returning null");
+			return null;
+		}
+		var typedObj = obj as T;
+		if (obj is null)
+		{
+			Debug.LogError($"Attempted to cast guid {guid} to type {typeof(T).Name} but failed");
+			return null;
+		}
+		return typedObj;
 	}
 
-	public IEnumerable<T> LoadAll<T>() where T : UnityEngine.Object
+	public IEnumerable<T> LoadAll<T>() where T : Object
 	{
-		throw new NotImplementedException();
+		return _dictionary
+			.Values
+			.Select(v => v as T)
+			.Where(v => v != null)
+			.ToArray();
 	}
 
 }
