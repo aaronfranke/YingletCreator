@@ -9,11 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8b5018ff73be7b4996c9f1fddb56e1d, type: 3}
-  m_Name: DefaultResourceLookupTable
+  m_Script: {fileID: 11500000, guid: 120deaf7dc863c64580690e742f11134, type: 3}
+  m_Name: BuiltInAssetsMod
   m_EditorClassIdentifier: 
-  Table:
+  _uniqueAssetId: 5574bb7c8b4533a4db95c866560e659e
+  _modDisplayTitle: Built-In Assets
+  _table:
     Resources:
+    - Guid: 5574bb7c8b4533a4db95c866560e659e
+      Object: {fileID: 11400000}
     - Guid: 7bfe8ede32f8e274fb5b3bbd405c31bf
       Object: {fileID: 11400000, guid: 7bfe8ede32f8e274fb5b3bbd405c31bf, type: 2}
     - Guid: 2e6d29396e5cc3843aa83f4fd5ec3dcd
@@ -2896,5 +2900,3 @@ MonoBehaviour:
       Object: {fileID: 11400000, guid: b21e1bb12a7c5c1439ed7a1129423dc2, type: 2}
     - Guid: 50728303e837d4b4d970bedba0fe91a1
       Object: {fileID: 11400000, guid: 50728303e837d4b4d970bedba0fe91a1, type: 2}
-    - Guid: 6f90434dcc6093248b58463452137fa6
-      Object: {fileID: 11400000}

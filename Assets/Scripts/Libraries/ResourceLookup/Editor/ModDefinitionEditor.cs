@@ -17,24 +17,36 @@ public class ModDefinitionEditor : Editor
 	public override void OnInspectorGUI()
 	{
 		serializedObject.Update();
+		var modDefinition = (ModDefinition)target;
 
 		EditorGUILayout.LabelField("This is the title that will display on the about page:");
 		EditorGUILayout.PropertyField(_modDisplayTitleProp);
 
 		DrawHorizontalLine(Color.gray);
 
-
-		EditorGUILayout.LabelField("Click the following button to generate a mod (.bundle) file. This bundle will include all of the following items nested in this folder:");
-		EditorGUILayout.LabelField(" • Presets (.yingsave)");
-		EditorGUILayout.LabelField(" • Toggles (CharacterToggleId)");
-		EditorGUILayout.LabelField(" • Poses (PoseID)");
-		EditorGUILayout.LabelField("Supporting textures, models, and ScriptableObject metadata will also be bundled.");
-
-		var modDefinition = (ModDefinition)target;
-
-		if (GUILayout.Button("Build Mod"))
+		if (modDefinition.IsBuiltInMod)
 		{
-			BundleContent(modDefinition);
+			EditorGUILayout.LabelField("The default mod can not be built; it is automatically included");
+
+			if (GUILayout.Button("Regenerate Lookup Table"))
+			{
+				ResourceTablePopulationUtils.PopulateLookupTable(modDefinition);
+			}
+		}
+
+		else
+		{
+			EditorGUILayout.LabelField("Click the following button to generate a mod (.bundle) file. This bundle will include all of the following items nested in this folder:");
+			EditorGUILayout.LabelField(" • Presets (.yingsave)");
+			EditorGUILayout.LabelField(" • Toggles (CharacterToggleId)");
+			EditorGUILayout.LabelField(" • Poses (PoseID)");
+			EditorGUILayout.LabelField("Supporting textures, models, and ScriptableObject metadata will also be bundled.");
+
+
+			if (GUILayout.Button("Build Mod"))
+			{
+				BundleContent(modDefinition);
+			}
 		}
 
 		serializedObject.ApplyModifiedProperties();
@@ -65,7 +77,7 @@ public class ModDefinitionEditor : Editor
 			AssignAssetBundleToAssets(assetPaths, modDefinition.UniqueAssetID);
 
 			EditorUtility.DisplayProgressBar($"Building Mod - {bundleFileName}", $"Creating asset lookup table...", 0.3f);
-			modDefinition.EditorSetTable(ResourceTablePopulationUtils.PopulateLookupTable(modRelativeFolder, true));
+			ResourceTablePopulationUtils.PopulateLookupTable(modDefinition);
 
 			EditorUtility.DisplayProgressBar($"Building Mod - {bundleFileName}", "Saving updated properties on ModDefinition...", 0.7f);
 			EditorUtility.SetDirty(modDefinition);

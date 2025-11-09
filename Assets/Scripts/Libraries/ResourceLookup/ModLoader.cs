@@ -10,11 +10,12 @@ public interface IModLoader
 
 public class ModLoader : MonoBehaviour, IModLoader
 {
+	[SerializeField] ModDefinition _builtInMod;
+
 	public IEnumerable<ModDefinition> AllMods { get; private set; }
 
 	private void Awake()
 	{
-
 		AllMods = LoadAllModDefinitions();
 	}
 
@@ -31,6 +32,7 @@ public class ModLoader : MonoBehaviour, IModLoader
 		var paths = Directory.GetFiles(modFolder, $"*{ModDefinition.ModExtension}", SearchOption.AllDirectories);
 
 		List<ModDefinition> definitions = new();
+		definitions.Add(_builtInMod);
 		foreach (var path in paths)
 		{
 			var bundle = AssetBundle.LoadFromFile(path);

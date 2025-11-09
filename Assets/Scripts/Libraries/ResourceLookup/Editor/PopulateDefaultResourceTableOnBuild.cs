@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEditor;
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
@@ -8,19 +9,27 @@ public class PopulateDefaultResourceTableOnBuild : IPreprocessBuildWithReport
 
 	public void OnPreprocessBuild(BuildReport report)
 	{
-		string[] guids = AssetDatabase.FindAssets("t:DefaultResourceLookupTable");
-		if (guids.Length == 0)
+		var guids = AssetDatabase.FindAssets("t:DefaultResourceLookupTable");
+		var modDefinitions = guids
+			.Select(guid =>
+			{
+				var path = AssetDatabase.GUIDToAssetPath(guid);
+				var modDefinition = AssetDatabase.LoadAssetAtPath<ModDefinition>(path);
+				return modDefinition;
+			})
+			.Where(modDefinition => modDefinition.IsBuiltInMod)
+			.ToArray();
+		if (modDefinitions.Length == 0)
 		{
-			throw new System.Exception("No DefaultResourceLookupTable asset");
+			throw new System.Exception("No default mod asset");
 		}
-		if (guids.Length > 1)
+		if (modDefinitions.Length > 1)
 		{
-			throw new System.Exception("Multiple DefaultResourceLookupTable assets");
+			throw new System.Exception("Multiple default mod assets");
 		}
 
-		string path = AssetDatabase.GUIDToAssetPath(guids[0]);
-		var table = AssetDatabase.LoadAssetAtPath<DefaultResourceLookupTable>(path);
+		var modDefinition = modDefinitions.Single();
+		ResourceTablePopulationUtils.PopulateLookupTable(modDefinition);
 
-		DefaultResourceLookupTableEditor.EditorPopulateDefaultTable(table);
 	}
 }

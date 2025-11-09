@@ -7,8 +7,17 @@ using UnityEngine;
 
 public static class ResourceTablePopulationUtils
 {
+	public static void PopulateLookupTable(ModDefinition modDefinition)
+	{
+		bool isBuiltIn = modDefinition.IsBuiltInMod;
+		string rootFolder = isBuiltIn ? "Assets/ScriptableObjects" : modDefinition.GetParentFolder();
+		bool onlyIncludeItemsUnderFolder = !isBuiltIn;
 
-	public static ResourceLookupTable PopulateLookupTable(string rootFolder, bool onlyIncludeItemsUnderFolder)
+		var table = GenerateTable(rootFolder, onlyIncludeItemsUnderFolder);
+		modDefinition.EditorSetTable(table);
+	}
+
+	static ResourceLookupTable GenerateTable(string rootFolder, bool onlyIncludeItemsUnderFolder)
 	{
 		// Find all ScriptableObject assets in project
 		// I originally thought of just searching for the ones being used and working my way down but:

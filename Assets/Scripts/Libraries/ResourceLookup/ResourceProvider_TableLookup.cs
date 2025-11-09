@@ -6,18 +6,15 @@ using Object = UnityEngine.Object;
 
 internal sealed class ResourceProvider_TableLookup : MonoBehaviour, IResourceProvider
 {
-	[SerializeField] DefaultResourceLookupTable _defaultResourceTable;
 	private Dictionary<string, Object> _dictionary = new();
 
 	public void Setup()
 	{
 		var modProvider = Singletons.GetSingleton<IModLoader>();
-		AddTableToDictionary(_defaultResourceTable.Table);
 		foreach (var mod in modProvider.AllMods)
 		{
 			AddTableToDictionary(mod.Table);
 		}
-		_defaultResourceTable = null; // Don't need this hogging memory any more. Could probably do the same for mods but eh
 	}
 
 	void AddTableToDictionary(ResourceLookupTable table)

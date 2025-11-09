@@ -15,6 +15,8 @@ public class ModDefinition : ScriptableObject, IHasUniqueAssetId
 	[SerializeField, HideInInspector] ResourceLookupTable _table;
 	public ResourceLookupTable Table => _table;
 
+	public bool IsBuiltInMod => name == "BuiltInAssetsMod";
+
 #if UNITY_EDITOR
 
 	public void EditorSetTable(ResourceLookupTable table)
