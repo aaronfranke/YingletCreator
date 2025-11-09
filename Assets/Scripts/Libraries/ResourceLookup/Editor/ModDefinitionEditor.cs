@@ -127,6 +127,7 @@ public class ModDefinitionEditor : Editor
 		var assetGuids = AssetDatabase.FindAssets("", new[] { relativeFolder });
 		return assetGuids
 			.Select(guid => AssetDatabase.GUIDToAssetPath(guid))
+			.Where(path => !path.EndsWith(".yingsave"))
 			.ToArray();
 	}
 
