@@ -118,6 +118,8 @@ namespace Snapshotter
 			// Refresh AssetDatabase to show the new file
 			AssetDatabase.Refresh();
 
+			SetTextureToSprite(outputPath);
+
 			// Cleanup
 			GameObject.DestroyImmediate(tex);
 		}
@@ -210,6 +212,22 @@ namespace Snapshotter
 				Guid guid = new Guid(hashBytes);
 				return new GUID(guid.ToString("N"));
 			}
+		}
+
+		public static void SetTextureToSprite(string assetPath)
+		{
+			var importer = AssetImporter.GetAtPath(assetPath) as TextureImporter;
+
+			if (importer.textureType == TextureImporterType.Sprite && importer.spriteImportMode == SpriteImportMode.Multiple)
+			{
+				return; // Already good
+			}
+
+			importer.textureType = TextureImporterType.Sprite;
+			importer.spriteImportMode = SpriteImportMode.Multiple;
+
+			EditorUtility.SetDirty(importer);
+			importer.SaveAndReimport();
 		}
 	}
 }
