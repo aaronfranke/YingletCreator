@@ -12,12 +12,16 @@ public class DefaultResourceLookupTableEditor : Editor
 
 		if (GUILayout.Button("Manually Update Table"))
 		{
-
-			lookup.Table = ResourceTablePopulationUtils.PopulateLookupTable("Assets/ScriptableObjects", false);
-
-			// Mark modified and save
-			EditorUtility.SetDirty(lookup);
-			AssetDatabase.SaveAssets();
+			EditorPopulateDefaultTable(lookup);
 		}
+	}
+
+	public static void EditorPopulateDefaultTable(DefaultResourceLookupTable table)
+	{
+		table.Table = ResourceTablePopulationUtils.PopulateLookupTable("Assets/ScriptableObjects", false);
+
+		// Mark modified and save
+		EditorUtility.SetDirty(table);
+		AssetDatabase.SaveAssets();
 	}
 }
