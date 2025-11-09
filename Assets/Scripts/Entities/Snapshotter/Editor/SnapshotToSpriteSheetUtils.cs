@@ -188,7 +188,7 @@ namespace Snapshotter
 		{
 			int spaceNeeded = cellSize * cellSize * itemCount;
 
-			int testSize = 256;
+			int testSize = 128;
 			while (spaceNeeded > testSize * testSize)
 			{
 				testSize *= 2;
