@@ -47,7 +47,7 @@ namespace Character.Creator
 		bool SaveSelected();
 		void DuplicateSelected();
 		void DeleteSelected();
-		IEnumerable<CachedYingletReference> LoadInitialYingData(CustomizationYingletGroup group);
+		IEnumerable<CachedYingletReference> LoadInitialCustomYingData();
 
 		/// <summary>
 		/// Event fired when a yinglet is saved to disk
@@ -88,15 +88,14 @@ namespace Character.Creator
 		{
 			if (_selectionReference.Selected == null) return false;
 			var isPreset = _selectionReference.Selected.Group == CustomizationYingletGroup.Preset;
-			bool debugButtonsHeld = Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.LeftAlt);
-			if (isPreset && !debugButtonsHeld) return false;
+			if (isPreset) return false;
 
 			// Serialize the data
 			var data = _selectionData.CustomizationData;
 			var serializedData = new SerializableCustomizationData(data);
 
 			// Write it to disk
-			string rootFolder = isPreset ? _locationProvider.PresetFolderRoot : _locationProvider.CustomFolderRoot;
+			string rootFolder = _locationProvider.CustomFolderRoot;
 			string newYingletName = data.Name.Val;
 			var lastFilePath = _selectionReference.Selected.Path;
 			var newFilePath = GetUniqueAlphanumericFilePath(newYingletName, lastFilePath, rootFolder);
@@ -178,35 +177,20 @@ namespace Character.Creator
 			OnDeleted(Path.GetFileName(filePath));
 		}
 
-		public IEnumerable<CachedYingletReference> LoadInitialYingData(CustomizationYingletGroup group)
+		public IEnumerable<CachedYingletReference> LoadInitialCustomYingData()
 		{
-			var filePaths = GetYingPaths(group);
+			var filePaths = GetCustomYingPaths();
 			var references = filePaths
-				.Select(path => new CachedYingletReference(path, LoadData(path), group))
-				.Where(reference => reference.CachedData != null) // In case we got a corrupt yingsave file
+				.Select(path => new CachedYingletReference(path, LoadData(path), CustomizationYingletGroup.Custom))
 				.ToList();
-			references.Sort((a, b) => DateTime.Compare(a.CachedData.CreationTime, b.CachedData.CreationTime));
+
 			return references;
 		}
-		IEnumerable<string> GetYingPaths(CustomizationYingletGroup group)
+		IEnumerable<string> GetCustomYingPaths()
 		{
-			var folder = GetFolderForGroup(group);
-			if (!Directory.Exists(folder))
-			{
-				Debug.LogWarning($"No folder for group {group} at path {folder}");
-				return Enumerable.Empty<string>();
-			}
+			var folder = _locationProvider.CustomFolderRoot;
 			return Directory.GetFiles(folder, $"*{EXTENSION}", SearchOption.TopDirectoryOnly);
 
-		}
-		string GetFolderForGroup(CustomizationYingletGroup group)
-		{
-			return group switch
-			{
-				CustomizationYingletGroup.Preset => _locationProvider.PresetFolderRoot,
-				CustomizationYingletGroup.Custom => _locationProvider.CustomFolderRoot,
-				_ => throw new ArgumentException("No folder for group")
-			};
 		}
 		SerializableCustomizationData LoadData(string filePath)
 		{
