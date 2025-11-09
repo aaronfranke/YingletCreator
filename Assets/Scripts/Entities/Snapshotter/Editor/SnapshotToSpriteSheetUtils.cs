@@ -18,7 +18,28 @@ namespace Snapshotter
 		const string CameraPosRelativePath = "Assets/Scripts/Entities/Snapshotter/CameraPositions/_Default.asset";
 		const string PresetPath = "Assets/Scripts/Entities/Snapshotter/SnapshotYing.yingsave";
 
-		public static void SnapshotToTexAndApply(ISnapshottableScriptableObject[] snapshottables, string outputPath)
+		public static void GenerateToggleIcons(ModDefinition modDefinition)
+		{
+			const string OutputName = "GeneratedToggleIcons.png";
+			string outputFolder = modDefinition.GetParentFolder();
+			string outputPath = Path.Combine(outputFolder, OutputName);
+			var toggles = ObjectExtensionMethods.LoadAllAssets<CharacterToggleId>(outputFolder).ToArray();
+			// Filter out toggles that we don't want an icon for
+			toggles = toggles.Where(t => !t.Components.Any(c => c is NoToggleIcon)).ToArray();
+			SnapshotToTexAndApply(toggles, outputPath);
+		}
+
+		public static void GenerateSpriteIcons(ModDefinition modDefinition)
+		{
+			const string OutputName = "GeneratedPoseIcons.png";
+			string outputFolder = modDefinition.GetParentFolder();
+			string outputPath = Path.Combine(outputFolder, OutputName);
+			var poses = ObjectExtensionMethods.LoadAllAssets<PoseId>(outputFolder).ToArray();
+			poses = poses.Where(p => !p.name.StartsWith("(UNUSED)")).ToArray();
+			SnapshotToTexAndApply(poses, outputPath);
+		}
+
+		static void SnapshotToTexAndApply(ISnapshottableScriptableObject[] snapshottables, string outputPath)
 		{
 			if (!EditorApplication.isPlaying)
 			{
@@ -186,6 +207,5 @@ namespace Snapshotter
 				return new GUID(guid.ToString("N"));
 			}
 		}
-
 	}
 }
