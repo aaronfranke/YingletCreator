@@ -8,21 +8,11 @@ public interface ISaveFolderProvider
 }
 public class SaveFolderProvider : MonoBehaviour, ISaveFolderProvider
 {
-	string _gameRootFolderPath;
-	public string GameRootFolderPath
+	private void Awake()
 	{
-		get
-		{
-			if (_gameRootFolderPath == null)
-			{
-				string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-				_gameRootFolderPath = Path.Combine(documentsPath, "My Games", Application.productName);
-				if (!Directory.Exists(_gameRootFolderPath))
-				{
-					Directory.CreateDirectory(_gameRootFolderPath);
-				}
-			}
-			return _gameRootFolderPath;
-		}
+		string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+		var fullPath = Path.Combine(documentsPath, "My Games", Application.productName);
+		GameRootFolderPath = PathUtils.EnsureDirectoryExists(fullPath);
 	}
+	public string GameRootFolderPath { get; private set; }
 }

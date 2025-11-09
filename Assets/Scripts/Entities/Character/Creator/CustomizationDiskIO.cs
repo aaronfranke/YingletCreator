@@ -70,7 +70,7 @@ namespace Character.Creator
 
 		private ICustomizationSelection _selectionReference;
 		private ICustomizationSelectedDataRepository _selectionData;
-		private ICustomizationSaveFolderProvider _locationProvider;
+		private ICharacterCreatorFolderProvider _locationProvider;
 		private ICustomizationYingletRepository _yingletRepository;
 
 		public event Action<string> OnSaved = delegate { };
@@ -80,7 +80,7 @@ namespace Character.Creator
 		{
 			_selectionReference = this.GetComponent<ICustomizationSelection>();
 			_selectionData = this.GetComponent<ICustomizationSelectedDataRepository>();
-			_locationProvider = this.GetComponent<ICustomizationSaveFolderProvider>();
+			_locationProvider = this.GetComponent<ICharacterCreatorFolderProvider>();
 			_yingletRepository = this.GetComponent<ICustomizationYingletRepository>();
 		}
 

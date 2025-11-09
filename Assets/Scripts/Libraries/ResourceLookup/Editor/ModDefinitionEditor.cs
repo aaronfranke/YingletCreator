@@ -121,10 +121,7 @@ public class ModDefinitionEditor : Editor
 
 	static void BuildBundle(string outputFolder, string bundleFileName, string[] assetPaths)
 	{
-		if (!Directory.Exists(outputFolder))
-		{
-			Directory.CreateDirectory(outputFolder);
-		}
+		PathUtils.EnsureDirectoryExists(outputFolder);
 		var build = new AssetBundleBuild()
 		{
 			assetBundleName = bundleFileName,

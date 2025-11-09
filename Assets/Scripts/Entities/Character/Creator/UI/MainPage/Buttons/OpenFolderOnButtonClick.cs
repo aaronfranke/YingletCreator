@@ -16,14 +16,14 @@ namespace Character.Creator.UI
 		[SerializeField] private OpenFolderOnClickType _type;
 
 		private Button _button;
-		private ICustomizationSaveFolderProvider _folderProvider;
+		private ICharacterCreatorFolderProvider _folderProvider;
 
 		private void Awake()
 		{
 			_button = this.GetComponent<Button>();
 			_button.onClick.AddListener(Button_OnClick);
 
-			_folderProvider = this.GetComponentInParent<ICustomizationSaveFolderProvider>();
+			_folderProvider = this.GetComponentInParent<ICharacterCreatorFolderProvider>();
 		}
 
 		private void OnDestroy()

@@ -23,19 +23,8 @@ public interface ICompositeResourceLoader
 	IEnumerable<MixTexture> LoadMixTextures();
 }
 
-enum CompositeResourceLoadMethod
-{
-	EditorAssetLookup,
-	SerializedTableLookup
-}
-
 public class CompositeResourceLoader : MonoBehaviour, ICompositeResourceLoader
 {
-#pragma warning disable CS0414 // Only used if editor enabled
-	[SerializeField] CompositeResourceLoadMethod _loadMethod = CompositeResourceLoadMethod.EditorAssetLookup;
-#pragma warning restore CS0414
-
-
 	// Not a fan of this kind of singleton pattern, but exposing the loading otherwise is a major pain in the ass
 	// Since loading logic happens from so many different locations
 	public static ICompositeResourceLoader Instance { get; private set; }
@@ -67,18 +56,12 @@ public class CompositeResourceLoader : MonoBehaviour, ICompositeResourceLoader
 
 	IResourceProvider GetProvider()
 	{
-		var actualLoadMethod = CompositeResourceLoadMethod.SerializedTableLookup;
-#if UNITY_EDITOR
-		if (_loadMethod == CompositeResourceLoadMethod.EditorAssetLookup)
-		{
-			actualLoadMethod = CompositeResourceLoadMethod.EditorAssetLookup;
-		}
-#endif
-		return actualLoadMethod switch
+		var loadMethod = Singletons.GetSingleton<IResourceLoadMethodProvider>().LoadMethod;
+		return loadMethod switch
 		{
 			CompositeResourceLoadMethod.EditorAssetLookup => this.GetComponent<ResourceProvider_EditorAssetLookup>(),
 			CompositeResourceLoadMethod.SerializedTableLookup => this.GetComponent<ResourceProvider_TableLookup>(),
-			_ => throw new ArgumentException($"No composite resource loader for {actualLoadMethod}")
+			_ => throw new ArgumentException($"No composite resource loader for {loadMethod}")
 		};
 	}
 

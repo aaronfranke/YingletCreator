@@ -13,6 +13,7 @@ public class ModDefinition : ScriptableObject, IHasUniqueAssetId
 	public string ModDisplayTitle => _modDisplayTitle;
 
 	[SerializeField, HideInInspector] ResourceLookupTable _table;
+	public ResourceLookupTable Table => _table;
 
 #if UNITY_EDITOR
 

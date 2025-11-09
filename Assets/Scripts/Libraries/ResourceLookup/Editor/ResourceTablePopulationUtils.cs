@@ -30,7 +30,7 @@ public static class ResourceTablePopulationUtils
 				.ToArray()
 		};
 
-		Debug.Log($"Populated lookup table with {table.Count} objects.");
+		// Debug.Log($"Populated lookup table with {table.Count} objects.");
 		return lookupTable;
 
 		void LoadObjectAndAddRecursively(string guid)

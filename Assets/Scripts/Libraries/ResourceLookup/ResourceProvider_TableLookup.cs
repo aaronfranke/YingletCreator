@@ -7,12 +7,32 @@ using Object = UnityEngine.Object;
 internal sealed class ResourceProvider_TableLookup : MonoBehaviour, IResourceProvider
 {
 	[SerializeField] DefaultResourceLookupTable _defaultResourceTable;
-	private Dictionary<string, Object> _dictionary;
+	private Dictionary<string, Object> _dictionary = new();
 
 	public void Setup()
 	{
-		_dictionary = _defaultResourceTable.Table.Resources.ToDictionary(kvp => kvp.Guid, kvp => kvp.Object);
-		_defaultResourceTable = null; // Don't need this hogging memory any more
+		var modProvider = Singletons.GetSingleton<IModLoader>();
+		AddTableToDictionary(_defaultResourceTable.Table);
+		foreach (var mod in modProvider.AllMods)
+		{
+			AddTableToDictionary(mod.Table);
+		}
+		_defaultResourceTable = null; // Don't need this hogging memory any more. Could probably do the same for mods but eh
+	}
+
+	void AddTableToDictionary(ResourceLookupTable table)
+	{
+		foreach (var pair in table.Resources)
+		{
+			if (!_dictionary.TryAdd(pair.Guid, pair.Object))
+			{
+				// This GUID already exists
+				// Let's force it, giving modders the potential opportunity to override base assets by moving them into their mod folder
+				// I'll consider this behavior undefined / unsupported though
+				_dictionary[pair.Guid] = pair.Object;
+				Debug.LogWarning($"Adding object with guid {pair.Guid} and name {pair.Object.name} despite it already existing");
+			}
+		}
 	}
 
 	public T Load<T>(string guid) where T : Object
