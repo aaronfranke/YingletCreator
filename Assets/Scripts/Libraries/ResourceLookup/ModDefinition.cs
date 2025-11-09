@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
@@ -17,10 +19,14 @@ public class ModDefinition : ScriptableObject, IHasUniqueAssetId
 
 	public bool IsBuiltInMod => name == "BuiltInAssetsMod";
 
+	[SerializeField, HideInInspector] string[] _presetYings;
+	public IEnumerable<string> PresetYings => _presetYings ?? Enumerable.Empty<string>();
+
 #if UNITY_EDITOR
 
-	public void EditorSetTable(ResourceLookupTable table)
+	public void EditorSetPresetsAndTable(string[] presetYings, ResourceLookupTable table)
 	{
+		_presetYings = presetYings;
 		_table = table;
 		UnityEditor.EditorUtility.SetDirty(this);
 		UnityEditor.AssetDatabase.SaveAssets();

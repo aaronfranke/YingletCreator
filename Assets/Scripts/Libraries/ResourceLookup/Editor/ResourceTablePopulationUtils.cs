@@ -13,8 +13,15 @@ public static class ResourceTablePopulationUtils
 		string rootFolder = isBuiltIn ? "Assets/ScriptableObjects" : modDefinition.GetParentFolder();
 		bool onlyIncludeItemsUnderFolder = !isBuiltIn;
 
+		var presetYings = GatherYingPresets(rootFolder);
 		var table = GenerateTable(rootFolder, onlyIncludeItemsUnderFolder);
-		modDefinition.EditorSetTable(table);
+		modDefinition.EditorSetPresetsAndTable(presetYings, table);
+	}
+
+	static string[] GatherYingPresets(string rootFolder)
+	{
+		var paths = Directory.GetFiles(rootFolder, "*.yingsave", SearchOption.AllDirectories);
+		return paths.Select(path => File.ReadAllText(path)).ToArray();
 	}
 
 	static ResourceLookupTable GenerateTable(string rootFolder, bool onlyIncludeItemsUnderFolder)

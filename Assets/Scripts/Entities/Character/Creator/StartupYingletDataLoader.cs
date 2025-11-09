@@ -70,8 +70,24 @@ namespace Character.Creator
 
 		IEnumerable<CachedYingletReference> LoadPresetsFromMods()
 		{
+			var modLoader = Singletons.GetSingleton<IModLoader>();
+			List<CachedYingletReference> loaded = new();
 
-			return Enumerable.Empty<CachedYingletReference>();
+			foreach (var mod in modLoader.AllMods)
+			{
+				var rawStrings = mod.PresetYings;
+				foreach (var rawString in rawStrings)
+				{
+					var data = SerializableCustomizationData.FromJSON(rawString);
+					if (data == null)
+					{
+						Debug.LogError($"Failed to read preset yinglet in mod {mod.name}");
+					}
+					loaded.Add(new CachedYingletReference("", data, CustomizationYingletGroup.Preset));
+
+				}
+			}
+			return loaded;
 		}
 	}
 }
