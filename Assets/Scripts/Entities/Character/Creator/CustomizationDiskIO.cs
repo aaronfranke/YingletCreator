@@ -194,16 +194,13 @@ namespace Character.Creator
 		}
 		SerializableCustomizationData LoadData(string filePath)
 		{
-			try
-			{
-				string text = File.ReadAllText(filePath);
-				return JsonUtility.FromJson<SerializableCustomizationData>(text);
-			}
-			catch (ArgumentException)
+			string text = File.ReadAllText(filePath);
+			var data = SerializableCustomizationData.FromJSON(text);
+			if (data == null)
 			{
 				Debug.LogError($"Failed to read yinglet at path {filePath}");
-				return null;
 			}
+			return data;
 		}
 
 		string GetUniqueAlphanumericFilePath(string newYingletName, string lastFilePath, string folderPath)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEngine;
 
@@ -35,6 +36,41 @@ namespace Character.Creator
 
 		IEnumerable<CachedYingletReference> LoadPresetYingData()
 		{
+			var loadMethod = Singletons.GetSingleton<IResourceLoadMethodProvider>().LoadMethod;
+			return loadMethod switch
+			{
+				CompositeResourceLoadMethod.EditorAssetLookup => LoadPresetsFromEditor(),
+				CompositeResourceLoadMethod.SerializedTableLookup => LoadPresetsFromMods(),
+				_ => throw new NotImplementedException()
+			};
+		}
+
+		IEnumerable<CachedYingletReference> LoadPresetsFromEditor()
+		{
+#if UNITY_EDITOR
+			var paths = Directory.GetFiles(Application.dataPath, "*.yingsave", SearchOption.AllDirectories);
+			return paths
+			.Where(path => !path.Contains("Snapshot")) // No snapshot ying
+			.Select(path =>
+			{
+				string text = File.ReadAllText(path);
+				var data = SerializableCustomizationData.FromJSON(text);
+				if (data == null)
+				{
+					Debug.LogError($"Failed to read editor yinglet at path {path}");
+				}
+				return new CachedYingletReference(path, data, CustomizationYingletGroup.Preset);
+			});
+#endif
+
+#pragma warning disable CS0162 // Unreachable code detected
+			return Enumerable.Empty<CachedYingletReference>();
+#pragma warning restore CS0162 // Unreachable code detected
+		}
+
+		IEnumerable<CachedYingletReference> LoadPresetsFromMods()
+		{
+
 			return Enumerable.Empty<CachedYingletReference>();
 		}
 	}
