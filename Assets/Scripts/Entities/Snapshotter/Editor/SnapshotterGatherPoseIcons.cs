@@ -8,7 +8,7 @@ namespace Snapshotter
 		[MenuItem("Custom/Snapshotter/Generate Built-In Pose Icons")]
 		public static void GeneratePoseIcons()
 		{
-			SnapshotToSpriteSheetUtils.GenerateToggleIcons(ModDefinitionUtils.GetBuiltinModDefinition());
+			SnapshotToSpriteSheetUtils.GeneratePoseIcons(ModDefinitionUtils.GetBuiltinModDefinition());
 		}
 	}
 }

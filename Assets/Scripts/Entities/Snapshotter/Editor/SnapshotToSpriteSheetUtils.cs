@@ -15,7 +15,7 @@ namespace Snapshotter
 	public static class SnapshotToSpriteSheetUtils
 	{
 		const string ReferencesRelativePath = "Assets/Scripts/Entities/Snapshotter/SnapshotterReferences_ToggleIcons.asset";
-		const string CameraPosRelativePath = "Assets/Scripts/Entities/Snapshotter/CameraPositions/_Default.asset";
+		const string CameraPosRelativePath = "Assets/ScriptableObjects/CharacterCompositor/SnapshotterCameraPositions/_Default.asset";
 		const string PresetPath = "Assets/Scripts/Entities/Snapshotter/SnapshotYing.yingsave";
 
 		public static void GenerateToggleIcons(ModDefinition modDefinition)
@@ -29,13 +29,13 @@ namespace Snapshotter
 			SnapshotToTexAndApply(toggles, outputPath);
 		}
 
-		public static void GenerateSpriteIcons(ModDefinition modDefinition)
+		public static void GeneratePoseIcons(ModDefinition modDefinition)
 		{
 			const string OutputName = "GeneratedPoseIcons.png";
 			string outputFolder = modDefinition.GetParentFolder();
 			string outputPath = Path.Combine(outputFolder, OutputName);
 			var poses = ObjectExtensionMethods.LoadAllAssets<PoseId>(outputFolder).ToArray();
-			poses = poses.Where(p => !p.name.StartsWith("(UNUSED)")).ToArray();
+			poses = poses.Where(p => p.Order.Group != null).ToArray();
 			SnapshotToTexAndApply(poses, outputPath);
 		}
 
@@ -44,6 +44,10 @@ namespace Snapshotter
 			if (!EditorApplication.isPlaying)
 			{
 				Debug.LogError("Snapshotting logic can only be ran while playing");
+				return;
+			}
+			if (!snapshottables.Any())
+			{
 				return;
 			}
 

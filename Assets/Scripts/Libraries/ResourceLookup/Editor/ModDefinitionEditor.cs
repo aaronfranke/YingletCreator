@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Snapshotter;
+using System;
 using System.IO;
 using System.Linq;
 using UnityEditor;
@@ -21,6 +22,24 @@ public class ModDefinitionEditor : Editor
 
 		EditorGUILayout.LabelField("This is the title that will display on the about page:");
 		EditorGUILayout.PropertyField(_modDisplayTitleProp);
+
+		DrawHorizontalLine(Color.gray);
+		EditorGUILayout.LabelField("Click the following button to generate toggle and pose icons");
+		EditorGUILayout.LabelField("Note: This can only be done while the game is running in-editor");
+
+		if (GUILayout.Button("Generate Toggle + Pose Icons"))
+		{
+			if (EditorApplication.isPlaying)
+			{
+				SnapshotToSpriteSheetUtils.GenerateToggleIcons(modDefinition);
+				SnapshotToSpriteSheetUtils.GeneratePoseIcons(modDefinition);
+				EditorUtility.DisplayDialog("Generate Icons", $"Icons generated!", "OK");
+			}
+			else
+			{
+				EditorUtility.DisplayDialog("Generate Icons", $"The game must be running to generate icons; hit the play button above.", "OK");
+			}
+		}
 
 		DrawHorizontalLine(Color.gray);
 
