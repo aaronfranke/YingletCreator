@@ -9,6 +9,7 @@ namespace Snapshotter
 		public static void GeneratePoseIcons()
 		{
 			SnapshotToSpriteSheetUtils.GeneratePoseIcons(ModDefinitionUtils.GetBuiltinModDefinition());
+			SnapshotToSpriteSheetUtils.UpdateIconsInScene();
 		}
 	}
 }

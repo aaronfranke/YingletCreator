@@ -8,6 +8,7 @@ namespace Snapshotter
 		public static void GenerateToggleIcons()
 		{
 			SnapshotToSpriteSheetUtils.GenerateToggleIcons(ModDefinitionUtils.GetBuiltinModDefinition());
+			SnapshotToSpriteSheetUtils.UpdateIconsInScene();
 		}
 	}
 }

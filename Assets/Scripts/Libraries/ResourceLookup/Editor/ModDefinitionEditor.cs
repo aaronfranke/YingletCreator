@@ -33,6 +33,7 @@ public class ModDefinitionEditor : Editor
 			{
 				SnapshotToSpriteSheetUtils.GenerateToggleIcons(modDefinition);
 				SnapshotToSpriteSheetUtils.GeneratePoseIcons(modDefinition);
+				SnapshotToSpriteSheetUtils.UpdateIconsInScene();
 				EditorUtility.DisplayDialog("Generate Icons", $"Icons generated!", "OK");
 			}
 			else

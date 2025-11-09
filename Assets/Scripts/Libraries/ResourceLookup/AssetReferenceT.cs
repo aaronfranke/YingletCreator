@@ -14,7 +14,6 @@ public class AssetReferenceT<T> : AssetReference where T : UnityEngine.Object
 
 	public T LoadSync()
 	{
-		_cached = false;
 		if (!_cached)
 		{
 #if UNITY_EDITOR

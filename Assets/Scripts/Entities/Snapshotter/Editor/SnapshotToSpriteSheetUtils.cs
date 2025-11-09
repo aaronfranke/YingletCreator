@@ -1,5 +1,6 @@
 ﻿
 using Character.Creator;
+using Character.Creator.UI;
 using Character.Data;
 using System;
 using System.IO;
@@ -228,6 +229,15 @@ namespace Snapshotter
 
 			EditorUtility.SetDirty(importer);
 			importer.SaveAndReimport();
+		}
+
+		public static void UpdateIconsInScene()
+		{
+			var sprites = UnityEngine.Object.FindObjectsByType<CharacterCreatorToggleSprite>(FindObjectsSortMode.None);
+			foreach (var sprite in sprites)
+			{
+				sprite.Start(); // Call to force regeneration
+			}
 		}
 	}
 }
