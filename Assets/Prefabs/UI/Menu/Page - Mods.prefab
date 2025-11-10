@@ -67,11 +67,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Mods installed from the <link="workshop">Steam workshop</link> or the
-    <link="folder">"''/Yinglet Creator/Mods/` folder</link> will show up here.
+  m_text: 'Mods installed from the <style="Link"><link="workshop">Steam workshop</link></style>
+    or the <style="Link"><link="folder">"''/Yinglet Creator/Mods/` folder</link></style>
+    will show up here.
 
-    Want
-    to make a mod? Visit <link="github">github.com/tbartl/YingletCreator</link>'
+    Want to make a mod? Visit <style="Link"><link="github">github.com/tbartl/YingletCreator</link></style>'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 31289117d6afe2c449a86f120137f0d5, type: 2}
   m_sharedMaterial: {fileID: 211475481123427812, guid: 31289117d6afe2c449a86f120137f0d5, type: 2}
