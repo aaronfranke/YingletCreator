@@ -11,8 +11,17 @@ public class ModDefinition : ScriptableObject, IHasUniqueAssetId
 	[SerializeField, HideInInspector] string _uniqueAssetId;
 	public string UniqueAssetID { get => _uniqueAssetId; set => _uniqueAssetId = value; }
 
-	[SerializeField] string _modDisplayTitle = "Replace Me";
-	public string ModDisplayTitle => _modDisplayTitle;
+	[SerializeField] string _title = "Replace Me";
+	public string Title => _title;
+
+	[SerializeField] string _shortDescription = "Replace Me";
+	public string ShortDescription => _shortDescription;
+
+	[SerializeField] string _author = "Replace Me";
+	public string Author => _author;
+
+	[SerializeField] Sprite _icon = null;
+	public Sprite Icon => _icon;
 
 	[SerializeField, HideInInspector] ResourceLookupTable _table;
 	public ResourceLookupTable Table => _table;

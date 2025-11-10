@@ -8,11 +8,17 @@ using UnityEngine;
 [CustomEditor(typeof(ModDefinition))]
 public class ModDefinitionEditor : Editor
 {
-	SerializedProperty _modDisplayTitleProp;
+	SerializedProperty _titleProp;
+	SerializedProperty _shortDescriptionProp;
+	SerializedProperty _authorProp;
+	SerializedProperty _iconProp;
 
 	void OnEnable()
 	{
-		_modDisplayTitleProp = serializedObject.FindProperty("_modDisplayTitle");
+		_titleProp = serializedObject.FindProperty("_title");
+		_shortDescriptionProp = serializedObject.FindProperty("_shortDescription");
+		_authorProp = serializedObject.FindProperty("_author");
+		_iconProp = serializedObject.FindProperty("_icon");
 	}
 
 	public override void OnInspectorGUI()
@@ -20,8 +26,11 @@ public class ModDefinitionEditor : Editor
 		serializedObject.Update();
 		var modDefinition = (ModDefinition)target;
 
-		EditorGUILayout.LabelField("This is the title that will display on the about page:");
-		EditorGUILayout.PropertyField(_modDisplayTitleProp);
+		EditorGUILayout.LabelField("These will display on the mods page in-app:");
+		EditorGUILayout.PropertyField(_titleProp);
+		EditorGUILayout.PropertyField(_shortDescriptionProp);
+		EditorGUILayout.PropertyField(_authorProp);
+		EditorGUILayout.PropertyField(_iconProp);
 
 		DrawHorizontalLine(Color.gray);
 		EditorGUILayout.LabelField("Click the following button to generate toggle and pose icons");
