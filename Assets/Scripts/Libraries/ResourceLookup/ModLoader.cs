@@ -28,7 +28,7 @@ public class ModLoader : MonoBehaviour, IModLoader
 			return new ModDefinition[0];
 		}
 
-		var modFolder = PathUtils.EnsureDirectoryExists(Path.Combine(Singletons.GetSingleton<ISaveFolderProvider>().GameRootFolderPath, "Mods"));
+		var modFolder = Singletons.GetSingleton<ISaveFolderProvider>().ModsFolderPath;
 		var paths = Directory.GetFiles(modFolder, $"*{ModDefinition.ModExtension}", SearchOption.AllDirectories);
 
 		List<ModDefinition> definitions = new();
