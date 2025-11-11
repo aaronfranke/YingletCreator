@@ -75,11 +75,11 @@ public class ModDefinitionEditor : Editor
 
 			if (GUILayout.Button("Build .yingmod for\nfile-based distribution"))
 			{
-				BundleContent(modDefinition);
+				BuildAsync(modDefinition, false);
 			}
 			if (GUILayout.Button("Build and publish\nto the Steam workshop"))
 			{
-				BundleContent(modDefinition);
+				BuildAsync(modDefinition, true); // Fire and forget
 			}
 			EditorGUILayout.EndHorizontal();
 		}
@@ -98,41 +98,59 @@ public class ModDefinitionEditor : Editor
 		EditorGUILayout.Space();
 	}
 
-	static void BundleContent(ModDefinition modDefinition)
+	static async void BuildAsync(ModDefinition modDefinition, bool steamWorkshop)
 	{
+		TemporaryFolder tempOutputFolder = steamWorkshop ? new TemporaryFolder() : null;
 		try
 		{
 			string modAssetPath = AssetDatabase.GetAssetPath(modDefinition);
 			string modRelativeFolder = Path.GetDirectoryName(modAssetPath);
 			string bundleFileName = Path.GetFileNameWithoutExtension(modAssetPath) + ModDefinition.ModExtension;
-			string outputFolder = GetOutputFolder();
+			string outputFolder = steamWorkshop ? tempOutputFolder.Path : GetBuildModsOutputFolder();
 
 			EditorUtility.DisplayProgressBar($"Building Mod - {bundleFileName}", "Assigning assets to bundle...", 0.1f);
 			var assetPaths = GetAssetPathsInFolder(modRelativeFolder);
 			AssignAssetBundleToAssets(assetPaths, modDefinition.UniqueAssetID);
 
-			EditorUtility.DisplayProgressBar($"Building Mod - {bundleFileName}", $"Creating asset lookup table...", 0.3f);
+			EditorUtility.DisplayProgressBar($"Building Mod - {bundleFileName}", $"Creating asset lookup table...", 0.2f);
 			ResourceTablePopulationUtils.PopulateLookupTable(modDefinition);
 
-			EditorUtility.DisplayProgressBar($"Building Mod - {bundleFileName}", "Saving updated properties on ModDefinition...", 0.7f);
+			EditorUtility.DisplayProgressBar($"Building Mod - {bundleFileName}", "Saving updated properties on ModDefinition...", 0.4f);
 			EditorUtility.SetDirty(modDefinition);
 			AssetDatabase.SaveAssets();
 
-			EditorUtility.DisplayProgressBar($"Building Mod - {bundleFileName}", "Building bundle...", 0.7f);
+			EditorUtility.DisplayProgressBar($"Building Mod - {bundleFileName}", "Building bundle...", 0.6f);
 			BuildBundle(outputFolder, bundleFileName, assetPaths);
 
-			EditorUtility.DisplayProgressBar($"Building Mod - {bundleFileName}", "Cleaning up...", 0.9f);
+			EditorUtility.DisplayProgressBar($"Building Mod - {bundleFileName}", "Cleaning up...", 0.8f);
 			DeleteAllManifestFiles(outputFolder);
 
+			if (steamWorkshop)
+			{
+				EditorUtility.DisplayProgressBar($"Building Mod - {bundleFileName}", "Publishing to steam...", 0.8f);
+				await SteamWorkshopUploading.UploadModAsync(modDefinition, outputFolder);
+			}
+
 			EditorUtility.ClearProgressBar();
-			EditorUtility.RevealInFinder(Path.Combine(outputFolder, bundleFileName));
-			EditorUtility.DisplayDialog($"Mod Built - {bundleFileName}", $"Mod contents built to: {outputFolder}", "OK");
+			if (steamWorkshop)
+			{
+				EditorUtility.DisplayDialog($"Mod Built - {bundleFileName}", $"Mod contents published to steam", "OK");
+			}
+			else
+			{
+				EditorUtility.RevealInFinder(Path.Combine(outputFolder, bundleFileName));
+				EditorUtility.DisplayDialog($"Mod Built - {bundleFileName}", $"Mod contents built to: {outputFolder}", "OK");
+			}
 		}
 		catch (Exception ex)
 		{
 			EditorUtility.ClearProgressBar();
 			Debug.LogException(ex);
 			EditorUtility.DisplayDialog("Bundle Content", $"An error occurred while bundling: {ex.Message}\nSee Console for details.", "OK");
+		}
+		finally
+		{
+			tempOutputFolder?.Dispose();
 		}
 	}
 
@@ -160,7 +178,7 @@ public class ModDefinitionEditor : Editor
 		AssetDatabase.RemoveUnusedAssetBundleNames(); // clean up any stale bundle names
 	}
 
-	static string GetOutputFolder()
+	static string GetBuildModsOutputFolder()
 	{
 		var projectRoot = Directory.GetParent(Application.dataPath).FullName;
 		var outputFolder = Path.Combine(projectRoot, "Builds", "Mods");
@@ -187,15 +205,12 @@ public class ModDefinitionEditor : Editor
 	static void DeleteAllManifestFiles(string outputFolder)
 	{
 		// Delete all .manifest files (recursive)
-		foreach (string file in Directory.GetFiles(outputFolder, "*.manifest", SearchOption.TopDirectoryOnly))
+		foreach (string file in Directory.GetFiles(outputFolder))
 		{
-			File.Delete(file);
-		}
-
-		var modsFile = Path.Combine(outputFolder, "Mods");
-		if (File.Exists(modsFile))
-		{
-			File.Delete(modsFile);
+			if (!file.EndsWith(ModDefinition.ModExtension))
+			{
+				File.Delete(file);
+			}
 		}
 	}
 }

@@ -11,6 +11,19 @@ public static class ObjectExtensionMethods
 		return AssetDatabase.GetAssetPath(obj);
 	}
 
+	public static string GetFullAssetPath(this Object obj)
+	{
+		var assetPath = GetAssetPath(obj);
+
+		if (!assetPath.StartsWith("Assets"))
+		{
+			throw new System.ArgumentException("Path must start with 'Assets': " + assetPath);
+		}
+
+		string projectRoot = Application.dataPath.Substring(0, Application.dataPath.Length - "Assets".Length);
+		return Path.GetFullPath(Path.Combine(projectRoot, assetPath));
+	}
+
 	public static string GetParentFolder(this Object obj)
 	{
 		return Path.GetDirectoryName(obj.GetAssetPath());

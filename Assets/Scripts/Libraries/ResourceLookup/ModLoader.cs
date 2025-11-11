@@ -28,11 +28,12 @@ public class ModLoader : MonoBehaviour, IModLoader
 			return new ModDefinition[0];
 		}
 
-		var modFolder = Singletons.GetSingleton<ISaveFolderProvider>().ModsFolderPath;
-		var paths = Directory.GetFiles(modFolder, $"*{ModDefinition.ModExtension}", SearchOption.AllDirectories);
-
 		List<ModDefinition> definitions = new();
 		definitions.Add(_builtInMod);
+
+		// Load from /Mods/ folder
+		var modFolder = Singletons.GetSingleton<ISaveFolderProvider>().ModsFolderPath;
+		var paths = Directory.GetFiles(modFolder, $"*{ModDefinition.ModExtension}", SearchOption.AllDirectories);
 		foreach (var path in paths)
 		{
 			var bundle = AssetBundle.LoadFromFile(path);
@@ -49,6 +50,9 @@ public class ModLoader : MonoBehaviour, IModLoader
 			}
 			definitions.Add(loadedDefinitions.First());
 		}
+
+
+
 		return definitions;
 	}
 }
