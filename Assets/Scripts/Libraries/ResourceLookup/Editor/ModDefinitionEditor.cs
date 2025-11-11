@@ -65,17 +65,23 @@ public class ModDefinitionEditor : Editor
 
 		else
 		{
-			EditorGUILayout.LabelField("Click the following button to generate a mod (.bundle) file. This bundle will include all of the following items nested in this folder:");
+			EditorGUILayout.LabelField("Click one of the following buttons build the mod. The mod will include all of the following items nested in this folder:");
 			EditorGUILayout.LabelField(" • Presets (.yingsave)");
 			EditorGUILayout.LabelField(" • Toggles (CharacterToggleId)");
 			EditorGUILayout.LabelField(" • Poses (PoseID)");
 			EditorGUILayout.LabelField("Supporting textures, models, and ScriptableObject metadata will also be bundled.");
 
+			EditorGUILayout.BeginHorizontal();
 
-			if (GUILayout.Button("Build Mod"))
+			if (GUILayout.Button("Build .yingmod for\nfile-based distribution"))
 			{
 				BundleContent(modDefinition);
 			}
+			if (GUILayout.Button("Build and publish\nto the Steam workshop"))
+			{
+				BundleContent(modDefinition);
+			}
+			EditorGUILayout.EndHorizontal();
 		}
 
 		serializedObject.ApplyModifiedProperties();
