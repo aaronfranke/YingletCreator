@@ -61,19 +61,27 @@ public class ModLoader : MonoBehaviour, IModLoader
 		var paths = Directory.GetFiles(folder, $"*{ModDefinition.ModExtension}", SearchOption.AllDirectories);
 		foreach (var path in paths)
 		{
-			var bundle = AssetBundle.LoadFromFile(path);
-			var loadedDefinitions = bundle.LoadAllAssets<ModDefinition>();
-			if (loadedDefinitions.Length == 0)
+			try
 			{
-				Debug.LogError($"Couldn't find mod definition for {path}, skipping");
-				continue;
+				var bundle = AssetBundle.LoadFromFile(path);
+				var loadedDefinitions = bundle.LoadAllAssets<ModDefinition>();
+				if (loadedDefinitions.Length == 0)
+				{
+					Debug.LogError($"Couldn't find mod definition for {path}, skipping");
+					continue;
+				}
+				if (loadedDefinitions.Length > 1)
+				{
+					Debug.LogError($"Found more than 1 mod definition for {path}, skipping");
+					continue;
+				}
+				definitions.Add(loadedDefinitions.First());
 			}
-			if (loadedDefinitions.Length > 1)
+			catch (Exception ex)
 			{
-				Debug.LogError($"Found more than 1 mod definition for {path}, skipping");
-				continue;
+				Debug.LogWarning($"Failed to load bundle at path {path} due to exception {ex}");
 			}
-			definitions.Add(loadedDefinitions.First());
+
 		}
 	}
 
