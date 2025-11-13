@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using UnityEditor;
 using UnityEngine;
 
 public static class SteamWorkshopUploading
@@ -20,19 +21,27 @@ public static class SteamWorkshopUploading
 
 		var iconFullPath = modDefinition.Icon.GetFullAssetPath();
 
-		var publishResult = await Steamworks.Ugc.Editor.NewCommunityFile
+		var existingSteamId = modDefinition.SteamWorkshopId;
+
+		var publishJob = existingSteamId == 0 ? Steamworks.Ugc.Editor.NewCommunityFile : new Steamworks.Ugc.Editor(existingSteamId);
+
+		publishJob = publishJob
 			.WithTitle(modDefinition.Title)
 			.WithDescription(modDefinition.ShortDescription)
 			.WithContent(contentFolder)
 			.WithTag("Presets")
-			.WithPreviewFile(iconFullPath)
-			//.WithPrivateVisibility()
-			.SubmitAsync();
+			.WithPreviewFile(iconFullPath);
 
-		var id = publishResult.FileId.Value;
-		if (id != 0)
+		var publishResult = await publishJob.SubmitAsync();
+
+		var returnedSteamId = publishResult.FileId.Value;
+		if (returnedSteamId != 0)
 		{
-			Application.OpenURL($"https://steamcommunity.com/sharedfiles/filedetails/?id={id}");
+			modDefinition.SteamWorkshopId = returnedSteamId; ;
+			EditorUtility.SetDirty(modDefinition);
+			AssetDatabase.SaveAssets();
+
+			Application.OpenURL($"https://steamcommunity.com/sharedfiles/filedetails/?id={returnedSteamId}");
 		}
 		if (!publishResult.Success)
 		{

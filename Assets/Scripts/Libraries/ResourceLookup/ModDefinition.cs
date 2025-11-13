@@ -31,6 +31,28 @@ public class ModDefinition : ScriptableObject, IHasUniqueAssetId
 	[SerializeField, HideInInspector] string[] _presetYings;
 	public IEnumerable<string> PresetYings => _presetYings ?? Enumerable.Empty<string>();
 
+
+	[SerializeField, HideInInspector] ulong _steamWorkshopId = 0;
+	[SerializeField, HideInInspector] string _steamWorkshopUniqueId; // In-case someone copy-pasted this mod-definition, we need to know if the workshop ID was generated for this or not
+	public ulong SteamWorkshopId
+	{
+		get
+		{
+			if (!_steamWorkshopUniqueId.Equals(_uniqueAssetId))
+			{
+				return 0;
+			}
+			return _steamWorkshopId;
+		}
+		set
+		{
+			_steamWorkshopUniqueId = _uniqueAssetId;
+			_steamWorkshopId = value;
+		}
+	}
+
+
+
 #if UNITY_EDITOR
 
 	public void EditorSetPresetsAndTable(string[] presetYings, ResourceLookupTable table)
