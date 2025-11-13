@@ -28,8 +28,21 @@ public static class SteamWorkshopUploading
 		publishJob = publishJob
 			.WithTitle(modDefinition.Title)
 			.WithDescription(modDefinition.ShortDescription)
-			.WithContent(contentFolder)
-			.WithTag("Presets");
+			.WithContent(contentFolder);
+
+		var counts = modDefinition.CountAssetTypes();
+		if (counts.Presets > 0)
+		{
+			publishJob = publishJob.WithTag("Presets");
+		}
+		if (counts.Toggles > 0)
+		{
+			publishJob = publishJob.WithTag("Toggles");
+		}
+		if (counts.Poses > 0)
+		{
+			publishJob = publishJob.WithTag("Poses");
+		}
 
 		using var tempIconFolder = new TemporaryFolder();
 		if (modDefinition.Icon != null)

@@ -1,4 +1,3 @@
-using Character.Data;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -21,26 +20,11 @@ public class IndividualModUI : MonoBehaviour
 
 	private string BuildResourceString(ModDefinition mod)
 	{
-		int presetCount = mod.PresetYings.Count();
-		int toggleCount = 0;
-		int poseCount = 0;
-		foreach (var resource in mod.Table.Resources)
-		{
-			var obj = resource.Object;
-			if (obj is CharacterToggleId)
-			{
-				toggleCount += 1;
-			}
-			else if (obj is PoseId)
-			{
-				poseCount += 1;
-			}
-		}
-
+		var counts = mod.CountAssetTypes();
 		List<string> items = new();
-		if (presetCount > 0) items.Add(NumberPrefixed(presetCount, "preset"));
-		if (toggleCount > 0) items.Add(NumberPrefixed(toggleCount, "toggle"));
-		if (poseCount > 0) items.Add(NumberPrefixed(poseCount, "pose"));
+		if (counts.Presets > 0) items.Add(NumberPrefixed(counts.Presets, "preset"));
+		if (counts.Toggles > 0) items.Add(NumberPrefixed(counts.Toggles, "toggle"));
+		if (counts.Poses > 0) items.Add(NumberPrefixed(counts.Poses, "pose"));
 		return BuildEnglishList(items);
 	}
 

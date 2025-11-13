@@ -12,6 +12,7 @@ public class ModDefinitionEditor : Editor
 	SerializedProperty _shortDescriptionProp;
 	SerializedProperty _authorProp;
 	SerializedProperty _iconProp;
+	private bool _showAdvancedSettings;
 
 	void OnEnable()
 	{
@@ -84,6 +85,22 @@ public class ModDefinitionEditor : Editor
 			EditorGUILayout.EndHorizontal();
 		}
 
+		_showAdvancedSettings = EditorGUILayout.Foldout(_showAdvancedSettings, "Advanced Settings", true);
+		if (_showAdvancedSettings)
+		{
+			if (!modDefinition.IsBuiltInMod)
+			{
+				EditorGUI.indentLevel++;
+				if (GUILayout.Button("Clear steam workshop item ID\nThis will cause the publish button to upload as a new item instead of updating\nUseful if you deleted the item on the workshop"))
+				{
+					modDefinition.SteamWorkshopId = 0;
+					EditorUtility.SetDirty(modDefinition);
+					AssetDatabase.SaveAssets();
+				}
+				EditorGUI.indentLevel--;
+			}
+		}
+
 		serializedObject.ApplyModifiedProperties();
 	}
 
@@ -134,7 +151,7 @@ public class ModDefinitionEditor : Editor
 			EditorUtility.ClearProgressBar();
 			if (steamWorkshop)
 			{
-				EditorUtility.DisplayDialog($"Mod Built - {bundleFileName}", $"Mod contents published to steam", "OK");
+				EditorUtility.DisplayDialog($"Mod Built - {bundleFileName}", $"Mod contents published to steam; use browser to finish setting up page and make visible", "OK");
 			}
 			else
 			{
