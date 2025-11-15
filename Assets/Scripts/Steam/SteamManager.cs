@@ -16,7 +16,7 @@ public class SteamManager : MonoBehaviour
 			catch (System.Exception e)
 			{
 				// Continue running even if we can't connect to steam
-				Debug.LogError(e);
+				Debug.LogWarning(e);
 			}
 		}
 	}
