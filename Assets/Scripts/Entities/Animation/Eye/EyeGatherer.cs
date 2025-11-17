@@ -10,8 +10,8 @@ public class EyeGatherer : MonoBehaviour, IEyeGatherer
 	[SerializeField] Transform _rigRoot;
 	Material[] _cachedEyes;
 
-	const string EYE_NAME_LEFT = "Eye_Left";
-	const string EYE_NAME_RIGHT = "Eye_Right";
+	const string EYE_NAME_LEFT = "Eye-Left";
+	const string EYE_NAME_RIGHT = "Eye-Right";
 
 	public Material[] EyeMaterials
 	{

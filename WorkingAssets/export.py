@@ -3,19 +3,19 @@ import os
 
 default_ying_object_filter = [
     "Antenna",
-    "Body",
-    "BodyArms",
-    "BodyLegs",
+    "Body-Trunk",
+    "Body-Arms",
+    "Body-Legs",
     "Boobs",
     "Ears",
-    "Eye_Left",
-    "Eye_Right",
-    "Fluff_Chest_Boobs",
-    "Fluff_Crotch",
-    "Fluff_Elbow",
-    "Fluff_Knee",
-    "Fluff_Neck",
-    "Fluff_Shoulder",
+    "Eye-Left",
+    "Eye-Right",
+    "Fluff-Chest",
+    "Fluff-Crotch",
+    "Fluff-Elbows",
+    "Fluff-Knees",
+    "Fluff-Neck",
+    "Fluff-Shoulders",
     "Head",
     "MouthInterior",
     "ShellTooth",
@@ -96,7 +96,7 @@ def export_fbx(exportPath, animsOnly):
         apply_scale_options='FBX_SCALE_ALL',
         use_mesh_modifiers=True,  # Apply mirror; this prevents shape key usage. It might be possible to get this working with https://github.com/smokejohn/SKkeeper/tree/master
         object_types=object_types,
-        bake_anim=animsOnly,
+        bake_anim=True,
         use_armature_deform_only=True,  # Export only bones used for deformation
         add_leaf_bones=False,  # Prevents extra bones from being added
         bake_anim_step = 1, # (Default 1) - How often frames are sampled
@@ -115,7 +115,8 @@ def get_collection_path(obj_name):
     for collection in bpy.data.collections:
         child_collection_names = [child_collection.name for child_collection in collection.children]
         if obj_name in collection.objects or obj_name in child_collection_names:
-            return get_collection_path(collection.name) + "/" + collection.name
+            stripped_name = collection.name.replace(".001", "", 1) # strip out duplicate name suffix, because linking doesn't let us parent nicely
+            return get_collection_path(collection.name) + "/" + stripped_name
     
     return "" 
     

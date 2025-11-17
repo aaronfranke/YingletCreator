@@ -18,5 +18,12 @@ namespace Character.Compositor
 		public MaterialDescription MaterialDescription => _materialWithDescriptionReference.LoadSync();
 		public IEnumerable<CharacterElementTag> Tags => _tagReferences.Select(r => r.LoadSync());
 		public CharacterBone BoneToAttachTo => _boneToAttachToReference.LoadSync();
+
+#if UNITY_EDITOR
+		public void EditorSetSkinnedMeshRendererPrefab(GameObject prefab)
+		{
+			_skinnedMeshRendererPrefab = prefab;
+		}
+#endif
 	}
 }

@@ -1,4 +1,6 @@
-﻿using Character.Data;
+﻿using Character.Compositor;
+using Character.Data;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -10,6 +12,43 @@ public class SandboxLogic : MonoBehaviour
 
 	[MenuItem("Custom/Run sandbox logic script")]
 	static void RunSandboxLogicScript()
+	{
+		AssignFbxSubAssetsToMeshWithMaterial();
+	}
+
+	static void AssignFbxSubAssetsToMeshWithMaterial()
+	{
+		string[] guids = AssetDatabase.FindAssets("t:MeshWithMaterial");
+		Dictionary<string, MeshWithMaterial> nameToScriptableDict = new();
+		foreach (var guid in guids)
+		{
+			string path = AssetDatabase.GUIDToAssetPath(guid);
+			var asset = AssetDatabase.LoadAssetAtPath<MeshWithMaterial>(path);
+			nameToScriptableDict[asset.name] = asset;
+		}
+
+		var assetPath = "Assets/Art/Models/Entities/Yinglet/Yinglet-Base.fbx";
+		var assets = AssetDatabase.LoadAllAssetsAtPath(assetPath);
+		foreach (var asset in assets)
+		{
+			if (asset is GameObject gameObject)
+			{
+				if (gameObject.GetComponent<SkinnedMeshRenderer>() == null) continue;
+				if (nameToScriptableDict.TryGetValue(asset.name, out var scriptable))
+				{
+					scriptable.EditorSetSkinnedMeshRendererPrefab(gameObject);
+					EditorUtility.SetDirty(scriptable);
+				}
+				else
+				{
+					Debug.LogWarning($"No ScriptableObject found for {asset.name}");
+				}
+			}
+		}
+		AssetDatabase.SaveAssets();
+	}
+
+	static void UpdateAssetDatabase()
 	{
 
 		string[] guids = AssetDatabase.FindAssets("t:CharacterToggleId");
