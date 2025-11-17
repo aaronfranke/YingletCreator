@@ -1,8 +1,29 @@
 import bpy
 import os
 
+default_ying_object_filter = [
+    "Antenna",
+    "Body",
+    "BodyArms",
+    "BodyLegs",
+    "Boobs",
+    "Ears",
+    "Eye_Left",
+    "Eye_Right",
+    "Fluff_Chest_Boobs",
+    "Fluff_Crotch",
+    "Fluff_Elbow",
+    "Fluff_Knee",
+    "Fluff_Neck",
+    "Fluff_Shoulder",
+    "Head",
+    "MouthInterior",
+    "ShellTooth",
+    "Tongue",
+    "Whiskers",
+]
+
 def export():
-    # export
     selectedObjects = bpy.context.selected_objects.copy()
     
     for selectedObject in selectedObjects:
@@ -17,7 +38,7 @@ def export():
             exportObjects.append(obj.parent)
         else:
             exportObjects.append(obj)
-    # Make unique
+    # Make unique test
     exportObjects = list(set(exportObjects)) 
     
     for selectedObject in exportObjects:
@@ -26,29 +47,37 @@ def export():
 
         # The model's path should be based on the collections it is under
         exportPath += get_collection_path(selectedObject.name) + "/"
-        
-        print(exportPath)
             
         os.makedirs(exportPath, exist_ok=True)
-
-        # exportPath += bpy.path.basename(bpy.context.blend_data.filepath).split(".")[0]
-        # exportPath += "/"
-        exportPath += selectedObject.name
+        
+        selection_name = selectedObject.name
+        file_name = bpy.path.basename(bpy.context.blend_data.filepath).split(".")[0]
+        
+        # If it's the yinglet rig, there's a bunch of files exporting this object
+        # Instead, export by the filename
+        if (selection_name == "YingletRig"):
+            exportPath += file_name
+        else:
+            exportPath += selection_name
+        
         
         if (selectedObject.type == 'ARMATURE'):
-             selectedObject.animation_data.action = bpy.data.actions.get("_T-Pose")
-             for child in selectedObject.children:
-                 # Don't export objects that for building other meshes
-                 hidden = ("(PreApply)" in child.name) or ("(Ignore)" in child.name) 
-                 child.hide_set(hidden)  # Visible in viewport
-                 child.hide_viewport = hidden  # Visible in viewport
+            selectedObject.animation_data.action = bpy.data.actions.get("_T-Pose")
+            for child in selectedObject.children:
+                 # Don't export objects that are just used for building other meshes
+                hidden = ("(PreApply)" in child.name) or ("(Ignore)" in child.name) 
+                 
+                # If this is a yinglet file that isn't the base one, filter base assets
+                if file_name.startswith("Yinglet") and file_name != "Yinglet-Base":
+                    if child.name in default_ying_object_filter:
+                        hidden = True
+                
+                # Apply hidden
+                child.hide_set(hidden)  # Visible in viewport
+                child.hide_viewport = hidden  # Visible in viewport
         
         select_children_recursive(selectedObject, True)
-        if (selectedObject.type == 'ARMATURE'):
-            export_fbx(exportPath, True)
-            export_fbx(exportPath + "-Meshes", False)
-        else:
-            export_fbx(exportPath, False)
+        export_fbx(exportPath, False)
         select_children_recursive(selectedObject, False)
 
 def export_fbx(exportPath, animsOnly):
@@ -96,7 +125,5 @@ def get_collection_path(obj_name):
 bpy.ops.wm.save_mainfile()
 export()
 
-# the only reason we're doing this rn is because i'm too lazy to re-hide stuff
-# I guess it's also causing the pose to stay as-is which is nice
 bpy.ops.wm.revert_mainfile()
 
