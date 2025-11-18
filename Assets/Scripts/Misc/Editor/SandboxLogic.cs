@@ -13,7 +13,28 @@ public class SandboxLogic : MonoBehaviour
 	[MenuItem("Custom/Run sandbox logic script")]
 	static void RunSandboxLogicScript()
 	{
-		AssignFbxSubAssetsToMeshWithMaterial();
+		RenameAssets();
+	}
+
+	static void RenameAssets()
+	{
+		string[] guids = AssetDatabase.FindAssets("t:MeshWithMaterial");
+		foreach (var guid in guids)
+		{
+			string path = AssetDatabase.GUIDToAssetPath(guid);
+			var asset = AssetDatabase.LoadAssetAtPath<MeshWithMaterial>(path);
+			AssetDatabase.RenameAsset(path, CleanString(asset.name));
+
+		}
+		AssetDatabase.SaveAssets();
+
+
+		static string CleanString(string input)
+		{
+			// No spaces or underlines
+			return input.Replace(" ", "")
+						.Replace("_", "-");
+		}
 	}
 
 	static void AssignFbxSubAssetsToMeshWithMaterial()
