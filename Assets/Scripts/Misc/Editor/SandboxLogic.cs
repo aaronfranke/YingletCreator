@@ -13,7 +13,7 @@ public class SandboxLogic : MonoBehaviour
 	[MenuItem("Custom/Run sandbox logic script")]
 	static void RunSandboxLogicScript()
 	{
-		RenameAssets();
+		AssignFbxSubAssetsToMeshWithMaterial();
 	}
 
 	static void RenameAssets()
@@ -48,7 +48,7 @@ public class SandboxLogic : MonoBehaviour
 			nameToScriptableDict[asset.name] = asset;
 		}
 
-		var assetPath = "Assets/Art/Models/Entities/Yinglet/Yinglet-AltBodyFeatures.fbx";
+		var assetPath = "Assets/Art/Models/Entities/Yinglet/Yinglet-Clothes-Outfits.fbx";
 		var assets = AssetDatabase.LoadAllAssetsAtPath(assetPath);
 		foreach (var asset in assets)
 		{
