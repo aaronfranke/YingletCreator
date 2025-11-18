@@ -27,7 +27,7 @@ public class SandboxLogic : MonoBehaviour
 			nameToScriptableDict[asset.name] = asset;
 		}
 
-		var assetPath = "Assets/Art/Models/Entities/Yinglet/Yinglet-Base.fbx";
+		var assetPath = "Assets/Art/Models/Entities/Yinglet/Yinglet-AltBodyFeatures.fbx";
 		var assets = AssetDatabase.LoadAllAssetsAtPath(assetPath);
 		foreach (var asset in assets)
 		{
