@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
+  m_Name: Clothes-Arms-Bracers
+  m_EditorClassIdentifier: 
+  _uniqueAssetId: c33cee9e52803704b86e2a99950185ee
+  _displayName: Bracers
+  _groupReferences:
+  - m_AssetGUID: 617549fcf0a3dec4a8b12b3dbdd12be6
+  _addedMeshReferences:
+  - m_AssetGUID: 13a5876a0b9ae9247a17eb28a7b4e9e1
+  _addedTextureReferences:
+  - m_AssetGUID: ccca7fbcce9033346be6b75a4061b366
+  _eyeTextures: {fileID: 0}
+  _roomPrefab: {fileID: 0}
+  _componentReferences: []
+  _preview:
+    _sprite: {fileID: 2103345408, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _cameraPositionReference:
+      m_AssetGUID: 005d0a3047e2fca45a7d687ce6b8b7fa
+  _order:
+    _groupReference:
+      m_AssetGUID: 9d9c766a28d59ce42833f23be82bf200
+    _index: 201

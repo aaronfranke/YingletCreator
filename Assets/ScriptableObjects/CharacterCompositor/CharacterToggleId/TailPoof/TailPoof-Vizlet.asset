@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
+  m_Name: TailPoof-Vizlet
+  m_EditorClassIdentifier: 
+  _uniqueAssetId: a7fb2df668b125d4ba3c3157d2dc95f6
+  _displayName: Braided
+  _groupReferences:
+  - m_AssetGUID: d3294cd046fb8c74099023de87c4c057
+  _addedMeshReferences:
+  - m_AssetGUID: 094f509cb44633c42ae1cd1e5cff3ab4
+  - m_AssetGUID: e2039edc0bf5534479358d8ee32e1031
+  _addedTextureReferences:
+  - m_AssetGUID: eee2dbe5d6ee5c640ad9c10f051b8625
+  - m_AssetGUID: 1a3b6159829f69b4a803394a95a831dd
+  - m_AssetGUID: daa6ea5d8e6a5e34b9050ce9d7f4f62d
+  _eyeTextures: {fileID: 0}
+  _roomPrefab: {fileID: 0}
+  _componentReferences: []
+  _preview:
+    _sprite: {fileID: 726268755, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _cameraPositionReference:
+      m_AssetGUID: 6644ba74460fac44c85059da15de82d6
+  _order:
+    _groupReference:
+      m_AssetGUID: b21e1bb12a7c5c1439ed7a1129423dc2
+    _index: 500

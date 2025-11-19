@@ -13,7 +13,7 @@ public class SandboxLogic : MonoBehaviour
 	[MenuItem("Custom/Run sandbox logic script")]
 	static void RunSandboxLogicScript()
 	{
-		ReplaceUnderscoresWithDashes("Assets/Art/Materials/Entities/Yinglet/Head");
+		ReplaceUnderscoresWithDashes("Assets/ScriptableObjects/CharacterCompositor/ColorGroup/Clothes");
 	}
 
 	static void RenameAssets()
@@ -130,9 +130,10 @@ public class SandboxLogic : MonoBehaviour
 			string fileName = System.IO.Path.GetFileNameWithoutExtension(assetPath);
 			string extension = System.IO.Path.GetExtension(assetPath);
 
-			if (!fileName.Contains("_")) continue;
+			string toReplace = "_";
+			if (!fileName.Contains(toReplace)) continue;
 
-			string newName = fileName.Replace("_", "-");
+			string newName = fileName.Replace(toReplace, "-");
 
 			AssetDatabase.RenameAsset(assetPath, newName);
 		}

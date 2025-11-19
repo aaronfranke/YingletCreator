@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
+  m_Name: Clothes-Hat-Lopin
+  m_EditorClassIdentifier: 
+  _uniqueAssetId: 8194a1a397904a5439b31fe493eec2ce
+  _displayName: Fancy Rat Hat
+  _groupReferences:
+  - m_AssetGUID: 79d28974154e5ec46b9a5f737f53aa30
+  _addedMeshReferences:
+  - m_AssetGUID: 5f7d6519a94681643841ae9e8774fa2a
+  - m_AssetGUID: 349d632fb035396459585eae84b89283
+  _addedTextureReferences:
+  - m_AssetGUID: 41c82571f9477ee49803892a841250c3
+  - m_AssetGUID: 7037aaffec979b44d8767dc1d6ca3d04
+  - m_AssetGUID: 099d5198806d4804c8765d9350c42776
+  - m_AssetGUID: ab9a27f9cd55f0646a63d9d241490386
+  _eyeTextures: {fileID: 0}
+  _roomPrefab: {fileID: 0}
+  _componentReferences: []
+  _preview:
+    _sprite: {fileID: 1547891369, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _cameraPositionReference:
+      m_AssetGUID: fac2921d43bc2c24380b3a43557dc741
+  _order:
+    _groupReference:
+      m_AssetGUID: 968c5f0717d8f674db03cab195bcd9c6
+    _index: 125

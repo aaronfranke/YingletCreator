@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
+  m_Name: Clothes-Bottom-Narklet
+  m_EditorClassIdentifier: 
+  _uniqueAssetId: bad26b3c8960a054db757532b4bd7170
+  _displayName: Scavenging Pants
+  _groupReferences:
+  - m_AssetGUID: 14901bc6611d3d54d98993552fb8d05e
+  _addedMeshReferences:
+  - m_AssetGUID: 2befd3b7843bda948a110cc80d957e6b
+  _addedTextureReferences:
+  - m_AssetGUID: 71b045c8e26726245af17d356462696b
+  - m_AssetGUID: 35312326e16e2654ebf671b9a8bb7f16
+  _eyeTextures: {fileID: 0}
+  _roomPrefab: {fileID: 0}
+  _componentReferences:
+  - m_AssetGUID: 3846122537375704bb1819205965ea9d
+  _preview:
+    _sprite: {fileID: -876458438, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _cameraPositionReference:
+      m_AssetGUID: 389e40160dafa374d9796f55f6499c21
+  _order:
+    _groupReference:
+      m_AssetGUID: a1ca54624f3ed244ca63c71315daa031
+    _index: 150

@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
+  m_Name: Clothes-Outfit-PekkitClothes
+  m_EditorClassIdentifier: 
+  _uniqueAssetId: fb6f1ff361209ab4bb7c2241fae3aeb5
+  _displayName: Goblin Dress
+  _groupReferences:
+  - m_AssetGUID: 83e476b94deb4f64d89399d0aa93cdac
+  - m_AssetGUID: 14901bc6611d3d54d98993552fb8d05e
+  _addedMeshReferences:
+  - m_AssetGUID: 3c28c244b5a7fbb4e9dce8d6929a286e
+  - m_AssetGUID: 0d352b828d1c2f74f843b3cf4d97dfb4
+  - m_AssetGUID: 0265405c9b7757e4e9d1c2ac06672681
+  - m_AssetGUID: bd120e367ba926d4fae698e6471d95a8
+  _addedTextureReferences:
+  - m_AssetGUID: 1c764af1177cbcb47bb4064f10b9bb29
+  - m_AssetGUID: dfdab0934e7be86468186c0e5265d97c
+  - m_AssetGUID: 0a3a9baec0b662f48a08ca410b079800
+  _eyeTextures: {fileID: 0}
+  _roomPrefab: {fileID: 0}
+  _componentReferences:
+  - m_AssetGUID: 3f1f4ba2c6a0db94b81e4c1bcb269c33
+  - m_AssetGUID: ffb49066cbb69594ca4a517c02939747
+  - m_AssetGUID: 483a5a90bcb11da4abb1952894c720eb
+  _preview:
+    _sprite: {fileID: -1188147656, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _cameraPositionReference:
+      m_AssetGUID: 05a5f89117304c04a99288d3a8404208
+  _order:
+    _groupReference:
+      m_AssetGUID: c369fb9b9aeccae4fad4d2d5cad4c7b4
+    _index: 300
