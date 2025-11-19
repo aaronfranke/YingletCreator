@@ -48,8 +48,10 @@ public class SandboxLogic : MonoBehaviour
 			nameToScriptableDict[asset.name] = asset;
 		}
 
-		var assetPath = "Assets/Art/Models/Entities/Yinglet/Yinglet-Hair.fbx";
+
+		var assetPath = "Assets/Art/Models/Entities/Yinglet/Yinglet-Clothes-Misc.fbx";
 		var assets = AssetDatabase.LoadAllAssetsAtPath(assetPath);
+		Debug.Log($"Found {assets.Length} sub-assets in {assetPath}");
 		foreach (var asset in assets)
 		{
 			if (asset is GameObject gameObject)
