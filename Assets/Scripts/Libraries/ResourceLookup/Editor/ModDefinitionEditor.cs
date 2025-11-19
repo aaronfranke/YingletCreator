@@ -31,7 +31,7 @@ public class ModDefinitionEditor : Editor
 		EditorGUILayout.PropertyField(_titleProp);
 		EditorGUILayout.PropertyField(_shortDescriptionProp);
 		EditorGUILayout.PropertyField(_authorProp);
-		EditorGUILayout.PropertyField(_iconProp);
+		EditorGUILayout.PropertyField(_iconProp, new GUIContent("Icon (256x256 for Steam)"));
 
 		DrawHorizontalLine(Color.gray);
 		EditorGUILayout.LabelField("Click the following button to generate toggle and pose icons");
