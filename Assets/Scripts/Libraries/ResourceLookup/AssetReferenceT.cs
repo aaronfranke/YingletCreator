@@ -14,6 +14,10 @@ public class AssetReferenceT<T> : AssetReference where T : UnityEngine.Object
 
 	public T LoadSync()
 	{
+#if UNITY_EDITOR
+		_cached = false; // Always reload in editor since it can actually change
+#endif
+
 		if (!_cached)
 		{
 #if UNITY_EDITOR
