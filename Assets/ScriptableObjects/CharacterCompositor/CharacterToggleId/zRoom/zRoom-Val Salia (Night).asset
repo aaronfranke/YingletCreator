@@ -14,32 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uniqueAssetId: 16132a48fcb6cd74e9b61b5ec363ecc9
   _displayName: Val Salia (Night)
-  _groups:
-  - {fileID: 11400000, guid: 593fc3c80bb2b7a4eaa2b80ba89f020f, type: 2}
   _groupReferences:
   - m_AssetGUID: 593fc3c80bb2b7a4eaa2b80ba89f020f
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 0
   _addedMeshReferences: []
   _addedTextureReferences: []
   _eyeTextures: {fileID: 0}
   _roomPrefab: {fileID: 7969703373110260778, guid: 60fccb0573e4a0049b9fb912e33917a1, type: 3}
   _componentReferences:
   - m_AssetGUID: 4b972600fc41eb044b2c6df5adb291b1
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 0
   _preview:
     _sprite: {fileID: 0}
-    _cameraPosition: {fileID: 0}
+    _cameraPositionReference:
+      m_AssetGUID: 
   _order:
     _groupReference:
       m_AssetGUID: 151e6e8a4ffca3a4fadb17aeef664cc8
-      m_SubObjectName: 
-      m_SubObjectType: 
-      m_SubObjectGUID: 
-      m_EditorAssetChanged: 0
-    _index: 300
+    _index: 205
