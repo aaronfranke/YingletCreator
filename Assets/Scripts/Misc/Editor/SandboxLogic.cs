@@ -13,7 +13,7 @@ public class SandboxLogic : MonoBehaviour
 	[MenuItem("Custom/Run sandbox logic script")]
 	static void RunSandboxLogicScript()
 	{
-		AssignFbxSubAssetsToMeshWithMaterial();
+		ReplaceUnderscoresWithDashes("Assets/Art/Materials/Entities/Yinglet/Head");
 	}
 
 	static void RenameAssets()
@@ -115,5 +115,29 @@ public class SandboxLogic : MonoBehaviour
 			EditorUtility.SetDirty(asset);
 		}
 		AssetDatabase.SaveAssets();
+	}
+
+	static void ReplaceUnderscoresWithDashes(string folderPath)
+	{
+		string[] assetGUIDs = AssetDatabase.FindAssets("", new[] { folderPath });
+
+		foreach (string assetGuid in assetGUIDs)
+		{
+			string assetPath = AssetDatabase.GUIDToAssetPath(assetGuid);
+
+			if (assetPath == folderPath) continue;
+
+			string fileName = System.IO.Path.GetFileNameWithoutExtension(assetPath);
+			string extension = System.IO.Path.GetExtension(assetPath);
+
+			if (!fileName.Contains("_")) continue;
+
+			string newName = fileName.Replace("_", "-");
+
+			AssetDatabase.RenameAsset(assetPath, newName);
+		}
+
+		AssetDatabase.SaveAssets();
+		AssetDatabase.Refresh();
 	}
 }
