@@ -22,6 +22,7 @@ default_ying_object_filter = [
     "Tongue",
     "Whiskers",
 ]
+YINGLET_MOD_PREFIX = "Yinglet-Mod-"
 
 def export():
     selectedObjects = bpy.context.selected_objects.copy()
@@ -43,15 +44,19 @@ def export():
     
     for selectedObject in exportObjects:
         exportPath = os.path.dirname(bpy.data.filepath)
-        exportPath += "/../Assets/Art/Models"
-
-        # The model's path should be based on the collections it is under
-        exportPath += get_collection_path(selectedObject.name) + "/"
+        file_name = bpy.path.basename(bpy.context.blend_data.filepath).split(".")[0]
+        
+        # If this is a mod file, put it in the expected mod directory. Otherwise, put it in with the models
+        if (file_name.startswith(YINGLET_MOD_PREFIX)):
+            exportPath += "/../Assets/_ModDevelopment/" + file_name.removeprefix(YINGLET_MOD_PREFIX) + "/"
+        else:
+            exportPath += "/../Assets/Art/Models"
+            # The model's path should be based on the collections it is under
+            exportPath += get_collection_path(selectedObject.name) + "/"
             
         os.makedirs(exportPath, exist_ok=True)
         
         selection_name = selectedObject.name
-        file_name = bpy.path.basename(bpy.context.blend_data.filepath).split(".")[0]
         
         # If it's the yinglet rig, there's a bunch of files exporting this object
         # Instead, export by the filename
