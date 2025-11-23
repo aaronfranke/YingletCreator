@@ -10,8 +10,8 @@ It has all the information you need to set up the project and start developing.
 
 # License
 
-This project is primarily made Open Source to support modding easier modding.
+This project was primarily made open source to support modding easier modding.
 
-If you want to contribute to the project itself though, you're welcome to open a PR.
+Though, if you want to contribute to the project itself, you're welcome to open a PR.
 
 If you want to make any derivative projects, I ask that you respect the [CC BY-NC-SA 4.0 license](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)
