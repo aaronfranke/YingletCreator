@@ -2,9 +2,10 @@ using Character.Creator;
 using Character.Data;
 using UnityEngine;
 
+
 public class ApplySliderAsRotation : MonoBehaviour, IApplyableCustomization
 {
-	[SerializeField] CharacterSliderId _sliderId;
+	[SerializeField] AssetReferenceT<CharacterSliderId> _sliderReference;
 	[SerializeField] Transform _target;
 	[SerializeField] Vector3 _eulerAngles;
 	[SerializeField] AnimationCurve _applyAmountBySliderVal;
@@ -18,7 +19,7 @@ public class ApplySliderAsRotation : MonoBehaviour, IApplyableCustomization
 
 	public void Apply()
 	{
-		var sliderValue = _dataRepository.GetSliderValue(_sliderId);
+		var sliderValue = _dataRepository.GetSliderValue(_sliderReference.LoadSync());
 
 		var p = _applyAmountBySliderVal.Evaluate(sliderValue);
 

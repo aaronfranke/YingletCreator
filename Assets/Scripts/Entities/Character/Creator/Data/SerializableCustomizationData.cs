@@ -3,6 +3,7 @@ using Character.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace Character.Creator
 {
@@ -40,6 +41,18 @@ namespace Character.Creator
 		public SerializableCustomizationToggleData ToggleData;
 		public SerializableCustomizationNumberData NumberData;
 		// Note: If adding anything else, make sure you implement it in SerializableCustomizationDataComparison
+
+		public static SerializableCustomizationData FromJSON(string dataBlob)
+		{
+			try
+			{
+				return JsonUtility.FromJson<SerializableCustomizationData>(dataBlob);
+			}
+			catch (ArgumentException)
+			{
+				return null;
+			}
+		}
 
 		public SerializableCustomizationData(ObservableCustomizationData data)
 		{

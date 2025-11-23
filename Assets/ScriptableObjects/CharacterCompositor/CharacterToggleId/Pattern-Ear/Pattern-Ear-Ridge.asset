@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
+  m_Name: Pattern-Ear-Ridge
+  m_EditorClassIdentifier: 
+  _uniqueAssetId: c9c1c27a47b6a734684415b04b009318
+  _displayName: Ridge
+  _groupReferences: []
+  _addedMeshReferences: []
+  _addedTextureReferences:
+  - m_AssetGUID: 9b11fd092967de543a8ad0049e0f1ccf
+  _eyeTextures: {fileID: 0}
+  _roomPrefab: {fileID: 0}
+  _componentReferences: []
+  _preview:
+    _sprite: {fileID: -1847419071, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _cameraPositionReference:
+      m_AssetGUID: 73be59f7a030a5346aa8933e157b32d0
+  _order:
+    _groupReference:
+      m_AssetGUID: eb821df97a9c5c542b98082e063ae5ce
+    _index: 800

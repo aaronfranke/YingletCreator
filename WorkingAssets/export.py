@@ -1,8 +1,30 @@
 import bpy
 import os
 
+default_ying_object_filter = [
+    "Antenna",
+    "Body-Trunk",
+    "Body-Arms",
+    "Body-Legs",
+    "Boobs",
+    "Ears",
+    "Eye-Left",
+    "Eye-Right",
+    "Fluff-Chest",
+    "Fluff-Crotch",
+    "Fluff-Elbows",
+    "Fluff-Knees",
+    "Fluff-Neck",
+    "Fluff-Shoulders",
+    "Head",
+    "MouthInterior",
+    "ShellTooth",
+    "Tongue",
+    "Whiskers",
+]
+YINGLET_MOD_PREFIX = "Yinglet-Mod-"
+
 def export():
-    # export
     selectedObjects = bpy.context.selected_objects.copy()
     
     for selectedObject in selectedObjects:
@@ -17,38 +39,50 @@ def export():
             exportObjects.append(obj.parent)
         else:
             exportObjects.append(obj)
-    # Make unique
+    # Make unique test
     exportObjects = list(set(exportObjects)) 
     
     for selectedObject in exportObjects:
         exportPath = os.path.dirname(bpy.data.filepath)
-        exportPath += "/../Assets/Art/Models"
-
-        # The model's path should be based on the collections it is under
-        exportPath += get_collection_path(selectedObject.name) + "/"
+        file_name = bpy.path.basename(bpy.context.blend_data.filepath).split(".")[0]
         
-        print(exportPath)
+        # If this is a mod file, put it in the expected mod directory. Otherwise, put it in with the models
+        if (file_name.startswith(YINGLET_MOD_PREFIX)):
+            exportPath += "/../Assets/_ModDevelopment/" + file_name.removeprefix(YINGLET_MOD_PREFIX) + "/"
+        else:
+            exportPath += "/../Assets/Art/Models"
+            # The model's path should be based on the collections it is under
+            exportPath += get_collection_path(selectedObject.name) + "/"
             
         os.makedirs(exportPath, exist_ok=True)
-
-        # exportPath += bpy.path.basename(bpy.context.blend_data.filepath).split(".")[0]
-        # exportPath += "/"
-        exportPath += selectedObject.name
+        
+        selection_name = selectedObject.name
+        
+        # If it's the yinglet rig, there's a bunch of files exporting this object
+        # Instead, export by the filename
+        if (selection_name == "YingletRig"):
+            exportPath += file_name
+        else:
+            exportPath += selection_name
+        
         
         if (selectedObject.type == 'ARMATURE'):
-             selectedObject.animation_data.action = bpy.data.actions.get("_T-Pose")
-             for child in selectedObject.children:
-                 # Don't export objects that for building other meshes
-                 hidden = ("(PreApply)" in child.name) or ("(Ignore)" in child.name) 
-                 child.hide_set(hidden)  # Visible in viewport
-                 child.hide_viewport = hidden  # Visible in viewport
+            selectedObject.animation_data.action = bpy.data.actions.get("_T-Pose")
+            for child in selectedObject.children:
+                 # Don't export objects that are just used for building other meshes
+                hidden = ("(PreApply)" in child.name) or ("(Ignore)" in child.name) 
+                 
+                # If this is a yinglet file that isn't the base one, filter base assets
+                if file_name.startswith("Yinglet") and file_name != "Yinglet-Base":
+                    if child.name in default_ying_object_filter:
+                        hidden = True
+                
+                # Apply hidden
+                child.hide_set(hidden)  # Visible in viewport
+                child.hide_viewport = hidden  # Visible in viewport
         
         select_children_recursive(selectedObject, True)
-        if (selectedObject.type == 'ARMATURE'):
-            export_fbx(exportPath, True)
-            export_fbx(exportPath + "-Meshes", False)
-        else:
-            export_fbx(exportPath, False)
+        export_fbx(exportPath, False)
         select_children_recursive(selectedObject, False)
 
 def export_fbx(exportPath, animsOnly):
@@ -67,7 +101,7 @@ def export_fbx(exportPath, animsOnly):
         apply_scale_options='FBX_SCALE_ALL',
         use_mesh_modifiers=True,  # Apply mirror; this prevents shape key usage. It might be possible to get this working with https://github.com/smokejohn/SKkeeper/tree/master
         object_types=object_types,
-        bake_anim=animsOnly,
+        bake_anim=True,
         use_armature_deform_only=True,  # Export only bones used for deformation
         add_leaf_bones=False,  # Prevents extra bones from being added
         bake_anim_step = 1, # (Default 1) - How often frames are sampled
@@ -86,7 +120,8 @@ def get_collection_path(obj_name):
     for collection in bpy.data.collections:
         child_collection_names = [child_collection.name for child_collection in collection.children]
         if obj_name in collection.objects or obj_name in child_collection_names:
-            return get_collection_path(collection.name) + "/" + collection.name
+            stripped_name = collection.name.replace(".001", "", 1) # strip out duplicate name suffix, because linking doesn't let us parent nicely
+            return get_collection_path(collection.name) + "/" + stripped_name
     
     return "" 
     
@@ -96,7 +131,5 @@ def get_collection_path(obj_name):
 bpy.ops.wm.save_mainfile()
 export()
 
-# the only reason we're doing this rn is because i'm too lazy to re-hide stuff
-# I guess it's also causing the pose to stay as-is which is nice
 bpy.ops.wm.revert_mainfile()
 

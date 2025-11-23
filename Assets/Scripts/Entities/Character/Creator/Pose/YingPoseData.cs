@@ -30,9 +30,9 @@ internal sealed class YingPoseData : IYingPoseData
 		Name = observableData.Name.Val;
 
 		// Hard referencing them like this is a little cringe, but I also don't care about pose mode
-		var eyeKey = resourceLoader.LoadCharacterIntId("1490a3cd97e05b34bb4efe5ed5513346");
-		var mouthKey = resourceLoader.LoadCharacterIntId("6ccdbae82063b23438cc6d12818d35a0");
-		var poseKey = resourceLoader.LoadPoseId("5c1ee6caa6f3f6c439595b0f1c5a27d4");
+		var eyeKey = resourceLoader.Load<CharacterIntId>("1490a3cd97e05b34bb4efe5ed5513346");
+		var mouthKey = resourceLoader.Load<CharacterIntId>("6ccdbae82063b23438cc6d12818d35a0");
+		var poseKey = resourceLoader.Load<PoseId>("5c1ee6caa6f3f6c439595b0f1c5a27d4");
 
 		_eyeExpressionNum.Val = observableData.NumberData.GetInt(eyeKey);
 		_mouthExpressionNum.Val = observableData.NumberData.GetInt(mouthKey);

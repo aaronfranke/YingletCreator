@@ -1,6 +1,8 @@
 ﻿using Character.Data;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+
 
 namespace Character.Compositor
 {
@@ -12,8 +14,8 @@ namespace Character.Compositor
 	[CreateAssetMenu(fileName = "CharacterElementTagMask", menuName = "Scriptable Objects/Character Compositor/CharacterElementTagMask")]
 	public class CharacterElementTagMask : CharacterToggleComponent, ICharacterElementTagMask
 	{
-		[SerializeField] CharacterElementTag[] _maskedTags;
-		public IEnumerable<CharacterElementTag> MaskedTags => _maskedTags;
+		[SerializeField] AssetReferenceT<CharacterElementTag>[] _maskedTagReferences;
+		public IEnumerable<CharacterElementTag> MaskedTags => _maskedTagReferences.Select(r => r.LoadSync());
 	}
 
 }

@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
+  m_Name: Clothes-Outfit-VizletClothes
+  m_EditorClassIdentifier: 
+  _uniqueAssetId: a53db4b760325734cbcc14dd8837b14a
+  _displayName: Matriarch Robes
+  _groupReferences:
+  - m_AssetGUID: 83e476b94deb4f64d89399d0aa93cdac
+  - m_AssetGUID: 14901bc6611d3d54d98993552fb8d05e
+  _addedMeshReferences:
+  - m_AssetGUID: b157ef39bcd6ff340a15b84c6920e1b3
+  - m_AssetGUID: 0d352b828d1c2f74f843b3cf4d97dfb4
+  - m_AssetGUID: f9d362d94f0bafb409992885bf330356
+  - m_AssetGUID: 85fefd3156a584c40bd436d44b8971c4
+  _addedTextureReferences:
+  - m_AssetGUID: 188e228fc1787cd4ca68e744eb679841
+  - m_AssetGUID: 77c9356cc0ad9954cb227d04e9f00883
+  - m_AssetGUID: ce0fc29ecc8b13d44bf445e53d8857bf
+  - m_AssetGUID: d90ac8fde65c4814692404521bfdc8e0
+  - m_AssetGUID: 2025c262757b93b449ea9074ef99ad13
+  _eyeTextures: {fileID: 0}
+  _roomPrefab: {fileID: 0}
+  _componentReferences:
+  - m_AssetGUID: 3f1f4ba2c6a0db94b81e4c1bcb269c33
+  - m_AssetGUID: 483a5a90bcb11da4abb1952894c720eb
+  _preview:
+    _sprite: {fileID: 643276493, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _cameraPositionReference:
+      m_AssetGUID: 05a5f89117304c04a99288d3a8404208
+  _order:
+    _groupReference:
+      m_AssetGUID: c369fb9b9aeccae4fad4d2d5cad4c7b4
+    _index: 400

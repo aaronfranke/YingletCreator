@@ -1,5 +1,6 @@
 ﻿
 using Character.Creator;
+using Character.Creator.UI;
 using Character.Data;
 using System;
 using System.IO;
@@ -15,14 +16,39 @@ namespace Snapshotter
 	public static class SnapshotToSpriteSheetUtils
 	{
 		const string ReferencesRelativePath = "Assets/Scripts/Entities/Snapshotter/SnapshotterReferences_ToggleIcons.asset";
-		const string CameraPosRelativePath = "Assets/Scripts/Entities/Snapshotter/CameraPositions/_Default.asset";
+		const string CameraPosRelativePath = "Assets/ScriptableObjects/CharacterCompositor/SnapshotterCameraPositions/_Default.asset";
 		const string PresetPath = "Assets/Scripts/Entities/Snapshotter/SnapshotYing.yingsave";
 
-		public static void SnapshotToTexAndApply(ISnapshottableScriptableObject[] snapshottables, string outputPath)
+		public static void GenerateToggleIcons(ModDefinition modDefinition)
+		{
+			const string OutputName = "GeneratedToggleIcons.png";
+			string outputFolder = modDefinition.GetParentFolder();
+			string outputPath = Path.Combine(outputFolder, OutputName);
+			var toggles = ObjectExtensionMethods.LoadAllAssets<CharacterToggleId>(outputFolder).ToArray();
+			// Filter out toggles that we don't want an icon for
+			toggles = toggles.Where(t => !t.Components.Any(c => c is NoToggleIcon)).ToArray();
+			SnapshotToTexAndApply(toggles, outputPath);
+		}
+
+		public static void GeneratePoseIcons(ModDefinition modDefinition)
+		{
+			const string OutputName = "GeneratedPoseIcons.png";
+			string outputFolder = modDefinition.GetParentFolder();
+			string outputPath = Path.Combine(outputFolder, OutputName);
+			var poses = ObjectExtensionMethods.LoadAllAssets<PoseId>(outputFolder).ToArray();
+			poses = poses.Where(p => p.Order.Group != null).ToArray();
+			SnapshotToTexAndApply(poses, outputPath);
+		}
+
+		static void SnapshotToTexAndApply(ISnapshottableScriptableObject[] snapshottables, string outputPath)
 		{
 			if (!EditorApplication.isPlaying)
 			{
 				Debug.LogError("Snapshotting logic can only be ran while playing");
+				return;
+			}
+			if (!snapshottables.Any())
+			{
 				return;
 			}
 
@@ -93,6 +119,8 @@ namespace Snapshotter
 			// Refresh AssetDatabase to show the new file
 			AssetDatabase.Refresh();
 
+			SetTextureToSprite(outputPath);
+
 			// Cleanup
 			GameObject.DestroyImmediate(tex);
 		}
@@ -161,7 +189,7 @@ namespace Snapshotter
 		{
 			int spaceNeeded = cellSize * cellSize * itemCount;
 
-			int testSize = 256;
+			int testSize = 128;
 			while (spaceNeeded > testSize * testSize)
 			{
 				testSize *= 2;
@@ -187,5 +215,29 @@ namespace Snapshotter
 			}
 		}
 
+		public static void SetTextureToSprite(string assetPath)
+		{
+			var importer = AssetImporter.GetAtPath(assetPath) as TextureImporter;
+
+			if (importer.textureType == TextureImporterType.Sprite && importer.spriteImportMode == SpriteImportMode.Multiple)
+			{
+				return; // Already good
+			}
+
+			importer.textureType = TextureImporterType.Sprite;
+			importer.spriteImportMode = SpriteImportMode.Multiple;
+
+			EditorUtility.SetDirty(importer);
+			importer.SaveAndReimport();
+		}
+
+		public static void UpdateIconsInScene()
+		{
+			var sprites = UnityEngine.Object.FindObjectsByType<CharacterCreatorToggleSprite>(FindObjectsSortMode.None);
+			foreach (var sprite in sprites)
+			{
+				sprite.Start(); // Call to force regeneration
+			}
+		}
 	}
 }

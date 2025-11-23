@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 /// <summary>
 /// Responsible for 
 /// </summary>
@@ -36,13 +37,13 @@ public interface IYingSnapshotRenderTexture : IDisposable
 public class YingSnapshotManager : MonoBehaviour, IYingSnapshotManager, IYingSnapshotManagerReferences
 {
 	[SerializeField] SnapshotterReferences _references;
-	[SerializeField] SnapshotterCameraPosition _cameraPosition;
+	[SerializeField] AssetReferenceT<SnapshotterCameraPosition> _cameraPositionReference;
 
 	Dictionary<CachedYingletReference, DictValue> _snapshots = new();
 	private ICompositeResourceLoader _resourceLoader;
 
 	public ISnapshotterReferences References => _references;
-	public SnapshotterCameraPosition CameraPosition => _cameraPosition;
+	public SnapshotterCameraPosition CameraPosition => _cameraPositionReference.LoadSync();
 	public ICompositeResourceLoader ResourceLoader => _resourceLoader;
 
 	private void Awake()

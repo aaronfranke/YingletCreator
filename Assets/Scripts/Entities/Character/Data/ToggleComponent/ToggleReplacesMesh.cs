@@ -1,6 +1,7 @@
 using Character.Compositor;
 using UnityEngine;
 
+
 namespace Character.Data
 {
 	public interface IToggleReplacesMesh
@@ -11,10 +12,10 @@ namespace Character.Data
 	[CreateAssetMenu(fileName = "ToggleReplacesMesh", menuName = "Scriptable Objects/Character Data/ToggleCompnents/ToggleReplacesMesh")]
 	public class ToggleReplacesMesh : CharacterToggleComponent, IToggleReplacesMesh
 	{
-		[SerializeField] MeshWithMaterial _toReplace;
-		[SerializeField] MeshWithMaterial _replacement;
+		[SerializeField] AssetReferenceT<MeshWithMaterial> _toReplaceReference;
+		[SerializeField] AssetReferenceT<MeshWithMaterial> _replacementReference;
 
-		public MeshWithMaterial ToReplace => _toReplace;
-		public MeshWithMaterial Replacement => _replacement;
+		public MeshWithMaterial ToReplace => _toReplaceReference.LoadSync();
+		public MeshWithMaterial Replacement => _replacementReference.LoadSync();
 	}
 }

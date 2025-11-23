@@ -26,7 +26,8 @@ internal sealed class PageYingPoseData : ReactiveBehaviour, IPageYingPoseData
 
 	private IYingPoseData ComputeData()
 	{
-		// TODO: consume even/odd and keep the last data
+		// We should probably consume even/odd and keep the last data
+		// That way it persists even when it becomes a transitioning page
 		var currentlyEditing = _poseData.CurrentlyEditing;
 
 		if (currentlyEditing == null) return null;

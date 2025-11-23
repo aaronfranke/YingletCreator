@@ -3,12 +3,13 @@ using System.Linq;
 using UnityEngine;
 
 
+
 namespace Character.Creator.UI
 {
 	public class CharacterCreatorTogglePoseGroup : MonoBehaviour
 	{
 		private ICompositeResourceLoader _resourceLoader;
-		[SerializeField] PoseOrderGroup _group;
+		[SerializeField] AssetReferenceT<PoseOrderGroup> _groupReference;
 		[SerializeField] GameObject _togglePrefab;
 
 		private void Awake()
@@ -23,7 +24,7 @@ namespace Character.Creator.UI
 		{
 			var allPoses = _resourceLoader.LoadAllPoseIds().ToArray();
 			var relevantPoses = allPoses
-				.Where(pose => pose.Order.Group == _group)
+				.Where(pose => pose.Order.Group == _groupReference.LoadSync())
 				.OrderBy(pose => pose.Order.Index)
 				.ToArray();
 			foreach (var poseId in relevantPoses)

@@ -2,6 +2,7 @@ using Character.Compositor;
 using Character.Data;
 using Reactivity;
 using System;
+using UnityEngine;
 
 namespace Character.Creator
 {
@@ -35,7 +36,12 @@ namespace Character.Creator
 			if (sliderData?.SliderValues == null) return;
 			foreach (var sliderValue in sliderData.SliderValues)
 			{
-				var key = resourceLoader.LoadCharacterSliderId(sliderValue.Id);
+				var key = resourceLoader.Load<CharacterSliderId>(sliderValue.Id);
+				if (key == null)
+				{
+					Debug.LogWarning($"Skipping unknown slider {key}");
+					continue;
+				}
 				SliderValues[key] = new(sliderValue.Value);
 			}
 		}
@@ -53,7 +59,12 @@ namespace Character.Creator
 			if (colorData?.ColorizeValues == null) return;
 			foreach (var colorizeValues in colorData.ColorizeValues)
 			{
-				var key = resourceLoader.LoadReColorId(colorizeValues.Id);
+				var key = resourceLoader.Load<ReColorId>(colorizeValues.Id);
+				if (key == null)
+				{
+					Debug.LogWarning($"Skipping unknown color data {key}");
+					continue;
+				}
 				ColorizeValues[key] = new(colorizeValues.Values);
 			}
 		}
@@ -67,7 +78,12 @@ namespace Character.Creator
 			if (toggleData?.ToggleIds == null) return;
 			foreach (var toggleIdString in toggleData.ToggleIds)
 			{
-				var toggleId = resourceLoader.LoadCharacterToggleId(toggleIdString);
+				var toggleId = resourceLoader.Load<CharacterToggleId>(toggleIdString);
+				if (toggleId == null)
+				{
+					Debug.LogWarning($"Skipping unknown toggle {toggleId}");
+					continue;
+				}
 				Toggles.Add(toggleId);
 			}
 		}
@@ -82,7 +98,12 @@ namespace Character.Creator
 			if (numberData?.IntValues == null) return;
 			foreach (var sliderValue in numberData.IntValues)
 			{
-				var key = resourceLoader.LoadCharacterIntId(sliderValue.Id);
+				var key = resourceLoader.Load<CharacterIntId>(sliderValue.Id);
+				if (key == null)
+				{
+					Debug.LogWarning($"Skipping unknown number {key}");
+					continue;
+				}
 				IntValues[key] = new(sliderValue.Value);
 			}
 		}

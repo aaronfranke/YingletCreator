@@ -24,10 +24,10 @@ float4 GrayscaleToColored(float4 mainTexColor, float4 grayscaleColor, float4 col
     float3 colorizedColor = lerp(darkColor.rgb, color.rgb, range25to75);
 
     float range0to25 = saturate(grayscale * 4);
-    colorizedColor = lerp((0, 0, 0), colorizedColor, Custom_ColorspaceConversion_RGB_Linear_float(range0to25));
+    colorizedColor = lerp(float3(0, 0, 0), colorizedColor, Custom_ColorspaceConversion_RGB_Linear_float(range0to25));
 
     float range75to100 = saturate((grayscale - 0.75f) * 4);
-    colorizedColor = lerp(colorizedColor, (1, 1, 1), Custom_ColorspaceConversion_RGB_Linear_float(range75to100));
+    colorizedColor = lerp(colorizedColor, float3(1, 1, 1), Custom_ColorspaceConversion_RGB_Linear_float(range75to100));
 
     float4 outColor = mainTexColor;
     outColor.rgb = lerp(mainTexColor.rgb, colorizedColor, grayscaleColor.a);

@@ -14,7 +14,7 @@ public class TakePictureOnLeftClick : MonoBehaviour, ITakePictureEvents
 {
 	const int PictureResolutionScale = 2;
 	private IInputRestrictor _inputRestrictor;
-	private ICustomizationSaveFolderProvider _locationProvider;
+	private ICharacterCreatorFolderProvider _locationProvider;
 	private IPhotoModeState _photoModeState;
 	private Camera _mainCamera;
 
@@ -25,7 +25,7 @@ public class TakePictureOnLeftClick : MonoBehaviour, ITakePictureEvents
 	private void Start()
 	{
 		_inputRestrictor = Singletons.GetSingleton<IInputRestrictor>();
-		_locationProvider = this.GetComponentInParent<ICustomizationSaveFolderProvider>();
+		_locationProvider = this.GetComponentInParent<ICharacterCreatorFolderProvider>();
 		_photoModeState = this.GetComponentInParent<IPhotoModeState>();
 		_mainCamera = this.GetComponentInChildren<Camera>();
 	}

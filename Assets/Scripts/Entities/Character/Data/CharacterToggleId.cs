@@ -1,7 +1,9 @@
 using Character.Compositor;
 using Snapshotter;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+
 
 namespace Character.Data
 {
@@ -14,14 +16,14 @@ namespace Character.Data
 		[SerializeField] string _displayName;
 		public string DisplayName => _displayName;
 
-		[SerializeField] public CharacterToggleEnforcementGroup[] _groups;
-		public CharacterToggleEnforcementGroup[] Groups => _groups;
+		[SerializeField] AssetReferenceT<CharacterToggleEnforcementGroup>[] _groupReferences;
+		public IEnumerable<CharacterToggleEnforcementGroup> Groups => _groupReferences.Select(r => r.LoadSync());
 
-		[SerializeField] MeshWithMaterial[] _addedMeshes;
-		public IEnumerable<MeshWithMaterial> AddedMeshes => _addedMeshes;
+		[SerializeField] AssetReferenceT<MeshWithMaterial>[] _addedMeshReferences;
+		public IEnumerable<MeshWithMaterial> AddedMeshes => _addedMeshReferences.Select(r => r.LoadSync());
 
-		[SerializeField] MixTexture[] _addedTextures;
-		public IEnumerable<MixTexture> AddedTextures => _addedTextures;
+		[SerializeField] AssetReferenceT<MixTexture>[] _addedTextureReferences;
+		public IEnumerable<MixTexture> AddedTextures => _addedTextureReferences.Select(r => r.LoadSync());
 
 		[SerializeField] EyeMixTextures _eyeTextures;
 		public EyeMixTextures EyeTextures => _eyeTextures;
@@ -29,8 +31,8 @@ namespace Character.Data
 		[SerializeField] GameObject _roomPrefab;
 		public GameObject RoomPrefab => _roomPrefab;
 
-		[SerializeField] CharacterToggleComponent[] _components;
-		public CharacterToggleComponent[] Components => _components;
+		[SerializeField] AssetReferenceT<CharacterToggleComponent>[] _componentReferences;
+		public IEnumerable<CharacterToggleComponent> Components => _componentReferences.Select(r => r.LoadSync());
 
 		[SerializeField] CharacterTogglePreviewData _preview;
 		public CharacterTogglePreviewData Preview => _preview;
@@ -46,8 +48,8 @@ namespace Character.Data
 		[SerializeField] Sprite _sprite;
 		public Sprite Sprite => _sprite;
 
-		[SerializeField] SnapshotterCameraPosition _cameraPosition;
-		public SnapshotterCameraPosition CameraPosition => _cameraPosition;
+		[SerializeField] AssetReferenceT<SnapshotterCameraPosition> _cameraPositionReference;
+		public SnapshotterCameraPosition CameraPosition => _cameraPositionReference.LoadSync();
 
 
 #if UNITY_EDITOR
@@ -61,8 +63,9 @@ namespace Character.Data
 	[System.Serializable]
 	public class CharacterToggleOrderData : IOrderData<CharacterToggleOrderGroup>
 	{
-		[SerializeField] CharacterToggleOrderGroup _group;
-		public CharacterToggleOrderGroup Group => _group;
+		public CharacterToggleOrderGroup Group => _groupReference.LoadSync();
+
+		[SerializeField] AssetReferenceT<CharacterToggleOrderGroup> _groupReference;
 
 		[SerializeField] int _index;
 		public int Index => _index;

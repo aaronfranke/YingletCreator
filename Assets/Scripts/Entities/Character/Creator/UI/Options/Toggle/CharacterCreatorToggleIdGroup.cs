@@ -3,13 +3,14 @@ using System.Linq;
 using UnityEngine;
 
 
+
 namespace Character.Creator.UI
 {
 	public class CharacterCreatorToggleIdGroup : MonoBehaviour
 	{
 		private ICompositeResourceLoader _resourceLoader;
 
-		[SerializeField] CharacterToggleOrderGroup _group;
+		[SerializeField] AssetReferenceT<CharacterToggleOrderGroup> _groupReference;
 		[SerializeField] GameObject _togglePrefab;
 
 		private void Awake()
@@ -22,9 +23,10 @@ namespace Character.Creator.UI
 		}
 		private void Start()
 		{
+			var group = _groupReference.LoadSync();
 			var allToggles = _resourceLoader.LoadAllToggleIds().ToArray();
 			var relevantToggles = allToggles
-				.Where(toggle => toggle.Order.Group == _group)
+				.Where(toggle => toggle.Order.Group == group)
 				.OrderBy(toggle => toggle.Order.Index)
 				.ToArray();
 			foreach (var toggleId in relevantToggles)

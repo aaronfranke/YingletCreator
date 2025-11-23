@@ -1,6 +1,8 @@
 using Character.Data;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+
 
 namespace Character.Compositor
 {
@@ -39,26 +41,26 @@ namespace Character.Compositor
 	[CreateAssetMenu(fileName = "MixTexture", menuName = "Scriptable Objects/Character Compositor/MixTexture")]
 	public class MixTexture : ScriptableObject, IMixTexture, IOrderableScriptableObject<MixTextureOrderGroup>
 	{
-		[SerializeField] ReColorId _reColorId;
-		[SerializeField] MaterialDescription _targetMaterialDescription;
-		[SerializeField] Texture2D _grayscale;
-		[SerializeField] Texture2D _mask;
-		[SerializeField] CharacterElementTag[] _tags;
+		[SerializeField] AssetReferenceT<ReColorId> _reColorIdReference;
+		[SerializeField] AssetReferenceT<MaterialDescription> _targetMaterialDescriptionReference;
+		[SerializeField] AssetReferenceT<Texture2D> _grayscaleReference;
+		[SerializeField] AssetReferenceT<Texture2D> _maskReference;
+		[SerializeField] AssetReferenceT<CharacterElementTag>[] _tagReferences;
 		[SerializeField] MixTextureOrderData _order;
 
-		public ReColorId ReColorId => _reColorId;
+		public ReColorId ReColorId => _reColorIdReference.LoadSync();
 
-		public MaterialDescription TargetMaterialDescription => _targetMaterialDescription;
+		public MaterialDescription TargetMaterialDescription => _targetMaterialDescriptionReference.LoadSync();
 
-		public Texture2D Grayscale => _grayscale;
+		public Texture2D Grayscale => _grayscaleReference.LoadSync();
 
-		public Texture2D Mask => _mask;
+		public Texture2D Mask => _maskReference.LoadSync();
 
 		public bool Sortable => true;
 
 		public virtual TargetMaterialTexture TargetMaterialTexture => TargetMaterialTexture.MainTexture;
 
-		public IEnumerable<CharacterElementTag> Tags => _tags;
+		public IEnumerable<CharacterElementTag> Tags => _tagReferences.Select(r => r.LoadSync());
 
 		public MixTextureOrderData Order => _order;
 		IOrderData<MixTextureOrderGroup> IOrderableScriptableObject<MixTextureOrderGroup>.Order => Order;
@@ -76,8 +78,8 @@ namespace Character.Compositor
 	[System.Serializable]
 	public class MixTextureOrderData : IOrderData<MixTextureOrderGroup>
 	{
-		[SerializeField] MixTextureOrderGroup _group;
-		public MixTextureOrderGroup Group => _group;
+		[SerializeField] AssetReferenceT<MixTextureOrderGroup> _groupReference;
+		public MixTextureOrderGroup Group => _groupReference.LoadSync();
 
 		[SerializeField] int _index;
 		public int Index => _index;

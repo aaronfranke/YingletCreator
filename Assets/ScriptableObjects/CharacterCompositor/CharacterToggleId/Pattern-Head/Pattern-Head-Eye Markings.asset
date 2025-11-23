@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
+  m_Name: Pattern-Head-Eye Markings
+  m_EditorClassIdentifier: 
+  _uniqueAssetId: d254412b1eb2e75498ed8b9f5806715c
+  _displayName: Eye Markings
+  _groupReferences: []
+  _addedMeshReferences: []
+  _addedTextureReferences:
+  - m_AssetGUID: aee4e5da247165b499e75a6e864fd5bc
+  _eyeTextures: {fileID: 0}
+  _roomPrefab: {fileID: 0}
+  _componentReferences: []
+  _preview:
+    _sprite: {fileID: -1019857638, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _cameraPositionReference:
+      m_AssetGUID: 850bf0f89ca3c0c498136d3f9febe1e8
+  _order:
+    _groupReference:
+      m_AssetGUID: 3d622c09a117a314e8d77c0606631bc1
+    _index: 1400

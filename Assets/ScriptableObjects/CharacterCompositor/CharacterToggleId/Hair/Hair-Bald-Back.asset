@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
+  m_Name: Hair-Bald-Back
+  m_EditorClassIdentifier: 
+  _uniqueAssetId: 69cafad3c31620243930a57b94075031
+  _displayName: Bald
+  _groupReferences:
+  - m_AssetGUID: a5117242e0acb1d4ead0e30cf8e080d3
+  _addedMeshReferences: []
+  _addedTextureReferences: []
+  _eyeTextures: {fileID: 0}
+  _roomPrefab: {fileID: 0}
+  _componentReferences:
+  - m_AssetGUID: a961be575566e23449ff0437d0c41253
+  _preview:
+    _sprite: {fileID: -553015257, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _cameraPositionReference:
+      m_AssetGUID: 18a8001dd172b7b46aa643b33f18e36b
+  _order:
+    _groupReference:
+      m_AssetGUID: 32e6cb2f51b23da45992b34ac37e6c7a
+    _index: 100

@@ -2,6 +2,7 @@ using Character.Creator;
 using Character.Data;
 using UnityEngine;
 
+
 enum ApplySliderMode
 {
 	Override,
@@ -12,7 +13,7 @@ public abstract class ApplySliderAsScaleBase : MonoBehaviour
 {
 	const float MIDDLE = 0.5f;
 
-	[SerializeField] CharacterSliderId _sliderId;
+	[SerializeField] AssetReferenceT<CharacterSliderId> _sliderReference;
 	[SerializeField] Vector3 _minSize = Vector3.one;
 	[SerializeField] Vector3 _maxSize = Vector3.one;
 	[SerializeField] ApplySliderMode _applyMode;
@@ -26,7 +27,7 @@ public abstract class ApplySliderAsScaleBase : MonoBehaviour
 
 	protected Vector3 GetSize()
 	{
-		var sliderValue = _dataRepository.GetSliderValue(_sliderId);
+		var sliderValue = _dataRepository.GetSliderValue(_sliderReference.LoadSync());
 		if (sliderValue < MIDDLE)
 		{
 			float p = sliderValue / MIDDLE;

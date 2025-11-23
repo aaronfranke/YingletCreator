@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
+  m_Name: Hair-Misc-Ponytail-Back
+  m_EditorClassIdentifier: 
+  _uniqueAssetId: 42125a23c85ffaf4b9da2024ea28801e
+  _displayName: Ponytail (Back)
+  _groupReferences:
+  - m_AssetGUID: afa6ef27aa0920645adf8aaad0e20b0c
+  _addedMeshReferences:
+  - m_AssetGUID: e182348161dcd734aa00b97fd9b60b44
+  - m_AssetGUID: 55deeb22e6a24fb4a9dee38fc61c61e5
+  _addedTextureReferences:
+  - m_AssetGUID: 37e8c4cebf6a11b44bba549b577f2f3c
+  - m_AssetGUID: c15cc3781a975354a9f7edbdfcbbfc88
+  _eyeTextures: {fileID: 0}
+  _roomPrefab: {fileID: 0}
+  _componentReferences: []
+  _preview:
+    _sprite: {fileID: -1097378742, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _cameraPositionReference:
+      m_AssetGUID: 9689795d523adb546ad1f6c0ca0a10fc
+  _order:
+    _groupReference:
+      m_AssetGUID: 05a058e822839214783e4ebfc4519043
+    _index: 400

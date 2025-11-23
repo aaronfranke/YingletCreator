@@ -16,6 +16,10 @@ namespace Snapshotter
 
 			var go = new GameObject("SnapshotterCamera");
 			_camera = go.AddComponent<Camera>();
+			if (_sParams.CamPos == null)
+			{
+				Debug.LogError($"No camera pos");
+			}
 			_camera.transform.position = _sParams.CamPos.Position;
 			_camera.transform.rotation = Quaternion.Euler(_sParams.CamPos.Rotation);
 			_camera.cullingMask = references.LayerMask;

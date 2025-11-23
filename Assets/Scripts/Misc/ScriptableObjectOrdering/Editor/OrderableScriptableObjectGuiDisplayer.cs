@@ -25,7 +25,7 @@ class OrderableScriptableObjectGuiDisplayer<TScriptableObject, TGroup> where TSc
 			_cachedObjects.Add(asset);
 		}
 
-		_cachedObjects = _cachedObjects.OrderBy(obj => obj.Order.Index).ToList();
+		_cachedObjects = _cachedObjects.ToList();
 	}
 
 	public void Display(ScriptableObject group)
@@ -41,7 +41,8 @@ class OrderableScriptableObjectGuiDisplayer<TScriptableObject, TGroup> where TSc
 		EditorGUILayout.LabelField("Ordering in group:", EditorStyles.boldLabel);
 
 		_scrollPos = EditorGUILayout.BeginScrollView(_scrollPos, GUILayout.Height(600));
-		foreach (var obj in _cachedObjects)
+		var ordered = _cachedObjects.OrderBy(obj => obj.Order.Index).ToList();
+		foreach (var obj in ordered)
 		{
 			EditorGUILayout.ObjectField($"({obj.Order.Index}) {obj.name}", obj, typeof(TScriptableObject), false);
 		}

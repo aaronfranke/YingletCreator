@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+
 namespace Character.Compositor
 {
 
 	public class MeshGatherer_MaskOnCharacterCreatorScreen : ReactiveBehaviour, IMeshGathererMutator
 	{
-		[SerializeField] CharacterElementTag _toRemove;
+		[SerializeField] AssetReferenceT<CharacterElementTag> _toRemoveReference;
 		[SerializeField] ClipboardSelectionType _clipboardType;
 
 		IClipboardSelection _clipboardSelection;
@@ -35,7 +36,7 @@ namespace Character.Compositor
 			if (!enabled) return;
 			if (_onPage.Val)
 			{
-				var toRemove = meshes.Where(m => m.Tags.Contains(_toRemove)).ToList();
+				var toRemove = meshes.Where(m => m.Tags.Contains(_toRemoveReference.LoadSync())).ToList();
 				foreach (var m in toRemove)
 				{
 					meshes.Remove(m);

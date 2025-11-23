@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
+  m_Name: Clothes-Legs-Legs-Anklet w Spikes
+  m_EditorClassIdentifier: 
+  _uniqueAssetId: b68029ceabbef134a9ed3bd20c670155
+  _displayName: Anklet w/ Spikes
+  _groupReferences:
+  - m_AssetGUID: 47a4cbb61be7d224bb7178414ad1bb45
+  _addedMeshReferences:
+  - m_AssetGUID: 8d1b5b29eb95f134c9bc6f81bdb1f45a
+  - m_AssetGUID: 7e86f604ca8d01c4f917f74c9db20143
+  _addedTextureReferences:
+  - m_AssetGUID: 3fec1b1bb8a4836439bbaeff36893711
+  - m_AssetGUID: 6e8cfa1313880654d98f69676ad8a412
+  _eyeTextures: {fileID: 0}
+  _roomPrefab: {fileID: 0}
+  _componentReferences: []
+  _preview:
+    _sprite: {fileID: -943697539, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _cameraPositionReference:
+      m_AssetGUID: ac012c3e212c77547b9d71f82e51ebfe
+  _order:
+    _groupReference:
+      m_AssetGUID: 620eabfd9902de141bec8093be12337c
+    _index: 105

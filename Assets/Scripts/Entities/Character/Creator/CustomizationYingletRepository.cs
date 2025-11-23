@@ -30,7 +30,6 @@ namespace Character.Creator
 
 	public class CustomizationYingletRepository : MonoBehaviour, ICustomizationYingletRepository
 	{
-		private ICustomizationDiskIO _diskIO;
 
 		private Dictionary<CustomizationYingletGroup, ObservableList<CachedYingletReference>> _yinglets = new();
 
@@ -41,18 +40,18 @@ namespace Character.Creator
 
 		private void Awake()
 		{
-			_diskIO = this.GetComponent<ICustomizationDiskIO>();
 			LoadAllYinglets();
 		}
 
 		void LoadAllYinglets()
 		{
+			var dataLoader = this.GetComponent<IStartupYingletDataLoader>();
 			LoadGroupYinglets(CustomizationYingletGroup.Preset);
 			LoadGroupYinglets(CustomizationYingletGroup.Custom);
 
 			void LoadGroupYinglets(CustomizationYingletGroup group)
 			{
-				var paths = _diskIO.LoadInitialYingData(group).ToArray();
+				var paths = dataLoader.LoadInitialYingData(group).ToArray();
 				var list = new ObservableList<CachedYingletReference>();
 				foreach (var path in paths)
 				{

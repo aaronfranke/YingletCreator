@@ -1,4 +1,5 @@
 using UnityEngine;
+
 namespace Character.Compositor
 {
 
@@ -10,7 +11,7 @@ namespace Character.Compositor
 	[CreateAssetMenu(fileName = "MaterialDescription", menuName = "Scriptable Objects/Character Compositor/MaterialDescription")]
 	public class MaterialDescription : ScriptableObject
 	{
-		[SerializeField] Material _referenceMaterial;
-		public Material ReferenceMaterial => _referenceMaterial;
+		[SerializeField] AssetReferenceT<Material> _materialReference;
+		public Material ReferenceMaterial => _materialReference.LoadSync();
 	}
 }

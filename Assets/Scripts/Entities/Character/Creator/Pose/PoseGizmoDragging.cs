@@ -1,4 +1,5 @@
 using Reactivity;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -15,6 +16,7 @@ public class PoseGizmoDragging : MonoBehaviour, IPoseGizmo
 	private IPoseGizmoDragLogic _dragLogic;
 	private IDragSfx _dragSfx;
 	private Coroutine _activeDrag;
+	private IDisposable _hoverDisable;
 	Observable<bool> _dragging = new();
 
 	public bool Dragging => _dragging.Val;
@@ -38,9 +40,14 @@ public class PoseGizmoDragging : MonoBehaviour, IPoseGizmo
 		_activeDrag = StartCoroutine(Drag());
 	}
 
+	void OnDisable()
+	{
+		ConcludeCoroutine();
+	}
+
 	IEnumerator Drag()
 	{
-		using var hoverDisable = _hoverManager.DisableHovering();
+		_hoverDisable = _hoverManager.DisableHovering();
 		_dragging.Val = true;
 		var target = _poseData.CurrentlyEditing.GameObject.transform;
 
@@ -66,9 +73,15 @@ public class PoseGizmoDragging : MonoBehaviour, IPoseGizmo
 		}
 
 		this.transform.localRotation = Quaternion.identity;
+		ConcludeCoroutine();
+	}
 
+	void ConcludeCoroutine()
+	{
 		_activeDrag = null;
 		_dragging.Val = false;
+		_hoverDisable?.Dispose();
+		_hoverDisable = null;
 	}
 
 	Vector3 GetMousePositionOnAppropriateAxis(Transform target)

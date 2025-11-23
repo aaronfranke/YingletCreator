@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
+  m_Name: Whiskers-Normal
+  m_EditorClassIdentifier: 
+  _uniqueAssetId: 67335fedf8c1d5b45b5e5d7f6781a70f
+  _displayName: Normal
+  _groupReferences:
+  - m_AssetGUID: 3ce4687996174434fafbbeaaac26e56d
+  _addedMeshReferences:
+  - m_AssetGUID: 0600307e6301d2149850bbd0f910166b
+  _addedTextureReferences: []
+  _eyeTextures: {fileID: 0}
+  _roomPrefab: {fileID: 0}
+  _componentReferences: []
+  _preview:
+    _sprite: {fileID: -2039566419, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _cameraPositionReference:
+      m_AssetGUID: c412fae6ac4885142b4cf7f4ae890356
+  _order:
+    _groupReference:
+      m_AssetGUID: 50728303e837d4b4d970bedba0fe91a1
+    _index: 200

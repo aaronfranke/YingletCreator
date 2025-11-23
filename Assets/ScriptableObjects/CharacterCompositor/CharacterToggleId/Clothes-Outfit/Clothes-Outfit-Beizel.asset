@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 410c8d6b8ba8703499ece84dbc319d34, type: 3}
+  m_Name: Clothes-Outfit-Beizel
+  m_EditorClassIdentifier: 
+  _uniqueAssetId: 05d365683989f5c45aef176e975de08c
+  _displayName: Scouting Attire
+  _groupReferences:
+  - m_AssetGUID: 83e476b94deb4f64d89399d0aa93cdac
+  _addedMeshReferences:
+  - m_AssetGUID: 2fd36ec2b7c4de14f8df39dcb74c8ff4
+  - m_AssetGUID: 81978d69d12910748a7aa1f8f58a2711
+  - m_AssetGUID: 64940c90153d0ed45b4125535b8e8624
+  _addedTextureReferences:
+  - m_AssetGUID: e0931eab949e60f4e9836c0adfa577fb
+  - m_AssetGUID: be927c0f62451874a8f32b77c095ac66
+  - m_AssetGUID: 24da7c38047509a42aa5ad9008a7c1e0
+  _eyeTextures: {fileID: 0}
+  _roomPrefab: {fileID: 0}
+  _componentReferences:
+  - m_AssetGUID: 3f1f4ba2c6a0db94b81e4c1bcb269c33
+  - m_AssetGUID: ffb49066cbb69594ca4a517c02939747
+  - m_AssetGUID: fa8dc294596c0ca4ca77b40dd865b4d8
+  _preview:
+    _sprite: {fileID: -1173339198, guid: 15341dd2853879d4694c63f593796b80, type: 3}
+    _cameraPositionReference:
+      m_AssetGUID: 05a5f89117304c04a99288d3a8404208
+  _order:
+    _groupReference:
+      m_AssetGUID: c369fb9b9aeccae4fad4d2d5cad4c7b4
+    _index: 300

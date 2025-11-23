@@ -5,7 +5,7 @@ namespace Character.Creator.UI
 {
 	public class CharacterCreatorToggleSprite : MonoBehaviour
 	{
-		private void Start()
+		public void Start()
 		{
 			var image = this.GetComponent<Image>();
 			image.sprite = this.GetComponentInParent<ICharacterCreatorToggleReference>().Sprite;
