@@ -100,7 +100,7 @@ TextureImporter:
       name: Pattern-Head-Star (Cheak)
       rect:
         serializedVersion: 2
-        x: 0
+        x: 128
         y: 0
         width: 128
         height: 128
@@ -114,6 +114,72 @@ TextureImporter:
       bones: []
       spriteID: 7f0af444c27dec4d5f9d4a2d7c3926d3
       internalID: 1464945161510881432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pattern-Body-Star (Back)
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae7c1740dd1c8709430e30172df1b382
+      internalID: -1860264567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hair-Star-Back
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9eaec80dd2b22df8347b0ca5b3ff6b55
+      internalID: 607627556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hair-Star-Front
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38f9bf6dce0c27008b2ef02723db1acb
+      internalID: -2059579463
       vertices: []
       indices: 
       edges: []
@@ -132,6 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+      Hair-Star-Back: 607627556
+      Hair-Star-Front: -2059579463
+      Pattern-Body-Star (Back): -1860264567
       Pattern-Head-Star (Cheak): 1464945161510881432
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
