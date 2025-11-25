@@ -35,7 +35,7 @@ public class ModsPageLinkSupport : MonoBehaviour, IPointerClickHandler
 				Process.Start("explorer.exe", _folderProvider.ModsFolderPath);
 				break;
 			case "workshop":
-				Application.OpenURL("https://steamcommunity.com/workshop/browse/?appid=3954540");
+				Application.OpenURL("https://steamcommunity.com/app/3954540/workshop/");
 				break;
 			default:
 				throw new Exception("Unexpected link: " + linkId);
