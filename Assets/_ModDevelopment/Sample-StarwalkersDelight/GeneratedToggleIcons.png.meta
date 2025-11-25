@@ -100,8 +100,8 @@ TextureImporter:
       name: Pattern-Head-Star (Cheak)
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
+        x: 0
+        y: 128
         width: 128
         height: 128
       alignment: 0
@@ -122,7 +122,7 @@ TextureImporter:
       name: Pattern-Body-Star (Back)
       rect:
         serializedVersion: 2
-        x: 0
+        x: 384
         y: 0
         width: 128
         height: 128
@@ -144,7 +144,7 @@ TextureImporter:
       name: Hair-Star-Back
       rect:
         serializedVersion: 2
-        x: 0
+        x: 128
         y: 128
         width: 128
         height: 128
@@ -166,7 +166,7 @@ TextureImporter:
       name: Hair-Star-Front
       rect:
         serializedVersion: 2
-        x: 128
+        x: 256
         y: 128
         width: 128
         height: 128
@@ -180,6 +180,72 @@ TextureImporter:
       bones: []
       spriteID: 38f9bf6dce0c27008b2ef02723db1acb
       internalID: -2059579463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clothes-Glasses-Star
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 975ad2f92c6d69f70a54fe6802c81e47
+      internalID: -299011585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clothes-Hat-WizardCone
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bed71aea4ed009e37db25ef708d5845d
+      internalID: -570715656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Clothes-Outfit-StarRobes
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19292aa15b45bda35d1f8bb41cb1ebe3
+      internalID: 1161022136
       vertices: []
       indices: 
       edges: []
@@ -198,6 +264,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+      Clothes-Glasses-Star: -299011585
+      Clothes-Hat-WizardCone: -570715656
+      Clothes-Outfit-StarRobes: 1161022136
       Hair-Star-Back: 607627556
       Hair-Star-Front: -2059579463
       Pattern-Body-Star (Back): -1860264567
