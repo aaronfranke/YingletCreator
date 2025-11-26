@@ -58,6 +58,11 @@ public class ModLoader : MonoBehaviour, IModLoader
 	}
 	static void LoadAllFromFolder(List<ModDefinition> definitions, string folder)
 	{
+		if (!Directory.Exists(folder))
+		{
+			Debug.LogError($"Mod folder {folder} does not exist, skipping");
+			return;
+		}
 		var paths = Directory.GetFiles(folder, $"*{ModDefinition.ModExtension}", SearchOption.AllDirectories);
 		foreach (var path in paths)
 		{
