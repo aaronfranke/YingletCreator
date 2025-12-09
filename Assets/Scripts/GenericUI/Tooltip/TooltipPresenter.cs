@@ -32,6 +32,7 @@ public class TooltipPresenter : ReactiveBehaviour, ISelectable
 		var currentTooltip = _tooltipManager.CurrentTooltip.Val;
 		if (currentTooltip == null) return;
 		_text.text = currentTooltip.Text;
+		LayoutRebuilder.ForceRebuildLayoutImmediate(_childRT); // Ensure the size is updated with the new text
 		this.transform.position = PositionTooltip(_childRT.sizeDelta, currentTooltip);
 	}
 
