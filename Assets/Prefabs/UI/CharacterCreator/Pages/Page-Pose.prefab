@@ -975,6 +975,10 @@ PrefabInstance:
       propertyPath: _soundEffect
       value: 
       objectReference: {fileID: 11400000, guid: 16db6013a7c1f98408baf7713b450597, type: 2}
+    - target: {fileID: 8358048460876505798, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
+      propertyPath: _text
+      value: Open photo folder
+      objectReference: {fileID: 0}
     - target: {fileID: 8520688674579123256, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
       propertyPath: m_Color.b
       value: 0.21568629
@@ -1350,7 +1354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3512307546995425619, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
       propertyPath: m_Name
-      value: Page - Pose
+      value: Page-Pose
       objectReference: {fileID: 0}
     - target: {fileID: 4099649964880116737, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
       propertyPath: m_AnchorMax.y

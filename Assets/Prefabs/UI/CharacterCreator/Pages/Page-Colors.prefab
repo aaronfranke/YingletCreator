@@ -232,6 +232,7 @@ GameObject:
   - component: {fileID: 2950351163441653580}
   - component: {fileID: 5761492533593310950}
   - component: {fileID: 3560676606715835088}
+  - component: {fileID: 2492990370122847311}
   m_Layer: 5
   m_Name: LightDarkToggle
   m_TagString: Untagged
@@ -418,6 +419,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3417f964297c4174797f3b7a81faacd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2492990370122847311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2843976788530192508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92853d98fed596748b66486394098bd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: 'Switch between editing
+
+    base or shade color'
 --- !u!1 &3744086791189796559
 GameObject:
   m_ObjectHideFlags: 0
@@ -1075,7 +1091,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3512307546995425619, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
       propertyPath: m_Name
-      value: Page - Colors
+      value: Page-Colors
       objectReference: {fileID: 0}
     - target: {fileID: 4099649964880116737, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1301,10 +1317,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _noIdInsertionPointReference:
     m_AssetGUID: eebdf3d18fc8b3c49a496e16dccc8912
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 0
 --- !u!114 &5239588029708702728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1524,6 +1536,10 @@ PrefabInstance:
     - target: {fileID: 6925715527149378760, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
       propertyPath: m_Name
       value: ButtonWithIcon - Paste
+      objectReference: {fileID: 0}
+    - target: {fileID: 8358048460876505798, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
+      propertyPath: _text
+      value: Paste color
       objectReference: {fileID: 0}
     - target: {fileID: 8520688674579123256, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
       propertyPath: m_Color.b
@@ -2176,6 +2192,10 @@ PrefabInstance:
     - target: {fileID: 6925715527149378760, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
       propertyPath: m_Name
       value: ButtonWithIcon - Copy
+      objectReference: {fileID: 0}
+    - target: {fileID: 8358048460876505798, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
+      propertyPath: _text
+      value: Copy color
       objectReference: {fileID: 0}
     - target: {fileID: 8520688674579123256, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
       propertyPath: m_Color.b

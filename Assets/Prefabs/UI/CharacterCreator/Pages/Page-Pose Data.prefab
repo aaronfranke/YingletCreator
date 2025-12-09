@@ -3141,7 +3141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3739304276860080370, guid: 881912b96e74a83458f93b64ce30c4b3, type: 3}
       propertyPath: m_Size
-      value: 0.2781609
+      value: 0.27816093
       objectReference: {fileID: 0}
     - target: {fileID: 3739304276860080370, guid: 881912b96e74a83458f93b64ce30c4b3, type: 3}
       propertyPath: m_Value
@@ -3325,7 +3325,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8212420343396858750, guid: 881912b96e74a83458f93b64ce30c4b3, type: 3}
       propertyPath: m_Name
-      value: Page - Pose Data
+      value: Page-Pose Data
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4179,6 +4179,10 @@ PrefabInstance:
     - target: {fileID: 6925715527149378760, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
       propertyPath: m_Name
       value: ButtonWithIcon
+      objectReference: {fileID: 0}
+    - target: {fileID: 8358048460876505798, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
+      propertyPath: _text
+      value: Reset
       objectReference: {fileID: 0}
     - target: {fileID: 8456146086630532683, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
       propertyPath: m_EffectDistance.x
