@@ -2109,6 +2109,10 @@ PrefabInstance:
       propertyPath: _soundEffect
       value: 
       objectReference: {fileID: 11400000, guid: eb2a4e4271f711848aa0a8f19a29b79a, type: 2}
+    - target: {fileID: 8358048460876505798, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
+      propertyPath: _text
+      value: Save to disk
+      objectReference: {fileID: 0}
     - target: {fileID: 8520688674579123256, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
       propertyPath: m_Color.b
       value: 0.6117647
@@ -2286,6 +2290,10 @@ PrefabInstance:
       propertyPath: _soundEffect
       value: 
       objectReference: {fileID: 11400000, guid: 16db6013a7c1f98408baf7713b450597, type: 2}
+    - target: {fileID: 8358048460876505798, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
+      propertyPath: _text
+      value: Open in file explorer
+      objectReference: {fileID: 0}
     - target: {fileID: 8520688674579123256, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
       propertyPath: m_Color.b
       value: 0.21568629
@@ -2443,6 +2451,10 @@ PrefabInstance:
     - target: {fileID: 6925715527149378760, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
       propertyPath: m_Name
       value: ButtonWithIcon (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8358048460876505798, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
+      propertyPath: _text
+      value: Export to Blender
       objectReference: {fileID: 0}
     - target: {fileID: 8520688674579123256, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
       propertyPath: m_Color.b
@@ -2617,6 +2629,10 @@ PrefabInstance:
     - target: {fileID: 6925715527149378760, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
       propertyPath: m_Name
       value: ButtonWithIcon (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8358048460876505798, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
+      propertyPath: _text
+      value: Delete yinglet
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3580659800990517261, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
@@ -2843,6 +2859,10 @@ PrefabInstance:
     - target: {fileID: 4099649964880116737, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4223748227334262666, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
+      propertyPath: m_Value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4262256649012887942, guid: 808cc516b9afeee43b61b1f96f26e04b, type: 3}
       propertyPath: m_AnchorMax.x
