@@ -6,6 +6,7 @@ public interface ISaveFolderProvider
 {
 	string GameRootFolderPath { get; }
 	string ModsFolderPath { get; }
+	string ExportsFolderPath { get; }
 }
 public class SaveFolderProvider : MonoBehaviour, ISaveFolderProvider
 {
@@ -15,7 +16,9 @@ public class SaveFolderProvider : MonoBehaviour, ISaveFolderProvider
 		var fullPath = Path.Combine(documentsPath, "My Games", Application.productName);
 		GameRootFolderPath = PathUtils.EnsureDirectoryExists(fullPath);
 		ModsFolderPath = PathUtils.EnsureDirectoryExists(Path.Combine(fullPath, "Mods"));
+		ExportsFolderPath = Path.Combine(fullPath, "Exports");
 	}
 	public string GameRootFolderPath { get; private set; }
 	public string ModsFolderPath { get; private set; }
+	public string ExportsFolderPath { get; private set; }
 }
