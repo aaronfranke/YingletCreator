@@ -52,19 +52,24 @@ namespace Snapshotter
 				return;
 			}
 
+			var resourceLoader = Singletons.GetSingleton<ICompositeResourceLoader>();
+			if (resourceLoader == null)
+			{
+				Debug.LogError("Missing dependencies required to snapshot; are you in the CharacterCreator scene?");
+				return;
+			}
+
 			Debug.Log($"Generating icons for {snapshottables.Length} snapshottables");
 			var references = AssetDatabase.LoadAssetAtPath<SnapshotterReferences>(ReferencesRelativePath);
 			int totalTexSize = CalculateTotalTextureSize(references.SizeInPixels, snapshottables.Length);
 
-			SnapshotsToTexture(references, snapshottables, outputPath, totalTexSize);
+			SnapshotsToTexture(references, snapshottables, outputPath, totalTexSize, resourceLoader);
 			SpliceSpriteSheet(references, snapshottables, outputPath, totalTexSize);
 			ApplySpriteSheetToSnapshottables(snapshottables, outputPath);
 		}
 
-		static void SnapshotsToTexture(SnapshotterReferences references, ISnapshottableScriptableObject[] snapshottables, string outputPath, int totalTexSize)
+		static void SnapshotsToTexture(SnapshotterReferences references, ISnapshottableScriptableObject[] snapshottables, string outputPath, int totalTexSize, ICompositeResourceLoader resourceLoader)
 		{
-			var resourceLoader = Singletons.GetSingleton<ICompositeResourceLoader>();
-
 			var defaultCamPos = AssetDatabase.LoadAssetAtPath<SnapshotterCameraPosition>(CameraPosRelativePath);
 
 			string text = File.ReadAllText(PresetPath);
