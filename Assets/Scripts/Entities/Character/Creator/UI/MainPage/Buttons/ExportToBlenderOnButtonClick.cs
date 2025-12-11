@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,7 @@ public class ExportToBlenderOnButtonClick : MonoBehaviour
 	private ISaveFolderProvider _saveFolderProvider;
 	private ICustomizationSelection _selection;
 	private IMaterialGeneration _materialGeneration;
+	private IMeshGatherer _meshGatherer;
 	private IConfirmationManager _confirmationManager;
 
 	public event Action OnExport = delegate { };
@@ -25,6 +27,7 @@ public class ExportToBlenderOnButtonClick : MonoBehaviour
 		_saveFolderProvider = Singletons.GetSingleton<ISaveFolderProvider>();
 		_selection = this.GetCharacterCreatorComponent<ICustomizationSelection>();
 		_materialGeneration = this.GetCharacterCreatorComponent<IMaterialGeneration>();
+		_meshGatherer = this.GetCharacterCreatorComponent<IMeshGatherer>();
 
 		_confirmationManager = Singletons.GetSingleton<IConfirmationManager>();
 	}
@@ -92,6 +95,10 @@ public class ExportToBlenderOnButtonClick : MonoBehaviour
 			}
 		}
 
+		// Export a manifest of meshes and materials
+		ExportManifest(newFolder);
+
+		// Export a readme
 		File.WriteAllText(Path.Combine(newFolder, "_README.txt"), "TODO");
 
 		// Export a .blend file to work with
@@ -99,6 +106,16 @@ public class ExportToBlenderOnButtonClick : MonoBehaviour
 		File.Copy(blendSourcePath, Path.Combine(newFolder, "Yinglet.blend"));
 
 		OnExport();
+	}
+
+	void ExportManifest(string newFolder)
+	{
+		var sb = new StringBuilder();
+		foreach (var meshWithMat in _meshGatherer.AllRelevantMeshes)
+		{
+			sb.AppendLine($"{meshWithMat.SkinnedMeshRendererPrefab.name},{meshWithMat.MaterialDescription.name}");
+		}
+		File.WriteAllText(Path.Combine(newFolder, "manifest.txt"), sb.ToString());
 	}
 
 
