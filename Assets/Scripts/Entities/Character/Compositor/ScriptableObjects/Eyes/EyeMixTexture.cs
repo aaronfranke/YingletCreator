@@ -1,6 +1,5 @@
 using Character.Data;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 
@@ -40,6 +39,6 @@ namespace Character.Compositor
 
 		public TargetMaterialTexture TargetMaterialTexture => _target;
 
-		public IEnumerable<CharacterElementTag> Tags => Enumerable.Empty<CharacterElementTag>();
+		public IEnumerable<CharacterElementTag> Tags => new[] { _references.EyeElementTag };
 	}
 }
