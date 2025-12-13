@@ -99,7 +99,8 @@ public class ExportToBlenderOnButtonClick : MonoBehaviour
 		ExportManifest(newFolder);
 
 		// Export a readme
-		File.WriteAllText(Path.Combine(newFolder, "_README.txt"), "TODO");
+		var readmeSB = new StringBuilder();
+		File.WriteAllText(Path.Combine(newFolder, "_README.txt"), "For information, go here: https://github.com/TBartl/YingletCreator/wiki/10.-Exporting-a-Yinglet");
 
 		// Export a .blend file to work with
 		string blendSourcePath = Path.Combine(Application.streamingAssetsPath, "Yinglet.blend");
