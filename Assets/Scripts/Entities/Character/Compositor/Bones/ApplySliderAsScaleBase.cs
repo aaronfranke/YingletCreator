@@ -25,7 +25,7 @@ public abstract class ApplySliderAsScaleBase : MonoBehaviour
 		_dataRepository = GetComponentInParent<ICustomizationSelectedDataRepository>();
 	}
 
-	protected Vector3 GetSize()
+	public Vector3 GetSize()
 	{
 		var sliderValue = _dataRepository.GetSliderValue(_sliderReference.LoadSync());
 		if (sliderValue < MIDDLE)
@@ -39,6 +39,12 @@ public abstract class ApplySliderAsScaleBase : MonoBehaviour
 			return Vector3.LerpUnclamped(Vector3.one, _maxSize, p);
 		}
 	}
+
+	public bool ReferencesSliderId(AssetReferenceT<CharacterSliderId> sliderIdReference)
+	{
+		return _sliderReference.AssetGUID == sliderIdReference.AssetGUID;
+	}
+
 	protected void ApplyToTarget(Transform target, Vector3 size)
 	{
 		if (_applyMode == ApplySliderMode.Override)
@@ -50,5 +56,4 @@ public abstract class ApplySliderAsScaleBase : MonoBehaviour
 			target.localScale = target.localScale.Multiply(size);
 		}
 	}
-
 }

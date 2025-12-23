@@ -33,7 +33,17 @@ namespace Character.Compositor
             var newGO = GameObject.Instantiate(mesh.SkinnedMeshRendererPrefab, this.transform.position, Quaternion.identity, this.transform);
 
             newGO.name = mesh.SkinnedMeshRendererPrefab.name;
+
+            // GameObject.Instantiate sets the global transform, but we want to ensure the mesh has an identity local transform.
+            newGO.transform.localPosition = Vector3.zero;
+            newGO.transform.localRotation = Quaternion.identity;
+            newGO.transform.localScale = Vector3.one;
+
             var skinnedMeshRenderer = newGO.GetComponent<SkinnedMeshRenderer>();
+            if (!mesh.StartsVisible)
+            {
+                skinnedMeshRenderer.enabled = false;
+            }
 
             // Despite the name, this doesn't actually have to be a skinned mesh renderer. Particularly, props aren't weighted
             if (skinnedMeshRenderer != null)

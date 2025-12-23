@@ -26,6 +26,15 @@ public class Tooltip : MonoBehaviour, ITooltip, IPointerEnterHandler, IPointerEx
 		}
 	}
 
+	public void SetText(string newText)
+	{
+		if (_text == newText) return;
+		_text = newText;
+		// If this tooltip is currently displayed, notify the manager so
+		// subscribers can refresh the visible text immediately.
+		_tooltipManager?.NotifyTextChanged(this);
+	}
+
 	private void OnDestroy()
 	{
 		_tooltipManager.Unregister(this);

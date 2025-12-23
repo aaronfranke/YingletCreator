@@ -9,35 +9,22 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ExportToBlenderOnButtonClick : MonoBehaviour
+public class ExportToBlenderOnButtonClick : ExportOnButtonClickBase
 {
-	private Button _button;
-	private ISaveFolderProvider _saveFolderProvider;
-	private ICustomizationSelection _selection;
 	private IMaterialGeneration _materialGeneration;
 	private IMeshGatherer _meshGatherer;
 	private IConfirmationManager _confirmationManager;
 
-	public event Action OnExport = delegate { };
-
-	private void Awake()
+	protected override void Awake()
 	{
-		_button = this.GetComponent<Button>();
-		_button.onClick.AddListener(Button_OnClick);
-		_saveFolderProvider = Singletons.GetSingleton<ISaveFolderProvider>();
-		_selection = this.GetCharacterCreatorComponent<ICustomizationSelection>();
+		base.Awake();
 		_materialGeneration = this.GetCharacterCreatorComponent<IMaterialGeneration>();
 		_meshGatherer = this.GetCharacterCreatorComponent<IMeshGatherer>();
 
 		_confirmationManager = Singletons.GetSingleton<IConfirmationManager>();
 	}
 
-	private void OnDestroy()
-	{
-		_button.onClick.RemoveListener(Button_OnClick);
-	}
-
-	private void Button_OnClick()
+    protected override void OnExportButtonClicked()
 	{
 		_confirmationManager.OpenConfirmation(new(
 			"Export model + textures to Blender?\nThis feature has limited support and\nrequires additional work.",
@@ -57,7 +44,7 @@ public class ExportToBlenderOnButtonClick : MonoBehaviour
 
 		var alphaNumericName = Regex.Replace(selected.CachedData.Name, "[^a-zA-Z0-9_-]", "");
 		var folderName = alphaNumericName + "-" + DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
-		var newFolder = Path.Combine(_saveFolderProvider.ExportsFolderPath, folderName);
+		var newFolder = GetSavePath();
 
 		PathUtils.EnsureDirectoryExists(newFolder);
 		System.Diagnostics.Process.Start("explorer.exe", newFolder);
@@ -106,7 +93,7 @@ public class ExportToBlenderOnButtonClick : MonoBehaviour
 		string blendSourcePath = Path.Combine(Application.streamingAssetsPath, "Yinglet.blend");
 		File.Copy(blendSourcePath, Path.Combine(newFolder, "Yinglet.blend"));
 
-		OnExport();
+		EmitExportEvent();
 	}
 
 	void ExportManifest(string newFolder)
