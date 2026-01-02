@@ -1,4 +1,5 @@
 using Reactivity;
+using UnityEngine;
 
 public interface IUiHoverManager
 {
@@ -32,6 +33,11 @@ public class UiHoverManager : ReactiveBehaviour, IWriteableUiHoverManager
 
 	private bool ComputeHoveringUi()
 	{
+		if (_nonUiHoverable == null)
+		{
+			Debug.LogWarning("Non-UI hoverable not registered; reactivity will likely break");
+			return true;
+		}
 		return !_nonUiHoverable.Hovered.Val;
 	}
 
