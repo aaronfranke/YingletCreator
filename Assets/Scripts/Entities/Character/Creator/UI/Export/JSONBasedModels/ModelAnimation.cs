@@ -86,7 +86,7 @@ public class ModelAnimation : ModelItem
 			}
 			json.Append(",\"values\":");
 			json.Append(valuesAccessorIndex);
-			json.Append("}],");
+			json.Append("}]");
 		}
 		json.Append("}");
 		return json.ToString();
