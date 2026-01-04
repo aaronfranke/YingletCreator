@@ -40,10 +40,7 @@ public abstract class ApplySliderAsScaleBase : MonoBehaviour
 		}
 	}
 
-	public bool ReferencesSliderId(AssetReferenceT<CharacterSliderId> sliderIdReference)
-	{
-		return _sliderReference.AssetGUID == sliderIdReference.AssetGUID;
-	}
+	public CharacterSliderId SliderId => _sliderReference.LoadSync();
 
 	protected void ApplyToTarget(Transform target, Vector3 size)
 	{

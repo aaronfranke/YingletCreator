@@ -38,7 +38,7 @@ public abstract class ExportOnButtonClickBase : MonoBehaviour
 		ApplySliderAsScaleBase[] applySliders = _headSizeApplyGameObject.GetComponents<ApplySliderAsScaleBase>();
 		foreach (ApplySliderAsScaleBase slider in applySliders)
 		{
-			if (!slider.ReferencesSliderId(_headSizeSliderReference)) continue;
+			if (_headSizeSliderReference.LoadSync() != slider.SliderId) continue;
 			if (_headSizeApplySlider == null)
 			{
 				_headSizeApplySlider = slider;
@@ -51,21 +51,21 @@ public abstract class ExportOnButtonClickBase : MonoBehaviour
 		applySliders = _antennaSizeApplyGameObject.GetComponents<ApplySliderAsScaleBase>();
 		foreach (ApplySliderAsScaleBase slider in applySliders)
 		{
-			if (!slider.ReferencesSliderId(_antennaSizeSliderReference)) continue;
+			if (_antennaSizeSliderReference.LoadSync() != slider.SliderId) continue;
 			_antennaSizeApplySlider = slider;
 			break;
 		}
 		applySliders = _earSizeApplyGameObject.GetComponents<ApplySliderAsScaleBase>();
 		foreach (ApplySliderAsScaleBase slider in applySliders)
 		{
-			if (!slider.ReferencesSliderId(_earSizeSliderReference)) continue;
+			if (_earSizeSliderReference.LoadSync() != slider.SliderId) continue;
 			_earSizeApplySlider = slider;
 			break;
 		}
 		applySliders = _earLengthApplyGameObject.GetComponents<ApplySliderAsScaleBase>();
 		foreach (ApplySliderAsScaleBase slider in applySliders)
 		{
-			if (!slider.ReferencesSliderId(_earLengthSliderReference)) continue;
+			if (_earLengthSliderReference.LoadSync() != slider.SliderId) continue;
 			_earLengthApplySlider = slider;
 			break;
 		}
