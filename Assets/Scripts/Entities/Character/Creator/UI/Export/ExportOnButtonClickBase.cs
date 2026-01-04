@@ -6,7 +6,7 @@ public abstract class ExportOnButtonClickBase : MonoBehaviour
 	private UnityEngine.UI.Button _button;
 	private ISaveFolderProvider _saveFolderProvider;
 	protected ICustomizationSelection _selection;
-	protected Tooltip _tooltip;
+	protected SettableTooltip _tooltip;
 	public event System.Action OnExport = delegate { };
 	private ICustomizationSelectedDataRepository _dataRepo;
 	[SerializeField] private AssetReferenceT<Character.Data.CharacterIntId> _eyeExpressionIntIdReference;
@@ -33,7 +33,7 @@ public abstract class ExportOnButtonClickBase : MonoBehaviour
 		_saveFolderProvider = Singletons.GetSingleton<ISaveFolderProvider>();
 		_selection = this.GetCharacterCreatorComponent<ICustomizationSelection>();
 		_dataRepo = this.GetComponentInParent<ICustomizationSelectedDataRepository>();
-		_tooltip = GetComponent<Tooltip>();
+		_tooltip = GetComponent<SettableTooltip>();
 		// These GameObjects have multiple of the same component on them, so we need this ugly code to find the right ones.
 		ApplySliderAsScaleBase[] applySliders = _headSizeApplyGameObject.GetComponents<ApplySliderAsScaleBase>();
 		foreach (ApplySliderAsScaleBase slider in applySliders)

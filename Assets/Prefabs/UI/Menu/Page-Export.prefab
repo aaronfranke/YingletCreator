@@ -130,9 +130,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3580659800990517261, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
+    - {fileID: 8358048460876505798, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5297741707789648774, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2270246526888479518}
     - targetCorrespondingSourceObject: {fileID: 5297741707789648774, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1912957529030951543}
@@ -156,6 +160,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5297741707789648774, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
   m_PrefabInstance: {fileID: 558425736086041229}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2270246526888479518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5637012755606860043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fca69ee3e75c69b4e858e2da0ea967db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _initialText: Export to VRM 1.0 (.vrm)
 --- !u!114 &1912957529030951543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,7 +359,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8358048460876505798, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
       propertyPath: _text
-      value: Export to VRM 0.x (.vrm)
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8520688674579123256, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
       propertyPath: m_Color.b
@@ -358,9 +375,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3580659800990517261, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
+    - {fileID: 8358048460876505798, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5297741707789648774, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7994058039801296216}
     - targetCorrespondingSourceObject: {fileID: 5297741707789648774, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5746787922452191803}
@@ -384,6 +405,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5297741707789648774, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
   m_PrefabInstance: {fileID: 1526328968092580380}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7994058039801296216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6677642114787522970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fca69ee3e75c69b4e858e2da0ea967db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _initialText: Export to VRM 0.x (.vrm)
 --- !u!114 &5746787922452191803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -570,7 +604,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8358048460876505798, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
       propertyPath: _text
-      value: Export to Blender (.blend)
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8520688674579123256, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
       propertyPath: m_Color.b
@@ -586,9 +620,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3580659800990517261, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
+    - {fileID: 8358048460876505798, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5297741707789648774, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2224089334268761929}
     - targetCorrespondingSourceObject: {fileID: 5297741707789648774, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8401674187673568148}
@@ -609,6 +647,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5297741707789648774, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
   m_PrefabInstance: {fileID: 2456554987873410637}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2224089334268761929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7751314796640361931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fca69ee3e75c69b4e858e2da0ea967db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _initialText: Export to Blender (.blend)
 --- !u!114 &8401674187673568148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -974,7 +1025,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8358048460876505798, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
       propertyPath: _text
-      value: Export to G3MF (.g3b)
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8520688674579123256, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
       propertyPath: m_Color.b
@@ -990,9 +1041,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3580659800990517261, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
+    - {fileID: 8358048460876505798, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5297741707789648774, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3816974683735049329}
     - targetCorrespondingSourceObject: {fileID: 5297741707789648774, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1468102220399912578}
@@ -1011,6 +1066,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5297741707789648774, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
   m_PrefabInstance: {fileID: 5837376148682495472}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3816974683735049329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1767621820935837302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fca69ee3e75c69b4e858e2da0ea967db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _initialText: Export to G3MF (.g3b)
 --- !u!114 &1468102220399912578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1582,9 +1650,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3580659800990517261, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
+    - {fileID: 8358048460876505798, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5297741707789648774, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1756489431153466322}
     - targetCorrespondingSourceObject: {fileID: 5297741707789648774, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7876781243490284286}
@@ -1603,6 +1675,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5297741707789648774, guid: 6feb517db03ff31499fc78fd663faa01, type: 3}
   m_PrefabInstance: {fileID: 7781444451999436612}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1756489431153466322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2483843513239637186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fca69ee3e75c69b4e858e2da0ea967db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _initialText: Export to glTF (.glb)
 --- !u!114 &7876781243490284286
 MonoBehaviour:
   m_ObjectHideFlags: 0
