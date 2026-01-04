@@ -6,7 +6,6 @@ namespace Character.Creator
 	public interface ICharacterCreatorFolderProvider
 	{
 		string CustomFolderRoot { get; }
-		string ExportFolderRoot { get; }
 		string PhotoRoot { get; }
 	}
 
@@ -18,12 +17,10 @@ namespace Character.Creator
 		{
 			_saveFolderProvider = Singletons.GetSingleton<ISaveFolderProvider>();
 			CustomFolderRoot = PathUtils.EnsureDirectoryExists(Path.Combine(_saveFolderProvider.GameRootFolderPath, "CustomYings"));
-			ExportFolderRoot = PathUtils.EnsureDirectoryExists(Path.Combine(_saveFolderProvider.GameRootFolderPath, "Exports"));
 			PhotoRoot = PathUtils.EnsureDirectoryExists(Path.Combine(_saveFolderProvider.GameRootFolderPath, "Photos"));
 		}
 
 		public string CustomFolderRoot { get; private set; }
-		public string ExportFolderRoot { get; private set; }
 		public string PhotoRoot { get; private set; }
 	}
 }
