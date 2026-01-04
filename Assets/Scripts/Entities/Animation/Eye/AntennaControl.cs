@@ -25,7 +25,6 @@ public class AntennaControl : ReactiveBehaviour
 {
 	[SerializeField] Transform _rigRoot;
 	[SerializeField] EaseSettings _blinkEaseSettings;
-	private EyeGatherer _eyeGatherer;
 	private IEyeExpressions _eyeExpressions;
 	private IBlinkTimer _blinkTimer;
 	private IEnumerable<Antenna> _antennas;
@@ -46,7 +45,6 @@ public class AntennaControl : ReactiveBehaviour
 
 	void Awake()
 	{
-		_eyeGatherer = this.GetComponent<EyeGatherer>();
 		_eyeExpressions = this.GetComponent<IEyeExpressions>();
 		_blinkTimer = this.GetComponent<IBlinkTimer>();
 
@@ -87,10 +85,6 @@ public class AntennaControl : ReactiveBehaviour
 
 	private void BlinkTimer_OnBlink()
 	{
-		if (!_eyeGatherer.EnableEyeMovement)
-		{
-			return;
-		}
 		CoroutineUtils.StartEaseCoroutine(this, ref _blinkCoroutine, _blinkEaseSettings, p =>
 		{
 			var angles = GetFromToAngles();

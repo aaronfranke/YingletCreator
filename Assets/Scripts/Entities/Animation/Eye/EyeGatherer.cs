@@ -7,7 +7,6 @@ public interface IEyeGatherer
 
 public class EyeGatherer : MonoBehaviour, IEyeGatherer
 {
-	public bool EnableEyeMovement = true;
 	[SerializeField] Transform _rigRoot;
 	Material[] _cachedEyes;
 

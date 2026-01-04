@@ -66,7 +66,6 @@ public class EyeExpressionsMutator_Blink : MonoBehaviour, ICurrentEyeExpressionM
 
 	void Awake()
 	{
-		_eyeGatherer = this.GetComponent<EyeGatherer>();
 		_blinkTimer = this.GetComponent<IBlinkTimer>();
 
 		_blinkTimer.OnBlink += BlinkTimer_OnBlink;
@@ -79,10 +78,6 @@ public class EyeExpressionsMutator_Blink : MonoBehaviour, ICurrentEyeExpressionM
 
 	private void BlinkTimer_OnBlink()
 	{
-		if (!_eyeGatherer.EnableEyeMovement)
-		{
-			return;
-		}
 		StartCoroutine(Blink());
 	}
 	IEnumerator Blink()

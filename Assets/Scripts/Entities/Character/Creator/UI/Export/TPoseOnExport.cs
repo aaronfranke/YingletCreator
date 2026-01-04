@@ -1,10 +1,9 @@
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class TPoseOnExport : MonoBehaviour
 {
 	[SerializeField] private Animator _animator;
-	[SerializeField] private EyeGatherer _eyeGatherer;
+	[SerializeField] private EyeControl _eyeControl;
 	[SerializeField] private MenuType _exportMenu;
 	[SerializeField] private GameObject[] _needsDisable;
 	[SerializeField] private Transform[] _needsUnrotation;
@@ -54,7 +53,7 @@ public class TPoseOnExport : MonoBehaviour
 			}
 			// Enable the TPose layer.
 			_animator.SetLayerWeight(_animator.GetLayerIndex("TPose"), 1.0f);
-			_eyeGatherer.EnableEyeMovement = false;
+			_eyeControl.IdleEyeMovementEnabled = false;
 		}
 		else
 		{
@@ -80,7 +79,7 @@ public class TPoseOnExport : MonoBehaviour
 			}
 			// Disable the TPose layer.
 			_animator.SetLayerWeight(_animator.GetLayerIndex("TPose"), 0.0f);
-			_eyeGatherer.EnableEyeMovement = true;
+			_eyeControl.IdleEyeMovementEnabled = true;
 		}
 	}
 }
