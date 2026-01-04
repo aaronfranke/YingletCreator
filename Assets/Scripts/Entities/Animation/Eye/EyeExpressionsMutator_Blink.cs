@@ -15,6 +15,7 @@ public class EyeExpressionsMutator_Blink : MonoBehaviour, ICurrentEyeExpressionM
 	[SerializeField] float _squintTime = .015f;
 	[SerializeField] float _closedTime = .03f;
 
+	private EyeGatherer _eyeGatherer;
 	private IBlinkTimer _blinkTimer;
 
 	Observable<BlinkState> _blinkState = new Observable<BlinkState>();
@@ -65,6 +66,7 @@ public class EyeExpressionsMutator_Blink : MonoBehaviour, ICurrentEyeExpressionM
 
 	void Awake()
 	{
+		_eyeGatherer = this.GetComponent<EyeGatherer>();
 		_blinkTimer = this.GetComponent<IBlinkTimer>();
 
 		_blinkTimer.OnBlink += BlinkTimer_OnBlink;
@@ -77,6 +79,10 @@ public class EyeExpressionsMutator_Blink : MonoBehaviour, ICurrentEyeExpressionM
 
 	private void BlinkTimer_OnBlink()
 	{
+		if (!_eyeGatherer.EnableEyeMovement)
+		{
+			return;
+		}
 		StartCoroutine(Blink());
 	}
 	IEnumerator Blink()

@@ -8,6 +8,7 @@ namespace Character.Creator.UI
 	public enum OpenFolderOnClickType
 	{
 		Custom,
+		Export,
 		Photos
 	}
 
@@ -36,6 +37,7 @@ namespace Character.Creator.UI
 			var folder = _type switch
 			{
 				OpenFolderOnClickType.Custom => _folderProvider.CustomFolderRoot,
+				OpenFolderOnClickType.Export => _folderProvider.ExportFolderRoot,
 				OpenFolderOnClickType.Photos => _folderProvider.PhotoRoot,
 				_ => _folderProvider.CustomFolderRoot
 			};
