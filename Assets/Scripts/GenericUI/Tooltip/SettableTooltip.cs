@@ -7,7 +7,7 @@ public class SettableTooltip : Tooltip
 	[SerializeField, TextArea] string _initialText;
 	Observable<string> _text = new Observable<string>();
 
-	public override string Text => _initialText;
+	public override string Text => _text.Val;
 
 	protected override void Awake()
 	{
