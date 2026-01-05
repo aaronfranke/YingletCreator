@@ -64,6 +64,7 @@ public class ModelDocument
 	/// </summary>
 	private HashSet<string> uniqueNames = new HashSet<string>();
 	private Dictionary<int, int> nodeIndexToJointMap = null;
+	private int thumbnailTextureAndImageIndex = -1;
 
 	/// <summary>
 	/// If true, inject extra LowerLeg nodes between UpperLeg and LowerLeg1 to improve compatibility
@@ -458,6 +459,18 @@ public class ModelDocument
 		return uniqueName;
 	}
 
+	public ModelAnimation FindAnimationByName(string name)
+	{
+		for (int i = 0; i < animations.Count; i++)
+		{
+			if (animations[i].name == name)
+			{
+				return animations[i];
+			}
+		}
+		return null;
+	}
+
 	public int FindNodeIndexByName(string name)
 	{
 		for (int i = 0; i < nodes.Count; i++)
@@ -548,7 +561,15 @@ public class ModelDocument
 		}
 	}
 
-	public void ExportTextures(int imageFormat)
+	public void EncodeAnimationAccessors(ModelBaseFormat format)
+	{
+		for (int i = 0; i < animations.Count; i++)
+		{
+			animations[i].EncodeZeroTimeAnimationAccessors(this, format);
+		}
+	}
+
+	public void EncodeTextures(int imageFormat)
 	{
 		for (int i = 0; i < materials.Count; i++)
 		{
@@ -563,12 +584,14 @@ public class ModelDocument
 		}
 	}
 
-	public void EncodeAnimationAccessors(ModelBaseFormat format)
+	public void EncodeThumbnail(Texture2D thumbnailTexture, int imageFormat)
 	{
-		for (int i = 0; i < animations.Count; i++)
+		if (thumbnailTexture == null)
 		{
-			animations[i].EncodeZeroTimeAnimationAccessors(this, format);
+			Debug.LogError("No thumbnail texture provided for export.");
+			return;
 		}
+		thumbnailTextureAndImageIndex = ModelTexture.FromUnityTexture2D(this, thumbnailTexture, "thumbnail", imageFormat);
 	}
 
 	public void ExportToG3MF(string path)
@@ -583,9 +606,19 @@ public class ModelDocument
 		json.Append("\"KHR_character\",\"KHR_character_expression\",\"KHR_character_skeleton_mapping\"");
 		json.Append(",\"KHR_materials_unlit\",\"KHR_texture_transform\",\"KHR_xmp_json_ld\"");
 		// VRM extension declarations.
-		json.Append(",\"VRMC_materials_mtoon\",\"VRMC_springBone\",\"VRMC_vrm\"");
-		json.Append("]"); // End extensionsUsed
-		json.Append(",\"generator\":\"Yinglet Creator\",\"specification\":\"https://github.com/godot-dimensions/g4mf\"}");
+		//json.Append(",\"VRMC_materials_mtoon\"");
+		json.Append(",\"VRMC_springBone\",\"VRMC_vrm\"");
+		json.Append("]"); // End extensionsUsed.
+		json.Append(",\"generator\":\"");
+		json.Append(GetGeneratorText());
+		json.Append("\",\"specification\":\"https://github.com/godot-dimensions/g4mf\"");
+		if (thumbnailTextureAndImageIndex >= 0)
+		{
+			json.Append(",\"thumbnail\":");
+			json.Append(thumbnailTextureAndImageIndex);
+		}
+		// End asset header.
+		json.Append("}");
 		// Accessors.
 		ExportCollectionToJSON(json, "accessors", accessors, ModelBaseFormat.G3MF);
 		// Animations.
@@ -675,7 +708,9 @@ public class ModelDocument
 		json.Append("{\"asset\":{");
 		json.Append("\"copyright\":\"" + System.DateTime.UtcNow.ToString("yyyy") + " Yinglet Creator\"");
 		json.Append(",\"extensions\":{\"KHR_xmp_json_ld\":{\"packet\":0}}"); // Packet applies to asset header / entire file.
-		json.Append(",\"generator\":\"Yinglet Creator\",\"version\":\"2.0\"}");
+		json.Append(",\"generator\":\"");
+		json.Append(GetGeneratorText());
+		json.Append("\",\"version\":\"2.0\"}");
 		// Accessors.
 		ExportCollectionToJSON(json, "accessors", accessors, ModelBaseFormat.GLTF);
 		// Animations.
@@ -727,7 +762,8 @@ public class ModelDocument
 		}
 		else
 		{
-			json.Append(",\"VRMC_materials_mtoon\",\"VRMC_springBone\",\"VRMC_vrm\"");
+			//json.Append(",\"VRMC_materials_mtoon\"");
+			json.Append(",\"VRMC_springBone\",\"VRMC_vrm\"");
 		}
 		json.Append("]"); // End extensionsUsed
 						  // Encode images of textures.
@@ -906,8 +942,19 @@ public class ModelDocument
 	private void ExportVRM0xTopLevelExtensions(StringBuilder json)
 	{
 		json.Append("\"VRM\":{");
-		json.Append("\"exporterVersion\":\"Yinglet Creator\"");
-		json.Append(",\"humanoid\":{");
+		json.Append("\"exporterVersion\":\"");
+		json.Append(GetGeneratorText());
+		json.Append("\"");
+		json.Append(",\"firstPerson\":{");
+		{
+			// Hard-coded values designed to work well with the exported Yinglet eye bones.
+			json.Append("\"lookAtHorizontalInner\":{\"xRange\":50.0,\"yRange\":3.0},");
+			json.Append("\"lookAtHorizontalOuter\":{\"xRange\":50.0,\"yRange\":6.0},");
+			json.Append("\"lookAtTypeName\":\"Bone\",");
+			json.Append("\"lookAtVerticalDown\":{\"xRange\":40.0,\"yRange\":3.0},");
+			json.Append("\"lookAtVerticalUp\":{\"xRange\":40.0,\"yRange\":3.0}");
+		}
+		json.Append("},\"humanoid\":{");
 		{
 			json.Append("\"humanBones\":[");
 			int vrmHumanBoneIndex = 0;
@@ -946,6 +993,12 @@ public class ModelDocument
 			json.Append("\"licenseName\":\"CC_BY_NC_SA\",");
 			json.Append("\"otherLicenseUrl\":\"https://github.com/TBartl/YingletCreator/blob/master/LICENSE\",");
 			json.Append("\"sexualUssageName\":\"Allow\",");
+			if (thumbnailTextureAndImageIndex >= 0)
+			{
+				json.Append("\"texture\":"); // VRM 0.x has the dumbest names I swear.
+				json.Append(thumbnailTextureAndImageIndex);
+				json.Append(",");
+			}
 			json.Append("\"title\":\"");
 			json.Append(nodes[0].name);
 			json.Append("\",");
@@ -985,7 +1038,23 @@ public class ModelDocument
 		}
 		json.Append("},\"VRMC_vrm\":{");
 		{
-			json.Append("\"humanoid\":{");
+			json.Append("\"expressions\":{");
+			{
+				json.Append("\"custom\":{");
+				ModelAnimation winceAnim = FindAnimationByName("EyesWince");
+				AnimationToVRM10ExpressionJSON(json, winceAnim, "wince");
+				json.Append("},\"preset\":{");
+				int expressionIndex = 0;
+				foreach (var kvp in vrmExpressionToAnimationName)
+				{
+					ModelAnimation animation = FindAnimationByName(kvp.Value);
+					if (expressionIndex > 0) json.Append(",");
+					AnimationToVRM10ExpressionJSON(json, animation, kvp.Key);
+					expressionIndex++;
+				}
+				json.Append("}");
+			}
+			json.Append("},\"humanoid\":{");
 			{
 				json.Append("\"humanBones\":{");
 				int vrmHumanBoneIndex = 0;
@@ -998,6 +1067,15 @@ public class ModelDocument
 					vrmHumanBoneIndex++;
 				}
 				json.Append("}");
+			}
+			json.Append("},\"lookAt\":{");
+			{
+				// Hard-coded values designed to work well with the exported Yinglet eye bones.
+				json.Append("\"rangeMapHorizontalInner\":{\"inputMaxValue\":50.0,\"outputScale\":3.0},");
+				json.Append("\"rangeMapHorizontalOuter\":{\"inputMaxValue\":50.0,\"outputScale\":6.0},");
+				json.Append("\"rangeMapVerticalDown\":{\"inputMaxValue\":40.0,\"outputScale\":3.0},");
+				json.Append("\"rangeMapVerticalUp\":{\"inputMaxValue\":40.0,\"outputScale\":3.0},");
+				json.Append("\"type\":\"bone\"");
 			}
 			json.Append("},\"meta\":{");
 			{
@@ -1017,12 +1095,34 @@ public class ModelDocument
 				json.Append(nodes[0].name);
 				json.Append("\",");
 				json.Append("\"otherLicenseUrl\":\"https://github.com/TBartl/YingletCreator/blob/master/LICENSE\",");
+				if (thumbnailTextureAndImageIndex >= 0)
+				{
+					json.Append("\"thumbnailImage\":");
+					json.Append(thumbnailTextureAndImageIndex);
+					json.Append(",");
+				}
 				json.Append("\"version\":\"0.0\"");
 			}
 			json.Append("},");
 			json.Append("\"specVersion\":\"1.0\"");
 		}
 		json.Append("}");
+	}
+
+	private void AnimationToVRM10ExpressionJSON(StringBuilder json, ModelAnimation animation, string vrmName)
+	{
+		json.Append("\"");
+		json.Append(vrmName);
+		json.Append("\":{\"isBinary\":true,\"textureTransformBinds\":[{");
+		json.Append("\"material\":");
+		json.Append(animation.targetMaterialIndex);
+		json.Append(",\"offset\":[");
+		json.Append(ModelItem.Flt(animation.offset.x));
+		json.Append(",");
+		json.Append(ModelItem.Flt(animation.offset.y));
+		json.Append("]"); // Close offset
+		json.Append(",\"scale\":[1.0,1.0]"); // HACK: UniVRM crashes when scale is missing, even though it's optional in the spec.
+		json.Append("}]}"); // Close textureTransformBinds, close expression.
 	}
 
 	private void ExportCollectionToJSON<T>(StringBuilder json, string name, List<T> items, ModelBaseFormat baseFormat) where T : ModelItem
@@ -1064,4 +1164,23 @@ public class ModelDocument
 		}
 		return ModelAccessor.EncodeMatrix4x4s(this, inverseBindMatrices);
 	}
+
+	private static string GetGeneratorText()
+	{
+		return "Yinglet Creator " + Application.version;
+	}
+
+	/// <summary>
+	/// VRM 1.0's expression names have a decent mapping for everything except "EyesWince".
+	/// </summary>
+	private static readonly Dictionary<string, string> vrmExpressionToAnimationName = new Dictionary<string, string>
+	{
+		{"angry", "EyesAngry"},
+		{"blink", "EyesBlink"},
+		{"happy", "EyesPleased"},
+		{"neutral", "EyesNeutral"},
+		{"relaxed", "EyesSquint"},
+		{"sad", "EyesSad"},
+		{"surprised", "EyesShocked"},
+	};
 }

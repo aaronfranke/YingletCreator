@@ -109,11 +109,36 @@ public abstract class ExportOnButtonClickBase : MonoBehaviour
 
 	protected string GetSavePath()
 	{
-		var selected = _selection.Selected;
-		var name = (selected != null) ? selected.CachedData.Name : "UnnamedYinglet";
-		var sanitizedName = System.Text.RegularExpressions.Regex.Replace(name, "[^a-zA-Z0-9_-]", "");
-		var folderName = sanitizedName + "-" + System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
+		CachedYingletReference yingRef = _selection.Selected;
+		string name = (yingRef != null) ? yingRef.CachedData.Name : "UnnamedYinglet";
+		string sanitizedName = System.Text.RegularExpressions.Regex.Replace(name, "[^a-zA-Z0-9_-]", "");
+		string folderName = sanitizedName + "-" + System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
 		return System.IO.Path.Combine(_saveFolderProvider.ExportsFolderPath, folderName);
+	}
+
+	protected Texture2D GetThumbnailTexture()
+	{
+		CachedYingletReference yingRef = _selection.Selected;
+		IYingSnapshotManager snapshotManager = Singletons.GetSingleton<IYingSnapshotManager>();
+		using (IYingSnapshotRenderTexture snapshot = snapshotManager.GetRenderTexture(yingRef))
+		{
+			RenderTexture renderTex = snapshot.RenderTexture;
+			if (renderTex == null)
+			{
+				return null;
+			}
+			// Convert RenderTexture to Texture2D
+			RenderTexture.active = renderTex;
+			// Hard-code square thumbnail size. The VRM specification says: "The thumbnail image must be square".
+			int newSize = renderTex.height * 3 / 4;
+			int offsetX = (renderTex.width - newSize) / 2;
+			int offsetY = 0; // Align to bottom (Unity's texture coordinate system is bottom-left origin).
+			Texture2D thumbnail = new Texture2D(newSize, newSize, TextureFormat.RGBA32, false);
+			thumbnail.ReadPixels(new Rect(offsetX, offsetY, newSize, newSize), 0, 0);
+			thumbnail.Apply();
+			RenderTexture.active = null;
+			return thumbnail;
+		}
 	}
 
 	protected void EmitExportEvent()
