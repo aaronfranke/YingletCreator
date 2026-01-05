@@ -93,8 +93,9 @@ public class ExportToModelOnButtonClick : ExportOnButtonClickBase
 		SetFloatPrecisionForModelAccessors(baseFormat, _floatPrecisionDropdown.value);
 		yinglet.PerformOptionalCleanups();
 		yinglet.EncodeMeshDataIntoAccessors(baseFormat);
-		yinglet.ExportTextures(_imageFormatDropdown.value);
 		yinglet.EncodeAnimationAccessors(baseFormat);
+		yinglet.EncodeTextures(_imageFormatDropdown.value);
+		yinglet.EncodeThumbnail(GetThumbnailTexture(), _imageFormatDropdown.value);
 		string savePath = GetSavePath();
 		// Note: The non-VRM 0.x formats all include the VRM 1.0 metadata.
 		// This is because VRM 1.0 is a clean superset of the standard rig, so

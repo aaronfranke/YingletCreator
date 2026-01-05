@@ -207,7 +207,7 @@ public class ModelMaterial : ModelItem
 			json.Append("\"alphaMode\":\"MASK\",");
 			json.Append("\"extensions\":{");
 			json.Append("\"KHR_materials_unlit\":{}");
-			json.Append(",\"VRMC_materials_mtoon\":{\"specVersion\":\"1.0\"}");
+			//json.Append(",\"VRMC_materials_mtoon\":{\"specVersion\":\"1.0\"}");
 			json.Append("}"); // End extensions
 			json.Append(",\"name\":\"" + name + "\"");
 			json.Append(",\"pbrMetallicRoughness\":{\"baseColorTexture\":{");
@@ -232,7 +232,7 @@ public class ModelMaterial : ModelItem
 			json.Append("}"); // End baseColor
 			json.Append(",\"extensions\":{");
 			json.Append("\"KHR_materials_unlit\":{}");
-			json.Append(",\"VRMC_materials_mtoon\":{\"specVersion\":\"1.0\"}");
+			//json.Append(",\"VRMC_materials_mtoon\":{\"specVersion\":\"1.0\"}");
 			json.Append("}"); // End extensions
 			json.Append(",\"name\":\"" + name + "\"");
 		}

@@ -19,13 +19,18 @@ public class ModelTexture : ModelItem
 				return i;
 			}
 		}
+		return FromUnityTexture2D(doc, material.unityTexture, material.name, imageFormat);
+	}
+
+	public static int FromUnityTexture2D(ModelDocument doc, Texture2D unityTexture, string baseName, int imageFormat)
+	{
 		// Make a new texture.
 		ModelTexture modelTexture = new ModelTexture();
-		// Convert the material name to snake_case for the texture name.
-		modelTexture.name = System.Text.RegularExpressions.Regex.Replace(PascalToSnake(material.name), "[^a-z0-9]", "_");
+		// Convert the base name to snake_case for the texture name.
+		modelTexture.name = System.Text.RegularExpressions.Regex.Replace(PascalToSnake(baseName), "[^a-z0-9]", "_");
 		modelTexture.name = modelTexture.name.Replace("__", "_").Replace("mat_", "tex_").Replace("material", "texture");
 		modelTexture.name = doc.ReserveUniqueName(modelTexture.name);
-		modelTexture.unityTexture = material.unityTexture;
+		modelTexture.unityTexture = unityTexture;
 		if (imageFormat == 0) // PNG
 		{
 			modelTexture.imageMimeType = "image/png";
@@ -41,7 +46,7 @@ public class ModelTexture : ModelItem
 			modelTexture.bufferViewIndex = ModelBufferView.FromByteArrayIntoDoc(doc, jpgData);
 		}
 		int texIndex = doc.textures.Count;
-		modelTexture.imageIndex = texIndex; // For simplicity, these will be in sync, excluding deduplicating the eyes at the end.
+		modelTexture.imageIndex = texIndex; // For simplicity, these will be in sync.
 		doc.textures.Add(modelTexture);
 		return texIndex;
 	}
