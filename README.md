@@ -10,7 +10,7 @@ It has all the information you need to set up the project and start developing.
 
 # License
 
-Exported models are free to use anywhere, with a [CCO license](https://creativecommons.org/publicdomain/zero/1.0/)
+Exported models are free to use anywhere, with a [CC0 license](https://creativecommons.org/publicdomain/zero/1.0/)
 
 The Unity project itself was primarily made open source to support mod development.
 
