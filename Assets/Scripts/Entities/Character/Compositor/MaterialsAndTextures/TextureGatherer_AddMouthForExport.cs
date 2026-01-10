@@ -35,13 +35,12 @@ namespace Character.Compositor
 				return;
 			}
 
-			var mouthTexture = set.FirstOrDefault(mixTex => mixTex.TargetMaterialTexture == TargetMaterialTexture.Mouth);
-			if (mouthTexture == null)
+			// There might be multiple mouth textures for things like lipstick. Or none at all if the user hasn't selected anything
+			var mouthTextures = set.Where(mixTex => mixTex.TargetMaterialTexture == TargetMaterialTexture.Mouth).ToList();
+			foreach (var mouthTexture in mouthTextures)
 			{
-				// We don't have a mouth for some reason. This is unlikely to happen, unless the user explicitly removed the mouth
-				return;
+				set.Add(new SlapOnMouthTexture(mouthTexture, _slapOnMouthMaterial.LoadSync()));
 			}
-			set.Add(new SlapOnMouthTexture(mouthTexture, _slapOnMouthMaterial.LoadSync()));
 		}
 	}
 
