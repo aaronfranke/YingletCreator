@@ -15,7 +15,7 @@ internal class ExportModelFormatDropdown : ReactiveDropdown<ExportModelFormat>
 		{
 			new MenuSettingsDropdownOption("Blender (.blend)", ExportModelFormat.BLENDER),
 			new MenuSettingsDropdownOption("G3MF (.g3b)",      ExportModelFormat.G3MF),
-			new MenuSettingsDropdownOption("glTF (GLTF)",      ExportModelFormat.GLTF),
+			new MenuSettingsDropdownOption("glTF (.glb)",      ExportModelFormat.GLTF),
 			new MenuSettingsDropdownOption("VRM 0.X (.vrm)",   ExportModelFormat.VRM_0_x),
 			new MenuSettingsDropdownOption("VRM 1.0 (.vrm)",   ExportModelFormat.VRM_1_0),
 		};
