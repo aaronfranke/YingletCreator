@@ -55,6 +55,8 @@ public class ExportToModelOnButtonClick : ExportOnButtonClickBase
 			Debug.LogError("Yinglet root is not assigned.");
 			return;
 		}
+		PathUtils.EnsureDirectoryExists(_saveFolderProvider.ExportsFolderPath);
+
 		// Prepare data.
 		ModelMaterial.pupilTexture = _pupilTexture;
 		MeshObjectOptimization meshObjOpt = (MeshObjectOptimization)_meshOptimizationDropdown.value;
